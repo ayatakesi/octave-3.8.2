@@ -1,0 +1,671 @@
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+@c DO NOT EDIT!  Generated automatically by munge-texi.pl.
+
+@c Copyright (C) 1996-2013 John W. Eaton
+@c
+@c This file is part of Octave.
+@c
+@c Octave is free software; you can redistribute it and/or modify it
+@c under the terms of the GNU General Public License as published by the
+@c Free Software Foundation; either version 3 of the License, or (at
+@c your option) any later version.
+@c 
+@c Octave is distributed in the hope that it will be useful, but WITHOUT
+@c ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+@c FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+@c for more details.
+@c 
+@c You should have received a copy of the GNU General Public License
+@c along with Octave; see the file COPYING.  If not, see
+@c <http://www.gnu.org/licenses/>.
+
+@node Variables
+@chapter Variables
+@cindex variables, user-defined
+@cindex user-defined variables
+
+変数により、値に名前を付け、後でそれを参照できるようになります。これまで多くの例で、すでに変数を目にしてきました。変数の名前は英数字とアンダースコアのシーケンスですが、数字で開始することはできません。Octaveは変数の名前の長さに制限は強いませんが、30文字を超える長さの変数名が有用なことはまれです。以下はすべて有効な変数名です
+
+@example
+@group
+x
+x15
+__foo_bar_baz__
+fucnrdthsucngtagdjb
+@end group
+@end example
+
+@noindent
+しかし、@code{__foo_bar_baz__}のように開始と終了が2つのアンダースコアの名前は、Octaveが内部で使用するために予約されています。これらの名前のは、ドキュメントされたOctaveの内部変数やビルトインシンボル定数を除き、あなたが記述するコードで使用するべきではありません。
+
+変数名は大文字小文字を区別します。シンボル@code{a}と@code{A}は別の変数です。
+
+変数名は、それ自体が有効な式です。変数名は、その変数の現在の値を表します。変数は@dfn{代入演算子}と@dfn{加算演算子}により新たな値が与えられます。@ref{Assignment
+Ops,,Assignment Expressions}を参照してください。
+
+特別な意味をもつビルトイン変数が1つあります。@code{ans}変数は、出力がどの変数にも割り当てられていないとき、常に最後の計算結果を保持します。コード@code{a
+= cos (pi)}は変数@code{a}に-1を代入しますが、@code{ans}の値は変更しません。しかしコード@code{cos
+(pi)}は@code{ans}の値を-1にセットします。
+
+Octaveの変数は固定された型をもたないので、変数に最初は数値を格納して、同じプログラム内で後で文字列を保持するために同じ名前を使用できます。値を与える前に変数を使用するべきではありません。これを行うと結果はエラーになります。
+
+@cindex @code{ans}
+@c ans scripts/miscellaneous/ans.m
+@anchor{XREFans}
+@defvr {Automatic Variable} ans
+明示的に変数に代入されていない、もっとも最近の計算結果です。たとえば、
+
+@example
+3^2 + 4^2
+@end example
+
+@noindent
+この式が評価された後に@code{ans}がリターンする値は25です。
+@end defvr
+
+
+@c isvarname libinterp/corefcn/utils.cc
+@anchor{XREFisvarname}
+@deftypefn {Built-in Function} {} isvarname (@var{name})
+@var{name}が有効な変数名の場合は、trueをリターンします。
+@seealso{@ref{XREFiskeyword,,iskeyword}, @ref{XREFexist,,exist},
+@ref{XREFwho,,who}}
+@end deftypefn
+
+
+@c genvarname scripts/miscellaneous/genvarname.m
+@anchor{XREFgenvarname}
+@deftypefn {Function File} {@var{varname} =} genvarname (@var{str})
+@deftypefnx {Function File} {@var{varname} =} genvarname (@var{str}, @var{exclusions})
+@var{str}から一意な変数を作成します。@var{exclusions}が与えられた場合、それぞれの変数および@var{exclusions}にたいして一意になります(@var{exclusions}には文字列とセル文字列を指定できます)。
+
+@var{str}がセル文字列の場合は、@var{str}内の各セルにたいして一意な変数が作成されます。
+
+@example
+@group
+x = 3.141;
+genvarname ("x", who ())
+  @result{} x1
+@end group
+@end example
+
+@var{str}がセル配列の場合、genvarnameは文字列を確実に分離するようにします:
+
+@example
+@group
+genvarname (@{"foo", "foo"@})
+  @result{}
+     @{
+       [1,1] = foo
+       [1,2] = foo1
+     @}
+@end group
+@end example
+
+結果は変数自体ではなく、文字配列または文字列のセル配列になることに注意してください。変数の定義には、@code{eval()}を使用できます。以下は@code{x}に@code{42}をセットする例です。
+
+@example
+@group
+name = genvarname ("x");
+eval ([name " = 42"]);
+  @result{} x =  42
+@end group
+@end example
+
+これは一意な構造体フィールド名の作成にも便利です。
+
+@example
+@group
+x = struct ();
+for i = 1:3
+  x.(genvarname ("a", fieldnames (x))) = i;
+endfor
+  @result{} x =
+     @{
+       a =  1
+       a1 =  2
+       a2 =  3
+     @}
+@end group
+@end example
+
+変数名に含むことができるのは英数字とアンダースコアだけなので、genvarnameは許可されていない文字シーケンスをアンダースコアで置き換えます。さらに変数名は数字で開始できないので、このような場合は変数名の最初にアンダースコアを追加します。
+
+開始と終了が2つのアンダースコア@qcode{"__"}であるような変数名は有効ですが、そのような名前はoctaveにより内部的に使用されるので一般的には避けるべきで、genvarnameはそのような名前を生成しません。
+
+またgenvarnameは@qcode{"for"}や@qcode{"if"}のようなキーワードと衝突しない名前をリターンします。必要なら数字が追加されます。しかし、これには@qcode{"sin"}のような函数名は@strong{含まれない}ことに注意してください。必要なら、そのような名前は@var{exclusions}に含めるべきです。
+@seealso{@ref{XREFisvarname,,isvarname}, @ref{XREFexist,,exist},
+@ref{XREFtmpnam,,tmpnam}, @ref{XREFeval,,eval}}
+@end deftypefn
+
+
+@c namelengthmax scripts/miscellaneous/namelengthmax.m
+@anchor{XREFnamelengthmax}
+@deftypefn {Function File} {} namelengthmax ()
+@sc{matlab}と互換性のある変数名の最大長をリターンします。Octaveは長さ@math{2^{31} -
+1}までの文字列を格納できます。しかし@sc{matlab}との互換性のためすべての変数、関数、構造体フィールド名は@code{namelengthmax}で得られる長さより短くする必要があります。特に@sc{matlab}ファイルフォーマットに格納する変数は、この長さに切り詰められます。
+@end deftypefn
+
+
+@menu
+* Global Variables::
+* Persistent Variables::
+* Status of Variables::      
+@end menu
+
+@node Global Variables
+@section Global Variables
+@cindex global variables
+@cindex @code{global} statement
+@cindex variables, global
+
+@dfn{global}と宣言された変数は、それが形式にしたがって渡されたパラメーターでなくても、関数ボディーの内部からアクセスできます。
+
+@code{global}宣言文を使用して変数をグローバルに宣言できます。以下の命令文はすべてグローバル宣言です。
+
+@example
+@group
+global a
+global a b
+global c = 2
+global d = 3 e f = 5
+@end group
+@end example
+
+グローバル変数は@code{global}文で1度だけ初期化されます。たとえば、
+
+@example
+@group
+global gvar = 1
+global gvar = 2
+@end group
+@end example
+
+@noindent
+この文が実行されるとグローバル変数@code{gvar}の値は2ではなく1になります。@samp{clear
+gvar}コマンドを実行しても上記の振る舞いは変更されません。@samp{clear all}により変更されます。
+
+グローバル変数にアクセスするために、関数内で変数をグローバルと宣言することが必要です。たとえば、
+
+@example
+@group
+global x
+function f ()
+  x = 1;
+endfunction
+f ()
+@end group
+@end example
+
+@noindent
+これはグローバル変数@code{x}の値を1にセット@emph{しません}。グローバル変数@code{x}の値を変更するには、以下のように関数ボディー内でそれをグローバルとセットしなければなりません
+
+@example
+@group
+function f ()
+  global x;
+  x = 1;
+endfunction
+@end group
+@end example
+
+関数のパラメーターリストにグローバル変数を渡しても、それはローカルコピーを作成し、グローバルな値は変更されないでしょう。たとえば関数が以下で与えられ
+
+@example
+@group
+function f (x)
+  x = 0
+endfunction
+@end group
+@end example
+
+@noindent
+トップレベルで@code{x}をグローバル変数とする定義が以下の場合
+
+@example
+global x = 13
+@end example
+
+@noindent
+以下の式
+
+@example
+f (x)
+@end example
+
+@noindent
+は関数内部の@code{x}の値として0を表示し、トップレベルの@code{x}の値は変更されないまま残ります。なぜなら関数は引数の@emph{コピー}にたいして機能するからです。
+
+@c isglobal libinterp/corefcn/variables.cc
+@anchor{XREFisglobal}
+@deftypefn {Built-in Function} {} isglobal (@var{name})
+@var{name}がグローバルに可視な変数の場合は、trueをリターンします。たとえば:
+
+@example
+@group
+global x
+isglobal ("x")
+   @result{} 1
+@end group
+@end example
+@seealso{@ref{XREFisvarname,,isvarname}, @ref{XREFexist,,exist}}
+@end deftypefn
+
+
+@node Persistent Variables
+@section Persistent Variables
+@cindex persistent variables
+@cindex @code{persistent} statement
+@cindex variables, persistent
+@anchor{XREFpersistent}
+
+関数内で@dfn{永続的(persistent)}と宣言された変数は、同じ関数にたいする一連の呼び出しの間、その内容をメモリー内にとどめます。永続的変数ちとグローバル変数に違いは、永続的変数のスコープが特定の関数にたいしてローカルであり、それ以外の場所からは不可視であることです。
+
+以下は、永続的変数を使用して、呼び出された回数をプリントする関数を作成する例です。
+
+@example
+@group
+function count_calls ()
+  persistent calls = 0;
+  printf ("'count_calls' has been called %d times\n",
+          ++calls);
+endfunction
+
+for i = 1:3
+  count_calls ();
+endfor
+
+@print{} 'count_calls' has been called 1 times
+@print{} 'count_calls' has been called 2 times
+@print{} 'count_calls' has been called 3 times
+@end group
+@end example
+
+例示すように変数@code{persistent}宣言文により永続的であると宣言されます。以下の命令文はすべて永続的な宣言です。
+
+@example
+@group
+persistent a
+persistent a b
+persistent c = 2
+persistent d = 3 e f = 5
+@end group
+@end example
+
+永続的変数の振る舞いは、Cの静的変数と同じです。Octaveではコマンド@code{static}も認識され、これは@code{persistent}と等価です。
+
+グローバル変数と同様、永続的変数は1度だけ初期化されます。たとえば、
+
+@example
+@group
+persistent pvar = 1
+persistent pvar = 2
+@end group
+@end example
+
+@noindent
+この式を実行すると、永続的変数@code{pvar}の値じゃ2ではなく1になります。
+
+永続的変数が宣言されていても特定の値に初期化されていない場合、値は空マトリクスになります。したがって以下の例で示すように、空かどうかチェックすることにより永続的変数を初期化することも可能です。
+
+@example
+@group
+function count_calls ()
+  persistent calls;
+  if (isempty (calls))
+    calls = 0;
+  endif
+  printf ("'count_calls' has been called %d times\n",
+          ++calls);
+endfunction
+@end group
+@end example
+
+@noindent
+この実装は、@code{count_calls}の以前の実装と正確に同じ方法で振る舞います。
+
+永続的変数の値は、明示的にクリアーされるまでメモリー内にとどまります。@code{count_calls}の実装がディスク上に保存されていると仮定すると、以下のような振る舞いになります。
+
+@example
+for i = 1:2
+  count_calls ();
+endfor
+@print{} 'count_calls' has been called 1 times
+@print{} 'count_calls' has been called 2 times
+
+clear
+for i = 1:2
+  count_calls ();
+endfor
+@print{} 'count_calls' has been called 3 times
+@print{} 'count_calls' has been called 4 times
+
+clear all
+for i = 1:2
+  count_calls ();
+endfor
+@print{} 'count_calls' has been called 1 times
+@print{} 'count_calls' has been called 2 times
+
+clear count_calls
+for i = 1:2
+  count_calls ();
+endfor
+@print{} 'count_calls' has been called 1 times
+@print{} 'count_calls' has been called 2 times
+@end example
+
+@noindent
+つまり、変数を含む関数がメモリーから削除されるときだけ、永続的変数が削除されます。Octaveから関数定義を直接タイプした場合は、メモリーから関数定義全体を削除する@code{clear}コマンドにより、永続的変数が削除されます。関数がクリアーされてもメモリーから永続的変数を削除したくない場合は、@code{mlock}関数を使用するべきです(@ref{Function
+Locking}を参照)。
+
+@node Status of Variables
+@section Status of Variables
+
+シンプルな使い捨てプログラムを作成する場合、プロンプト上でどの変数が利用できるととても便利なことがあります。関数@code{who}、および同類の@code{whos}と@code{whos_line_format}は以下で示すように、メモリー内に何があるかについて異なる情報を表示します。
+
+@example
+@group
+str = "A random string";
+who -variables
+     @print{} *** local user variables:
+     @print{} 
+     @print{} __nargin__  str
+@end group
+@end example
+
+@c who libinterp/corefcn/variables.cc
+@anchor{XREFwho}
+@deftypefn {Command} {} who
+@deftypefnx {Command} {} who pattern @dots{}
+@deftypefnx {Command} {} who option pattern @dots{}
+@deftypefnx {Command} {C =} who ("pattern", @dots{})
+与えられたパターンにマッチする現在定義されている変数をリストします。有効なパターン構文は、@code{clear}コマンドで説明されているものと同じです。パターンが与えられない場合は、すべての変数がリストされます。デフォルトでは、ローカルスコープで可視な変数だけが表示されます。
+
+以下は有効なオプションですが、組み合わせることはできません。
+
+@table @code
+@item global
+カレントスコープではなく、グローバルスコープの変数をリストします。
+
+@item -regexp
+パターンは表示する変数をマッチングするときの正規表現です。@code{regexp}関数を使用するときと同じパターン構文を指定できます。
+
+@item -file
+次の引数をファイル名として扱います。指定されたファイルで見つかったすべての変数がリストされます。ファイルから変数を読み込むとき、パターンは指定できません。
+@end table
+
+関数として呼び出された場合は、与えられたパターンにマッチする定義された変数名のセル配列をリターンします。
+@seealso{@ref{XREFwhos,,whos}, @ref{XREFisglobal,,isglobal},
+@ref{XREFisvarname,,isvarname}, @ref{XREFexist,,exist},
+@ref{XREFregexp,,regexp}}
+@end deftypefn
+
+
+@c whos libinterp/corefcn/variables.cc
+@anchor{XREFwhos}
+@deftypefn {Command} {} whos
+@deftypefnx {Command} {} whos pattern @dots{}
+@deftypefnx {Command} {} whos option pattern @dots{}
+@deftypefnx {Command} {S =} whos ("pattern", @dots{})
+与えられたパターンにマッチする、現在定義された変数の詳細な情報を提供します。オプションとパターン構文は、@code{who}コマンドと同じです。各変数についての拡張された情報は、以下のデフォルトエントリーとともにテーブルに要約されます。
+
+@table @asis
+@item Attr
+リストされた変数の属性。
+
+@table @asis
+@item blank
+ローカルスコープの変数
+
+@item @code{a}
+自動変数。自動変数とは、インタープリターにより作成されたもの。例: @code{argn}
+
+@item @code{c}
+複素数型の変数
+
+@item @code{f}
+通常形式のパラメーター(関数の引数)。
+
+@item @code{g}
+グローバルスコープの変数。
+
+@item @code{p}
+永続的変数。
+@end table
+
+@item Name
+変数の名前。
+
+@item Size
+変数の論理的サイズ。スカラーは1x1、ベクターは@nospell{1xN}または@nospell{Nx1}、2次元マトリクスは@nospell{MxN}。
+
+@item Bytes
+変数を格納するために現在使用されているメモリーの量。
+
+@item Class
+変数のクラス。たとえばdouble、single、char、uint16、cell、struct。
+@end table
+
+関数@code{whos_line_format}を通じて表示される情報の加減をカスタマイズできます。
+
+関数として@code{whos}が呼び出された場合は、与えられたパターンにマッチする定義された変数名の構造体配列をリターンします。構造体の各フィールドはname、size、bytes、class、global、sparse、complex、nesting、persistentを表します。
+@seealso{@ref{XREFwho,,who}, @ref{XREFwhos_line_format,,whos_line_format}}
+@end deftypefn
+
+
+@c whos_line_format libinterp/corefcn/variables.cc
+@anchor{XREFwhos_line_format}
+@deftypefn {Built-in Function} {@var{val} =} whos_line_format ()
+@deftypefnx {Built-in Function} {@var{old_val} =} whos_line_format (@var{new_val})
+@deftypefnx {Built-in Function} {} whos_line_format (@var{new_val}, "local")
+コマンド@code{whos}で使用されるフォーマット文字列にたいして、問い合わせまたはセットを行います。
+
+@c Set example in small font to prevent overfull line
+以下は完全なフォーマット文字列です:
+
+@smallexample
+%[modifier]<command>[:width[:left-min[:balance]]];
+@end smallexample
+
+以下のコマンドシーケンスが利用できます:
+
+@table @code
+@item %a
+変数の属性をプリントする(g=global、p=persistent、f=formal parameter、a=automatic variable)。
+
+@item %b
+変数が占めるバイト数をプリントする。
+
+@item %c
+変数のクラス名をプリントする。
+
+@item %e
+変数が保持する要素をプリントする。
+
+@item %n
+変数名をプリントする。
+
+@item %s
+変数の次元をプリントする。
+
+@item %t
+変数の型名をプリントする。
+@end table
+
+各コマンドはアラインメント修飾子ももつ:
+
+@table @code
+@item l
+左揃え。
+
+@item r
+右揃え(デフォルト)。
+
+@item c
+列揃え(コマンド%sでのみ指定可)。
+@end table
+
+@code{width}はプリントに使用される最小列値を指定する正の整数です。フィールドは必要に応じて自動的に拡張されるので、最大値は必要ありません。
+
+パラメーター@code{left-min}および@code{balance}は、コマンド@samp{%s}とともに列アラインメント修飾子が使用されたときだけ利用可能です。@code{balance}はエントリー間を整列するフィールド幅を列数で指定します。ナンバリングは最左列を意味する0から開始されます。@code{left-min}は指定されたバランス列の左側の最小フィールド幅を指定します。
+
+デフォルトフォーマットは@qcode{" %a:4; %ln:6; %cs:16:6:1; %rb:12; %lc:-1;\n"}です。
+
+関数内から@qcode{"local"}オプションとともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFwhos,,whos}}
+@end deftypefn
+
+
+どの変数がメモリー内にあるか表示するかわりに、与えられた変数が利用可能か判定することができます。この方法は、変数の存在によりプログラムの挙動を変えることにより可能になります。以下はこれを示す例です。
+
+@example
+@group
+if (! exist ("meaning", "var"))
+  disp ("The program has no 'meaning'");
+endif
+@end group
+@end example
+
+@c exist libinterp/corefcn/variables.cc
+@anchor{XREFexist}
+@deftypefn {Built-in Function} {} exist (@var{name}, @var{type})
+nameが変数として存在する場合は1、絶対ファイル名、またはOctaveの@code{path}上の通常ファイルか(@samp{.m}を追加することにより)関数ファイルの場合は2、Octaveの@code{path}上の@samp{.oct}または@samp{.mex}ファイルの場合は3、ビルトイン関数の場合は5、ディレクトリの場合は7、ファイルに関連付けされていない(コマンドラインで入力された)関数の場合は103をリターンします。
+
+それ以外は0をリターンします。
+
+この関数はOctaveの検索パスにある@var{name}という名前の通常ファイルの場合は、2をリターンします。他のファイル型についての情報が欲しい場合は、かわりに関数@code{file_in_path}および@code{stat}を組み合わせて使用するべきです。
+
+オプション引数@var{type}が与えられた場合は、シンボルで指定された型だけをチェックします。有効な型は
+
+@table @asis
+@item @qcode{"var"}
+変数だけをチェック。
+
+@item @qcode{"builtin"}
+ビルトイン関数だけをチェック。
+
+@item @qcode{"file"}
+ファイルとディレクトリだけをチェック。
+
+@item @qcode{"dir"}
+ディレクトリだけをチェック。
+@end table
+
+@seealso{@ref{XREFfile_in_loadpath,,file_in_loadpath},
+@ref{XREFfile_in_path,,file_in_path},
+@ref{XREFfind_dir_in_path,,find_dir_in_path}, @ref{XREFstat,,stat}}
+@end deftypefn
+
+
+通常Octaveはメモリーを管理しますが、メモリーから手動で変数を削除するのが実用的な場合もあるでしょう。これは通常、メモリーの相当量を占める大きな変数を扱うとき必要になります。IEEE浮動小数点フォーマットを使用するコンピューターでは、以下のプログラムは約128MBのメモリーを要求するマトリクスを割り当てます。
+
+@example
+large_matrix = zeros (4000, 4000);
+@end example
+
+@noindent
+この変数をメモリー上に保持することは、他の計算の速度低下を招くかもしれないので、メモリーから手動で削除する必要があります。@code{clear}関数により、これを行うことができます。
+
+@c clear libinterp/corefcn/variables.cc
+@anchor{XREFclear}
+@deftypefn {Command} {} clear [options] pattern @dots{}
+シンボルテーブルから、与えられたパターンにマッチする名前を削除します。パターンは、以下の特殊文字を含むことができます:
+
+@table @code
+@item ?
+任意の1文字にマッチ。
+
+@item *
+0文字以上にマッチ。
+
+@item [ @var{list} ]
+@var{list}で指定された文字リストにマッチ。1文字目が@code{!}か@code{^}の場合は@var{list}で指定された文字以外のすべての文字にマッチ。たとえば、@samp{[a-zA-Z]}はすべてのアルファベットの小文字と大文字にマッチ。
+@end table
+
+たとえば、
+
+@example
+clear foo b*r
+@end example
+
+@noindent
+は名前@code{foo}と、@code{b}で始まり@code{r}で終わるすべての名前をクリアーします。
+
+引数を指定せずに@code{clear}が呼び出された場合、シンボルテーブルからすべてのユーザー定義変数(ローカルおよびグローバル)がクリアーされます。少なくとも1つの引数とともに@code{clear}が呼び出された場合は、引数にマッチする可視の名前だけがクリアーされます。たとえば、関数@code{foo}を定義して、その後に代入@code{foo
+= 2}を行ってそれを隠したとします。コマンド@kbd{clear
+foo}を1度実行することにより、変数定義がクリアーされ、関数としての@code{foo}の定義がリストアされます。@kbd{clear
+foo}の2度目の実行により、関数定義がクリアーされます。
+
+短い形式と長い形式の両方で、以下のオプションが利用できます
+
+@table @code
+@item -all, -a
+シンボルテーブルから、ローカルおよびグローバルのユーザー定義変数とすべての関数をクリアーする。
+
+@item -exclusive, -x
+後のパターンにマッチしない変数をクリアーする。
+
+@item -functions, -f
+関数とビルトインシンボル名をクリアーする。
+
+@item -global, -g
+グローバルシンボル名をクリアーする。
+
+@item -variables, -v
+ローカル変数名をクリアーする。
+
+@item -classes, -c
+クラス構造体テーブルちすべてのオブジェクトをクリアーする。
+
+@item -regexp, -r
+引数は正規表現と解釈され、それにマッチする変数をクリアーする。
+@end table
+
+@code{exclusive}の例外として、ダッシュなしのロングオプションも同様に使用できる。
+@end deftypefn
+
+
+@c pack scripts/miscellaneous/pack.m
+@anchor{XREFpack}
+@deftypefn {Function File} {} pack ()
+@sc{matlab}ではワークスペースのメモリーを統合します。この関数は互換性のために提供されており、Octaveでは何も行いません。
+@end deftypefn
+
+
+関数や変数について、それがファイルシステム上どの位置にあるかなどの情報も、Octaveにより収集できます。これは通常プログラム開発の間のみ有用で、プログラムにとって有用ではありません。
+
+@c type scripts/help/type.m
+@anchor{XREFtype}
+@deftypefn {Command} {} type @var{name} @dots{}
+@deftypefnx {Command} {} type -q @var{name} @dots{}
+@deftypefnx {Function File} {text =} type ("@var{name}", @dots{})
+@var{name}の内容を表示します。@var{name}にはファイル、関数(m-file)、変数、演算子、キーワードを指定できます。
+
+@code{type}は通常、functionやvariableのように@var{name}のカテゴリーを記述するヘッダー行を前置します。@option{-q}オプションにより、この動作を抑制できます。
+
+出力変数が指定されていない場合、内容はスクリーンに表示されます。それ以外は文字列のセル配列がリターンされます。この場合、各要素が要求されあ関数の内容に対応します。
+@end deftypefn
+
+
+@c which scripts/help/which.m
+@anchor{XREFwhich}
+@deftypefn {Command} {} which name @dots{}
+@var{name}のそれぞれの型を表示します。@var{name}が関数ファイルで定義される場合は、ファイルの関数名も表示されます。
+@seealso{@ref{XREFhelp,,help}, @ref{XREFlookfor,,lookfor}}
+@end deftypefn
+
+
+@c what scripts/miscellaneous/what.m
+@anchor{XREFwhat}
+@deftypefn {Command} {} what
+@deftypefnx {Command} {} what @var{dir}
+@deftypefnx {Function File} {w =} what (@var{dir})
+ディレクトリ@var{dir}内のOctave固有のファイルをリストします。@var{dir}が指定されない場合は、カレントディレクトリが使用されます。リターン引数が要求された場合、構造体@var{w}内に見つかったファイルがリターンされます。
+@seealso{@ref{XREFwhich,,which}}
+@end deftypefn
+

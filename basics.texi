@@ -1,0 +1,1506 @@
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+@c DO NOT EDIT!  Generated automatically by munge-texi.pl.
+
+@c Copyright (C) 1996-2013 John W. Eaton
+@c
+@c This file is part of Octave.
+@c
+@c Octave is free software; you can redistribute it and/or modify it
+@c under the terms of the GNU General Public License as published by the
+@c Free Software Foundation; either version 3 of the License, or (at
+@c your option) any later version.
+@c 
+@c Octave is distributed in the hope that it will be useful, but WITHOUT
+@c ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+@c FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+@c for more details.
+@c 
+@c You should have received a copy of the GNU General Public License
+@c along with Octave; see the file COPYING.  If not, see
+@c <http://www.gnu.org/licenses/>.
+
+@node Getting Started
+@chapter Getting Started
+
+このチャプターでは、Octaveの基本的な機能についていくつか説明します。それらの機能にはOctaveセッションの開始、コマンドプロンプトでのヘルプの入手、コマンド行の編集、シェルプロンプトからコマンドとして実行可能なOctaveプログラムの記述が含まれます。
+
+@menu
+* Invoking Octave from the Command Line::
+* Quitting Octave::
+* Getting Help::
+* Command Line Editing::
+* Errors::
+* Executable Octave Programs::
+* Comments::                 
+@end menu
+
+@node Invoking Octave from the Command Line
+@section Invoking Octave from the Command Line
+
+Octaveは通常、引数を指定せずに@samp{octave}プログラムを実行することにより、対話的に使用されます。一度開始すると、exitを指示するまで、Octaveは端末からコマンドを読み取ります。
+
+コマンドラインにファイル名を指定することもできます。この場合、Octaveはその名前のファイルからコマンドを読み込んで実行し、それが終了したらexitします。
+
+さらに次のセクションで説明するコマンドラインオプションにより、Octaveをどのように開始するか、制御することができます。Octave自身が、利用できるオプションを知らせることができます。@samp{octave
+--help}(短い形式は@samp{octave -h})とタイプすると、利用できるすべてのオプションと、使い方の簡略が表示されます。
+
+@menu
+* Command Line Options::
+* Startup Files::            
+@end menu
+
+@node Command Line Options
+@subsection Command Line Options
+@cindex Octave command options
+@cindex command options
+@cindex options, Octave command
+
+以下は、Octaveに指定できるコマンドラインオプションの、完全なリストです。
+
+
+@table @code
+
+@item --built-in-docstrings-file @var{filename}
+@cindex @code{--built-in-docstrings-file @var{filename}}
+Octaveのビルトイン関数のドキュメント文字列を含むファイルの名前を指定します。この値は通常は正しいので、異常な状況において指定する必要なときだけ指定するべきです。
+
+@item --debug
+@itemx -d
+@cindex @code{--debug}
+@cindex @code{-d}
+パーサーのデバッグモードに入ります。このオプションを使うことにより、Octaveが読み込んだコマンドについて、Octaveパーサーが大量の情報をプリントするようになるので、おそらくパーサーのデバッグを実際に試みるときだけ有用でしょう。
+
+@item --debug-jit
+@cindex @code{--debug-jit}
+JITコンパイラーのデバッグとトレースを有効にします。
+
+@item --doc-cache-file @var{filename}
+@cindex @code{--doc-cache-file @var{filename}}
+使用するドキュメントキャッシュファイルを指定します。コマンドラインで指定された@var{filename}の値は、環境変数@w{@env{OCTAVE_DOC_CACHE_FILE}}の値をオーバーライドします。しかし、@code{doc_cache_file}を使用する、システムまたはユーザーのスタートアップファイルのコマンドを除きます。
+
+@item --echo-commands
+@itemx -x
+@cindex @code{--echo-commands}
+@cindex @code{-x}
+コマンドが実行されると、そのコマンドをエコーします。
+
+@item --eval @var{code}
+@var{code}を評価して、@option{--persist}が共に指定されていなければ、評価の終了と共にexitします。
+
+@item --exec-path @var{path}
+@cindex @code{--exec-path @var{path}}
+実行するプログラムうぃ検索するパスを指定します。コマンドラインで指定された@var{path}の値は、環境変数@w{@env{OCTAVE_EXEC_PATH}}の値をオーバーライドします。しかし、ビルトイン変数@w{@env{EXEC_PATH}}をセットする、システムまたはユーザーのスタートアップファイルのコマンドを除きます。
+
+@item --force-gui
+@cindex @code{--force-gui}
+起動時にグラフィカルユーザーインターフェイス(FUI)を強制します。
+
+@item --help
+@itemx -h
+@itemx -?
+@cindex @code{--help}
+@cindex @code{-h}
+@cindex @code{-?}
+短いヘルプメッセージをプリントして、exitします。
+
+@item --image-path @var{path}
+@cindex @code{--image-path @var{path}}
+イメージを検索するパスのheadにパスを追加します。コマンドラインで指定された@var{path}の値は、環境変数@w{@env{OCTAVE_IMAGE_PATH}}の値をオーバーライドします。しかし、ビルトイン変数@w{@env{IMAGE_PATH}}をセットする、システムまたはユーザーのスタートアップファイルのコマンドを除きます。
+
+@item --info-file @var{filename}
+@cindex @code{--info-file @var{filename}}
+使用するinfoファイルの名前を指定します。コマンドラインで@var{filename}に指定された値は、環境変数@w{@env{OCTAVE_INFO_FILE}}の値をオーバーライドします。しかし、@code{info_file}関数を使用する、システムまたはユーザーのスタートアップファイルのコマンドを除きます。
+
+@item --info-program @var{program}
+@cindex @code{--info-program @var{program}}
+使用するinfoプログラムの名前を指定します。コマンドラインで指定された@var{program}の値は、環境変数@w{@env{OCTAVE_INFO_PROGRAM}}の値をオーバーライドします。しかし、@code{info_program}関数を使用する、システムまたはユーザーのスタートアップファイルのコマンドを除きます。
+
+@item --interactive
+@itemx -i
+@cindex @code{--interactive}
+@cindex @code{-i}
+対話的な動作を強制します。これはリモートシェルコマンドやEmacsのシェルバッファーを通じてOctaveを実行するとき便利かもしれません。
+
+@item --jit-compiler
+@cindex @code{--jit-compiler}
+JITコンパイラーのループ高速化を有効にします。
+
+@item --line-editing
+@cindex @code{--line-editing}
+コマンドライン編集に、readlineの使用を強制します。
+
+@item --no-gui
+@cindex @code{--no-gui}
+グラフィカルユーザーインターフェイス(GUI)を無効にして、かわりにコマンドラインインターフェイス(CLI)を使用します。
+
+@item --no-history
+@itemx -H
+@cindex @code{--no-history}
+@cindex @code{-H}
+コマンドラインのヒストリーの記録を無効にします。
+
+@item --no-init-file
+@cindex @code{--no-init-file}
+初期化ファイル@file{~/.octaverc}および@file{.octaverc}を読み込みません。
+
+@item --no-init-path
+@cindex @code{--no-init-path}
+デフォルトの場所を含めるための、関数ファイル用の検索パス初期化を行いません。
+
+@item --no-line-editing
+@cindex @code{--no-line-editing}
+コマンドライン編集を無効にします。
+
+@item --no-site-file
+@cindex @code{--no-site-file}
+サイト単位の初期化ファイル@file{octaverc}を読み込みません。
+
+@item --no-window-system
+@itemx -W
+@cindex @code{--no-window-system}
+グラフィックスを含めてウィンドウシステムの使用を無効にします。これは端末だけに制限された環境を強制します。
+
+@item --norc
+@itemx -f
+@cindex @code{--norc}
+@cindex @code{-f}
+スタートアップ時に、システムまたはユーザーの初期化ファイルを読み込みません。これは、@option{--no-init-file}と@option{--no-site-file}の両方のオプションを使用することと同じです。
+
+@item --path @var{path}
+@itemx -p @var{path}
+@cindex @code{--path @var{path}}
+@cindex @code{-p @var{path}}
+関数ファイルの検索パスにheadにパスを追加します。コマンドラインで指定された@var{path}の値は、環境変数@w{@env{OCTAVE_PATH}}の値をオーバーライドします。しかしシステムまたはユーザーのスタートアップファイルで、path関数のいずれかを通じてセットされた内部のloadパスは除きます。
+
+@item --persist
+@cindex @code{--persist}
+@option{--eval}またはコマンドラインで指定された名前のファイルを読み込んだ後に、インタラクティブモードに移ります。
+
+@item --silent
+@itemx --quiet
+@itemx -q
+@cindex @code{--silent}
+@cindex @code{--quiet}
+@cindex @code{-q}
+起動時に通常のグリーティングメッセージとバージョンメッセージをプリントしません。
+
+@item --texi-macros-file @var{filename}
+@cindex @code{--texi-macros-file @var{filename}}
+makeinfoにより使用されるTexinfoマクロを含むファイルの名前を指定します。
+
+@item --traditional
+@itemx --braindead
+@cindex @code{--traditional}
+@cindex @code{--braindead}
+@sc{matlab}との互換のために、ユーザープリファレンスとして、以下の値を初期値としてセットします。
+
+@example
+@group
+PS1                             = ">> "
+PS2                             = ""
+allow_noninteger_range_as_index = true
+beep_on_error                   = true
+confirm_recursive_rmdir         = false
+crash_dumps_octave_core         = false
+save_default_options            = "-mat-binary"
+do_braindead_shortcircuit_evaluation = true
+fixed_point_format              = true
+history_timestamp_format_string = "%%-- %D %I:%M %p --%%"
+page_screen_output              = false
+print_empty_dimensions          = false
+@end group
+@end example
+
+@noindent
+そして、以下の警告を無効にします。
+
+@example
+@group
+Octave:abbreviated-property-match
+Octave:fopen-file-in-path
+Octave:function-name-clash
+Octave:load-file-in-path
+@end group
+@end example
+
+@noindent
+これは@code{Octave:matlab-incompatible}警告を有効にしないことに注意してください。Octaveでは機能するが、@sc{matlab}では機能しないコードの記述にたいして警告してほしいときは、この警告を有効にしたいと思うでしょう(詳細は@ref{XREFwarning,,warning}、および@ref{XREFwarning_ids,,warning_ids}を参照してください)。
+
+@item --verbose
+@itemx -V
+@cindex @code{--verbose}
+@cindex @code{-V}
+詳細な出力に切り替えます。
+
+@item --version
+@itemx -v
+@cindex @code{--version}
+@cindex @code{-v}
+プログラムのバージョンナンバーをプリントしてexitします。
+
+@item @var{file}
+@var{file}のコマンドを実行します。@option{--persist}が指定されていない場合は、実行が終了した後にexitします。
+@end table
+
+Octaveには、引数の数やすべてのオプションなど、コマンドラインの情報についてリターンする関数がいくつかあります。
+
+@c argv libinterp/octave.cc
+@anchor{XREFargv}
+@deftypefn {Built-in Function} {} argv ()
+Octaveに渡されたコマンドライン引数をリターンします。たとえば以下のようなコマンドを使用してOctaveを呼び出した場合、
+
+@example
+octave --no-line-editing --silent
+@end example
+
+@noindent
+@code{argv}は、要素が@option{--no-line-editing}と@option{--silent}であるようなセル配列をリターンするでしょう。
+
+実行可能なOctaveスクリプトを記述した場合、@code{argv}はそのスクリプトに渡された引数のリストをリターンします。実行可能なOctaveスクリプトを記述する例は、@ref{Executable
+Octave Programs}を参照してください。
+@end deftypefn
+
+
+@c program_name libinterp/octave.cc
+@anchor{XREFprogram_name}
+@deftypefn {Built-in Function} {} program_name ()
+@code{program_invocation_name}からリターンされた値(フルパス)の、最後の成分(ファイル名)をリターンします。
+@seealso{@ref{XREFprogram_invocation_name,,program_invocation_name}}
+@end deftypefn
+
+
+@c program_invocation_name libinterp/octave.cc
+@anchor{XREFprogram_invocation_name}
+@deftypefn {Built-in Function} {} program_invocation_name ()
+Octaveを実行するためにシェルプロンプトにタイプされた名前をリターンします。
+
+コマンドラインからスクリプトを実行した場合(例: @code{octave
+foo.m})、あるいは実行可能なOctaveスクリプトを使用した場合、プログラム名はしのスクリプトの名前にセットされます。実行可能なOctaveスクリプトを作成する例は、@ref{Executable
+Octave Programs}を参照してください。
+@seealso{@ref{XREFprogram_name,,program_name}}
+@end deftypefn
+
+
+以下は、これらの関数を使用して、Octaveを呼び出したコマンドラインを再現する例です
+
+@example
+@group
+printf ("%s", program_name ());
+arg_list = argv ();
+for i = 1:nargin
+  printf (" %s", arg_list@{i@});
+endfor
+printf ("\n");
+@end group
+@end example
+
+@noindent
+セル配列からオブジェクトを取得する方法についての説明は@ref{Indexing Cell
+Arrays}、変数@code{nargin}についての情報は@ref{Defining Functions}を参照してください。
+
+@node Startup Files
+@subsection Startup Files
+@cindex initialization
+@cindex startup
+
+Octaveが開始されるとき、Octaveは以下のリストのファイルから、実行するコマンドを探します。これらのファイルには、関数定義を含む、任意の有効なOctaveコマンドが含まれるでしょう。
+
+@cindex startup files
+
+@table @code
+@item @var{octave-home}/share/octave/site/m/startup/octaverc
+@cindex site startup file
+@var{octave-home}はOctaveがインストールされたディレクトリーです(デフォルトは@file{/usr/local}))。このファイルは、デフォルトのOctave環境にたいする変更を、そのサイトのすべてのユーザー、インストールされたOctaveのすべてのバージョンにたいして全体的に適用するために提供されています。このファイルへの変更は、そのサイトのOctaveユーザーすべてに影響を与えるため、注意を払うべきです。デフォルトファイルは、環境変数yによりオーバーライドされるかもしれません。
+
+@item @var{octave-home}/share/octave/@var{version}/m/startup/octaverc
+@cindex version startup file
+@var{octave-home}はOctaveがインストールされたディレクトリー(デフォルトは@file{/usr/local})、@var{version}はOctaveのバージョンナンバーです。このファイルは、特定のバージョンのOctaveを使用するすべてのユーザーにたいして、デフォルトのOctave環境への変更を全体的に適用するために提供されています。そのサイトで対象となるバージョンのOctaveを使用するすべてのユーザーに影響を与えるため、このファイルの変更には注意が払われるべきです。デフォルトファイルは環境変数@w{@env{OCTAVE_VERSION_INITFILE}}により、オーバーライドされるかもしれません。
+
+@item ~/.octaverc
+@cindex personal startup file
+@cindex @code{~/.octaverc}
+このファイルは、デフォルトOctave環境にたいして個人的に変更を行なうために使用されます。
+
+@item .octaverc
+@cindex project startup file
+@cindex @code{.octaverc}
+このファイルは、特定のプロジェクトのデフォルトOctave環境にたいして変更を行なうために使用されます。Octaveは、@file{~/.octaverc}を読み込んだ後に、カレントディレクトリーからこのファイルを検索します。@file{~/.octaverc}ファイル内での@code{cd}コマンドの使用は、Octaveが@file{.octaverc}を検索するディレクトリーに影響を与えます。
+
+ホームディレクトリーでOctaveを開始した場合、ファイル@file{~/.octaverc}のコマンドは一度だけ実行されます。
+@end table
+
+@option{--silent}オプションを指定せずに@option{--verbose}オプションでOctaveを呼び出した場合、スタートアップファイルが読み込まれるたびに、メッセージが表示されます。
+
+どのようなカスタマイズが可能で、どのカスタマイズが有効になっているかを決定するには、@code{dump_prefs}関数が便利です。
+
+@c dump_prefs scripts/miscellaneous/dump_prefs.m
+@anchor{XREFdump_prefs}
+@deftypefn {Function File} {} dump_prefs ()
+@deftypefnx {Function File} {} dump_prefs (@var{fid})
+後からOctaveでパースできる形式で、現在のすべてのユーザープリファレンス変数をダンプします。@var{fid}は@code{fopen}からリターンされたファイルディスクリプターです。@var{file}が省略された場合、リストはstdoutにプリントされます。
+@end deftypefn
+
+
+@node Quitting Octave
+@section Quitting Octave
+@cindex exiting octave
+@cindex quitting octave
+
+@c quit libinterp/corefcn/toplev.cc
+@anchor{XREFquit}
+@deftypefn {Built-in Function} {} exit (@var{status})
+@deftypefnx {Built-in Function} {} quit (@var{status})
+現在のOctaveセッションをexitします。オプションの整数値@var{status}が与えられた場合、Octaveのexit
+statusとして、その値をオペレーティングシステムに渡します。デフォルト値は0です。
+@end deftypefn
+
+
+@c atexit libinterp/corefcn/toplev.cc
+@anchor{XREFatexit}
+@deftypefn {Built-in Function} {} atexit (@var{fcn})
+@deftypefnx {Built-in Function} {} atexit (@var{fcn}, @var{flag})
+Octaveをexitするときに呼び出される関数を登録します。たとえば、
+
+@example
+@group
+function last_words ()
+  disp ("Bye bye");
+endfunction
+atexit ("last_words");
+@end group
+@end example
+
+@noindent
+これはOctaveをexitするとき、メッセージ@qcode{"Bye bye"}をプリントします。
+
+追加の引数@var{flag}は、Octaveをexitするときに呼び出される関数のリストに、@var{fcn}を登録、または登録を取り消します。@var{flag}がtrueの場合、その関数は登録され、@var{flag}の場合は、その関数の登録が取り消されます。たとえば、上述の関数@code{last_words}を登録した後に
+
+@example
+atexit ("last_words", false);
+@end example
+
+@noindent
+これはリストから関数を取り除くので、Octaveがexitするとき@code{last_words}は呼び出されません。
+
+@code{atexit}はリストから最初の関数だけを取り除くことに注意してください。@code{atexit}によりリストに関数が複数ある場合は、同じように複数回取り除かなければなりません。
+@end deftypefn
+
+
+@node Getting Help
+@section Commands for Getting Help
+@cindex online help
+@cindex help, online
+
+このマニュアルのテキスト全体は、Octaveプロンプトから@kbd{doc}コマンドを通じて利用できます。さらにユーザーが独自に記述した関数や変数のドキュメントも、@kbd{help}コマンドを通じて利用できます。このセクションでは、マニュアルやユーザーが定義した関数や変数のドキュメント文字列を読むために使用するコマンドを説明します。作成した関数のドキュメント記述については、@ref{Function
+Files}を参照してください。
+
+@c help scripts/help/help.m
+@anchor{XREFhelp}
+@deftypefn {Command} {} help @var{name}
+@deftypefnx {Command} {} help @code{--list}
+@deftypefnx {Command} {} help @code{.}
+@var{name}にたいするヘルプテキストを表示します。たとえば、コマンド@kbd{help
+help}は@code{help}コマンドを説明する短いメッセージをプリントします。
+
+単一の引数@code{--list}が与えられた場合は、演算子、キーワード、ビルトイン関数、および現在のOctaveセッションで利用できるロード可能な関数を、すべてリストします。
+
+単一も引数@code{.}が与えられた場合は、現在のOctaveセッションで利用できる、すべての演算子をリストします。
+
+引数を指定せずに呼び出した場合、@code{help}はコマンドラインからヘルプにアクセスする手順を表示します。
+
+helpコマンドにより、コマンドの区切り文字に使用されるカンマとセミコロンを除いた、演算子の情報を得ることができます。それらについてのヘルプを得るには、@kbd{help
+comma}や@kbd{help semicolon}とタイプしなければなりません。
+@seealso{@ref{XREFdoc,,doc}, @ref{XREFlookfor,,lookfor},
+@ref{XREFwhich,,which}}
+@end deftypefn
+
+
+@c doc scripts/help/doc.m
+@anchor{XREFdoc}
+@deftypefn {Command} {} doc @var{function_name}
+GNU
+Infoブラウザを使用して、プリントされたマニュアルのオンラインバージョンから、関数@var{function_name}のドキュメントを直接表示します。引数を指定せずに呼び出した場合、マニュアルの冒頭から表示されます。
+
+たとえば、コマンド@kbd{doc rand}はマニュアルのオンラインバージョンの@code{rand}ノードからGNU Infoブラウザを開始します。
+
+GNU Infoブラウザが実行されると、コマンド@kbd{C-h}を使用して、使い方のヘルプを得ることができます。
+@seealso{@ref{XREFhelp,,help}}
+@end deftypefn
+
+
+@c lookfor scripts/help/lookfor.m
+@anchor{XREFlookfor}
+@deftypefn {Command} {} lookfor @var{str}
+@deftypefnx {Command} {} lookfor -all @var{str}
+@deftypefnx {Function File} {[@var{func}, @var{helpstring}] =} lookfor (@var{str})
+@deftypefnx {Function File} {[@var{func}, @var{helpstring}] =} lookfor ("-all", @var{str})
+現在の関数検索パスで見つかったすべての関数の中から、文字列@var{str}を検索します。デフォルトでは、@code{lookfor}は見つかった関数それぞれのヘルプ文字列の最初のセンテンスから@var{str}を検索します。引数@qcode{"-all"}が与えられた場合は、それぞれの関数のヘルプテキスト全体から検索します。検索はすべて大文字小文字を区別しません。
+
+出力引数を指定せずに呼び出された場合、@code{lookfor}はマッチした関数のリストを端末にプリントします。指定された場合、出力引数@var{func}および@var{helpstring}には、マッチした関数とその関数のヘルプ文字列の最初のセンテンスが定義されます。
+
+最初のセンテンスを正しく認識する@code{lookfor}の能力は、その関数のヘルプのフォーマットに依存します。Octaveの中心的な関数はすべて正しくフォーマットされていますが、外部パッケージとユーザー定義関数について同様に保証することはできません。したがって、Octaveの一部ではない、関連のある関数を見つけるために、@qcode{"-all"}引数の使用が必要になるかもしれません。
+@seealso{@ref{XREFhelp,,help}, @ref{XREFdoc,,doc}, @ref{XREFwhich,,which}}
+@end deftypefn
+
+
+Octaveのカレントリリースで何が新しくなったか確認するには、@code{news}関数を使用します。
+
+@c news scripts/miscellaneous/news.m
+@anchor{XREFnews}
+@deftypefn {Command} {} news
+@deftypefnx {Command} {} news @var{package}
+OctaveまたはインストールされたパッケージのカレントNEWSファイルを表示します。
+
+引数を指定せずに呼び出した場合は、OctaveのNEWSファイルを表示します。パッケージ名@var{package}が与えられた場合は、そのパッケージのカレントNEWSファイルを表示します。
+@end deftypefn
+
+
+@c info scripts/miscellaneous/info.m
+@anchor{XREFinfo}
+@deftypefn {Function File} {} info ()
+GNU Octaveコミュニティーに連絡を取るための情報を表示します。
+@end deftypefn
+
+
+@c warranty libinterp/corefcn/toplev.cc
+@anchor{XREFwarranty}
+@deftypefn {Built-in Function} {} warranty ()
+Octaveを複製、および配布するための条件を説明します。
+@end deftypefn
+
+
+以下の関数は、ドキュメントを表示するために使用されるプログラムｙｓ，ドキュメントを探す場所を変更するために使用されます。
+
+@c info_file libinterp/corefcn/help.cc
+@anchor{XREFinfo_file}
+@deftypefn {Built-in Function} {@var{val} =} info_file ()
+@deftypefnx {Built-in Function} {@var{old_val} =} info_file (@var{new_val})
+@deftypefnx {Built-in Function} {} info_file (@var{new_val}, "local")
+Octaveのinfoファイルの名前を指定する内部変数にたいして問い合わせ、またはセットをします。デフォルト値は@file{@var{octave-home}/info/octave.info}です。@var{octave-home}はOctaveをインストールしたルートディレクトリーです。デフォルト値は、環境変数@w{@env{OCTAVE_INFO_FILE}}、またはコマンドライン引数@samp{--info-file
+FNAME}によりオーバーライドされるかもしれません。
+
+関数内から@qcode{"local"}と共に呼び出された場合、変数にたいする変更は、その関数と関数が呼び出すサブルーチンにたいしてローカルになります。その関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFinfo_program,,info_program}, @ref{XREFdoc,,doc},
+@ref{XREFhelp,,help}, @ref{XREFmakeinfo_program,,makeinfo_program}}
+@end deftypefn
+
+
+@c info_program libinterp/corefcn/help.cc
+@anchor{XREFinfo_program}
+@deftypefn {Built-in Function} {@var{val} =} info_program ()
+@deftypefnx {Built-in Function} {@var{old_val} =} info_program (@var{new_val})
+@deftypefnx {Built-in Function} {} info_program (@var{new_val}, "local")
+実行するinfoプログラムの名前を指定する内部変数の問い合わせ、またはセットを行います。デフォルト値は@file{@var{octave-home}/libexec/octave/@var{version}/exec/@var{arch}/info}で、@var{octave-home}はOctaveをインストールしたルートディレクトリー、@var{version}はOctaveのバージョンナンバー、そして@var{arch}はシステムタイプ(たとえば@code{i686-pc-linux-gnu})です。デフォルト値は、環境変数@w{@env{OCTAVE_INFO_PROGRAM}}、またはコマンドライン引数@samp{--info-program
+NAME}でオーバーライドされるかもしれません。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数への変更ははその関数および関数のサブルーチンにたいしてローカルになります。その関数をexitするときに、変数の元の値がリストアされます。
+@seealso{@ref{XREFinfo_file,,info_file}, @ref{XREFdoc,,doc},
+@ref{XREFhelp,,help}, @ref{XREFmakeinfo_program,,makeinfo_program}}
+@end deftypefn
+
+
+@c makeinfo_program libinterp/corefcn/help.cc
+@anchor{XREFmakeinfo_program}
+@deftypefn {Built-in Function} {@var{val} =} makeinfo_program ()
+@deftypefnx {Built-in Function} {@var{old_val} =} makeinfo_program (@var{new_val})
+@deftypefnx {Built-in Function} {} makeinfo_program (@var{new_val}, "local")
+Texinfoのマークアップコマンドを含むヘルプテキストをフォーマットするためにOctaveが実行するプログラム名を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@code{makeinfo}です。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、その変数にたいする変更は、その関数および関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。
+@seealso{@ref{XREFtexi_macros_file,,texi_macros_file},
+@ref{XREFinfo_file,,info_file}, @ref{XREFinfo_program,,info_program},
+@ref{XREFdoc,,doc}, @ref{XREFhelp,,help}}
+@end deftypefn
+
+
+@c texi_macros_file libinterp/corefcn/help.cc
+@anchor{XREFtexi_macros_file}
+@deftypefn {Built-in Function} {@var{val} =} texi_macros_file ()
+@deftypefnx {Built-in Function} {@var{old_val} =} texi_macros_file (@var{new_val})
+@deftypefnx {Built-in Function} {} texi_macros_file (@var{new_val}, "local")
+ドキュメント文字列がmakeinfoに渡される前に、文字列の前に追加されるTexinfoマクロを含むファイルの名前を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@file{@var{octave-home}/share/octave/@var{version}/etc/macros.texi}です。ここで、@var{octave-home}はOctaveをインストールしたルートディレクトリー、@var{version}はOctaveのバージョンナンバーです。デフォルト値は、環境変数@w{@env{OCTAVE_TEXI_MACROS_FILE}}、またはコマンドライン引数@samp{--texi-macros-file
+FNAME}により、オーバーライドされるかもしれません。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数への変更は、その関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。
+@seealso{@ref{XREFmakeinfo_program,,makeinfo_program}}
+@end deftypefn
+
+
+@c doc_cache_file libinterp/corefcn/help.cc
+@anchor{XREFdoc_cache_file}
+@deftypefn {Built-in Function} {@var{val} =} doc_cache_file ()
+@deftypefnx {Built-in Function} {@var{old_val} =} doc_cache_file (@var{new_val})
+@deftypefnx {Built-in Function} {} doc_cache_file (@var{new_val}, "local")
+Octaveのドキュメントキャッシュファイルの名前を指定する内部変数にたいして、問い合わせ、またはセットを行います。キャッシュファイルは、@code{lookfor}コマンドはパフォーマンスを大幅に改善します。デフォルト値は@file{@var{octave-home}/share/octave/@var{version}/etc/doc-cache}です。ここで、@var{octave-home}はOctaveをインストールしたルートディレクトリー、@var{version}はOctaveのバージョンナンバーです。デフォルト値は、環境変数@w{@env{OCTAVE_DOC_CACHE_FILE}}、またはコマンドライン引数@samp{--doc-cache-file
+FNAME}によりオーバーライドされるかもしれません。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数への変更は、その関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFdoc_cache_create,,doc_cache_create},
+@ref{XREFlookfor,,lookfor}, @ref{XREFinfo_program,,info_program},
+@ref{XREFdoc,,doc}, @ref{XREFhelp,,help},
+@ref{XREFmakeinfo_program,,makeinfo_program}}
+@end deftypefn
+
+
+@c built_in_docstrings_file libinterp/corefcn/help.cc
+@anchor{XREFbuilt_in_docstrings_file}
+@deftypefn {Built-in Function} {@var{val} =} built_in_docstrings_file ()
+@deftypefnx {Built-in Function} {@var{old_val} =} built_in_docstrings_file (@var{new_val})
+@deftypefnx {Built-in Function} {} built_in_docstrings_file (@var{new_val}, "local")
+Octaveのビルトイン関数のdocstringを含むファイルの名前を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@file{@var{octave-home}/share/octave/@var{version}/etc/built-in-docstrings}です。ここで、@var{octave-home}はOctaveをインストールしたルートディレクトリー、@var{version}はOctaveのバージョンナンバーです。デフォルト値は、環境変数@w{@env{OCTAVE_BUILT_IN_DOCSTRINGS_FILE}}、またはコマンドライン引数@samp{--built-in-docstrings-file
+FNAME}によりオーバーライドされるかもしれません。
+
+注意: この変数はOctave自身の初期化時だけ使用されます。Octaveセッション実行中に変更しても、Octaveに影響しません。
+@end deftypefn
+
+
+@c suppress_verbose_help_message libinterp/corefcn/help.cc
+@anchor{XREFsuppress_verbose_help_message}
+@deftypefn {Built-in Function} {@var{val} =} suppress_verbose_help_message ()
+@deftypefnx {Built-in Function} {@var{old_val} =} suppress_verbose_help_message (@var{new_val})
+@deftypefnx {Built-in Function} {} suppress_verbose_help_message (@var{new_val}, "local")
+@code{help}コマンドの出力とビルトイン関数の使い方メッセージのの最後に、Octaveが付加的なヘルプ情報を追加するかどうかと、を制御する内部変数にたいして、問い合わせまたはセットを行います。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更は、その関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、元の変数の値がリストアされます。
+@end deftypefn
+
+
+以下の関数は、ドキュメントを生成するために、主にOctaveにより内部的に使用されます。これらの関数は、ユーザーにとって便利なときがあるかもしれないので、ここに完全なドキュメントを示します。
+
+@c doc_cache_create scripts/help/doc_cache_create.m
+@anchor{XREFdoc_cache_create}
+@deftypefn {Function File} {} doc_cache_create (@var{out_file}, @var{directory})
+与えられたディレクトリー内のすべての関数にたいするドキュメントキャッシュを生成します。
+
+@var{directory}内のすべての関数にたいするドキュメントキャッシュを生成します。生成されたキャッシュは、ファイル@var{out_file}に保存されます。このキャッシュは、@code{lookfor}のスピードアップのために使用されます。
+
+ディレクトリーが与えられない(または空のマトリクスが与えられた)場合は、ビルトイン演算子などにたいするキャッシュが生成されます。
+
+@seealso{@ref{XREFdoc_cache_file,,doc_cache_file},
+@ref{XREFlookfor,,lookfor}, @ref{XREFpath,,path}}
+@end deftypefn
+
+
+@c get_help_text libinterp/corefcn/help.cc
+@anchor{XREFget_help_text}
+@deftypefn {Built-in Function} {[@var{text}, @var{format}] =} get_help_text (@var{name})
+関数@var{name}のrawヘルプテキストをリターンします。
+
+@var{text}にrawヘルプテキスト、@var{format}のフォーマットがリターンされます。フォーマットは文字列で、@qcode{"texinfo"}、@qcode{"html"}、@qcode{"plain
+text"}のうちの1つです。
+@end deftypefn
+
+
+@c get_help_text_from_file libinterp/corefcn/help.cc
+@anchor{XREFget_help_text_from_file}
+@deftypefn {Built-in Function} {[@var{text}, @var{format}] =} get_help_text_from_file (@var{fname})
+ファイル@var{fname}のrawヘルプテキストをリターンします。
+
+@var{text}にrawヘルプテキスト、@var{format}のフォーマットがリターンされます。フォーマットは文字列で、@qcode{"texinfo"}、@qcode{"html"}、@qcode{"plain
+text"}のうちの1つです。
+@end deftypefn
+
+
+@c get_first_help_sentence scripts/help/get_first_help_sentence.m
+@anchor{XREFget_first_help_sentence}
+@deftypefn {Function File} {[@var{text}, @var{status}] =} get_first_help_sentence (@var{name})
+@deftypefnx {Function File} {[@var{text}, @var{status}] =} get_first_help_sentence (@var{name}, @var{max_len})
+関数のヘルプテキストの最初のセンテンスをリターンします。
+
+最初のセンテンスとは、関数定義の後ろから、最初のピリオド(".")、または連続する改行("\n\n")までのテキストです。テキストは最大長@var{max_len}(デフォルトは80)に切り詰められます。
+
+オプションの出力引数@var{status}には、@code{makeinfo}かｒ報告されたステータスがリターンされます。要求される出力引数が1つで、@var{status}が非0の場合は警告が表示されます。
+
+例として、この関数のヘルプテキストの最初のセンテンスは、以下のようになります
+
+@example
+@group
+get_first_help_sentence ("get_first_help_sentence")
+@print{} ans = Return the first sentence of a function's help text.
+@end group
+@end example
+@end deftypefn
+
+
+@node Command Line Editing
+@section Command Line Editing
+@cindex command-line editing
+@cindex editing the command line
+
+Octaveは、豊富なコマンドライン編集とヒストリー機能を提供するために、GNU
+Readlineライブラリーを使用しています。このマニュアルでは、もっとも一般的な機能についてだけ説明します。さらに、すべての編集コマンドは、ユーザーにより自由に別のキーストロークのバインドできます。このマニュアルでは、Emacsのデフォルトのキーバインディングを変更していない前提で説明します。Readlineのカスタマイズと、完全な機能については、GNU
+Readlineのマニュアルを参照してください。
+
+印字可能文字(文字、数字、シンボルなど)の挿入は、単にその文字をタイプするだけです。Octaveはカーソル位置に文字を挿入して、カーソルを前方に進めます。
+
+コマンドライン編集関数の操作の多くは、コントロール文字を使用します。たとえば文字@kbd{Control-a}は、カーソルをその行の先頭に移動します。@kbd{C-a}のタイプは、@key{CTRL}を押したまま、@key{a}を押します。以降のセクションでは、@kbd{Control-a}のようなコントロール文字は、@kbd{C-a}と表記します。
+
+メタ文字を使用するコマンドライン編集関数もあります。@kbd{M-u}をタイプするには、@key{META}キーを押したまま、@key{u}を押します。キーボードによっては、@key{META}が@key{ALT}とラベルされていたり、@key{WINDOWS}とラベルされていることさえあります。端末に@key{META}がない場合でも、@kbd{ESC}で始まる2文字シーケンスを使ってメタ文字を入力できます。この場合@kbd{M-u}を入力するには、@key{ESC}の次に@key{u}をタイプします。実際のMetaキーがある端末でも、@kbd{ESC}文字シーケンスは利用できます。以降のセクションでは、@kbd{Meta-u}のようなメタ文字は、@kbd{M-u}のように表記します。
+
+
+@menu
+* Cursor Motion::
+* Killing and Yanking::
+* Commands For Text::
+* Commands For Completion::
+* Commands For History::
+* Customizing readline::
+* Customizing the Prompt::
+* Diary and Echo Commands::  
+@end menu
+
+@node Cursor Motion
+@subsection Cursor Motion
+
+以下のコマンドで、カーソルを動かすことができます。
+
+@table @kbd
+@item C-b
+1文字後退します。
+
+@item C-f
+1文字前進します。
+
+@item @key{BACKSPACE}
+カーソルの左の文字を削除します。
+
+@item @key{DEL}
+カーソルの下の文字を削除します。
+
+@item C-d
+カーソルの下の文字を削除します。
+
+@item M-f
+1単語前方に移動します。
+
+@item M-b
+1単語後方に移動します。
+
+@item C-a
+行の先頭に移動します。
+
+@item C-e
+行の末尾に移動します。
+
+@item C-l
+スクリーンをクリアーして、カレント行をスクリーンのトップに再印字します。
+
+@item C-_
+@itemx C-/
+最後の操作をアンドゥします。すべてをアンドゥして空の行まで戻ることができます。
+
+@item M-r
+その行へのすべての変更をアンドゥします。これは最初に戻るまで充分な回数だけ`undo'コマンドをタイプするのと同様です。
+@end table
+
+上記のテーブルでは、入力行で編集を行うのに必要となる、もっとも基本的な利用できるキーストロークを説明しています。ほとんどの端末では、@kbd{C-f}や@kbd{C-b}で前方または後方へ移動するのに、左矢印キーと右矢印キーも利用できます。
+
+@kbd{C-f}は1文字前方、@kbd{M-f}は1単語前方へ移動する点に注目してください。コントロールによるキーストロークは文字単位の処理、メタによるキーストロークは単語単位の処理という、緩い慣習があります。
+
+@cindex clearing the screen
+
+関数@code{clc}にとり、実行中のOctaveプログラム内のスクリーンをクリアーできます。
+
+@c clc libinterp/corefcn/sysdep.cc
+@anchor{XREFclc}
+@deftypefn {Built-in Function} {} clc ()
+@deftypefnx {Built-in Function} {} home ()
+端末スクリーンをクリアーして、カーソルを左上隅に移動します。
+@end deftypefn
+
+
+@node Killing and Yanking
+@subsection Killing and Yanking
+
+テキストを@dfn{キル}するとは、行からテキストを削除しますが、後でそれを使用する(通常は@dfn{ヤンク}により行に戻す)ために、それを保存するという意味です。コマンドの説明で、そのコマンドがテキストを`キル'する、と記述されているときは、後から違う(または同じ)場所に戻せることが保証されます。
+
+以下はテキストをキルするコマンドのリストです。
+
+@table @kbd
+@item C-k
+現在のカーソル位置から行末までのテキストをキルします。
+
+@item M-d
+カーソルから現在の単語の末尾まで、カーソルが単語と単語の間にある場合は次の単語の末尾までをキルします。
+
+@item M-@key{DEL}
+カーソルから現在の単語の先頭まで、カーソルが単語と単語の間にある場合は前の単語の先頭までをキルします。 
+
+@item C-w
+カーソルから前の空白までをキルします。単語境界が違うので、@kbd{M-@key{DEL}}とは異なります。
+@end table
+
+以下は、その行にテキストを@dfn{yank}で戻す方法です。ヤンクとは、kキルバッファーからもっとも最近キルされたテキストをコピーするという意味です。
+
+@table @kbd
+@item C-y
+そのバッファーのカーソル位置に、もっとも最近キルされたテキストをヤンクして戻します。
+
+@item M-y
+キルリンクをローテートして、新たなトップをヤンクします。直前のコマンドが@kbd{C-y}または@kbd{M-y}のときだけ、これを行なうことができます。
+@end table
+
+キルコマンドを使うと、そのテキストは@dfn{キルリング(kill-ring)}に保存されます。任意の回数の連続したキルコマンドは、キルされたすべてのテキストを1つにまとめるので、それをヤンクで戻すときは、一度にまとめてヤンクできます。キルリングは特定の行に限定されたものではありません。以前にタイプしたラインでキルしたテキストは、後で他の行をタイプしているときに、ヤンクで戻すことができます。
+
+@node Commands For Text
+@subsection Commands For Changing Text
+
+以降のコマンドは、他の場合では特別な意味をもつ文字(例:
+@key{TAB}、@kbd{C-q}など)を入力したり、タイプミスをすばやく訂正するために使用できます。
+
+@table @kbd
+@item C-q
+@itemx C-v
+次にタイプする文字そのものを、行に追加します。これは、@kbd{C-q}のような文字を挿入する方法の一例です。
+
+@item M-@key{TAB}
+Insert a tab character.
+
+@item C-t
+カーソルのある文字の前方にカーソルの前の文字をドラッグするとともに、カーソルを進めます。カーソルが行の末尾にある場合は、カーソルの前の2文字を入れ換えます。
+
+@item M-t
+同様に、カーソルの前方の単語をカーソルの後方へドラッグして、カーソルの後方にあった単語の前方にカーソルを移動します。
+
+@item M-u
+現在の単語(または次の単語からの)の末尾までを大文字にして、その単語の末尾にカーソルを移動します。
+
+@item M-l
+現在の単語(または次の単語からの)の末尾までを小文字にして、その単語の末尾にカーソルを移動します。
+
+@item M-c
+カーソルの前方(カーソルが単語と単語の間にある場合は次の単語の先頭)を大文字にして、その単語の末尾にカーソルを移動します。
+@end table
+
+@node Commands For Completion
+@subsection Letting Readline Type For You
+@cindex command completion
+
+以降のコマンドにより、コマンドや変数の名前をOctaveに補完させることができます。
+
+@table @kbd
+@item @key{TAB}
+カーソルの前のテキストにたいして補完を試みます。Octaveはコマンドと変数の名前を補完することができます。
+
+@item M-?
+カーソルの前のテキストにたいして、可能な補完をリストします。
+@end table
+
+@c completion_append_char libinterp/corefcn/input.cc
+@anchor{XREFcompletion_append_char}
+@deftypefn {Built-in Function} {@var{val} =} completion_append_char ()
+@deftypefnx {Built-in Function} {@var{old_val} =} completion_append_char (@var{new_val})
+@deftypefnx {Built-in Function} {} completion_append_char (@var{new_val}, "local")
+コマンドラインの成功した補完に追加する文字のための内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@qcode{"
+"}(スペース1つ)です。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更は、その関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、元の変数の値がリストアされます。
+@end deftypefn
+
+
+@c completion_matches libinterp/corefcn/input.cc
+@anchor{XREFcompletion_matches}
+@deftypefn {Built-in Function} {} completion_matches (@var{hint})
+与えられた@var{hint}にたいして、可能な補完を生成します。
+
+この関数は、Octaveを制御したりユーザー入力を処理するEmacsのようなプログラムのために提供されています。この関数が呼び出されても、カレントコマンドナンバーはインクリメントされません。これはバグではなく仕様です。
+@end deftypefn
+
+
+@node Commands For History
+@subsection Commands For Manipulating The History
+@cindex command history
+@cindex input history
+@cindex history of commands
+
+Octaveは通常、以前にタイプされたコマンドうぃ編集や再実行できるように、タイプしたコマンドを記録しています。Octaveをexitするとき、もっとも最近タイプされたコマンドから、変数@code{history_size}で指定された個数までのコマンドがファイルに保存されます。Octaveが開始されるとき、変数@code{history_file}の名前のファイルから、コマンドの初期リストがロードされます。
+
+以下は、ヒストリーリストを簡単に閲覧したり、検索するためのコマンドです。
+
+@table @kbd
+@item @key{LFD}
+@itemx @key{RET}
+カーソルの位置に関わらず、カレント行を受け入れます。その行が空でない場合は、その行をヒストリーに加えます。その行がヒストリー行だった場合は、ヒストリー行を元の状態にリストアします。
+
+@item C-p
+ヒストリーリストを`上'に移動します。
+
+@item C-n
+ヒストリーリストを`下'に移動します。
+
+@item M-<
+ヒストリーリストの最初の行に移動します。
+
+@item M->
+入力ヒストリーの最後の行(あなたが入力している行です!)に移動します。
+
+@item C-r
+カレント行から後方検索を開始して、必要ならヒストリーを`上'に移動します。これはインクリメンタル検索です。
+
+@item C-s
+カレント行から前方検索を開始して、必要ならヒストリーを`下'に移動します。
+@end table
+
+多くの端末では、ヒストリーリストを移動するのに、@kbd{C-p}や@kbd{C-n}のかわりに上矢印キーと下矢印キーを使用できます。
+
+ヒストリーリストを移動するコマンドに加えて、Octaveはヒストリーリストからコマンド群を閲覧、編集、再実行するために3つの関数を提供します。
+
+@c history libinterp/corefcn/oct-hist.cc
+@anchor{XREFhistory}
+@deftypefn {Command} {} history
+@deftypefnx {Command} {} history @var{opt1} @dots{}
+@deftypefnx {Built-in Function} {@var{h} =} history ()
+@deftypefnx {Built-in Function} {@var{h} =} history (@var{opt1}, @dots{})
+引数を指定せずに呼び出すと、@code{history}は実行されたコマンドのリストを表示します。有効なオプションは:
+
+@table @code
+@item @var{n}
+@itemx -@var{n}
+ヒストリーリストのもっとも最近の@var{n}行だけを表示します。
+
+@item -c
+ヒストリーリストをクリアーします。
+
+@item -q
+表示されるヒストリーリストの番号を表示しません。これは、X Window Systemを使用してカットアンドペーストを行なうときに便利です。
+
+@item -r @var{file}
+ファイル@var{file}を読み込んで、その内容をカレントヒストリーリストに追加します。名前が省略された場合はデフォルトのヒストリーファイル(通常は@file{~/.octave_hist})を使用します。
+
+@item -w @var{file}
+カレントヒストリーを、ファイル@var{file}に書き込みます。名前が省略された場合はデフォルトのヒストリーファイル(通常は@file{~/.octave_hist})を使用します。
+@end table
+
+たとえば、もっとも最近タイプされたコマンド5つを、行番号なしで表示するには、コマンド@kbd{history -q 5}を使用します。
+
+出力引数が1つで呼び出された場合、ヒストリーはその引数のセル文字列として保存され、スクリーンに表示されません。
+@end deftypefn
+
+
+@c edit_history libinterp/corefcn/oct-hist.cc
+@anchor{XREFedit_history}
+@deftypefn {Command} {} edit_history
+@deftypefnx {Command} {} edit_history @var{cmd_number}
+@deftypefnx {Command} {} edit_history @var{first} @var{last}
+変数@w{@env{EDITOR}}で指定された名前のエディターを使って、ヒストリーリストを編集します。
+
+編集されるコマンドは、最初にテンポラリーファイルにコピーされます。エディターをexitするとき、Octaveはそのファイル内に残ったコマンドを実行します。関数を定義するとき、それを直接コマンドラインに入力するのではなく、@code{edit_history}を使うほうが便利なときがあります。そのコマンドブロックは、エディターをexitするとすぐに実行されます。コマンドを実行したくないときは、エディターを抜けるときに、単にそのバッファーのすべての行を削除してください。
+
+引数なしで呼び出された場合は、以前に実行されたコマンドを編集します。引数が1つの場合は、指定されたコマンド@var{cmd_number}を編集します。引数が2つの場合は、@var{first}と@var{last}の間のコマンドを編集します。コマンド番号には、負の数も指定できます。この場合、-1はもっとも最近実行されたコマンドを参照します。以下のコマンドは等価で、どちらももっとも最近実行されたコマンドを編集します。
+
+@example
+@group
+edit_history
+edit_history -1
+@end group
+@end example
+
+範囲を使用する場合、最初のコマンドに最後のコマンドより大きい番号を指定すると、編集されるバッファーに配置される前に、コマンドリストを逆転します。
+@seealso{@ref{XREFrun_history,,run_history}}
+@end deftypefn
+
+
+@c run_history libinterp/corefcn/oct-hist.cc
+@anchor{XREFrun_history}
+@deftypefn {Command} {} run_history
+@deftypefnx {Command} {} run_history @var{cmd_number}
+@deftypefnx {Command} {} run_history @var{first} @var{last}
+ヒストリーリストからコマンドを実行します。
+
+引数なしで呼び出された場合は、以前に実行されたコマンドを実行します。引数が1つの場合は、指定されたコマンド@var{cmd_number}を実行します。引数が2つの場合は、@var{first}と@var{last}の間のコマンドを実行します。コマンド番号には、負の数も指定できます。この場合、-1はもっとも最近実行されたコマンドを参照します。以下のコマンドは等価で、どちらももっとも最近実行されたコマンドを編集します。たとえば以下のコマンド
+
+@example
+@group
+run_history
+     OR
+run_history -1
+@end group
+@end example
+
+@noindent
+はもっとも最近のコマンドを再実行します。また、
+
+@example
+run_history 13 169
+@end example
+
+@noindent
+は13から169のコマンドを実行します。
+
+最初のコマンドに最後のコマンドより大きい番号を指定すると、編集されるバッファーに配置される前に、コマンドリストを逆転します。たとえば:
+
+@example
+@group
+disp (1)
+disp (2)
+run_history -1 -2
+@result{}
+ 2
+ 1
+@end group
+@end example
+
+@seealso{@ref{XREFedit_history,,edit_history}}
+@end deftypefn
+
+
+@noindent
+Octaveでは、ヒストリーがいつ、どこで、どのように保存されたかの詳細もカスタマイズできます。
+
+@c history_save libinterp/corefcn/oct-hist.cc
+@anchor{XREFhistory_save}
+@deftypefn {Built-in Function} {@var{val} =} history_save ()
+@deftypefnx {Built-in Function} {@var{old_val} =} history_save (@var{new_val})
+@deftypefnx {Built-in Function} {} history_save (@var{new_val}, "local")
+ヒストリーファイルに、コマンドがコマンドラインから入力されたかどうかを保存するか制御する内部変数にたいして、問い合わせまたはセットを行います。
+
+関数内から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。その関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFhistory_control,,history_control},
+@ref{XREFhistory_file,,history_file}, @ref{XREFhistory_size,,history_size},
+@ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}}
+@end deftypefn
+
+
+@c history_control libinterp/corefcn/oct-hist.cc
+@anchor{XREFhistory_control}
+@deftypefn {Built-in Function} {@var{val} =} history_control ()
+@deftypefnx {Built-in Function} {@var{old_val} =} history_control (@var{new_val})
+コマンドがヒストリーリストに保存される方法を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は空文字列ですが、環境変数@w{@env{OCTAVE_HISTCONTROL}}によりオーバーライドされるかもしれません。
+
+@code{history_control}の値は、コマンドをヒストリーリストに保存する方法を制御する、コロンで区切られた値です。値リストが@code{ignorespace}を含む場合、スペース文字で始まる行は、ヒストリーリストに保存されません。@code{ignoredups}では、以前のヒストリーにマッチする行はヒストリーに保存されません。値@code{ignoreboth}は、@code{ignorespace}と@code{ignoredups}の省略指定です。値@code{erasedups}は、カレント行がヒストリーリストに保存される前に、ヒストリーリストからマッチするすべての行を削除します。上記のリスト以外の値はすべて無視されます。@code{history_control}が空文字列の場合、すべてのコマンドは@code{history_save}の値として、すべてヒストリーリストに保存されます。
+@seealso{@ref{XREFhistory_file,,history_file},
+@ref{XREFhistory_size,,history_size},
+@ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string},
+@ref{XREFhistory_save,,history_save}}
+@end deftypefn
+
+
+@c history_file libinterp/corefcn/oct-hist.cc
+@anchor{XREFhistory_file}
+@deftypefn {Built-in Function} {@var{val} =} history_file ()
+@deftypefnx {Built-in Function} {@var{old_val} =} history_file (@var{new_val})
+コマンドヒストリーを保存するのに使用するファイルの名前を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@file{~/.octave_hist}ですが、環境変数@w{@env{OCTAVE_HISTFILE}}によりオーバーライドされるかもしれません。
+@seealso{@ref{XREFhistory_size,,history_size},
+@ref{XREFhistory_save,,history_save},
+@ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}}
+@end deftypefn
+
+
+@c history_size libinterp/corefcn/oct-hist.cc
+@anchor{XREFhistory_size}
+@deftypefn {Built-in Function} {@var{val} =} history_size ()
+@deftypefnx {Built-in Function} {@var{old_val} =} history_size (@var{new_val})
+ヒストリーファイルに保存するエントリー数を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@code{1000}ですが、環境変数@w{@env{OCTAVE_HISTSIZE}}によりオーバーライドされるかもしれません。
+@seealso{@ref{XREFhistory_file,,history_file},
+@ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string},
+@ref{XREFhistory_save,,history_save}}
+@end deftypefn
+
+
+@c history_timestamp_format_string libinterp/corefcn/oct-hist.cc
+@anchor{XREFhistory_timestamp_format_string}
+@deftypefn {Built-in Function} {@var{val} =} history_timestamp_format_string ()
+@deftypefnx {Built-in Function} {@var{old_val} =} history_timestamp_format_string (@var{new_val})
+@deftypefnx {Built-in Function} {} history_timestamp_format_string (@var{new_val}, "local")
+Octaveをexitするときにヒストリーファイルに書き込まれるコマンドラインにたいするフォーマット文字列を指定する内部変数にたいして、問い合わせまたはセットを行います。このフォーマット文字列は@code{strftime}に渡されます。デフォルト値は
+
+@example
+"# Octave VERSION, %a %b %d %H:%M:%S %Y %Z <USER@@HOST>"
+@end example
+
+関数内から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。
+@seealso{@ref{XREFstrftime,,strftime}, @ref{XREFhistory_file,,history_file},
+@ref{XREFhistory_size,,history_size}, @ref{XREFhistory_save,,history_save}}
+@end deftypefn
+
+
+@c EDITOR libinterp/corefcn/defaults.cc
+@anchor{XREFEDITOR}
+@deftypefn {Built-in Function} {@var{val} =} EDITOR ()
+@deftypefnx {Built-in Function} {@var{old_val} =} EDITOR (@var{new_val})
+@deftypefnx {Built-in Function} {} EDITOR (@var{new_val}, "local")
+デフォルトのテキストエディターを指定する内部変数にたいして、問い合わせまたはセットを行います。
+
+デフォルト値はOctave開始時に環境変数@w{@env{EDITOR}}から取得されます。環境変数が初期化されない場合、@w{@env{EDITOR}}は@qcode{"emacs"}にセットされます。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更は、その関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、元の変数の値がリストアされます。
+
+@seealso{@ref{XREFedit,,edit}, @ref{XREFedit_history,,edit_history}}
+@end deftypefn
+
+
+@node Customizing readline
+@subsection Customizing @code{readline}
+@cindex @code{~/.inputrc}
+@cindex customizing @code{readline}
+@cindex @code{readline} customization
+
+Octaveはコマンドライン変数およびヒストリー機能のために、GNU
+Readlineライブラリーを使用しています。Readlineはとてもフレキシブルで、コマンドの設定ファイルを通じてカスタマイズできます(正確なコマンド構文についてはGNU
+Readlineライブラリーを参照してください)。デフォルトの設定ファイルは通常、@file{~/.inputrc}です。
+
+OctaveはReadlineを初期化するためのコマンドを提供しており、それによりコマンドラインの挙動を変更できます。
+
+@c readline_read_init_file libinterp/corefcn/input.cc
+@anchor{XREFreadline_read_init_file}
+@deftypefn {Built-in Function} {} readline_read_init_file (@var{file})
+readline初期化ファイル@var{file}を読み込みます。@var{file}が省略された場合には、デフォルトの初期化ファイル(通常は@file{~/.inputrc})を読み込みます。
+
+詳細は@ref{Readline Init File, , , readline, GNU Readline Library}を参照してください。
+@seealso{@ref{XREFreadline_re_read_init_file,,readline_re_read_init_file}}
+@end deftypefn
+
+
+@c readline_re_read_init_file libinterp/corefcn/input.cc
+@anchor{XREFreadline_re_read_init_file}
+@deftypefn {Built-in Function} {} readline_re_read_init_file ()
+最後に読み込んだreadline初期化ファイルを再読込します。詳細は @ref{Readline Init File, , , readline,
+GNU Readline Library}を参照してください。
+@seealso{@ref{XREFreadline_read_init_file,,readline_read_init_file}}
+@end deftypefn
+
+
+@node Customizing the Prompt
+@subsection Customizing the Prompt
+@cindex prompt customization
+@cindex customizing the prompt
+
+以降の変数による、コマンドラインプロンプトの外観をカスタマイズできます。Octaveでは、バックスラッシュでエスケープされたいくつかの特別な文字を挿入することにより、プロンプトをカスタマイズできます。それらの文字は以下のようにデコードされます:
+
+@table @samp
+@item \t
+時刻。
+
+@item \d
+日付。
+
+@item \n
+改行と復帰と等価なものをプリントすることにより、新たな行を開始します。
+
+@item \s
+プログラムの名前(通常は単に@samp{octave})です。
+
+@item \w
+カレントワーキングディレクトリー。
+
+@item \W
+カレントワーキングディレクトリーのbasename。
+
+@item \u
+カレントユーザーのユーザー名。
+
+@item \h
+最初の`.'までのhostname。
+
+@item \H
+hostname。
+
+@item \#
+Octave起動後からカウントした、そのコマンドのコマンド番号。
+
+@item \!
+そのコマンドのヒストリー番号。これはOctave開始時からのヒストリーリスト内のコマンド数なので、@samp{\#}とは異なります。
+
+@item \$
+実行UIDが0のときは@samp{#}、それ以外は@samp{$}。
+
+@item \nnn
+文字コードが8進@var{nnn}の文字。
+
+@item \\
+バックスラッシュ。
+@end table
+
+@c PS1 libinterp/corefcn/input.cc
+@anchor{XREFPS1}
+@deftypefn {Built-in Function} {@var{val} =} PS1 ()
+@deftypefnx {Built-in Function} {@var{old_val} =} PS1 (@var{new_val})
+@deftypefnx {Built-in Function} {} PS1 (@var{new_val}, "local")
+一次プロンプト(primary
+prompt)文字列にたいして、問い合わせまたはセットを行います。インタラクティブに実行された場合は、コマンドを読み取る準備ができたときに、Octaveは一次プロンプトを表示します。
+
+一次プロンプト文字列のデフォルト値は@qcode{"octave:\#> "}です。これを変更するには、以下のようなコマンドを使用します。
+
+@example
+PS1 ("\\u@@\\H> ")
+@end example
+
+@noindent
+これは、ホスト@samp{kremvax.kgb.su}にログインしているユーザー@samp{boris}のプロンプトを、@samp{boris@@kremvax>
+}にします。ダブルクォートされた文字列内にバックスラッシュを入力するには、バックスラッシュが2つ必要なことに注意してください。@ref{Strings}を参照してください。
+
+端末がサポートしていれば、ANSIエスケープシーケンスも使用できます。これはプロンプトにカラーを使いたいとき便利かもしれません。たとえば、
+
+@example
+PS1 ("\\[\\033[01;31m\\]\\s:\\#> \\[\\033[0m\\]")
+@end example
+
+@noindent
+これはデフォルトのOctaveプロンプトのカラーを赤にします。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。
+@seealso{@ref{XREFPS2,,PS2}, @ref{XREFPS4,,PS4}}
+@end deftypefn
+
+
+@c PS2 libinterp/corefcn/input.cc
+@anchor{XREFPS2}
+@deftypefn {Built-in Function} {@var{val} =} PS2 ()
+@deftypefnx {Built-in Function} {@var{old_val} =} PS2 (@var{new_val})
+@deftypefnx {Built-in Function} {} PS2 (@var{new_val}, "local")
+二次プロンプト文字列にたいして、問い合わせまたはセットを行います。二次プロンプトは、Octaveがコマンドを完成させるために、追加入力を待っているときにプリントされます。たとえば、複数行に分かれた@code{for}ループをタイプしているとき、Octaveは最初の行以降の各行の先頭に二次プロンプトをプリントするでしょう。二次プロンプト文字列のデフォルト値は、@qcode{">
+"}です。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、元の変数の値がリストアされます。
+@seealso{@ref{XREFPS1,,PS1}, @ref{XREFPS4,,PS4}}
+@end deftypefn
+
+
+@c PS4 libinterp/corefcn/input.cc
+@anchor{XREFPS4}
+@deftypefn {Built-in Function} {@var{val} =} PS4 ()
+@deftypefnx {Built-in Function} {@var{old_val} =} PS4 (@var{new_val})
+@deftypefnx {Built-in Function} {} PS4 (@var{new_val}, "local")
+コマンドのエコーが有効なときに、生成された出力のプレフィクスに使用する文字列の、問い合わせまたはセットを行います。デフォルト値は@qcode{"+
+"}です。コマンドのエコーについての説明は、@ref{Diary and Echo Commands}を参照してください。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。
+@seealso{@ref{XREFecho,,echo},
+@ref{XREFecho_executing_commands,,echo_executing_commands},
+@ref{XREFPS1,,PS1}, @ref{XREFPS2,,PS2}}
+@end deftypefn
+
+
+@node Diary and Echo Commands
+@subsection Diary and Echo Commands
+@cindex diary of commands and output
+@cindex command and output logs
+@cindex logging commands and output
+@cindex echoing executing commands
+@cindex command echoing
+
+Octaveのダイアリー機能により、インタラクティブなセッションのすべて、または一部のログを維持できます。これは、タイプされた入力と、Octaveが生成した出力を、別のファイルに記録することにより行なわれます。
+
+@c diary libinterp/corefcn/pager.cc
+@anchor{XREFdiary}
+@deftypefn {Command} {} diary
+@deftypefnx {Command} {} diary on
+@deftypefnx {Command} {} diary off
+@deftypefnx {Command} {} diary @var{filename}
+すべてのコマンドのリスト@emph{および}それらが生成した出力を、まさに端末に表示されたよｙに混在して記録します。
+
+有効なオプションは:
+
+@table @asis
+@item on
+カレントワーキングディレクトリーの@file{diary}と呼ばれるファイルへ、セッションの記録を開始します。
+
+@item off
+ダイアリーファイルへのセッションの記録を停止します。
+
+@item @var{filename}
+@var{filename}という名前のファイルに、セッションを記録します。
+@end table
+
+引数を指定しない場合、カレントダイアリーの状態うぃ切り替えます。
+@seealso{@ref{XREFhistory,,history}}
+@end deftypefn
+
+
+関数やスクリプトが評価されるときに、それらの中のコマンドを確認できると便利な場合があります。これは、ある種の問題をデバッグするとき、特に助けになるでしょう。
+
+@c echo libinterp/corefcn/input.cc
+@anchor{XREFecho}
+@deftypefn {Command} {} echo options
+コマンドが評価されるときに、それらのコマンドを表示するかどうかを制御します。有効なオプションは:
+
+@table @code
+@item on
+スクリプトファイル内でコマンドが実行されるとき、エコーを有効にします。
+
+@item off
+スクリプトファイル内でコマンドが実行されるとき、エコーを無効にします。
+
+@item on all
+スクリプトファイルおよび関数内でコマンドが実行されるとき、エコーを有効にします。
+
+@item off all
+スクリプトファイルおよび関数内でコマンドが実行されるとき、エコーを無効にします。
+@end table
+
+@noindent
+引数を指定しない場合、@code{echo}はエコー状態を切り替えます。
+@end deftypefn
+
+
+@c echo_executing_commands libinterp/corefcn/input.cc
+@anchor{XREFecho_executing_commands}
+@deftypefn {Built-in Function} {@var{val} =} echo_executing_commands ()
+@deftypefnx {Built-in Function} {@var{old_val} =} echo_executing_commands (@var{new_val})
+@deftypefnx {Built-in Function} {} echo_executing_commands (@var{new_val}, "local")
+エコー状態を制御する内部変数にたいして、問い合わせまたはセットを行います。値は以下の値の和になるでしょう:
+
+@table @asis
+@item 1
+スクリプトファイルから読み込んだコマンドをエコーします。
+
+@item 2
+関数のコマンドをエコーします。
+
+@item 4
+コマンドラインから読み込んだコマンドをエコーします。
+@end table
+
+一度に2つ以上の状態がアクティブになり得ます。たとえば、値3は、コマンド@kbd{echo on all}と等価です。
+
+@code{echo_executing_commands}の値は、@kbd{echo}コマンドまたはコマンドラインオプション@option{--echo-commands}によりセットされるかもしれません。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更は、その関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、元の変数の値がリストアされます。
+@end deftypefn
+
+
+@node Errors
+@section How Octave Reports Errors
+@cindex error messages
+@cindex messages, error
+
+Octaveは無効なプログラムにたいして、2つの種類のエラーをリポートします。
+
+@dfn{パースエラー}は、Octaveがタイプされたものを理解できなかった場合に発生します。たとえば、キーワードのスペルミスをした場合、
+
+@example
+octave:13> function y = f (x) y = x***2; endfunction
+@end example
+
+@noindent
+Octaveは即座に次のようなメッセージを返すでしょう:
+
+@example
+@group
+parse error:
+
+  syntax error
+
+>>> function y = f (x) y = x***2; endfunction
+                              ^
+@end group
+@end example
+
+@noindent
+多くのパースエラーにたいして、Octaveは入力行で理解できなかった箇所をマークするのに、キャレット(@samp{^})を使用します。上記のケースでは、べき乗(@code{**})にたいするキーワードにスペルミスがあるので、Octaveはエラーメッセージを生成しました。キャレットは3つ目の@samp{*}にエラーをマークしました。なぜなら、その箇所まではコードは正しく読み取れていたけれど、最後の@samp{*}が理解できなかったからです。
+
+他のクラスのエラーメッセージは、評価時に発生します。これらのエラーは、@dfn{ランタイムエラー}または,
+@dfn{評価エラー}と呼ばれることもあります。これは、それらのエラーが、プログラムが@dfn{実行(run)}あるいは@dfn{評価(evaluate)}されるときに発生するからです。たとえば、前の関数定義のミスを訂正したあとで、以下をタイプしたとします
+
+@example
+octave:13> f ()
+@end example
+
+@noindent
+Octaveは以下のように応答するでしょう
+
+@example
+@group
+error: `x' undefined near line 1 column 24
+error: called from:
+error:   f at line 1, column 22
+@end group
+@end example
+
+@noindent
+このエラーメッセージにはいくつかのパートがあります。そして、それらはエラーのあるソースを見つける助けとなる情報を多く含んでいます。このメッセージは、最内のエラー箇所から生成され、それを囲む式と関数呼び出しのバックトレースを提供します。
+
+上記の例の最初の行は、何らかの関数または式の、行1、列24の近くで、名前@samp{x}の未定義な変数が見つかったことを示しています。関数内で発生したエラーにたいしては、行はその関数定義を含むファイルの先頭から数えた行のことです。関数の外側で発生したエラーにたいしては、行番号は入力行番号であり、これは通常一次プロンプト文字列に表示されています。
+
+エラーメッセージの2行目と3行目は、このエラーが関数@code{f}の中で発生したことを示しています。もし関数@code{f}がさらに他の関数、たとえば@code{g}から呼び出されていた場合には、エラーリストにはさらに以下のような1行が加わるでしょう:
+
+@example
+error:   g at line 1, column 17
+@end example
+
+これらの関数呼び出しのリストは、エラーが発生するまでにそのプログラムがとったパスのトレースと、プログラムを再試行する前にエラーを訂正するのを、とても簡単にします。
+
+@node Executable Octave Programs
+@section Executable Octave Programs
+@cindex executable scripts
+@cindex scripts
+@cindex batch processing
+@cindex self contained programs
+@cindex program, self contained
+@cindex @samp{#!}
+
+一度Octaveを習得したら、@samp{#!}スクリプトメカニズムを使ってOctaveによる自己完結型スクリプトを記述したいと思うかもしれません。これはGNUシステム、および多くのUnixシステム@footnote{@samp{#!}メカニズムは、
+Berkeley Unix、System V Release 4、およびいくつかのSystem V Release 3
+systemから継承されたUnixシステムで機能します。}で行なうことができます。
+
+Octave自己完結型スクリプトは、Octave言語で記述されたプログラムに関する知識を要さずに、ユーザーが呼び出せるプログラムを記述したいときに便利です。Octaveスクリプトは、データファイルのバッチプロセッシングにも使用されます。一度アルゴリズムが開発され、Octaveのインタラクティブ環境でテストされれば、それを実行可能スクリプトにコミットして、データファイルに何度も使用できます。
+
+実行可能Octaveスクリプトの些細な例として、あなたは以下の行を含む@file{hello}という例の名前のファイルを作るかもしれません:
+
+@example
+@group
+#! @var{octave-interpreter-name} -qf
+# a sample Octave program
+printf ("Hello, world!\n");
+@end group
+@end example
+
+@noindent
+(@var{octave-interpreter-name}はOctaveバイナリーのフルパスで置き換えてください)。スクリプトはファイルの先頭に@samp{#!}があるときだけ機能することに注意してください。(Unixシステムでは@code{chmod}で)ファイルを実行可能にした後は、以下のようにシェル上で単にタイプできます:
+
+@example
+hello
+@end example
+
+@noindent
+システムはあなたがタイプしたものを以下のようにアレンジして、Octaveを実行します:
+
+@example
+octave hello
+@end example
+
+@samp{#!}で始まる行は、実行されるインタープリターのファイル名へのフルパスと、そのインタープリターに渡す初期化のためのオプションのコマンドライン引数です。するとオペレーティングシステムは与えられた引数と、実行されるプログラムの完全な引数リストにより、インタープリターを実行します。リストの最初の引数は、実行可能なOctaveのフルパスファイル名です。引数リストの残りはOctaveへのオプション、データファイル、またはその両方です。@samp{-qf}オプションは通常、スタンドアローンなOctaveプログラム内での、通常のスタートアップメッセージのプリントを抑止して、特定のユーザーの@file{~/.octaverc}の内容に依存した異なる挙動から守ります。@ref{Invoking
+Octave from the Command Line}を参照してください。
+
+@samp{#!}の後ろの文字数に制限のあるオペレーティングシステムがいくつかあることに注意してください。また、@samp{#!}の行内の引数のパースは、さまざまなシェルやシステムにより異なります。これらの多くは、すべての引数を1つの文字列にまとめて、インタープリターに1つの引数として渡します。この場合、以下のスクリプト:
+
+@example
+@group
+#! @var{octave-interpreter-name} -q -f # comment
+@end group
+@end example
+
+@noindent
+は、コマンドラインで以下のようにタイプするのと等価です:
+
+@example
+@group
+octave "-q -f # comment"
+@end group
+@end example
+
+@noindent
+そして、これはエラーになるでしょう。残念ながら、コマンドラインから呼び出されたのか、それとも@samp{#!}スクリプトから呼び出されたかを、Octaveが判断するのは不可能です。したがって、@samp{#!}メカニズムを使用するときは、いくつかの配慮が必要です。
+
+Octaveが実行可能スクリプトから起動された場合、ビルトイン関数@code{argv}はスクリプトの@samp{#!}行でOctaveインタープリターに渡された引数ではなく、実行可能Octaveスクリプトに渡されたコマンドライン引数を含むセル配列をリターンします。たとえば、以下のプログラムは@samp{-qf}ではなく、スクリプトを実行するために使用されたコマンドライン引数を再現します。
+
+@example
+@group
+#! /bin/octave -qf
+printf ("%s", program_name ());
+arg_list = argv ();
+for i = 1:nargin
+  printf (" %s", arg_list@{i@});
+endfor
+printf ("\n");
+@end group
+@end example
+
+@node Comments
+@section Comments in Octave Programs
+@cindex comments
+@cindex use of comments
+@cindex documenting Octave programs
+
+@dfn{コメント}とは、人間の読み手のためにプログラム中に含まれるテキストのことで、このテキストはプログラムの実行パートではありません。コメントにより、そのプログラムが何を行なうか、どのように機能するか説明することができます。ほとんどすべてのプログラミング言語にはコメントにたいする規約があります。なぜならプログラムは通常、コメントがなければ理解するのが困難だからです。
+
+@menu
+* Single Line Comments::
+* Block Comments::
+* Comments and the Help System::  
+@end menu
+
+@node Single Line Comments
+@subsection Single Line Comments
+@cindex @samp{#}
+@cindex @samp{%}
+
+Octave言語では、コメントはシャープ記号@samp{#}、あるいはパーセント記号@samp{%}のどちらかで始まり、その行の末尾までがコメントになります。シャープ記号またはパーセント記号に続く任意のテキストは、Octaveインタープリターには無視され、実行されません。以下の例では、行全体のコメントと、行の一部を使用したコメントが使用されています。
+
+@example
+@group
+function countdown
+  # Count down for main rocket engines 
+  disp (3);
+  disp (2);
+  disp (1);
+  disp ("Blast Off!");  # Rocket leaves pad
+endfunction
+@end group
+@end example
+
+@node Block Comments
+@subsection Block Comments
+@cindex block comments
+@cindex multi-line comments
+@cindex @samp{#@{}
+@cindex @samp{%@{}
+
+マッチする@samp{#@{}と@samp{#@}}、または@samp{%@{}と@samp{%@}}で囲むことにより、コードブロック全体をコメント化することができます。たとえば、
+
+@example
+@group
+function quick_countdown
+  # Count down for main rocket engines 
+  disp (3);
+ #@{
+  disp (2);
+  disp (1);
+ #@}
+  disp ("Blast Off!");  # Rocket leaves pad
+endfunction
+@end group
+@end example
+
+@noindent
+これは、"@code{disp (2);}"と"@code{disp
+(1);}"を実行しないことにより、@qcode{'3'}から@qcode{"Blast Off"}へのとても素早いカウントダウンを生成します。
+
+ブロックコメントマーカーは、正しくパースされるために、その行で(空白文字以外の)単独の文字として記述しなければなりません。
+
+@node Comments and the Help System
+@subsection Comments and the Help System
+@cindex documenting functions
+@cindex documenting user scripts
+@cindex help, user-defined functions
+
+@code{help}コマンド(@ref{Getting
+Help}参照)は、関数の最初のコメントブロックを見つけて、それらをドキュメント文字列としてリターンします。これはヘルプを取得するために使用する同じコマンドが、ユーザー定義関数を正しくフォーマットできることを意味します。たとえば、以下の関数@code{f}を定義してみます
+
+@example
+@group
+function xdot = f (x, t)
+
+# usage: f (x, t)
+#
+# This function defines the right-hand
+# side functions for a set of nonlinear
+# differential equations.
+
+  r = 0.25;
+  @dots{}
+endfunction
+@end group
+@end example
+
+@noindent
+すると、コマンド@kbd{help f}は以下の出力を生成します
+
+@example
+@group
+ usage: f (x, t)
+
+ This function defines the right-hand
+ side functions for a set of nonlinear
+ differential equations.
+@end group
+@end example
+
+キーボード入力して使い捨てするプログラムにコメント行を挿入することはできますが、これは通常とても有用とは言えません。なぜならコメントの目的は、後で他の人がプログラムを理解する助けとなることだからです。
+
+@code{help}パーサーは、初期ヘルプテキストとして、1行コメント(@ref{Single Line
+Comments}参照)だけを正しく認識します。 

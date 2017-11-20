@@ -1,0 +1,1241 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: octave 3.8.2\n"
+"POT-Creation-Date: 2017-07-03 18:09+0900\n"
+"PO-Revision-Date: 2017-07-08 16:19+0900\n"
+"Last-Translator: Ayanokoji Takesi <ayanokoji.takesi@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: node
+#: intro.texi:21
+#, no-wrap
+msgid "Introduction"
+msgstr "Introduction"
+
+#. type: chapter
+#: intro.texi:22
+#, no-wrap
+msgid "A Brief Introduction to Octave"
+msgstr "A Brief Introduction to Octave"
+
+#. type: cindex
+#: intro.texi:23
+#, no-wrap
+msgid "introduction"
+msgstr "introduction"
+
+#. type: Plain text
+#: intro.texi:30
+msgid ""
+"GNU Octave is a high-level language, primarily intended for numerical "
+"computations.  It is typically used for such problems as solving linear and "
+"nonlinear equations, numerical linear algebra, statistical analysis, and for "
+"performing other numerical experiments.  It may also be used as a "
+"batch-oriented language for automated data processing."
+msgstr "GNU Octaveは主に数値計算を意図した、ハイレベル言語であり、通常は線形、および非線形の代数、数値線形代数(numerical linear algebra)、統計分析を解決したり、その他の数値実験(numerical experiment)を行なうために使用されます。また、自動化されたデータ処理のための、バッチ指向言語としても使用されます。"
+
+#. type: Plain text
+#: intro.texi:35
+msgid ""
+"Until recently GNU Octave provided a command-line interface with graphical "
+"results displayed in separate windows.  The current version (version 3.8, "
+"released in late 2013) also provides, by default, a graphical user "
+"interface."
+msgstr "最近まで、GNU Octaveは別ウィンドウでグラフィカルな結果を表示する、コマンドラインインターフェイスを提供していました。最新のバージョン(2013年後半にリリースされたバージョン3.8)は、デフォルトではグラフィカルユーザーインターフェイスも提供します。"
+
+#. type: Plain text
+#: intro.texi:40
+msgid ""
+"GNU Octave is freely redistributable software.  You may redistribute it "
+"and/or modify it under the terms of the GNU General Public License as "
+"published by the Free Software Foundation.  The GPL is included in this "
+"manual, @pxref{Copying}."
+msgstr "GNU Octaveは自由に再頒布できるソフトウェアです。Free Software Foundationから公表されたGNU General Public Licenseの条件に基づき、あなたはこれを再頒布、かつ/または改変することができます。GPLは、このマニュアルの@pxref{Copying}に含まれています。"
+
+#. type: Plain text
+#: intro.texi:44
+msgid ""
+"This manual provides comprehensive documentation on how to install, run, "
+"use, and extend GNU Octave.  Additional chapters describe how to report bugs "
+"and help contribute code."
+msgstr "このマニュアルはGNU Octaveのインストール、実行、使用に関する包括的なドキュメントを提供します。バグ報告やコードの寄贈については、追加のチャプターで説明します。"
+
+#. type: Plain text
+#: intro.texi:46
+msgid "This document corresponds to Octave version @value{VERSION}."
+msgstr "このドキュメントは、Octave バージョン@value{VERSION}に対応します。"
+
+#. type: menuentry
+#: intro.texi:51
+msgid "Running Octave::"
+msgstr "Running Octave::"
+
+#. type: menuentry
+#: intro.texi:51
+msgid "Simple Examples::"
+msgstr "Simple Examples::"
+
+#. type: section
+#: intro.texi:51 intro.texi:425 intro.texi:426
+#, no-wrap
+msgid "Conventions"
+msgstr "Conventions"
+
+#. type: section
+#: intro.texi:53 intro.texi:54
+#, no-wrap
+msgid "Running Octave"
+msgstr "Running Octave"
+
+#. type: Plain text
+#: intro.texi:63
+msgid ""
+"On most systems, Octave is started with the shell command @samp{octave}.  "
+"This, by default, starts the graphical user interface (GUI).  The central "
+"window in the GUI is the Octave command-line interface.  Octave displays an "
+"initial message and then a prompt indicating it is ready to accept input.  "
+"If you have chosen the traditional command-line interface only the command "
+"prompt appears.  In any case, you can immediately begin typing Octave "
+"commands."
+msgstr "大部分のシステムでは、シェルコマンド@samp{octave}によりOctaveが起動されます。デフォルトでは、このコマンドによりグラフィカルユーザーインターフェイス(GUI)が起動します。このGUIの中の中央のウィンドウは、Octaveのコマンドラインインターフェイスです。Octaveは初期メッセージを表示してから、入力を受け取る準備ができたことを示すプロンプトを表示します。伝統的なコマンドラインインターフェイスを選択していた場合には、コマンドプロンプトだけが表示されます。どちらの場合でも、すぐにOctaveコマンドのタイプを開始できます。"
+
+#. type: Plain text
+#: intro.texi:69
+msgid ""
+"If you get into trouble, you can usually interrupt Octave by typing "
+"@kbd{Control-C} (written @kbd{C-c} for short).  @kbd{C-c} gets its name from "
+"the fact that you type it by holding down @key{CTRL} and then pressing "
+"@key{c}.  Doing this will normally return you to Octave's prompt."
+msgstr "問題が起きた場合、通常は@kbd{Control-C}(略記は@kbd{C-c})をタイプすることにより、Octaveに割り込むことができます。@kbd{C-c}の名前は、@key{CTRL}を押したまま@key{c}を押すという事実が由来です。これを行なうことにより、通常はOctaveのプロンプトに戻ることができるでしょう。"
+
+#. type: cindex
+#: intro.texi:70
+#, no-wrap
+msgid "exiting octave"
+msgstr "exiting octave"
+
+#. type: cindex
+#: intro.texi:71
+#, no-wrap
+msgid "quitting octave"
+msgstr "quitting octave"
+
+#. type: Plain text
+#: intro.texi:73
+msgid "To exit Octave, type @kbd{quit}, or @kbd{exit} at the Octave prompt."
+msgstr "Octaveを終了するには、Octaveのプロンプトで@kbd{quit}、または, @kbd{exit}とタイプします。"
+
+#. type: Plain text
+#: intro.texi:76
+msgid ""
+"On systems that support job control, you can suspend Octave by sending it a "
+"@code{SIGTSTP} signal, usually by typing @kbd{C-z}."
+msgstr "ジョブ制御をサポートするシステムでは、通常は@kbd{C-z}とタイプして@code{SIGTSTP}シグナルを送ることにより、Octaveをサスペンドすることができます。"
+
+#. type: section
+#: intro.texi:77 intro.texi:78
+#, no-wrap
+msgid "Simple Examples"
+msgstr "Simple Examples"
+
+#. type: Plain text
+#: intro.texi:83
+msgid ""
+"The following chapters describe all of Octave's features in detail, but "
+"before doing that, it might be helpful to give a sampling of some of its "
+"capabilities."
+msgstr "以降のチャプターでは、Octaveのもつすべての機能の詳細を説明しますが、その前にOctaveの能力を示すサンプルを見ておくことが助けになるかもしれません。"
+
+#. type: Plain text
+#: intro.texi:88
+msgid ""
+"If you are new to Octave, I recommend that you try these examples to begin "
+"learning Octave by using it.  Lines marked like so, @samp{octave:13>}, are "
+"lines you type, ending each with a carriage return.  Octave will respond "
+"with an answer, or by displaying a graph."
+msgstr "Octaveに触れるのが初めてならば、これらのサンプルを試して実際にOctaveを使ってみることから、Octaveの学習を開始することをおすすめします。@samp{octave:13>}のようにマークされたラインは、あなたがタイプして最後にエンターで終了するラインです。するとOctaveは答えを示すか、グラフを表示するでしょう。"
+
+#. type: subsection
+#: intro.texi:89
+#, no-wrap
+msgid "Elementary Calculations"
+msgstr "Elementary Calculations"
+
+#. type: Plain text
+#: intro.texi:98
+msgid ""
+"Octave can easily be used for basic numerical calculations.  Octave knows "
+"about arithmetic operations (+,-,*,/), exponentiation (^), natural "
+"logarithms/exponents (log, exp), and the trigonometric functions (sin, cos, "
+"@dots{}).  Moreover, Octave calculations work on real or imaginary numbers "
+"(i,j).  In addition, some mathematical constants such as the base of the "
+"natural logarithm (e) and the ratio of a circle's circumference to its "
+"diameter (pi) are pre-defined."
+msgstr "Octaveでは、基本的な数値計算を簡単に行うことができ、算術演算子(+,-,*,/)、べき乗(^)、対数と指数(log, exp)、三角関数(sin, cos, @dots{})を認識します。さらにOctaveでの演算は実数に加えて虚数(i,j)にも機能します。また、自然対数の底(e)や円周率(pi)などの数学定数が事前に定義されています。"
+
+#. type: Plain text
+#: intro.texi:101
+msgid "For example, to verify Euler's Identity,"
+msgstr "たとえばオイラーの等式"
+
+#. type: tex
+#: intro.texi:103
+#, no-wrap
+msgid "$$e^{\\imath\\pi} = -1$$\n"
+msgstr "$$e^{\\imath\\pi} = -1$$\n"
+
+#. type: display
+#: intro.texi:109
+#, no-wrap
+msgid ""
+" i*pi\n"
+"e     = -1\n"
+msgstr ""
+" i*pi\n"
+"e     = -1\n"
+
+#. type: Plain text
+#: intro.texi:115
+msgid ""
+"type the following which will evaluate to @code{-1} within the tolerance of "
+"the calculation."
+msgstr "を検証するためには、以下をタイプすると、これは計算の許容誤差(tolerance of the calculation)とともに@code{-1}に評価されるでしょう。"
+
+#. type: example
+#: intro.texi:118
+#, no-wrap
+msgid "octave:1> exp (i*pi)\n"
+msgstr "octave:1> exp (i*pi)\n"
+
+#. type: subsection
+#: intro.texi:120
+#, no-wrap
+msgid "Creating a Matrix"
+msgstr "Creating a Matrix"
+
+#. type: Plain text
+#: intro.texi:125
+msgid ""
+"Vectors and matrices are the basic building blocks for numerical analysis.  "
+"To create a new matrix and store it in a variable so that you can refer to "
+"it later, type the command"
+msgstr "ベクターとマトリクスは、数値解析における基本的な構成要素です。新たにマトリクスを作成して、それを変数に格納すれば、コマンドをタイプして後からそれを参照できます"
+
+#. type: example
+#: intro.texi:128
+#, no-wrap
+msgid "octave:1> A = [ 1, 1, 2; 3, 5, 8; 13, 21, 34 ]\n"
+msgstr "octave:1> A = [ 1, 1, 2; 3, 5, 8; 13, 21, 34 ]\n"
+
+#. type: Plain text
+#: intro.texi:136
+msgid ""
+"Octave will respond by printing the matrix in neatly aligned columns.  "
+"Octave uses a comma or space to separate entries in a row, and a semicolon "
+"or carriage return to separate one row from the next.  Ending a command with "
+"a semicolon tells Octave not to print the result of the command.  For "
+"example,"
+msgstr ""
+"Octaveは、列で整列されたマトリクスを表示して応答するでしょう。\n"
+"Octave will respond by printing the matrix in neatly aligned columns.\n"
+"\n"
+"Octaveは行の中の区切りにカンマ、またはスペースを使い、行ごとの区切りにはセミコロン、または改行を使用します。コマンドの最後にセミコロンを入力した場合、Octaveはコマンドの結果をプリントしません。たとえば、"
+
+#. type: example
+#: intro.texi:139
+#, no-wrap
+msgid "octave:2> B = rand (3, 2);\n"
+msgstr "octave:2> B = rand (3, 2);\n"
+
+#. type: Plain text
+#: intro.texi:144
+msgid ""
+"will create a 3 row, 2 column matrix with each element set to a random value "
+"between zero and one."
+msgstr "これは、それぞれの要素が0から1の間の乱数であるような、3行2列のマトリクスを作成します。"
+
+#. type: Plain text
+#: intro.texi:148
+msgid ""
+"To display the value of a variable, simply type the name of the variable at "
+"the prompt.  For example, to display the value stored in the matrix "
+"@code{B}, type the command"
+msgstr "変数の値を表示するには、プロンプトで、単に変数名をタイプします。たとえば@code{B}に格納されたマトリクスの値を表示するには、以下のコマンドをタイプします"
+
+#. type: example
+#: intro.texi:151
+#, no-wrap
+msgid "octave:3> B\n"
+msgstr "octave:3> B\n"
+
+#. type: subsection
+#: intro.texi:153
+#, no-wrap
+msgid "Matrix Arithmetic"
+msgstr "Matrix Arithmetic"
+
+#. type: Plain text
+#: intro.texi:158
+msgid ""
+"Octave has a convenient operator notation for performing matrix arithmetic.  "
+"For example, to multiply the matrix @code{A} by a scalar value, type the "
+"command"
+msgstr "Octaveには、行列演算を行なうための、便利な演算子があります。たとえばマトリクス@code{A}にスカラー値を乗ずるには、以下のコマンドを試してみてください"
+
+#. type: example
+#: intro.texi:161
+#, no-wrap
+msgid "octave:4> 2 * A\n"
+msgstr "octave:4> 2 * A\n"
+
+#. type: Plain text
+#: intro.texi:165
+msgid "To multiply the two matrices @code{A} and @code{B}, type the command"
+msgstr "2つの行列@code{A}と@code{B}の内積は、以下のコマンドをタイプします"
+
+#. type: example
+#: intro.texi:168
+#, no-wrap
+msgid "octave:5> A * B\n"
+msgstr "octave:5> A * B\n"
+
+#. type: Plain text
+#: intro.texi:172
+msgid "and to form the matrix product"
+msgstr "行列の積"
+
+#. type: tex
+#: intro.texi:174
+#, no-wrap
+msgid "$@code{A}^T@code{A}$,\n"
+msgstr "$@code{A}^T@code{A}$,\n"
+
+#. type: ifnottex
+#: intro.texi:177
+msgid "@code{transpose (A) * A},"
+msgstr "@code{transpose (A) * A},"
+
+#. type: Plain text
+#: intro.texi:179
+msgid "type the command"
+msgstr "を得るには、以下のコマンドをタイプします"
+
+#. type: example
+#: intro.texi:182
+#, no-wrap
+msgid "octave:6> A' * A\n"
+msgstr "octave:6> A' * A\n"
+
+#. type: subsection
+#: intro.texi:184
+#, no-wrap
+msgid "Solving Systems of Linear Equations"
+msgstr "Solving Systems of Linear Equations"
+
+#. type: Plain text
+#: intro.texi:189
+msgid ""
+"Systems of linear equations are ubiquitous in numerical analysis.  To solve "
+"the set of linear equations @code{A@var{x} = b}, use the left division "
+"operator, @samp{\\}:"
+msgstr "数値解析において、線形方程式系(systems of linear equations)は至るところに現れます。一連の線形方程式@code{A@var{x} = b}を解くには、左除算演算子(left division operator) @samp{\\}を使います:"
+
+#. type: example
+#: intro.texi:192
+#, no-wrap
+msgid "@var{x} = A \\ b\n"
+msgstr "@var{x} = A \\ b\n"
+
+#. type: Plain text
+#: intro.texi:196
+msgid "This is conceptually equivalent to"
+msgstr "これは、概念的には以下と等価です"
+
+#. type: tex
+#: intro.texi:198
+#, no-wrap
+msgid "$@code{A}^{-1}@code{b}$,\n"
+msgstr "$@code{A}^{-1}@code{b}$,\n"
+
+#. type: ifnottex
+#: intro.texi:201
+msgid "@code{inv (a) * b},"
+msgstr "@code{inv (a) * b},"
+
+#. type: Plain text
+#: intro.texi:203
+msgid "but avoids computing the inverse of a matrix directly."
+msgstr "しかし、左除算演算子を使うことにより、逆行列を直接計算するのを避けることができます。"
+
+#. type: Plain text
+#: intro.texi:206
+msgid ""
+"If the coefficient matrix is singular, Octave will print a warning message "
+"and compute a minimum norm solution."
+msgstr "係数行列(coefficient matrix)が正則(singular)な場合、Octaveは警告をプリントして、最小ノルム解(minimum norm solution)を計算します。"
+
+#. type: Plain text
+#: intro.texi:210
+msgid ""
+"A simple example comes from chemistry and the need to obtain balanced "
+"chemical equations.  Consider the burning of hydrogen and oxygen to produce "
+"water."
+msgstr "化学から簡単な例を1つ。バランスのとれた化学反応式(balanced chemical equations)を得たいとします。水素と酸素の燃焼による水の生成を考えてみましょう。"
+
+#. type: tex
+#: intro.texi:212
+#, no-wrap
+msgid "$$ {\\rm H_{2}} + {\\rm O_{2}} \\rightarrow {\\rm H_{2}O} $$\n"
+msgstr "$$ {\\rm H_{2}} + {\\rm O_{2}} \\rightarrow {\\rm H_{2}O} $$\n"
+
+#. type: example
+#: intro.texi:217
+#, no-wrap
+msgid "H2 + O2 --> H2O\n"
+msgstr "H2 + O2 --> H2O\n"
+
+#. type: Plain text
+#: intro.texi:225
+msgid ""
+"The equation above is not accurate.  The Law of Conservation of Mass "
+"requires that the number of molecules of each type balance on the left- and "
+"right-hand sides of the equation.  Writing the variable overall reaction "
+"with individual equations for hydrogen and oxygen one finds:"
+msgstr "この化学反応式は正確ではありません。質量保存の法則により、各分子の数は反応式の左辺と右辺でバランスが取れている必要があります。反応を通じて水素と酸素について個別に方程式を記述すると、以下のようになります:"
+
+#. type: tex
+#: intro.texi:231
+#, no-wrap
+msgid ""
+"\\vbox{\n"
+"$$ x_{1}{\\rm H_{2}} + x_{2}{\\rm O_{2}} \\rightarrow {\\rm H_{2}O} $$\n"
+"$$ {\\rm H:}\\quad 2x_{1} + 0x_{2} \\rightarrow 2 $$\n"
+"$$ {\\rm O:}\\quad 0x_{1} + 2x_{2} \\rightarrow 1 $$\n"
+"}\n"
+msgstr ""
+"\\vbox{\n"
+"$$ x_{1}{\\rm H_{2}} + x_{2}{\\rm O_{2}} \\rightarrow {\\rm H_{2}O} $$\n"
+"$$ {\\rm H:}\\quad 2x_{1} + 0x_{2} \\rightarrow 2 $$\n"
+"$$ {\\rm O:}\\quad 0x_{1} + 2x_{2} \\rightarrow 1 $$\n"
+"}\n"
+
+#. type: group
+#: intro.texi:239
+#, no-wrap
+msgid ""
+"x1*H2 + x2*O2 --> H2O\n"
+"H: 2*x1 + 0*x2 --> 2\n"
+"O: 0*x1 + 2*x2 --> 1\n"
+msgstr ""
+"x1*H2 + x2*O2 --> H2O\n"
+"H: 2*x1 + 0*x2 --> 2\n"
+"O: 0*x1 + 2*x2 --> 1\n"
+
+#. type: Plain text
+#: intro.texi:245
+msgid "The solution in Octave is found in just three steps."
+msgstr "Octaveでは、3つのステップだけでこれを解くことができます。"
+
+#. type: group
+#: intro.texi:251
+#, no-wrap
+msgid ""
+"octave:1> A = [ 2, 0; 0, 2 ];\n"
+"octave:2> b = [ 2; 1 ];\n"
+"octave:3> x = A \\ b\n"
+msgstr ""
+"octave:1> A = [ 2, 0; 0, 2 ];\n"
+"octave:2> b = [ 2; 1 ];\n"
+"octave:3> x = A \\ b\n"
+
+#. type: subsection
+#: intro.texi:254
+#, no-wrap
+msgid "Integrating Differential Equations"
+msgstr "Integrating Differential Equations"
+
+#. type: Plain text
+#: intro.texi:258
+msgid ""
+"Octave has built-in functions for solving nonlinear differential equations "
+"of the form"
+msgstr "Octaveには、以下の形式をもち"
+
+#. type: tex
+#: intro.texi:262
+#, no-wrap
+msgid ""
+"$$\n"
+" {dx \\over dt} = f(x,t), \\qquad x(t=t_0) = x_0\n"
+"$$\n"
+msgstr ""
+"$$\n"
+" {dx \\over dt} = f(x,t), \\qquad x(t=t_0) = x_0\n"
+"$$\n"
+
+#. type: group
+#: intro.texi:270
+#, no-wrap
+msgid ""
+"dx\n"
+"-- = f (x, t)\n"
+"dt\n"
+msgstr ""
+"dx\n"
+"-- = f (x, t)\n"
+"dt\n"
+
+#. type: ifnottex
+#: intro.texi:275
+msgid "with the initial condition"
+msgstr "初期条件が以下であるような非線形方程式を解くビルトイン関数があります"
+
+#. type: example
+#: intro.texi:278
+#, no-wrap
+msgid "x(t = t0) = x0\n"
+msgstr "x(t = t0) = x0\n"
+
+#. type: Plain text
+#: intro.texi:284
+msgid ""
+"For Octave to integrate equations of this form, you must first provide a "
+"definition of the function"
+msgstr "このような形式の関数をOctaveで積分するには、最初にその関数の定義を与えなければなりません"
+
+#. type: tex
+#: intro.texi:286
+#, no-wrap
+msgid "$f (x, t)$.\n"
+msgstr "$f (x, t)$.\n"
+
+#. type: ifnottex
+#: intro.texi:289
+msgid "@code{f(x,t)}."
+msgstr "@code{f(x,t)}."
+
+#. type: Plain text
+#: intro.texi:296
+msgid ""
+"This is straightforward, and may be accomplished by entering the function "
+"body directly on the command line.  For example, the following commands "
+"define the right-hand side function for an interesting pair of nonlinear "
+"differential equations.  Note that while you are entering a function, Octave "
+"responds with a different prompt, to indicate that it is waiting for you to "
+"complete your input."
+msgstr "これは簡単です。コマンドライン上で関数のボディを直接入力していけばよいのです。たとえば、以下のコマンドは、ある非線形微分方程式の着目する変数ペアにたいする右辺の関数を定義しています。関数を入力する間、Octaveは異なるプロンプトで応答することに注意してください。これは入力が完了するまでOctaveが待機していることを示します。"
+
+#. type: group
+#: intro.texi:312
+#, no-wrap
+msgid ""
+"octave:1> function xdot = f (x, t) \n"
+">\n"
+">  r = 0.25;\n"
+">  k = 1.4;\n"
+">  a = 1.5;\n"
+">  b = 0.16;\n"
+">  c = 0.9;\n"
+">  d = 0.8;\n"
+">\n"
+">  xdot(1) = r*x(1)*(1 - x(1)/k) - a*x(1)*x(2)/(1 + b*x(1));\n"
+">  xdot(2) = c*a*x(1)*x(2)/(1 + b*x(1)) - d*x(2);\n"
+">\n"
+"> endfunction\n"
+msgstr ""
+"octave:1> function xdot = f (x, t) \n"
+">\n"
+">  r = 0.25;\n"
+">  k = 1.4;\n"
+">  a = 1.5;\n"
+">  b = 0.16;\n"
+">  c = 0.9;\n"
+">  d = 0.8;\n"
+">\n"
+">  xdot(1) = r*x(1)*(1 - x(1)/k) - a*x(1)*x(2)/(1 + b*x(1));\n"
+">  xdot(2) = c*a*x(1)*x(2)/(1 + b*x(1)) - d*x(2);\n"
+">\n"
+"> endfunction\n"
+
+#. type: Plain text
+#: intro.texi:317
+msgid "Given the initial condition"
+msgstr "次に初期条件を与えます"
+
+#. type: example
+#: intro.texi:320
+#, no-wrap
+msgid "octave:2> x0 = [1; 2];\n"
+msgstr "octave:2> x0 = [1; 2];\n"
+
+#. type: Plain text
+#: intro.texi:325
+msgid ""
+"and the set of output times as a column vector (note that the first output "
+"time corresponds to the initial condition given above)"
+msgstr "そして出力時間を列ベクトルとしてセットします(1番目の出力時間は上記で与えた初期条件に対応することに注意してください)"
+
+#. type: example
+#: intro.texi:328
+#, no-wrap
+msgid "octave:3> t = linspace (0, 50, 200)';\n"
+msgstr "octave:3> t = linspace (0, 50, 200)';\n"
+
+#. type: Plain text
+#: intro.texi:332
+msgid "it is easy to integrate the set of differential equations:"
+msgstr "微分方程式の組を積分するのは簡単です:"
+
+#. type: example
+#: intro.texi:335
+#, no-wrap
+msgid "octave:4> x = lsode (\"f\", x0, t);\n"
+msgstr "octave:4> x = lsode (\"f\", x0, t);\n"
+
+#. type: Plain text
+#: intro.texi:342
+msgid ""
+"The function @code{lsode} uses the Livermore Solver for Ordinary "
+"Differential Equations, described in A. C. Hindmarsh, @cite{ODEPACK, a "
+"Systematized Collection of ODE Solvers}, in: Scientific Computing, R. S.  "
+"Stepleman et al. (Eds.), North-Holland, Amsterdam, 1983, pages 55--64."
+msgstr "関数@code{lsode}は、「A. C. Hindmarsh, @cite{ODEPACK, a Systematized Collection of ODE Solvers}, in: Scientific Computing, R. S.  Stepleman et al. (Eds.), North-Holland, Amsterdam, 1983」の55ページから64ページで説明されている、\"Livermore Solver for Ordinary Differential Equation\"を使用しています。"
+
+#. type: subsection
+#: intro.texi:343
+#, no-wrap
+msgid "Producing Graphical Output"
+msgstr "Producing Graphical Output"
+
+#. type: Plain text
+#: intro.texi:347
+msgid "To display the solution of the previous example graphically, use the command"
+msgstr "前の例の解をグラフィカルに表示するには、以下のコマンドを使用します"
+
+#. type: example
+#: intro.texi:350
+#, no-wrap
+msgid "octave:1> plot (t, x)\n"
+msgstr "octave:1> plot (t, x)\n"
+
+#. type: Plain text
+#: intro.texi:355
+msgid ""
+"If you are using a graphical user interface, Octave will automatically "
+"create a separate window to display the plot."
+msgstr "グラフィカルユーザーインターフェイスを使用している場合、Octaveはプロットを表示するための別ウィンドウを自動的に作成するでしょう。"
+
+#. type: Plain text
+#: intro.texi:358
+msgid ""
+"To save a plot once it has been displayed on the screen, use the print "
+"command.  For example,"
+msgstr "1度スクリーンに表示されたプロットを保存するには、printコマンドを使用します。たとえば、"
+
+#. type: example
+#: intro.texi:361
+#, no-wrap
+msgid "print -deps foo.eps\n"
+msgstr "print -deps foo.eps\n"
+
+#. type: Plain text
+#: intro.texi:366
+msgid ""
+"will create a file called @file{foo.eps} that contains a rendering of the "
+"current plot in Encapsulated PostScript format.  The command"
+msgstr "Encapsulated PostScriptフォーマットで描画された現在のプロットを含む、@file{foo.eps}というファイルを作成します。また、以下のコマンド"
+
+#. type: example
+#: intro.texi:369
+#, no-wrap
+msgid "help print\n"
+msgstr "help print\n"
+
+#. type: Plain text
+#: intro.texi:374
+msgid ""
+"explains more options for the @code{print} command and provides a list of "
+"additional output file formats."
+msgstr "は、@code{print}にたいする他のオプションの説明と、出力ファイルフォーマットの追加リストを提供します。"
+
+#. type: subsection
+#: intro.texi:375
+#, no-wrap
+msgid "Editing What You Have Typed"
+msgstr "Editing What You Have Typed"
+
+#. type: Plain text
+#: intro.texi:385
+msgid ""
+"At the Octave prompt, you can recall, edit, and reissue previous commands "
+"using Emacs- or vi-style editing commands.  The default keybindings use "
+"Emacs-style commands.  For example, to recall the previous command, press "
+"@kbd{Control-p} (written @kbd{C-p} for short).  Doing this will normally "
+"bring back the previous line of input.  @kbd{C-n} will bring up the next "
+"line of input, @kbd{C-b} will move the cursor backward on the line, "
+"@kbd{C-f} will move the cursor forward on the line, etc."
+msgstr "Octaveプロンプトでは、Emacsスタイル、またはviスタイルを使用した、以前のコマンドの再呼び出し、編集、再実行が可能です。デフォルトのキーバインディングは、Emacsスタイルのコマンドを使用します。たとえば、前のコマンドを再び呼び出すには、@kbd{Control-p}(略記すると@kbd{C-p})を押します。これを行なうことにより、入力した以前の行に戻ることができます。他にも、@kbd{C-n}で入力の次の行、@kbd{C-b}でカーソルをその行の後方へ移動、@kbd{C-f}でカーソルをその行の前方へ移動などができます。"
+
+#. type: Plain text
+#: intro.texi:388
+msgid ""
+"A complete description of the command line editing capability is given in "
+"this manual, @pxref{Command Line Editing}."
+msgstr "コマンドライン編集の能力に関する完全な説明は、このマニュアルの@pxref{Command Line Editing}で提供されています。"
+
+#. type: subsection
+#: intro.texi:389
+#, no-wrap
+msgid "Help and Documentation"
+msgstr "Help and Documentation"
+
+#. type: Plain text
+#: intro.texi:395
+msgid ""
+"Octave has an extensive help facility.  The same documentation that is "
+"available in printed form is also available from the Octave prompt, because "
+"both forms of the documentation are created from the same input file."
+msgstr "Octaveには豊富なヘルプ機能があります。Octaveプロンプトから、同じドキュメントのプリント形式が利用できます。これはドキュメントの各形式が、同じ入力ファイルから作成されているからです。"
+
+#. type: Plain text
+#: intro.texi:403
+msgid ""
+"In order to get good help you first need to know the name of the command "
+"that you want to use.  This name of the function may not always be obvious, "
+"but a good place to start is to type @code{help --list}.  This will show you "
+"all the operators, keywords, built-in functions, and loadable functions "
+"available in the current session of Octave.  An alternative is to search the "
+"documentation using the @code{lookfor} function.  This function is described "
+"in @ref{Getting Help}."
+msgstr "望ましいヘルプを得るには、まず使いたいコマンドの名前を知る必要があります。この関数の名前が明確でない場合もあります。そのようなときは、@code{help --list}とタイプするのがよい出発点です。これはすべての演算子、キーワード、ビルトイン関数、Octaveのカレントセッションで利用できるロード可能な関数をすべて表示します。代替としては、@code{lookfor}関数を使ってドキュメントを検索する方法もあります。この関数は、@ref{Getting Help}で説明されています。"
+
+#. type: Plain text
+#: intro.texi:407
+msgid ""
+"Once you know the name of the function you wish to use, you can get more "
+"help on the function by simply including the name as an argument to help.  "
+"For example,"
+msgstr "使いたい関数の名前が解ったら、単にhelpの引数にその関数の名前を含めることで、さらなるヘルプを入手できます。たとえば、"
+
+#. type: example
+#: intro.texi:410
+#, no-wrap
+msgid "help plot\n"
+msgstr "help plot\n"
+
+#. type: Plain text
+#: intro.texi:414
+msgid "will display the help text for the @code{plot} function."
+msgstr "これは@code{plot}関数のヘルプテキストを表示します。"
+
+#. type: Plain text
+#: intro.texi:418
+msgid ""
+"Octave sends output that is too long to fit on one screen through a pager "
+"like @code{less} or @code{more}.  Type a @key{RET} to advance one line, a "
+"@key{SPC} to advance one page, and @key{q} to exit the pager."
+msgstr "Octaveは、1つのスクリーンに収まらないような長い出力を、@code{less}や@code{more}風のページャーを通じて送ります。@key{RET}をタイプすると1行、@key{SPC}で1ページ進み、@key{q}でページャーを抜けます。"
+
+#. type: Plain text
+#: intro.texi:424
+msgid ""
+"The part of Octave's help facility that allows you to read the complete text "
+"of the printed manual from within Octave normally uses a separate program "
+"called Info.  When you invoke Info you will be put into a menu driven "
+"program that contains the entire Octave manual.  Help for using Info is "
+"provided in this manual, @pxref{Getting Help}."
+msgstr "Octave内ででプリントされたマニュアルの完全なテキストを読むことができるOctaveのヘルプ機能の一部は、通常はInfoと呼ばれる別のプログラムを使用します。Infoを呼び出すと、Octaveマニュアル全体を含んだメニュー駆動型のプログラムが起動されます。Infoの使用に関するヘルプは、このマニュアルの@pxref{Getting Help}で提供されています。"
+
+#. type: Plain text
+#: intro.texi:430
+msgid ""
+"This section explains the notational conventions that are used in this "
+"manual.  You may want to skip this section and refer back to it later."
+msgstr "このセクションでは、このマニュアルで使われている表記規約について説明します。あなたはこのセクションを飛ばして、あとで参照したいと思うかもしれません。"
+
+#. type: menuentry
+#: intro.texi:437
+msgid "Fonts::"
+msgstr "Fonts::"
+
+#. type: menuentry
+#: intro.texi:437
+msgid "Evaluation Notation::"
+msgstr "Evaluation Notation::"
+
+#. type: menuentry
+#: intro.texi:437
+msgid "Printing Notation::"
+msgstr "Printing Notation::"
+
+#. type: menuentry
+#: intro.texi:437
+msgid "Error Messages::"
+msgstr "Error Messages::"
+
+#. type: subsection
+#: intro.texi:437 intro.texi:541 intro.texi:542
+#, no-wrap
+msgid "Format of Descriptions"
+msgstr "Format of Descriptions"
+
+#. type: subsection
+#: intro.texi:439 intro.texi:440
+#, no-wrap
+msgid "Fonts"
+msgstr "Fonts"
+
+#. type: cindex
+#: intro.texi:441
+#, no-wrap
+msgid "documentation fonts"
+msgstr "documentation fonts"
+
+#. type: Plain text
+#: intro.texi:450
+msgid ""
+"Examples of Octave code appear in this font or form: @code{svd (a)}.  Names "
+"that represent variables or function arguments appear in this font or form: "
+"@var{first-number}.  Commands that you type at the shell prompt appear in "
+"this font or form: @samp{octave --no-init-file}.  Commands that you type at "
+"the Octave prompt sometimes appear in this font or form: @kbd{foo --bar "
+"--baz}.  Specific keys on your keyboard appear in this font or form: "
+"@key{ANY}."
+msgstr "Octaveコードの例は、@code{svd (a)}のようなフォントまたは形式で表します。変数や関数の引数の名前を示す場合は、@var{first-number}のようなフォントまたは形式で表します。シェルプロンプト上でタイプするコマンドは、@samp{octave --no-init-file}のようなフォントまたは形式で表します。Octaveプロンプト上でタイプするコマンドは、@kbd{foo --bar --baz}のようなフォントまたは形式で表す場合があります。キーボード上の特定のキーは、@key{ANY}のようなフォントまたは形式で表します。"
+
+#. type: subsection
+#: intro.texi:451 intro.texi:452
+#, no-wrap
+msgid "Evaluation Notation"
+msgstr "Evaluation Notation"
+
+#. type: cindex
+#: intro.texi:453
+#, no-wrap
+msgid "evaluation notation"
+msgstr "evaluation notation"
+
+#. type: cindex
+#: intro.texi:454
+#, no-wrap
+msgid "documentation notation"
+msgstr "documentation notation"
+
+#. type: Plain text
+#: intro.texi:458
+msgid ""
+"In the examples in this manual, results from expressions that you evaluate "
+"are indicated with @samp{@result{}}.  For example:"
+msgstr "このマニュアル内の例では、あなたが評価した式の結果は、@samp{@result{}}で示されます。たとえば、"
+
+#. type: group
+#: intro.texi:463
+#, no-wrap
+msgid ""
+"sqrt (2)\n"
+"     @result{} 1.4142\n"
+msgstr ""
+"sqrt (2)\n"
+"     @result{} 1.4142\n"
+
+#. type: Plain text
+#: intro.texi:468
+msgid "You can read this as ``@code{sqrt (2)} evaluates to 1.4142''."
+msgstr "あなたはこれを、``@code{sqrt (2)}は1.4142に評価された''と読み替えることができます。"
+
+#. type: Plain text
+#: intro.texi:471
+msgid ""
+"In some cases, matrix values that are returned by expressions are displayed "
+"like this"
+msgstr "式によりリターンされるマトリクス値は、以下のように表示される場合があります"
+
+#. type: group
+#: intro.texi:476
+#, no-wrap
+msgid ""
+"[1, 2; 3, 4] == [1, 3; 2, 4]\n"
+"     @result{} [ 1, 0; 0, 1 ]\n"
+msgstr ""
+"[1, 2; 3, 4] == [1, 3; 2, 4]\n"
+"     @result{} [ 1, 0; 0, 1 ]\n"
+
+#. type: Plain text
+#: intro.texi:481
+msgid "and in other cases, they are displayed like this"
+msgstr "また、以下のように表示される場合もあります"
+
+#. type: group
+#: intro.texi:488
+#, no-wrap
+msgid ""
+"eye (3)\n"
+"     @result{}  1  0  0\n"
+"         0  1  0\n"
+"         0  0  1\n"
+msgstr ""
+"eye (3)\n"
+"     @result{}  1  0  0\n"
+"         0  1  0\n"
+"         0  0  1\n"
+
+#. type: Plain text
+#: intro.texi:493
+msgid "in order to clearly show the structure of the result."
+msgstr "これは結果の構造を明確にするためです。"
+
+#. type: Plain text
+#: intro.texi:497
+msgid ""
+"Sometimes to help describe one expression, another expression is shown that "
+"produces identical results.  The exact equivalence of expressions is "
+"indicated with @samp{@equiv{}}.  For example:"
+msgstr "1つの式を説明するのに、同じ結果を生成する別の式を示すのが助けになる場合もあります。式の完全な等価は、@samp{@equiv{}}で表します。たとえば:"
+
+#. type: group
+#: intro.texi:505
+#, no-wrap
+msgid ""
+"rot90 ([1, 2; 3, 4], -1)\n"
+"@equiv{}\n"
+"rot90 ([1, 2; 3, 4], 3)\n"
+"@equiv{}\n"
+"rot90 ([1, 2; 3, 4], 7)\n"
+msgstr ""
+"rot90 ([1, 2; 3, 4], -1)\n"
+"@equiv{}\n"
+"rot90 ([1, 2; 3, 4], 3)\n"
+"@equiv{}\n"
+"rot90 ([1, 2; 3, 4], 7)\n"
+
+#. type: subsection
+#: intro.texi:508 intro.texi:509
+#, no-wrap
+msgid "Printing Notation"
+msgstr "Printing Notation"
+
+#. type: cindex
+#: intro.texi:510
+#, no-wrap
+msgid "printing notation"
+msgstr "printing notation"
+
+#. type: Plain text
+#: intro.texi:517
+msgid ""
+"Many of the examples in this manual print text when they are evaluated.  In "
+"this manual the printed text resulting from an example is indicated by "
+"@samp{@print{}}.  The value that is returned by evaluating the expression is "
+"displayed with @samp{@result{}} (@code{1} in the next example) and follows "
+"on a separate line."
+msgstr "このマニュアルの例の多くは、評価されたときにテキストをプリントします。このマニュアルでは、例の結果としてプリントされるものを、@samp{@print{}}で表します。式の評価によりリターンされた値(次の例の@code{1})は、続けて別の行に@samp{@result{}}で表します。"
+
+#. type: group
+#: intro.texi:523
+#, no-wrap
+msgid ""
+"printf (\"foo %s\\n\", \"bar\")\n"
+"     @print{} foo bar\n"
+"     @result{} 1\n"
+msgstr ""
+"printf (\"foo %s\\n\", \"bar\")\n"
+"     @print{} foo bar\n"
+"     @result{} 1\n"
+
+#. type: subsection
+#: intro.texi:526 intro.texi:527
+#, no-wrap
+msgid "Error Messages"
+msgstr "Error Messages"
+
+#. type: cindex
+#: intro.texi:528
+#, no-wrap
+msgid "error message notation"
+msgstr "error message notation"
+
+#. type: Plain text
+#: intro.texi:533
+msgid ""
+"Some examples signal errors.  This normally displays an error message on "
+"your terminal.  Error messages are shown on a line beginning with "
+"@code{error:}."
+msgstr "エラーをシグナルする例もいくつかあります。これらは通常、端末上にエラーメッセージを表示します。エラーメッセージは行頭の@code{error:}で表します。"
+
+#. type: group
+#: intro.texi:538
+#, no-wrap
+msgid ""
+"fieldnames ([1, 2; 3, 4])\n"
+"error: fieldnames: Invalid input argument\n"
+msgstr ""
+"fieldnames ([1, 2; 3, 4])\n"
+"error: fieldnames: Invalid input argument\n"
+
+#. type: cindex
+#: intro.texi:543
+#, no-wrap
+msgid "description format"
+msgstr "description format"
+
+#. type: Plain text
+#: intro.texi:548
+msgid ""
+"Functions and commands are described in this manual in a uniform format.  "
+"The first line of a description contains the name of the item followed by "
+"its arguments, if any."
+msgstr "このマニュアルでは、関数とコマンドは統一されたフォーマットで説明されています。説明の最初の行には、そのアイテムの名前と、もしあれば引数が含まれます。"
+
+#. type: ifnottex
+#: intro.texi:551
+msgid ""
+"The category---function, command, or whatever---appears at the beginning of "
+"the line."
+msgstr "行の先頭はカテゴリー---function、commandなど---が表示されます。"
+
+#. type: iftex
+#: intro.texi:555
+msgid ""
+"The category---function, command, or whatever---is printed next to the right "
+"margin."
+msgstr "右余白の隣にはカテゴリー---function、commandなど---がプリントされます。"
+
+#. type: Plain text
+#: intro.texi:557
+msgid "The description follows on succeeding lines, sometimes with examples."
+msgstr "後続の行が説明で、例を含む場合もあります。"
+
+#. type: menuentry
+#: intro.texi:561
+msgid "A Sample Function Description::"
+msgstr "A Sample Function Description::"
+
+#. type: subsubsection
+#: intro.texi:561 intro.texi:637 intro.texi:638
+#, no-wrap
+msgid "A Sample Command Description"
+msgstr "A Sample Command Description"
+
+#. type: subsubsection
+#: intro.texi:563 intro.texi:564
+#, no-wrap
+msgid "A Sample Function Description"
+msgstr "A Sample Function Description"
+
+#. type: cindex
+#: intro.texi:565
+#, no-wrap
+msgid "function descriptions"
+msgstr "function descriptions"
+
+#. type: Plain text
+#: intro.texi:571
+msgid ""
+"In a function description, the name of the function being described appears "
+"first.  It is followed on the same line by a list of parameters.  The names "
+"used for the parameters are also used in the body of the description."
+msgstr "関数の説明では、説明される関数の名前が最初に表示されます。同じ行にパラメーターのリストが続きます。パラメーターに使用された名前は、説明の本文でも使用されます。"
+
+#. type: Plain text
+#: intro.texi:573
+msgid "Here is a description of an imaginary function @code{foo}:"
+msgstr "以下は、架空の関数@code{foo}の説明です:"
+
+#. type: deftypefn
+#: intro.texi:574
+#, no-wrap
+msgid "{Function File} {} foo (@var{x})"
+msgstr "{Function File} {} foo (@var{x})"
+
+#. type: deftypefnx
+#: intro.texi:575
+#, no-wrap
+msgid "{Function File} {} foo (@var{x}, @var{y})"
+msgstr "{Function File} {} foo (@var{x}, @var{y})"
+
+#. type: deftypefnx
+#: intro.texi:576
+#, no-wrap
+msgid "{Function File} {} foo (@var{x}, @var{y}, @dots{})"
+msgstr "{Function File} {} foo (@var{x}, @var{y}, @dots{})"
+
+#. type: deftypefn
+#: intro.texi:580
+msgid ""
+"The function @code{foo} subtracts @var{x} from @var{y}, then adds the "
+"remaining arguments to the result.  If @var{y} is not supplied, then the "
+"number 19 is used by default."
+msgstr "関数@code{foo}は@var{y}から@var{x}を減じたのち、残りの引数を結果に加算します。@var{y}が与えられない場合、デフォルトとして数値19が使用されます。"
+
+#. type: group
+#: intro.texi:587
+#, no-wrap
+msgid ""
+"foo (1, [3, 5], 3, 9)\n"
+"     @result{} [ 14, 16 ]\n"
+"foo (5)\n"
+"     @result{} 14\n"
+msgstr ""
+"foo (1, [3, 5], 3, 9)\n"
+"     @result{} [ 14, 16 ]\n"
+"foo (5)\n"
+"     @result{} 14\n"
+
+#. type: deftypefn
+#: intro.texi:591
+msgid "More generally,"
+msgstr "より一般的には、"
+
+#. type: group
+#: intro.texi:597
+#, no-wrap
+msgid ""
+"foo (@var{w}, @var{x}, @var{y}, @dots{})\n"
+"@equiv{}\n"
+"@var{x} - @var{w} + @var{y} + @dots{}\n"
+msgstr ""
+"foo (@var{w}, @var{x}, @var{y}, @dots{})\n"
+"@equiv{}\n"
+"@var{x} - @var{w} + @var{y} + @dots{}\n"
+
+#. type: Plain text
+#: intro.texi:608
+msgid ""
+"Any parameter whose name contains the name of a type (e.g., @var{integer} or "
+"@var{matrix}) is expected to be of that type.  Parameters named @var{object} "
+"may be of any type.  Parameters with other sorts of names (e.g., "
+"@var{new_file}) are discussed specifically in the description of the "
+"function.  In some sections, features common to parameters of several "
+"functions are described at the beginning."
+msgstr "名前に型名(例: @var{integer}や@var{matrix})を含むパラメーターは、その型が期待されます。@var{object}という名前のパラメーターは、任意の型です。他の種類の名前(例: @var{new_file})をもつパラメーターについては、その関数の説明の中で個別に説明されます。いくつかのセクションでは、複数の関数で共通のパラメーターは、最初に説明されます。"
+
+#. type: Plain text
+#: intro.texi:612
+msgid ""
+"Functions in Octave may be defined in several different ways.  The category "
+"name for functions may include another name that indicates the way that the "
+"function is defined.  These additional tags include"
+msgstr "Octave内の関数は、複数の異なる方法で定義されているかもしれません。関数のカテゴリー名には、その関数が定義された方法を示す他の名前が含まれる場合があります。これらの追加タグには以下が含まれます。"
+
+#. type: item
+#: intro.texi:614
+#, no-wrap
+msgid "Function File"
+msgstr "Function File"
+
+#. type: cindex
+#: intro.texi:615
+#, no-wrap
+msgid "function file"
+msgstr "function file"
+
+#. type: table
+#: intro.texi:618
+msgid ""
+"The function described is defined using Octave commands stored in a text "
+"file.  @xref{Function Files}."
+msgstr "説明されている関数は、テキストファイルに格納されたOctaveコマンドにより定義されています。@ref{Function Files}を参照してください。"
+
+#. type: item
+#: intro.texi:619
+#, no-wrap
+msgid "Built-in Function"
+msgstr "Built-in Function"
+
+#. type: cindex
+#: intro.texi:620
+#, no-wrap
+msgid "built-in function"
+msgstr "built-in function"
+
+#. type: table
+#: intro.texi:623
+msgid ""
+"The function described is written in a language like C++, C, or Fortran, and "
+"is part of the compiled Octave binary."
+msgstr "説明されている関数は、C++、C、またはFortranのような言語で記述されており、コンパイル済みOctaveバイナリーの一部です。"
+
+#. type: item
+#: intro.texi:624
+#, no-wrap
+msgid "Loadable Function"
+msgstr "Loadable Function"
+
+#. type: cindex
+#: intro.texi:625
+#, no-wrap
+msgid "loadable function"
+msgstr "loadable function"
+
+#. type: table
+#: intro.texi:630
+msgid ""
+"The function described is written in a language like C++, C, or Fortran.  On "
+"systems that support dynamic linking of user-supplied functions, it may be "
+"automatically linked while Octave is running, but only if it is needed.  "
+"@xref{External Code Interface}."
+msgstr "説明されている関数は、C++、C、またはFortranのような言語で記述されています。ユーザー定義関数の動的リンクをサポートするシステムでは、Octaveの実行中に、必要なときだけ自動的にリンクされます。"
+
+#. type: item
+#: intro.texi:631
+#, no-wrap
+msgid "Mapping Function"
+msgstr "Mapping Function"
+
+#. type: cindex
+#: intro.texi:632
+#, no-wrap
+msgid "mapping function"
+msgstr "mapping function"
+
+#. type: table
+#: intro.texi:635
+msgid ""
+"The function described works element-by-element for matrix and vector "
+"arguments."
+msgstr "説明されている関数は、マトリクスおよびベクター引数の要素ごとに作用します。"
+
+#. type: cindex
+#: intro.texi:639
+#, no-wrap
+msgid "command descriptions"
+msgstr "command descriptions"
+
+#. type: Plain text
+#: intro.texi:646
+msgid ""
+"Command descriptions have a format similar to function descriptions, except "
+"that the word `Function' is replaced by `Command'.  Commands are functions "
+"that may be called without surrounding their arguments in parentheses.  For "
+"example, here is the description for Octave's @code{cd} command:"
+msgstr "コマンドの説明は、単語`Function'が`Command'置き換わることを除き、関数の説明と同じフォーマットです。コマンドとは、引数をカッコで括らずに呼び出される関数です。たとえば、以下はOctaveの@code{cd}コマンドの説明です。"
+
+#. type: deftypefn
+#: intro.texi:647
+#, no-wrap
+msgid "{Command} {} cd dir"
+msgstr "{Command} {} cd dir"
+
+#. type: deftypefnx
+#: intro.texi:648
+#, no-wrap
+msgid "{Command} {} chdir dir"
+msgstr "{Command} {} chdir dir"
+
+#. type: deftypefn
+#: intro.texi:653
+msgid ""
+"Change the current working directory to @var{dir}.  For example, @kbd{cd "
+"~/octave} changes the current working directory to @file{~/octave}.  If the "
+"directory does not exist, an error message is printed and the working "
+"directory is not changed."
+msgstr "カレント作業ディレクトリーを@var{dir}に変更します。たとえば@kbd{cd ~/octave}は、カレント作業ディレクトリーを@file{~/octave}に変更します。そのディレクトリーが存在しない場合、エラーメッセージをプリントし、作業ディレクトリーは変更されません。"

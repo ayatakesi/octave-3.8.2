@@ -1,0 +1,547 @@
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+@c DO NOT EDIT!  Generated automatically by munge-texi.pl.
+
+@c Copyright (C) 1996-2013 John W. Eaton
+@c
+@c This file is part of Octave.
+@c
+@c Octave is free software; you can redistribute it and/or modify it
+@c under the terms of the GNU General Public License as published by the
+@c Free Software Foundation; either version 3 of the License, or (at
+@c your option) any later version.
+@c 
+@c Octave is distributed in the hope that it will be useful, but WITHOUT
+@c ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+@c FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+@c for more details.
+@c 
+@c You should have received a copy of the GNU General Public License
+@c along with Octave; see the file COPYING.  If not, see
+@c <http://www.gnu.org/licenses/>.
+
+@node Introduction
+@chapter A Brief Introduction to Octave
+@cindex introduction
+
+GNU Octaveは主に数値計算を意図した、ハイレベル言語であり、通常は線形、および非線形の代数、数値線形代数(numerical linear
+algebra)、統計分析を解決したり、その他の数値実験(numerical
+experiment)を行なうために使用されます。また、自動化されたデータ処理のための、バッチ指向言語としても使用されます。
+
+最近まで、GNU
+Octaveは別ウィンドウでグラフィカルな結果を表示する、コマンドラインインターフェイスを提供していました。最新のバージョン(2013年後半にリリースされたバージョン3.8)は、デフォルトではグラフィカルユーザーインターフェイスも提供します。
+
+GNU Octaveは自由に再頒布できるソフトウェアです。Free Software Foundationから公表されたGNU General
+Public
+Licenseの条件に基づき、あなたはこれを再頒布、かつ/または改変することができます。GPLは、このマニュアルの@pxref{Copying}に含まれています。
+
+このマニュアルはGNU
+Octaveのインストール、実行、使用に関する包括的なドキュメントを提供します。バグ報告やコードの寄贈については、追加のチャプターで説明します。
+
+このドキュメントは、Octave バージョン@value{VERSION}に対応します。
+
+@menu
+* Running Octave::
+* Simple Examples::
+* Conventions::              
+@end menu
+
+@node Running Octave
+@section Running Octave
+
+大部分のシステムでは、シェルコマンド@samp{octave}によりOctaveが起動されます。デフォルトでは、このコマンドによりグラフィカルユーザーインターフェイス(GUI)が起動します。このGUIの中の中央のウィンドウは、Octaveのコマンドラインインターフェイスです。Octaveは初期メッセージを表示してから、入力を受け取る準備ができたことを示すプロンプトを表示します。伝統的なコマンドラインインターフェイスを選択していた場合には、コマンドプロンプトだけが表示されます。どちらの場合でも、すぐにOctaveコマンドのタイプを開始できます。 
+
+問題が起きた場合、通常は@kbd{Control-C}(略記は@kbd{C-c})をタイプすることにより、Octaveに割り込むことができます。@kbd{C-c}の名前は、@key{CTRL}を押したまま@key{c}を押すという事実が由来です。これを行なうことにより、通常はOctaveのプロンプトに戻ることができるでしょう。
+
+@cindex exiting octave
+@cindex quitting octave
+Octaveを終了するには、Octaveのプロンプトで@kbd{quit}、または, @kbd{exit}とタイプします。
+
+ジョブ制御をサポートするシステムでは、通常は@kbd{C-z}とタイプして@code{SIGTSTP}シグナルを送ることにより、Octaveをサスペンドすることができます。
+
+@node Simple Examples
+@section Simple Examples
+
+以降のチャプターでは、Octaveのもつすべての機能の詳細を説明しますが、その前にOctaveの能力を示すサンプルを見ておくことが助けになるかもしれません。
+
+Octaveに触れるのが初めてならば、これらのサンプルを試して実際にOctaveを使ってみることから、Octaveの学習を開始することをおすすめします。@samp{octave:13>}のようにマークされたラインは、あなたがタイプして最後にエンターで終了するラインです。するとOctaveは答えを示すか、グラフを表示するでしょう。
+
+@subsection Elementary Calculations
+
+Octaveでは、基本的な数値計算を簡単に行うことができ、算術演算子(+,-,*,/)、べき乗(^)、対数と指数(log, exp)、三角関数(sin,
+cos,
+@dots{})を認識します。さらにOctaveでの演算は実数に加えて虚数(i,j)にも機能します。また、自然対数の底(e)や円周率(pi)などの数学定数が事前に定義されています。
+
+@noindent
+たとえばオイラーの等式
+@tex
+$$e^{\imath\pi} = -1$$
+@end tex
+@ifnottex
+@display
+
+ i*pi
+e     = -1
+@end display
+@end ifnottex
+
+@noindent
+を検証するためには、以下をタイプすると、これは計算の許容誤差(tolerance of the
+calculation)とともに@code{-1}に評価されるでしょう。 
+
+@example
+octave:1> exp (i*pi)
+@end example
+
+@subsection Creating a Matrix
+
+ベクターとマトリクスは、数値解析における基本的な構成要素です。新たにマトリクスを作成して、それを変数に格納すれば、コマンドをタイプして後からそれを参照できます
+
+@example
+octave:1> A = [ 1, 1, 2; 3, 5, 8; 13, 21, 34 ]
+@end example
+
+@noindent
+Octaveは、列で整列されたマトリクスを表示して応答するでしょう。
+Octave will respond by printing the matrix in neatly aligned columns.
+
+Octaveは行の中の区切りにカンマ、またはスペースを使い、行ごとの区切りにはセミコロン、または改行を使用します。コマンドの最後にセミコロンを入力した場合、Octaveはコマンドの結果をプリントしません。たとえば、
+
+@example
+octave:2> B = rand (3, 2);
+@end example
+
+@noindent
+これは、それぞれの要素が0から1の間の乱数であるような、3行2列のマトリクスを作成します。
+
+変数の値を表示するには、プロンプトで、単に変数名をタイプします。たとえば@code{B}に格納されたマトリクスの値を表示するには、以下のコマンドをタイプします
+
+@example
+octave:3> B
+@end example
+
+@subsection Matrix Arithmetic
+
+Octaveには、行列演算を行なうための、便利な演算子があります。たとえばマトリクス@code{A}にスカラー値を乗ずるには、以下のコマンドを試してみてください
+
+@example
+octave:4> 2 * A
+@end example
+
+@noindent
+2つの行列@code{A}と@code{B}の内積は、以下のコマンドをタイプします
+
+@example
+octave:5> A * B
+@end example
+
+@noindent
+行列の積
+@tex
+$@code{A}^T@code{A}$,
+@end tex
+@ifnottex
+@code{transpose (A) * A},
+@end ifnottex
+を得るには、以下のコマンドをタイプします
+
+@example
+octave:6> A' * A
+@end example
+
+@subsection Solving Systems of Linear Equations
+
+数値解析において、線形方程式系(systems of linear
+equations)は至るところに現れます。一連の線形方程式@code{A@var{x} = b}を解くには、左除算演算子(left division
+operator) @samp{\}を使います:
+
+@example
+@var{x} = A \ b
+@end example
+
+@noindent
+これは、概念的には以下と等価です
+@tex
+$@code{A}^{-1}@code{b}$,
+@end tex
+@ifnottex
+@code{inv (a) * b},
+@end ifnottex
+しかし、左除算演算子を使うことにより、逆行列を直接計算するのを避けることができます。
+
+係数行列(coefficient matrix)が正則(singular)な場合、Octaveは警告をプリントして、最小ノルム解(minimum
+norm solution)を計算します。
+
+化学から簡単な例を1つ。バランスのとれた化学反応式(balanced chemical
+equations)を得たいとします。水素と酸素の燃焼による水の生成を考えてみましょう。
+@tex
+$$ {\rm H_{2}} + {\rm O_{2}} \rightarrow {\rm H_{2}O} $$
+@end tex
+@ifnottex
+
+@example
+H2 + O2 --> H2O
+@end example
+
+@end ifnottex
+@noindent
+この化学反応式は正確ではありません。質量保存の法則により、各分子の数は反応式の左辺と右辺でバランスが取れている必要があります。反応を通じて水素と酸素について個別に方程式を記述すると、以下のようになります:
+@tex
+\vbox{
+$$ x_{1}{\rm H_{2}} + x_{2}{\rm O_{2}} \rightarrow {\rm H_{2}O} $$
+$$ {\rm H:}\quad 2x_{1} + 0x_{2} \rightarrow 2 $$
+$$ {\rm O:}\quad 0x_{1} + 2x_{2} \rightarrow 1 $$
+}
+@end tex
+@ifnottex
+
+@example
+@group
+x1*H2 + x2*O2 --> H2O
+H: 2*x1 + 0*x2 --> 2
+O: 0*x1 + 2*x2 --> 1
+@end group
+@end example
+
+@end ifnottex
+@noindent
+Octaveでは、3つのステップだけでこれを解くことができます。
+
+@example
+@group
+octave:1> A = [ 2, 0; 0, 2 ];
+octave:2> b = [ 2; 1 ];
+octave:3> x = A \ b
+@end group
+@end example
+
+@subsection Integrating Differential Equations
+
+Octaveには、以下の形式をもち
+@tex
+$$
+ {dx \over dt} = f(x,t), \qquad x(t=t_0) = x_0
+$$
+@end tex
+@ifnottex
+
+@example
+@group
+dx
+-- = f (x, t)
+dt
+@end group
+@end example
+
+@noindent
+初期条件が以下であるような非線形方程式を解くビルトイン関数があります
+
+@example
+x(t = t0) = x0
+@end example
+
+@end ifnottex
+@noindent
+このような形式の関数をOctaveで積分するには、最初にその関数の定義を与えなければなりません
+@tex
+$f (x, t)$.
+@end tex
+@ifnottex
+@code{f(x,t)}.
+@end ifnottex
+これは簡単です。コマンドライン上で関数のボディを直接入力していけばよいのです。たとえば、以下のコマンドは、ある非線形微分方程式の着目する変数ペアにたいする右辺の関数を定義しています。関数を入力する間、Octaveは異なるプロンプトで応答することに注意してください。これは入力が完了するまでOctaveが待機していることを示します。
+
+@example
+@group
+octave:1> function xdot = f (x, t) 
+>
+>  r = 0.25;
+>  k = 1.4;
+>  a = 1.5;
+>  b = 0.16;
+>  c = 0.9;
+>  d = 0.8;
+>
+>  xdot(1) = r*x(1)*(1 - x(1)/k) - a*x(1)*x(2)/(1 + b*x(1));
+>  xdot(2) = c*a*x(1)*x(2)/(1 + b*x(1)) - d*x(2);
+>
+> endfunction
+@end group
+@end example
+
+@noindent
+次に初期条件を与えます
+
+@example
+octave:2> x0 = [1; 2];
+@end example
+
+@noindent
+そして出力時間を列ベクトルとしてセットします(1番目の出力時間は上記で与えた初期条件に対応することに注意してください)
+
+@example
+octave:3> t = linspace (0, 50, 200)';
+@end example
+
+@noindent
+微分方程式の組を積分するのは簡単です:
+
+@example
+octave:4> x = lsode ("f", x0, t);
+@end example
+
+@noindent
+関数@code{lsode}は、「A. C. Hindmarsh, @cite{ODEPACK, a Systematized Collection
+of ODE Solvers}, in: Scientific Computing, R. S.  Stepleman et al. (Eds.),
+North-Holland, Amsterdam, 1983」の55ページから64ページで説明されている、"Livermore Solver for
+Ordinary Differential Equation"を使用しています。
+
+@subsection Producing Graphical Output
+
+前の例の解をグラフィカルに表示するには、以下のコマンドを使用します
+
+@example
+octave:1> plot (t, x)
+@end example
+
+@noindent
+グラフィカルユーザーインターフェイスを使用している場合、Octaveはプロットを表示するための別ウィンドウを自動的に作成するでしょう。
+
+1度スクリーンに表示されたプロットを保存するには、printコマンドを使用します。たとえば、
+
+@example
+print -deps foo.eps
+@end example
+
+@noindent
+Encapsulated
+PostScriptフォーマットで描画された現在のプロットを含む、@file{foo.eps}というファイルを作成します。また、以下のコマンド
+
+@example
+help print
+@end example
+
+@noindent
+は、@code{print}にたいする他のオプションの説明と、出力ファイルフォーマットの追加リストを提供します。
+
+@subsection Editing What You Have Typed
+
+Octaveプロンプトでは、Emacsスタイル、またはviスタイルを使用した、以前のコマンドの再呼び出し、編集、再実行が可能です。デフォルトのキーバインディングは、Emacsスタイルのコマンドを使用します。たとえば、前のコマンドを再び呼び出すには、@kbd{Control-p}(略記すると@kbd{C-p})を押します。これを行なうことにより、入力した以前の行に戻ることができます。他にも、@kbd{C-n}で入力の次の行、@kbd{C-b}でカーソルをその行の後方へ移動、@kbd{C-f}でカーソルをその行の前方へ移動などができます。
+
+コマンドライン編集の能力に関する完全な説明は、このマニュアルの@pxref{Command Line Editing}で提供されています。
+
+@subsection Help and Documentation
+
+Octaveには豊富なヘルプ機能があります。Octaveプロンプトから、同じドキュメントのプリント形式が利用できます。これはドキュメントの各形式が、同じ入力ファイルから作成されているからです。
+
+望ましいヘルプを得るには、まず使いたいコマンドの名前を知る必要があります。この関数の名前が明確でない場合もあります。そのようなときは、@code{help
+--list}とタイプするのがよい出発点です。これはすべての演算子、キーワード、ビルトイン関数、Octaveのカレントセッションで利用できるロード可能な関数をすべて表示します。代替としては、@code{lookfor}関数を使ってドキュメントを検索する方法もあります。この関数は、@ref{Getting
+Help}で説明されています。
+
+使いたい関数の名前が解ったら、単にhelpの引数にその関数の名前を含めることで、さらなるヘルプを入手できます。たとえば、
+
+@example
+help plot
+@end example
+
+@noindent
+これは@code{plot}関数のヘルプテキストを表示します。
+
+Octaveは、1つのスクリーンに収まらないような長い出力を、@code{less}や@code{more}風のページャーを通じて送ります。@key{RET}をタイプすると1行、@key{SPC}で1ページ進み、@key{q}でページャーを抜けます。
+
+Octave内ででプリントされたマニュアルの完全なテキストを読むことができるOctaveのヘルプ機能の一部は、通常はInfoと呼ばれる別のプログラムを使用します。Infoを呼び出すと、Octaveマニュアル全体を含んだメニュー駆動型のプログラムが起動されます。Infoの使用に関するヘルプは、このマニュアルの@pxref{Getting
+Help}で提供されています。
+
+@node Conventions
+@section Conventions
+
+このセクションでは、このマニュアルで使われている表記規約について説明します。あなたはこのセクションを飛ばして、あとで参照したいと思うかもしれません。
+
+@menu
+* Fonts::
+* Evaluation Notation::
+* Printing Notation::
+* Error Messages::
+* Format of Descriptions::   
+@end menu
+
+@node Fonts
+@subsection Fonts
+@cindex documentation fonts
+
+Octaveコードの例は、@code{svd
+(a)}のようなフォントまたは形式で表します。変数や関数の引数の名前を示す場合は、@var{first-number}のようなフォントまたは形式で表します。シェルプロンプト上でタイプするコマンドは、@samp{octave
+--no-init-file}のようなフォントまたは形式で表します。Octaveプロンプト上でタイプするコマンドは、@kbd{foo --bar
+--baz}のようなフォントまたは形式で表す場合があります。キーボード上の特定のキーは、@key{ANY}のようなフォントまたは形式で表します。
+
+@node Evaluation Notation
+@subsection Evaluation Notation
+@cindex evaluation notation
+@cindex documentation notation
+
+このマニュアル内の例では、あなたが評価した式の結果は、@samp{@result{}}で示されます。たとえば、
+
+@example
+@group
+sqrt (2)
+     @result{} 1.4142
+@end group
+@end example
+
+@noindent
+あなたはこれを、``@code{sqrt (2)}は1.4142に評価された''と読み替えることができます。
+
+式によりリターンされるマトリクス値は、以下のように表示される場合があります
+
+@example
+@group
+[1, 2; 3, 4] == [1, 3; 2, 4]
+     @result{} [ 1, 0; 0, 1 ]
+@end group
+@end example
+
+@noindent
+また、以下のように表示される場合もあります
+
+@example
+@group
+eye (3)
+     @result{}  1  0  0
+         0  1  0
+         0  0  1
+@end group
+@end example
+
+@noindent
+これは結果の構造を明確にするためです。
+
+1つの式を説明するのに、同じ結果を生成する別の式を示すのが助けになる場合もあります。式の完全な等価は、@samp{@equiv{}}で表します。たとえば:
+
+@example
+@group
+rot90 ([1, 2; 3, 4], -1)
+@equiv{}
+rot90 ([1, 2; 3, 4], 3)
+@equiv{}
+rot90 ([1, 2; 3, 4], 7)
+@end group
+@end example
+
+@node Printing Notation
+@subsection Printing Notation
+@cindex printing notation
+
+このマニュアルの例の多くは、評価されたときにテキストをプリントします。このマニュアルでは、例の結果としてプリントされるものを、@samp{@print{}}で表します。式の評価によりリターンされた値(次の例の@code{1})は、続けて別の行に@samp{@result{}}で表します。
+
+@example
+@group
+printf ("foo %s\n", "bar")
+     @print{} foo bar
+     @result{} 1
+@end group
+@end example
+
+@node Error Messages
+@subsection Error Messages
+@cindex error message notation
+
+エラーをシグナルする例もいくつかあります。これらは通常、端末上にエラーメッセージを表示します。エラーメッセージは行頭の@code{error:}で表します。
+
+@example
+@group
+fieldnames ([1, 2; 3, 4])
+error: fieldnames: Invalid input argument
+@end group
+@end example
+
+@node Format of Descriptions
+@subsection Format of Descriptions
+@cindex description format
+
+このマニュアルでは、関数とコマンドは統一されたフォーマットで説明されています。説明の最初の行には、そのアイテムの名前と、もしあれば引数が含まれます。
+@ifnottex
+行の先頭はカテゴリー---function、commandなど---が表示されます。
+@end ifnottex
+@iftex
+右余白の隣にはカテゴリー---function、commandなど---がプリントされます。
+@end iftex
+後続の行が説明で、例を含む場合もあります。
+
+@menu
+* A Sample Function Description::
+* A Sample Command Description::  
+@end menu
+
+@node A Sample Function Description
+@subsubsection A Sample Function Description
+@cindex function descriptions
+
+関数の説明では、説明される関数の名前が最初に表示されます。同じ行にパラメーターのリストが続きます。パラメーターに使用された名前は、説明の本文でも使用されます。
+
+以下は、架空の関数@code{foo}の説明です:
+
+@deftypefn {Function File} {} foo (@var{x})
+@deftypefnx {Function File} {} foo (@var{x}, @var{y})
+@deftypefnx {Function File} {} foo (@var{x}, @var{y}, @dots{})
+関数@code{foo}は@var{y}から@var{x}を減じたのち、残りの引数を結果に加算します。@var{y}が与えられない場合、デフォルトとして数値19が使用されます。
+
+@example
+@group
+foo (1, [3, 5], 3, 9)
+     @result{} [ 14, 16 ]
+foo (5)
+     @result{} 14
+@end group
+@end example
+
+より一般的には、
+
+@example
+@group
+foo (@var{w}, @var{x}, @var{y}, @dots{})
+@equiv{}
+@var{x} - @var{w} + @var{y} + @dots{}
+@end group
+@end example
+@end deftypefn
+
+名前に型名(例:
+@var{integer}や@var{matrix})を含むパラメーターは、その型が期待されます。@var{object}という名前のパラメーターは、任意の型です。他の種類の名前(例:
+@var{new_file})をもつパラメーターについては、その関数の説明の中で個別に説明されます。いくつかのセクションでは、複数の関数で共通のパラメーターは、最初に説明されます。
+
+Octave内の関数は、複数の異なる方法で定義されているかもしれません。関数のカテゴリー名には、その関数が定義された方法を示す他の名前が含まれる場合があります。これらの追加タグには以下が含まれます。
+
+@table @asis
+@item Function File
+@cindex function file
+説明されている関数は、テキストファイルに格納されたOctaveコマンドにより定義されています。@ref{Function
+Files}を参照してください。
+
+@item Built-in Function
+@cindex built-in function
+説明されている関数は、C++、C、またはFortranのような言語で記述されており、コンパイル済みOctaveバイナリーの一部です。
+
+@item Loadable Function
+@cindex loadable function
+説明されている関数は、C++、C、またはFortranのような言語で記述されています。ユーザー定義関数の動的リンクをサポートするシステムでは、Octaveの実行中に、必要なときだけ自動的にリンクされます。
+
+@item Mapping Function
+@cindex mapping function
+説明されている関数は、マトリクスおよびベクター引数の要素ごとに作用します。
+@end table
+
+@node A Sample Command Description
+@subsubsection A Sample Command Description
+@cindex command descriptions
+
+コマンドの説明は、単語`Function'が`Command'置き換わることを除き、関数の説明と同じフォーマットです。コマンドとは、引数をカッコで括らずに呼び出される関数です。たとえば、以下はOctaveの@code{cd}コマンドの説明です。
+
+@deftypefn {Command} {} cd dir
+@deftypefnx {Command} {} chdir dir
+カレント作業ディレクトリーを@var{dir}に変更します。たとえば@kbd{cd
+~/octave}は、カレント作業ディレクトリーを@file{~/octave}に変更します。そのディレクトリーが存在しない場合、エラーメッセージをプリントし、作業ディレクトリーは変更されません。
+@end deftypefn
+

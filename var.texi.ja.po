@@ -1,0 +1,1768 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-08-27 11:05+0000\n"
+"PO-Revision-Date: 2017-08-28 19:51+0900\n"
+"Last-Translator: Ayanokoji Takesi <ayanokoji.takesi@gmail.com>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: chapter
+#: var.texi.orig:21 var.texi.orig:22
+#, no-wrap
+msgid "Variables"
+msgstr "Variables"
+
+#. type: cindex
+#: var.texi.orig:23
+#, no-wrap
+msgid "variables, user-defined"
+msgstr "variables, user-defined"
+
+#. type: cindex
+#: var.texi.orig:24
+#, no-wrap
+msgid "user-defined variables"
+msgstr "user-defined variables"
+
+#. type: Plain text
+#: var.texi.orig:32
+msgid ""
+"Variables let you give names to values and refer to them later.  You have "
+"already seen variables in many of the examples.  The name of a variable must "
+"be a sequence of letters, digits and underscores, but it may not begin with "
+"a digit.  Octave does not enforce a limit on the length of variable names, "
+"but it is seldom useful to have variables with names longer than about 30 "
+"characters.  The following are all valid variable names"
+msgstr "変数により、値に名前を付け、後でそれを参照できるようになります。これまで多くの例で、すでに変数を目にしてきました。変数の名前は英数字とアンダースコアのシーケンスですが、数字で開始することはできません。Octaveは変数の名前の長さに制限は強いませんが、30文字を超える長さの変数名が有用なことはまれです。以下はすべて有効な変数名です"
+
+#. type: group
+#: var.texi.orig:39
+#, no-wrap
+msgid ""
+"x\n"
+"x15\n"
+"__foo_bar_baz__\n"
+"fucnrdthsucngtagdjb\n"
+msgstr ""
+"x\n"
+"x15\n"
+"__foo_bar_baz__\n"
+"fucnrdthsucngtagdjb\n"
+
+#. type: Plain text
+#: var.texi.orig:47
+msgid ""
+"However, names like @code{__foo_bar_baz__} that begin and end with two "
+"underscores are understood to be reserved for internal use by Octave.  You "
+"should not use them in code you write, except to access Octave's documented "
+"internal variables and built-in symbolic constants."
+msgstr "しかし、@code{__foo_bar_baz__}のように開始と終了が2つのアンダースコアの名前は、Octaveが内部で使用するために予約されています。これらの名前のは、ドキュメントされたOctaveの内部変数やビルトインシンボル定数を除き、あなたが記述するコードで使用するべきではありません。"
+
+#. type: Plain text
+#: var.texi.orig:50
+msgid ""
+"Case is significant in variable names.  The symbols @code{a} and @code{A} "
+"are distinct variables."
+msgstr "変数名は大文字小文字を区別します。シンボル@code{a}と@code{A}は別の変数です。"
+
+#. type: Plain text
+#: var.texi.orig:55
+msgid ""
+"A variable name is a valid expression by itself.  It represents the "
+"variable's current value.  Variables are given new values with "
+"@dfn{assignment operators} and @dfn{increment operators}.  @xref{Assignment "
+"Ops,,Assignment Expressions}."
+msgstr "変数名は、それ自体が有効な式です。変数名は、その変数の現在の値を表します。変数は@dfn{代入演算子}と@dfn{加算演算子}により新たな値が与えられます。@ref{Assignment Ops,,Assignment Expressions}を参照してください。"
+
+#. type: Plain text
+#: var.texi.orig:61
+msgid ""
+"There is one built-in variable with a special meaning.  The @code{ans} "
+"variable always contains the result of the last computation, where the "
+"output wasn't assigned to any variable.  The code @code{a = cos (pi)} will "
+"assign the value -1 to the variable @code{a}, but will not change the value "
+"of @code{ans}.  However, the code @code{cos (pi)} will set the value of "
+"@code{ans} to -1."
+msgstr "特別な意味をもつビルトイン変数が1つあります。@code{ans}変数は、出力がどの変数にも割り当てられていないとき、常に最後の計算結果を保持します。コード@code{a = cos (pi)}は変数@code{a}に-1を代入しますが、@code{ans}の値は変更しません。しかしコード@code{cos (pi)}は@code{ans}の値を-1にセットします。"
+
+#. type: Plain text
+#: var.texi.orig:66
+msgid ""
+"Variables in Octave do not have fixed types, so it is possible to first "
+"store a numeric value in a variable and then to later use the same name to "
+"hold a string value in the same program.  Variables may not be used before "
+"they have been given a value.  Doing so results in an error."
+msgstr "Octaveの変数は固定された型をもたないので、変数に最初は数値を格納して、同じプログラム内で後で文字列を保持するために同じ名前を使用できます。値を与える前に変数を使用するべきではありません。これを行うと結果はエラーになります。"
+
+#. type: code{#1}
+#: var.texi.orig:67
+#, no-wrap
+msgid "ans"
+msgstr "ans"
+
+#. type: anchor{#1}
+#: var.texi.orig:70
+msgid "XREFans"
+msgstr "XREFans"
+
+#. type: defvr
+#: var.texi.orig:70
+#, no-wrap
+msgid "{Automatic Variable} ans"
+msgstr "{Automatic Variable} ans"
+
+#. type: defvr
+#: var.texi.orig:73
+msgid ""
+"The most recently computed result that was not explicitly assigned to a "
+"variable.  For example, after the expression"
+msgstr "明示的に変数に代入されていない、もっとも最近の計算結果です。たとえば、"
+
+#. type: example
+#: var.texi.orig:76
+#, no-wrap
+msgid "3^2 + 4^2\n"
+msgstr "3^2 + 4^2\n"
+
+#. type: defvr
+#: var.texi.orig:80
+msgid "is evaluated, the value returned by @code{ans} is 25."
+msgstr "この式が評価された後に@code{ans}がリターンする値は25です。"
+
+#. type: anchor{#1}
+#: var.texi.orig:85
+msgid "XREFisvarname"
+msgstr "XREFisvarname"
+
+#. type: deftypefn
+#: var.texi.orig:85
+#, no-wrap
+msgid "{Built-in Function} {} isvarname (@var{name})"
+msgstr "{Built-in Function} {} isvarname (@var{name})"
+
+#. type: deftypefn
+#: var.texi.orig:88
+msgid ""
+"Return true if @var{name} is a valid variable name.  "
+"@seealso{@ref{XREFiskeyword,,iskeyword}, @ref{XREFexist,,exist}, "
+"@ref{XREFwho,,who}}"
+msgstr ""
+"@var{name}が有効な変数名の場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFiskeyword,,iskeyword}, @ref{XREFexist,,exist}, @ref{XREFwho,,who}}"
+
+#. type: anchor{#1}
+#: var.texi.orig:93
+msgid "XREFgenvarname"
+msgstr "XREFgenvarname"
+
+#. type: deftypefn
+#: var.texi.orig:93
+#, no-wrap
+msgid "{Function File} {@var{varname} =} genvarname (@var{str})"
+msgstr "{Function File} {@var{varname} =} genvarname (@var{str})"
+
+#. type: deftypefnx
+#: var.texi.orig:94
+#, no-wrap
+msgid "{Function File} {@var{varname} =} genvarname (@var{str}, @var{exclusions})"
+msgstr "{Function File} {@var{varname} =} genvarname (@var{str}, @var{exclusions})"
+
+#. type: deftypefn
+#: var.texi.orig:98
+msgid ""
+"Create unique variable(s) from @var{str}.  If @var{exclusions} is given, "
+"then the variable(s) will be unique to each other and to @var{exclusions} "
+"(@var{exclusions} may be either a string or a cellstr)."
+msgstr "@var{str}から一意な変数を作成します。@var{exclusions}が与えられた場合、それぞれの変数および@var{exclusions}にたいして一意になります(@var{exclusions}には文字列とセル文字列を指定できます)。"
+
+#. type: deftypefn
+#: var.texi.orig:101
+msgid ""
+"If @var{str} is a cellstr, then a unique variable is created for each cell "
+"in @var{str}."
+msgstr "@var{str}がセル文字列の場合は、@var{str}内の各セルにたいして一意な変数が作成されます。"
+
+#. type: group
+#: var.texi.orig:107
+#, no-wrap
+msgid ""
+"x = 3.141;\n"
+"genvarname (\"x\", who ())\n"
+"  @result{} x1\n"
+msgstr ""
+"x = 3.141;\n"
+"genvarname (\"x\", who ())\n"
+"  @result{} x1\n"
+
+#. type: deftypefn
+#: var.texi.orig:112
+msgid ""
+"If @var{wanted} is a cell array, genvarname will make sure the returned "
+"strings are distinct:"
+msgstr "@var{str}がセル配列の場合、genvarnameは文字列を確実に分離するようにします:"
+
+#. type: group
+#: var.texi.orig:121
+#, no-wrap
+msgid ""
+"genvarname (@{\"foo\", \"foo\"@})\n"
+"  @result{}\n"
+"     @{\n"
+"       [1,1] = foo\n"
+"       [1,2] = foo1\n"
+"     @}\n"
+msgstr ""
+"genvarname (@{\"foo\", \"foo\"@})\n"
+"  @result{}\n"
+"     @{\n"
+"       [1,1] = foo\n"
+"       [1,2] = foo1\n"
+"     @}\n"
+
+#. type: deftypefn
+#: var.texi.orig:127
+msgid ""
+"Note that the result is a char array/cell array of strings, not the "
+"variables themselves.  To define a variable, @code{eval()} can be used.  The "
+"following trivial example sets @code{x} to @code{42}."
+msgstr "結果は変数自体ではなく、文字配列または文字列のセル配列になることに注意してください。変数の定義には、@code{eval()}を使用できます。以下は@code{x}に@code{42}をセットする例です。"
+
+#. type: group
+#: var.texi.orig:133
+#, no-wrap
+msgid ""
+"name = genvarname (\"x\");\n"
+"eval ([name \" = 42\"]);\n"
+"  @result{} x =  42\n"
+msgstr ""
+"name = genvarname (\"x\");\n"
+"eval ([name \" = 42\"]);\n"
+"  @result{} x =  42\n"
+
+#. type: deftypefn
+#: var.texi.orig:137
+msgid "Also, this can be useful for creating unique struct field names."
+msgstr "これは一意な構造体フィールド名の作成にも便利です。"
+
+#. type: group
+#: var.texi.orig:150
+#, no-wrap
+msgid ""
+"x = struct ();\n"
+"for i = 1:3\n"
+"  x.(genvarname (\"a\", fieldnames (x))) = i;\n"
+"endfor\n"
+"  @result{} x =\n"
+"     @{\n"
+"       a =  1\n"
+"       a1 =  2\n"
+"       a2 =  3\n"
+"     @}\n"
+msgstr ""
+"x = struct ();\n"
+"for i = 1:3\n"
+"  x.(genvarname (\"a\", fieldnames (x))) = i;\n"
+"endfor\n"
+"  @result{} x =\n"
+"     @{\n"
+"       a =  1\n"
+"       a1 =  2\n"
+"       a2 =  3\n"
+"     @}\n"
+
+#. type: deftypefn
+#: var.texi.orig:157
+msgid ""
+"Since variable names may only contain letters, digits and underscores, "
+"genvarname replaces any sequence of disallowed characters with an "
+"underscore.  Also, variables may not begin with a digit; in this case an "
+"underscore is added before the variable name."
+msgstr "変数名に含むことができるのは英数字とアンダースコアだけなので、genvarnameは許可されていない文字シーケンスをアンダースコアで置き換えます。さらに変数名は数字で開始できないので、このような場合は変数名の最初にアンダースコアを追加します。"
+
+#. type: deftypefn
+#: var.texi.orig:161
+msgid ""
+"Variable names beginning and ending with two underscores @qcode{\"__\"} are "
+"valid but they are used internally by octave and should generally be "
+"avoided, therefore genvarname will not generate such names."
+msgstr "開始と終了が2つのアンダースコア@qcode{\"__\"}であるような変数名は有効ですが、そのような名前はoctaveにより内部的に使用されるので一般的には避けるべきで、genvarnameはそのような名前を生成しません。"
+
+#. type: deftypefn
+#: var.texi.orig:168
+msgid ""
+"genvarname will also make sure that returned names do not clash with "
+"keywords such as @qcode{\"for\"} and @qcode{\"if\"}.  A number will be "
+"appended if necessary.  Note, however, that this does @strong{not} include "
+"function names, such as @qcode{\"sin\"}.  Such names should be included in "
+"@var{avoid} if necessary.  @seealso{@ref{XREFisvarname,,isvarname}, "
+"@ref{XREFexist,,exist}, @ref{XREFtmpnam,,tmpnam}, @ref{XREFeval,,eval}}"
+msgstr ""
+"またgenvarnameは@qcode{\"for\"}や@qcode{\"if\"}のようなキーワードと衝突しない名前をリターンします。必要なら数字が追加されます。しかし、これには@qcode{\"sin\"}のような函数名は@strong{含まれない}ことに注意してください。必要なら、そのような名前は@var{exclusions}に含めるべきです。\n"
+"@seealso{@ref{XREFisvarname,,isvarname}, @ref{XREFexist,,exist}, @ref{XREFtmpnam,,tmpnam}, @ref{XREFeval,,eval}}"
+
+#. type: anchor{#1}
+#: var.texi.orig:173
+msgid "XREFnamelengthmax"
+msgstr "XREFnamelengthmax"
+
+#. type: deftypefn
+#: var.texi.orig:173
+#, no-wrap
+msgid "{Function File} {} namelengthmax ()"
+msgstr "{Function File} {} namelengthmax ()"
+
+#. type: deftypefn
+#: var.texi.orig:180
+msgid ""
+"Return the @sc{matlab} compatible maximum variable name length.  Octave is "
+"capable of storing strings up to @math{2^{31} - 1} in length.  However for "
+"@sc{matlab} compatibility all variable, function, and structure field names "
+"should be shorter than the length supplied by @code{namelengthmax}.  In "
+"particular variables stored to a @sc{matlab} file format will have their "
+"names truncated to this length."
+msgstr "@sc{matlab}と互換性のある変数名の最大長をリターンします。Octaveは長さ@math{2^{31} - 1}までの文字列を格納できます。しかし@sc{matlab}との互換性のためすべての変数、関数、構造体フィールド名は@code{namelengthmax}で得られる長さより短くする必要があります。特に@sc{matlab}ファイルフォーマットに格納する変数は、この長さに切り詰められます。"
+
+#. type: menuentry
+#: var.texi.orig:187
+msgid "Global Variables::"
+msgstr "Global Variables::"
+
+#. type: menuentry
+#: var.texi.orig:187
+msgid "Persistent Variables::"
+msgstr "Persistent Variables::"
+
+#. type: section
+#: var.texi.orig:187 var.texi.orig:429 var.texi.orig:430
+#, no-wrap
+msgid "Status of Variables"
+msgstr "Status of Variables"
+
+#. type: section
+#: var.texi.orig:189 var.texi.orig:190
+#, no-wrap
+msgid "Global Variables"
+msgstr "Global Variables"
+
+#. type: cindex
+#: var.texi.orig:191
+#, no-wrap
+msgid "global variables"
+msgstr "global variables"
+
+#. type: cindex
+#: var.texi.orig:192
+#, no-wrap
+msgid "@code{global} statement"
+msgstr "@code{global} statement"
+
+#. type: cindex
+#: var.texi.orig:193
+#, no-wrap
+msgid "variables, global"
+msgstr "variables, global"
+
+#. type: Plain text
+#: var.texi.orig:197
+msgid ""
+"A variable that has been declared @dfn{global} may be accessed from within a "
+"function body without having to pass it as a formal parameter."
+msgstr "@dfn{global}と宣言された変数は、それが形式にしたがって渡されたパラメーターでなくても、関数ボディーの内部からアクセスできます。"
+
+#. type: Plain text
+#: var.texi.orig:200
+msgid ""
+"A variable may be declared global using a @code{global} declaration "
+"statement.  The following statements are all global declarations."
+msgstr "@code{global}宣言文を使用して変数をグローバルに宣言できます。以下の命令文はすべてグローバル宣言です。"
+
+#. type: group
+#: var.texi.orig:207
+#, no-wrap
+msgid ""
+"global a\n"
+"global a b\n"
+"global c = 2\n"
+"global d = 3 e f = 5\n"
+msgstr ""
+"global a\n"
+"global a b\n"
+"global c = 2\n"
+"global d = 3 e f = 5\n"
+
+#. type: Plain text
+#: var.texi.orig:212
+msgid ""
+"A global variable may only be initialized once in a @code{global} "
+"statement.  For example, after executing the following code"
+msgstr "グローバル変数は@code{global}文で1度だけ初期化されます。たとえば、"
+
+#. type: group
+#: var.texi.orig:217
+#, no-wrap
+msgid ""
+"global gvar = 1\n"
+"global gvar = 2\n"
+msgstr ""
+"global gvar = 1\n"
+"global gvar = 2\n"
+
+#. type: Plain text
+#: var.texi.orig:224
+msgid ""
+"the value of the global variable @code{gvar} is 1, not 2.  Issuing a "
+"@samp{clear gvar} command does not change the above behavior, but "
+"@samp{clear all} does."
+msgstr "この文が実行されるとグローバル変数@code{gvar}の値は2ではなく1になります。@samp{clear gvar}コマンドを実行しても上記の振る舞いは変更されません。@samp{clear all}により変更されます。"
+
+#. type: Plain text
+#: var.texi.orig:227
+msgid ""
+"It is necessary declare a variable as global within a function body in order "
+"to access it.  For example,"
+msgstr "グローバル変数にアクセスするために、関数内で変数をグローバルと宣言することが必要です。たとえば、"
+
+#. type: group
+#: var.texi.orig:235
+#, no-wrap
+msgid ""
+"global x\n"
+"function f ()\n"
+"  x = 1;\n"
+"endfunction\n"
+"f ()\n"
+msgstr ""
+"global x\n"
+"function f ()\n"
+"  x = 1;\n"
+"endfunction\n"
+"f ()\n"
+
+#. type: Plain text
+#: var.texi.orig:242
+msgid ""
+"does @emph{not} set the value of the global variable @code{x} to 1.  In "
+"order to change the value of the global variable @code{x}, you must also "
+"declare it to be global within the function body, like this"
+msgstr "これはグローバル変数@code{x}の値を1にセット@emph{しません}。グローバル変数@code{x}の値を変更するには、以下のように関数ボディー内でそれをグローバルとセットしなければなりません"
+
+#. type: group
+#: var.texi.orig:249
+#, no-wrap
+msgid ""
+"function f ()\n"
+"  global x;\n"
+"  x = 1;\n"
+"endfunction\n"
+msgstr ""
+"function f ()\n"
+"  global x;\n"
+"  x = 1;\n"
+"endfunction\n"
+
+#. type: Plain text
+#: var.texi.orig:255
+msgid ""
+"Passing a global variable in a function parameter list will make a local "
+"copy and not modify the global value.  For example, given the function"
+msgstr "関数のパラメーターリストにグローバル変数を渡しても、それはローカルコピーを作成し、グローバルな値は変更されないでしょう。たとえば関数が以下で与えられ"
+
+#. type: group
+#: var.texi.orig:261
+#, no-wrap
+msgid ""
+"function f (x)\n"
+"  x = 0\n"
+"endfunction\n"
+msgstr ""
+"function f (x)\n"
+"  x = 0\n"
+"endfunction\n"
+
+#. type: Plain text
+#: var.texi.orig:266
+msgid "and the definition of @code{x} as a global variable at the top level,"
+msgstr "トップレベルで@code{x}をグローバル変数とする定義が以下の場合"
+
+#. type: example
+#: var.texi.orig:269
+#, no-wrap
+msgid "global x = 13\n"
+msgstr "global x = 13\n"
+
+#. type: Plain text
+#: var.texi.orig:273
+msgid "the expression"
+msgstr "以下の式"
+
+#. type: example
+#: var.texi.orig:276
+#, no-wrap
+msgid "f (x)\n"
+msgstr "f (x)\n"
+
+#. type: Plain text
+#: var.texi.orig:282
+msgid ""
+"will display the value of @code{x} from inside the function as 0, but the "
+"value of @code{x} at the top level remains unchanged, because the function "
+"works with a @emph{copy} of its argument."
+msgstr "は関数内部の@code{x}の値として0を表示し、トップレベルの@code{x}の値は変更されないまま残ります。なぜなら関数は引数の@emph{コピー}にたいして機能するからです。"
+
+#. type: anchor{#1}
+#: var.texi.orig:285
+msgid "XREFisglobal"
+msgstr "XREFisglobal"
+
+#. type: deftypefn
+#: var.texi.orig:285
+#, no-wrap
+msgid "{Built-in Function} {} isglobal (@var{name})"
+msgstr "{Built-in Function} {} isglobal (@var{name})"
+
+#. type: deftypefn
+#: var.texi.orig:288
+msgid "Return true if @var{name} is a globally visible variable.  For example:"
+msgstr "@var{name}がグローバルに可視な変数の場合は、trueをリターンします。たとえば:"
+
+#. type: group
+#: var.texi.orig:294
+#, no-wrap
+msgid ""
+"global x\n"
+"isglobal (\"x\")\n"
+"   @result{} 1\n"
+msgstr ""
+"global x\n"
+"isglobal (\"x\")\n"
+"   @result{} 1\n"
+
+#. type: deftypefn
+#: var.texi.orig:297
+msgid "@seealso{@ref{XREFisvarname,,isvarname}, @ref{XREFexist,,exist}}"
+msgstr "@seealso{@ref{XREFisvarname,,isvarname}, @ref{XREFexist,,exist}}"
+
+#. type: section
+#: var.texi.orig:300 var.texi.orig:301
+#, no-wrap
+msgid "Persistent Variables"
+msgstr "Persistent Variables"
+
+#. type: cindex
+#: var.texi.orig:302
+#, no-wrap
+msgid "persistent variables"
+msgstr "persistent variables"
+
+#. type: cindex
+#: var.texi.orig:303
+#, no-wrap
+msgid "@code{persistent} statement"
+msgstr "@code{persistent} statement"
+
+#. type: cindex
+#: var.texi.orig:304
+#, no-wrap
+msgid "variables, persistent"
+msgstr "variables, persistent"
+
+#. type: anchor{#1}
+#: var.texi.orig:306
+msgid "XREFpersistent"
+msgstr "XREFpersistent"
+
+#. type: Plain text
+#: var.texi.orig:312
+msgid ""
+"A variable that has been declared @dfn{persistent} within a function will "
+"retain its contents in memory between subsequent calls to the same "
+"function.  The difference between persistent variables and global variables "
+"is that persistent variables are local in scope to a particular function and "
+"are not visible elsewhere."
+msgstr "関数内で@dfn{永続的(persistent)}と宣言された変数は、同じ関数にたいする一連の呼び出しの間、その内容をメモリー内にとどめます。永続的変数ちとグローバル変数に違いは、永続的変数のスコープが特定の関数にたいしてローカルであり、それ以外の場所からは不可視であることです。"
+
+#. type: Plain text
+#: var.texi.orig:315
+msgid ""
+"The following example uses a persistent variable to create a function that "
+"prints the number of times it has been called."
+msgstr "以下は、永続的変数を使用して、呼び出された回数をプリントする関数を作成する例です。"
+
+#. type: group
+#: var.texi.orig:323
+#, no-wrap
+msgid ""
+"function count_calls ()\n"
+"  persistent calls = 0;\n"
+"  printf (\"'count_calls' has been called %d times\\n\",\n"
+"          ++calls);\n"
+"endfunction\n"
+"\n"
+msgstr ""
+"function count_calls ()\n"
+"  persistent calls = 0;\n"
+"  printf (\"'count_calls' has been called %d times\\n\",\n"
+"          ++calls);\n"
+"endfunction\n"
+"\n"
+
+#. type: group
+#: var.texi.orig:327
+#, no-wrap
+msgid ""
+"for i = 1:3\n"
+"  count_calls ();\n"
+"endfor\n"
+"\n"
+msgstr ""
+"for i = 1:3\n"
+"  count_calls ();\n"
+"endfor\n"
+"\n"
+
+#. type: group
+#: var.texi.orig:331
+#, no-wrap
+msgid ""
+"@print{} 'count_calls' has been called 1 times\n"
+"@print{} 'count_calls' has been called 2 times\n"
+"@print{} 'count_calls' has been called 3 times\n"
+msgstr ""
+"@print{} 'count_calls' has been called 1 times\n"
+"@print{} 'count_calls' has been called 2 times\n"
+"@print{} 'count_calls' has been called 3 times\n"
+
+#. type: Plain text
+#: var.texi.orig:337
+msgid ""
+"As the example shows, a variable may be declared persistent using a "
+"@code{persistent} declaration statement.  The following statements are all "
+"persistent declarations."
+msgstr "例示すように変数@code{persistent}宣言文により永続的であると宣言されます。以下の命令文はすべて永続的な宣言です。"
+
+#. type: group
+#: var.texi.orig:344
+#, no-wrap
+msgid ""
+"persistent a\n"
+"persistent a b\n"
+"persistent c = 2\n"
+"persistent d = 3 e f = 5\n"
+msgstr ""
+"persistent a\n"
+"persistent a b\n"
+"persistent c = 2\n"
+"persistent d = 3 e f = 5\n"
+
+#. type: Plain text
+#: var.texi.orig:350
+msgid ""
+"The behavior of persistent variables is equivalent to the behavior of static "
+"variables in C@.  The command @code{static} in Octave is also recognized and "
+"is equivalent to @code{persistent}."
+msgstr "永続的変数の振る舞いは、Cの静的変数と同じです。Octaveではコマンド@code{static}も認識され、これは@code{persistent}と等価です。"
+
+#. type: Plain text
+#: var.texi.orig:353
+msgid ""
+"Like global variables, a persistent variable may only be initialized once.  "
+"For example, after executing the following code"
+msgstr "グローバル変数と同様、永続的変数は1度だけ初期化されます。たとえば、"
+
+#. type: group
+#: var.texi.orig:358
+#, no-wrap
+msgid ""
+"persistent pvar = 1\n"
+"persistent pvar = 2\n"
+msgstr ""
+"persistent pvar = 1\n"
+"persistent pvar = 2\n"
+
+#. type: Plain text
+#: var.texi.orig:363
+msgid "the value of the persistent variable @code{pvar} is 1, not 2."
+msgstr "この式を実行すると、永続的変数@code{pvar}の値じゃ2ではなく1になります。"
+
+#. type: Plain text
+#: var.texi.orig:368
+msgid ""
+"If a persistent variable is declared but not initialized to a specific "
+"value, it will contain an empty matrix.  So, it is also possible to "
+"initialize a persistent variable by checking whether it is empty, as the "
+"following example illustrates."
+msgstr "永続的変数が宣言されていても特定の値に初期化されていない場合、値は空マトリクスになります。したがって以下の例で示すように、空かどうかチェックすることにより永続的変数を初期化することも可能です。"
+
+#. type: group
+#: var.texi.orig:379
+#, no-wrap
+msgid ""
+"function count_calls ()\n"
+"  persistent calls;\n"
+"  if (isempty (calls))\n"
+"    calls = 0;\n"
+"  endif\n"
+"  printf (\"'count_calls' has been called %d times\\n\",\n"
+"          ++calls);\n"
+"endfunction\n"
+msgstr ""
+"function count_calls ()\n"
+"  persistent calls;\n"
+"  if (isempty (calls))\n"
+"    calls = 0;\n"
+"  endif\n"
+"  printf (\"'count_calls' has been called %d times\\n\",\n"
+"          ++calls);\n"
+"endfunction\n"
+
+#. type: Plain text
+#: var.texi.orig:385
+msgid ""
+"This implementation behaves in exactly the same way as the previous "
+"implementation of @code{count_calls}."
+msgstr "この実装は、@code{count_calls}の以前の実装と正確に同じ方法で振る舞います。"
+
+#. type: Plain text
+#: var.texi.orig:389
+msgid ""
+"The value of a persistent variable is kept in memory until it is explicitly "
+"cleared.  Assuming that the implementation of @code{count_calls} is saved on "
+"disk, we get the following behavior."
+msgstr "永続的変数の値は、明示的にクリアーされるまでメモリー内にとどまります。@code{count_calls}の実装がディスク上に保存されていると仮定すると、以下のような振る舞いになります。"
+
+#. type: example
+#: var.texi.orig:396
+#, no-wrap
+msgid ""
+"for i = 1:2\n"
+"  count_calls ();\n"
+"endfor\n"
+"@print{} 'count_calls' has been called 1 times\n"
+"@print{} 'count_calls' has been called 2 times\n"
+"\n"
+msgstr ""
+"for i = 1:2\n"
+"  count_calls ();\n"
+"endfor\n"
+"@print{} 'count_calls' has been called 1 times\n"
+"@print{} 'count_calls' has been called 2 times\n"
+"\n"
+
+#. type: example
+#: var.texi.orig:403
+#, no-wrap
+msgid ""
+"clear\n"
+"for i = 1:2\n"
+"  count_calls ();\n"
+"endfor\n"
+"@print{} 'count_calls' has been called 3 times\n"
+"@print{} 'count_calls' has been called 4 times\n"
+"\n"
+msgstr ""
+"clear\n"
+"for i = 1:2\n"
+"  count_calls ();\n"
+"endfor\n"
+"@print{} 'count_calls' has been called 3 times\n"
+"@print{} 'count_calls' has been called 4 times\n"
+"\n"
+
+#. type: example
+#: var.texi.orig:410
+#, no-wrap
+msgid ""
+"clear all\n"
+"for i = 1:2\n"
+"  count_calls ();\n"
+"endfor\n"
+"@print{} 'count_calls' has been called 1 times\n"
+"@print{} 'count_calls' has been called 2 times\n"
+"\n"
+msgstr ""
+"clear all\n"
+"for i = 1:2\n"
+"  count_calls ();\n"
+"endfor\n"
+"@print{} 'count_calls' has been called 1 times\n"
+"@print{} 'count_calls' has been called 2 times\n"
+"\n"
+
+#. type: example
+#: var.texi.orig:417
+#, no-wrap
+msgid ""
+"clear count_calls\n"
+"for i = 1:2\n"
+"  count_calls ();\n"
+"endfor\n"
+"@print{} 'count_calls' has been called 1 times\n"
+"@print{} 'count_calls' has been called 2 times\n"
+msgstr ""
+"clear count_calls\n"
+"for i = 1:2\n"
+"  count_calls ();\n"
+"endfor\n"
+"@print{} 'count_calls' has been called 1 times\n"
+"@print{} 'count_calls' has been called 2 times\n"
+
+#. type: Plain text
+#: var.texi.orig:428
+msgid ""
+"That is, the persistent variable is only removed from memory when the "
+"function containing the variable is removed.  Note that if the function "
+"definition is typed directly into the Octave prompt, the persistent variable "
+"will be cleared by a simple @code{clear} command as the entire function "
+"definition will be removed from memory.  If you do not want a persistent "
+"variable to be removed from memory even if the function is cleared, you "
+"should use the @code{mlock} function (@pxref{Function Locking})."
+msgstr "つまり、変数を含む関数がメモリーから削除されるときだけ、永続的変数が削除されます。Octaveから関数定義を直接タイプした場合は、メモリーから関数定義全体を削除する@code{clear}コマンドにより、永続的変数が削除されます。関数がクリアーされてもメモリーから永続的変数を削除したくない場合は、@code{mlock}関数を使用するべきです(@ref{Function Locking}を参照)。"
+
+#. type: Plain text
+#: var.texi.orig:436
+msgid ""
+"When creating simple one-shot programs it can be very convenient to see "
+"which variables are available at the prompt.  The function @code{who} and "
+"its siblings @code{whos} and @code{whos_line_format} will show different "
+"information about what is in memory, as the following shows."
+msgstr "シンプルな使い捨てプログラムを作成する場合、プロンプト上でどの変数が利用できるととても便利なことがあります。関数@code{who}、および同類の@code{whos}と@code{whos_line_format}は以下で示すように、メモリー内に何があるかについて異なる情報を表示します。"
+
+#. type: group
+#: var.texi.orig:444
+#, no-wrap
+msgid ""
+"str = \"A random string\";\n"
+"who -variables\n"
+"     @print{} *** local user variables:\n"
+"     @print{} \n"
+"     @print{} __nargin__  str\n"
+msgstr ""
+"str = \"A random string\";\n"
+"who -variables\n"
+"     @print{} *** local user variables:\n"
+"     @print{} \n"
+"     @print{} __nargin__  str\n"
+
+#. type: anchor{#1}
+#: var.texi.orig:449
+msgid "XREFwho"
+msgstr "XREFwho"
+
+#. type: deftypefn
+#: var.texi.orig:449
+#, no-wrap
+msgid "{Command} {} who"
+msgstr "{Command} {} who"
+
+#. type: deftypefnx
+#: var.texi.orig:450
+#, no-wrap
+msgid "{Command} {} who pattern @dots{}"
+msgstr "{Command} {} who pattern @dots{}"
+
+#. type: deftypefnx
+#: var.texi.orig:451
+#, no-wrap
+msgid "{Command} {} who option pattern @dots{}"
+msgstr "{Command} {} who option pattern @dots{}"
+
+#. type: deftypefnx
+#: var.texi.orig:452
+#, no-wrap
+msgid "{Command} {C =} who (\"pattern\", @dots{})"
+msgstr "{Command} {C =} who (\"pattern\", @dots{})"
+
+#. type: deftypefn
+#: var.texi.orig:457
+msgid ""
+"List currently defined variables matching the given patterns.  Valid pattern "
+"syntax is the same as described for the @code{clear} command.  If no "
+"patterns are supplied, all variables are listed.  By default, only variables "
+"visible in the local scope are displayed."
+msgstr "与えられたパターンにマッチする現在定義されている変数をリストします。有効なパターン構文は、@code{clear}コマンドで説明されているものと同じです。パターンが与えられない場合は、すべての変数がリストされます。デフォルトでは、ローカルスコープで可視な変数だけが表示されます。"
+
+#. type: deftypefn
+#: var.texi.orig:459
+msgid "The following are valid options but may not be combined."
+msgstr "以下は有効なオプションですが、組み合わせることはできません。"
+
+#. type: item
+#: var.texi.orig:461
+#, no-wrap
+msgid "global"
+msgstr "global"
+
+#. type: table
+#: var.texi.orig:463
+msgid "List variables in the global scope rather than the current scope."
+msgstr "カレントスコープではなく、グローバルスコープの変数をリストします。"
+
+#. type: item
+#: var.texi.orig:464
+#, no-wrap
+msgid "-regexp"
+msgstr "-regexp"
+
+#. type: table
+#: var.texi.orig:468
+msgid ""
+"The patterns are considered to be regular expressions when matching the "
+"variables to display.  The same pattern syntax accepted by the @code{regexp} "
+"function is used."
+msgstr "パターンは表示する変数をマッチングするときの正規表現です。@code{regexp}関数を使用するときと同じパターン構文を指定できます。"
+
+#. type: item
+#: var.texi.orig:469
+#, no-wrap
+msgid "-file"
+msgstr "-file"
+
+#. type: table
+#: var.texi.orig:473
+msgid ""
+"The next argument is treated as a filename.  All variables found within the "
+"specified file are listed.  No patterns are accepted when reading variables "
+"from a file."
+msgstr "次の引数をファイル名として扱います。指定されたファイルで見つかったすべての変数がリストされます。ファイルから変数を読み込むとき、パターンは指定できません。"
+
+#. type: deftypefn
+#: var.texi.orig:478
+msgid ""
+"If called as a function, return a cell array of defined variable names "
+"matching the given patterns.  @seealso{@ref{XREFwhos,,whos}, "
+"@ref{XREFisglobal,,isglobal}, @ref{XREFisvarname,,isvarname}, "
+"@ref{XREFexist,,exist}, @ref{XREFregexp,,regexp}}"
+msgstr ""
+"関数として呼び出された場合は、与えられたパターンにマッチする定義された変数名のセル配列をリターンします。\n"
+"@seealso{@ref{XREFwhos,,whos}, @ref{XREFisglobal,,isglobal}, @ref{XREFisvarname,,isvarname}, @ref{XREFexist,,exist}, @ref{XREFregexp,,regexp}}"
+
+#. type: anchor{#1}
+#: var.texi.orig:483
+msgid "XREFwhos"
+msgstr "XREFwhos"
+
+#. type: deftypefn
+#: var.texi.orig:483
+#, no-wrap
+msgid "{Command} {} whos"
+msgstr "{Command} {} whos"
+
+#. type: deftypefnx
+#: var.texi.orig:484
+#, no-wrap
+msgid "{Command} {} whos pattern @dots{}"
+msgstr "{Command} {} whos pattern @dots{}"
+
+#. type: deftypefnx
+#: var.texi.orig:485
+#, no-wrap
+msgid "{Command} {} whos option pattern @dots{}"
+msgstr "{Command} {} whos option pattern @dots{}"
+
+#. type: deftypefnx
+#: var.texi.orig:486
+#, no-wrap
+msgid "{Command} {S =} whos (\"pattern\", @dots{})"
+msgstr "{Command} {S =} whos (\"pattern\", @dots{})"
+
+#. type: deftypefn
+#: var.texi.orig:491
+msgid ""
+"Provide detailed information on currently defined variables matching the "
+"given patterns.  Options and pattern syntax are the same as for the "
+"@code{who} command.  Extended information about each variable is summarized "
+"in a table with the following default entries."
+msgstr "与えられたパターンにマッチする、現在定義された変数の詳細な情報を提供します。オプションとパターン構文は、@code{who}コマンドと同じです。各変数についての拡張された情報は、以下のデフォルトエントリーとともにテーブルに要約されます。"
+
+#. type: item
+#: var.texi.orig:493
+#, no-wrap
+msgid "Attr"
+msgstr "Attr"
+
+#. type: table
+#: var.texi.orig:495
+msgid "Attributes of the listed variable.  Possible attributes are:"
+msgstr "リストされた変数の属性。"
+
+#. type: item
+#: var.texi.orig:497
+#, no-wrap
+msgid "blank"
+msgstr "blank"
+
+#. type: table
+#: var.texi.orig:499
+msgid "Variable in local scope"
+msgstr "ローカルスコープの変数"
+
+#. type: code{#1}
+#: var.texi.orig:500
+#, no-wrap
+msgid "a"
+msgstr "a"
+
+#. type: table
+#: var.texi.orig:503
+msgid ""
+"Automatic variable.  An automatic variable is one created by the "
+"interpreter, for example @code{argn}."
+msgstr "自動変数。自動変数とは、インタープリターにより作成されたもの。例: @code{argn}"
+
+#. type: item
+#: var.texi.orig:504 var.texi.orig:592
+#, no-wrap
+msgid "c"
+msgstr "c"
+
+#. type: table
+#: var.texi.orig:506
+msgid "Variable of complex type."
+msgstr "複素数型の変数"
+
+#. type: code{#1}
+#: var.texi.orig:507
+#, no-wrap
+msgid "f"
+msgstr "f"
+
+#. type: table
+#: var.texi.orig:509
+msgid "Formal parameter (function argument)."
+msgstr "通常形式のパラメーター(関数の引数)。"
+
+#. type: code{#1}
+#: var.texi.orig:510
+#, no-wrap
+msgid "g"
+msgstr "g"
+
+#. type: table
+#: var.texi.orig:512
+msgid "Variable with global scope."
+msgstr "グローバルスコープの変数。"
+
+#. type: code{#1}
+#: var.texi.orig:513
+#, no-wrap
+msgid "p"
+msgstr "p"
+
+#. type: table
+#: var.texi.orig:515
+msgid "Persistent variable."
+msgstr "永続的変数。"
+
+#. type: item
+#: var.texi.orig:517
+#, no-wrap
+msgid "Name"
+msgstr "Name"
+
+#. type: table
+#: var.texi.orig:519
+msgid "The name of the variable."
+msgstr "変数の名前。"
+
+#. type: item
+#: var.texi.orig:520
+#, no-wrap
+msgid "Size"
+msgstr "Size"
+
+#. type: table
+#: var.texi.orig:523
+msgid ""
+"The logical size of the variable.  A scalar is 1x1, a vector is "
+"@nospell{1xN} or @nospell{Nx1}, a 2-D matrix is @nospell{MxN}."
+msgstr "変数の論理的サイズ。スカラーは1x1、ベクターは@nospell{1xN}または@nospell{Nx1}、2次元マトリクスは@nospell{MxN}。"
+
+#. type: item
+#: var.texi.orig:524
+#, no-wrap
+msgid "Bytes"
+msgstr "Bytes"
+
+#. type: table
+#: var.texi.orig:526
+msgid "The amount of memory currently used to store the variable."
+msgstr "変数を格納するために現在使用されているメモリーの量。"
+
+#. type: item
+#: var.texi.orig:527
+#, no-wrap
+msgid "Class"
+msgstr "Class"
+
+#. type: table
+#: var.texi.orig:530
+msgid ""
+"The class of the variable.  Examples include double, single, char, uint16, "
+"cell, and struct."
+msgstr "変数のクラス。たとえばdouble、single、char、uint16、cell、struct。"
+
+#. type: deftypefn
+#: var.texi.orig:534
+msgid ""
+"The table can be customized to display more or less information through the "
+"function @code{whos_line_format}."
+msgstr "関数@code{whos_line_format}を通じて表示される情報の加減をカスタマイズできます。"
+
+#. type: deftypefn
+#: var.texi.orig:540
+msgid ""
+"If @code{whos} is called as a function, return a struct array of defined "
+"variable names matching the given patterns.  Fields in the structure "
+"describing each variable are: name, size, bytes, class, global, sparse, "
+"complex, nesting, persistent.  @seealso{@ref{XREFwho,,who}, "
+"@ref{XREFwhos_line_format,,whos_line_format}}"
+msgstr ""
+"関数として@code{whos}が呼び出された場合は、与えられたパターンにマッチする定義された変数名の構造体配列をリターンします。構造体の各フィールドはname、size、bytes、class、global、sparse、complex、nesting、persistentを表します。\n"
+"@seealso{@ref{XREFwho,,who}, @ref{XREFwhos_line_format,,whos_line_format}}"
+
+#. type: anchor{#1}
+#: var.texi.orig:545
+msgid "XREFwhos_line_format"
+msgstr "XREFwhos_line_format"
+
+#. type: deftypefn
+#: var.texi.orig:545
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} whos_line_format ()"
+msgstr "{Built-in Function} {@var{val} =} whos_line_format ()"
+
+#. type: deftypefnx
+#: var.texi.orig:546
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} whos_line_format (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} whos_line_format (@var{new_val})"
+
+#. type: deftypefnx
+#: var.texi.orig:547
+#, no-wrap
+msgid "{Built-in Function} {} whos_line_format (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} whos_line_format (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: var.texi.orig:549
+msgid "Query or set the format string used by the command @code{whos}."
+msgstr "コマンド@code{whos}で使用されるフォーマット文字列にたいして、問い合わせまたはセットを行います。"
+
+#. type: deftypefn
+#: var.texi.orig:552
+msgid "A full format string is:"
+msgstr "以下は完全なフォーマット文字列です:"
+
+#. type: smallexample
+#: var.texi.orig:555
+#, no-wrap
+msgid "%[modifier]<command>[:width[:left-min[:balance]]];\n"
+msgstr "%[modifier]<command>[:width[:left-min[:balance]]];\n"
+
+#. type: deftypefn
+#: var.texi.orig:558
+msgid "The following command sequences are available:"
+msgstr "以下のコマンドシーケンスが利用できます:"
+
+#. type: item
+#: var.texi.orig:560
+#, no-wrap
+msgid "%a"
+msgstr "%a"
+
+#. type: table
+#: var.texi.orig:563
+msgid ""
+"Prints attributes of variables (g=global, p=persistent, f=formal parameter, "
+"a=automatic variable)."
+msgstr "変数の属性をプリントする(g=global、p=persistent、f=formal parameter、a=automatic variable)。"
+
+#. type: item
+#: var.texi.orig:564
+#, no-wrap
+msgid "%b"
+msgstr "%b"
+
+#. type: table
+#: var.texi.orig:566
+msgid "Prints number of bytes occupied by variables."
+msgstr "変数が占めるバイト数をプリントする。"
+
+#. type: item
+#: var.texi.orig:567
+#, no-wrap
+msgid "%c"
+msgstr "%c"
+
+#. type: table
+#: var.texi.orig:569
+msgid "Prints class names of variables."
+msgstr "変数のクラス名をプリントする。"
+
+#. type: item
+#: var.texi.orig:570
+#, no-wrap
+msgid "%e"
+msgstr "%e"
+
+#. type: table
+#: var.texi.orig:572
+msgid "Prints elements held by variables."
+msgstr "変数が保持する要素をプリントする。"
+
+#. type: item
+#: var.texi.orig:573
+#, no-wrap
+msgid "%n"
+msgstr "%n"
+
+#. type: table
+#: var.texi.orig:575
+msgid "Prints variable names."
+msgstr "変数名をプリントする。"
+
+#. type: item
+#: var.texi.orig:576
+#, no-wrap
+msgid "%s"
+msgstr "%s"
+
+#. type: table
+#: var.texi.orig:578
+msgid "Prints dimensions of variables."
+msgstr "変数の次元をプリントする。"
+
+#. type: item
+#: var.texi.orig:579
+#, no-wrap
+msgid "%t"
+msgstr "%t"
+
+#. type: table
+#: var.texi.orig:581
+msgid "Prints type names of variables."
+msgstr "変数の型名をプリントする。"
+
+#. type: deftypefn
+#: var.texi.orig:584
+msgid "Every command may also have an alignment modifier:"
+msgstr "各コマンドはアラインメント修飾子ももつ:"
+
+#. type: item
+#: var.texi.orig:586
+#, no-wrap
+msgid "l"
+msgstr "l"
+
+#. type: table
+#: var.texi.orig:588
+msgid "Left alignment."
+msgstr "左揃え。"
+
+#. type: item
+#: var.texi.orig:589
+#, no-wrap
+msgid "r"
+msgstr "r"
+
+#. type: table
+#: var.texi.orig:591
+msgid "Right alignment (default)."
+msgstr "右揃え(デフォルト)。"
+
+#. type: table
+#: var.texi.orig:594
+msgid "Column-aligned (only applicable to command %s)."
+msgstr "列揃え(コマンド%sでのみ指定可)。"
+
+#. type: deftypefn
+#: var.texi.orig:599
+msgid ""
+"The @code{width} parameter is a positive integer specifying the minimum "
+"number of columns used for printing.  No maximum is needed as the field will "
+"auto-expand as required."
+msgstr "@code{width}はプリントに使用される最小列値を指定する正の整数です。フィールドは必要に応じて自動的に拡張されるので、最大値は必要ありません。"
+
+#. type: deftypefn
+#: var.texi.orig:606
+msgid ""
+"The parameters @code{left-min} and @code{balance} are only available when "
+"the column-aligned modifier is used with the command @samp{%s}.  "
+"@code{balance} specifies the column number within the field width which will "
+"be aligned between entries.  Numbering starts from 0 which indicates the "
+"leftmost column.  @code{left-min} specifies the minimum field width to the "
+"left of the specified balance column."
+msgstr "パラメーター@code{left-min}および@code{balance}は、コマンド@samp{%s}とともに列アラインメント修飾子が使用されたときだけ利用可能です。@code{balance}はエントリー間を整列するフィールド幅を列数で指定します。ナンバリングは最左列を意味する0から開始されます。@code{left-min}は指定されたバランス列の左側の最小フィールド幅を指定します。"
+
+#. type: deftypefn
+#: var.texi.orig:609
+msgid ""
+"The default format is @qcode{\" %a:4; %ln:6; %cs:16:6:1; %rb:12; "
+"%lc:-1;\\n\"}."
+msgstr "デフォルトフォーマットは@qcode{\" %a:4; %ln:6; %cs:16:6:1; %rb:12; %lc:-1;\\n\"}です。"
+
+#. type: deftypefn
+#: var.texi.orig:614
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFwhos,,whos}}"
+msgstr ""
+"関数内から@qcode{\"local\"}オプションとともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFwhos,,whos}}"
+
+#. type: Plain text
+#: var.texi.orig:621
+msgid ""
+"Instead of displaying which variables are in memory, it is possible to "
+"determine if a given variable is available.  That way it is possible to "
+"alter the behavior of a program depending on the existence of a variable.  "
+"The following example illustrates this."
+msgstr "どの変数がメモリー内にあるか表示するかわりに、与えられた変数が利用可能か判定することができます。この方法は、変数の存在によりプログラムの挙動を変えることにより可能になります。以下はこれを示す例です。"
+
+#. type: group
+#: var.texi.orig:627
+#, no-wrap
+msgid ""
+"if (! exist (\"meaning\", \"var\"))\n"
+"  disp (\"The program has no 'meaning'\");\n"
+"endif\n"
+msgstr ""
+"if (! exist (\"meaning\", \"var\"))\n"
+"  disp (\"The program has no 'meaning'\");\n"
+"endif\n"
+
+#. type: anchor{#1}
+#: var.texi.orig:632
+msgid "XREFexist"
+msgstr "XREFexist"
+
+#. type: deftypefn
+#: var.texi.orig:632
+#, no-wrap
+msgid "{Built-in Function} {} exist (@var{name}, @var{type})"
+msgstr "{Built-in Function} {} exist (@var{name}, @var{type})"
+
+#. type: deftypefn
+#: var.texi.orig:640
+msgid ""
+"Return 1 if the name exists as a variable, 2 if the name is an absolute file "
+"name, an ordinary file in Octave's @code{path}, or (after appending "
+"@samp{.m}) a function file in Octave's @code{path}, 3 if the name is a "
+"@samp{.oct} or @samp{.mex} file in Octave's @code{path}, 5 if the name is a "
+"built-in function, 7 if the name is a directory, or 103 if the name is a "
+"function not associated with a file (entered on the command line)."
+msgstr "nameが変数として存在する場合は1、絶対ファイル名、またはOctaveの@code{path}上の通常ファイルか(@samp{.m}を追加することにより)関数ファイルの場合は2、Octaveの@code{path}上の@samp{.oct}または@samp{.mex}ファイルの場合は3、ビルトイン関数の場合は5、ディレクトリの場合は7、ファイルに関連付けされていない(コマンドラインで入力された)関数の場合は103をリターンします。"
+
+#. type: deftypefn
+#: var.texi.orig:642
+msgid "Otherwise, return 0."
+msgstr "それ以外は0をリターンします。"
+
+#. type: deftypefn
+#: var.texi.orig:647
+msgid ""
+"This function also returns 2 if a regular file called @var{name} exists in "
+"Octave's search path.  If you want information about other types of files, "
+"you should use some combination of the functions @code{file_in_path} and "
+"@code{stat} instead."
+msgstr "この関数はOctaveの検索パスにある@var{name}という名前の通常ファイルの場合は、2をリターンします。他のファイル型についての情報が欲しい場合は、かわりに関数@code{file_in_path}および@code{stat}を組み合わせて使用するべきです。"
+
+#. type: deftypefn
+#: var.texi.orig:650
+msgid ""
+"If the optional argument @var{type} is supplied, check only for symbols of "
+"the specified type.  Valid types are"
+msgstr "オプション引数@var{type}が与えられた場合は、シンボルで指定された型だけをチェックします。有効な型は"
+
+#. type: item
+#: var.texi.orig:652
+#, no-wrap
+msgid "@qcode{\"var\"}"
+msgstr "@qcode{\"var\"}"
+
+#. type: table
+#: var.texi.orig:654
+msgid "Check only for variables."
+msgstr "変数だけをチェック。"
+
+#. type: item
+#: var.texi.orig:655
+#, no-wrap
+msgid "@qcode{\"builtin\"}"
+msgstr "@qcode{\"builtin\"}"
+
+#. type: table
+#: var.texi.orig:657
+msgid "Check only for built-in functions."
+msgstr "ビルトイン関数だけをチェック。"
+
+#. type: item
+#: var.texi.orig:658
+#, no-wrap
+msgid "@qcode{\"file\"}"
+msgstr "@qcode{\"file\"}"
+
+#. type: table
+#: var.texi.orig:660
+msgid "Check only for files and directories."
+msgstr "ファイルとディレクトリだけをチェック。"
+
+#. type: item
+#: var.texi.orig:661
+#, no-wrap
+msgid "@qcode{\"dir\"}"
+msgstr "@qcode{\"dir\"}"
+
+#. type: table
+#: var.texi.orig:663
+msgid "Check only for directories."
+msgstr "ディレクトリだけをチェック。"
+
+#. type: deftypefn
+#: var.texi.orig:666
+msgid ""
+"@seealso{@ref{XREFfile_in_loadpath,,file_in_loadpath}, "
+"@ref{XREFfile_in_path,,file_in_path}, "
+"@ref{XREFfind_dir_in_path,,find_dir_in_path}, @ref{XREFstat,,stat}}"
+msgstr "@seealso{@ref{XREFfile_in_loadpath,,file_in_loadpath}, @ref{XREFfile_in_path,,file_in_path}, @ref{XREFfind_dir_in_path,,find_dir_in_path}, @ref{XREFstat,,stat}}"
+
+#. type: Plain text
+#: var.texi.orig:674
+msgid ""
+"Usually Octave will manage the memory, but sometimes it can be practical to "
+"remove variables from memory manually.  This is usually needed when working "
+"with large variables that fill a substantial part of the memory.  On a "
+"computer that uses the IEEE floating point format, the following program "
+"allocates a matrix that requires around 128 MB memory."
+msgstr "通常Octaveはメモリーを管理しますが、メモリーから手動で変数を削除するのが実用的な場合もあるでしょう。これは通常、メモリーの相当量を占める大きな変数を扱うとき必要になります。IEEE浮動小数点フォーマットを使用するコンピューターでは、以下のプログラムは約128MBのメモリーを要求するマトリクスを割り当てます。"
+
+#. type: example
+#: var.texi.orig:677
+#, no-wrap
+msgid "large_matrix = zeros (4000, 4000);\n"
+msgstr "large_matrix = zeros (4000, 4000);\n"
+
+#. type: Plain text
+#: var.texi.orig:683
+msgid ""
+"Since having this variable in memory might slow down other computations, it "
+"can be necessary to remove it manually from memory.  The @code{clear} "
+"function allows this."
+msgstr "この変数をメモリー上に保持することは、他の計算の速度低下を招くかもしれないので、メモリーから手動で削除する必要があります。@code{clear}関数により、これを行うことができます。"
+
+#. type: anchor{#1}
+#: var.texi.orig:686
+msgid "XREFclear"
+msgstr "XREFclear"
+
+#. type: deftypefn
+#: var.texi.orig:686
+#, no-wrap
+msgid "{Command} {} clear [options] pattern @dots{}"
+msgstr "{Command} {} clear [options] pattern @dots{}"
+
+#. type: deftypefn
+#: var.texi.orig:689
+msgid ""
+"Delete the names matching the given patterns from the symbol table.  The "
+"pattern may contain the following special characters:"
+msgstr "シンボルテーブルから、与えられたパターンにマッチする名前を削除します。パターンは、以下の特殊文字を含むことができます:"
+
+#. type: item
+#: var.texi.orig:691
+#, no-wrap
+msgid "?"
+msgstr "?"
+
+#. type: table
+#: var.texi.orig:693
+msgid "Match any single character."
+msgstr "任意の1文字にマッチ。"
+
+#. type: item
+#: var.texi.orig:694
+#, no-wrap
+msgid "*"
+msgstr "*"
+
+#. type: table
+#: var.texi.orig:696
+msgid "Match zero or more characters."
+msgstr "0文字以上にマッチ。"
+
+#. type: item
+#: var.texi.orig:697
+#, no-wrap
+msgid "[ @var{list} ]"
+msgstr "[ @var{list} ]"
+
+#. type: table
+#: var.texi.orig:702
+msgid ""
+"Match the list of characters specified by @var{list}.  If the first "
+"character is @code{!} or @code{^}, match all characters except those "
+"specified by @var{list}.  For example, the pattern @samp{[a-zA-Z]} will "
+"match all lowercase and uppercase alphabetic characters."
+msgstr "@var{list}で指定された文字リストにマッチ。1文字目が@code{!}か@code{^}の場合は@var{list}で指定された文字以外のすべての文字にマッチ。たとえば、@samp{[a-zA-Z]}はすべてのアルファベットの小文字と大文字にマッチ。"
+
+#. type: deftypefn
+#: var.texi.orig:705
+msgid "For example, the command"
+msgstr "たとえば、"
+
+#. type: example
+#: var.texi.orig:708
+#, no-wrap
+msgid "clear foo b*r\n"
+msgstr "clear foo b*r\n"
+
+#. type: deftypefn
+#: var.texi.orig:713
+msgid ""
+"clears the name @code{foo} and all names that begin with the letter @code{b} "
+"and end with the letter @code{r}."
+msgstr "は名前@code{foo}と、@code{b}で始まり@code{r}で終わるすべての名前をクリアーします。"
+
+#. type: deftypefn
+#: var.texi.orig:723
+msgid ""
+"If @code{clear} is called without any arguments, all user-defined variables "
+"(local and global) are cleared from the symbol table.  If @code{clear} is "
+"called with at least one argument, only the visible names matching the "
+"arguments are cleared.  For example, suppose you have defined a function "
+"@code{foo}, and then hidden it by performing the assignment @code{foo = 2}.  "
+"Executing the command @kbd{clear foo} once will clear the variable "
+"definition and restore the definition of @code{foo} as a function.  "
+"Executing @kbd{clear foo} a second time will clear the function definition."
+msgstr "引数を指定せずに@code{clear}が呼び出された場合、シンボルテーブルからすべてのユーザー定義変数(ローカルおよびグローバル)がクリアーされます。少なくとも1つの引数とともに@code{clear}が呼び出された場合は、引数にマッチする可視の名前だけがクリアーされます。たとえば、関数@code{foo}を定義して、その後に代入@code{foo = 2}を行ってそれを隠したとします。コマンド@kbd{clear foo}を1度実行することにより、変数定義がクリアーされ、関数としての@code{foo}の定義がリストアされます。@kbd{clear foo}の2度目の実行により、関数定義がクリアーされます。"
+
+#. type: deftypefn
+#: var.texi.orig:725
+msgid "The following options are available in both long and short form"
+msgstr "短い形式と長い形式の両方で、以下のオプションが利用できます"
+
+#. type: item
+#: var.texi.orig:727
+#, no-wrap
+msgid "-all, -a"
+msgstr "-all, -a"
+
+#. type: table
+#: var.texi.orig:730
+msgid ""
+"Clears all local and global user-defined variables and all functions from "
+"the symbol table."
+msgstr "シンボルテーブルから、ローカルおよびグローバルのユーザー定義変数とすべての関数をクリアーする。"
+
+#. type: item
+#: var.texi.orig:731
+#, no-wrap
+msgid "-exclusive, -x"
+msgstr "-exclusive, -x"
+
+#. type: table
+#: var.texi.orig:733
+msgid "Clears the variables that don't match the following pattern."
+msgstr "後のパターンにマッチしない変数をクリアーする。"
+
+#. type: item
+#: var.texi.orig:734
+#, no-wrap
+msgid "-functions, -f"
+msgstr "-functions, -f"
+
+#. type: table
+#: var.texi.orig:736
+msgid "Clears the function names and the built-in symbols names."
+msgstr "関数とビルトインシンボル名をクリアーする。"
+
+#. type: item
+#: var.texi.orig:737
+#, no-wrap
+msgid "-global, -g"
+msgstr "-global, -g"
+
+#. type: table
+#: var.texi.orig:739
+msgid "Clears the global symbol names."
+msgstr "グローバルシンボル名をクリアーする。"
+
+#. type: item
+#: var.texi.orig:740
+#, no-wrap
+msgid "-variables, -v"
+msgstr "-variables, -v"
+
+#. type: table
+#: var.texi.orig:742
+msgid "Clears the local variable names."
+msgstr "ローカル変数名をクリアーする。"
+
+#. type: item
+#: var.texi.orig:743
+#, no-wrap
+msgid "-classes, -c"
+msgstr "-classes, -c"
+
+#. type: table
+#: var.texi.orig:745
+msgid "Clears the class structure table and clears all objects."
+msgstr "クラス構造体テーブルちすべてのオブジェクトをクリアーする。"
+
+#. type: item
+#: var.texi.orig:746
+#, no-wrap
+msgid "-regexp, -r"
+msgstr "-regexp, -r"
+
+#. type: table
+#: var.texi.orig:749
+msgid ""
+"The arguments are treated as regular expressions as any variables that match "
+"will be cleared."
+msgstr "引数は正規表現と解釈され、それにマッチする変数をクリアーする。"
+
+#. type: deftypefn
+#: var.texi.orig:753
+msgid ""
+"With the exception of @code{exclusive}, all long options can be used without "
+"the dash as well."
+msgstr "@code{exclusive}の例外として、ダッシュなしのロングオプションも同様に使用できる。"
+
+#. type: anchor{#1}
+#: var.texi.orig:758
+msgid "XREFpack"
+msgstr "XREFpack"
+
+#. type: deftypefn
+#: var.texi.orig:758
+#, no-wrap
+msgid "{Function File} {} pack ()"
+msgstr "{Function File} {} pack ()"
+
+#. type: deftypefn
+#: var.texi.orig:761
+msgid ""
+"Consolidate workspace memory in @sc{matlab}.  This function is provided for "
+"compatibility, but does nothing in Octave."
+msgstr "@sc{matlab}ではワークスペースのメモリーを統合します。この関数は互換性のために提供されており、Octaveでは何も行いません。"
+
+#. type: Plain text
+#: var.texi.orig:767
+msgid ""
+"Information about a function or variable such as its location in the file "
+"system can also be acquired from within Octave.  This is usually only useful "
+"during development of programs, and not within a program."
+msgstr "関数や変数について、それがファイルシステム上どの位置にあるかなどの情報も、Octaveにより収集できます。これは通常プログラム開発の間のみ有用で、プログラムにとって有用ではありません。"
+
+#. type: anchor{#1}
+#: var.texi.orig:770
+msgid "XREFtype"
+msgstr "XREFtype"
+
+#. type: deftypefn
+#: var.texi.orig:770
+#, no-wrap
+msgid "{Command} {} type @var{name} @dots{}"
+msgstr "{Command} {} type @var{name} @dots{}"
+
+#. type: deftypefnx
+#: var.texi.orig:771
+#, no-wrap
+msgid "{Command} {} type -q @var{name} @dots{}"
+msgstr "{Command} {} type -q @var{name} @dots{}"
+
+#. type: deftypefnx
+#: var.texi.orig:772
+#, no-wrap
+msgid "{Function File} {text =} type (\"@var{name}\", @dots{})"
+msgstr "{Function File} {text =} type (\"@var{name}\", @dots{})"
+
+#. type: deftypefn
+#: var.texi.orig:775
+msgid ""
+"Display the contents of @var{name} which may be a file, function (m-file), "
+"variable, operator, or keyword."
+msgstr "@var{name}の内容を表示します。@var{name}にはファイル、関数(m-file)、変数、演算子、キーワードを指定できます。"
+
+#. type: deftypefn
+#: var.texi.orig:779
+msgid ""
+"@code{type} normally prepends a header line describing the category of "
+"@var{name} such as function or variable; The @option{-q} option suppresses "
+"this behavior."
+msgstr "@code{type}は通常、functionやvariableのように@var{name}のカテゴリーを記述するヘッダー行を前置します。@option{-q}オプションにより、この動作を抑制できます。"
+
+#. type: deftypefn
+#: var.texi.orig:783
+msgid ""
+"If no output variable is used the contents are displayed on screen.  "
+"Otherwise, a cell array of strings is returned, where each element "
+"corresponds to the contents of each requested function."
+msgstr "出力変数が指定されていない場合、内容はスクリーンに表示されます。それ以外は文字列のセル配列がリターンされます。この場合、各要素が要求されあ関数の内容に対応します。"
+
+#. type: anchor{#1}
+#: var.texi.orig:788
+msgid "XREFwhich"
+msgstr "XREFwhich"
+
+#. type: deftypefn
+#: var.texi.orig:788
+#, no-wrap
+msgid "{Command} {} which name @dots{}"
+msgstr "{Command} {} which name @dots{}"
+
+#. type: deftypefn
+#: var.texi.orig:792
+msgid ""
+"Display the type of each @var{name}.  If @var{name} is defined from a "
+"function file, the full name of the file is also displayed.  "
+"@seealso{@ref{XREFhelp,,help}, @ref{XREFlookfor,,lookfor}}"
+msgstr ""
+"@var{name}のそれぞれの型を表示します。@var{name}が関数ファイルで定義される場合は、ファイルの関数名も表示されます。\n"
+"@seealso{@ref{XREFhelp,,help}, @ref{XREFlookfor,,lookfor}}"
+
+#. type: anchor{#1}
+#: var.texi.orig:797
+msgid "XREFwhat"
+msgstr "XREFwhat"
+
+#. type: deftypefn
+#: var.texi.orig:797
+#, no-wrap
+msgid "{Command} {} what"
+msgstr "{Command} {} what"
+
+#. type: deftypefnx
+#: var.texi.orig:798
+#, no-wrap
+msgid "{Command} {} what @var{dir}"
+msgstr "{Command} {} what @var{dir}"
+
+#. type: deftypefnx
+#: var.texi.orig:799
+#, no-wrap
+msgid "{Function File} {w =} what (@var{dir})"
+msgstr "{Function File} {w =} what (@var{dir})"
+
+#. type: deftypefn
+#: var.texi.orig:804
+msgid ""
+"List the Octave specific files in directory @var{dir}.  If @var{dir} is not "
+"specified then the current directory is used.  If a return argument is "
+"requested, the files found are returned in the structure @var{w}.  "
+"@seealso{@ref{XREFwhich,,which}}"
+msgstr ""
+"ディレクトリ@var{dir}内のOctave固有のファイルをリストします。@var{dir}が指定されない場合は、カレントディレクトリが使用されます。リターン引数が要求された場合、構造体@var{w}内に見つかったファイルがリターンされます。\n"
+"@seealso{@ref{XREFwhich,,which}}"

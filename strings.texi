@@ -1,0 +1,2192 @@
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+@c DO NOT EDIT!  Generated automatically by munge-texi.pl.
+
+@c Copyright (C) 1996-2013 John W. Eaton
+@c
+@c This file is part of Octave.
+@c
+@c Octave is free software; you can redistribute it and/or modify it
+@c under the terms of the GNU General Public License as published by the
+@c Free Software Foundation; either version 3 of the License, or (at
+@c your option) any later version.
+@c 
+@c Octave is distributed in the hope that it will be useful, but WITHOUT
+@c ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+@c FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+@c for more details.
+@c 
+@c You should have received a copy of the GNU General Public License
+@c along with Octave; see the file COPYING.  If not, see
+@c <http://www.gnu.org/licenses/>.
+
+@node Strings
+@chapter Strings
+@cindex strings
+@cindex character strings
+@opindex "
+@opindex '
+
+@dfn{文字列定数(string
+constant)}は、ダブルクォーテーションマークまたはシングルクォーテーションマークで囲まれた、文字シーケンスにより構成されます。たとえば、以下の式
+
+@example
+@group
+"parrot"
+'parrot'
+@end group
+@end example
+
+@noindent
+はどちらも内容が@samp{parrot}の文字列を表します。Octaveでは文字列は任意の長さをとることができます。
+
+シングルクォートマークは転置演算子(@ref{Arithmetic
+Ops}参照)にも使用されますが、ダブルクォートマークはOctaveでは他の目的に使用されることはないので、文字列を表すときはダブルクォートマークを使うのが最善です。
+
+文字列の連結はマトリクス定義の記法を使用できます。たとえば、以下の式 
+ 
+@example
+[ "foo" , "bar" , "baz" ]
+@end example
+
+@noindent
+は、内容が@samp{foobarbaz}の文字列を生成します。マトリクスの作成についての詳細は、@ref{Numeric Data
+Types}を参照してください。
+
+@menu
+* Escape Sequences in String Constants::
+* Character Arrays::
+* Creating Strings::
+* Comparing Strings::
+* Manipulating Strings::
+* String Conversions::
+* Character Class Functions::  
+@end menu
+
+@node Escape Sequences in String Constants
+@section Escape Sequences in String Constants
+@cindex escape sequence notation
+ダブルクォートされた文字列内では、バックスラッシュ文字は他の文字を表すための@dfn{エスケープシーケンス}として使用されます。
+In double-quoted strings, the backslash character is used to introduce  that
+represent other characters.
+たとえば@samp{\n}はダブルクォートされた文字列内に改行文字を、@samp{\"}はダブルクォート文字を埋め込みます。シングルクォートされた文字列内では、バックスラッシュ文字は特別な文字ではありません。以下の例は、この違いを示します:
+
+@example
+@group
+toascii ("\n")
+    @result{} 10
+toascii ('\n')
+    @result{} [ 92 110 ]
+@end group
+@end example
+
+以下は、Octaveで(ダブルクォートされた文字列内で)使用されるすべてのエスケープシーケンスのテーブルです。これらはCプログラミング言語で使用される場合と同じです。
+
+@table @code
+@item \\
+リテラルにバックスラッシュ@samp{\}を表します。
+
+@item \"
+リテラルのダブルクォート文字@samp{"}を表します<。
+
+@item \'
+リテラルのシングルクォート文字@samp{'}を表します。
+
+@item \0
+Null文字(control-@@、ASCIIコード0)を表します。
+
+@item \a
+``alert''文字(control-g、ASCIIコード7)を表します。
+
+@item \b
+バックスペース(control-h、ASCIIコード8)を表します。
+
+@item \f
+改ページ(control-l、ASCIIコード12)を表します。
+
+@item \n
+改行(control-j、ASCIIコード10)を表します。
+
+@item \r
+キャリッジリターン(control-m、ASCIIコード13)を表します。
+
+@item \t
+水平タブ(control-i、ASCIIコード9)を表します。
+
+@item \v
+垂直タブ(control-k、ASCIIコード11)を表します。
+
+@item \@var{nnn}
+8進値@var{nnn}の文字を表します。@var{nnn}は0から7の1桁から3桁です。たとえば、アスキーのESC文字は@samp{\033}です。
+
+@item \x@var{hh}@dots{}
+16進値@var{hh}の文字を表します。@var{hh}は16進数字(@samp{0}から@samp{9}、および@samp{A}から@samp{F}または@samp{a}から@samp{f})です。
+@sc{ansi}-Cの場合と同様、最初の非16進数字が見つかるエスケープシーケンスは継続されます。しかし3桁以上の16進数字は未定義の結果を生成します。
+@end table
+
+シングルクォートされた文字列内のエスケープシーケンスは、1つだけです。連続してシングルクォート文字を使用することにより、1つのシングルクォート文字を挿入できます。たとえば、
+
+@example
+@group
+'I can''t escape'
+    @result{} I can't escape
+@end group
+@end example
+
+スクリプト内では、必要なら@code{is_dq_string}と@code{is_sq_string}を使用して、2つの文字列型を区別できます。
+
+@c is_dq_string libinterp/octave-value/ov.cc
+@anchor{XREFis_dq_string}
+@deftypefn {Built-in Function} {} is_dq_string (@var{x})
+@var{x}がダブルクォートされた文字列の場合は、trueをリターンします。
+@seealso{@ref{XREFis_sq_string,,is_sq_string}, @ref{XREFischar,,ischar}}
+@end deftypefn
+
+
+@c is_sq_string libinterp/octave-value/ov.cc
+@anchor{XREFis_sq_string}
+@deftypefn {Built-in Function} {} is_sq_string (@var{x})
+@var{x}がシングルクォートされた文字列の場合は、trueをリターンします。
+@seealso{@ref{XREFis_dq_string,,is_dq_string}, @ref{XREFischar,,ischar}}
+@end deftypefn
+
+
+@node Character Arrays
+@section Character Arrays
+
+文字列を表すためにOctaveが使用するのは文字の配列なので、文字列@nospell{@qcode{"dddddddddd"}}は、内部的にはすべての要素が値100(100は@qcode{"d"}のASCIIコード)の長さが10の行ベクターです。これは文字マトリクスにたいする明白な汎化をもたらします。文字マトリクスを使用することにより、同じ長さに文字列コレクションを、1つの変数で表すことが可能になります。Octave内で使用される慣習では、文字マトリクスの各行が個別の文字列になりますが、各列で文字列を表すことも同様に可能です。
+
+文字マトリクスを作成するもっとも簡単な方法は、複数の文字列を一緒にマトリクスに配す方法です。
+
+@example
+collection = [ "String #1"; "String #2" ];
+@end example
+
+@noindent
+これは2行9列の文字マトリクスを作成します。
+
+関数@code{ischar}は、オブジェクトが文字マトリクスかテストするために使用できます。
+
+@c ischar libinterp/corefcn/strfns.cc
+@anchor{XREFischar}
+@deftypefn {Built-in Function} {} ischar (@var{x})
+@var{x}が文字配列の場合は、trueをリターンします。
+@seealso{@ref{XREFisfloat,,isfloat}, @ref{XREFisinteger,,isinteger},
+@ref{XREFislogical,,islogical}, @ref{XREFisnumeric,,isnumeric},
+@ref{XREFiscellstr,,iscellstr}, @ref{XREFisa,,isa}}
+@end deftypefn
+
+
+オブジェクトが文字列(例:
+文字ベクターか、文字マトリクスでないか、など)なのかテストするためには、以下の例のように@code{isvector}関数を組み合わせて@code{ischar}関数を使用できます。
+
+@example
+@group
+ischar (collection)
+     @result{} 1
+
+ischar (collection) && isvector (collection)
+     @result{} 0
+
+ischar ("my string") && isvector ("my string")
+     @result{} 1
+@end group
+@end example
+
+これに関係して疑問が1つ生じます。異なる長さの文字列から文字マトリクスを作成すると何が起こるでしょうか。短い文字列の最後にOctaveがブランク文字を追加する、というのが答えです。@code{string_fill_char}関数を使えば、ブランク文字以外の文字を使うこともできます。
+
+@c string_fill_char libinterp/parse-tree/pt-mat.cc
+@anchor{XREFstring_fill_char}
+@deftypefn {Built-in Function} {@var{val} =} string_fill_char ()
+@deftypefnx {Built-in Function} {@var{old_val} =} string_fill_char (@var{new_val})
+@deftypefnx {Built-in Function} {} string_fill_char (@var{new_val}, "local")
+文字マトリクスのすべての行を同じ長さにパディングするために使用される内部変数にたいして、問い合わせまたはセットを行います。これは1文字でなければなりません。デフォルト値は@qcode{"
+"}(スペース1つ)です。たとえば:
+
+@example
+@group
+string_fill_char ("X");
+[ "these"; "are"; "strings" ]
+      @result{}  "theseXX"
+          "areXXXX"
+          "strings"
+@end group
+@end example
+
+関数内部から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。
+@end deftypefn
+
+
+これは文字マトリクスの問題点を表しています。文字マトリクスでは、長さの異なる文字列の表現は単に不可能なのです。解決策は文字列のセル配列の使用です。これは@ref{Cell
+Arrays of Strings}で説明されています。
+
+@node Creating Strings
+@section Creating Strings
+
+文字列を作成するもっとも簡単な方法は、冒頭で紹介したように、テキストをダブルクォートかシングルクォートで囲む方法です。しかし、実際にテキストを記述せずに文字列を作成することも可能です。関数@code{blanks}はブランク文字(ASCIIコード32)だけで構成される、与えられた長さの文字列を作成します。
+
+@c blanks scripts/strings/blanks.m
+@anchor{XREFblanks}
+@deftypefn {Function File} {} blanks (@var{n})
+@var{n}個のブランクからなる文字列をリターンします。
+
+@example
+@group
+blanks (10);
+whos ans
+     @result{}
+      Attr Name        Size                     Bytes  Class
+      ==== ====        ====                     =====  =====
+           ans         1x10                        10  char
+@end group
+@end example
+@seealso{@ref{XREFrepmat,,repmat}}
+@end deftypefn
+
+
+@menu
+* Concatenating Strings::
+* Converting Numerical Data to Strings::  
+@end menu
+
+@node Concatenating Strings
+@subsection Concatenating Strings
+
+文字列はマトリクス表記(@ref{Strings}および@ref{Character
+Arrays}を参照)を使用して作成することができます。これがもっとも自然な方法の場合もあります。たとえば:
+
+@example
+@group
+fullname = [fname ".txt"];
+email = ["<" user "@@" domain ">"];
+@end group
+@end example
+
+@noindent
+どちらの場合も、最終的にどのような文字列になるか容易に判断できます。この方法は、もっとも効率的でもあります。マトリクス結合を使用するとき、パーサーは関数呼び出しと関数による入力の検査というオーバーヘッドなしに、即座に文字列の連結を開始します。
+
+それでも、特定の状況において文字列オブジェクトを連結する関数がいくつかあります:
+@code{char}、@code{strvcat}、@code{strcat}、@code{cstrcat}そして最後に一般的な用途のための連結関数が使用できます。@ref{XREFhorzcat,,horzcat}と@ref{XREFvertcat,,vertcat}を参照してください。
+
+@itemize @bullet
+@item @code{cstrcat}を除く
+すべての文字列連結関数は以下の例のように、数値を対応するASCII文字に変換することにより、各要素を文字データに変換します:
+
+@example
+@group
+char ([98, 97, 110, 97, 110, 97])
+   @result{} banana
+@end group
+@end example
+
+@item
+@code{char}と@code{strvcat}は垂直に、@code{strcat}と@code{cstrcat}は水平に連結します。たとえば、
+
+@example
+@group
+char ("an apple", "two pears")
+    @result{} an apple
+       two pears
+@end group
+
+@group
+strcat ("oc", "tave", " is", " good", " for you")
+     @result{} octave is good for you
+@end group
+@end example
+
+@item @code{char}は入力内の空文字列ごとに、出力内に空行を生成します。
+一方、@code{strvcat}は空文字列を無視します。
+
+@example
+@group
+char ("orange", "green", "", "red")
+    @result{} orange
+       green 
+
+       red
+@end group
+
+@group
+strvcat ("orange", "green", "", "red")
+    @result{} orange
+       green 
+       red  
+@end group
+@end example
+
+@item @code{cstrcat}を除くすべての文字列連結関数は、
+セル配列データも受け付けます(@ref{Cell
+Arrays})。@code{char}と@code{strvcat}はセル配列を文字配列に変換し、@code{strcat}はセル配列内のセルを連結します:
+
+@example
+@group
+char (@{"red", "green", "", "blue"@})
+     @result{} red  
+        green
+
+        blue 
+@end group
+
+@group
+strcat (@{"abc"; "ghi"@}, @{"def"; "jkl"@})
+     @result{}
+        @{
+          [1,1] = abcdef
+          [2,1] = ghijkl
+        @}
+@end group
+@end example
+
+@item @code{strcat}は引数(セル配列を除く)の末尾のスペースを削除しますが、
+@code{cstrcat}はそのまま残します。以下の例のように、この2種類を使い分けるのが便利なときもあります:
+
+@example
+@group
+strcat (["dir1";"directory2"], ["/";"/"], ["file1";"file2"])
+     @result{} dir1/file1
+        directory2/file2
+@end group
+@group
+
+cstrcat (["thirteen apples"; "a banana"], [" 5$";" 1$"])
+      @result{} thirteen apples 5$
+         a banana        1$
+@end group
+@end example
+
+上記の@code{cstrcat}の例の空白文字は、文字列配列内での文字列の内部表現にもとづくことに注意してください(@ref{Character
+Arrays}を参照)。
+@end itemize
+
+@c char libinterp/corefcn/strfns.cc
+@anchor{XREFchar}
+@deftypefn {Built-in Function} {} char (@var{x})
+@deftypefnx {Built-in Function} {} char (@var{x}, @dots{})
+@deftypefnx {Built-in Function} {} char (@var{s1}, @var{s2}, @dots{})
+@deftypefnx {Built-in Function} {} char (@var{cell_array})
+2つ以上の数値マトリクス、文字マトリクス、セル配列から文字列配列を作成します。引数は垂直に結合されます。リターン値は、文字列配列の各行の文字列が同じ長さになるように、必要に応じブランクでぱっパディングされます。空の入力文字列には意味があり、出力に連結されます。
+
+数値入力では、各要素は対応するASCII文字に変換されます。入力がASCII(0から255)の範囲外の場合、結果はレンジエラーになります。
+
+セル配列では、各要素は個々に連結されます。@code{char}により変換されたセル配列の大部分は、@code{cellstr}で元に変換できます。たとえば:
+
+@example
+@group
+char ([97, 98, 99], "", @{"98", "99", 100@}, "str1", ["ha", "lf"])
+   @result{} ["abc    "
+       "       "
+       "98     "
+       "99     "
+       "d      "
+       "str1   "
+       "half   "]
+@end group
+@end example
+@seealso{@ref{XREFstrvcat,,strvcat}, @ref{XREFcellstr,,cellstr}}
+@end deftypefn
+
+
+@c strvcat libinterp/corefcn/strfns.cc
+@anchor{XREFstrvcat}
+@deftypefn {Built-in Function} {} strvcat (@var{x})
+@deftypefnx {Built-in Function} {} strvcat (@var{x}, @dots{})
+@deftypefnx {Built-in Function} {} strvcat (@var{s1}, @var{s2}, @dots{})
+@deftypefnx {Built-in Function} {} strvcat (@var{cell_array})
+2つ以上の数値マトリクス、文字マトリクス、セル配列から文字配列を作成します。。引数は垂直に連結します。リターン値は、文字列配列の各要素が同じ長さになるように、必要に応じブランクでパディングされます。
+@code{char}と異なり、空文字列は削除され、出力されません
+
+数値入力では、各要素は対応するASCII文字に変換されます。入力がASCII(0から255)の範囲外の場合、結果はレンジエラーになります。
+
+セル配列では、各要素は個々に連結されます。@code{strvcat}で変換されたセル配列の大部分は、@code{cellstr}で元に変換できます。たとえば:
+
+@example
+@group
+strvcat ([97, 98, 99], "", @{"98", "99", 100@}, "str1", ["ha", "lf"])
+      @result{} ["abc    "
+          "98     "
+          "99     "
+          "d      "
+          "str1   "
+          "half   "]
+@end group
+@end example
+@seealso{@ref{XREFchar,,char}, @ref{XREFstrcat,,strcat},
+@ref{XREFcstrcat,,cstrcat}}
+@end deftypefn
+
+
+@c strcat scripts/strings/strcat.m
+@anchor{XREFstrcat}
+@deftypefn {Function File} {} strcat (@var{s1}, @var{s2}, @dots{})
+すべての引数を水平に連結した文字列をリターンします。引数がセル文字列の場合、@code{strcat}は個々のセルを連結したセル文字列をリターンします。入力が数値の場合、各要素は対応するASCII文字に変換されます。入力文字列の末尾の空白文字は、文字列を連結する前に削除されます。セル文字列にはトリムされた空白文字を@strong{含まない}ことに注意してください。
+
+たとえば:
+
+@example
+@group
+strcat ("|", " leading space is preserved", "|")
+    @result{} | leading space is preserved|
+@end group
+@end example
+
+@example
+@group
+strcat ("|", "trailing space is eliminated ", "|")
+    @result{} |trailing space is eliminated|
+@end group
+@end example
+
+@example
+@group
+strcat ("homogeneous space |", "  ", "| is also eliminated")
+    @result{} homogeneous space || is also eliminated
+@end group
+@end example
+
+@example
+@group
+s = [ "ab"; "cde" ];
+strcat (s, s, s)
+    @result{}
+        "ababab   "
+        "cdecdecde"
+@end group
+@end example
+
+@example
+@group
+s = @{ "ab"; "cd " @};
+strcat (s, s, s)
+    @result{}
+        @{
+          [1,1] = ababab
+          [2,1] = cd cd cd 
+        @}
+@end group
+@end example
+
+@seealso{@ref{XREFcstrcat,,cstrcat}, @ref{XREFchar,,char},
+@ref{XREFstrvcat,,strvcat}}
+@end deftypefn
+
+
+@c cstrcat scripts/strings/cstrcat.m
+@anchor{XREFcstrcat}
+@deftypefn {Function File} {} cstrcat (@var{s1}, @var{s2}, @dots{})
+すべての引数を水平に連結した文字列をリターンします。末尾のスペースは残されます。たとえば:
+
+@example
+@group
+cstrcat ("ab   ", "cd")
+      @result{} "ab   cd"
+@end group
+@end example
+
+@example
+@group
+s = [ "ab"; "cde" ];
+cstrcat (s, s, s)
+      @result{} "ab ab ab "
+         "cdecdecde"
+@end group
+@end example
+@seealso{@ref{XREFstrcat,,strcat}, @ref{XREFchar,,char},
+@ref{XREFstrvcat,,strvcat}}
+@end deftypefn
+
+
+@node Converting Numerical Data to Strings
+@subsection Converting Numerical Data to Strings
+数値データを対応するASCII文字にキャストする文字列連結関数(@ref{Concatenating
+Strings}参照)の他にも、数値データを文字列にフォーマットする関数がいくつかあります。@code{mat2str}と@code{num2str}は実数おとび複素数のマトリクス、@code{int2str}は整数マトリクスを変換します。
+複素数値にたいして@code{int2str}は、実数部から少数部を整数に丸めて評価します。数値データを文字列にフォーマットする、より柔軟な方法としては、@code{sprintf}関数(@ref{Formatted
+Output}, @ref{XREFsprintf,,sprintf}参照)があります。
+
+@c mat2str scripts/strings/mat2str.m
+@anchor{XREFmat2str}
+@deftypefn {Function File} {@var{s} =} mat2str (@var{x}, @var{n})
+@deftypefnx {Function File} {@var{s} =} mat2str (@var{x}, @var{n}, "class")
+実数、複素数、および論理のマトリクスｗ文字列としてフォーマットします。リターンされる文字列と@code{eval}関数を使用することにより、元のマトリクスを再構築できます。
+
+値の精度は、@var{n}により与えられます。@var{n}がスカラーの場合、マトリクスの実数部と虚数部は両方とも同じ精度でプリントされます。スカラーでない場合は、@code{@var{n}(1)}が実数部の精度、@code{@var{n}(2)}が虚数部の精度を定義します。@var{n}のデフォルト値は15です。
+
+引数@qcode{"class"}が与えられた場合には、@code{eval}がそのクラスのマトリクスを構築するときのような方法で、@var{x}が文字列結果に含められます。
+
+@example
+@group
+mat2str ([ -1/3 + i/7; 1/3 - i/7 ], [4 2])
+     @result{} "[-0.3333+0.14i;0.3333-0.14i]"
+
+mat2str ([ -1/3 +i/7; 1/3 -i/7 ], [4 2])
+     @result{} "[-0.3333+0i 0+0.14i;0.3333+0i -0-0.14i]"
+
+mat2str (int16 ([1 -1]), "class")
+     @result{} "int16([1 -1])"
+
+mat2str (logical (eye (2)))
+     @result{} "[true false;false true]"
+
+isequal (x, eval (mat2str (x)))
+     @result{} 1
+@end group
+@end example
+
+@seealso{@ref{XREFsprintf,,sprintf}, @ref{XREFnum2str,,num2str},
+@ref{XREFint2str,,int2str}}
+@end deftypefn
+
+
+@c num2str scripts/general/num2str.m
+@anchor{XREFnum2str}
+@deftypefn {Function File} {} num2str (@var{x})
+@deftypefnx {Function File} {} num2str (@var{x}, @var{precision})
+@deftypefnx {Function File} {} num2str (@var{x}, @var{format})
+数字(または配列)を、文字列(または文字配列)に変換します。オプションの第2引数は、出力に使用される有効桁数(@var{precision})、または@code{sprintf}形式(@ref{Formatted
+Output}参照)のフォーマット用テンプレート文字列(@var{format})です。@code{num2str}は複素数も扱うことができます。
+
+例:
+
+@example
+@group
+num2str (123.456)
+     @result{} "123.46"
+
+num2str (123.456, 4)
+     @result{} "123.5"
+
+s = num2str ([1, 1.34; 3, 3.56], "%5.1f")
+     @result{} s =
+        1.0  1.3
+        3.0  3.6
+whos s
+     @result{}
+      Attr Name        Size                     Bytes  Class
+      ==== ====        ====                     =====  =====
+           s           2x8                         16  char
+
+num2str (1.234 + 27.3i)
+     @result{} "1.234+27.3i"
+@end group
+@end example
+
+注意:
+
+@sc{matlab}との互換性のため、文字列をリターンする前に先頭のスペースは削除されます。
+
+@code{num2str}関数はあまり柔軟ではありません。より柔軟に結果を制御したい場合は、@code{sprintf}(@ref{Formatted
+Output}参照)を使用してください。
+
+@var{x}が複素数の場合は、フォーマット文字列に含める出力変換指定は1つだけにしてください。それ以外では、結果は予測できません。
+@seealso{@ref{XREFsprintf,,sprintf}, @ref{XREFint2str,,int2str},
+@ref{XREFmat2str,,mat2str}}
+@end deftypefn
+
+
+@c int2str scripts/general/int2str.m
+@anchor{XREFint2str}
+@deftypefn {Function File} {} int2str (@var{n})
+整数(または整数配列)を、文字列(または文字配列)に変換します。
+
+@example
+@group
+int2str (123)
+     @result{} "123"
+
+s = int2str ([1, 2, 3; 4, 5, 6])
+     @result{} s =
+        1  2  3
+        4  5  6
+
+whos s
+     @result{}
+      Attr Name        Size                     Bytes  Class
+      ==== ====        ====                     =====  =====
+           s           2x7                         14  char
+@end group
+@end example
+
+この関数はあまり柔軟ではありません。より柔軟に結果を制御したい場合は、@code{sprintf}(@ref{Formatted
+Output}参照)を使用してください。
+ @seealso{@ref{XREFsprintf,,sprintf}, @ref{XREFnum2str,,num2str},
+@ref{XREFmat2str,,mat2str}}
+@end deftypefn
+
+
+@node Comparing Strings
+@section Comparing Strings
+
+文字列とは文字配列のことなので、以下の例が示すように、文字列は要素ごとに比較されます。
+
+@example
+@group
+GNU = "GNU's Not UNIX";
+spaces = (GNU == " ")
+     @result{} spaces =
+       0   0   0   0   0   1   0   0   0   1   0   0   0   0
+@end group
+@end example
+
+@noindent To determine if two strings are identical it is necessary to use the
+2つの文字列が等しいか判断するには、@code{strcmp}関数を使う必要があります。この関数は大文字小文字を区別して、文字列全体を比較します。@code{strncmp}は、最初の@code{N}文字だけを比較します(@code{N}はパラメーターとして与えられます)。@code{strcmpi}と@code{strncmpi}は、大文字小文字を区別しません。
+
+@c strcmp libinterp/corefcn/strfns.cc
+@anchor{XREFstrcmp}
+@deftypefn {Built-in Function} {} strcmp (@var{s1}, @var{s2})
+文字列@var{s1}と@var{s2}が同じなら1、それ以外は0をリターンします。
+
+@var{s1}と@var{s2}のいずれかが文字列のセル配列の場合、個々のセル配列にたいして上述した値を含む、セル配列と同じサイズの配列をリターンします。もう一方の引数は文字列のセル配列(同じサイズ、または要素が1つだけのセル配列)、文字マトリクス、または文字列です。
+
+@strong{警告:}
+@sc{matlab}との互換性のため、Octaveのstrcmp関数は文字列が等しいときに1、等しくなければ0をリターンします。これは同名のCライブラリー関数とは逆です。
+@seealso{@ref{XREFstrcmpi,,strcmpi}, @ref{XREFstrncmp,,strncmp},
+@ref{XREFstrncmpi,,strncmpi}}
+@end deftypefn
+
+
+@c strncmp libinterp/corefcn/strfns.cc
+@anchor{XREFstrncmp}
+@deftypefn {Built-in Function} {} strncmp (@var{s1}, @var{s2}, @var{n})
+文字列@var{s1}と@var{s2}の最初の@var{n}文字が同じなら1、それ以外は0をリターンします。
+
+@example
+@group
+strncmp ("abce", "abcd", 3)
+      @result{} 1
+@end group
+@end example
+
+@var{s1}と@var{s2}のいずれかが文字列のセル配列の場合、個々のセル配列にたいして上述した値を含む、セル配列と同じサイズの配列をリターンします。もう一方の引数は文字列のセル配列(同じサイズ、または要素が1つだけのセル配列)、文字マトリクス、または文字列です。
+
+@example
+@group
+strncmp ("abce", @{"abcd", "bca", "abc"@}, 3)
+     @result{} [1, 0, 1]
+@end group
+@end example
+
+@strong{警告:}
+@sc{matlab}との互換性のため、Octaveのstrncmp関数は文字列が等しいときに1、等しくなければ0をリターンします。これは同名のCライブラリー関数とは逆です。
+@seealso{@ref{XREFstrncmpi,,strncmpi}, @ref{XREFstrcmp,,strcmp},
+@ref{XREFstrcmpi,,strcmpi}}
+@end deftypefn
+
+
+@c strcmpi libinterp/corefcn/strfns.cc
+@anchor{XREFstrcmpi}
+@deftypefn {Built-in Function} {} strcmpi (@var{s1}, @var{s2})
+文字列@var{s1}と@var{s2}が、同じ(大文字小文字の違いは無視)場合は1、それ以外は0をリターンします。
+
+@var{s1}と@var{s2}のいずれかが文字列のセル配列の場合、個々のセル配列にたいして上述した値を含む、セル配列と同じサイズの配列をリターンします。もう一方の引数は文字列のセル配列(同じサイズ、または要素が1つだけのセル配列)、文字マトリクス、または文字列です。
+
+@strong{警告:}
+@sc{matlab}との互換性のため、Octaveのstrcmpi関数は文字列が等しいときに1、等しくなければ0をリターンします。これは同名のCライブラリー関数とは逆です。
+
+@strong{警告:} National alphabetはサポートされません。
+@seealso{@ref{XREFstrcmp,,strcmp}, @ref{XREFstrncmp,,strncmp},
+@ref{XREFstrncmpi,,strncmpi}}
+@end deftypefn
+
+
+@c strncmpi libinterp/corefcn/strfns.cc
+@anchor{XREFstrncmpi}
+@deftypefn {Built-in Function} {} strncmpi (@var{s1}, @var{s2}, @var{n})
+@var{s1}と@var{s2}の最初の@var{n}文字が同じ(大文字小文字の違いは無視)場合は1、それ以外は0をリターンします。
+
+@var{s1}と@var{s2}のいずれかが文字列のセル配列の場合、個々のセル配列にたいして上述した値を含む、セル配列と同じサイズの配列をリターンします。もう一方の引数は文字列のセル配列(同じサイズ、または要素が1つだけのセル配列)、文字マトリクス、または文字列です。
+
+@strong{警告:}
+@sc{matlab}との互換性のため、Octaveのstrncmpi関数は文字列が等しいときに1、等しくなければ0をリターンします。これは同名のCライブラリー関数とは逆です。
+
+@strong{警告:} National alphabetsはサポートされません。
+@seealso{@ref{XREFstrncmp,,strncmp}, @ref{XREFstrcmp,,strcmp},
+@ref{XREFstrcmpi,,strcmpi}}
+@end deftypefn
+
+
+@c validatestring scripts/strings/validatestring.m
+@anchor{XREFvalidatestring}
+@deftypefn {Function File} {@var{validstr} =} validatestring (@var{str}, @var{strarray})
+@deftypefnx {Function File} {@var{validstr} =} validatestring (@var{str}, @var{strarray}, @var{funcname})
+@deftypefnx {Function File} {@var{validstr} =} validatestring (@var{str}, @var{strarray}, @var{funcname}, @var{varname})
+@deftypefnx {Function File} {@var{validstr} =} validatestring (@dots{}, @var{position})
+@var{str}が@var{strarray}内の要素、または要素の部分文字列か検証します。
+
+@var{str}がテストされる文字列で、@var{strarray}が有効な値となる文字列のセル配列の場合、@var{validstr}は@var{str}にたいする検証フォームです(検証の定義は@var{str}が@var{validstr}のメンバー、またはメンバーの部分文字列かどうかです)。これはオプションの長い形式が@qcode{"red"}で短い形式が@qcode{"r"}のような場合などに、短い形式を展開して検証するのに便利です。@var{str}が@var{validstr}の部分文字列で複数がマッチし、すべてのマッチが部分文字列へのマッチの場合は、最短のマッチがリターンされます。それ以外では、@var{str}の展開があいまいなため、エラーがレイズされます。すべての比較で大文字小文字を区別しません。
+
+追加入力の@var{funcname}、@var{varname}、@var{position}はオプションで、生成される検証エラーメッセージをより具体的にするものです。
+
+@c Set example in small font to prevent overfull line
+例:
+
+@smallexample
+@group
+validatestring ("r", @{"red", "green", "blue"@})
+@result{} "red"
+
+validatestring ("b", @{"red", "green", "blue", "black"@})
+@result{} error: validatestring: multiple unique matches were found for 'b':
+   blue, black
+@end group
+@end smallexample
+
+@seealso{@ref{XREFstrcmp,,strcmp}, @ref{XREFstrcmpi,,strcmpi}}
+@end deftypefn
+
+
+@node Manipulating Strings
+@section Manipulating Strings
+
+Octaveは文字列を操作するための関数を広範にサポートします。文字列は単なるマトリクスなので、単純な操作は標準的な演算子を使用して行うことができます。以下はブランク文字をすべてアンダースコアで置き換える方法を示す例です。
+
+@example
+@group
+quote = ...
+  "First things first, but not necessarily in that order";
+quote( quote == " " ) = "_"
+@result{} quote = 
+    First_things_first,_but_not_necessarily_in_that_order
+@end group
+@end example
+
+検索、置換、および一般的な正規表現などのより複雑な操作にたいして、Octaveには以下の関数があります。
+
+@c deblank scripts/strings/deblank.m
+@anchor{XREFdeblank}
+@deftypefn {Function File} {} deblank (@var{s})
+@var{s}から末尾の空白文字とnullを削除します。@var{s}がマトリクスの場合、@var{deblank}は各行をもっとも長い文字列の長さにトリムします。@var{s}が文字列のセル配列の場合は、各文字列要素を再帰的に処理します。
+
+例:
+
+@example
+@group
+deblank ("    abc  ")
+     @result{}  "    abc"
+
+deblank ([" abc   "; "   def   "])
+     @result{}  [" abc  " ; "   def"]
+@end group
+@end example
+@seealso{@ref{XREFstrtrim,,strtrim}}
+@end deftypefn
+
+
+@c strtrim scripts/strings/strtrim.m
+@anchor{XREFstrtrim}
+@deftypefn {Function File} {} strtrim (@var{s})
+@var{s}から先頭と末尾の空白文字を削除します。@var{s}がマトリクスの場合、@var{strtrim}は各行をもっとも長い文字列の長さにトリムします。@var{s}が文字列のセル配列の場合は、各文字列要素を再帰的に処理します。たとえば:
+
+@example
+@group
+strtrim ("    abc  ")
+     @result{}  "abc"
+
+strtrim ([" abc   "; "   def   "])
+     @result{}  ["abc  "  ; "  def"]
+@end group
+@end example
+@seealso{@ref{XREFdeblank,,deblank}}
+@end deftypefn
+
+
+@c strtrunc scripts/strings/strtrunc.m
+@anchor{XREFstrtrunc}
+@deftypefn {Function File} {} strtrunc (@var{s}, @var{n})
+文字列@var{s}を、長さ@var{n}に切り詰めます。@var{s}が文字マトリクスのは、列数を合わせます。@var{s}が文字列のセル配列の場合は、処理は各要素にたいして行われ、新たなセル配列をリターンします。
+@end deftypefn
+
+
+@c findstr scripts/strings/findstr.m
+@anchor{XREFfindstr}
+@deftypefn {Function File} {} findstr (@var{s}, @var{t})
+@deftypefnx {Function File} {} findstr (@var{s}, @var{t}, @var{overlap})
+文字列@var{s}と@var{t}の長い方の文字列中で、短い方の文字列が出現するすべての位置をベクターでリターンします。オプション引数@var{overlap}がtrueの場合は、リターンされるベクターはオーバーラップする位置を含むことができます(これがデフォルトです)。たとえば:
+
+@example
+@group
+findstr ("ababab", "a")
+     @result{} [1, 3, 5];
+findstr ("abababa", "aba", 0)
+     @result{} [1, 5]
+@end group
+@end example
+
+@strong{警告:} @code{findstr}は廃止が予定されています。新たなコードはすべて@code{strfind}を使用してください。
+@seealso{@ref{XREFstrfind,,strfind}, @ref{XREFstrmatch,,strmatch},
+@ref{XREFstrcmp,,strcmp}, @ref{XREFstrncmp,,strncmp},
+@ref{XREFstrcmpi,,strcmpi}, @ref{XREFstrncmpi,,strncmpi},
+@ref{XREFfind,,find}}
+@end deftypefn
+
+
+@c strchr scripts/strings/strchr.m
+@anchor{XREFstrchr}
+@deftypefn {Function File} {@var{idx} =} strchr (@var{str}, @var{chars})
+@deftypefnx {Function File} {@var{idx} =} strchr (@var{str}, @var{chars}, @var{n})
+@deftypefnx {Function File} {@var{idx} =} strchr (@var{str}, @var{chars}, @var{n}, @var{direction})
+@deftypefnx {Function File} {[@var{i}, @var{j}] =} strchr (@dots{})
+文字列@var{chars}から、文字集合@var{chars}の文字の出現を検索します。リターン値、および引数の@var{n}と@var{direction}は、@code{find}の場合と同様に振る舞います。
+
+多くの場合、この関数はregexpを使用するより高速です。
+
+@seealso{@ref{XREFfind,,find}}
+@end deftypefn
+
+
+@c index scripts/strings/index.m
+@anchor{XREFindex}
+@deftypefn {Function File} {} index (@var{s}, @var{t})
+@deftypefnx {Function File} {} index (@var{s}, @var{t}, @var{direction})
+文字列@var{s}内で文字列@var{t}が最初に出現する位置、見つからない場合は0をリターンします。@var{s}には文字列配列、または文字列のセル配列も指定できます。
+
+たとえば:
+
+@example
+@group
+index ("Teststring", "t")
+    @result{} 4
+@end group
+@end example
+
+@var{direction}が@qcode{"first"}の場合は、見つかった最初の要素をリターンします。@var{direction}が@qcode{"last"}の場合は、見つかった最後の要素をリターンします。
+
+@seealso{@ref{XREFfind,,find}, @ref{XREFrindex,,rindex}}
+@end deftypefn
+
+
+@c rindex scripts/strings/rindex.m
+@anchor{XREFrindex}
+@deftypefn {Function File} {} rindex (@var{s}, @var{t})
+文字列@var{s}内で文字列@var{t}が最後に出現する位置、見つからない場合は0をリターンします。@var{s}には文字列配列、または文字列のセル配列も指定できます。
+
+たとえば:
+
+@example
+@group
+rindex ("Teststring", "t")
+     @result{} 6
+@end group
+@end example
+
+@code{rindex}関数は、@var{direction}を@qcode{"last"}にセットした@code{index}関数と等価です。
+
+@seealso{@ref{XREFfind,,find}, @ref{XREFindex,,index}}
+@end deftypefn
+
+
+@c strfind libinterp/corefcn/strfind.cc
+@anchor{XREFstrfind}
+@deftypefn {Built-in Function} {@var{idx} =} strfind (@var{str}, @var{pattern})
+@deftypefnx {Built-in Function} {@var{idx} =} strfind (@var{cellstr}, @var{pattern})
+@deftypefnx {Built-in Function} {@var{idx} =} strfind (@dots{}, "overlaps", @var{val})
+文字列@var{str}内から@var{pattern}を検索して、出現の各開始位置のインデクスをベクター@var{idx}でリターンします。
+
+パターンが見つからなかった場合、または@var{pattern}が@var{str}より長い場合には、@var{idx}は空の配列@code{[]}になります。オプション引数@qcode{"overlaps"}はパターンが@var{str}内のどの位置でもマッチする(true)か、完全なパターンのユニークな出現だけにマッチする(false)を決定します。デフォルトはtrueです。
+
+文字列のセル配列 @var{cellstr}がセットされた場合、@var{idx}は上記で指定されたベクターのセル配列になります。
+
+例:
+
+@example
+@group
+strfind ("abababa", "aba")
+     @result{} [1, 3, 5]
+
+strfind ("abababa", "aba", "overlaps", false)
+     @result{} [1, 5]
+
+strfind (@{"abababa", "bebebe", "ab"@}, "aba")
+     @result{}
+        @{
+          [1,1] =
+
+             1   3   5
+
+          [1,2] = [](1x0)
+          [1,3] = [](1x0)
+        @}
+@end group
+@end example
+@seealso{@ref{XREFfindstr,,findstr}, @ref{XREFstrmatch,,strmatch},
+@ref{XREFregexp,,regexp}, @ref{XREFregexpi,,regexpi}, @ref{XREFfind,,find}}
+@end deftypefn
+
+
+@c strjoin scripts/strings/strjoin.m
+@anchor{XREFstrjoin}
+@deftypefn {Function File} {@var{str} =} strjoin (@var{cstr})
+@deftypefnx {Function File} {@var{str} =} strjoin (@var{cstr}, @var{delimiter})
+セル文字列配列@var{cstr}の要素を1つの文字列に結合します。
+
+@var{delimiter}が指定されない場合、@var{cstr}の要素の区切りはスペースになります。
+
+@var{delimiter}が文字列として指定された場合、その文字列を使用してセル文字列配列が結合されます。エスケープシーケンスもサポートされます。
+
+@var{delimiter}がセル文字列配列で、その長さが@var{cstr}より1小さい場合は、@var{cstr}は@var{delimiter}の要素を順番に使って結合されます。エスケープシーケンスはサポートされません。
+
+@example
+@group
+strjoin (@{'Octave','Scilab','Lush','Yorick'@}, '*')
+      @result{} 'Octave*Scilab*Lush*Yorick'
+@end group
+@end example
+@seealso {strsplit}
+@end deftypefn
+
+
+@c strmatch scripts/strings/strmatch.m
+@anchor{XREFstrmatch}
+@deftypefn {Function File} {} strmatch (@var{s}, @var{A})
+@deftypefnx {Function File} {} strmatch (@var{s}, @var{A}, "exact")
+@var{s}で始まる@var{A}のエントリーのインデクスをリターンします。第2引数@var{A}は文字列、文字マトリクス、または文字列のセル配列でなければなりません。第3引数@qcode{"exact"}が与えられなかった場合、@var{s}は@var{s}の長さまで@var{A}に一致するだけでマッチとなります。マッチングでは、@var{s}と@var{A}の末尾のスペースとnullは無視します。
+
+たとえば:
+
+@example
+@group
+strmatch ("apple", "apple juice")
+     @result{} 1
+
+strmatch ("apple", ["apple  "; "apple juice"; "an apple"])
+     @result{} [1; 2]
+
+strmatch ("apple", ["apple  "; "apple juice"; "an apple"], "exact")
+     @result{} [1]
+@end group
+@end example
+
+@strong{警告:} @code{strmatch}は廃止が予定されています。
+Use @code{strncmp} (normal case), or @code{strcmp} (@qcode{"exact"} case),
+or @code{regexp} in all new code.  @seealso{@ref{XREFstrfind,,strfind},
+@ref{XREFfindstr,,findstr}, @ref{XREFstrcmp,,strcmp},
+@ref{XREFstrncmp,,strncmp}, @ref{XREFstrcmpi,,strcmpi},
+@ref{XREFstrncmpi,,strncmpi}, @ref{XREFfind,,find}}
+@end deftypefn
+
+
+@c strtok scripts/strings/strtok.m
+@anchor{XREFstrtok}
+@deftypefn {Function File} {[@var{tok}, @var{rem}] =} strtok (@var{str})
+@deftypefnx {Function File} {[@var{tok}, @var{rem}] =} strtok (@var{str}, @var{delim})
+
+文字列@var{str}から、最初に見つかった文字列@var{delim}内の文字(その文字は含まない)までのすべての文字を探します。@var{rem}が要求された場合、@var{rem}には最初に見つかった区切り文字から開始する、@var{str}の残りの文字列がセットされます。@var{str}内の先頭の区切り文字は無視されます。@var{delim}が指定されない場合には、スペースが指定されたものとします。@var{str}には文字列のセル配列を指定することもでき、その場合は個々の文字列にたいして関数が実行され、見つかったトークンと残りの文字がセル配列でリターンされます。
+
+例:
+
+@example
+@group
+strtok ("this is the life")
+     @result{} "this"
+
+[tok, rem] = strtok ("14*27+31", "+-*/")
+     @result{}
+        tok = 14
+        rem = *27+31
+@end group
+@end example
+@seealso{@ref{XREFindex,,index}, @ref{XREFstrsplit,,strsplit},
+@ref{XREFstrchr,,strchr}, @ref{XREFisspace,,isspace}}
+@end deftypefn
+
+
+@c strsplit scripts/strings/strsplit.m
+@anchor{XREFstrsplit}
+@deftypefn {Function File} {[@var{cstr}] =} strsplit (@var{s})
+@deftypefnx {Function File} {[@var{cstr}] =} strsplit (@var{s}, @var{del})
+@deftypefnx {Function File} {[@var{cstr}] =} strsplit (@dots{}, @var{name}, @var{value})
+@deftypefnx {Function File} {[@var{cstr}, @var{matches}] =} strsplit (@dots{})
+@var{del}で指定された区切り文字を使用して文字列@var{s}を分割し、分割された部分文字列のセル文字列配列をリターンします。区切り文字が指定されない場合、文字列@var{s}は空白文字で分割されます。区切り文字@var{del}には文字列、スカラーのセル文字列、またはセル文字列配列を指定できます。デフォルトでは入力文字列@var{s}内の連続する区切り文字は、1つにまとめられます。
+
+第2出力@var{matches}には元文字列内でマッチした区切り文字がリターンされます。
+
+例:
+
+@example
+strsplit ("a b c")
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = b
+            [1,3] = c
+          @}
+
+strsplit ("a,b,c", ",")
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = b
+            [1,3] = c
+          @}
+
+strsplit ("a foo b,bar c", @{"\s", "foo", "bar"@})
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = b
+            [1,3] = c
+          @}
+
+strsplit ("a,,b, c", @{",", " "@}, false)
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = 
+            [1,3] = b
+            [1,4] = 
+            [1,5] = c
+          @}
+
+@end example
+
+サポートされる@var{name}/@var{value}ペアー引数は;
+
+@itemize
+@item @var{collapsedelimiters}には値@var{true}、
+または@var{false}を指定でき、デフォルトは@var{false}。
+
+@item @var{delimitertype}は値@code{simple}、
+または@code{regularexpression}を指定できる。デフォルトは、@var{delimitertype}が@code{simple}。
+@end itemize
+
+例:
+
+@example
+strsplit ("a foo b,bar c", ",|\\s|foo|bar", "delimitertype", "regularexpression")
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = b
+            [1,3] = c
+          @}
+
+strsplit ("a,,b, c", "[, ]", false, "delimitertype", "regularexpression")
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = 
+            [1,3] = b
+            [1,4] = 
+            [1,5] = c
+          @}
+
+strsplit ("a,\t,b, c", @{',', '\s'@}, "delimitertype", "regularexpression")
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = b
+            [1,3] = c
+          @}
+
+strsplit ("a,\t,b, c", @{',', ' ', '\t'@}, "collapsedelimiters", false)
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = 
+            [1,3] = 
+            [1,4] = b
+            [1,5] = 
+            [1,6] = c
+          @}
+@end example
+
+@seealso{@ref{XREFostrsplit,,ostrsplit}, @ref{XREFstrjoin,,strjoin},
+@ref{XREFstrtok,,strtok}, @ref{XREFregexp,,regexp}}
+@end deftypefn
+
+
+@c ostrsplit scripts/strings/ostrsplit.m
+@anchor{XREFostrsplit}
+@deftypefn {Function File} {[@var{cstr}] =} ostrsplit (@var{s}, @var{sep})
+@deftypefnx {Function File} {[@var{cstr}] =} ostrsplit (@var{s}, @var{sep}, @var{strip_empty})
+文字列@var{s}を1つ以上のセパレーター@var{sep}で分割して、文字列のセル配列をリターンします。@var{strip_empty}がtrueでない場合、連続するセパレーター、および境界のセパレーターは、空文字列の結果になります。@var{strip_empty}のデフォルト値はfalseです。
+
+2次元文字配列はセパレーター、および元々の列境界で分割されます。
+
+例:
+
+@example
+@group
+ostrsplit ("a,b,c", ",")
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = b
+            [1,3] = c
+          @}
+
+ostrsplit (["a,b" ; "cde"], ",")
+      @result{}
+          @{
+            [1,1] = a
+            [1,2] = b
+            [1,3] = cde
+          @}
+@end group
+@end example
+@seealso{@ref{XREFstrsplit,,strsplit}, @ref{XREFstrtok,,strtok}}
+@end deftypefn
+
+
+@c strread scripts/io/strread.m
+@anchor{XREFstrread}
+@deftypefn {Function File} {[@var{a}, @dots{}] =} strread (@var{str})
+@deftypefnx {Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format})
+@deftypefnx {Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format}, @var{format_repeat})
+@deftypefnx {Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format}, @var{prop1}, @var{value1}, @dots{})
+@deftypefnx {Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format}, @var{format_repeat}, @var{prop1}, @var{value1}, @dots{})
+文字列からデータを読み取ります。
+
+文字列@var{str}は、@var{format}の指定に順繰りにマッチする単語に分割されます。つまり、最初の単語は1つ目の指定、次の単語は2つ目の指定にたいするマッチ、のようにとなります。指定子より多くの単語がある場合には、すべての単語が処理されるまで、このプロセスが繰り返されます。
+
+文字列@var{format}には、@var{str}内で単語がパースされる方法を記述します。これには以下の指定の任意の組み合わせが含まれます:
+
+@table @code
+@item %s
+単語は文字列としてパースされる。
+
+@item %f
+@itemx %n
+単語は数字としてパースされ、倍精度に変換される。
+
+@item %d
+@itemx %u
+単語は数字としてパースされ、int32に変換される。
+
+@item %*', '%*f', '%*s
+単語をスキップする。
+
+%sと%d、%f、%n、%uおよび関連する%*s
+@dots{}は、%N(Nは2以上の整数)によるオプションの幅指定です。%fにたいしては、%N.Mfのような指定ができます。
+
+@item literals
+これらに加え、フォーマットにはリテラル文字列が含まれる場合があり、これらは読み込みの際にはスキップされます。
+@end table
+
+パースされた単語は、1つ目の指定子に対応する単語は1つ目の出力引数にリターンされ、残りの指定子も同様です。
+
+@var{format}のデフォルトは@t{"%f"}で、これは@var{str}から数字が読み取られることを意味します。これは@var{str}に数値フィールドが含まれるときだけ行われます。
+
+たとえば、文字列
+
+@example
+@group
+@var{str} = "\
+Bunny Bugs   5.5\n\
+Duck Daffy  -7.5e-5\n\
+Penguin Tux   6"
+@end group
+@end example
+
+@noindent
+は、以下で読み取ることができます
+
+@example
+[@var{a}, @var{b}, @var{c}] = strread (@var{str}, "%s %s %f");
+@end example
+
+オプションの数値引数@var{format_repeat}は、読み取るアイテム数を制限するために使用できます:
+
+@table @asis
+@item -1
+すべての文字列を最後まで読み取る。
+
+@item N
+@var{nargout}アイテムをN回読み込みます。@var{format_repeat}には0を指定することもできます。
+@end table
+
+プロパティー値ペアーを使って、@code{strread}の挙動を変更できます。以下のプロパティが認識されます:
+
+@table @asis
+@item @qcode{"commentstyle"}
+@var{str}のパーツはコメントと判断され、スキップされる。@var{value}はコメントスタイルで、以下を使用できます。
+
+@itemize
+@item @qcode{"shell"}
+@code{#}文字から行末までのすべてがスキップされる。
+
+@item @qcode{"c"}
+@code{/*}と@code{*/}の間のすべてがスキップされる。
+
+@item @qcode{"c++"}
+@code{//}文字から行末までのすべてがスキップされる。
+
+@item @qcode{"matlab"}
+@code{%}文字から行末までのすべてがスキップされる。
+
+@item ユーザー指定。オプションは2つ
+(1) 1つの文字列、また1x1のセル文字列: この右側のすべてがスキップされる; (2) 2x1のセル文字列配列:
+左側の文字列と右側の文字列の間のすべてがスキップされる。
+@end itemize
+
+@item @qcode{"delimiter"}
+@var{value}内の文字は、@var{str}を単語に分割するために使用される(デフォルト値は任意の空白文字)。
+
+@item @qcode{"emptyvalue"}:
+非空白文字で区切られた空の数値にたいしてリターンする値。デフォルトはNaN。そのデータ型がNaNをサポートしない場合(たとえばint32)のデフォルトは0。
+
+@item @qcode{"multipledelimsasone"}
+間に空白文字がない連続する区切り文字のシリーズを、1つの区切り文字として扱う。連続する区切り文字シリーズは垂直に@qcode{"aligned"}(整列されている)必要はない。
+
+@item @qcode{"treatasempty"}
+@var{value}内の(区切り文字か空白文字で囲まれた)文字列が1つあったら、それを欠損値として扱う。
+
+@item @qcode{"returnonerror"}
+@var{value}がtrue(デフォルトは1)の場合は、読み取りエラーを無視して通常どおりリターンする。false(0)の場合は、エラーをリターンする。
+
+@item @qcode{"whitespace"}
+@var{value}内の任意の文字は空白文字と解釈され、トリムされる。/tのような特殊文字を正しく処理するために、ダブルクォートで囲まなければならない。空白文字のデフォルト値は@qcode{"
+\b\r\n\t"}(スペースが含まれることにに注意)。空白文字が''(空)にセットされておらず@qcode{"%s"}フォーマット変更指定子が1つも指定されていない場合、スペースは常に空白文字の一部となる。
+
+@end table
+
+@var{str}内の単語数がフォーマット変換指定子の数に正確にマッチしない、strreadの振る舞いは@var{str}の最後の文字に依存する:
+
+@table @asis
+@item 最後の文字 = @qcode{"\n"}
+データ列は空フィールドかNaNでパディングされるので、すべての列が同じ長さになる 
+
+@item 最後の文字がt @qcode{"\n"}以外
+データ列はパディングされない。strreadは長さが異なる列をリターンする
+
+@end table
+
+@seealso{@ref{XREFtextscan,,textscan}, @ref{XREFtextread,,textread},
+@ref{XREFload,,load}, @ref{XREFdlmread,,dlmread}, @ref{XREFfscanf,,fscanf}}
+@end deftypefn
+
+
+@c strrep libinterp/corefcn/strfind.cc
+@anchor{XREFstrrep}
+@deftypefn {Built-in Function} {@var{newstr} =} strrep (@var{str}, @var{ptn}, @var{rep})
+@deftypefnx {Built-in Function} {@var{newstr} =} strrep (@var{cellstr}, @var{ptn}, @var{rep})
+@deftypefnx {Built-in Function} {@var{newstr} =} strrep (@dots{}, "overlaps", @var{val})
+文字列@var{str}内にあるすべてのパターン@var{ptn}を文字列@var{rep}で置換して、その結果をリターンします。
+
+オプション引数@qcode{"overlaps"}は、パターンが@var{str}内のすべての位置でマッチできる(true)か、それとも完全なパターンの一意な出現だけにマッチできるかを決定します。デフォルトはtrueです。
+
+@var{s}には文字列のセル配列も指定でき、その場合は各要素にたいして置換が行われ、セル配列がリターンされます。
+
+例:
+
+@example
+@group
+strrep ("This is a test string", "is", "&%$")
+    @result{}  "Th&%$ &%$ a test string"
+@end group
+@end example
+
+@seealso{@ref{XREFregexprep,,regexprep}, @ref{XREFstrfind,,strfind},
+@ref{XREFfindstr,,findstr}}
+@end deftypefn
+
+
+@c substr scripts/strings/substr.m
+@anchor{XREFsubstr}
+@deftypefn {Function File} {} substr (@var{s}, @var{offset})
+@deftypefnx {Function File} {} substr (@var{s}, @var{offset}, @var{len})
+文字位置@var{offset}から始まる長さ@var{len}文字の一部文字列をリターンします。
+
+オフセット位置の番号は1から開始されます。@var{offset}が負の場合は、抽出開始位置は文字列の終端からのオフセットで数えられます。
+
+@var{len}が省略された場合、一部文字列は@var{S}の終端まで拡張されます。@var{len}に負の値を指定すると、文字列の最後の@var{len}文字が抽出されます。
+
+例:
+
+@example
+@group
+substr ("This is a test string", 6, 9)
+     @result{} "is a test"
+substr ("This is a test string", -11)
+     @result{} "test string"
+substr ("This is a test string", -11, -7)
+     @result{} "test"
+@end group
+@end example
+
+この関数はPerlの同名の関数を元にしています。
+@end deftypefn
+
+
+@c regexp libinterp/corefcn/regexp.cc
+@anchor{XREFregexp}
+@deftypefn {Built-in Function} {[@var{s}, @var{e}, @var{te}, @var{m}, @var{t}, @var{nm}, @var{sp}] =} regexp (@var{str}, @var{pat})
+@deftypefnx {Built-in Function} {[@dots{}] =} regexp (@var{str}, @var{pat}, "@var{opt1}", @dots{})
+文字列をマッチングするための正規表現です。@var{str}から@var{pat}を検索して、マッチした位置と部分文字列、マッチしなかったときは空の値をリターンします。
+
+マッチさせるパターン@var{pat}には以下の標準的なregex演算子が含まれます:
+
+@table @code
+@item .
+任意の文字にマッチする
+
+@item * + ? @{@}
+繰り返し演算子。以下の意味をもつ
+
+@table @code
+@item *
+0回以上のマッチ
+
+@item +
+1回以上のマッチ
+
+@item ?
+0または1回のマッチ
+
+@item @{@var{n}@}
+正確に@var{n}回のマッチ
+
+@item @{@var{n},@}
+@var{n}回以上のマッチ
+
+@item @{@var{m},@var{n}@}
+@var{m}回から@var{n}回のマッチ
+@end table
+
+@item [@dots{}] [^@dots{}]
+
+リスト演算子。パターンは"["と"]"の間にリストされた任意の文字にマッチする。最初の文字が"^"の場合、パターンの意味は逆になり、角カッコの間にリストされた文字以外の任意の文字にマッチする。
+
+リスト演算子内で以下で定義されるエスケープシーケンスを使用できる。たとえば浮動小数点数にたいするテンプレートは@code{[-+.\d]+}のようになる。
+
+@item () (?:)
+グループ化演算子。1つ目の丸カッコだけの形式はトークンも作成する。
+
+@item |
+選択肢のための演算子。正規表現からなる選択肢の1つにマッチする。選択肢は上述のグループ化演算子@code{()}で区切らなければならない。
+
+@item ^ $
+アンカー演算子。文字列の開始、または終了を示すには、(@code{^})および(@code{$})のパターンが要求される。
+@end table
+
+さらに以下のエスケープシーケンスは、特別な意味をもつ。
+
+@table @code
+
+@item \d
+任意の数字にマッチする
+
+@item \D
+数字以外の任意の文字にマッチする
+
+@item \s
+任意の空白文字にマッチする
+
+@item \S
+空白文字以外の任意の文字にマッチする
+
+@item \w
+任意の単語文字にマッチする
+
+@item \W
+単語以外の任意の文字にマッチする
+
+@item \<
+単語の先頭にマッチする
+
+@item \>
+単語の末尾にマッチする
+
+@item \B
+単語の内部にマッチする
+@end table
+
+実装ノート: @sc{matlab}との互換性のため、通常のエスケープシーケンス(例: @qcode{"\n"} =>
+newline)は、@var{pat}がシングルクォートで定義されているか否かに関わらず処理されます。エスケープシーケンスの補間を停止するには2つ目のバックスラッシュ(例:
+"\\n")を使うか、@code{regexptranslate}関数を使用してください。
+
+@code{regexp}のデフォルトの出力順は以下で与えられます
+
+@table @var
+@item s
+マッチした部分文字列の開始インデクス
+
+@item e
+マッチした部分文字列の終了インデクス
+
+@item te
+マッチした各トークンを@var{pat}内の@code{(@dots{})}で囲んだものの範囲
+
+@item m
+各マッチのテキストのセル配列
+
+@item t
+各マッチのトークンのテキストのセル配列
+
+@item nm
+マッチした名前付きトークン(名前はフィールド名として使用される)のテキストを含む構造体。名前付きトークンは@code{(?<name>@dots{})}で表される。
+
+@item sp
+テキストのセル配列(例: @var{pat}により文字列を分割したときの残り)はマッチによりリターンされない。
+@end table
+
+特定の出力引数、または出力引数の順番は、追加の引数@var{opt}で選択できます。これらは文字列で、出力引数とオプション引数の対応は以下のとおりです
+
+@multitable @columnfractions 0.2 0.3 0.3 0.2
+@item @tab @qcode{'start'}        @tab @var{s}  @tab
+@item @tab @qcode{'end'}          @tab @var{e}  @tab
+@item @tab @qcode{'tokenExtents'} @tab @var{te} @tab
+@item @tab @qcode{'match'}        @tab @var{m}  @tab
+@item @tab @qcode{'tokens'}       @tab @var{t}  @tab
+@item @tab @qcode{'names'}        @tab @var{nm} @tab
+@item @tab @qcode{'split'}        @tab @var{sp} @tab
+@end multitable
+
+追加の引数を以下に要約します。
+
+@table @samp
+@item once
+パターンの最初の出現だけをリターンする。
+
+@item matchcase
+大文字小文字を区別せずにマッチングする(デフォルト)。
+
+パターン内で(?-i)を使用して代替できる。
+
+@item ignorecase
+大文字小文字を区別してマッチングする。
+
+パターン内で(?i)を使用して代替できる。
+
+@item stringanchors
+アンカー文字は文字列の開始と終了にマッチする(デフォルト)。
+
+パターン内で(?-m)を使用して代替できる。
+
+@item lineanchors
+アンカー文字は行の開始と終了にマッチする(デフォルト)。
+
+パターン内で(?m)を使用して代替できる。
+
+@item dotall
+パターン@code{.}は、改行文字を含むすべての文字にマッチする(デフォルト)。
+
+パターン内で(?s)を使用して代替できる。
+
+@item dotexceptnewline
+パターン@code{.}は、改行文字を除くすべての文字にマッチする。
+
+パターン内で(?-s)を使用して代替できる。
+
+@item literalspacing
+空白文字を含む、パターン内のすべての文字は有意であり、パターンマッチングに使用される(デフォルト)。
+
+パターン内で(?-x)を使用して代替できる。
+
+@item freespacing
+パターンは任意の空白文字、および文字@samp{#}で始まるコメントを含むことができる。
+
+パターン内で(?x)を使用して代替できる。
+
+@item noemptymatch
+長さ0のマッチはリターンされない(デフォルト)。
+
+@item emptymatch
+長さ0のマッチをリターンする。
+
+@code{regexp ('a', 'b*', 'emptymatch')}は@code{[1
+2]}をリターンする。それは0文字以上の@qcode{'b'}が位置1と文字列終端にマッチするからである。
+
+@end table
+@seealso{@ref{XREFregexpi,,regexpi}, @ref{XREFstrfind,,strfind},
+@ref{XREFregexprep,,regexprep}}
+@end deftypefn
+
+
+@c regexpi libinterp/corefcn/regexp.cc
+@anchor{XREFregexpi}
+@deftypefn {Built-in Function} {[@var{s}, @var{e}, @var{te}, @var{m}, @var{t}, @var{nm}, @var{sp}] =} regexpi (@var{str}, @var{pat})
+@deftypefnx {Built-in Function} {[@dots{}] =} regexpi (@var{str}, @var{pat}, "@var{opt1}", @dots{})
+
+大文字小文字を区別せずに正規表現による文字列マッチングを行います。@var{str}内から@var{pat}を検索して、マッチした位置と部分文字列、マッチしなかったときは空の値をリターンします。検索パターン構文の詳細は、@ref{XREFregexp,,regexp}を参照してください。
+@seealso{@ref{XREFregexp,,regexp}}
+@end deftypefn
+
+
+@c regexprep libinterp/corefcn/regexp.cc
+@anchor{XREFregexprep}
+@deftypefn {Built-in Function} {@var{outstr} =} regexprep (@var{string}, @var{pat}, @var{repstr})
+@deftypefnx {Built-in Function} {@var{outstr} =} regexprep (@var{string}, @var{pat}, @var{repstr}, "@var{opt1}", @dots{})
+@var{string}内に存在するパターン@var{pat}を、@var{repstr}で置き換えます。
+
+パターンは@code{regexp}に記述されている正規表現です。@ref{XREFregexp,,regexp}を参照してください。
+
+置換文字列には@code{$i}を含めることができます。これはマッチした文字列内の、i番目のカッコで括られたもので置換されます。たとえば、
+
+@example
+regexprep ("Bill Dunn", '(\w+) (\w+)', '$2, $1')
+@end example
+
+@noindent
+は、"Dunn, Bill"をリターンします
+
+追加オプションは@code{regexp}のものに以下が加わります
+
+@table @samp
+
+@item once
+結果の中の最初にあった@code{regexp}だけを置換する。
+
+@item warnings
+このオプションは互換性のためだけで、無視される。
+
+@end table
+
+実装ノート: @sc{matlab}との互換性のため@var{pat}と@var{repstr}内のエスケープシーケンス(例: @qcode{"\n"}
+=>
+改行)は、それらがシングルクォート内で定義されているか否かに関わらず、通常どおり処理されます。エスケープシーケンスの補間を防ぐには2つ目のバックスラッシュを使かう(例:
+"\\n")か、@code{regexptranslate}関数を使用してください。
+@seealso{@ref{XREFregexp,,regexp}, @ref{XREFregexpi,,regexpi},
+@ref{XREFstrrep,,strrep}}
+@end deftypefn
+
+
+@c regexptranslate scripts/strings/regexptranslate.m
+@anchor{XREFregexptranslate}
+@deftypefn {Function File} {} regexptranslate (@var{op}, @var{s})
+正規表現として使用するために文字列を翻訳します。これにはワイルドカードの置換や、特殊文字のエスケープが含まれます。この振る舞いは@var{op}により制御され、以下の値をとることができます
+
+@table @asis
+@item @qcode{"wildcard"}
+ワイルドカード文字@code{.}、@code{*}、@code{?}は適切な正規表現に置き換えられます。たとえば:
+
+@example
+@group
+regexptranslate ("wildcard", "*.m")
+     @result{} ".*\.m"
+@end group
+@end example
+
+@item @qcode{"escape"}
+文字@code{$.?[]}は正規表現では特別な意味をもつので、リテラルとして扱うためには、エスケープする必要があります。たとえば:
+
+@example
+@group
+regexptranslate ("escape", "12.5")
+     @result{} "12\.5"
+@end group
+@end example
+
+@end table
+@seealso{@ref{XREFregexp,,regexp}, @ref{XREFregexpi,,regexpi},
+@ref{XREFregexprep,,regexprep}}
+@end deftypefn
+
+
+@c untabify scripts/strings/untabify.m
+@anchor{XREFuntabify}
+@deftypefn {Function File} {} untabify (@var{t})
+@deftypefnx {Function File} {} untabify (@var{t}, @var{tw})
+@deftypefnx {Function File} {} untabify (@var{t}, @var{tw}, @var{deblank})
+@var{t}内のTAB文字を、スペースで置き換えます。TAB幅は@var{tw}での指定、またはデフォルトの8になります。入力の@var{t}は2次元文字配列、または文字列のセル配列です。出力は入力と同じクラスになります。
+
+オプション引数@var{deblank}がtrueの場合、文字データの末尾のスペースは削除されます。
+
+以下は、ファイルを読み込んでから、最後のス同じファイルのスペースを取り除いた、TABなしバージョンを書き込む例です。
+
+@example
+@group
+fid = fopen ("tabbed_script.m");
+text = char (fread (fid, "uchar")');
+fclose (fid);
+fid = fopen ("untabified_script.m", "w");
+text = untabify (strsplit (text, "\n"), 8, true);
+fprintf (fid, "%s\n", text@{:@});
+fclose (fid);
+@end group
+@end example
+
+@seealso{@ref{XREFstrjust,,strjust}, @ref{XREFstrsplit,,strsplit},
+@ref{XREFdeblank,,deblank}}
+@end deftypefn
+
+
+@node String Conversions
+@section String Conversions
+
+Octaveは文字列と数値の間で、さまざまな種類の変換をサポートします。1例をあげると、16進数を含む文字列を、浮動小数点数に変換することができます。
+
+@example
+@group
+hex2dec ("FF")
+      @result{} 255
+@end group
+@end example
+
+@c bin2dec scripts/strings/bin2dec.m
+@anchor{XREFbin2dec}
+@deftypefn {Function File} {} bin2dec (@var{s})
+文字列@var{s}で表された2進数に対応する10進数をリターンします。たとえば:
+
+@example
+@group
+bin2dec ("1110")
+     @result{} 14
+@end group
+@end example
+
+変換において、2進数値のかどくせいを工場させるために使用されるかもしれないスペースは無視されます。
+
+@example
+@group
+bin2dec ("1000 0001")
+     @result{} 129
+@end group
+@end example
+
+@var{s}が文字列マトリクスの場合は、@var{s}の行ごとに1つの数値に変換した列ベクターをリターンします。無効な行はNaNに評価されます。
+
+@var{s}が文字列のセル配列の場合は、@var{s}内のセル要素ごとに1つの数値に変換した列ベクターをリターンします。
+@seealso{@ref{XREFdec2bin,,dec2bin}, @ref{XREFbase2dec,,base2dec},
+@ref{XREFhex2dec,,hex2dec}}
+@end deftypefn
+
+
+@c dec2bin scripts/strings/dec2bin.m
+@anchor{XREFdec2bin}
+@deftypefn {Function File} {} dec2bin (@var{d}, @var{len})
+非負の整数@var{d}に大王する2進数値を、1と0からなる文字列でリターンします。たとえば:
+
+@example
+@group
+dec2bin (14)
+     @result{} "1110"
+@end group
+@end example
+
+@var{d}がマトリクスまたはセル配列の場合は、@var{d}内の要素ごとに1行(最大値の幅になるように先頭に0がパディングされます)となる文字列マトリクスをリターンします。
+
+2つ目のオプション引数@var{len}は、結果の最小の桁数を指定します。
+@seealso{@ref{XREFbin2dec,,bin2dec}, @ref{XREFdec2base,,dec2base},
+@ref{XREFdec2hex,,dec2hex}}
+@end deftypefn
+
+
+@c dec2hex scripts/strings/dec2hex.m
+@anchor{XREFdec2hex}
+@deftypefn {Function File} {} dec2hex (@var{d}, @var{len})
+非負の整数@var{d}に対応する16進文字列をリターンします。たとえば:
+
+@example
+@group
+dec2hex (2748)
+     @result{} "ABC"
+@end group
+@end example
+
+@var{d}がマトリクスまたはセル配列の場合は、@var{d}内の要素ごとに1行(最大値の幅になるように先頭に0がパディングされます)となる文字列マトリクスをリターンします。
+
+2つ目のオプション引数@var{len}は、結果の最小の桁数を指定します。
+@seealso{@ref{XREFhex2dec,,hex2dec}, @ref{XREFdec2base,,dec2base},
+@ref{XREFdec2bin,,dec2bin}}
+@end deftypefn
+
+
+@c hex2dec scripts/strings/hex2dec.m
+@anchor{XREFhex2dec}
+@deftypefn {Function File} {} hex2dec (@var{s})
+文字列@var{s}で表された16進数値に対応する整数をリターンします。たとえば:
+
+@example
+@group
+hex2dec ("12B")
+      @result{} 299
+hex2dec ("12b")
+      @result{} 299
+@end group
+@end example
+
+@var{s}が文字列マトリクスの場合は、@var{s}の行ごとに1つの数値に変換した列ベクターをリターンします。無効な行はNaNに評価されます。
+
+@var{s}がセル配列の場合は、@var{s}内のセル要素ごとに1つの数値に変換された列ベクターをリターンします。
+
+@seealso{@ref{XREFdec2hex,,dec2hex}, @ref{XREFbase2dec,,base2dec},
+@ref{XREFbin2dec,,bin2dec}}
+@end deftypefn
+
+
+@c dec2base scripts/strings/dec2base.m
+@anchor{XREFdec2base}
+@deftypefn {Function File} {} dec2base (@var{d}, @var{base})
+@deftypefnx {Function File} {} dec2base (@var{d}, @var{base}, @var{len})
+非負の整数@var{d}に対応する、基数@var{base}のシンボル文字列をリターンします。
+
+@example
+@group
+dec2base (123, 3)
+   @result{} "11120"
+@end group
+@end example
+
+@var{d}がマトリクスまたはセル配列の場合は、@var{d}内の要素ごとに1行(最大値の幅になるように先頭に0がパディングされます)となる文字列マトリクスをリターンします。
+
+@var{base}が文字列の場合は、@var{base}の文字が@var{d}の桁のシンボルとして使用されます。スペース('
+')はシンボルとして使用されません。
+
+@example
+@group
+dec2base (123, "aei")
+   @result{} "eeeia"
+@end group
+@end example
+
+3つ目のオプション引数@var{len}は、結果の最小の桁数を指定します。
+@seealso{@ref{XREFbase2dec,,base2dec}, @ref{XREFdec2bin,,dec2bin},
+@ref{XREFdec2hex,,dec2hex}}
+@end deftypefn
+
+
+@c base2dec scripts/strings/base2dec.m
+@anchor{XREFbase2dec}
+@deftypefn {Function File} {} base2dec (@var{s}, @var{base})
+基数@var{base}の数字文字列を10進整数(基数10)に変換します。
+
+@example
+@group
+base2dec ("11120", 3)
+   @result{} 123
+@end group
+@end example
+
+@var{s}が文字列マトリクスの場合は、@var{s}の各行が1つの値になる列ベクターをリターンします。行に無効なシンボルが含まれる場合、対応する値はNaNになります。
+
+@var{s}が文字列のセル配列の場合は、@var{s}内のセル要素ごとに1つの値となる列ベクターをリターンします。
+
+@var{base}が文字列の場合は、@var{base}の文字が@var{s}の数字のシンボルとして使用されます。スペース('
+')はシンボルとして使用されません。
+
+@example
+@group
+base2dec ("yyyzx", "xyz")
+   @result{} 123
+@end group
+@end example
+@seealso{@ref{XREFdec2base,,dec2base}, @ref{XREFbin2dec,,bin2dec},
+@ref{XREFhex2dec,,hex2dec}}
+@end deftypefn
+
+
+@c num2hex libinterp/corefcn/hex2num.cc
+@anchor{XREFnum2hex}
+@deftypefn {Built-in Function} {@var{s} =} num2hex (@var{n})
+倍精度または単精度数値のベクターを、IEEE 754数値表現の8文字または16文字の16進文字列に型キャストします。たとえば:
+
+@example
+@group
+num2hex ([-1, 1, e, Inf])
+@result{} "bff0000000000000
+    3ff0000000000000
+    4005bf0a8b145769
+    7ff0000000000000"
+@end group
+@end example
+
+引数@var{n}が単精度数値の数値またはベクターの場合、リターンされる文字列の長さは8になります。たとえば:
+
+@example
+@group
+num2hex (single ([-1, 1, e, Inf]))
+@result{} "bf800000
+    3f800000
+    402df854
+    7f800000"
+@end group
+@end example
+@seealso{@ref{XREFhex2num,,hex2num}, @ref{XREFhex2dec,,hex2dec},
+@ref{XREFdec2hex,,dec2hex}}
+@end deftypefn
+
+
+@c hex2num libinterp/corefcn/hex2num.cc
+@anchor{XREFhex2num}
+@deftypefn {Built-in Function} {@var{n} =} hex2num (@var{s})
+@deftypefnx {Built-in Function} {@var{n} =} hex2num (@var{s}, @var{class})
+16文字16進文字列を、IEEE
+754の倍精度数値に型キャストします。与えられた文字列が16文字未満の場合は、右に文字@qcode{'0'}がパディングされます。
+
+文字列マトリクスが与えられた場合、@code{hex2num}は各行を個別の数値として扱います。
+
+@example
+@group
+hex2num (["4005bf0a8b145769"; "4024000000000000"])
+   @result{} [2.7183; 10.000]
+@end group
+@end example
+
+オプション引数@var{class}にはもっと@qcode{"single"}を渡すことができ、これは与えられた文字列を単精度数値として解釈すべきことを指定します。この場合、@var{s}は8文字の16進文字列になります。たとえば: 
+
+@example
+@group
+hex2num (["402df854"; "41200000"], "single")
+   @result{} [2.7183; 10.000]
+@end group
+@end example
+@seealso{@ref{XREFnum2hex,,num2hex}, @ref{XREFhex2dec,,hex2dec},
+@ref{XREFdec2hex,,dec2hex}}
+@end deftypefn
+
+
+@c str2double libinterp/corefcn/str2double.cc
+@anchor{XREFstr2double}
+@deftypefn {Built-in Function} {} str2double (@var{s})
+文字列を実数または複素数に変換します。
+
+文字列は以下のフォーマットのうちの1つでなければなりません。ここでaとbは実数、複素数単位は@qcode{'i'}と@qcode{'j'}です。
+
+@itemize
+@item a + bi
+
+@item a + b*i
+
+@item a + i*b
+
+@item bi + a
+
+@item b*i + a
+
+@item i*b + a
+@end itemize
+
+もし与えられた場合、aおよび/またはbは@nospell{[+-]d[,.]d[[eE][+-]d]}という形式です。ここで角カッコはオプション引数を示し、@qcode{'d'}は0以上の数字を示します。特別な入力値@code{Inf}、@code{NaN}、@code{NA}も指定できます。
+
+@var{s}は文字列、文字マトリクス、またはセル配列です。文字列配列にたいしては、各行にたいして変換が繰り返され、倍精度または複素数の配列がリターンされます。@var{s}内の空行は削除され、数値配列はリターンされません。セル配列にたいしては各文字列要素が処理され、@var{s}と同じ次元の倍精度または複素数の配列がリターンされます。
+
+互換性のないスカラーまたは文字列が入力された場合、@code{str2double}はNaNをリターンします。同様に文字配列が入力された場合、@code{str2double}は変換できなかった@var{s}の行にNaNをリターンします。セル配列にたいして、@code{str2double}は変換がに失敗した@var{s}の要素にたいしてNaNをリターンします。文字列と数値が混交されたセル配列内の数値要素は文字列ではないので、これらの要素の変換は失敗しNaNがリターンされることに注意してください。
+
+@code{str2double}は@code{str2num}に置き換えることができ、未知のデータにたいして@code{eval}を使用するセキュリティリスクを避けます。
+@seealso{@ref{XREFstr2num,,str2num}}
+@end deftypefn
+
+
+@c strjust scripts/strings/strjust.m
+@anchor{XREFstrjust}
+@deftypefn {Function File} {} strjust (@var{s})
+@deftypefnx {Function File} {} strjust (@var{s}, @var{pos})
+@var{pos}(@qcode{"left"}、@qcode{"center"}、または@qcode{"right"})に応じて@var{s}を整列したテキストをリターンします。@var{pos}が省略された場合、デフォルトは@qcode{"right"}です。
+
+null文字はスペースに置き換えられます。それ以外のすべての文字は、非空白文字として扱います。
+
+例:
+
+@example
+@group
+strjust (["a"; "ab"; "abc"; "abcd"])
+     @result{}
+        "   a"
+        "  ab"
+        " abc"
+        "abcd"
+@end group
+@end example
+@seealso{@ref{XREFdeblank,,deblank}, @ref{XREFstrrep,,strrep},
+@ref{XREFstrtrim,,strtrim}, @ref{XREFuntabify,,untabify}}
+@end deftypefn
+
+
+@c str2num scripts/strings/str2num.m
+@anchor{XREFstr2num}
+@deftypefn {Function File} {@var{x} =} str2num (@var{s})
+@deftypefnx {Function File} {[@var{x}, @var{state}] =} str2num (@var{s})
+文字列(または文字配列)@var{s}を数値(または配列)に変換します。たとえば:
+
+@example
+@group
+str2num ("3.141596")
+      @result{} 3.141596
+
+str2num (["1, 2, 3"; "4, 5, 6"])
+      @result{} 1  2  3
+         4  5  6
+@end group
+@end example
+
+2つ目のオプション出力@var{state}は、変換が成功したときは論理的trueになります。変換が失敗した場合、数値出力は空で、@var{state}はfalseになります。
+
+@strong{警告:}
+@code{str2num}は変換を行うために@code{eval}関数を使用しているので、文字列@var{s}に含まれる任意のコードは実行されます。より安全かつ高速な変換のために@code{str2double}を使用してください。
+
+文字列のセル配列には、@code{str2double}を使用してください。
+@seealso{@ref{XREFstr2double,,str2double}, @ref{XREFeval,,eval}}
+@end deftypefn
+
+
+@c toascii libinterp/corefcn/mappers.cc
+@anchor{XREFtoascii}
+@deftypefn {Mapping Function} {} toascii (@var{s})
+@var{s}のASCII表現をマトリクスでリターンします。たとえば:
+
+@example
+@group
+toascii ("ASCII")
+     @result{} [ 65, 83, 67, 73, 73 ]
+@end group
+
+@end example
+@seealso{@ref{XREFchar,,char}}
+@end deftypefn
+
+
+@c tolower libinterp/corefcn/mappers.cc
+@anchor{XREFtolower}
+@deftypefn {Mapping Function} {} tolower (@var{s})
+@deftypefnx {Mapping Function} {} lower (@var{s})
+文字列またはセル文字列@var{s}の大文字を対応する小文字に置き換えたコピーをリターンします。非アルファベット文字は変更されません。たとえば:
+
+@example
+@group
+tolower ("MiXeD cAsE 123")
+      @result{} "mixed case 123"
+@end group
+@end example
+@seealso{@ref{XREFtoupper,,toupper}}
+@end deftypefn
+
+
+@c toupper libinterp/corefcn/mappers.cc
+@anchor{XREFtoupper}
+@deftypefn {Mapping Function} {} toupper (@var{s})
+@deftypefnx {Mapping Function} {} upper (@var{s})
+文字列またはセル文字列@var{s}の小文字を対応する大文字に置き換えたコピーをリターンします。非アルファベット文字は変更されません。たとえば:
+
+@example
+@group
+toupper ("MiXeD cAsE 123")
+      @result{} "MIXED CASE 123"
+@end group
+@end example
+@seealso{@ref{XREFtolower,,tolower}}
+@end deftypefn
+
+
+@c do_string_escapes libinterp/corefcn/utils.cc
+@anchor{XREFdo_string_escapes}
+@deftypefn {Built-in Function} {} do_string_escapes (@var{string})
+@var{string}内のエスケープされた特殊文字を、特殊文字にに変換します。
+@end deftypefn
+
+
+@c undo_string_escapes libinterp/corefcn/utils.cc
+@anchor{XREFundo_string_escapes}
+@deftypefn {Built-in Function} {} undo_string_escapes (@var{s})
+文字列内の特殊文字を、エスケープされた形式に変換します。たとえば、
+
+@example
+bell = "\a";
+@end example
+
+@noindent
+この式は変数@code{bell}にalert文字(control-g、ASCIIコード7)を割り当てます。この文字列がプリントされた場合、(もし可能なら)システムは端末ベルを鳴らすでしょう。通常これは望んだ結果です。しかし特殊文字をエスケープシーケンスに置き換えて、元の文字列表現をプリントできたほうが便利な場合もあります。たとえば、
+
+@example
+@group
+octave:13> undo_string_escapes (bell)
+ans = \a
+@end group
+@end example
+
+@noindent
+これはプリントできないalert文字を、プリント可能な表現に置き換えます。
+@end deftypefn
+
+
+@node Character Class Functions
+@section Character Class Functions
+
+Octaveは以下のような、C標準ライブラリーに倣った文字クラステスト関数も提供します。これらはすべて文字列配列を処理して、0と1からなるマトリクスをリターンします。非0の要素は文字列配列内の対応する文字がtrueであることを示します。たとえば:
+
+@example
+@group
+isalpha ("!Q@@WERT^Y&")
+     @result{} [ 0, 1, 0, 1, 1, 1, 1, 0, 1, 0 ]
+@end group
+@end example
+
+@c isalnum libinterp/corefcn/mappers.cc
+@anchor{XREFisalnum}
+@deftypefn {Mapping Function} {} isalnum (@var{s})
+@var{s}の要素が英数字ならtrue、それ以外はfalseのような論理配列をリターンします。この関数は(@code{isalpha
+(@var{s}) | isdigit (@var{s})})と等価です。
+@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit},
+@ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace},
+@ref{XREFiscntrl,,iscntrl}}
+@end deftypefn
+
+
+@c isalpha libinterp/corefcn/mappers.cc
+@anchor{XREFisalpha}
+@deftypefn {Mapping Function} {} isalpha (@var{s})
+@var{s}の要素がアルファベットならtrue、それ以外はfalseのような論理配列をリターンします。この関数は(@code{islower
+(@var{s}) | isupper (@var{s})})と等価です。
+@seealso{@ref{XREFisdigit,,isdigit}, @ref{XREFispunct,,ispunct},
+@ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl},
+@ref{XREFisalnum,,isalnum}, @ref{XREFislower,,islower},
+@ref{XREFisupper,,isupper}}
+@end deftypefn
+
+
+@c isletter scripts/strings/isletter.m
+@anchor{XREFisletter}
+@deftypefn {Function File} {} isletter (@var{s})
+@var{s}の要素がアルファベットならtrue、それ以外はfalseのような論理配列をリターンします。この関数は@code{isalpha}関数のエイリアスです。
+@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit},
+@ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace},
+@ref{XREFiscntrl,,iscntrl}, @ref{XREFisalnum,,isalnum}}
+@end deftypefn
+
+
+@c islower libinterp/corefcn/mappers.cc
+@anchor{XREFislower}
+@deftypefn {Mapping Function} {} islower (@var{s})
+@var{s}の要素がアルファベット小文字ならtrue、それ以外はfalseのような論理配列をリターンします。
+@seealso{@ref{XREFisupper,,isupper}, @ref{XREFisalpha,,isalpha},
+@ref{XREFisletter,,isletter}, @ref{XREFisalnum,,isalnum}}
+@end deftypefn
+
+
+@c isupper libinterp/corefcn/mappers.cc
+@anchor{XREFisupper}
+@deftypefn {Mapping Function} {} isupper (@var{s})
+@var{s}の要素がアルファベット大文字ならtrue、それ以外はfalseのような論理配列をリターンします。
+@seealso{@ref{XREFislower,,islower}, @ref{XREFisalpha,,isalpha},
+@ref{XREFisletter,,isletter}, @ref{XREFisalnum,,isalnum}}
+@end deftypefn
+
+
+@c isdigit libinterp/corefcn/mappers.cc
+@anchor{XREFisdigit}
+@deftypefn {Mapping Function} {} isdigit (@var{s})
+@var{s}の要素が10進数字(0-9)ならtrue、それ以外はfalseのような論理配列をリターンします。
+@seealso{@ref{XREFisxdigit,,isxdigit}, @ref{XREFisalpha,,isalpha},
+@ref{XREFisletter,,isletter}, @ref{XREFispunct,,ispunct},
+@ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}}
+@end deftypefn
+
+
+@c isxdigit libinterp/corefcn/mappers.cc
+@anchor{XREFisxdigit}
+@deftypefn {Mapping Function} {} isxdigit (@var{s})
+@var{s}の要素が16進数字(0-9および@nospell{a-fA-F})ならtrueのような論理配列をリターンします。
+@seealso{@ref{XREFisdigit,,isdigit}}
+@end deftypefn
+
+
+@c ispunct libinterp/corefcn/mappers.cc
+@anchor{XREFispunct}
+@deftypefn {Mapping Function} {} ispunct (@var{s})
+@var{s}の要素が句読点文字ならtrue、それ以外はfalseのような論理配列をリターンします。
+@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit},
+@ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}}
+@end deftypefn
+
+
+@c isspace libinterp/corefcn/mappers.cc
+@anchor{XREFisspace}
+@deftypefn {Mapping Function} {} isspace (@var{s})
+@var{s}の要素が空白文字(スペース、改ページ、改行、復帰、タブ、垂直タブ)ならtrue、それ以外はfalseのような論理配列をリターンします。
+@seealso{@ref{XREFiscntrl,,iscntrl}, @ref{XREFispunct,,ispunct},
+@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}}
+@end deftypefn
+
+
+@c iscntrl libinterp/corefcn/mappers.cc
+@anchor{XREFiscntrl}
+@deftypefn {Mapping Function} {} iscntrl (@var{s})
+@var{s}の要素がコントロール文字ならtrue、それ以外はfalseのような論理配列をリターンします。
+@seealso{@ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace},
+@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}}
+@end deftypefn
+
+
+@c isgraph libinterp/corefcn/mappers.cc
+@anchor{XREFisgraph}
+@deftypefn {Mapping Function} {} isgraph (@var{s})
+@var{s}の要素がプリント可能文字(ただしスペース以外)ならtrue、それ以外はfalseのような論理配列をリターンします。
+@seealso{@ref{XREFisprint,,isprint}}
+@end deftypefn
+
+
+@c isprint libinterp/corefcn/mappers.cc
+@anchor{XREFisprint}
+@deftypefn {Mapping Function} {} isprint (@var{s})
+@var{s}の要素がプリント可能文字(スペース文字も含む)ならtrue、それ以外はfalseのような論理配列をリターンします。
+@seealso{@ref{XREFisgraph,,isgraph}}
+@end deftypefn
+
+
+@c isascii libinterp/corefcn/mappers.cc
+@anchor{XREFisascii}
+@deftypefn {Mapping Function} {} isascii (@var{s})
+@var{s}の要素がASCII文字(10進の0から127)ならtrue、それ以外はfalseのような論理配列をリターンします。
+@end deftypefn
+
+
+@c isstrprop scripts/strings/isstrprop.m
+@anchor{XREFisstrprop}
+@deftypefn {Function File} {} isstrprop (@var{str}, @var{prop})
+文字列プロパティをテストします。たとえば:
+
+@example
+@group
+isstrprop ("abc123", "alpha")
+@result{} [1, 1, 1, 0, 0, 0]
+@end group
+@end example
+
+@var{str}がセル配列の場合は、セル配列の各要素にたいして@code{isstrpop}が再帰的に適用されます。
+
+数値配列は文字列に変換されます。
+
+2つ目の引数@var{prop}は、以下のうちの1つでなければなりません
+
+@table @asis
+@item @qcode{"alpha"}
+文字がアルファベットならtrue。
+
+@item @qcode{"alnum"}
+@itemx @qcode{"alphanum"}
+文字が英数字ならtrue。
+
+@item @qcode{"lower"}
+アルファベット小文字ならtrue。
+
+@item @qcode{"upper"}
+アルファベット大文字ならtrue。
+
+@item @qcode{"digit"}
+10進数字(0-9)ならtrue。
+
+@item @qcode{"xdigit"}
+16進数字(@nospell{a-fA-F0-9})ならtrue。
+
+@item @qcode{"space"}
+@itemx @qcode{"wspace"}
+空白文字(スペース、改ページ、改行、復帰、タブ、垂直タブ)ならtrue。
+
+@item @qcode{"punct"}
+句読点文字(スペース、英数字を除くプリント文字)ならtrue。
+
+@item @qcode{"cntrl"}
+コントロール文字ならtrue。
+
+@item @qcode{"graph"}
+@itemx @qcode{"graphic"}
+スペース以外のプリント文字ならtrue。
+
+@item @qcode{"print"}
+スペースを含むプリント文字ならtrue。
+
+@item @qcode{"ascii"}
+ASCIIエンコーディング範囲内の文字ならtrue。
+
+@end table
+
+@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisalnum,,isalnum},
+@ref{XREFislower,,islower}, @ref{XREFisupper,,isupper},
+@ref{XREFisdigit,,isdigit}, @ref{XREFisxdigit,,isxdigit},
+@ref{XREFisspace,,isspace}, @ref{XREFispunct,,ispunct},
+@ref{XREFiscntrl,,iscntrl}, @ref{XREFisgraph,,isgraph},
+@ref{XREFisprint,,isprint}, @ref{XREFisascii,,isascii}}
+@end deftypefn
+

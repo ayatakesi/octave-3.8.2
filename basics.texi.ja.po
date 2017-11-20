@@ -1,0 +1,4500 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: octave 3.8.2\n"
+"POT-Creation-Date: 2017-07-08 08:41+0000\n"
+"PO-Revision-Date: 2017-07-16 11:40+0900\n"
+"Last-Translator: Ayanokoji Takesi <ayanokoji.takesi@gmail.com>\n"
+"Language-Team: japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: chapter
+#: basics.texi:21 basics.texi:22
+#, no-wrap
+msgid "Getting Started"
+msgstr "Getting Started"
+
+#. type: Plain text
+#: basics.texi:28
+msgid ""
+"This chapter explains some of Octave's basic features, including how to "
+"start an Octave session, get help at the command prompt, edit the command "
+"line, and write Octave programs that can be executed as commands from your "
+"shell."
+msgstr "このチャプターでは、Octaveの基本的な機能についていくつか説明します。それらの機能にはOctaveセッションの開始、コマンドプロンプトでのヘルプの入手、コマンド行の編集、シェルプロンプトからコマンドとして実行可能なOctaveプログラムの記述が含まれます。"
+
+#. type: menuentry
+#: basics.texi:37
+msgid "Invoking Octave from the Command Line::"
+msgstr "Invoking Octave from the Command Line::"
+
+#. type: menuentry
+#: basics.texi:37
+msgid "Quitting Octave::"
+msgstr "Quitting Octave::"
+
+#. type: menuentry
+#: basics.texi:37
+msgid "Getting Help::"
+msgstr "Getting Help::"
+
+#. type: menuentry
+#: basics.texi:37
+msgid "Command Line Editing::"
+msgstr "Command Line Editing::"
+
+#. type: menuentry
+#: basics.texi:37
+msgid "Errors::"
+msgstr "Errors::"
+
+#. type: menuentry
+#: basics.texi:37
+msgid "Executable Octave Programs::"
+msgstr "Executable Octave Programs::"
+
+#. type: node
+#: basics.texi:37 basics.texi:1801
+#, no-wrap
+msgid "Comments"
+msgstr "Comments"
+
+#. type: section
+#: basics.texi:39 basics.texi:40
+#, no-wrap
+msgid "Invoking Octave from the Command Line"
+msgstr "Invoking Octave from the Command Line"
+
+#. type: Plain text
+#: basics.texi:45
+msgid ""
+"Normally, Octave is used interactively by running the program @samp{octave} "
+"without any arguments.  Once started, Octave reads commands from the "
+"terminal until you tell it to exit."
+msgstr "Octaveは通常、引数を指定せずに@samp{octave}プログラムを実行することにより、対話的に使用されます。一度開始すると、exitを指示するまで、Octaveは端末からコマンドを読み取ります。"
+
+#. type: Plain text
+#: basics.texi:49
+msgid ""
+"You can also specify the name of a file on the command line, and Octave will "
+"read and execute the commands from the named file and then exit when it is "
+"finished."
+msgstr "コマンドラインにファイル名を指定することもできます。この場合、Octaveはその名前のファイルからコマンドを読み込んで実行し、それが終了したらexitします。"
+
+#. type: Plain text
+#: basics.texi:55
+msgid ""
+"You can further control how Octave starts by using the command-line options "
+"described in the next section, and Octave itself can remind you of the "
+"options available.  Type @samp{octave --help} to display all available "
+"options and briefly describe their use (@samp{octave -h} is a shorter "
+"equivalent)."
+msgstr "さらに次のセクションで説明するコマンドラインオプションにより、Octaveをどのように開始するか、制御することができます。Octave自身が、利用できるオプションを知らせることができます。@samp{octave --help}(短い形式は@samp{octave -h})とタイプすると、利用できるすべてのオプションと、使い方の簡略が表示されます。"
+
+#. type: menuentry
+#: basics.texi:59
+msgid "Command Line Options::"
+msgstr "Command Line Options::"
+
+#. type: subsection
+#: basics.texi:59 basics.texi:362 basics.texi:363
+#, no-wrap
+msgid "Startup Files"
+msgstr "Startup Files"
+
+#. type: subsection
+#: basics.texi:61 basics.texi:62
+#, no-wrap
+msgid "Command Line Options"
+msgstr "Command Line Options"
+
+#. type: cindex
+#: basics.texi:63
+#, no-wrap
+msgid "Octave command options"
+msgstr "Octave command options"
+
+#. type: cindex
+#: basics.texi:64
+#, no-wrap
+msgid "command options"
+msgstr "command options"
+
+#. type: cindex
+#: basics.texi:65
+#, no-wrap
+msgid "options, Octave command"
+msgstr "options, Octave command"
+
+#. type: Plain text
+#: basics.texi:69
+msgid "Here is a complete list of the command line options that Octave accepts."
+msgstr "以下は、Octaveに指定できるコマンドラインオプションの、完全なリストです。"
+
+#. type: code{#1}
+#: basics.texi:73 basics.texi:74
+#, no-wrap
+msgid "--built-in-docstrings-file @var{filename}"
+msgstr "--built-in-docstrings-file @var{filename}"
+
+#. type: table
+#: basics.texi:78
+msgid ""
+"Specify the name of the file containing documentation strings for the "
+"built-in functions of Octave.  This value is normally correct and should "
+"only need to specified in extraordinary situations."
+msgstr "Octaveのビルトイン関数のドキュメント文字列を含むファイルの名前を指定します。この値は通常は正しいので、異常な状況において指定する必要なときだけ指定するべきです。"
+
+#. type: code{#1}
+#: basics.texi:79 basics.texi:81
+#, no-wrap
+msgid "--debug"
+msgstr "--debug"
+
+#. type: code{#1}
+#: basics.texi:80 basics.texi:82
+#, no-wrap
+msgid "-d"
+msgstr "-d"
+
+#. type: table
+#: basics.texi:86
+msgid ""
+"Enter parser debugging mode.  Using this option will cause Octave's parser "
+"to print a lot of information about the commands it reads, and is probably "
+"only useful if you are actually trying to debug the parser."
+msgstr "パーサーのデバッグモードに入ります。このオプションを使うことにより、Octaveが読み込んだコマンドについて、Octaveパーサーが大量の情報をプリントするようになるので、おそらくパーサーのデバッグを実際に試みるときだけ有用でしょう。"
+
+#. type: code{#1}
+#: basics.texi:87 basics.texi:88
+#, no-wrap
+msgid "--debug-jit"
+msgstr "--debug-jit"
+
+#. type: table
+#: basics.texi:90
+msgid "Enable JIT compiler debugging and tracing."
+msgstr "JITコンパイラーのデバッグとトレースを有効にします。"
+
+#. type: code{#1}
+#: basics.texi:91 basics.texi:92
+#, no-wrap
+msgid "--doc-cache-file @var{filename}"
+msgstr "--doc-cache-file @var{filename}"
+
+#. type: table
+#: basics.texi:98
+msgid ""
+"Specify the name of the doc cache file to use.  The value of @var{filename} "
+"specified on the command line will override any value of "
+"@w{@env{OCTAVE_DOC_CACHE_FILE}} found in the environment, but not any "
+"commands in the system or user startup files that use the "
+"@code{doc_cache_file} function."
+msgstr "使用するドキュメントキャッシュファイルを指定します。コマンドラインで指定された@var{filename}の値は、環境変数@w{@env{OCTAVE_DOC_CACHE_FILE}}の値をオーバーライドします。しかし、@code{doc_cache_file}を使用する、システムまたはユーザーのスタートアップファイルのコマンドを除きます。"
+
+#. type: code{#1}
+#: basics.texi:99 basics.texi:101
+#, no-wrap
+msgid "--echo-commands"
+msgstr "--echo-commands"
+
+#. type: code{#1}
+#: basics.texi:100 basics.texi:102
+#, no-wrap
+msgid "-x"
+msgstr "-x"
+
+#. type: table
+#: basics.texi:104
+msgid "Echo commands as they are executed."
+msgstr "コマンドが実行されると、そのコマンドをエコーします。"
+
+#. type: item
+#: basics.texi:105
+#, no-wrap
+msgid "--eval @var{code}"
+msgstr "--eval @var{code}"
+
+#. type: table
+#: basics.texi:108
+msgid ""
+"Evaluate @var{code} and exit when finished unless @option{--persist} is also "
+"specified."
+msgstr "@var{code}を評価して、@option{--persist}が共に指定されていなければ、評価の終了と共にexitします。"
+
+#. type: code{#1}
+#: basics.texi:109 basics.texi:110
+#, no-wrap
+msgid "--exec-path @var{path}"
+msgstr "--exec-path @var{path}"
+
+#. type: table
+#: basics.texi:116
+msgid ""
+"Specify the path to search for programs to run.  The value of @var{path} "
+"specified on the command line will override any value of "
+"@w{@env{OCTAVE_EXEC_PATH}} found in the environment, but not any commands in "
+"the system or user startup files that set the built-in variable "
+"@w{@env{EXEC_PATH}}."
+msgstr "実行するプログラムうぃ検索するパスを指定します。コマンドラインで指定された@var{path}の値は、環境変数@w{@env{OCTAVE_EXEC_PATH}}の値をオーバーライドします。しかし、ビルトイン変数@w{@env{EXEC_PATH}}をセットする、システムまたはユーザーのスタートアップファイルのコマンドを除きます。"
+
+#. type: code{#1}
+#: basics.texi:117 basics.texi:118
+#, no-wrap
+msgid "--force-gui"
+msgstr "--force-gui"
+
+#. type: table
+#: basics.texi:120
+msgid "Force the graphical user interface (GUI) to start."
+msgstr "起動時にグラフィカルユーザーインターフェイス(FUI)を強制します。"
+
+#. type: code{#1}
+#: basics.texi:121 basics.texi:124
+#, no-wrap
+msgid "--help"
+msgstr "--help"
+
+#. type: code{#1}
+#: basics.texi:122 basics.texi:125
+#, no-wrap
+msgid "-h"
+msgstr "-h"
+
+#. type: code{#1}
+#: basics.texi:123 basics.texi:126
+#, no-wrap
+msgid "-?"
+msgstr "-?"
+
+#. type: table
+#: basics.texi:128
+msgid "Print short help message and exit."
+msgstr "短いヘルプメッセージをプリントして、exitします。"
+
+#. type: code{#1}
+#: basics.texi:129 basics.texi:130
+#, no-wrap
+msgid "--image-path @var{path}"
+msgstr "--image-path @var{path}"
+
+#. type: table
+#: basics.texi:136
+msgid ""
+"Add path to the head of the search path for images.  The value of @var{path} "
+"specified on the command line will override any value of "
+"@w{@env{OCTAVE_IMAGE_PATH}} found in the environment, but not any commands "
+"in the system or user startup files that set the built-in variable "
+"@w{@env{IMAGE_PATH}}."
+msgstr "イメージを検索するパスのheadにパスを追加します。コマンドラインで指定された@var{path}の値は、環境変数@w{@env{OCTAVE_IMAGE_PATH}}の値をオーバーライドします。しかし、ビルトイン変数@w{@env{IMAGE_PATH}}をセットする、システムまたはユーザーのスタートアップファイルのコマンドを除きます。"
+
+#. type: code{#1}
+#: basics.texi:137 basics.texi:138
+#, no-wrap
+msgid "--info-file @var{filename}"
+msgstr "--info-file @var{filename}"
+
+#. type: table
+#: basics.texi:144
+msgid ""
+"Specify the name of the info file to use.  The value of @var{filename} "
+"specified on the command line will override any value of "
+"@w{@env{OCTAVE_INFO_FILE}} found in the environment, but not any commands in "
+"the system or user startup files that use the @code{info_file} function."
+msgstr "使用するinfoファイルの名前を指定します。コマンドラインで@var{filename}に指定された値は、環境変数@w{@env{OCTAVE_INFO_FILE}}の値をオーバーライドします。しかし、@code{info_file}関数を使用する、システムまたはユーザーのスタートアップファイルのコマンドを除きます。"
+
+#. type: code{#1}
+#: basics.texi:145 basics.texi:146
+#, no-wrap
+msgid "--info-program @var{program}"
+msgstr "--info-program @var{program}"
+
+#. type: table
+#: basics.texi:152
+msgid ""
+"Specify the name of the info program to use.  The value of @var{program} "
+"specified on the command line will override any value of "
+"@w{@env{OCTAVE_INFO_PROGRAM}} found in the environment, but not any commands "
+"in the system or user startup files that use the @code{info_program} "
+"function."
+msgstr "使用するinfoプログラムの名前を指定します。コマンドラインで指定された@var{program}の値は、環境変数@w{@env{OCTAVE_INFO_PROGRAM}}の値をオーバーライドします。しかし、@code{info_program}関数を使用する、システムまたはユーザーのスタートアップファイルのコマンドを除きます。"
+
+#. type: code{#1}
+#: basics.texi:153 basics.texi:155
+#, no-wrap
+msgid "--interactive"
+msgstr "--interactive"
+
+#. type: code{#1}
+#: basics.texi:154 basics.texi:156
+#, no-wrap
+msgid "-i"
+msgstr "-i"
+
+#. type: table
+#: basics.texi:160
+msgid ""
+"Force interactive behavior.  This can be useful for running Octave via a "
+"remote shell command or inside an Emacs shell buffer.  For another way to "
+"run Octave within Emacs, @pxref{Emacs Octave Support}."
+msgstr "対話的な動作を強制します。これはリモートシェルコマンドやEmacsのシェルバッファーを通じてOctaveを実行するとき便利かもしれません。"
+
+#. type: code{#1}
+#: basics.texi:161 basics.texi:162
+#, no-wrap
+msgid "--jit-compiler"
+msgstr "--jit-compiler"
+
+#. type: table
+#: basics.texi:164
+msgid "Enable the JIT compiler used for accelerating loops."
+msgstr "JITコンパイラーのループ高速化を有効にします。"
+
+#. type: code{#1}
+#: basics.texi:165 basics.texi:166
+#, no-wrap
+msgid "--line-editing"
+msgstr "--line-editing"
+
+#. type: table
+#: basics.texi:168
+msgid "Force readline use for command-line editing."
+msgstr "コマンドライン編集に、readlineの使用を強制します。"
+
+#. type: code{#1}
+#: basics.texi:169 basics.texi:170
+#, no-wrap
+msgid "--no-gui"
+msgstr "--no-gui"
+
+#. type: table
+#: basics.texi:173
+msgid ""
+"Disable the graphical user interface (GUI) and use the command line "
+"interface (CLI) instead."
+msgstr "グラフィカルユーザーインターフェイス(GUI)を無効にして、かわりにコマンドラインインターフェイス(CLI)を使用します。"
+
+#. type: code{#1}
+#: basics.texi:174 basics.texi:176
+#, no-wrap
+msgid "--no-history"
+msgstr "--no-history"
+
+#. type: code{#1}
+#: basics.texi:175 basics.texi:177
+#, no-wrap
+msgid "-H"
+msgstr "-H"
+
+#. type: table
+#: basics.texi:179
+msgid "Disable recording of command-line history."
+msgstr "コマンドラインのヒストリーの記録を無効にします。"
+
+#. type: code{#1}
+#: basics.texi:180 basics.texi:181
+#, no-wrap
+msgid "--no-init-file"
+msgstr "--no-init-file"
+
+#. type: table
+#: basics.texi:183
+msgid "Don't read the initialization files @file{~/.octaverc} and @file{.octaverc}."
+msgstr "初期化ファイル@file{~/.octaverc}および@file{.octaverc}を読み込みません。"
+
+#. type: code{#1}
+#: basics.texi:184 basics.texi:185
+#, no-wrap
+msgid "--no-init-path"
+msgstr "--no-init-path"
+
+#. type: table
+#: basics.texi:188
+msgid ""
+"Don't initialize the search path for function files to include default "
+"locations."
+msgstr "デフォルトの場所を含めるための、関数ファイル用の検索パス初期化を行いません。"
+
+#. type: code{#1}
+#: basics.texi:189 basics.texi:190
+#, no-wrap
+msgid "--no-line-editing"
+msgstr "--no-line-editing"
+
+#. type: table
+#: basics.texi:192
+msgid "Disable command-line editing."
+msgstr "コマンドライン編集を無効にします。"
+
+#. type: code{#1}
+#: basics.texi:193 basics.texi:194
+#, no-wrap
+msgid "--no-site-file"
+msgstr "--no-site-file"
+
+#. type: table
+#: basics.texi:196
+msgid "Don't read the site-wide @file{octaverc} initialization files."
+msgstr "サイト単位の初期化ファイル@file{octaverc}を読み込みません。"
+
+#. type: code{#1}
+#: basics.texi:197 basics.texi:199
+#, no-wrap
+msgid "--no-window-system"
+msgstr "--no-window-system"
+
+#. type: itemx
+#: basics.texi:198
+#, no-wrap
+msgid "-W"
+msgstr "-W"
+
+#. type: table
+#: basics.texi:202
+msgid ""
+"Disable use of a windowing system including graphics.  This forces a "
+"strictly terminal-only environment."
+msgstr "グラフィックスを含めてウィンドウシステムの使用を無効にします。これは端末だけに制限された環境を強制します。"
+
+#. type: code{#1}
+#: basics.texi:203 basics.texi:205
+#, no-wrap
+msgid "--norc"
+msgstr "--norc"
+
+#. type: code{#1}
+#: basics.texi:204 basics.texi:206
+#, no-wrap
+msgid "-f"
+msgstr "-f"
+
+#. type: table
+#: basics.texi:210
+msgid ""
+"Don't read any of the system or user initialization files at startup.  This "
+"is equivalent to using both of the options @option{--no-init-file} and "
+"@option{--no-site-file}."
+msgstr "スタートアップ時に、システムまたはユーザーの初期化ファイルを読み込みません。これは、@option{--no-init-file}と@option{--no-site-file}の両方のオプションを使用することと同じです。"
+
+#. type: code{#1}
+#: basics.texi:211 basics.texi:213
+#, no-wrap
+msgid "--path @var{path}"
+msgstr "--path @var{path}"
+
+#. type: code{#1}
+#: basics.texi:212 basics.texi:214
+#, no-wrap
+msgid "-p @var{path}"
+msgstr "-p @var{path}"
+
+#. type: table
+#: basics.texi:220
+msgid ""
+"Add path to the head of the search path for function files.  The value of "
+"@var{path} specified on the command line will override any value of "
+"@w{@env{OCTAVE_PATH}} found in the environment, but not any commands in the "
+"system or user startup files that set the internal load path through one of "
+"the path functions."
+msgstr "関数ファイルの検索パスにheadにパスを追加します。コマンドラインで指定された@var{path}の値は、環境変数@w{@env{OCTAVE_PATH}}の値をオーバーライドします。しかしシステムまたはユーザーのスタートアップファイルで、path関数のいずれかを通じてセットされた内部のloadパスは除きます。"
+
+#. type: code{#1}
+#: basics.texi:221 basics.texi:222
+#, no-wrap
+msgid "--persist"
+msgstr "--persist"
+
+#. type: table
+#: basics.texi:225
+msgid ""
+"Go to interactive mode after @option{--eval} or reading from a file named on "
+"the command line."
+msgstr "@option{--eval}またはコマンドラインで指定された名前のファイルを読み込んだ後に、インタラクティブモードに移ります。"
+
+#. type: code{#1}
+#: basics.texi:226 basics.texi:229
+#, no-wrap
+msgid "--silent"
+msgstr "--silent"
+
+#. type: code{#1}
+#: basics.texi:227 basics.texi:230
+#, no-wrap
+msgid "--quiet"
+msgstr "--quiet"
+
+#. type: item
+#: basics.texi:228 basics.texi:231 basics.texi:1117
+#, no-wrap
+msgid "-q"
+msgstr "-q"
+
+#. type: table
+#: basics.texi:233
+msgid "Don't print the usual greeting and version message at startup."
+msgstr "起動時に通常のグリーティングメッセージとバージョンメッセージをプリントしません。"
+
+#. type: code{#1}
+#: basics.texi:234 basics.texi:235
+#, no-wrap
+msgid "--texi-macros-file @var{filename}"
+msgstr "--texi-macros-file @var{filename}"
+
+#. type: table
+#: basics.texi:237
+msgid "Specify the name of the file containing Texinfo macros for use by makeinfo."
+msgstr "makeinfoにより使用されるTexinfoマクロを含むファイルの名前を指定します。"
+
+#. type: code{#1}
+#: basics.texi:238 basics.texi:240
+#, no-wrap
+msgid "--traditional"
+msgstr "--traditional"
+
+#. type: code{#1}
+#: basics.texi:239 basics.texi:241
+#, no-wrap
+msgid "--braindead"
+msgstr "--braindead"
+
+#. type: table
+#: basics.texi:244
+msgid ""
+"For compatibility with @sc{matlab}, set initial values for user preferences "
+"to the following values"
+msgstr "@sc{matlab}との互換のために、ユーザープリファレンスとして、以下の値を初期値としてセットします。"
+
+#. type: group
+#: basics.texi:259
+#, no-wrap
+msgid ""
+"PS1                             = \">> \"\n"
+"PS2                             = \"\"\n"
+"allow_noninteger_range_as_index = true\n"
+"beep_on_error                   = true\n"
+"confirm_recursive_rmdir         = false\n"
+"crash_dumps_octave_core         = false\n"
+"save_default_options            = \"-mat-binary\"\n"
+"do_braindead_shortcircuit_evaluation = true\n"
+"fixed_point_format              = true\n"
+"history_timestamp_format_string = \"%%-- %D %I:%M %p --%%\"\n"
+"page_screen_output              = false\n"
+"print_empty_dimensions          = false\n"
+msgstr ""
+"PS1                             = \">> \"\n"
+"PS2                             = \"\"\n"
+"allow_noninteger_range_as_index = true\n"
+"beep_on_error                   = true\n"
+"confirm_recursive_rmdir         = false\n"
+"crash_dumps_octave_core         = false\n"
+"save_default_options            = \"-mat-binary\"\n"
+"do_braindead_shortcircuit_evaluation = true\n"
+"fixed_point_format              = true\n"
+"history_timestamp_format_string = \"%%-- %D %I:%M %p --%%\"\n"
+"page_screen_output              = false\n"
+"print_empty_dimensions          = false\n"
+
+#. type: table
+#: basics.texi:264
+msgid "and disable the following warnings"
+msgstr "そして、以下の警告を無効にします。"
+
+#. type: group
+#: basics.texi:271
+#, no-wrap
+msgid ""
+"Octave:abbreviated-property-match\n"
+"Octave:fopen-file-in-path\n"
+"Octave:function-name-clash\n"
+"Octave:load-file-in-path\n"
+msgstr ""
+"Octave:abbreviated-property-match\n"
+"Octave:fopen-file-in-path\n"
+"Octave:function-name-clash\n"
+"Octave:load-file-in-path\n"
+
+#. type: table
+#: basics.texi:279
+msgid ""
+"Note that this does not enable the @code{Octave:matlab-incompatible} "
+"warning, which you might want if you want to be told about writing code that "
+"works in Octave but not @sc{matlab} (@pxref{XREFwarning,,warning}, "
+"@ref{XREFwarning_ids,,warning_ids})."
+msgstr "これは@code{Octave:matlab-incompatible}警告を有効にしないことに注意してください。Octaveでは機能するが、@sc{matlab}では機能しないコードの記述にたいして警告してほしいときは、この警告を有効にしたいと思うでしょう(詳細は@ref{XREFwarning,,warning}、および@ref{XREFwarning_ids,,warning_ids}を参照してください)。"
+
+#. type: code{#1}
+#: basics.texi:280 basics.texi:282
+#, no-wrap
+msgid "--verbose"
+msgstr "--verbose"
+
+#. type: code{#1}
+#: basics.texi:281 basics.texi:283
+#, no-wrap
+msgid "-V"
+msgstr "-V"
+
+#. type: table
+#: basics.texi:285
+msgid "Turn on verbose output."
+msgstr "詳細な出力に切り替えます。"
+
+#. type: code{#1}
+#: basics.texi:286 basics.texi:288
+#, no-wrap
+msgid "--version"
+msgstr "--version"
+
+#. type: code{#1}
+#: basics.texi:287 basics.texi:289
+#, no-wrap
+msgid "-v"
+msgstr "-v"
+
+#. type: table
+#: basics.texi:291
+msgid "Print the program version number and exit."
+msgstr "プログラムのバージョンナンバーをプリントしてexitします。"
+
+#. type: var{#1}
+#: basics.texi:292
+#, no-wrap
+msgid "file"
+msgstr "file"
+
+#. type: table
+#: basics.texi:295
+msgid ""
+"Execute commands from @var{file}.  Exit when done unless @option{--persist} "
+"is also specified."
+msgstr "@var{file}のコマンドを実行します。@option{--persist}が指定されていない場合は、実行が終了した後にexitします。"
+
+#. type: Plain text
+#: basics.texi:300
+msgid ""
+"Octave also includes several functions which return information about the "
+"command line, including the number of arguments and all of the options."
+msgstr "Octaveには、引数の数やすべてのオプションなど、コマンドラインの情報についてリターンする関数がいくつかあります。"
+
+#. type: anchor{#1}
+#: basics.texi:303
+msgid "XREFargv"
+msgstr "XREFargv"
+
+#. type: deftypefn
+#: basics.texi:303
+#, no-wrap
+msgid "{Built-in Function} {} argv ()"
+msgstr "{Built-in Function} {} argv ()"
+
+#. type: deftypefn
+#: basics.texi:306
+msgid ""
+"Return the command line arguments passed to Octave.  For example, if you "
+"invoked Octave using the command"
+msgstr "Octaveに渡されたコマンドライン引数をリターンします。たとえば以下のようなコマンドを使用してOctaveを呼び出した場合、"
+
+#. type: example
+#: basics.texi:309
+#, no-wrap
+msgid "octave --no-line-editing --silent\n"
+msgstr "octave --no-line-editing --silent\n"
+
+#. type: deftypefn
+#: basics.texi:314
+msgid ""
+"@code{argv} would return a cell array of strings with the elements "
+"@option{--no-line-editing} and @option{--silent}."
+msgstr "@code{argv}は、要素が@option{--no-line-editing}と@option{--silent}であるようなセル配列をリターンするでしょう。"
+
+#. type: deftypefn
+#: basics.texi:318
+msgid ""
+"If you write an executable Octave script, @code{argv} will return the list "
+"of arguments passed to the script.  @xref{Executable Octave Programs}, for "
+"an example of how to create an executable Octave script."
+msgstr "実行可能なOctaveスクリプトを記述した場合、@code{argv}はそのスクリプトに渡された引数のリストをリターンします。実行可能なOctaveスクリプトを記述する例は、@ref{Executable Octave Programs}を参照してください。"
+
+#. type: anchor{#1}
+#: basics.texi:323
+msgid "XREFprogram_name"
+msgstr "XREFprogram_name"
+
+#. type: deftypefn
+#: basics.texi:323
+#, no-wrap
+msgid "{Built-in Function} {} program_name ()"
+msgstr "{Built-in Function} {} program_name ()"
+
+#. type: deftypefn
+#: basics.texi:327
+msgid ""
+"Return the last component of the value returned by "
+"@code{program_invocation_name}.  "
+"@seealso{@ref{XREFprogram_invocation_name,,program_invocation_name}}"
+msgstr ""
+"@code{program_invocation_name}からリターンされた値(フルパス)の、最後の成分(ファイル名)をリターンします。\n"
+"@seealso{@ref{XREFprogram_invocation_name,,program_invocation_name}}"
+
+#. type: anchor{#1}
+#: basics.texi:332
+msgid "XREFprogram_invocation_name"
+msgstr "XREFprogram_invocation_name"
+
+#. type: deftypefn
+#: basics.texi:332
+#, no-wrap
+msgid "{Built-in Function} {} program_invocation_name ()"
+msgstr "{Built-in Function} {} program_invocation_name ()"
+
+#. type: deftypefn
+#: basics.texi:334
+msgid "Return the name that was typed at the shell prompt to run Octave."
+msgstr "Octaveを実行するためにシェルプロンプトにタイプされた名前をリターンします。"
+
+#. type: deftypefn
+#: basics.texi:340
+msgid ""
+"If executing a script from the command line (e.g., @code{octave foo.m})  or "
+"using an executable Octave script, the program name is set to the name of "
+"the script.  @xref{Executable Octave Programs}, for an example of how to "
+"create an executable Octave script.  "
+"@seealso{@ref{XREFprogram_name,,program_name}}"
+msgstr ""
+"コマンドラインからスクリプトを実行した場合(例: @code{octave foo.m})、あるいは実行可能なOctaveスクリプトを使用した場合、プログラム名はしのスクリプトの名前にセットされます。実行可能なOctaveスクリプトを作成する例は、@ref{Executable Octave Programs}を参照してください。\n"
+"@seealso{@ref{XREFprogram_name,,program_name}}"
+
+#. type: Plain text
+#: basics.texi:345
+msgid ""
+"Here is an example of using these functions to reproduce the command line "
+"which invoked Octave."
+msgstr "以下は、これらの関数を使用して、Octaveを呼び出したコマンドラインを再現する例です"
+
+#. type: group
+#: basics.texi:354
+#, no-wrap
+msgid ""
+"printf (\"%s\", program_name ());\n"
+"arg_list = argv ();\n"
+"for i = 1:nargin\n"
+"  printf (\" %s\", arg_list@{i@});\n"
+"endfor\n"
+"printf (\"\\n\");\n"
+msgstr ""
+"printf (\"%s\", program_name ());\n"
+"arg_list = argv ();\n"
+"for i = 1:nargin\n"
+"  printf (\" %s\", arg_list@{i@});\n"
+"endfor\n"
+"printf (\"\\n\");\n"
+
+#. type: Plain text
+#: basics.texi:361
+msgid ""
+"@xref{Indexing Cell Arrays}, for an explanation of how to retrieve objects "
+"from cell arrays, and @ref{Defining Functions}, for information about the "
+"variable @code{nargin}."
+msgstr "セル配列からオブジェクトを取得する方法についての説明は@ref{Indexing Cell Arrays}、変数@code{nargin}についての情報は@ref{Defining Functions}を参照してください。"
+
+#. type: cindex
+#: basics.texi:364
+#, no-wrap
+msgid "initialization"
+msgstr "initialization"
+
+#. type: cindex
+#: basics.texi:365
+#, no-wrap
+msgid "startup"
+msgstr "startup"
+
+#. type: Plain text
+#: basics.texi:370
+msgid ""
+"When Octave starts, it looks for commands to execute from the files in the "
+"following list.  These files may contain any valid Octave commands, "
+"including function definitions."
+msgstr "Octaveが開始されるとき、Octaveは以下のリストのファイルから、実行するコマンドを探します。これらのファイルには、関数定義を含む、任意の有効なOctaveコマンドが含まれるでしょう。"
+
+#. type: cindex
+#: basics.texi:371
+#, no-wrap
+msgid "startup files"
+msgstr "startup files"
+
+#. type: item
+#: basics.texi:374
+#, no-wrap
+msgid "@var{octave-home}/share/octave/site/m/startup/octaverc"
+msgstr "@var{octave-home}/share/octave/site/m/startup/octaverc"
+
+#. type: cindex
+#: basics.texi:375
+#, no-wrap
+msgid "site startup file"
+msgstr "site startup file"
+
+#. type: table
+#: basics.texi:383
+msgid ""
+"where @var{octave-home} is the directory in which Octave is installed (the "
+"default is @file{/usr/local}).  This file is provided so that changes to the "
+"default Octave environment can be made globally for all users at your site "
+"for all versions of Octave you have installed.  Care should be taken when "
+"making changes to this file since all users of Octave at your site will be "
+"affected.  The default file may be overridden by the environment variable "
+"@w{@env{OCTAVE_SITE_INITFILE}}."
+msgstr "@var{octave-home}はOctaveがインストールされたディレクトリーです(デフォルトは@file{/usr/local}))。このファイルは、デフォルトのOctave環境にたいする変更を、そのサイトのすべてのユーザー、インストールされたOctaveのすべてのバージョンにたいして全体的に適用するために提供されています。このファイルへの変更は、そのサイトのOctaveユーザーすべてに影響を与えるため、注意を払うべきです。デフォルトファイルは、環境変数yによりオーバーライドされるかもしれません。"
+
+#. type: item
+#: basics.texi:384
+#, no-wrap
+msgid "@var{octave-home}/share/octave/@var{version}/m/startup/octaverc"
+msgstr "@var{octave-home}/share/octave/@var{version}/m/startup/octaverc"
+
+#. type: cindex
+#: basics.texi:385
+#, no-wrap
+msgid "version startup file"
+msgstr "version startup file"
+
+#. type: table
+#: basics.texi:394
+msgid ""
+"where @var{octave-home} is the directory in which Octave is installed (the "
+"default is @file{/usr/local}), and @var{version} is the version number of "
+"Octave.  This file is provided so that changes to the default Octave "
+"environment can be made globally for all users of a particular version of "
+"Octave.  Care should be taken when making changes to this file since all "
+"users of Octave at your site will be affected.  The default file may be "
+"overridden by the environment variable @w{@env{OCTAVE_VERSION_INITFILE}}."
+msgstr "@var{octave-home}はOctaveがインストールされたディレクトリー(デフォルトは@file{/usr/local})、@var{version}はOctaveのバージョンナンバーです。このファイルは、特定のバージョンのOctaveを使用するすべてのユーザーにたいして、デフォルトのOctave環境への変更を全体的に適用するために提供されています。そのサイトで対象となるバージョンのOctaveを使用するすべてのユーザーに影響を与えるため、このファイルの変更には注意が払われるべきです。デフォルトファイルは環境変数@w{@env{OCTAVE_VERSION_INITFILE}}により、オーバーライドされるかもしれません。"
+
+#. type: code{#1}
+#: basics.texi:395 basics.texi:397
+#, no-wrap
+msgid "~/.octaverc"
+msgstr "~/.octaverc"
+
+#. type: cindex
+#: basics.texi:396
+#, no-wrap
+msgid "personal startup file"
+msgstr "personal startup file"
+
+#. type: table
+#: basics.texi:400
+msgid ""
+"This file is used to make personal changes to the default Octave "
+"environment."
+msgstr "このファイルは、デフォルトOctave環境にたいして個人的に変更を行なうために使用されます。"
+
+#. type: code{#1}
+#: basics.texi:401 basics.texi:403
+#, no-wrap
+msgid ".octaverc"
+msgstr ".octaverc"
+
+#. type: cindex
+#: basics.texi:402
+#, no-wrap
+msgid "project startup file"
+msgstr "project startup file"
+
+#. type: table
+#: basics.texi:409
+msgid ""
+"This file can be used to make changes to the default Octave environment for "
+"a particular project.  Octave searches for this file in the current "
+"directory after it reads @file{~/.octaverc}.  Any use of the @code{cd} "
+"command in the @file{~/.octaverc} file will affect the directory where "
+"Octave searches for @file{.octaverc}."
+msgstr "このファイルは、特定のプロジェクトのデフォルトOctave環境にたいして変更を行なうために使用されます。Octaveは、@file{~/.octaverc}を読み込んだ後に、カレントディレクトリーからこのファイルを検索します。@file{~/.octaverc}ファイル内での@code{cd}コマンドの使用は、Octaveが@file{.octaverc}を検索するディレクトリーに影響を与えます。"
+
+#. type: table
+#: basics.texi:412
+msgid ""
+"If you start Octave in your home directory, commands from the file "
+"@file{~/.octaverc} will only be executed once."
+msgstr "ホームディレクトリーでOctaveを開始した場合、ファイル@file{~/.octaverc}のコマンドは一度だけ実行されます。"
+
+#. type: Plain text
+#: basics.texi:417
+msgid ""
+"A message will be displayed as each of the startup files is read if you "
+"invoke Octave with the @option{--verbose} option but without the "
+"@option{--silent} option."
+msgstr "@option{--silent}オプションを指定せずに@option{--verbose}オプションでOctaveを呼び出した場合、スタートアップファイルが読み込まれるたびに、メッセージが表示されます。"
+
+#. type: Plain text
+#: basics.texi:420
+msgid ""
+"The @code{dump_prefs} function is useful for determining what customizations "
+"to Octave are possible and which are in effect."
+msgstr "どのようなカスタマイズが可能で、どのカスタマイズが有効になっているかを決定するには、@code{dump_prefs}関数が便利です。"
+
+#. type: anchor{#1}
+#: basics.texi:423
+msgid "XREFdump_prefs"
+msgstr "XREFdump_prefs"
+
+#. type: deftypefn
+#: basics.texi:423
+#, no-wrap
+msgid "{Function File} {} dump_prefs ()"
+msgstr "{Function File} {} dump_prefs ()"
+
+#. type: deftypefnx
+#: basics.texi:424
+#, no-wrap
+msgid "{Function File} {} dump_prefs (@var{fid})"
+msgstr "{Function File} {} dump_prefs (@var{fid})"
+
+#. type: deftypefn
+#: basics.texi:428
+msgid ""
+"Dump all of the current user preference variables in a format that can be "
+"parsed by Octave later.  @var{fid} is a file descriptor as returned by "
+"@code{fopen}.  If @var{file} is omitted, the listing is printed to stdout."
+msgstr "後からOctaveでパースできる形式で、現在のすべてのユーザープリファレンス変数をダンプします。@var{fid}は@code{fopen}からリターンされたファイルディスクリプターです。@var{file}が省略された場合、リストはstdoutにプリントされます。"
+
+#. type: section
+#: basics.texi:431 basics.texi:432
+#, no-wrap
+msgid "Quitting Octave"
+msgstr "Quitting Octave"
+
+#. type: cindex
+#: basics.texi:433
+#, no-wrap
+msgid "exiting octave"
+msgstr "exiting octave"
+
+#. type: cindex
+#: basics.texi:434
+#, no-wrap
+msgid "quitting octave"
+msgstr "quitting octave"
+
+#. type: anchor{#1}
+#: basics.texi:438
+msgid "XREFquit"
+msgstr "XREFquit"
+
+#. type: deftypefn
+#: basics.texi:438
+#, no-wrap
+msgid "{Built-in Function} {} exit (@var{status})"
+msgstr "{Built-in Function} {} exit (@var{status})"
+
+#. type: deftypefnx
+#: basics.texi:439
+#, no-wrap
+msgid "{Built-in Function} {} quit (@var{status})"
+msgstr "{Built-in Function} {} quit (@var{status})"
+
+#. type: deftypefn
+#: basics.texi:443
+msgid ""
+"Exit the current Octave session.  If the optional integer value @var{status} "
+"is supplied, pass that value to the operating system as the Octave's exit "
+"status.  The default value is zero."
+msgstr "現在のOctaveセッションをexitします。オプションの整数値@var{status}が与えられた場合、Octaveのexit statusとして、その値をオペレーティングシステムに渡します。デフォルト値は0です。"
+
+#. type: anchor{#1}
+#: basics.texi:448
+msgid "XREFatexit"
+msgstr "XREFatexit"
+
+#. type: deftypefn
+#: basics.texi:448
+#, no-wrap
+msgid "{Built-in Function} {} atexit (@var{fcn})"
+msgstr "{Built-in Function} {} atexit (@var{fcn})"
+
+#. type: deftypefnx
+#: basics.texi:449
+#, no-wrap
+msgid "{Built-in Function} {} atexit (@var{fcn}, @var{flag})"
+msgstr "{Built-in Function} {} atexit (@var{fcn}, @var{flag})"
+
+#. type: deftypefn
+#: basics.texi:451
+msgid "Register a function to be called when Octave exits.  For example,"
+msgstr "Octaveをexitするときに呼び出される関数を登録します。たとえば、"
+
+#. type: group
+#: basics.texi:458
+#, no-wrap
+msgid ""
+"function last_words ()\n"
+"  disp (\"Bye bye\");\n"
+"endfunction\n"
+"atexit (\"last_words\");\n"
+msgstr ""
+"function last_words ()\n"
+"  disp (\"Bye bye\");\n"
+"endfunction\n"
+"atexit (\"last_words\");\n"
+
+#. type: deftypefn
+#: basics.texi:463
+msgid "will print the message @qcode{\"Bye bye\"} when Octave exits."
+msgstr "これはOctaveをexitするとき、メッセージ@qcode{\"Bye bye\"}をプリントします。"
+
+#. type: deftypefn
+#: basics.texi:469
+msgid ""
+"The additional argument @var{flag} will register or unregister @var{fcn} "
+"from the list of functions to be called when Octave exits.  If @var{flag} is "
+"true, the function is registered, and if @var{flag} is false, it is "
+"unregistered.  For example, after registering the function @code{last_words} "
+"above,"
+msgstr "追加の引数@var{flag}は、Octaveをexitするときに呼び出される関数のリストに、@var{fcn}を登録、または登録を取り消します。@var{flag}がtrueの場合、その関数は登録され、@var{flag}の場合は、その関数の登録が取り消されます。たとえば、上述の関数@code{last_words}を登録した後に"
+
+#. type: example
+#: basics.texi:472
+#, no-wrap
+msgid "atexit (\"last_words\", false);\n"
+msgstr "atexit (\"last_words\", false);\n"
+
+#. type: deftypefn
+#: basics.texi:477
+msgid ""
+"will remove the function from the list and Octave will not call "
+"@code{last_words} when it exits."
+msgstr "これはリストから関数を取り除くので、Octaveがexitするとき@code{last_words}は呼び出されません。"
+
+#. type: deftypefn
+#: basics.texi:482
+msgid ""
+"Note that @code{atexit} only removes the first occurrence of a function from "
+"the list, so if a function was placed in the list multiple times with "
+"@code{atexit}, it must also be removed from the list multiple times."
+msgstr "@code{atexit}はリストから最初の関数だけを取り除くことに注意してください。@code{atexit}によりリストに関数が複数ある場合は、同じように複数回取り除かなければなりません。"
+
+#. type: node
+#: basics.texi:485
+#, no-wrap
+msgid "Getting Help"
+msgstr "Getting Help"
+
+#. type: section
+#: basics.texi:486
+#, no-wrap
+msgid "Commands for Getting Help"
+msgstr "Commands for Getting Help"
+
+#. type: cindex
+#: basics.texi:487
+#, no-wrap
+msgid "online help"
+msgstr "online help"
+
+#. type: cindex
+#: basics.texi:488
+#, no-wrap
+msgid "help, online"
+msgstr "help, online"
+
+#. type: Plain text
+#: basics.texi:497
+msgid ""
+"The entire text of this manual is available from the Octave prompt via the "
+"command @kbd{doc}.  In addition, the documentation for individual "
+"user-written functions and variables is also available via the @kbd{help} "
+"command.  This section describes the commands used for reading the manual "
+"and the documentation strings for user-supplied functions and variables.  "
+"@xref{Function Files}, for more information about how to document the "
+"functions you write."
+msgstr "このマニュアルのテキスト全体は、Octaveプロンプトから@kbd{doc}コマンドを通じて利用できます。さらにユーザーが独自に記述した関数や変数のドキュメントも、@kbd{help}コマンドを通じて利用できます。このセクションでは、マニュアルやユーザーが定義した関数や変数のドキュメント文字列を読むために使用するコマンドを説明します。作成した関数のドキュメント記述については、@ref{Function Files}を参照してください。"
+
+#. type: anchor{#1}
+#: basics.texi:500
+msgid "XREFhelp"
+msgstr "XREFhelp"
+
+#. type: deftypefn
+#: basics.texi:500
+#, no-wrap
+msgid "{Command} {} help @var{name}"
+msgstr "{Command} {} help @var{name}"
+
+#. type: deftypefnx
+#: basics.texi:501
+#, no-wrap
+msgid "{Command} {} help @code{--list}"
+msgstr "{Command} {} help @code{--list}"
+
+#. type: deftypefnx
+#: basics.texi:502
+#, no-wrap
+msgid "{Command} {} help @code{.}"
+msgstr "{Command} {} help @code{.}"
+
+#. type: deftypefn
+#: basics.texi:506
+msgid ""
+"Display the help text for @var{name}.  For example, the command @kbd{help "
+"help} prints a short message describing the @code{help} command."
+msgstr "@var{name}にたいするヘルプテキストを表示します。たとえば、コマンド@kbd{help help}は@code{help}コマンドを説明する短いメッセージをプリントします。"
+
+#. type: deftypefn
+#: basics.texi:510
+msgid ""
+"Given the single argument @code{--list}, list all operators, keywords, "
+"built-in functions, and loadable functions available in the current session "
+"of Octave."
+msgstr "単一の引数@code{--list}が与えられた場合は、演算子、キーワード、ビルトイン関数、および現在のOctaveセッションで利用できるロード可能な関数を、すべてリストします。"
+
+#. type: deftypefn
+#: basics.texi:513
+msgid ""
+"Given the single argument @code{.}, list all operators available in the "
+"current session of Octave."
+msgstr "単一も引数@code{.}が与えられた場合は、現在のOctaveセッションで利用できる、すべての演算子をリストします。"
+
+#. type: deftypefn
+#: basics.texi:516
+msgid ""
+"If invoked without any arguments, @code{help} display instructions on how to "
+"access help from the command line."
+msgstr "引数を指定せずに呼び出した場合、@code{help}はコマンドラインからヘルプにアクセスする手順を表示します。"
+
+#. type: deftypefn
+#: basics.texi:521
+msgid ""
+"The help command can give you information about operators, but not the comma "
+"and semicolons that are used as command separators.  To get help for those, "
+"you must type @kbd{help comma} or @kbd{help semicolon}.  "
+"@seealso{@ref{XREFdoc,,doc}, @ref{XREFlookfor,,lookfor}, "
+"@ref{XREFwhich,,which}}"
+msgstr ""
+"helpコマンドにより、コマンドの区切り文字に使用されるカンマとセミコロンを除いた、演算子の情報を得ることができます。それらについてのヘルプを得るには、@kbd{help comma}や@kbd{help semicolon}とタイプしなければなりません。\n"
+"@seealso{@ref{XREFdoc,,doc}, @ref{XREFlookfor,,lookfor}, @ref{XREFwhich,,which}}"
+
+#. type: anchor{#1}
+#: basics.texi:526
+msgid "XREFdoc"
+msgstr "XREFdoc"
+
+#. type: deftypefn
+#: basics.texi:526
+#, no-wrap
+msgid "{Command} {} doc @var{function_name}"
+msgstr "{Command} {} doc @var{function_name}"
+
+#. type: deftypefn
+#: basics.texi:531
+msgid ""
+"Display documentation for the function @var{function_name} directly from an "
+"online version of the printed manual, using the GNU Info browser.  If "
+"invoked without any arguments, the manual is shown from the beginning."
+msgstr "GNU Infoブラウザを使用して、プリントされたマニュアルのオンラインバージョンから、関数@var{function_name}のドキュメントを直接表示します。引数を指定せずに呼び出した場合、マニュアルの冒頭から表示されます。"
+
+#. type: deftypefn
+#: basics.texi:534
+msgid ""
+"For example, the command @kbd{doc rand} starts the GNU Info browser at the "
+"@code{rand} node in the online version of the manual."
+msgstr "たとえば、コマンド@kbd{doc rand}はマニュアルのオンラインバージョンの@code{rand}ノードからGNU Infoブラウザを開始します。"
+
+#. type: deftypefn
+#: basics.texi:538
+msgid ""
+"Once the GNU Info browser is running, help for using it is available using "
+"the command @kbd{C-h}.  @seealso{@ref{XREFhelp,,help}}"
+msgstr ""
+"GNU Infoブラウザが実行されると、コマンド@kbd{C-h}を使用して、使い方のヘルプを得ることができます。\n"
+"@seealso{@ref{XREFhelp,,help}}"
+
+#. type: anchor{#1}
+#: basics.texi:543
+msgid "XREFlookfor"
+msgstr "XREFlookfor"
+
+#. type: deftypefn
+#: basics.texi:543
+#, no-wrap
+msgid "{Command} {} lookfor @var{str}"
+msgstr "{Command} {} lookfor @var{str}"
+
+#. type: deftypefnx
+#: basics.texi:544
+#, no-wrap
+msgid "{Command} {} lookfor -all @var{str}"
+msgstr "{Command} {} lookfor -all @var{str}"
+
+#. type: deftypefnx
+#: basics.texi:545
+#, no-wrap
+msgid "{Function File} {[@var{func}, @var{helpstring}] =} lookfor (@var{str})"
+msgstr "{Function File} {[@var{func}, @var{helpstring}] =} lookfor (@var{str})"
+
+#. type: deftypefnx
+#: basics.texi:546
+#, no-wrap
+msgid ""
+"{Function File} {[@var{func}, @var{helpstring}] =} lookfor (\"-all\", "
+"@var{str})"
+msgstr "{Function File} {[@var{func}, @var{helpstring}] =} lookfor (\"-all\", @var{str})"
+
+#. type: deftypefn
+#: basics.texi:552
+msgid ""
+"Search for the string @var{str} in all functions found in the current "
+"function search path.  By default, @code{lookfor} searches for @var{str} in "
+"the first sentence of the help string of each function found.  The entire "
+"help text of each function can be searched if the @qcode{\"-all\"} argument "
+"is supplied.  All searches are case insensitive."
+msgstr "現在の関数検索パスで見つかったすべての関数の中から、文字列@var{str}を検索します。デフォルトでは、@code{lookfor}は見つかった関数それぞれのヘルプ文字列の最初のセンテンスから@var{str}を検索します。引数@qcode{\"-all\"}が与えられた場合は、それぞれの関数のヘルプテキスト全体から検索します。検索はすべて大文字小文字を区別しません。"
+
+#. type: deftypefn
+#: basics.texi:557
+msgid ""
+"Called with no output arguments, @code{lookfor} prints the list of matching "
+"functions to the terminal.  Otherwise, the output arguments @var{func} and "
+"@var{helpstring} define the matching functions and the first sentence of "
+"each of their help strings."
+msgstr "出力引数を指定せずに呼び出された場合、@code{lookfor}はマッチした関数のリストを端末にプリントします。指定された場合、出力引数@var{func}および@var{helpstring}には、マッチした関数とその関数のヘルプ文字列の最初のセンテンスが定義されます。"
+
+#. type: deftypefn
+#: basics.texi:566
+msgid ""
+"The ability of @code{lookfor} to correctly identify the first sentence of "
+"the help text is dependent on the format of the function's help.  All Octave "
+"core functions are correctly formatted, but the same can not be guaranteed "
+"for external packages and user-supplied functions.  Therefore, the use of "
+"the @qcode{\"-all\"} argument may be necessary to find related functions "
+"that are not a part of Octave.  @seealso{@ref{XREFhelp,,help}, "
+"@ref{XREFdoc,,doc}, @ref{XREFwhich,,which}}"
+msgstr ""
+"最初のセンテンスを正しく認識する@code{lookfor}の能力は、その関数のヘルプのフォーマットに依存します。Octaveの中心的な関数はすべて正しくフォーマットされていますが、外部パッケージとユーザー定義関数について同様に保証することはできません。したがって、Octaveの一部ではない、関連のある関数を見つけるために、@qcode{\"-all\"}引数の使用が必要になるかもしれません。\n"
+"@seealso{@ref{XREFhelp,,help}, @ref{XREFdoc,,doc}, @ref{XREFwhich,,which}}"
+
+#. type: Plain text
+#: basics.texi:571
+msgid ""
+"To see what is new in the current release of Octave, use the @code{news} "
+"function."
+msgstr "Octaveのカレントリリースで何が新しくなったか確認するには、@code{news}関数を使用します。"
+
+#. type: anchor{#1}
+#: basics.texi:574
+msgid "XREFnews"
+msgstr "XREFnews"
+
+#. type: deftypefn
+#: basics.texi:574
+#, no-wrap
+msgid "{Command} {} news"
+msgstr "{Command} {} news"
+
+#. type: deftypefnx
+#: basics.texi:575
+#, no-wrap
+msgid "{Command} {} news @var{package}"
+msgstr "{Command} {} news @var{package}"
+
+#. type: deftypefn
+#: basics.texi:577
+msgid "Display the current NEWS file for Octave or an installed package."
+msgstr "OctaveまたはインストールされたパッケージのカレントNEWSファイルを表示します。"
+
+#. type: deftypefn
+#: basics.texi:581
+msgid ""
+"When called without an argument, display the NEWS file for Octave.  When "
+"given a package name @var{package}, display the current NEWS file for that "
+"package."
+msgstr "引数を指定せずに呼び出した場合は、OctaveのNEWSファイルを表示します。パッケージ名@var{package}が与えられた場合は、そのパッケージのカレントNEWSファイルを表示します。"
+
+#. type: anchor{#1}
+#: basics.texi:586
+msgid "XREFinfo"
+msgstr "XREFinfo"
+
+#. type: deftypefn
+#: basics.texi:586
+#, no-wrap
+msgid "{Function File} {} info ()"
+msgstr "{Function File} {} info ()"
+
+#. type: deftypefn
+#: basics.texi:588
+msgid "Display contact information for the GNU Octave community."
+msgstr "GNU Octaveコミュニティーに連絡を取るための情報を表示します。"
+
+#. type: anchor{#1}
+#: basics.texi:593
+msgid "XREFwarranty"
+msgstr "XREFwarranty"
+
+#. type: deftypefn
+#: basics.texi:593
+#, no-wrap
+msgid "{Built-in Function} {} warranty ()"
+msgstr "{Built-in Function} {} warranty ()"
+
+#. type: deftypefn
+#: basics.texi:595
+msgid "Describe the conditions for copying and distributing Octave."
+msgstr "Octaveを複製、および配布するための条件を説明します。"
+
+#. type: Plain text
+#: basics.texi:601
+msgid ""
+"The following functions can be used to change which programs are used for "
+"displaying the documentation, and where the documentation can be found."
+msgstr "以下の関数は、ドキュメントを表示するために使用されるプログラムｙｓ，ドキュメントを探す場所を変更するために使用されます。"
+
+#. type: anchor{#1}
+#: basics.texi:604
+msgid "XREFinfo_file"
+msgstr "XREFinfo_file"
+
+#. type: deftypefn
+#: basics.texi:604
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} info_file ()"
+msgstr "{Built-in Function} {@var{val} =} info_file ()"
+
+#. type: deftypefnx
+#: basics.texi:605
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} info_file (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} info_file (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:606
+#, no-wrap
+msgid "{Built-in Function} {} info_file (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} info_file (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:614
+msgid ""
+"Query or set the internal variable that specifies the name of the Octave "
+"info file.  The default value is @file{@var{octave-home}/info/octave.info}, "
+"in which @var{octave-home} is the root directory of the Octave "
+"installation.  The default value may be overridden by the environment "
+"variable @w{@env{OCTAVE_INFO_FILE}}, or the command line argument "
+"@samp{--info-file FNAME}."
+msgstr "Octaveのinfoファイルの名前を指定する内部変数にたいして問い合わせ、またはセットをします。デフォルト値は@file{@var{octave-home}/info/octave.info}です。@var{octave-home}はOctaveをインストールしたルートディレクトリーです。デフォルト値は、環境変数@w{@env{OCTAVE_INFO_FILE}}、またはコマンドライン引数@samp{--info-file FNAME}によりオーバーライドされるかもしれません。"
+
+#. type: deftypefn
+#: basics.texi:619
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFinfo_program,,info_program}, @ref{XREFdoc,,doc}, "
+"@ref{XREFhelp,,help}, @ref{XREFmakeinfo_program,,makeinfo_program}}"
+msgstr ""
+"関数内から@qcode{\"local\"}と共に呼び出された場合、変数にたいする変更は、その関数と関数が呼び出すサブルーチンにたいしてローカルになります。その関数をexitするとき、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFinfo_program,,info_program}, @ref{XREFdoc,,doc}, @ref{XREFhelp,,help}, @ref{XREFmakeinfo_program,,makeinfo_program}}"
+
+#. type: anchor{#1}
+#: basics.texi:624
+msgid "XREFinfo_program"
+msgstr "XREFinfo_program"
+
+#. type: deftypefn
+#: basics.texi:624
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} info_program ()"
+msgstr "{Built-in Function} {@var{val} =} info_program ()"
+
+#. type: deftypefnx
+#: basics.texi:625
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} info_program (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} info_program (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:626
+#, no-wrap
+msgid "{Built-in Function} {} info_program (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} info_program (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:636
+msgid ""
+"Query or set the internal variable that specifies the name of the info "
+"program to run.  The default value is "
+"@file{@var{octave-home}/libexec/octave/@var{version}/exec/@var{arch}/info} "
+"in which @var{octave-home} is the root directory of the Octave installation, "
+"@var{version} is the Octave version number, and @var{arch} is the system "
+"type (for example, @code{i686-pc-linux-gnu}).  The default value may be "
+"overridden by the environment variable @w{@env{OCTAVE_INFO_PROGRAM}}, or the "
+"command line argument @samp{--info-program NAME}."
+msgstr "実行するinfoプログラムの名前を指定する内部変数の問い合わせ、またはセットを行います。デフォルト値は@file{@var{octave-home}/libexec/octave/@var{version}/exec/@var{arch}/info}で、@var{octave-home}はOctaveをインストールしたルートディレクトリー、@var{version}はOctaveのバージョンナンバー、そして@var{arch}はシステムタイプ(たとえば@code{i686-pc-linux-gnu})です。デフォルト値は、環境変数@w{@env{OCTAVE_INFO_PROGRAM}}、またはコマンドライン引数@samp{--info-program NAME}でオーバーライドされるかもしれません。"
+
+#. type: deftypefn
+#: basics.texi:641
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFinfo_file,,info_file}, @ref{XREFdoc,,doc}, "
+"@ref{XREFhelp,,help}, @ref{XREFmakeinfo_program,,makeinfo_program}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数への変更ははその関数および関数のサブルーチンにたいしてローカルになります。その関数をexitするときに、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFinfo_file,,info_file}, @ref{XREFdoc,,doc}, @ref{XREFhelp,,help}, @ref{XREFmakeinfo_program,,makeinfo_program}}"
+
+#. type: anchor{#1}
+#: basics.texi:646
+msgid "XREFmakeinfo_program"
+msgstr "XREFmakeinfo_program"
+
+#. type: deftypefn
+#: basics.texi:646
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} makeinfo_program ()"
+msgstr "{Built-in Function} {@var{val} =} makeinfo_program ()"
+
+#. type: deftypefnx
+#: basics.texi:647
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} makeinfo_program (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} makeinfo_program (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:648
+#, no-wrap
+msgid "{Built-in Function} {} makeinfo_program (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} makeinfo_program (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:652
+msgid ""
+"Query or set the internal variable that specifies the name of the program "
+"that Octave runs to format help text containing Texinfo markup commands.  "
+"The default value is @code{makeinfo}."
+msgstr "Texinfoのマークアップコマンドを含むヘルプテキストをフォーマットするためにOctaveが実行するプログラム名を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@code{makeinfo}です。"
+
+#. type: deftypefn
+#: basics.texi:657
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFtexi_macros_file,,texi_macros_file}, "
+"@ref{XREFinfo_file,,info_file}, @ref{XREFinfo_program,,info_program}, "
+"@ref{XREFdoc,,doc}, @ref{XREFhelp,,help}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、その変数にたいする変更は、その関数および関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFtexi_macros_file,,texi_macros_file}, @ref{XREFinfo_file,,info_file}, @ref{XREFinfo_program,,info_program}, @ref{XREFdoc,,doc}, @ref{XREFhelp,,help}}"
+
+#. type: anchor{#1}
+#: basics.texi:662
+msgid "XREFtexi_macros_file"
+msgstr "XREFtexi_macros_file"
+
+#. type: deftypefn
+#: basics.texi:662
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} texi_macros_file ()"
+msgstr "{Built-in Function} {@var{val} =} texi_macros_file ()"
+
+#. type: deftypefnx
+#: basics.texi:663
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} texi_macros_file (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} texi_macros_file (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:664
+#, no-wrap
+msgid "{Built-in Function} {} texi_macros_file (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} texi_macros_file (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:674
+msgid ""
+"Query or set the internal variable that specifies the name of the file "
+"containing Texinfo macros that are prepended to documentation strings before "
+"they are passed to makeinfo.  The default value is "
+"@file{@var{octave-home}/share/octave/@var{version}/etc/macros.texi}, in "
+"which @var{octave-home} is the root directory of the Octave installation, "
+"and @var{version} is the Octave version number.  The default value may be "
+"overridden by the environment variable @w{@env{OCTAVE_TEXI_MACROS_FILE}}, or "
+"the command line argument @samp{--texi-macros-file FNAME}."
+msgstr "ドキュメント文字列がmakeinfoに渡される前に、文字列の前に追加されるTexinfoマクロを含むファイルの名前を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@file{@var{octave-home}/share/octave/@var{version}/etc/macros.texi}です。ここで、@var{octave-home}はOctaveをインストールしたルートディレクトリー、@var{version}はOctaveのバージョンナンバーです。デフォルト値は、環境変数@w{@env{OCTAVE_TEXI_MACROS_FILE}}、またはコマンドライン引数@samp{--texi-macros-file FNAME}により、オーバーライドされるかもしれません。"
+
+#. type: deftypefn
+#: basics.texi:679
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFmakeinfo_program,,makeinfo_program}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数への変更は、その関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFmakeinfo_program,,makeinfo_program}}"
+
+#. type: anchor{#1}
+#: basics.texi:684
+msgid "XREFdoc_cache_file"
+msgstr "XREFdoc_cache_file"
+
+#. type: deftypefn
+#: basics.texi:684
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} doc_cache_file ()"
+msgstr "{Built-in Function} {@var{val} =} doc_cache_file ()"
+
+#. type: deftypefnx
+#: basics.texi:685
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} doc_cache_file (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} doc_cache_file (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:686
+#, no-wrap
+msgid "{Built-in Function} {} doc_cache_file (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} doc_cache_file (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:696
+msgid ""
+"Query or set the internal variable that specifies the name of the Octave "
+"documentation cache file.  A cache file significantly improves the "
+"performance of the @code{lookfor} command.  The default value is "
+"@file{@var{octave-home}/share/octave/@var{version}/etc/doc-cache}, in which "
+"@var{octave-home} is the root directory of the Octave installation, and "
+"@var{version} is the Octave version number.  The default value may be "
+"overridden by the environment variable @w{@env{OCTAVE_DOC_CACHE_FILE}}, or "
+"the command line argument @samp{--doc-cache-file FNAME}."
+msgstr "Octaveのドキュメントキャッシュファイルの名前を指定する内部変数にたいして、問い合わせ、またはセットを行います。キャッシュファイルは、@code{lookfor}コマンドはパフォーマンスを大幅に改善します。デフォルト値は@file{@var{octave-home}/share/octave/@var{version}/etc/doc-cache}です。ここで、@var{octave-home}はOctaveをインストールしたルートディレクトリー、@var{version}はOctaveのバージョンナンバーです。デフォルト値は、環境変数@w{@env{OCTAVE_DOC_CACHE_FILE}}、またはコマンドライン引数@samp{--doc-cache-file FNAME}によりオーバーライドされるかもしれません。"
+
+#. type: deftypefn
+#: basics.texi:701
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFdoc_cache_create,,doc_cache_create}, "
+"@ref{XREFlookfor,,lookfor}, @ref{XREFinfo_program,,info_program}, "
+"@ref{XREFdoc,,doc}, @ref{XREFhelp,,help}, "
+"@ref{XREFmakeinfo_program,,makeinfo_program}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数への変更は、その関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFdoc_cache_create,,doc_cache_create}, @ref{XREFlookfor,,lookfor}, @ref{XREFinfo_program,,info_program}, @ref{XREFdoc,,doc}, @ref{XREFhelp,,help}, @ref{XREFmakeinfo_program,,makeinfo_program}}"
+
+#. type: anchor{#1}
+#: basics.texi:706
+msgid "XREFbuilt_in_docstrings_file"
+msgstr "XREFbuilt_in_docstrings_file"
+
+#. type: deftypefn
+#: basics.texi:706
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} built_in_docstrings_file ()"
+msgstr "{Built-in Function} {@var{val} =} built_in_docstrings_file ()"
+
+#. type: deftypefnx
+#: basics.texi:707
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{old_val} =} built_in_docstrings_file "
+"(@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} built_in_docstrings_file (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:708
+#, no-wrap
+msgid "{Built-in Function} {} built_in_docstrings_file (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} built_in_docstrings_file (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:718
+msgid ""
+"Query or set the internal variable that specifies the name of the file "
+"containing docstrings for built-in Octave functions.  The default value is "
+"@file{@var{octave-home}/share/octave/@var{version}/etc/built-in-docstrings}, "
+"in which @var{octave-home} is the root directory of the Octave installation, "
+"and @var{version} is the Octave version number.  The default value may be "
+"overridden by the environment variable "
+"@w{@env{OCTAVE_BUILT_IN_DOCSTRINGS_FILE}}, or the command line argument "
+"@samp{--built-in-docstrings-file FNAME}."
+msgstr "Octaveのビルトイン関数のdocstringを含むファイルの名前を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@file{@var{octave-home}/share/octave/@var{version}/etc/built-in-docstrings}です。ここで、@var{octave-home}はOctaveをインストールしたルートディレクトリー、@var{version}はOctaveのバージョンナンバーです。デフォルト値は、環境変数@w{@env{OCTAVE_BUILT_IN_DOCSTRINGS_FILE}}、またはコマンドライン引数@samp{--built-in-docstrings-file FNAME}によりオーバーライドされるかもしれません。"
+
+#. type: deftypefn
+#: basics.texi:721
+msgid ""
+"Note: This variable is only used when Octave is initializing itself.  "
+"Modifying it during a running session of Octave will have no effect."
+msgstr "注意: この変数はOctave自身の初期化時だけ使用されます。Octaveセッション実行中に変更しても、Octaveに影響しません。"
+
+#. type: anchor{#1}
+#: basics.texi:726
+msgid "XREFsuppress_verbose_help_message"
+msgstr "XREFsuppress_verbose_help_message"
+
+#. type: deftypefn
+#: basics.texi:726
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} suppress_verbose_help_message ()"
+msgstr "{Built-in Function} {@var{val} =} suppress_verbose_help_message ()"
+
+#. type: deftypefnx
+#: basics.texi:727
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{old_val} =} suppress_verbose_help_message "
+"(@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} suppress_verbose_help_message (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:728
+#, no-wrap
+msgid ""
+"{Built-in Function} {} suppress_verbose_help_message (@var{new_val}, "
+"\"local\")"
+msgstr "{Built-in Function} {} suppress_verbose_help_message (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:732
+msgid ""
+"Query or set the internal variable that controls whether Octave will add "
+"additional help information to the end of the output from the @code{help} "
+"command and usage messages for built-in commands."
+msgstr "@code{help}コマンドの出力とビルトイン関数の使い方メッセージのの最後に、Octaveが付加的なヘルプ情報を追加するかどうかと、を制御する内部変数にたいして、問い合わせまたはセットを行います。"
+
+#. type: deftypefn
+#: basics.texi:736 basics.texi:1034 basics.texi:1331 basics.texi:1603
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function."
+msgstr "関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更は、その関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、元の変数の値がリストアされます。"
+
+#. type: Plain text
+#: basics.texi:742
+msgid ""
+"The following functions are principally used internally by Octave for "
+"generating the documentation.  They are documented here for completeness and "
+"because they may occasionally be useful for users."
+msgstr "以下の関数は、ドキュメントを生成するために、主にOctaveにより内部的に使用されます。これらの関数は、ユーザーにとって便利なときがあるかもしれないので、ここに完全なドキュメントを示します。"
+
+#. type: anchor{#1}
+#: basics.texi:745
+msgid "XREFdoc_cache_create"
+msgstr "XREFdoc_cache_create"
+
+#. type: deftypefn
+#: basics.texi:745
+#, no-wrap
+msgid "{Function File} {} doc_cache_create (@var{out_file}, @var{directory})"
+msgstr "{Function File} {} doc_cache_create (@var{out_file}, @var{directory})"
+
+#. type: deftypefn
+#: basics.texi:747
+msgid "Generate documentation caches for all functions in a given directory."
+msgstr "与えられたディレクトリー内のすべての関数にたいするドキュメントキャッシュを生成します。"
+
+#. type: deftypefn
+#: basics.texi:752
+msgid ""
+"A documentation cache is generated for all functions in @var{directory}.  "
+"The resulting cache is saved in the file @var{out_file}.  The cache is used "
+"to speed up @code{lookfor}."
+msgstr "@var{directory}内のすべての関数にたいするドキュメントキャッシュを生成します。生成されたキャッシュは、ファイル@var{out_file}に保存されます。このキャッシュは、@code{lookfor}のスピードアップのために使用されます。"
+
+#. type: deftypefn
+#: basics.texi:755
+msgid ""
+"If no directory is given (or it is the empty matrix), a cache for built-in "
+"operators, etc. is generated."
+msgstr "ディレクトリーが与えられない(または空のマトリクスが与えられた)場合は、ビルトイン演算子などにたいするキャッシュが生成されます。"
+
+#. type: deftypefn
+#: basics.texi:757
+msgid ""
+"@seealso{@ref{XREFdoc_cache_file,,doc_cache_file}, "
+"@ref{XREFlookfor,,lookfor}, @ref{XREFpath,,path}}"
+msgstr "@seealso{@ref{XREFdoc_cache_file,,doc_cache_file}, @ref{XREFlookfor,,lookfor}, @ref{XREFpath,,path}}"
+
+#. type: anchor{#1}
+#: basics.texi:762
+msgid "XREFget_help_text"
+msgstr "XREFget_help_text"
+
+#. type: deftypefn
+#: basics.texi:762
+#, no-wrap
+msgid ""
+"{Built-in Function} {[@var{text}, @var{format}] =} get_help_text "
+"(@var{name})"
+msgstr "{Built-in Function} {[@var{text}, @var{format}] =} get_help_text (@var{name})"
+
+#. type: deftypefn
+#: basics.texi:764
+msgid "Return the raw help text of function @var{name}."
+msgstr "関数@var{name}のrawヘルプテキストをリターンします。"
+
+#. type: deftypefn
+#: basics.texi:768 basics.texi:779
+msgid ""
+"The raw help text is returned in @var{text} and the format in @var{format} "
+"The format is a string which is one of @qcode{\"texinfo\"}, "
+"@qcode{\"html\"}, or @qcode{\"plain text\"}."
+msgstr "@var{text}にrawヘルプテキスト、@var{format}のフォーマットがリターンされます。フォーマットは文字列で、@qcode{\"texinfo\"}、@qcode{\"html\"}、@qcode{\"plain text\"}のうちの1つです。"
+
+#. type: anchor{#1}
+#: basics.texi:773
+msgid "XREFget_help_text_from_file"
+msgstr "XREFget_help_text_from_file"
+
+#. type: deftypefn
+#: basics.texi:773
+#, no-wrap
+msgid ""
+"{Built-in Function} {[@var{text}, @var{format}] =} get_help_text_from_file "
+"(@var{fname})"
+msgstr "{Built-in Function} {[@var{text}, @var{format}] =} get_help_text_from_file (@var{fname})"
+
+#. type: deftypefn
+#: basics.texi:775
+msgid "Return the raw help text from the file @var{fname}."
+msgstr "ファイル@var{fname}のrawヘルプテキストをリターンします。"
+
+#. type: anchor{#1}
+#: basics.texi:784
+msgid "XREFget_first_help_sentence"
+msgstr "XREFget_first_help_sentence"
+
+#. type: deftypefn
+#: basics.texi:784
+#, no-wrap
+msgid ""
+"{Function File} {[@var{text}, @var{status}] =} get_first_help_sentence "
+"(@var{name})"
+msgstr "{Function File} {[@var{text}, @var{status}] =} get_first_help_sentence (@var{name})"
+
+#. type: deftypefnx
+#: basics.texi:785
+#, no-wrap
+msgid ""
+"{Function File} {[@var{text}, @var{status}] =} get_first_help_sentence "
+"(@var{name}, @var{max_len})"
+msgstr "{Function File} {[@var{text}, @var{status}] =} get_first_help_sentence (@var{name}, @var{max_len})"
+
+#. type: deftypefn
+#: basics.texi:787
+msgid "Return the first sentence of a function's help text."
+msgstr "関数のヘルプテキストの最初のセンテンスをリターンします。"
+
+#. type: deftypefn
+#: basics.texi:792
+msgid ""
+"The first sentence is defined as the text after the function declaration "
+"until either the first period (\".\") or the first appearance of two "
+"consecutive newlines (\"\\n\\n\").  The text is truncated to a maximum "
+"length of @var{max_len}, which defaults to 80."
+msgstr "最初のセンテンスとは、関数定義の後ろから、最初のピリオド(\".\")、または連続する改行(\"\\n\\n\")までのテキストです。テキストは最大長@var{max_len}(デフォルトは80)に切り詰められます。"
+
+#. type: deftypefn
+#: basics.texi:796
+msgid ""
+"The optional output argument @var{status} returns the status reported by "
+"@code{makeinfo}.  If only one output argument is requested, and @var{status} "
+"is non-zero, a warning is displayed."
+msgstr "オプションの出力引数@var{status}には、@code{makeinfo}かｒ報告されたステータスがリターンされます。要求される出力引数が1つで、@var{status}が非0の場合は警告が表示されます。"
+
+#. type: deftypefn
+#: basics.texi:798
+msgid "As an example, the first sentence of this help text is"
+msgstr "例として、この関数のヘルプテキストの最初のセンテンスは、以下のようになります"
+
+#. type: group
+#: basics.texi:803
+#, no-wrap
+msgid ""
+"get_first_help_sentence (\"get_first_help_sentence\")\n"
+"@print{} ans = Return the first sentence of a function's help text.\n"
+msgstr ""
+"get_first_help_sentence (\"get_first_help_sentence\")\n"
+"@print{} ans = Return the first sentence of a function's help text.\n"
+
+#. type: section
+#: basics.texi:808 basics.texi:809
+#, no-wrap
+msgid "Command Line Editing"
+msgstr "Command Line Editing"
+
+#. type: cindex
+#: basics.texi:810
+#, no-wrap
+msgid "command-line editing"
+msgstr "command-line editing"
+
+#. type: cindex
+#: basics.texi:811
+#, no-wrap
+msgid "editing the command line"
+msgstr "editing the command line"
+
+#. type: Plain text
+#: basics.texi:820
+msgid ""
+"Octave uses the GNU Readline library to provide an extensive set of "
+"command-line editing and history features.  Only the most common features "
+"are described in this manual.  In addition, all of the editing functions can "
+"be bound to different key strokes at the user's discretion.  This manual "
+"assumes no changes from the default Emacs bindings.  See the GNU Readline "
+"Library manual for more information on customizing Readline and for a "
+"complete feature list."
+msgstr "Octaveは、豊富なコマンドライン編集とヒストリー機能を提供するために、GNU Readlineライブラリーを使用しています。このマニュアルでは、もっとも一般的な機能についてだけ説明します。さらに、すべての編集コマンドは、ユーザーにより自由に別のキーストロークのバインドできます。このマニュアルでは、Emacsのデフォルトのキーバインディングを変更していない前提で説明します。Readlineのカスタマイズと、完全な機能については、GNU Readlineのマニュアルを参照してください。"
+
+#. type: Plain text
+#: basics.texi:824
+msgid ""
+"To insert printing characters (letters, digits, symbols, etc.), simply type "
+"the character.  Octave will insert the character at the cursor and advance "
+"the cursor forward."
+msgstr "印字可能文字(文字、数字、シンボルなど)の挿入は、単にその文字をタイプするだけです。Octaveはカーソル位置に文字を挿入して、カーソルを前方に進めます。"
+
+#. type: Plain text
+#: basics.texi:830
+msgid ""
+"Many of the command-line editing functions operate using control "
+"characters.  For example, the character @kbd{Control-a} moves the cursor to "
+"the beginning of the line.  To type @kbd{C-a}, hold down @key{CTRL} and then "
+"press @key{a}.  In the following sections, control characters such as "
+"@kbd{Control-a} are written as @kbd{C-a}."
+msgstr "コマンドライン編集関数の操作の多くは、コントロール文字を使用します。たとえば文字@kbd{Control-a}は、カーソルをその行の先頭に移動します。@kbd{C-a}のタイプは、@key{CTRL}を押したまま、@key{a}を押します。以降のセクションでは、@kbd{Control-a}のようなコントロール文字は、@kbd{C-a}と表記します。"
+
+#. type: Plain text
+#: basics.texi:840
+msgid ""
+"Another set of command-line editing functions use Meta characters.  To type "
+"@kbd{M-u}, hold down the @key{META} key and press @key{u}.  Depending on the "
+"keyboard, the @key{META} key may be labeled @key{ALT} or even "
+"@key{WINDOWS}.  If your terminal does not have a @key{META} key, you can "
+"still type Meta characters using two-character sequences starting with "
+"@kbd{ESC}.  Thus, to enter @kbd{M-u}, you would type @key{ESC} @key{u}.  The "
+"@kbd{ESC} character sequences are also allowed on terminals with real Meta "
+"keys.  In the following sections, Meta characters such as @kbd{Meta-u} are "
+"written as @kbd{M-u}."
+msgstr "メタ文字を使用するコマンドライン編集関数もあります。@kbd{M-u}をタイプするには、@key{META}キーを押したまま、@key{u}を押します。キーボードによっては、@key{META}が@key{ALT}とラベルされていたり、@key{WINDOWS}とラベルされていることさえあります。端末に@key{META}がない場合でも、@kbd{ESC}で始まる2文字シーケンスを使ってメタ文字を入力できます。この場合@kbd{M-u}を入力するには、@key{ESC}の次に@key{u}をタイプします。実際のMetaキーがある端末でも、@kbd{ESC}文字シーケンスは利用できます。以降のセクションでは、@kbd{Meta-u}のようなメタ文字は、@kbd{M-u}のように表記します。"
+
+#. type: menuentry
+#: basics.texi:851
+msgid "Cursor Motion::"
+msgstr "Cursor Motion::"
+
+#. type: menuentry
+#: basics.texi:851
+msgid "Killing and Yanking::"
+msgstr "Killing and Yanking::"
+
+#. type: menuentry
+#: basics.texi:851
+msgid "Commands For Text::"
+msgstr "Commands For Text::"
+
+#. type: menuentry
+#: basics.texi:851
+msgid "Commands For Completion::"
+msgstr "Commands For Completion::"
+
+#. type: menuentry
+#: basics.texi:851
+msgid "Commands For History::"
+msgstr "Commands For History::"
+
+#. type: menuentry
+#: basics.texi:851
+msgid "Customizing readline::"
+msgstr "Customizing readline::"
+
+#. type: menuentry
+#: basics.texi:851
+msgid "Customizing the Prompt::"
+msgstr "Customizing the Prompt::"
+
+#. type: subsection
+#: basics.texi:851 basics.texi:1504 basics.texi:1505
+#, no-wrap
+msgid "Diary and Echo Commands"
+msgstr "Diary and Echo Commands"
+
+#. type: subsection
+#: basics.texi:853 basics.texi:854
+#, no-wrap
+msgid "Cursor Motion"
+msgstr "Cursor Motion"
+
+#. type: Plain text
+#: basics.texi:857
+msgid "The following commands allow you to position the cursor."
+msgstr "以下のコマンドで、カーソルを動かすことができます。"
+
+#. type: item
+#: basics.texi:859
+#, no-wrap
+msgid "C-b"
+msgstr "C-b"
+
+#. type: table
+#: basics.texi:861
+msgid "Move back one character."
+msgstr "1文字後退します。"
+
+#. type: item
+#: basics.texi:862
+#, no-wrap
+msgid "C-f"
+msgstr "C-f"
+
+#. type: table
+#: basics.texi:864
+msgid "Move forward one character."
+msgstr "1文字前進します。"
+
+#. type: key{#1}
+#: basics.texi:865
+#, no-wrap
+msgid "BACKSPACE"
+msgstr "BACKSPACE"
+
+#. type: table
+#: basics.texi:867
+msgid "Delete the character to the left of the cursor."
+msgstr "カーソルの左の文字を削除します。"
+
+#. type: key{#1}
+#: basics.texi:868
+#, no-wrap
+msgid "DEL"
+msgstr "DEL"
+
+#. type: table
+#: basics.texi:870 basics.texi:873
+msgid "Delete the character underneath the cursor."
+msgstr "カーソルの下の文字を削除します。"
+
+#. type: item
+#: basics.texi:871
+#, no-wrap
+msgid "C-d"
+msgstr "C-d"
+
+#. type: item
+#: basics.texi:874
+#, no-wrap
+msgid "M-f"
+msgstr "M-f"
+
+#. type: table
+#: basics.texi:876
+msgid "Move forward a word."
+msgstr "1単語前方に移動します。"
+
+#. type: item
+#: basics.texi:877
+#, no-wrap
+msgid "M-b"
+msgstr "M-b"
+
+#. type: table
+#: basics.texi:879
+msgid "Move backward a word."
+msgstr "1単語後方に移動します。"
+
+#. type: item
+#: basics.texi:880
+#, no-wrap
+msgid "C-a"
+msgstr "C-a"
+
+#. type: table
+#: basics.texi:882
+msgid "Move to the start of the line."
+msgstr "行の先頭に移動します。"
+
+#. type: item
+#: basics.texi:883
+#, no-wrap
+msgid "C-e"
+msgstr "C-e"
+
+#. type: table
+#: basics.texi:885
+msgid "Move to the end of the line."
+msgstr "行の末尾に移動します。"
+
+#. type: item
+#: basics.texi:886
+#, no-wrap
+msgid "C-l"
+msgstr "C-l"
+
+#. type: table
+#: basics.texi:888
+msgid "Clear the screen, reprinting the current line at the top."
+msgstr "スクリーンをクリアーして、カレント行をスクリーンのトップに再印字します。"
+
+#. type: item
+#: basics.texi:889
+#, no-wrap
+msgid "C-_"
+msgstr "C-_"
+
+#. type: itemx
+#: basics.texi:890
+#, no-wrap
+msgid "C-/"
+msgstr "C-/"
+
+#. type: table
+#: basics.texi:892
+msgid "Undo the last action.  You can undo all the way back to an empty line."
+msgstr "最後の操作をアンドゥします。すべてをアンドゥして空の行まで戻ることができます。"
+
+#. type: item
+#: basics.texi:893
+#, no-wrap
+msgid "M-r"
+msgstr "M-r"
+
+#. type: table
+#: basics.texi:896
+msgid ""
+"Undo all changes made to this line.  This is like typing the `undo' command "
+"enough times to get back to the beginning."
+msgstr "その行へのすべての変更をアンドゥします。これは最初に戻るまで充分な回数だけ`undo'コマンドをタイプするのと同様です。"
+
+#. type: Plain text
+#: basics.texi:902
+msgid ""
+"The above table describes the most basic possible keystrokes that you need "
+"in order to do editing of the input line.  On most terminals, you can also "
+"use the left and right arrow keys in place of @kbd{C-f} and @kbd{C-b} to "
+"move forward and backward."
+msgstr "上記のテーブルでは、入力行で編集を行うのに必要となる、もっとも基本的な利用できるキーストロークを説明しています。ほとんどの端末では、@kbd{C-f}や@kbd{C-b}で前方または後方へ移動するのに、左矢印キーと右矢印キーも利用できます。"
+
+#. type: Plain text
+#: basics.texi:906
+msgid ""
+"Notice how @kbd{C-f} moves forward a character, while @kbd{M-f} moves "
+"forward a word.  It is a loose convention that control keystrokes operate on "
+"characters while meta keystrokes operate on words."
+msgstr "@kbd{C-f}は1文字前方、@kbd{M-f}は1単語前方へ移動する点に注目してください。コントロールによるキーストロークは文字単位の処理、メタによるキーストロークは単語単位の処理という、緩い慣習があります。"
+
+#. type: cindex
+#: basics.texi:907
+#, no-wrap
+msgid "clearing the screen"
+msgstr "clearing the screen"
+
+#. type: Plain text
+#: basics.texi:911
+msgid ""
+"The function @code{clc} will allow you to clear the screen from within "
+"Octave programs."
+msgstr "関数@code{clc}にとり、実行中のOctaveプログラム内のスクリーンをクリアーできます。"
+
+#. type: anchor{#1}
+#: basics.texi:914
+msgid "XREFclc"
+msgstr "XREFclc"
+
+#. type: deftypefn
+#: basics.texi:914
+#, no-wrap
+msgid "{Built-in Function} {} clc ()"
+msgstr "{Built-in Function} {} clc ()"
+
+#. type: deftypefnx
+#: basics.texi:915
+#, no-wrap
+msgid "{Built-in Function} {} home ()"
+msgstr "{Built-in Function} {} home ()"
+
+#. type: deftypefn
+#: basics.texi:917
+msgid "Clear the terminal screen and move the cursor to the upper left corner."
+msgstr "端末スクリーンをクリアーして、カーソルを左上隅に移動します。"
+
+#. type: subsection
+#: basics.texi:920 basics.texi:921
+#, no-wrap
+msgid "Killing and Yanking"
+msgstr "Killing and Yanking"
+
+#. type: Plain text
+#: basics.texi:928
+msgid ""
+"@dfn{Killing} text means to delete the text from the line, but to save it "
+"away for later use, usually by @dfn{yanking} it back into the line.  If the "
+"description for a command says that it `kills' text, then you can be sure "
+"that you can get the text back in a different (or the same)  place later."
+msgstr "テキストを@dfn{キル}するとは、行からテキストを削除しますが、後でそれを使用する(通常は@dfn{ヤンク}により行に戻す)ために、それを保存するという意味です。コマンドの説明で、そのコマンドがテキストを`キル'する、と記述されているときは、後から違う(または同じ)場所に戻せることが保証されます。"
+
+#. type: Plain text
+#: basics.texi:930
+msgid "Here is the list of commands for killing text."
+msgstr "以下はテキストをキルするコマンドのリストです。"
+
+#. type: item
+#: basics.texi:932
+#, no-wrap
+msgid "C-k"
+msgstr "C-k"
+
+#. type: table
+#: basics.texi:934
+msgid "Kill the text from the current cursor position to the end of the line."
+msgstr "現在のカーソル位置から行末までのテキストをキルします。"
+
+#. type: item
+#: basics.texi:935
+#, no-wrap
+msgid "M-d"
+msgstr "M-d"
+
+#. type: table
+#: basics.texi:938
+msgid ""
+"Kill from the cursor to the end of the current word, or if between words, to "
+"the end of the next word."
+msgstr "カーソルから現在の単語の末尾まで、カーソルが単語と単語の間にある場合は次の単語の末尾までをキルします。"
+
+#. type: item
+#: basics.texi:939
+#, no-wrap
+msgid "M-@key{DEL}"
+msgstr "M-@key{DEL}"
+
+#. type: table
+#: basics.texi:942
+msgid ""
+"Kill from the cursor to the start of the previous word, or if between words, "
+"to the start of the previous word."
+msgstr "カーソルから現在の単語の先頭まで、カーソルが単語と単語の間にある場合は前の単語の先頭までをキルします。"
+
+#. type: item
+#: basics.texi:943
+#, no-wrap
+msgid "C-w"
+msgstr "C-w"
+
+#. type: table
+#: basics.texi:946
+msgid ""
+"Kill from the cursor to the previous whitespace.  This is different than "
+"@kbd{M-@key{DEL}} because the word boundaries differ."
+msgstr "カーソルから前の空白までをキルします。単語境界が違うので、@kbd{M-@key{DEL}}とは異なります。"
+
+#. type: Plain text
+#: basics.texi:950
+msgid ""
+"And, here is how to @dfn{yank} the text back into the line.  Yanking means "
+"to copy the most-recently-killed text from the kill buffer."
+msgstr "以下は、その行にテキストを@dfn{yank}で戻す方法です。ヤンクとは、kキルバッファーからもっとも最近キルされたテキストをコピーするという意味です。"
+
+#. type: item
+#: basics.texi:952
+#, no-wrap
+msgid "C-y"
+msgstr "C-y"
+
+#. type: table
+#: basics.texi:954
+msgid "Yank the most recently killed text back into the buffer at the cursor."
+msgstr "そのバッファーのカーソル位置に、もっとも最近キルされたテキストをヤンクして戻します。"
+
+#. type: item
+#: basics.texi:955
+#, no-wrap
+msgid "M-y"
+msgstr "M-y"
+
+#. type: table
+#: basics.texi:958
+msgid ""
+"Rotate the kill-ring, and yank the new top.  You can only do this if the "
+"prior command is @kbd{C-y} or @kbd{M-y}."
+msgstr "キルリンクをローテートして、新たなトップをヤンクします。直前のコマンドが@kbd{C-y}または@kbd{M-y}のときだけ、これを行なうことができます。"
+
+#. type: Plain text
+#: basics.texi:966
+msgid ""
+"When you use a kill command, the text is saved in a @dfn{kill-ring}.  Any "
+"number of consecutive kills save all of the killed text together, so that "
+"when you yank it back, you get it in one clean sweep.  The kill ring is not "
+"line specific; the text that you killed on a previously typed line is "
+"available to be yanked back later, when you are typing another line."
+msgstr "キルコマンドを使うと、そのテキストは@dfn{キルリング(kill-ring)}に保存されます。任意の回数の連続したキルコマンドは、キルされたすべてのテキストを1つにまとめるので、それをヤンクで戻すときは、一度にまとめてヤンクできます。キルリングは特定の行に限定されたものではありません。以前にタイプしたラインでキルしたテキストは、後で他の行をタイプしているときに、ヤンクで戻すことができます。"
+
+#. type: node
+#: basics.texi:967
+#, no-wrap
+msgid "Commands For Text"
+msgstr "Commands For Text"
+
+#. type: subsection
+#: basics.texi:968
+#, no-wrap
+msgid "Commands For Changing Text"
+msgstr "Commands For Changing Text"
+
+#. type: Plain text
+#: basics.texi:973
+msgid ""
+"The following commands can be used for entering characters that would "
+"otherwise have a special meaning (e.g., @key{TAB}, @kbd{C-q}, etc.), or for "
+"quickly correcting typing mistakes."
+msgstr "以降のコマンドは、他の場合では特別な意味をもつ文字(例: @key{TAB}、@kbd{C-q}など)を入力したり、タイプミスをすばやく訂正するために使用できます。"
+
+#. type: item
+#: basics.texi:975
+#, no-wrap
+msgid "C-q"
+msgstr "C-q"
+
+#. type: itemx
+#: basics.texi:976
+#, no-wrap
+msgid "C-v"
+msgstr "C-v"
+
+#. type: table
+#: basics.texi:979
+msgid ""
+"Add the next character that you type to the line verbatim.  This is how to "
+"insert things like @kbd{C-q} for example."
+msgstr "次にタイプする文字そのものを、行に追加します。これは、@kbd{C-q}のような文字を挿入する方法の一例です。"
+
+#. type: item
+#: basics.texi:980
+#, no-wrap
+msgid "M-@key{TAB}"
+msgstr "M-@key{TAB}"
+
+#. type: table
+#: basics.texi:982
+msgid "Insert a tab character."
+msgstr "Insert a tab character."
+
+#. type: item
+#: basics.texi:983
+#, no-wrap
+msgid "C-t"
+msgstr "C-t"
+
+#. type: table
+#: basics.texi:987
+msgid ""
+"Drag the character before the cursor forward over the character at the "
+"cursor, also moving the cursor forward.  If the cursor is at the end of the "
+"line, then transpose the two characters before it."
+msgstr "カーソルのある文字の前方にカーソルの前の文字をドラッグするとともに、カーソルを進めます。カーソルが行の末尾にある場合は、カーソルの前の2文字を入れ換えます。"
+
+#. type: item
+#: basics.texi:988
+#, no-wrap
+msgid "M-t"
+msgstr "M-t"
+
+#. type: table
+#: basics.texi:991
+msgid ""
+"Drag the word behind the cursor past the word in front of the cursor moving "
+"the cursor over that word as well."
+msgstr "同様に、カーソルの前方の単語をカーソルの後方へドラッグして、カーソルの後方にあった単語の前方にカーソルを移動します。"
+
+#. type: item
+#: basics.texi:992
+#, no-wrap
+msgid "M-u"
+msgstr "M-u"
+
+#. type: table
+#: basics.texi:995
+msgid ""
+"Uppercase the characters following the cursor to the end of the current (or "
+"following) word, moving the cursor to the end of the word."
+msgstr "現在の単語(または次の単語からの)の末尾までを大文字にして、その単語の末尾にカーソルを移動します。"
+
+#. type: item
+#: basics.texi:996
+#, no-wrap
+msgid "M-l"
+msgstr "M-l"
+
+#. type: table
+#: basics.texi:999
+msgid ""
+"Lowercase the characters following the cursor to the end of the current (or "
+"following) word, moving the cursor to the end of the word."
+msgstr "現在の単語(または次の単語からの)の末尾までを小文字にして、その単語の末尾にカーソルを移動します。"
+
+#. type: item
+#: basics.texi:1000
+#, no-wrap
+msgid "M-c"
+msgstr "M-c"
+
+#. type: table
+#: basics.texi:1004
+msgid ""
+"Uppercase the character following the cursor (or the beginning of the next "
+"word if the cursor is between words), moving the cursor to the end of the "
+"word."
+msgstr "カーソルの前方(カーソルが単語と単語の間にある場合は次の単語の先頭)を大文字にして、その単語の末尾にカーソルを移動します。"
+
+#. type: node
+#: basics.texi:1006
+#, no-wrap
+msgid "Commands For Completion"
+msgstr "Commands For Completion"
+
+#. type: subsection
+#: basics.texi:1007
+#, no-wrap
+msgid "Letting Readline Type For You"
+msgstr "Letting Readline Type For You"
+
+#. type: cindex
+#: basics.texi:1008
+#, no-wrap
+msgid "command completion"
+msgstr "command completion"
+
+#. type: Plain text
+#: basics.texi:1012
+msgid ""
+"The following commands allow Octave to complete command and variable names "
+"for you."
+msgstr "以降のコマンドにより、コマンドや変数の名前をOctaveに補完させることができます。"
+
+#. type: key{#1}
+#: basics.texi:1014
+#, no-wrap
+msgid "TAB"
+msgstr "TAB"
+
+#. type: table
+#: basics.texi:1017
+msgid ""
+"Attempt to do completion on the text before the cursor.  Octave can complete "
+"the names of commands and variables."
+msgstr "カーソルの前のテキストにたいして補完を試みます。Octaveはコマンドと変数の名前を補完することができます。"
+
+#. type: item
+#: basics.texi:1018
+#, no-wrap
+msgid "M-?"
+msgstr "M-?"
+
+#. type: table
+#: basics.texi:1020
+msgid "List the possible completions of the text before the cursor."
+msgstr "カーソルの前のテキストにたいして、可能な補完をリストします。"
+
+#. type: anchor{#1}
+#: basics.texi:1024
+msgid "XREFcompletion_append_char"
+msgstr "XREFcompletion_append_char"
+
+#. type: deftypefn
+#: basics.texi:1024
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} completion_append_char ()"
+msgstr "{Built-in Function} {@var{val} =} completion_append_char ()"
+
+#. type: deftypefnx
+#: basics.texi:1025
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} completion_append_char (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} completion_append_char (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:1026
+#, no-wrap
+msgid "{Built-in Function} {} completion_append_char (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} completion_append_char (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:1030
+msgid ""
+"Query or set the internal character variable that is appended to successful "
+"command-line completion attempts.  The default value is @qcode{\" \"} (a "
+"single space)."
+msgstr "コマンドラインの成功した補完に追加する文字のための内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@qcode{\" \"}(スペース1つ)です。"
+
+#. type: anchor{#1}
+#: basics.texi:1039
+msgid "XREFcompletion_matches"
+msgstr "XREFcompletion_matches"
+
+#. type: deftypefn
+#: basics.texi:1039
+#, no-wrap
+msgid "{Built-in Function} {} completion_matches (@var{hint})"
+msgstr "{Built-in Function} {} completion_matches (@var{hint})"
+
+#. type: deftypefn
+#: basics.texi:1041
+msgid "Generate possible completions given @var{hint}."
+msgstr "与えられた@var{hint}にたいして、可能な補完を生成します。"
+
+#. type: deftypefn
+#: basics.texi:1046
+msgid ""
+"This function is provided for the benefit of programs like Emacs which might "
+"be controlling Octave and handling user input.  The current command number "
+"is not incremented when this function is called.  This is a feature, not a "
+"bug."
+msgstr "この関数は、Octaveを制御したりユーザー入力を処理するEmacsのようなプログラムのために提供されています。この関数が呼び出されても、カレントコマンドナンバーはインクリメントされません。これはバグではなく仕様です。"
+
+#. type: node
+#: basics.texi:1049
+#, no-wrap
+msgid "Commands For History"
+msgstr "Commands For History"
+
+#. type: subsection
+#: basics.texi:1050
+#, no-wrap
+msgid "Commands For Manipulating The History"
+msgstr "Commands For Manipulating The History"
+
+#. type: cindex
+#: basics.texi:1051
+#, no-wrap
+msgid "command history"
+msgstr "command history"
+
+#. type: cindex
+#: basics.texi:1052
+#, no-wrap
+msgid "input history"
+msgstr "input history"
+
+#. type: cindex
+#: basics.texi:1053
+#, no-wrap
+msgid "history of commands"
+msgstr "history of commands"
+
+#. type: Plain text
+#: basics.texi:1061
+msgid ""
+"Octave normally keeps track of the commands you type so that you can recall "
+"previous commands to edit or execute them again.  When you exit Octave, the "
+"most recent commands you have typed, up to the number specified by the "
+"variable @code{history_size}, are saved in a file.  When Octave starts, it "
+"loads an initial list of commands from the file named by the variable "
+"@code{history_file}."
+msgstr "Octaveは通常、以前にタイプされたコマンドうぃ編集や再実行できるように、タイプしたコマンドを記録しています。Octaveをexitするとき、もっとも最近タイプされたコマンドから、変数@code{history_size}で指定された個数までのコマンドがファイルに保存されます。Octaveが開始されるとき、変数@code{history_file}の名前のファイルから、コマンドの初期リストがロードされます。"
+
+#. type: Plain text
+#: basics.texi:1064
+msgid "Here are the commands for simple browsing and searching the history list."
+msgstr "以下は、ヒストリーリストを簡単に閲覧したり、検索するためのコマンドです。"
+
+#. type: key{#1}
+#: basics.texi:1066
+#, no-wrap
+msgid "LFD"
+msgstr "LFD"
+
+#. type: key{#1}
+#: basics.texi:1067
+#, no-wrap
+msgid "RET"
+msgstr "RET"
+
+#. type: table
+#: basics.texi:1071
+msgid ""
+"Accept the current line regardless of where the cursor is.  If the line is "
+"non-empty, add it to the history list.  If the line was a history line, then "
+"restore the history line to its original state."
+msgstr "カーソルの位置に関わらず、カレント行を受け入れます。その行が空でない場合は、その行をヒストリーに加えます。その行がヒストリー行だった場合は、ヒストリー行を元の状態にリストアします。"
+
+#. type: item
+#: basics.texi:1072
+#, no-wrap
+msgid "C-p"
+msgstr "C-p"
+
+#. type: table
+#: basics.texi:1074
+msgid "Move `up' through the history list."
+msgstr "ヒストリーリストを`上'に移動します。"
+
+#. type: item
+#: basics.texi:1075
+#, no-wrap
+msgid "C-n"
+msgstr "C-n"
+
+#. type: table
+#: basics.texi:1077
+msgid "Move `down' through the history list."
+msgstr "ヒストリーリストを`下'に移動します。"
+
+#. type: item
+#: basics.texi:1078
+#, no-wrap
+msgid "M-<"
+msgstr "M-<"
+
+#. type: table
+#: basics.texi:1080
+msgid "Move to the first line in the history."
+msgstr "ヒストリーリストの最初の行に移動します。"
+
+#. type: item
+#: basics.texi:1081
+#, no-wrap
+msgid "M->"
+msgstr "M->"
+
+#. type: table
+#: basics.texi:1083
+msgid "Move to the end of the input history, i.e., the line you are entering!"
+msgstr "入力ヒストリーの最後の行(あなたが入力している行です!)に移動します。"
+
+#. type: item
+#: basics.texi:1084
+#, no-wrap
+msgid "C-r"
+msgstr "C-r"
+
+#. type: table
+#: basics.texi:1087
+msgid ""
+"Search backward starting at the current line and moving `up' through the "
+"history as necessary.  This is an incremental search."
+msgstr "カレント行から後方検索を開始して、必要ならヒストリーを`上'に移動します。これはインクリメンタル検索です。"
+
+#. type: item
+#: basics.texi:1088
+#, no-wrap
+msgid "C-s"
+msgstr "C-s"
+
+#. type: table
+#: basics.texi:1091
+msgid ""
+"Search forward starting at the current line and moving `down' through the "
+"history as necessary."
+msgstr "カレント行から前方検索を開始して、必要ならヒストリーを`下'に移動します。"
+
+#. type: Plain text
+#: basics.texi:1095
+msgid ""
+"On most terminals, you can also use the up and down arrow keys in place of "
+"@kbd{C-p} and @kbd{C-n} to move through the history list."
+msgstr "多くの端末では、ヒストリーリストを移動するのに、@kbd{C-p}や@kbd{C-n}のかわりに上矢印キーと下矢印キーを使用できます。"
+
+#. type: Plain text
+#: basics.texi:1099
+msgid ""
+"In addition to the keyboard commands for moving through the history list, "
+"Octave provides three functions for viewing, editing, and re-running chunks "
+"of commands from the history list."
+msgstr "ヒストリーリストを移動するコマンドに加えて、Octaveはヒストリーリストからコマンド群を閲覧、編集、再実行するために3つの関数を提供します。"
+
+#. type: anchor{#1}
+#: basics.texi:1102
+msgid "XREFhistory"
+msgstr "XREFhistory"
+
+#. type: deftypefn
+#: basics.texi:1102
+#, no-wrap
+msgid "{Command} {} history"
+msgstr "{Command} {} history"
+
+#. type: deftypefnx
+#: basics.texi:1103
+#, no-wrap
+msgid "{Command} {} history @var{opt1} @dots{}"
+msgstr "{Command} {} history @var{opt1} @dots{}"
+
+#. type: deftypefnx
+#: basics.texi:1104
+#, no-wrap
+msgid "{Built-in Function} {@var{h} =} history ()"
+msgstr "{Built-in Function} {@var{h} =} history ()"
+
+#. type: deftypefnx
+#: basics.texi:1105
+#, no-wrap
+msgid "{Built-in Function} {@var{h} =} history (@var{opt1}, @dots{})"
+msgstr "{Built-in Function} {@var{h} =} history (@var{opt1}, @dots{})"
+
+#. type: deftypefn
+#: basics.texi:1108
+msgid ""
+"If invoked with no arguments, @code{history} displays a list of commands "
+"that you have executed.  Valid options are:"
+msgstr "引数を指定せずに呼び出すと、@code{history}は実行されたコマンドのリストを表示します。有効なオプションは:"
+
+#. type: var{#1}
+#: basics.texi:1110
+#, no-wrap
+msgid "n"
+msgstr "n"
+
+#. type: itemx
+#: basics.texi:1111
+#, no-wrap
+msgid "-@var{n}"
+msgstr "-@var{n}"
+
+#. type: table
+#: basics.texi:1113
+msgid "Display only the most recent @var{n} lines of history."
+msgstr "ヒストリーリストのもっとも最近の@var{n}行だけを表示します。"
+
+#. type: item
+#: basics.texi:1114
+#, no-wrap
+msgid "-c"
+msgstr "-c"
+
+#. type: table
+#: basics.texi:1116
+msgid "Clear the history list."
+msgstr "ヒストリーリストをクリアーします。"
+
+#. type: table
+#: basics.texi:1120
+msgid ""
+"Don't number the displayed lines of history.  This is useful for cutting and "
+"pasting commands using the X Window System."
+msgstr "表示されるヒストリーリストの番号を表示しません。これは、X Window Systemを使用してカットアンドペーストを行なうときに便利です。"
+
+#. type: item
+#: basics.texi:1121
+#, no-wrap
+msgid "-r @var{file}"
+msgstr "-r @var{file}"
+
+#. type: table
+#: basics.texi:1125
+msgid ""
+"Read the file @var{file}, appending its contents to the current history "
+"list.  If the name is omitted, use the default history file (normally "
+"@file{~/.octave_hist})."
+msgstr "ファイル@var{file}を読み込んで、その内容をカレントヒストリーリストに追加します。名前が省略された場合はデフォルトのヒストリーファイル(通常は@file{~/.octave_hist})を使用します。"
+
+#. type: item
+#: basics.texi:1126
+#, no-wrap
+msgid "-w @var{file}"
+msgstr "-w @var{file}"
+
+#. type: table
+#: basics.texi:1129
+msgid ""
+"Write the current history to the file @var{file}.  If the name is omitted, "
+"use the default history file (normally @file{~/.octave_hist})."
+msgstr "カレントヒストリーを、ファイル@var{file}に書き込みます。名前が省略された場合はデフォルトのヒストリーファイル(通常は@file{~/.octave_hist})を使用します。"
+
+#. type: deftypefn
+#: basics.texi:1134
+msgid ""
+"For example, to display the five most recent commands that you have typed "
+"without displaying line numbers, use the command @kbd{history -q 5}."
+msgstr "たとえば、もっとも最近タイプされたコマンド5つを、行番号なしで表示するには、コマンド@kbd{history -q 5}を使用します。"
+
+#. type: deftypefn
+#: basics.texi:1137
+msgid ""
+"If invoked with a single output argument, the history will be saved to that "
+"argument as a cell string and will not be output to screen."
+msgstr "出力引数が1つで呼び出された場合、ヒストリーはその引数のセル文字列として保存され、スクリーンに表示されません。"
+
+#. type: anchor{#1}
+#: basics.texi:1142
+msgid "XREFedit_history"
+msgstr "XREFedit_history"
+
+#. type: deftypefn
+#: basics.texi:1142
+#, no-wrap
+msgid "{Command} {} edit_history"
+msgstr "{Command} {} edit_history"
+
+#. type: deftypefnx
+#: basics.texi:1143
+#, no-wrap
+msgid "{Command} {} edit_history @var{cmd_number}"
+msgstr "{Command} {} edit_history @var{cmd_number}"
+
+#. type: deftypefnx
+#: basics.texi:1144
+#, no-wrap
+msgid "{Command} {} edit_history @var{first} @var{last}"
+msgstr "{Command} {} edit_history @var{first} @var{last}"
+
+#. type: deftypefn
+#: basics.texi:1147
+msgid ""
+"Edit the history list using the editor named by the variable "
+"@w{@env{EDITOR}}."
+msgstr "変数@w{@env{EDITOR}}で指定された名前のエディターを使って、ヒストリーリストを編集します。"
+
+#. type: deftypefn
+#: basics.texi:1155
+msgid ""
+"The commands to be edited are first copied to a temporary file.  When you "
+"exit the editor, Octave executes the commands that remain in the file.  It "
+"is often more convenient to use @code{edit_history} to define functions "
+"rather than attempting to enter them directly on the command line.  The "
+"block of commands is executed as soon as you exit the editor.  To avoid "
+"executing any commands, simply delete all the lines from the buffer before "
+"leaving the editor."
+msgstr "編集されるコマンドは、最初にテンポラリーファイルにコピーされます。エディターをexitするとき、Octaveはそのファイル内に残ったコマンドを実行します。関数を定義するとき、それを直接コマンドラインに入力するのではなく、@code{edit_history}を使うほうが便利なときがあります。そのコマンドブロックは、エディターをexitするとすぐに実行されます。コマンドを実行したくないときは、エディターを抜けるときに、単にそのバッファーのすべての行を削除してください。"
+
+#. type: deftypefn
+#: basics.texi:1162
+msgid ""
+"When invoked with no arguments, edit the previously executed command; With "
+"one argument, edit the specified command @var{cmd_number}; With two "
+"arguments, edit the list of commands between @var{first} and @var{last}.  "
+"Command number specifiers may also be negative where -1 refers to the most "
+"recently executed command.  The following are equivalent and edit the most "
+"recently executed command."
+msgstr "引数なしで呼び出された場合は、以前に実行されたコマンドを編集します。引数が1つの場合は、指定されたコマンド@var{cmd_number}を編集します。引数が2つの場合は、@var{first}と@var{last}の間のコマンドを編集します。コマンド番号には、負の数も指定できます。この場合、-1はもっとも最近実行されたコマンドを参照します。以下のコマンドは等価で、どちらももっとも最近実行されたコマンドを編集します。"
+
+#. type: group
+#: basics.texi:1167
+#, no-wrap
+msgid ""
+"edit_history\n"
+"edit_history -1\n"
+msgstr ""
+"edit_history\n"
+"edit_history -1\n"
+
+#. type: deftypefn
+#: basics.texi:1174
+msgid ""
+"When using ranges, specifying a larger number for the first command than the "
+"last command reverses the list of commands before they are placed in the "
+"buffer to be edited.  @seealso{@ref{XREFrun_history,,run_history}}"
+msgstr ""
+"範囲を使用する場合、最初のコマンドに最後のコマンドより大きい番号を指定すると、編集されるバッファーに配置される前に、コマンドリストを逆転します。\n"
+"@seealso{@ref{XREFrun_history,,run_history}}"
+
+#. type: anchor{#1}
+#: basics.texi:1179
+msgid "XREFrun_history"
+msgstr "XREFrun_history"
+
+#. type: deftypefn
+#: basics.texi:1179
+#, no-wrap
+msgid "{Command} {} run_history"
+msgstr "{Command} {} run_history"
+
+#. type: deftypefnx
+#: basics.texi:1180
+#, no-wrap
+msgid "{Command} {} run_history @var{cmd_number}"
+msgstr "{Command} {} run_history @var{cmd_number}"
+
+#. type: deftypefnx
+#: basics.texi:1181
+#, no-wrap
+msgid "{Command} {} run_history @var{first} @var{last}"
+msgstr "{Command} {} run_history @var{first} @var{last}"
+
+#. type: deftypefn
+#: basics.texi:1183
+msgid "Run commands from the history list."
+msgstr "ヒストリーリストからコマンドを実行します。"
+
+#. type: deftypefn
+#: basics.texi:1190
+msgid ""
+"When invoked with no arguments, run the previously executed command; With "
+"one argument, run the specified command @var{cmd_number}; With two "
+"arguments, run the list of commands between @var{first} and @var{last}.  "
+"Command number specifiers may also be negative where -1 refers to the most "
+"recently executed command.  For example, the command"
+msgstr "引数なしで呼び出された場合は、以前に実行されたコマンドを実行します。引数が1つの場合は、指定されたコマンド@var{cmd_number}を実行します。引数が2つの場合は、@var{first}と@var{last}の間のコマンドを実行します。コマンド番号には、負の数も指定できます。この場合、-1はもっとも最近実行されたコマンドを参照します。以下のコマンドは等価で、どちらももっとも最近実行されたコマンドを編集します。たとえば以下のコマンド"
+
+#. type: group
+#: basics.texi:1196
+#, no-wrap
+msgid ""
+"run_history\n"
+"     OR\n"
+"run_history -1\n"
+msgstr ""
+"run_history\n"
+"     OR\n"
+"run_history -1\n"
+
+#. type: deftypefn
+#: basics.texi:1202
+msgid "executes the most recent command again.  The command"
+msgstr "はもっとも最近のコマンドを再実行します。また、"
+
+#. type: example
+#: basics.texi:1205
+#, no-wrap
+msgid "run_history 13 169\n"
+msgstr "run_history 13 169\n"
+
+#. type: deftypefn
+#: basics.texi:1209
+msgid "executes commands 13 through 169."
+msgstr "は13から169のコマンドを実行します。"
+
+#. type: deftypefn
+#: basics.texi:1213
+msgid ""
+"Specifying a larger number for the first command than the last command "
+"reverses the list of commands before executing them.  For example:"
+msgstr "最初のコマンドに最後のコマンドより大きい番号を指定すると、編集されるバッファーに配置される前に、コマンドリストを逆転します。たとえば:"
+
+#. type: group
+#: basics.texi:1222
+#, no-wrap
+msgid ""
+"disp (1)\n"
+"disp (2)\n"
+"run_history -1 -2\n"
+"@result{}\n"
+" 2\n"
+" 1\n"
+msgstr ""
+"disp (1)\n"
+"disp (2)\n"
+"run_history -1 -2\n"
+"@result{}\n"
+" 2\n"
+" 1\n"
+
+#. type: deftypefn
+#: basics.texi:1226
+msgid "@seealso{@ref{XREFedit_history,,edit_history}}"
+msgstr "@seealso{@ref{XREFedit_history,,edit_history}}"
+
+#. type: Plain text
+#: basics.texi:1232
+msgid ""
+"Octave also allows you customize the details of when, where, and how history "
+"is saved."
+msgstr "Octaveでは、ヒストリーがいつ、どこで、どのように保存されたかの詳細もカスタマイズできます。"
+
+#. type: anchor{#1}
+#: basics.texi:1235
+msgid "XREFhistory_save"
+msgstr "XREFhistory_save"
+
+#. type: deftypefn
+#: basics.texi:1235
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} history_save ()"
+msgstr "{Built-in Function} {@var{val} =} history_save ()"
+
+#. type: deftypefnx
+#: basics.texi:1236
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} history_save (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} history_save (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:1237
+#, no-wrap
+msgid "{Built-in Function} {} history_save (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} history_save (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:1240
+msgid ""
+"Query or set the internal variable that controls whether commands entered on "
+"the command line are saved in the history file."
+msgstr "ヒストリーファイルに、コマンドがコマンドラインから入力されたかどうかを保存するか制御する内部変数にたいして、問い合わせまたはセットを行います。"
+
+#. type: deftypefn
+#: basics.texi:1245
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFhistory_control,,history_control}, "
+"@ref{XREFhistory_file,,history_file}, @ref{XREFhistory_size,,history_size}, "
+"@ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}}"
+msgstr ""
+"関数内から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。その関数をexitするとき、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFhistory_control,,history_control}, @ref{XREFhistory_file,,history_file}, @ref{XREFhistory_size,,history_size}, @ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}}"
+
+#. type: anchor{#1}
+#: basics.texi:1250
+msgid "XREFhistory_control"
+msgstr "XREFhistory_control"
+
+#. type: deftypefn
+#: basics.texi:1250
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} history_control ()"
+msgstr "{Built-in Function} {@var{val} =} history_control ()"
+
+#. type: deftypefnx
+#: basics.texi:1251
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} history_control (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} history_control (@var{new_val})"
+
+#. type: deftypefn
+#: basics.texi:1256
+msgid ""
+"Query or set the internal variable that specifies how commands are saved to "
+"the history list.  The default value is an empty character string, but may "
+"be overridden by the environment variable @w{@env{OCTAVE_HISTCONTROL}}."
+msgstr "コマンドがヒストリーリストに保存される方法を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は空文字列ですが、環境変数@w{@env{OCTAVE_HISTCONTROL}}によりオーバーライドされるかもしれません。"
+
+#. type: deftypefn
+#: basics.texi:1269
+msgid ""
+"The value of @code{history_control} is a colon-separated list of values "
+"controlling how commands are saved on the history list.  If the list of "
+"values includes @code{ignorespace}, lines which begin with a space character "
+"are not saved in the history list.  A value of @code{ignoredups} causes "
+"lines matching the previous history entry to not be saved.  A value of "
+"@code{ignoreboth} is shorthand for @code{ignorespace} and "
+"@code{ignoredups}.  A value of @code{erasedups} causes all previous lines "
+"matching the current line to be removed from the history list before that "
+"line is saved.  Any value not in the above list is ignored.  If "
+"@code{history_control} is the empty string, all commands are saved on the "
+"history list, subject to the value of @code{history_save}.  "
+"@seealso{@ref{XREFhistory_file,,history_file}, "
+"@ref{XREFhistory_size,,history_size}, "
+"@ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}, "
+"@ref{XREFhistory_save,,history_save}}"
+msgstr ""
+"@code{history_control}の値は、コマンドをヒストリーリストに保存する方法を制御する、コロンで区切られた値です。値リストが@code{ignorespace}を含む場合、スペース文字で始まる行は、ヒストリーリストに保存されません。@code{ignoredups}では、以前のヒストリーにマッチする行はヒストリーに保存されません。値@code{ignoreboth}は、@code{ignorespace}と@code{ignoredups}の省略指定です。値@code{erasedups}は、カレント行がヒストリーリストに保存される前に、ヒストリーリストからマッチするすべての行を削除します。上記のリスト以外の値はすべて無視されます。@code{history_control}が空文字列の場合、すべてのコマンドは@code{history_save}の値として、すべてヒストリーリストに保存されます。\n"
+"@seealso{@ref{XREFhistory_file,,history_file}, @ref{XREFhistory_size,,history_size}, @ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}, @ref{XREFhistory_save,,history_save}}"
+
+#. type: anchor{#1}
+#: basics.texi:1274
+msgid "XREFhistory_file"
+msgstr "XREFhistory_file"
+
+#. type: deftypefn
+#: basics.texi:1274
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} history_file ()"
+msgstr "{Built-in Function} {@var{val} =} history_file ()"
+
+#. type: deftypefnx
+#: basics.texi:1275
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} history_file (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} history_file (@var{new_val})"
+
+#. type: deftypefn
+#: basics.texi:1281
+msgid ""
+"Query or set the internal variable that specifies the name of the file used "
+"to store command history.  The default value is @file{~/.octave_hist}, but "
+"may be overridden by the environment variable @w{@env{OCTAVE_HISTFILE}}.  "
+"@seealso{@ref{XREFhistory_size,,history_size}, "
+"@ref{XREFhistory_save,,history_save}, "
+"@ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}}"
+msgstr ""
+"コマンドヒストリーを保存するのに使用するファイルの名前を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@file{~/.octave_hist}ですが、環境変数@w{@env{OCTAVE_HISTFILE}}によりオーバーライドされるかもしれません。\n"
+"@seealso{@ref{XREFhistory_size,,history_size}, @ref{XREFhistory_save,,history_save}, @ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}}"
+
+#. type: anchor{#1}
+#: basics.texi:1286
+msgid "XREFhistory_size"
+msgstr "XREFhistory_size"
+
+#. type: deftypefn
+#: basics.texi:1286
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} history_size ()"
+msgstr "{Built-in Function} {@var{val} =} history_size ()"
+
+#. type: deftypefnx
+#: basics.texi:1287
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} history_size (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} history_size (@var{new_val})"
+
+#. type: deftypefn
+#: basics.texi:1292
+msgid ""
+"Query or set the internal variable that specifies how many entries to store "
+"in the history file.  The default value is @code{1000}, but may be "
+"overridden by the environment variable @w{@env{OCTAVE_HISTSIZE}}.  "
+"@seealso{@ref{XREFhistory_file,,history_file}, "
+"@ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}, "
+"@ref{XREFhistory_save,,history_save}}"
+msgstr ""
+"ヒストリーファイルに保存するエントリー数を指定する内部変数にたいして、問い合わせまたはセットを行います。デフォルト値は@code{1000}ですが、環境変数@w{@env{OCTAVE_HISTSIZE}}によりオーバーライドされるかもしれません。\n"
+"@seealso{@ref{XREFhistory_file,,history_file}, @ref{XREFhistory_timestamp_format_string,,history_timestamp_format_string}, @ref{XREFhistory_save,,history_save}}"
+
+#. type: anchor{#1}
+#: basics.texi:1297
+msgid "XREFhistory_timestamp_format_string"
+msgstr "XREFhistory_timestamp_format_string"
+
+#. type: deftypefn
+#: basics.texi:1297
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} history_timestamp_format_string ()"
+msgstr "{Built-in Function} {@var{val} =} history_timestamp_format_string ()"
+
+#. type: deftypefnx
+#: basics.texi:1298
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{old_val} =} history_timestamp_format_string "
+"(@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} history_timestamp_format_string (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:1299
+#, no-wrap
+msgid ""
+"{Built-in Function} {} history_timestamp_format_string (@var{new_val}, "
+"\"local\")"
+msgstr "{Built-in Function} {} history_timestamp_format_string (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:1304
+msgid ""
+"Query or set the internal variable that specifies the format string for the "
+"comment line that is written to the history file when Octave exits.  The "
+"format string is passed to @code{strftime}.  The default value is"
+msgstr "Octaveをexitするときにヒストリーファイルに書き込まれるコマンドラインにたいするフォーマット文字列を指定する内部変数にたいして、問い合わせまたはセットを行います。このフォーマット文字列は@code{strftime}に渡されます。デフォルト値は"
+
+#. type: example
+#: basics.texi:1307
+#, no-wrap
+msgid "\"# Octave VERSION, %a %b %d %H:%M:%S %Y %Z <USER@@HOST>\"\n"
+msgstr "\"# Octave VERSION, %a %b %d %H:%M:%S %Y %Z <USER@@HOST>\"\n"
+
+#. type: deftypefn
+#: basics.texi:1313
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFstrftime,,strftime}, @ref{XREFhistory_file,,history_file}, "
+"@ref{XREFhistory_size,,history_size}, @ref{XREFhistory_save,,history_save}}"
+msgstr ""
+"関数内から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFstrftime,,strftime}, @ref{XREFhistory_file,,history_file}, @ref{XREFhistory_size,,history_size}, @ref{XREFhistory_save,,history_save}}"
+
+#. type: anchor{#1}
+#: basics.texi:1318
+msgid "XREFEDITOR"
+msgstr "XREFEDITOR"
+
+#. type: deftypefn
+#: basics.texi:1318
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} EDITOR ()"
+msgstr "{Built-in Function} {@var{val} =} EDITOR ()"
+
+#. type: deftypefnx
+#: basics.texi:1319
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} EDITOR (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} EDITOR (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:1320
+#, no-wrap
+msgid "{Built-in Function} {} EDITOR (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} EDITOR (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:1322
+msgid "Query or set the internal variable that specifies the default text editor."
+msgstr "デフォルトのテキストエディターを指定する内部変数にたいして、問い合わせまたはセットを行います。"
+
+#. type: deftypefn
+#: basics.texi:1327
+msgid ""
+"The default value is taken from the environment variable @w{@env{EDITOR}} "
+"when Octave starts.  If the environment variable is not initialized, "
+"@w{@env{EDITOR}} will be set to @qcode{\"emacs\"}."
+msgstr "デフォルト値はOctave開始時に環境変数@w{@env{EDITOR}}から取得されます。環境変数が初期化されない場合、@w{@env{EDITOR}}は@qcode{\"emacs\"}にセットされます。"
+
+#. type: deftypefn
+#: basics.texi:1333
+msgid "@seealso{@ref{XREFedit,,edit}, @ref{XREFedit_history,,edit_history}}"
+msgstr "@seealso{@ref{XREFedit,,edit}, @ref{XREFedit_history,,edit_history}}"
+
+#. type: node
+#: basics.texi:1336
+#, no-wrap
+msgid "Customizing readline"
+msgstr "Customizing readline"
+
+#. type: subsection
+#: basics.texi:1337
+#, no-wrap
+msgid "Customizing @code{readline}"
+msgstr "Customizing @code{readline}"
+
+#. type: code{#1}
+#: basics.texi:1338
+#, no-wrap
+msgid "~/.inputrc"
+msgstr "~/.inputrc"
+
+#. type: cindex
+#: basics.texi:1339
+#, no-wrap
+msgid "customizing @code{readline}"
+msgstr "customizing @code{readline}"
+
+#. type: cindex
+#: basics.texi:1340
+#, no-wrap
+msgid "@code{readline} customization"
+msgstr "@code{readline} customization"
+
+#. type: Plain text
+#: basics.texi:1347
+msgid ""
+"Octave uses the GNU Readline library for command-line editing and history "
+"features.  Readline is very flexible and can be modified through a "
+"configuration file of commands (See the GNU Readline library for the exact "
+"command syntax).  The default configuration file is normally "
+"@file{~/.inputrc}."
+msgstr "Octaveはコマンドライン変数およびヒストリー機能のために、GNU Readlineライブラリーを使用しています。Readlineはとてもフレキシブルで、コマンドの設定ファイルを通じてカスタマイズできます(正確なコマンド構文についてはGNU Readlineライブラリーを参照してください)。デフォルトの設定ファイルは通常、@file{~/.inputrc}です。"
+
+#. type: Plain text
+#: basics.texi:1350
+msgid ""
+"Octave provides two commands for initializing Readline and thereby changing "
+"the command line behavior."
+msgstr "OctaveはReadlineを初期化するためのコマンドを提供しており、それによりコマンドラインの挙動を変更できます。"
+
+#. type: anchor{#1}
+#: basics.texi:1353
+msgid "XREFreadline_read_init_file"
+msgstr "XREFreadline_read_init_file"
+
+#. type: deftypefn
+#: basics.texi:1353
+#, no-wrap
+msgid "{Built-in Function} {} readline_read_init_file (@var{file})"
+msgstr "{Built-in Function} {} readline_read_init_file (@var{file})"
+
+#. type: deftypefn
+#: basics.texi:1357
+msgid ""
+"Read the readline library initialization file @var{file}.  If @var{file} is "
+"omitted, read the default initialization file (normally @file{~/.inputrc})."
+msgstr "readline初期化ファイル@var{file}を読み込みます。@var{file}が省略された場合には、デフォルトの初期化ファイル(通常は@file{~/.inputrc})を読み込みます。"
+
+#. type: deftypefn
+#: basics.texi:1361
+msgid ""
+"@xref{Readline Init File, , , readline, GNU Readline Library}, for details.  "
+"@seealso{@ref{XREFreadline_re_read_init_file,,readline_re_read_init_file}}"
+msgstr ""
+"詳細は@ref{Readline Init File, , , readline, GNU Readline Library}を参照してください。\n"
+"@seealso{@ref{XREFreadline_re_read_init_file,,readline_re_read_init_file}}"
+
+#. type: anchor{#1}
+#: basics.texi:1366
+msgid "XREFreadline_re_read_init_file"
+msgstr "XREFreadline_re_read_init_file"
+
+#. type: deftypefn
+#: basics.texi:1366
+#, no-wrap
+msgid "{Built-in Function} {} readline_re_read_init_file ()"
+msgstr "{Built-in Function} {} readline_re_read_init_file ()"
+
+#. type: deftypefn
+#: basics.texi:1371
+msgid ""
+"Re-read the last readline library initialization file that was read.  "
+"@xref{Readline Init File, , , readline, GNU Readline Library}, for details.  "
+"@seealso{@ref{XREFreadline_read_init_file,,readline_read_init_file}}"
+msgstr ""
+"最後に読み込んだreadline初期化ファイルを再読込します。詳細は @ref{Readline Init File, , , readline, GNU Readline Library}を参照してください。\n"
+"@seealso{@ref{XREFreadline_read_init_file,,readline_read_init_file}}"
+
+#. type: subsection
+#: basics.texi:1374 basics.texi:1375
+#, no-wrap
+msgid "Customizing the Prompt"
+msgstr "Customizing the Prompt"
+
+#. type: cindex
+#: basics.texi:1376
+#, no-wrap
+msgid "prompt customization"
+msgstr "prompt customization"
+
+#. type: cindex
+#: basics.texi:1377
+#, no-wrap
+msgid "customizing the prompt"
+msgstr "customizing the prompt"
+
+#. type: Plain text
+#: basics.texi:1383
+msgid ""
+"The following variables are available for customizing the appearance of the "
+"command-line prompts.  Octave allows the prompt to be customized by "
+"inserting a number of backslash-escaped special characters that are decoded "
+"as follows:"
+msgstr "以降の変数による、コマンドラインプロンプトの外観をカスタマイズできます。Octaveでは、バックスラッシュでエスケープされたいくつかの特別な文字を挿入することにより、プロンプトをカスタマイズできます。それらの文字は以下のようにデコードされます:"
+
+#. type: item
+#: basics.texi:1385
+#, no-wrap
+msgid "\\t"
+msgstr "\\t"
+
+#. type: table
+#: basics.texi:1387
+msgid "The time."
+msgstr "時刻。"
+
+#. type: item
+#: basics.texi:1388
+#, no-wrap
+msgid "\\d"
+msgstr "\\d"
+
+#. type: table
+#: basics.texi:1390
+msgid "The date."
+msgstr "日付。"
+
+#. type: item
+#: basics.texi:1391
+#, no-wrap
+msgid "\\n"
+msgstr "\\n"
+
+#. type: table
+#: basics.texi:1394
+msgid ""
+"Begins a new line by printing the equivalent of a carriage return followed "
+"by a line feed."
+msgstr "改行と復帰と等価なものをプリントすることにより、新たな行を開始します。"
+
+#. type: item
+#: basics.texi:1395
+#, no-wrap
+msgid "\\s"
+msgstr "\\s"
+
+#. type: table
+#: basics.texi:1397
+msgid "The name of the program (usually just @samp{octave})."
+msgstr "プログラムの名前(通常は単に@samp{octave})です。"
+
+#. type: item
+#: basics.texi:1398
+#, no-wrap
+msgid "\\w"
+msgstr "\\w"
+
+#. type: table
+#: basics.texi:1400
+msgid "The current working directory."
+msgstr "カレントワーキングディレクトリー。"
+
+#. type: item
+#: basics.texi:1401
+#, no-wrap
+msgid "\\W"
+msgstr "\\W"
+
+#. type: table
+#: basics.texi:1403
+msgid "The basename of the current working directory."
+msgstr "カレントワーキングディレクトリーのbasename。"
+
+#. type: item
+#: basics.texi:1404
+#, no-wrap
+msgid "\\u"
+msgstr "\\u"
+
+#. type: table
+#: basics.texi:1406
+msgid "The username of the current user."
+msgstr "カレントユーザーのユーザー名。"
+
+#. type: item
+#: basics.texi:1407
+#, no-wrap
+msgid "\\h"
+msgstr "\\h"
+
+#. type: table
+#: basics.texi:1409
+msgid "The hostname, up to the first `.'."
+msgstr "最初の`.'までのhostname。"
+
+#. type: item
+#: basics.texi:1410
+#, no-wrap
+msgid "\\H"
+msgstr "\\H"
+
+#. type: table
+#: basics.texi:1412
+msgid "The hostname."
+msgstr "hostname。"
+
+#. type: item
+#: basics.texi:1413
+#, no-wrap
+msgid "\\#"
+msgstr "\\#"
+
+#. type: table
+#: basics.texi:1415
+msgid "The command number of this command, counting from when Octave starts."
+msgstr "Octave起動後からカウントした、そのコマンドのコマンド番号。"
+
+#. type: item
+#: basics.texi:1416
+#, no-wrap
+msgid "\\!"
+msgstr "\\!"
+
+#. type: table
+#: basics.texi:1419
+msgid ""
+"The history number of this command.  This differs from @samp{\\#} by the "
+"number of commands in the history list when Octave starts."
+msgstr "そのコマンドのヒストリー番号。これはOctave開始時からのヒストリーリスト内のコマンド数なので、@samp{\\#}とは異なります。"
+
+#. type: item
+#: basics.texi:1420
+#, no-wrap
+msgid "\\$"
+msgstr "\\$"
+
+#. type: table
+#: basics.texi:1422
+msgid "If the effective UID is 0, a @samp{#}, otherwise a @samp{$}."
+msgstr "実行UIDが0のときは@samp{#}、それ以外は@samp{$}。"
+
+#. type: item
+#: basics.texi:1423
+#, no-wrap
+msgid "\\nnn"
+msgstr "\\nnn"
+
+#. type: table
+#: basics.texi:1425
+msgid "The character whose character code in octal is @var{nnn}."
+msgstr "文字コードが8進@var{nnn}の文字。"
+
+#. type: item
+#: basics.texi:1426
+#, no-wrap
+msgid "\\\\"
+msgstr "\\\\"
+
+#. type: table
+#: basics.texi:1428
+msgid "A backslash."
+msgstr "バックスラッシュ。"
+
+#. type: anchor{#1}
+#: basics.texi:1432
+msgid "XREFPS1"
+msgstr "XREFPS1"
+
+#. type: deftypefn
+#: basics.texi:1432
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} PS1 ()"
+msgstr "{Built-in Function} {@var{val} =} PS1 ()"
+
+#. type: deftypefnx
+#: basics.texi:1433
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} PS1 (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} PS1 (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:1434
+#, no-wrap
+msgid "{Built-in Function} {} PS1 (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} PS1 (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:1437
+msgid ""
+"Query or set the primary prompt string.  When executing interactively, "
+"Octave displays the primary prompt when it is ready to read a command."
+msgstr "一次プロンプト(primary prompt)文字列にたいして、問い合わせまたはセットを行います。インタラクティブに実行された場合は、コマンドを読み取る準備ができたときに、Octaveは一次プロンプトを表示します。"
+
+#. type: deftypefn
+#: basics.texi:1440
+msgid ""
+"The default value of the primary prompt string is @qcode{\"octave:\\#> \"}.  "
+"To change it, use a command like"
+msgstr "一次プロンプト文字列のデフォルト値は@qcode{\"octave:\\#> \"}です。これを変更するには、以下のようなコマンドを使用します。"
+
+#. type: example
+#: basics.texi:1443
+#, no-wrap
+msgid "PS1 (\"\\\\u@@\\\\H> \")\n"
+msgstr "PS1 (\"\\\\u@@\\\\H> \")\n"
+
+#. type: deftypefn
+#: basics.texi:1450
+msgid ""
+"which will result in the prompt @samp{boris@@kremvax> } for the user "
+"@samp{boris} logged in on the host @samp{kremvax.kgb.su}.  Note that two "
+"backslashes are required to enter a backslash into a double-quoted character "
+"string.  @xref{Strings}."
+msgstr "これは、ホスト@samp{kremvax.kgb.su}にログインしているユーザー@samp{boris}のプロンプトを、@samp{boris@@kremvax> }にします。ダブルクォートされた文字列内にバックスラッシュを入力するには、バックスラッシュが2つ必要なことに注意してください。@ref{Strings}を参照してください。"
+
+#. type: deftypefn
+#: basics.texi:1453
+msgid ""
+"You can also use ANSI escape sequences if your terminal supports them.  This "
+"can be useful for coloring the prompt.  For example,"
+msgstr "端末がサポートしていれば、ANSIエスケープシーケンスも使用できます。これはプロンプトにカラーを使いたいとき便利かもしれません。たとえば、"
+
+#. type: example
+#: basics.texi:1456
+#, no-wrap
+msgid "PS1 (\"\\\\[\\\\033[01;31m\\\\]\\\\s:\\\\#> \\\\[\\\\033[0m\\\\]\")\n"
+msgstr "PS1 (\"\\\\[\\\\033[01;31m\\\\]\\\\s:\\\\#> \\\\[\\\\033[0m\\\\]\")\n"
+
+#. type: deftypefn
+#: basics.texi:1460
+msgid "will give the default Octave prompt a red coloring."
+msgstr "これはデフォルトのOctaveプロンプトのカラーを赤にします。"
+
+#. type: deftypefn
+#: basics.texi:1465
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFPS2,,PS2}, @ref{XREFPS4,,PS4}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFPS2,,PS2}, @ref{XREFPS4,,PS4}}"
+
+#. type: anchor{#1}
+#: basics.texi:1470
+msgid "XREFPS2"
+msgstr "XREFPS2"
+
+#. type: deftypefn
+#: basics.texi:1470
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} PS2 ()"
+msgstr "{Built-in Function} {@var{val} =} PS2 ()"
+
+#. type: deftypefnx
+#: basics.texi:1471
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} PS2 (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} PS2 (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:1472
+#, no-wrap
+msgid "{Built-in Function} {} PS2 (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} PS2 (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:1479
+msgid ""
+"Query or set the secondary prompt string.  The secondary prompt is printed "
+"when Octave is expecting additional input to complete a command.  For "
+"example, if you are typing a @code{for} loop that spans several lines, "
+"Octave will print the secondary prompt at the beginning of each line after "
+"the first.  The default value of the secondary prompt string is @qcode{\"> "
+"\"}."
+msgstr "二次プロンプト文字列にたいして、問い合わせまたはセットを行います。二次プロンプトは、Octaveがコマンドを完成させるために、追加入力を待っているときにプリントされます。たとえば、複数行に分かれた@code{for}ループをタイプしているとき、Octaveは最初の行以降の各行の先頭に二次プロンプトをプリントするでしょう。二次プロンプト文字列のデフォルト値は、@qcode{\"> \"}です。"
+
+#. type: deftypefn
+#: basics.texi:1484
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFPS1,,PS1}, @ref{XREFPS4,,PS4}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、元の変数の値がリストアされます。\n"
+"@seealso{@ref{XREFPS1,,PS1}, @ref{XREFPS4,,PS4}}"
+
+#. type: anchor{#1}
+#: basics.texi:1489
+msgid "XREFPS4"
+msgstr "XREFPS4"
+
+#. type: deftypefn
+#: basics.texi:1489
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} PS4 ()"
+msgstr "{Built-in Function} {@var{val} =} PS4 ()"
+
+#. type: deftypefnx
+#: basics.texi:1490
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} PS4 (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} PS4 (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:1491
+#, no-wrap
+msgid "{Built-in Function} {} PS4 (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} PS4 (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:1496
+msgid ""
+"Query or set the character string used to prefix output produced when "
+"echoing commands is enabled.  The default value is @qcode{\"+ \"}.  "
+"@xref{Diary and Echo Commands}, for a description of echoing commands."
+msgstr "コマンドのエコーが有効なときに、生成された出力のプレフィクスに使用する文字列の、問い合わせまたはセットを行います。デフォルト値は@qcode{\"+ \"}です。コマンドのエコーについての説明は、@ref{Diary and Echo Commands}を参照してください。"
+
+#. type: deftypefn
+#: basics.texi:1501
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFecho,,echo}, "
+"@ref{XREFecho_executing_commands,,echo_executing_commands}, "
+"@ref{XREFPS1,,PS1}, @ref{XREFPS2,,PS2}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFecho,,echo}, @ref{XREFecho_executing_commands,,echo_executing_commands}, @ref{XREFPS1,,PS1}, @ref{XREFPS2,,PS2}}"
+
+#. type: cindex
+#: basics.texi:1506
+#, no-wrap
+msgid "diary of commands and output"
+msgstr "diary of commands and output"
+
+#. type: cindex
+#: basics.texi:1507
+#, no-wrap
+msgid "command and output logs"
+msgstr "command and output logs"
+
+#. type: cindex
+#: basics.texi:1508
+#, no-wrap
+msgid "logging commands and output"
+msgstr "logging commands and output"
+
+#. type: cindex
+#: basics.texi:1509
+#, no-wrap
+msgid "echoing executing commands"
+msgstr "echoing executing commands"
+
+#. type: cindex
+#: basics.texi:1510
+#, no-wrap
+msgid "command echoing"
+msgstr "command echoing"
+
+#. type: Plain text
+#: basics.texi:1515
+msgid ""
+"Octave's diary feature allows you to keep a log of all or part of an "
+"interactive session by recording the input you type and the output that "
+"Octave produces in a separate file."
+msgstr "Octaveのダイアリー機能により、インタラクティブなセッションのすべて、または一部のログを維持できます。これは、タイプされた入力と、Octaveが生成した出力を、別のファイルに記録することにより行なわれます。"
+
+#. type: anchor{#1}
+#: basics.texi:1518
+msgid "XREFdiary"
+msgstr "XREFdiary"
+
+#. type: deftypefn
+#: basics.texi:1518
+#, no-wrap
+msgid "{Command} {} diary"
+msgstr "{Command} {} diary"
+
+#. type: deftypefnx
+#: basics.texi:1519
+#, no-wrap
+msgid "{Command} {} diary on"
+msgstr "{Command} {} diary on"
+
+#. type: deftypefnx
+#: basics.texi:1520
+#, no-wrap
+msgid "{Command} {} diary off"
+msgstr "{Command} {} diary off"
+
+#. type: deftypefnx
+#: basics.texi:1521
+#, no-wrap
+msgid "{Command} {} diary @var{filename}"
+msgstr "{Command} {} diary @var{filename}"
+
+#. type: deftypefn
+#: basics.texi:1524
+msgid ""
+"Record a list of all commands @emph{and} the output they produce, mixed "
+"together just as they appear on the terminal."
+msgstr "すべてのコマンドのリスト@emph{および}それらが生成した出力を、まさに端末に表示されたよｙに混在して記録します。"
+
+#. type: deftypefn
+#: basics.texi:1526
+msgid "Valid options are:"
+msgstr "有効なオプションは:"
+
+#. type: item
+#: basics.texi:1528 basics.texi:1555
+#, no-wrap
+msgid "on"
+msgstr "on"
+
+#. type: table
+#: basics.texi:1531
+msgid ""
+"Start recording a session in a file called @file{diary} in the current "
+"working directory."
+msgstr "カレントワーキングディレクトリーの@file{diary}と呼ばれるファイルへ、セッションの記録を開始します。"
+
+#. type: item
+#: basics.texi:1532 basics.texi:1558
+#, no-wrap
+msgid "off"
+msgstr "off"
+
+#. type: table
+#: basics.texi:1534
+msgid "Stop recording the session in the diary file."
+msgstr "ダイアリーファイルへのセッションの記録を停止します。"
+
+#. type: var{#1}
+#: basics.texi:1535
+#, no-wrap
+msgid "filename"
+msgstr "filename"
+
+#. type: table
+#: basics.texi:1537
+msgid "Record the session in the file named @var{filename}."
+msgstr "@var{filename}という名前のファイルに、セッションを記録します。"
+
+#. type: deftypefn
+#: basics.texi:1541
+msgid ""
+"With no arguments, @code{diary} toggles the current diary state.  "
+"@seealso{@ref{XREFhistory,,history}}"
+msgstr ""
+"引数を指定しない場合、カレントダイアリーの状態うぃ切り替えます。\n"
+"@seealso{@ref{XREFhistory,,history}}"
+
+#. type: Plain text
+#: basics.texi:1547
+msgid ""
+"Sometimes it is useful to see the commands in a function or script as they "
+"are being evaluated.  This can be especially helpful for debugging some "
+"kinds of problems."
+msgstr "関数やスクリプトが評価されるときに、それらの中のコマンドを確認できると便利な場合があります。これは、ある種の問題をデバッグするとき、特に助けになるでしょう。"
+
+#. type: anchor{#1}
+#: basics.texi:1550
+msgid "XREFecho"
+msgstr "XREFecho"
+
+#. type: deftypefn
+#: basics.texi:1550
+#, no-wrap
+msgid "{Command} {} echo options"
+msgstr "{Command} {} echo options"
+
+#. type: deftypefn
+#: basics.texi:1553
+msgid ""
+"Control whether commands are displayed as they are executed.  Valid options "
+"are:"
+msgstr "コマンドが評価されるときに、それらのコマンドを表示するかどうかを制御します。有効なオプションは:"
+
+#. type: table
+#: basics.texi:1557
+msgid "Enable echoing of commands as they are executed in script files."
+msgstr "スクリプトファイル内でコマンドが実行されるとき、エコーを有効にします。"
+
+#. type: table
+#: basics.texi:1560
+msgid "Disable echoing of commands as they are executed in script files."
+msgstr "スクリプトファイル内でコマンドが実行されるとき、エコーを無効にします。"
+
+#. type: item
+#: basics.texi:1561
+#, no-wrap
+msgid "on all"
+msgstr "on all"
+
+#. type: table
+#: basics.texi:1564
+msgid ""
+"Enable echoing of commands as they are executed in script files and "
+"functions."
+msgstr "スクリプトファイルおよび関数内でコマンドが実行されるとき、エコーを有効にします。"
+
+#. type: item
+#: basics.texi:1565
+#, no-wrap
+msgid "off all"
+msgstr "off all"
+
+#. type: table
+#: basics.texi:1568
+msgid ""
+"Disable echoing of commands as they are executed in script files and "
+"functions."
+msgstr "スクリプトファイルおよび関数内でコマンドが実行されるとき、エコーを無効にします。"
+
+#. type: deftypefn
+#: basics.texi:1572
+msgid "With no arguments, @code{echo} toggles the current echo state."
+msgstr "引数を指定しない場合、@code{echo}はエコー状態を切り替えます。"
+
+#. type: anchor{#1}
+#: basics.texi:1577
+msgid "XREFecho_executing_commands"
+msgstr "XREFecho_executing_commands"
+
+#. type: deftypefn
+#: basics.texi:1577
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} echo_executing_commands ()"
+msgstr "{Built-in Function} {@var{val} =} echo_executing_commands ()"
+
+#. type: deftypefnx
+#: basics.texi:1578
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{old_val} =} echo_executing_commands "
+"(@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} echo_executing_commands (@var{new_val})"
+
+#. type: deftypefnx
+#: basics.texi:1579
+#, no-wrap
+msgid "{Built-in Function} {} echo_executing_commands (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} echo_executing_commands (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: basics.texi:1582
+msgid ""
+"Query or set the internal variable that controls the echo state.  It may be "
+"the sum of the following values:"
+msgstr "エコー状態を制御する内部変数にたいして、問い合わせまたはセットを行います。値は以下の値の和になるでしょう:"
+
+#. type: item
+#: basics.texi:1584
+#, no-wrap
+msgid "1"
+msgstr "1"
+
+#. type: table
+#: basics.texi:1586
+msgid "Echo commands read from script files."
+msgstr "スクリプトファイルから読み込んだコマンドをエコーします。"
+
+#. type: item
+#: basics.texi:1587
+#, no-wrap
+msgid "2"
+msgstr "2"
+
+#. type: table
+#: basics.texi:1589
+msgid "Echo commands from functions."
+msgstr "関数のコマンドをエコーします。"
+
+#. type: item
+#: basics.texi:1590
+#, no-wrap
+msgid "4"
+msgstr "4"
+
+#. type: table
+#: basics.texi:1592
+msgid "Echo commands read from command line."
+msgstr "コマンドラインから読み込んだコマンドをエコーします。"
+
+#. type: deftypefn
+#: basics.texi:1596
+msgid ""
+"More than one state can be active at once.  For example, a value of 3 is "
+"equivalent to the command @kbd{echo on all}."
+msgstr "一度に2つ以上の状態がアクティブになり得ます。たとえば、値3は、コマンド@kbd{echo on all}と等価です。"
+
+#. type: deftypefn
+#: basics.texi:1599
+msgid ""
+"The value of @code{echo_executing_commands} may be set by the @kbd{echo} "
+"command or the command line option @option{--echo-commands}."
+msgstr "@code{echo_executing_commands}の値は、@kbd{echo}コマンドまたはコマンドラインオプション@option{--echo-commands}によりセットされるかもしれません。"
+
+#. type: node
+#: basics.texi:1606
+#, no-wrap
+msgid "Errors"
+msgstr "Errors"
+
+#. type: section
+#: basics.texi:1607
+#, no-wrap
+msgid "How Octave Reports Errors"
+msgstr "How Octave Reports Errors"
+
+#. type: cindex
+#: basics.texi:1608
+#, no-wrap
+msgid "error messages"
+msgstr "error messages"
+
+#. type: cindex
+#: basics.texi:1609
+#, no-wrap
+msgid "messages, error"
+msgstr "messages, error"
+
+#. type: Plain text
+#: basics.texi:1612
+msgid "Octave reports two kinds of errors for invalid programs."
+msgstr "Octaveは無効なプログラムにたいして、2つの種類のエラーをリポートします。"
+
+#. type: Plain text
+#: basics.texi:1615
+msgid ""
+"A @dfn{parse error} occurs if Octave cannot understand something you have "
+"typed.  For example, if you misspell a keyword,"
+msgstr "@dfn{パースエラー}は、Octaveがタイプされたものを理解できなかった場合に発生します。たとえば、キーワードのスペルミスをした場合、"
+
+#. type: example
+#: basics.texi:1618
+#, no-wrap
+msgid "octave:13> function y = f (x) y = x***2; endfunction\n"
+msgstr "octave:13> function y = f (x) y = x***2; endfunction\n"
+
+#. type: Plain text
+#: basics.texi:1622
+msgid "Octave will respond immediately with a message like this:"
+msgstr "Octaveは即座に次のようなメッセージを返すでしょう:"
+
+#. type: group
+#: basics.texi:1626
+#, no-wrap
+msgid ""
+"parse error:\n"
+"\n"
+msgstr "parse error:\n\n"
+
+#. type: group
+#: basics.texi:1628
+#, no-wrap
+msgid ""
+"  syntax error\n"
+"\n"
+msgstr "  syntax error\n\n"
+
+#. type: group
+#: basics.texi:1631
+#, no-wrap
+msgid ""
+">>> function y = f (x) y = x***2; endfunction\n"
+"                              ^\n"
+msgstr ""
+">>> function y = f (x) y = x***2; endfunction\n"
+"                              ^\n"
+
+#. type: Plain text
+#: basics.texi:1641
+msgid ""
+"For most parse errors, Octave uses a caret (@samp{^}) to mark the point on "
+"the line where it was unable to make sense of your input.  In this case, "
+"Octave generated an error message because the keyword for exponentiation "
+"(@code{**}) was misspelled.  It marked the error at the third @samp{*} "
+"because the code leading up to this was correct but the final @samp{*} was "
+"not understood."
+msgstr "多くのパースエラーにたいして、Octaveは入力行で理解できなかった箇所をマークするのに、キャレット(@samp{^})を使用します。上記のケースでは、べき乗(@code{**})にたいするキーワードにスペルミスがあるので、Octaveはエラーメッセージを生成しました。キャレットは3つ目の@samp{*}にエラーをマークしました。なぜなら、その箇所まではコードは正しく読み取れていたけれど、最後の@samp{*}が理解できなかったからです。"
+
+#. type: Plain text
+#: basics.texi:1647
+msgid ""
+"Another class of error message occurs at evaluation time.  These errors are "
+"called @dfn{run-time errors}, or sometimes @dfn{evaluation errors}, because "
+"they occur when your program is being @dfn{run}, or @dfn{evaluated}.  For "
+"example, if after correcting the mistake in the previous function "
+"definition, you type"
+msgstr "他のクラスのエラーメッセージは、評価時に発生します。これらのエラーは、@dfn{ランタイムエラー}または, @dfn{評価エラー}と呼ばれることもあります。これは、それらのエラーが、プログラムが@dfn{実行(run)}あるいは@dfn{評価(evaluate)}されるときに発生するからです。たとえば、前の関数定義のミスを訂正したあとで、以下をタイプしたとします"
+
+#. type: example
+#: basics.texi:1650
+#, no-wrap
+msgid "octave:13> f ()\n"
+msgstr "octave:13> f ()\n"
+
+#. type: Plain text
+#: basics.texi:1654
+msgid "Octave will respond with"
+msgstr "Octaveは以下のように応答するでしょう"
+
+#. type: group
+#: basics.texi:1660
+#, no-wrap
+msgid ""
+"error: `x' undefined near line 1 column 24\n"
+"error: called from:\n"
+"error:   f at line 1, column 22\n"
+msgstr ""
+"error: `x' undefined near line 1 column 24\n"
+"error: called from:\n"
+"error:   f at line 1, column 22\n"
+
+#. type: Plain text
+#: basics.texi:1668
+msgid ""
+"This error message has several parts, and gives quite a bit of information "
+"to help you locate the source of the error.  The messages are generated from "
+"the point of the innermost error, and provide a traceback of enclosing "
+"expressions and function calls."
+msgstr "このエラーメッセージにはいくつかのパートがあります。そして、それらはエラーのあるソースを見つける助けとなる情報を多く含んでいます。このメッセージは、最内のエラー箇所から生成され、それを囲む式と関数呼び出しのバックトレースを提供します。"
+
+#. type: Plain text
+#: basics.texi:1676
+msgid ""
+"In the example above, the first line indicates that a variable named "
+"@samp{x} was found to be undefined near line 1 and column 24 of some "
+"function or expression.  For errors occurring within functions, lines are "
+"counted from the beginning of the file containing the function definition.  "
+"For errors occurring outside of an enclosing function, the line number "
+"indicates the input line number, which is usually displayed in the primary "
+"prompt string."
+msgstr "上記の例の最初の行は、何らかの関数または式の、行1、列24の近くで、名前@samp{x}の未定義な変数が見つかったことを示しています。関数内で発生したエラーにたいしては、行はその関数定義を含むファイルの先頭から数えた行のことです。関数の外側で発生したエラーにたいしては、行番号は入力行番号であり、これは通常一次プロンプト文字列に表示されています。"
+
+#. type: Plain text
+#: basics.texi:1681
+msgid ""
+"The second and third lines of the error message indicate that the error "
+"occurred within the function @code{f}.  If the function @code{f} had been "
+"called from within another function, for example, @code{g}, the list of "
+"errors would have ended with one more line:"
+msgstr "エラーメッセージの2行目と3行目は、このエラーが関数@code{f}の中で発生したことを示しています。もし関数@code{f}がさらに他の関数、たとえば@code{g}から呼び出されていた場合には、エラーリストにはさらに以下のような1行が加わるでしょう:"
+
+#. type: example
+#: basics.texi:1684
+#, no-wrap
+msgid "error:   g at line 1, column 17\n"
+msgstr "error:   g at line 1, column 17\n"
+
+#. type: Plain text
+#: basics.texi:1689
+msgid ""
+"These lists of function calls make it fairly easy to trace the path your "
+"program took before the error occurred, and to correct the error before "
+"trying again."
+msgstr "これらの関数呼び出しのリストは、エラーが発生するまでにそのプログラムがとったパスのトレースと、プログラムを再試行する前にエラーを訂正するのを、とても簡単にします。"
+
+#. type: section
+#: basics.texi:1690 basics.texi:1691
+#, no-wrap
+msgid "Executable Octave Programs"
+msgstr "Executable Octave Programs"
+
+#. type: cindex
+#: basics.texi:1692
+#, no-wrap
+msgid "executable scripts"
+msgstr "executable scripts"
+
+#. type: cindex
+#: basics.texi:1693
+#, no-wrap
+msgid "scripts"
+msgstr "scripts"
+
+#. type: cindex
+#: basics.texi:1694
+#, no-wrap
+msgid "batch processing"
+msgstr "batch processing"
+
+#. type: cindex
+#: basics.texi:1695
+#, no-wrap
+msgid "self contained programs"
+msgstr "self contained programs"
+
+#. type: cindex
+#: basics.texi:1696
+#, no-wrap
+msgid "program, self contained"
+msgstr "program, self contained"
+
+#. type: samp{#1}
+#: basics.texi:1697
+#, no-wrap
+msgid "#!"
+msgstr "#!"
+
+#. type: Plain text
+#: basics.texi:1704
+msgid ""
+"Once you have learned Octave, you may want to write self-contained Octave "
+"scripts, using the @samp{#!} script mechanism.  You can do this on GNU "
+"systems and on many Unix systems @footnote{The @samp{#!} mechanism works on "
+"Unix systems derived from Berkeley Unix, System V Release 4, and some System "
+"V Release 3 systems.}."
+msgstr "一度Octaveを習得したら、@samp{#!}スクリプトメカニズムを使ってOctaveによる自己完結型スクリプトを記述したいと思うかもしれません。これはGNUシステム、および多くのUnixシステム@footnote{@samp{#!}メカニズムは、 Berkeley Unix、System V Release 4、およびいくつかのSystem V Release 3 systemから継承されたUnixシステムで機能します。}で行なうことができます。"
+
+#. type: Plain text
+#: basics.texi:1711
+msgid ""
+"Self-contained Octave scripts are useful when you want to write a program "
+"which users can invoke without knowing that the program is written in the "
+"Octave language.  Octave scripts are also used for batch processing of data "
+"files.  Once an algorithm has been developed and tested in the interactive "
+"portion of Octave, it can be committed to an executable script and used "
+"again and again on new data files."
+msgstr "Octave自己完結型スクリプトは、Octave言語で記述されたプログラムに関する知識を要さずに、ユーザーが呼び出せるプログラムを記述したいときに便利です。Octaveスクリプトは、データファイルのバッチプロセッシングにも使用されます。一度アルゴリズムが開発され、Octaveのインタラクティブ環境でテストされれば、それを実行可能スクリプトにコミットして、データファイルに何度も使用できます。"
+
+#. type: Plain text
+#: basics.texi:1714
+msgid ""
+"As a trivial example of an executable Octave script, you might create a text "
+"file named @file{hello}, containing the following lines:"
+msgstr "実行可能Octaveスクリプトの些細な例として、あなたは以下の行を含む@file{hello}という例の名前のファイルを作るかもしれません:"
+
+#. type: group
+#: basics.texi:1720
+#, no-wrap
+msgid ""
+"#! @var{octave-interpreter-name} -qf\n"
+"# a sample Octave program\n"
+"printf (\"Hello, world!\\n\");\n"
+msgstr ""
+"#! @var{octave-interpreter-name} -qf\n"
+"# a sample Octave program\n"
+"printf (\"Hello, world!\\n\");\n"
+
+#. type: Plain text
+#: basics.texi:1729
+msgid ""
+"(where @var{octave-interpreter-name} should be replaced with the full path "
+"and name of your Octave binary).  Note that this will only work if @samp{#!} "
+"appears at the very beginning of the file.  After making the file executable "
+"(with the @code{chmod} command on Unix systems), you can simply type:"
+msgstr "(@var{octave-interpreter-name}はOctaveバイナリーのフルパスで置き換えてください)。スクリプトはファイルの先頭に@samp{#!}があるときだけ機能することに注意してください。(Unixシステムでは@code{chmod}で)ファイルを実行可能にした後は、以下のようにシェル上で単にタイプできます:"
+
+#. type: example
+#: basics.texi:1732
+#, no-wrap
+msgid "hello\n"
+msgstr "hello\n"
+
+#. type: Plain text
+#: basics.texi:1737
+msgid "at the shell, and the system will arrange to run Octave as if you had typed:"
+msgstr "システムはあなたがタイプしたものを以下のようにアレンジして、Octaveを実行します:"
+
+#. type: example
+#: basics.texi:1740
+#, no-wrap
+msgid "octave hello\n"
+msgstr "octave hello\n"
+
+#. type: Plain text
+#: basics.texi:1753
+msgid ""
+"The line beginning with @samp{#!} lists the full path and filename of an "
+"interpreter to be run, and an optional initial command line argument to pass "
+"to that interpreter.  The operating system then runs the interpreter with "
+"the given argument and the full argument list of the executed program.  The "
+"first argument in the list is the full file name of the Octave executable.  "
+"The rest of the argument list will either be options to Octave, or data "
+"files, or both.  The @samp{-qf} options are usually specified in stand-alone "
+"Octave programs to prevent them from printing the normal startup message, "
+"and to keep them from behaving differently depending on the contents of a "
+"particular user's @file{~/.octaverc} file.  @xref{Invoking Octave from the "
+"Command Line}."
+msgstr "@samp{#!}で始まる行は、実行されるインタープリターのファイル名へのフルパスと、そのインタープリターに渡す初期化のためのオプションのコマンドライン引数です。するとオペレーティングシステムは与えられた引数と、実行されるプログラムの完全な引数リストにより、インタープリターを実行します。リストの最初の引数は、実行可能なOctaveのフルパスファイル名です。引数リストの残りはOctaveへのオプション、データファイル、またはその両方です。@samp{-qf}オプションは通常、スタンドアローンなOctaveプログラム内での、通常のスタートアップメッセージのプリントを抑止して、特定のユーザーの@file{~/.octaverc}の内容に依存した異なる挙動から守ります。@ref{Invoking Octave from the Command Line}を参照してください。"
+
+#. type: Plain text
+#: basics.texi:1760
+msgid ""
+"Note that some operating systems may place a limit on the number of "
+"characters that are recognized after @samp{#!}.  Also, the arguments "
+"appearing in a @samp{#!} line are parsed differently by various "
+"shells/systems.  The majority of them group all the arguments together in "
+"one string and pass it to the interpreter as a single argument.  In this "
+"case, the following script:"
+msgstr "@samp{#!}の後ろの文字数に制限のあるオペレーティングシステムがいくつかあることに注意してください。また、@samp{#!}の行内の引数のパースは、さまざまなシェルやシステムにより異なります。これらの多くは、すべての引数を1つの文字列にまとめて、インタープリターに1つの引数として渡します。この場合、以下のスクリプト:"
+
+#. type: group
+#: basics.texi:1764
+#, no-wrap
+msgid "#! @var{octave-interpreter-name} -q -f # comment\n"
+msgstr "#! @var{octave-interpreter-name} -q -f # comment\n"
+
+#. type: Plain text
+#: basics.texi:1769
+msgid "is equivalent to typing at the command line:"
+msgstr "は、コマンドラインで以下のようにタイプするのと等価です:"
+
+#. type: group
+#: basics.texi:1773
+#, no-wrap
+msgid "octave \"-q -f # comment\"\n"
+msgstr "octave \"-q -f # comment\"\n"
+
+#. type: Plain text
+#: basics.texi:1781
+msgid ""
+"which will produce an error message.  Unfortunately, it is not possible for "
+"Octave to determine whether it has been called from the command line or from "
+"a @samp{#!} script, so some care is needed when using the @samp{#!} "
+"mechanism."
+msgstr "そして、これはエラーになるでしょう。残念ながら、コマンドラインから呼び出されたのか、それとも@samp{#!}スクリプトから呼び出されたかを、Octaveが判断するのは不可能です。したがって、@samp{#!}メカニズムを使用するときは、いくつかの配慮が必要です。"
+
+#. type: Plain text
+#: basics.texi:1788
+msgid ""
+"Note that when Octave is started from an executable script, the built-in "
+"function @code{argv} returns a cell array containing the command line "
+"arguments passed to the executable Octave script, not the arguments passed "
+"to the Octave interpreter on the @samp{#!} line of the script.  For example, "
+"the following program will reproduce the command line that was used to "
+"execute the script, not @samp{-qf}."
+msgstr "Octaveが実行可能スクリプトから起動された場合、ビルトイン関数@code{argv}はスクリプトの@samp{#!}行でOctaveインタープリターに渡された引数ではなく、実行可能Octaveスクリプトに渡されたコマンドライン引数を含むセル配列をリターンします。たとえば、以下のプログラムは@samp{-qf}ではなく、スクリプトを実行するために使用されたコマンドライン引数を再現します。"
+
+#. type: group
+#: basics.texi:1798
+#, no-wrap
+msgid ""
+"#! /bin/octave -qf\n"
+"printf (\"%s\", program_name ());\n"
+"arg_list = argv ();\n"
+"for i = 1:nargin\n"
+"  printf (\" %s\", arg_list@{i@});\n"
+"endfor\n"
+"printf (\"\\n\");\n"
+msgstr ""
+"#! /bin/octave -qf\n"
+"printf (\"%s\", program_name ());\n"
+"arg_list = argv ();\n"
+"for i = 1:nargin\n"
+"  printf (\" %s\", arg_list@{i@});\n"
+"endfor\n"
+"printf (\"\\n\");\n"
+
+#. type: section
+#: basics.texi:1802
+#, no-wrap
+msgid "Comments in Octave Programs"
+msgstr "Comments in Octave Programs"
+
+#. type: cindex
+#: basics.texi:1803
+#, no-wrap
+msgid "comments"
+msgstr "comments"
+
+#. type: cindex
+#: basics.texi:1804
+#, no-wrap
+msgid "use of comments"
+msgstr "use of comments"
+
+#. type: cindex
+#: basics.texi:1805
+#, no-wrap
+msgid "documenting Octave programs"
+msgstr "documenting Octave programs"
+
+#. type: Plain text
+#: basics.texi:1812
+msgid ""
+"A @dfn{comment} is some text that is included in a program for the sake of "
+"human readers, and which is NOT an executable part of the program.  Comments "
+"can explain what the program does, and how it works.  Nearly all programming "
+"languages have provisions for comments, because programs are typically hard "
+"to understand without them."
+msgstr "@dfn{コメント}とは、人間の読み手のためにプログラム中に含まれるテキストのことで、このテキストはプログラムの実行パートではありません。コメントにより、そのプログラムが何を行なうか、どのように機能するか説明することができます。ほとんどすべてのプログラミング言語にはコメントにたいする規約があります。なぜならプログラムは通常、コメントがなければ理解するのが困難だからです。"
+
+#. type: menuentry
+#: basics.texi:1817
+msgid "Single Line Comments::"
+msgstr "Single Line Comments::"
+
+#. type: menuentry
+#: basics.texi:1817
+msgid "Block Comments::"
+msgstr "Block Comments::"
+
+#. type: subsection
+#: basics.texi:1817 basics.texi:1874 basics.texi:1875
+#, no-wrap
+msgid "Comments and the Help System"
+msgstr "Comments and the Help System"
+
+#. type: subsection
+#: basics.texi:1819 basics.texi:1820
+#, no-wrap
+msgid "Single Line Comments"
+msgstr "Single Line Comments"
+
+#. type: samp{#1}
+#: basics.texi:1821
+#, no-wrap
+msgid "#"
+msgstr "#"
+
+#. type: samp{#1}
+#: basics.texi:1822
+#, no-wrap
+msgid "%"
+msgstr "%"
+
+#. type: Plain text
+#: basics.texi:1829
+msgid ""
+"In the Octave language, a comment starts with either the sharp sign "
+"character, @samp{#}, or the percent symbol @samp{%} and continues to the end "
+"of the line.  Any text following the sharp sign or percent symbol is ignored "
+"by the Octave interpreter and not executed.  The following example shows "
+"whole line and partial line comments."
+msgstr "Octave言語では、コメントはシャープ記号@samp{#}、あるいはパーセント記号@samp{%}のどちらかで始まり、その行の末尾までがコメントになります。シャープ記号またはパーセント記号に続く任意のテキストは、Octaveインタープリターには無視され、実行されません。以下の例では、行全体のコメントと、行の一部を使用したコメントが使用されています。"
+
+#. type: group
+#: basics.texi:1839
+#, no-wrap
+msgid ""
+"function countdown\n"
+"  # Count down for main rocket engines \n"
+"  disp (3);\n"
+"  disp (2);\n"
+"  disp (1);\n"
+"  disp (\"Blast Off!\");  # Rocket leaves pad\n"
+"endfunction\n"
+msgstr ""
+"function countdown\n"
+"  # Count down for main rocket engines \n"
+"  disp (3);\n"
+"  disp (2);\n"
+"  disp (1);\n"
+"  disp (\"Blast Off!\");  # Rocket leaves pad\n"
+"endfunction\n"
+
+#. type: subsection
+#: basics.texi:1842 basics.texi:1843
+#, no-wrap
+msgid "Block Comments"
+msgstr "Block Comments"
+
+#. type: cindex
+#: basics.texi:1844
+#, no-wrap
+msgid "block comments"
+msgstr "block comments"
+
+#. type: cindex
+#: basics.texi:1845
+#, no-wrap
+msgid "multi-line comments"
+msgstr "multi-line comments"
+
+#. type: samp{#1}
+#: basics.texi:1846
+#, no-wrap
+msgid "#@{"
+msgstr "#@{"
+
+#. type: samp{#1}
+#: basics.texi:1847
+#, no-wrap
+msgid "%@{"
+msgstr "%@{"
+
+#. type: Plain text
+#: basics.texi:1852
+msgid ""
+"Entire blocks of code can be commented by enclosing the code between "
+"matching @samp{#@{} and @samp{#@}} or @samp{%@{} and @samp{%@}} markers.  "
+"For example,"
+msgstr "マッチする@samp{#@{}と@samp{#@}}、または@samp{%@{}と@samp{%@}}で囲むことにより、コードブロック全体をコメント化することができます。たとえば、"
+
+#. type: group
+#: basics.texi:1864
+#, no-wrap
+msgid ""
+"function quick_countdown\n"
+"  # Count down for main rocket engines \n"
+"  disp (3);\n"
+" #@{\n"
+"  disp (2);\n"
+"  disp (1);\n"
+" #@}\n"
+"  disp (\"Blast Off!\");  # Rocket leaves pad\n"
+"endfunction\n"
+msgstr ""
+"function quick_countdown\n"
+"  # Count down for main rocket engines \n"
+"  disp (3);\n"
+" #@{\n"
+"  disp (2);\n"
+"  disp (1);\n"
+" #@}\n"
+"  disp (\"Blast Off!\");  # Rocket leaves pad\n"
+"endfunction\n"
+
+#. type: Plain text
+#: basics.texi:1870
+msgid ""
+"will produce a very quick countdown from @qcode{'3'} to @qcode{\"Blast "
+"Off\"} as the lines \"@code{disp (2);}\" and \"@code{disp (1);}\" won't be "
+"executed."
+msgstr "これは、\"@code{disp (2);}\"と\"@code{disp (1);}\"を実行しないことにより、@qcode{'3'}から@qcode{\"Blast Off\"}へのとても素早いカウントダウンを生成します。"
+
+#. type: Plain text
+#: basics.texi:1873
+msgid ""
+"The block comment markers must appear alone as the only characters on a line "
+"(excepting whitespace) in order to be parsed correctly."
+msgstr "ブロックコメントマーカーは、正しくパースされるために、その行で(空白文字以外の)単独の文字として記述しなければなりません。"
+
+#. type: cindex
+#: basics.texi:1876
+#, no-wrap
+msgid "documenting functions"
+msgstr "documenting functions"
+
+#. type: cindex
+#: basics.texi:1877
+#, no-wrap
+msgid "documenting user scripts"
+msgstr "documenting user scripts"
+
+#. type: cindex
+#: basics.texi:1878
+#, no-wrap
+msgid "help, user-defined functions"
+msgstr "help, user-defined functions"
+
+#. type: Plain text
+#: basics.texi:1885
+msgid ""
+"The @code{help} command (@pxref{Getting Help}) is able to find the first "
+"block of comments in a function and return those as a documentation string.  "
+"This means that the same commands used to get help on built-in functions are "
+"available for properly formatted user-defined functions.  For example, after "
+"defining the function @code{f} below,"
+msgstr "@code{help}コマンド(@ref{Getting Help}参照)は、関数の最初のコメントブロックを見つけて、それらをドキュメント文字列としてリターンします。これはヘルプを取得するために使用する同じコマンドが、ユーザー定義関数を正しくフォーマットできることを意味します。たとえば、以下の関数@code{f}を定義してみます"
+
+#. type: group
+#: basics.texi:1889
+#, no-wrap
+msgid ""
+"function xdot = f (x, t)\n"
+"\n"
+msgstr "function xdot = f (x, t)\n\n"
+
+#. type: group
+#: basics.texi:1895
+#, no-wrap
+msgid ""
+"# usage: f (x, t)\n"
+"#\n"
+"# This function defines the right-hand\n"
+"# side functions for a set of nonlinear\n"
+"# differential equations.\n"
+"\n"
+msgstr ""
+"# usage: f (x, t)\n"
+"#\n"
+"# This function defines the right-hand\n"
+"# side functions for a set of nonlinear\n"
+"# differential equations.\n"
+"\n"
+
+#. type: group
+#: basics.texi:1899
+#, no-wrap
+msgid ""
+"  r = 0.25;\n"
+"  @dots{}\n"
+"endfunction\n"
+msgstr ""
+"  r = 0.25;\n"
+"  @dots{}\n"
+"endfunction\n"
+
+#. type: Plain text
+#: basics.texi:1904
+msgid "the command @kbd{help f} produces the output"
+msgstr "すると、コマンド@kbd{help f}は以下の出力を生成します"
+
+#. type: group
+#: basics.texi:1908
+#, no-wrap
+msgid ""
+" usage: f (x, t)\n"
+"\n"
+msgstr " usage: f (x, t)\n\n"
+
+#. type: group
+#: basics.texi:1912
+#, no-wrap
+msgid ""
+" This function defines the right-hand\n"
+" side functions for a set of nonlinear\n"
+" differential equations.\n"
+msgstr ""
+" This function defines the right-hand\n"
+" side functions for a set of nonlinear\n"
+" differential equations.\n"
+
+#. type: Plain text
+#: basics.texi:1919
+msgid ""
+"Although it is possible to put comment lines into keyboard-composed, "
+"throw-away Octave programs, it usually isn't very useful because the purpose "
+"of a comment is to help you or another person understand the program at a "
+"later time."
+msgstr "キーボード入力して使い捨てするプログラムにコメント行を挿入することはできますが、これは通常とても有用とは言えません。なぜならコメントの目的は、後で他の人がプログラムを理解する助けとなることだからです。"
+
+#. type: Plain text
+#: basics.texi:1922
+msgid ""
+"The @code{help} parser currently only recognizes single line comments "
+"(@pxref{Single Line Comments}) and not block comments for the initial help "
+"text."
+msgstr "@code{help}パーサーは、初期ヘルプテキストとして、1行コメント(@ref{Single Line Comments}参照)だけを正しく認識します。"

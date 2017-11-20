@@ -1,0 +1,3058 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: octave 3.8.2\n"
+"POT-Creation-Date: 2017-07-16 21:35+0000\n"
+"PO-Revision-Date: 2017-07-23 01:56+0900\n"
+"Last-Translator: Ayanokoji Takesi <ayanokoji.takesi@gmail.com>\n"
+"Language-Team: japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: chapter
+#: numbers.texi:21 numbers.texi:22
+#, no-wrap
+msgid "Numeric Data Types"
+msgstr "Numeric Data Types"
+
+#. type: cindex
+#: numbers.texi:23
+#, no-wrap
+msgid "numeric constant"
+msgstr "numeric constant"
+
+#. type: cindex
+#: numbers.texi:24
+#, no-wrap
+msgid "numeric value"
+msgstr "numeric value"
+
+#. type: Plain text
+#: numbers.texi:28
+msgid ""
+"A @dfn{numeric constant} may be a scalar, a vector, or a matrix, and it may "
+"contain complex values."
+msgstr "@dfn{numeric定数}はスカラー、ベクター、マトリクスであるかもしれず、さらにそれらはcomplex値を含むかもしれません。"
+
+#. type: Plain text
+#: numbers.texi:38
+msgid ""
+"The simplest form of a numeric constant, a scalar, is a single number that "
+"can be an integer, a decimal fraction, a number in scientific (exponential) "
+"notation, or a complex number.  Note that by default numeric constants are "
+"represented within Octave in double-precision floating point format (complex "
+"constants are stored as pairs of double-precision floating point values).  "
+"It is, however, possible to represent real integers as described in "
+"@ref{Integer Data Types}.  Here are some examples of real-valued numeric "
+"constants, which all have the same value:"
+msgstr "もっともシンプルなnumeric定数の形式はスカラーです。スカラーは単独の数であり、整数、少数、科学表記(指数表記)の数値、複素数を含むことができます。Octave内ではデフォルトではnumeric定数は倍精度浮動小数点数で表されることに注意してください(complex定数は倍精度浮動小数点数のペアーとして格納されます)。しかし、@ref{Integer Data Types}で説明するように、real整数(実数型整数)で表すこともできます。以下にreal値のnumeric定数の例をいくつか示します。これらはすべて同じ値をもちます:"
+
+#. type: group
+#: numbers.texi:44
+#, no-wrap
+msgid ""
+"105\n"
+"1.05e+2\n"
+"1050e-1\n"
+msgstr ""
+"105\n"
+"1.05e+2\n"
+"1050e-1\n"
+
+#. type: Plain text
+#: numbers.texi:48
+msgid "To specify complex constants, you can write an expression of the form"
+msgstr "complex定数を指定する場合は、以下の形式で式を記述できます"
+
+#. type: group
+#: numbers.texi:54
+#, no-wrap
+msgid ""
+"3 + 4i\n"
+"3.0 + 4.0i\n"
+"0.3e1 + 40e-1i\n"
+msgstr ""
+"3 + 4i\n"
+"3.0 + 4.0i\n"
+"0.3e1 + 40e-1i\n"
+
+#. type: Plain text
+#: numbers.texi:60
+msgid ""
+"all of which are equivalent.  The letter @samp{i} in the previous example "
+"stands for the pure imaginary constant, defined as"
+msgstr "これらはすべて等価です。この例の文字@samp{i}は純虚数定数(pure imaginary constant)を意味しており、"
+
+#. type: tex
+#: numbers.texi:62
+#, no-wrap
+msgid "  $\\sqrt{-1}$.\n"
+msgstr "  $\\sqrt{-1}$と定義されます。\n"
+
+#. type: ifnottex
+#: numbers.texi:65
+msgid "@code{sqrt (-1)}."
+msgstr "@code{sqrt (-1)}と定義されます。"
+
+#. type: Plain text
+#: numbers.texi:70
+msgid ""
+"For Octave to recognize a value as the imaginary part of a complex constant, "
+"a space must not appear between the number and the @samp{i}.  If it does, "
+"Octave will print an error message, like this:"
+msgstr "Octaveがcomplex定数の虚部(imaginary part)を認識するためには、数字と@samp{i}の間にスペースがあってはなりません。スペースが存在する場合、Octaveは以下のようなエラーメッセージをプリントします:"
+
+#. type: group
+#: numbers.texi:74
+#, no-wrap
+msgid ""
+"octave:13> 3 + 4 i\n"
+"\n"
+msgstr "octave:13> 3 + 4 i\n\n"
+
+#. type: group
+#: numbers.texi:76 numbers.texi:279
+#, no-wrap
+msgid ""
+"parse error:\n"
+"\n"
+msgstr "parse error:\n\n"
+
+#. type: group
+#: numbers.texi:78 numbers.texi:281
+#, no-wrap
+msgid ""
+"  syntax error\n"
+"\n"
+msgstr "  syntax error\n\n"
+
+#. type: group
+#: numbers.texi:81
+#, no-wrap
+msgid ""
+">>> 3 + 4 i\n"
+"          ^\n"
+msgstr ""
+">>> 3 + 4 i\n"
+"          ^\n"
+
+#. type: Plain text
+#: numbers.texi:87
+msgid ""
+"You may also use @samp{j}, @samp{I}, or @samp{J} in place of the @samp{i} "
+"above.  All four forms are equivalent."
+msgstr "上記の例で@samp{i}が出現する箇所には@samp{j}、@samp{I}、@samp{J}を使うこともできます。これら4つの形式は、すべて等価です。"
+
+#. type: anchor{#1}
+#: numbers.texi:90
+msgid "XREFdouble"
+msgstr "XREFdouble"
+
+#. type: deftypefn
+#: numbers.texi:90
+#, no-wrap
+msgid "{Built-in Function} {} double (@var{x})"
+msgstr "{Built-in Function} {} double (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:93
+msgid ""
+"Convert @var{x} to double precision type.  "
+"@seealso{@ref{XREFsingle,,single}}"
+msgstr ""
+"@var{x}を倍精度型に変換します。\n"
+"@seealso{@ref{XREFsingle,,single}}"
+
+#. type: anchor{#1}
+#: numbers.texi:98
+msgid "XREFcomplex"
+msgstr "XREFcomplex"
+
+#. type: deftypefn
+#: numbers.texi:98
+#, no-wrap
+msgid "{Built-in Function} {} complex (@var{x})"
+msgstr "{Built-in Function} {} complex (@var{x})"
+
+#. type: deftypefnx
+#: numbers.texi:99
+#, no-wrap
+msgid "{Built-in Function} {} complex (@var{re}, @var{im})"
+msgstr "{Built-in Function} {} complex (@var{re}, @var{im})"
+
+#. type: deftypefn
+#: numbers.texi:105
+msgid ""
+"Return a complex result from real arguments.  With 1 real argument @var{x}, "
+"return the complex result @code{@var{x} + 0i}.  With 2 real arguments, "
+"return the complex result @code{@var{re} + @var{im}}.  @code{complex} can "
+"often be more convenient than expressions such as @code{a + i*b}.  For "
+"example:"
+msgstr "realの引数から、complexの結果をリターンします。realの引数が@var{x}の1つの場合、結果はcomplexの@code{@var{x} + 0i}になります。realの引数が2つの場合、結果はcomplexの@code{@var{re} + @var{im}}になります。@code{a + i*b}のような式よりも、@code{complex}のほうが便利な場合もあります。たとえば:"
+
+#. type: group
+#: numbers.texi:110
+#, no-wrap
+msgid ""
+"complex ([1, 2], [3, 4])\n"
+"  @result{} [ 1 + 3i   2 + 4i ]\n"
+msgstr ""
+"complex ([1, 2], [3, 4])\n"
+"  @result{} [ 1 + 3i   2 + 4i ]\n"
+
+#. type: deftypefn
+#: numbers.texi:113
+msgid ""
+"@seealso{@ref{XREFreal,,real}, @ref{XREFimag,,imag}, "
+"@ref{XREFiscomplex,,iscomplex}, @ref{XREFabs,,abs}, @ref{XREFarg,,arg}}"
+msgstr "@seealso{@ref{XREFreal,,real}, @ref{XREFimag,,imag}, @ref{XREFiscomplex,,iscomplex}, @ref{XREFabs,,abs}, @ref{XREFarg,,arg}}"
+
+#. type: menuentry
+#: numbers.texi:125
+msgid "Matrices::"
+msgstr "Matrices::"
+
+#. type: menuentry
+#: numbers.texi:125
+msgid "Ranges::"
+msgstr "Ranges::"
+
+#. type: menuentry
+#: numbers.texi:125
+msgid "Single Precision Data Types::"
+msgstr "Single Precision Data Types::"
+
+#. type: menuentry
+#: numbers.texi:125
+msgid "Integer Data Types::"
+msgstr "Integer Data Types::"
+
+#. type: menuentry
+#: numbers.texi:125
+msgid "Bit Manipulations::"
+msgstr "Bit Manipulations::"
+
+#. type: menuentry
+#: numbers.texi:125
+msgid "Logical Values::"
+msgstr "Logical Values::"
+
+#. type: menuentry
+#: numbers.texi:125
+msgid "Promotion and Demotion of Data Types::"
+msgstr "Promotion and Demotion of Data Types::"
+
+#. type: section
+#: numbers.texi:125 numbers.texi:1288 numbers.texi:1289
+#, no-wrap
+msgid "Predicates for Numeric Objects"
+msgstr "Predicates for Numeric Objects"
+
+#. type: section
+#: numbers.texi:127 numbers.texi:128
+#, no-wrap
+msgid "Matrices"
+msgstr "Matrices"
+
+#. type: cindex
+#: numbers.texi:129
+#, no-wrap
+msgid "matrices"
+msgstr "matrices"
+
+#. type: opindex
+#: numbers.texi:131
+#, no-wrap
+msgid "["
+msgstr "["
+
+#. type: opindex
+#: numbers.texi:132
+#, no-wrap
+msgid "]"
+msgstr "]"
+
+#. type: opindex
+#: numbers.texi:133
+#, no-wrap
+msgid ";"
+msgstr ";"
+
+#. type: opindex
+#: numbers.texi:134
+#, no-wrap
+msgid ","
+msgstr ","
+
+#. type: Plain text
+#: numbers.texi:139
+msgid ""
+"It is easy to define a matrix of values in Octave.  The size of the matrix "
+"is determined automatically, so it is not necessary to explicitly state the "
+"dimensions.  The expression"
+msgstr "Octaveで値のマトリクスを定義するのは、簡単です。マトリクスのサイズは自動的に決定されるので、次元を明示する必要はありません。以下の式"
+
+#. type: example
+#: numbers.texi:142
+#, no-wrap
+msgid "a = [1, 2; 3, 4]\n"
+msgstr "a = [1, 2; 3, 4]\n"
+
+#. type: Plain text
+#: numbers.texi:146
+msgid "results in the matrix"
+msgstr "の結果は、以下のマトリクスになります"
+
+#. type: tex
+#: numbers.texi:148
+#, no-wrap
+msgid "$$ a = \\left[ \\matrix{ 1 & 2 \\cr 3 & 4 } \\right] $$\n"
+msgstr "$$ a = \\left[ \\matrix{ 1 & 2 \\cr 3 & 4 } \\right] $$\n"
+
+#. type: group
+#: numbers.texi:159
+#, no-wrap
+msgid ""
+"        /      \\\n"
+"        | 1  2 |\n"
+"  a  =  |      |\n"
+"        | 3  4 |\n"
+"        \\      /\n"
+"\n"
+msgstr ""
+"        /      \\\n"
+"        | 1  2 |\n"
+"  a  =  |      |\n"
+"        | 3  4 |\n"
+"        \\      /\n"
+"\n"
+
+#. type: Plain text
+#: numbers.texi:168
+msgid ""
+"Elements of a matrix may be arbitrary expressions, provided that the "
+"dimensions all make sense when combining the various pieces.  For example, "
+"given the above matrix, the expression"
+msgstr "さまざまなピースをまとめたときに、すべての次元が意味をなすなら、任意の式をマトリクスの要素にできます。たとえば、上記のマトリクスが与えられた場合、以下の式"
+
+#. type: example
+#: numbers.texi:171
+#, no-wrap
+msgid "[ a, a ]\n"
+msgstr "[ a, a ]\n"
+
+#. type: Plain text
+#: numbers.texi:175
+msgid "produces the matrix"
+msgstr "は、以下のマトリクスを生成します"
+
+#. type: group
+#: numbers.texi:179
+#, no-wrap
+msgid ""
+"ans =\n"
+"\n"
+msgstr "ans =\n\n"
+
+#. type: group
+#: numbers.texi:182
+#, no-wrap
+msgid ""
+"  1  2  1  2\n"
+"  3  4  3  4\n"
+msgstr ""
+"  1  2  1  2\n"
+"  3  4  3  4\n"
+
+#. type: Plain text
+#: numbers.texi:187
+msgid "but the expression"
+msgstr "しかし、以下の式"
+
+#. type: example
+#: numbers.texi:190
+#, no-wrap
+msgid "[ a, 1 ]\n"
+msgstr "[ a, 1 ]\n"
+
+#. type: Plain text
+#: numbers.texi:194
+msgid "produces the error"
+msgstr "は、エラーを生成します"
+
+#. type: example
+#: numbers.texi:197
+#, no-wrap
+msgid "error: number of rows must match (1 != 2) near line 13, column 6\n"
+msgstr "error: number of rows must match (1 != 2) near line 13, column 6\n"
+
+#. type: Plain text
+#: numbers.texi:202
+msgid ""
+"(assuming that this expression was entered as the first thing on line 13, of "
+"course)."
+msgstr "(このエラーは、この式が13行目の行頭から入力された場合です)。"
+
+#. type: Plain text
+#: numbers.texi:207
+msgid ""
+"Inside the square brackets that delimit a matrix expression, Octave looks at "
+"the surrounding context to determine whether spaces and newline characters "
+"should be converted into element and row separators, or simply ignored, so "
+"an expression like"
+msgstr "マトリクス式を区切る角カッコの中では、スペース文字と改行文字を要素と行区切りに変換すべきか、あるいは単に無視すべきかを判断するために、Octaveは周囲のコンテキストを調べます。そのため、以下のような式"
+
+#. type: group
+#: numbers.texi:212
+#, no-wrap
+msgid ""
+"a = [ 1 2\n"
+"      3 4 ]\n"
+msgstr ""
+"a = [ 1 2\n"
+"      3 4 ]\n"
+
+#. type: Plain text
+#: numbers.texi:218
+msgid ""
+"will work.  However, some possible sources of confusion remain.  For "
+"example, in the expression"
+msgstr "は機能するでしょう。しかし混乱の種はまだ残っています。たとえば、以下の式"
+
+#. type: example
+#: numbers.texi:221
+#, no-wrap
+msgid "[ 1 - 1 ]\n"
+msgstr "[ 1 - 1 ]\n"
+
+#. type: Plain text
+#: numbers.texi:226
+msgid ""
+"the @samp{-} is treated as a binary operator and the result is the scalar 0, "
+"but in the expression"
+msgstr "では@samp{-}は2項演算子とみなされ、その結果はスカラー0になります。しかし以下の式"
+
+#. type: example
+#: numbers.texi:229
+#, no-wrap
+msgid "[ 1 -1 ]\n"
+msgstr "[ 1 -1 ]\n"
+
+#. type: Plain text
+#: numbers.texi:234
+msgid ""
+"the @samp{-} is treated as a unary operator and the result is the vector "
+"@code{[ 1, -1 ]}.  Similarly, the expression"
+msgstr "では@samp{-}は単項演算子とみなされ、結果はベクター@code{[ 1, -1 ]}になります。同様に、以下の式"
+
+#. type: example
+#: numbers.texi:237
+#, no-wrap
+msgid "[ sin (pi) ]\n"
+msgstr "[ sin (pi) ]\n"
+
+#. type: Plain text
+#: numbers.texi:241
+msgid "will be parsed as"
+msgstr "は以下のよｙにパースされて"
+
+#. type: example
+#: numbers.texi:244
+#, no-wrap
+msgid "[ sin, (pi) ]\n"
+msgstr "[ sin, (pi) ]\n"
+
+#. type: Plain text
+#: numbers.texi:251
+msgid ""
+"and will result in an error since the @code{sin} function will be called "
+"with no arguments.  To get around this, you must omit the space between "
+"@code{sin} and the opening parenthesis, or enclose the expression in a set "
+"of parentheses:"
+msgstr "これは@code{sin}関数が引数なしで呼び出されたとみなされて、エラーになります。エラーを回避するためには、@code{sin}と開きカッコの間のスペースを取り除くか、式をカッコで括らなければなりません:"
+
+#. type: example
+#: numbers.texi:254
+#, no-wrap
+msgid "[ (sin (pi)) ]\n"
+msgstr "[ (sin (pi)) ]\n"
+
+#. type: Plain text
+#: numbers.texi:259
+msgid ""
+"Whitespace surrounding the single quote character (@samp{'}, used as a "
+"transpose operator and for delimiting character strings) can also cause "
+"confusion.  Given @code{a = 1}, the expression"
+msgstr "転置演算子(transpose operator)と文字列の区切りに使用される、空白文字ど囲まれたシングルクォート文字(@samp{'}も混乱を招きます。@code{a = 1}が与えられた場合、以下の式"
+
+#. type: example
+#: numbers.texi:262
+#, no-wrap
+msgid "[ 1 a' ]\n"
+msgstr "[ 1 a' ]\n"
+
+#. type: Plain text
+#: numbers.texi:268
+msgid ""
+"results in the single quote character being treated as a transpose operator "
+"and the result is the vector @code{[ 1, 1 ]}, but the expression"
+msgstr "では、シングルクォート文字は転置演算子とみなされて、結果はベクター@code{[ 1, 1 ]}になります。しかし以下の式"
+
+#. type: example
+#: numbers.texi:271
+#, no-wrap
+msgid "[ 1 a ' ]\n"
+msgstr "[ 1 a ' ]\n"
+
+#. type: Plain text
+#: numbers.texi:275
+msgid "produces the error message"
+msgstr "はエラーメッセージを生成します"
+
+#. type: group
+#: numbers.texi:284
+#, no-wrap
+msgid ""
+">>> [ 1 a ' ]\n"
+"              ^\n"
+msgstr ""
+">>> [ 1 a ' ]\n"
+"              ^\n"
+
+#. type: Plain text
+#: numbers.texi:289
+msgid "because not doing so would cause trouble when parsing the valid expression"
+msgstr "なぜなら、これをエラーにしないと、以下のような有効な式をパースするときトラブルになるからです"
+
+#. type: example
+#: numbers.texi:292
+#, no-wrap
+msgid "[ a 'foo' ]\n"
+msgstr "[ a 'foo' ]\n"
+
+#. type: Plain text
+#: numbers.texi:296
+msgid ""
+"For clarity, it is probably best to always use commas and semicolons to "
+"separate matrix elements and rows."
+msgstr "明確にするためには、マトリクスの要素と行の区切りには常に、カンマとセミコロンを使用するのがおそらく最善でしょう。"
+
+#. type: Plain text
+#: numbers.texi:301
+msgid ""
+"The maximum number of elements in a matrix is fixed when Octave is "
+"compiled.  The allowable number can be queried with the function "
+"@code{sizemax}.  Note that other factors, such as the amount of memory "
+"available on your machine, may limit the maximum size of matrices to "
+"something smaller."
+msgstr "マトリクスの要素の最大数は、Octaveのコンパイル時に決定されていて固定です。可能な数は、関数@code{sizemax}で問い合わせることができます。マシン上で利用できるメモリーなど、他の要因により、マトリクスの最大要素数の制限は、いくぶん小さくなるかもしれないことに注意してください。"
+
+#. type: anchor{#1}
+#: numbers.texi:304
+msgid "XREFsizemax"
+msgstr "XREFsizemax"
+
+#. type: deftypefn
+#: numbers.texi:304
+#, no-wrap
+msgid "{Built-in Function} {} sizemax ()"
+msgstr "{Built-in Function} {} sizemax ()"
+
+#. type: deftypefn
+#: numbers.texi:311
+msgid ""
+"Return the largest value allowed for the size of an array.  If Octave is "
+"compiled with 64-bit indexing, the result is of class int64, otherwise it is "
+"of class int32.  The maximum array size is slightly smaller than the maximum "
+"value allowable for the relevant class as reported by @code{intmax}.  "
+"@seealso{@ref{XREFintmax,,intmax}}"
+msgstr ""
+"配列のサイズにたいして許される最大の値をリターンします。Octaveが64-bit indexingでコンパイルされている場合はint64クラスの最大値、それ以外はint32クラスの最大値になります。配列の最大サイズは、@code{intmax}でリポートされる関連するクラスに許される最大値より、少しだけ小さくなります。\n"
+"@seealso{@ref{XREFintmax,,intmax}}"
+
+#. type: Plain text
+#: numbers.texi:320
+msgid ""
+"When you type a matrix or the name of a variable whose value is a matrix, "
+"Octave responds by printing the matrix in with neatly aligned rows and "
+"columns.  If the rows of the matrix are too large to fit on the screen, "
+"Octave splits the matrix and displays a header before each section to "
+"indicate which columns are being displayed.  You can use the following "
+"variables to control the format of the output."
+msgstr "マトリクス、または値がマトリクスである変数の名前をタイプすると、Octaveは行と列を整列してプリントします。そのマトリクスの行がスクリーンに収まらないほど大きい場合、Octaveはマトリクスを分割して、どの列が表示されているかを示すヘッダーを各セクションの前に表示します。出力フォーマットを制御するために、以下の変数を使用できます。"
+
+#. type: anchor{#1}
+#: numbers.texi:323
+msgid "XREFoutput_max_field_width"
+msgstr "XREFoutput_max_field_width"
+
+#. type: deftypefn
+#: numbers.texi:323
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} output_max_field_width ()"
+msgstr "{Built-in Function} {@var{val} =} output_max_field_width ()"
+
+#. type: deftypefnx
+#: numbers.texi:324
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} output_max_field_width (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} output_max_field_width (@var{new_val})"
+
+#. type: deftypefnx
+#: numbers.texi:325
+#, no-wrap
+msgid "{Built-in Function} {} output_max_field_width (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} output_max_field_width (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: numbers.texi:328
+msgid ""
+"Query or set the internal variable that specifies the maximum width of a "
+"numeric output field."
+msgstr "numeric出力フィールドの最大幅を指定する内部変数にたいして、問い合わせまたはセットを行います。"
+
+#. type: deftypefn
+#: numbers.texi:333
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFformat,,format}, "
+"@ref{XREFfixed_point_format,,fixed_point_format}, "
+"@ref{XREFoutput_precision,,output_precision}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFformat,,format}, @ref{XREFfixed_point_format,,fixed_point_format}, @ref{XREFoutput_precision,,output_precision}}"
+
+#. type: anchor{#1}
+#: numbers.texi:338
+msgid "XREFoutput_precision"
+msgstr "XREFoutput_precision"
+
+#. type: deftypefn
+#: numbers.texi:338
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} output_precision ()"
+msgstr "{Built-in Function} {@var{val} =} output_precision ()"
+
+#. type: deftypefnx
+#: numbers.texi:339
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} output_precision (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} output_precision (@var{new_val})"
+
+#. type: deftypefnx
+#: numbers.texi:340
+#, no-wrap
+msgid "{Built-in Function} {} output_precision (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} output_precision (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: numbers.texi:343
+msgid ""
+"Query or set the internal variable that specifies the minimum number of "
+"significant figures to display for numeric output."
+msgstr "numeric出力にたいして表示する最小の有効数字を指定する内部変数にたいして、問い合わせまたはセットを行います。"
+
+#. type: deftypefn
+#: numbers.texi:348
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFformat,,format}, "
+"@ref{XREFfixed_point_format,,fixed_point_format}, "
+"@ref{XREFoutput_max_field_width,,output_max_field_width}}"
+msgstr ""
+"関数の中から@qcode{\\\"local\\\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFformat,,format}, @ref{XREFfixed_point_format,,fixed_point_format}, @ref{XREFoutput_max_field_width,,output_max_field_width}}"
+
+#. type: Plain text
+#: numbers.texi:355
+msgid ""
+"It is possible to achieve a wide range of output styles by using different "
+"values of @code{output_precision} and @code{output_max_field_width}.  "
+"Reasonable combinations can be set using the @code{format} function.  "
+"@xref{Basic Input and Output}."
+msgstr "@code{output_precision}と@code{output_max_field_width}に異なる値を使用することにより、幅広い出力スタイルを実現できます。@code{format}関数をセットして、妥当な組み合わせをセットできます。@ref{Basic Input and Output}を参照してください。"
+
+#. type: anchor{#1}
+#: numbers.texi:358
+msgid "XREFsplit_long_rows"
+msgstr "XREFsplit_long_rows"
+
+#. type: deftypefn
+#: numbers.texi:358
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} split_long_rows ()"
+msgstr "{Built-in Function} {@var{val} =} split_long_rows ()"
+
+#. type: deftypefnx
+#: numbers.texi:359
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} split_long_rows (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} split_long_rows (@var{new_val})"
+
+#. type: deftypefnx
+#: numbers.texi:360
+#, no-wrap
+msgid "{Built-in Function} {} split_long_rows (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} split_long_rows (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: numbers.texi:367
+msgid ""
+"Query or set the internal variable that controls whether rows of a matrix "
+"may be split when displayed to a terminal window.  If the rows are split, "
+"Octave will display the matrix in a series of smaller pieces, each of which "
+"can fit within the limits of your terminal width and each set of rows is "
+"labeled so that you can easily see which columns are currently being "
+"displayed.  For example:"
+msgstr "端末ウィンドウに表示するときにマトリクスの行を分割するかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。行を分割する場合、Octaveはマトリクスを小さい断片のシリーズとして表示します。断片はそれぞれ、端末の制限幅に適合するよう分割され、各行セットにはラベルが付されるので、現在どの列が表示されているか簡単に識別できます。たとえば:"
+
+#. type: group
+#: numbers.texi:372
+#, no-wrap
+msgid ""
+"octave:13> rand (2,10)\n"
+"ans =\n"
+"\n"
+msgstr ""
+"octave:13> rand (2,10)\n"
+"ans =\n"
+"\n"
+
+#. type: group
+#: numbers.texi:374
+#, no-wrap
+msgid ""
+" Columns 1 through 6:\n"
+"\n"
+msgstr " Columns 1 through 6:\n\n"
+
+#. type: group
+#: numbers.texi:377
+#, no-wrap
+msgid ""
+"  0.75883  0.93290  0.40064  0.43818  0.94958  0.16467\n"
+"  0.75697  0.51942  0.40031  0.61784  0.92309  0.40201\n"
+"\n"
+msgstr ""
+"  0.75883  0.93290  0.40064  0.43818  0.94958  0.16467\n"
+"  0.75697  0.51942  0.40031  0.61784  0.92309  0.40201\n"
+"\n"
+
+#. type: group
+#: numbers.texi:379
+#, no-wrap
+msgid ""
+" Columns 7 through 10:\n"
+"\n"
+msgstr " Columns 7 through 10:\n\n"
+
+#. type: group
+#: numbers.texi:382
+#, no-wrap
+msgid ""
+"  0.90174  0.11854  0.72313  0.73326\n"
+"  0.44672  0.94303  0.56564  0.82150\n"
+msgstr ""
+"  0.90174  0.11854  0.72313  0.73326\n"
+"  0.44672  0.94303  0.56564  0.82150\n"
+
+#. type: deftypefn
+#: numbers.texi:389 numbers.texi:515
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFformat,,format}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFformat,,format}}"
+
+#. type: Plain text
+#: numbers.texi:399
+msgid ""
+"Octave automatically switches to scientific notation when values become very "
+"large or very small.  This guarantees that you will see several significant "
+"figures for every value in a matrix.  If you would prefer to see all values "
+"in a matrix printed in a fixed point format, you can set the built-in "
+"variable @code{fixed_point_format} to a nonzero value.  But doing so is not "
+"recommended, because it can produce output that can easily be "
+"misinterpreted."
+msgstr "値が非常に大きくなったとき、または小さくなったとき、Octaveは自動的に科学的表記に切り替えます。これはマトリクス内のすべての値にたいして、数桁の有効数字を確認できることを保証します。マトリクス内のすべての値を固定小数点フォーマットで確認したい場合は、ビルトイン変数@code{fixed_point_format}を非0値にセットすることができます。しかしこれを行なうことにより、容易に誤解釈され得る出力を生成するため、推奨されません。"
+
+#. type: anchor{#1}
+#: numbers.texi:402
+msgid "XREFfixed_point_format"
+msgstr "XREFfixed_point_format"
+
+#. type: deftypefn
+#: numbers.texi:402
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} fixed_point_format ()"
+msgstr "{Built-in Function} {@var{val} =} fixed_point_format ()"
+
+#. type: deftypefnx
+#: numbers.texi:403
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} fixed_point_format (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} fixed_point_format (@var{new_val})"
+
+#. type: deftypefnx
+#: numbers.texi:404
+#, no-wrap
+msgid "{Built-in Function} {} fixed_point_format (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} fixed_point_format (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: numbers.texi:407
+msgid ""
+"Query or set the internal variable that controls whether Octave will use a "
+"scaled format to print matrix values."
+msgstr "Octaveがマトリクスの値をプリントするためにスケール化されたフォーマットを使用するかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。"
+
+#. type: deftypefn
+#: numbers.texi:411
+msgid ""
+"The scaled format prints a scaling factor on the first line of output chosen "
+"such that the largest matrix element can be written with a single leading "
+"digit.  For example:"
+msgstr "スケール化されたフォーマットは、出力の最初の行にスケール因子をプリントします。スケール因子はマトリクスの最大要素を、整数部1桁で記述できるように選択されます。たとえば:"
+
+#. type: group
+#: numbers.texi:416
+#, no-wrap
+msgid ""
+"logspace (1, 7, 5)'\n"
+"ans =\n"
+"\n"
+msgstr ""
+"logspace (1, 7, 5)'\n"
+"ans =\n"
+"\n"
+
+#. type: group
+#: numbers.texi:418
+#, no-wrap
+msgid ""
+"  1.0e+07  *\n"
+"\n"
+msgstr "  1.0e+07  *\n\n"
+
+#. type: group
+#: numbers.texi:424
+#, no-wrap
+msgid ""
+"  0.00000\n"
+"  0.00003\n"
+"  0.00100\n"
+"  0.03162\n"
+"  1.00000\n"
+msgstr ""
+"  0.00000\n"
+"  0.00003\n"
+"  0.00100\n"
+"  0.03162\n"
+"  1.00000\n"
+
+#. type: deftypefn
+#: numbers.texi:431
+msgid ""
+"Notice that the first value appears to be 0 when it is actually 1.  Because "
+"of the possibilty for confusion you should be careful about enabling "
+"@code{fixed_point_format}."
+msgstr "最初の値は実際は1なのに、0のように見えることに注目してください。混乱を招く可能性があるため、@code{fixed_point_format}の有効化には注意が必要です。"
+
+#. type: deftypefn
+#: numbers.texi:436
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFformat,,format}, "
+"@ref{XREFoutput_max_field_width,,output_max_field_width}, "
+"@ref{XREFoutput_precision,,output_precision}}"
+msgstr ""
+"関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFformat,,format}, @ref{XREFoutput_max_field_width,,output_max_field_width}, @ref{XREFoutput_precision,,output_precision}}"
+
+#. type: subsection
+#: numbers.texi:441 numbers.texi:443 numbers.texi:444
+#, no-wrap
+msgid "Empty Matrices"
+msgstr "Empty Matrices"
+
+#. type: Plain text
+#: numbers.texi:452
+msgid ""
+"A matrix may have one or both dimensions zero, and operations on empty "
+"matrices are handled as described by Carl @nospell{de} Boor in @cite{An "
+"Empty Exercise}, SIGNUM, Volume 25, pages 2-6, 1990 and C. N. Nett and "
+"W. M.  Haddad, in @cite{A System-Theoretic Appropriate Realization of the "
+"Empty Matrix Concept}, IEEE Transactions on Automatic Control, Volume 38, "
+"Number 5, May 1993."
+msgstr "マトリクスの1つ、または両方の次元が0の場合があり、このような空マトリクスへの操作は、Carl @nospell{de} Boor in @cite{An Empty Exercise}, SIGNUM, Volume 25, pages 2-6, 1990 and C. N. Nett and W. M.  Haddad, in @cite{A System-Theoretic Appropriate Realization of the Empty Matrix Concept}, IEEE Transactions on Automatic Control, Volume 38, Number 5, May 1993で説明されています。"
+
+#. type: tex
+#: numbers.texi:464
+#, no-wrap
+msgid ""
+"Briefly, given a scalar $s$, an $m\\times n$ matrix $M_{m\\times n}$,\n"
+"and an $m\\times n$ empty matrix $[\\,]_{m\\times n}$ (with either one or\n"
+"both dimensions equal to zero), the following are true:\n"
+"$$\n"
+"\\eqalign{%\n"
+"s \\cdot [\\,]_{m\\times n} = [\\,]_{m\\times n} \\cdot s &= [\\,]_{m\\times "
+"n}\\cr\n"
+"[\\,]_{m\\times n} + [\\,]_{m\\times n} &= [\\,]_{m\\times n}\\cr\n"
+"[\\,]_{0\\times m} \\cdot M_{m\\times n} &= [\\,]_{0\\times n}\\cr\n"
+"M_{m\\times n} \\cdot [\\,]_{n\\times 0} &= [\\,]_{m\\times 0}\\cr\n"
+"[\\,]_{m\\times 0} \\cdot [\\,]_{0\\times n} &=  0_{m\\times n}}\n"
+"$$\n"
+msgstr ""
+"簡単にいうと、スカラー$s$、$m\\times n$のマトリクス$M_{m\\times n}$、$m\\times n$の空マトリクス(2つまたは両方の次元が0)$[\\,]_{m\\times n}$が与えられたとき、以下が成り立ちます:\n"
+"$$\n"
+"\\eqalign{%\n"
+"s \\cdot [\\,]_{m\\times n} = [\\,]_{m\\times n} \\cdot s &= [\\,]_{m\\times n}\\cr\n"
+"[\\,]_{m\\times n} + [\\,]_{m\\times n} &= [\\,]_{m\\times n}\\cr\n"
+"[\\,]_{0\\times m} \\cdot M_{m\\times n} &= [\\,]_{0\\times n}\\cr\n"
+"M_{m\\times n} \\cdot [\\,]_{n\\times 0} &= [\\,]_{m\\times 0}\\cr\n"
+"[\\,]_{m\\times 0} \\cdot [\\,]_{0\\times n} &=  0_{m\\times n}}\n"
+"$$\n"
+
+#. type: ifnottex
+#: numbers.texi:470
+msgid ""
+"Briefly, given a scalar @var{s}, an @var{m} by @var{n} matrix @code{M(mxn)}, "
+"and an @var{m} by @var{n} empty matrix @code{[](mxn)} (with either one or "
+"both dimensions equal to zero), the following are true:"
+msgstr "簡単にいうと、スカラー@var{s}@var{m}行@var{n}列のマトリクス@code{M(mxn)}、@var{m}行@var{n}列の空マトリクス(1つまたは両方の次元が0)@code{[](mxn)}が与えられたとき、以下が成り立ちます:"
+
+#. type: group
+#: numbers.texi:474
+#, no-wrap
+msgid ""
+"s * [](mxn) = [](mxn) * s = [](mxn)\n"
+"\n"
+msgstr "s * [](mxn) = [](mxn) * s = [](mxn)\n\n"
+
+#. type: group
+#: numbers.texi:476
+#, no-wrap
+msgid ""
+"    [](mxn) + [](mxn) = [](mxn)\n"
+"\n"
+msgstr "    [](mxn) + [](mxn) = [](mxn)\n\n"
+
+#. type: group
+#: numbers.texi:478
+#, no-wrap
+msgid ""
+"    [](0xm) *  M(mxn) = [](0xn)\n"
+"\n"
+msgstr "    [](0xm) *  M(mxn) = [](0xn)\n\n"
+
+#. type: group
+#: numbers.texi:480
+#, no-wrap
+msgid ""
+"     M(mxn) * [](nx0) = [](mx0)\n"
+"\n"
+msgstr "     M(mxn) * [](nx0) = [](mx0)\n\n"
+
+#. type: group
+#: numbers.texi:482
+#, no-wrap
+msgid "    [](mx0) * [](0xn) =  0(mxn)\n"
+msgstr "    [](mx0) * [](0xn) =  0(mxn)\n"
+
+#. type: Plain text
+#: numbers.texi:490
+msgid ""
+"By default, dimensions of the empty matrix are printed along with the empty "
+"matrix symbol, @samp{[]}.  The built-in variable "
+"@code{print_empty_dimensions} controls this behavior."
+msgstr "デフォルトでは、空マトリクスの次元は、空マトリクスのシンボル@samp{[]}と共にプリントされます。ビルトイン変数@code{print_empty_dimensions}が、この振る舞いを制御します。"
+
+#. type: anchor{#1}
+#: numbers.texi:493
+msgid "XREFprint_empty_dimensions"
+msgstr "XREFprint_empty_dimensions"
+
+#. type: deftypefn
+#: numbers.texi:493
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} print_empty_dimensions ()"
+msgstr "{Built-in Function} {@var{val} =} print_empty_dimensions ()"
+
+#. type: deftypefnx
+#: numbers.texi:494
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} print_empty_dimensions (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} print_empty_dimensions (@var{new_val})"
+
+#. type: deftypefnx
+#: numbers.texi:495
+#, no-wrap
+msgid "{Built-in Function} {} print_empty_dimensions (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} print_empty_dimensions (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: numbers.texi:499
+msgid ""
+"Query or set the internal variable that controls whether the dimensions of "
+"empty matrices are printed along with the empty matrix symbol, @samp{[]}.  "
+"For example, the expression"
+msgstr "空マトリクスの次元を空マトリクスのシンボル@samp{[]}と共にプリントするかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。たとえば、以下の式"
+
+#. type: example
+#: numbers.texi:502
+#, no-wrap
+msgid "zeros (3, 0)\n"
+msgstr "zeros (3, 0)\n"
+
+#. type: deftypefn
+#: numbers.texi:506
+msgid "will print"
+msgstr "は、以下のようにプリントするでしょう"
+
+#. type: example
+#: numbers.texi:509
+#, no-wrap
+msgid "ans = [](3x0)\n"
+msgstr "ans = [](3x0)\n"
+
+#. type: Plain text
+#: numbers.texi:521
+msgid ""
+"Empty matrices may also be used in assignment statements as a convenient way "
+"to delete rows or columns of matrices.  @xref{Assignment Ops,,Assignment "
+"Expressions}."
+msgstr "空マトリクスは、マトリクスから行や列を簡単に削除する方法として、割り当てステートメント内でも使用されます。@ref{Assignment Ops,,Assignment Expressions}を参照してください。"
+
+#. type: Plain text
+#: numbers.texi:525
+msgid ""
+"When Octave parses a matrix expression, it examines the elements of the list "
+"to determine whether they are all constants.  If they are, it replaces the "
+"list with a single matrix constant."
+msgstr "Octaveがマトリクス式をパースする場合な要素がすべて定数かどうか、要素のリストを調べます。そして、すべて定数ならば、そのリストを1つのマトリクス定数に置き換えます。"
+
+#. type: section
+#: numbers.texi:526 numbers.texi:527
+#, no-wrap
+msgid "Ranges"
+msgstr "Ranges"
+
+#. type: cindex
+#: numbers.texi:528
+#, no-wrap
+msgid "range expressions"
+msgstr "range expressions"
+
+#. type: cindex
+#: numbers.texi:529
+#, no-wrap
+msgid "expression, range"
+msgstr "expression, range"
+
+#. type: opindex
+#: numbers.texi:531
+#, no-wrap
+msgid ":"
+msgstr ":"
+
+#. type: Plain text
+#: numbers.texi:541
+msgid ""
+"A @dfn{range} is a convenient way to write a row vector with evenly spaced "
+"elements.  A range expression is defined by the value of the first element "
+"in the range, an optional value for the increment between elements, and a "
+"maximum value which the elements of the range will not exceed.  The base, "
+"increment, and limit are separated by colons (the @samp{:} character) and "
+"may contain any arithmetic expressions and function calls.  If the increment "
+"is omitted, it is assumed to be 1.  For example, the range"
+msgstr "@dfn{レンジ(range: 範囲)}は、等差の要素からなる行ベクターを記述する便利な方法です。レンジ式は、そのレンジ内の最初の値、オプションとして要素間の増分値、そしてそのレンジの要素の上限となる最大値により定義されます。これらのベース、増分、リミットはコロン(@samp{:}文字)で区切られ、任意の算術式や関数呼び出しを含むことができます。増分が省略された場合、増分は1とみなされます。たとえば、以下のレンジ"
+
+#. type: example
+#: numbers.texi:544
+#, no-wrap
+msgid "1 : 5\n"
+msgstr "1 : 5\n"
+
+#. type: Plain text
+#: numbers.texi:548
+msgid "defines the set of values @samp{[ 1, 2, 3, 4, 5 ]}, and the range"
+msgstr "は、値@samp{[ 1, 2, 3, 4, 5 ]}を定義します。また、以下のレンジ"
+
+#. type: example
+#: numbers.texi:551
+#, no-wrap
+msgid "1 : 3 : 5\n"
+msgstr "1 : 3 : 5\n"
+
+#. type: Plain text
+#: numbers.texi:555
+msgid "defines the set of values @samp{[ 1, 4 ]}."
+msgstr "は、値@samp{[ 1, 4 ]}を定義します。"
+
+#. type: Plain text
+#: numbers.texi:560
+msgid ""
+"Although a range constant specifies a row vector, Octave does @emph{not} "
+"convert range constants to vectors unless it is necessary to do so.  This "
+"allows you to write a constant like @samp{1 : 10000} without using 80,000 "
+"bytes of storage on a typical 32-bit workstation."
+msgstr "レンジ定数で行ベクターを指定しても、Octaveは変換する必要がなければ、レンジ定数をベクターに変換@emph{しません}。これにより、@samp{1 : 10000}のような定数を記述しても、ストレージを消費(通常の32ビットワークステーション上では8000バイト)せずにすみます。"
+
+#. type: Plain text
+#: numbers.texi:564
+msgid ""
+"A common example of when it does become necessary to convert ranges into "
+"vectors occurs when they appear within a vector (i.e., inside square "
+"brackets).  For instance, whereas"
+msgstr "レンジをベクターに変換する必要が生じる例としては、それらがベクター(例: 角カッコの内側)と共に記述されるときです。たとえば、"
+
+#. type: example
+#: numbers.texi:567
+#, no-wrap
+msgid "x = 0 : 0.1 : 1;\n"
+msgstr "x = 0 : 0.1 : 1;\n"
+
+#. type: Plain text
+#: numbers.texi:572
+msgid ""
+"defines @var{x} to be a variable of type @code{range} and occupies 24 bytes "
+"of memory, the expression"
+msgstr "これは、@var{x}を@code{range}型として定義し、式のために24バイトのメモリーを占めます"
+
+#. type: example
+#: numbers.texi:575
+#, no-wrap
+msgid "y = [ 0 : 0.1 : 1];\n"
+msgstr "y = [ 0 : 0.1 : 1];\n"
+
+#. type: Plain text
+#: numbers.texi:580
+msgid "defines @var{y} to be of type @code{matrix} and occupies 88 bytes of memory."
+msgstr "これは、@var{y}を@code{matrix}型として定義し、88バイトのメモリーを占めます。"
+
+#. type: Plain text
+#: numbers.texi:588
+msgid ""
+"Note that the upper (or lower, if the increment is negative) bound on the "
+"range is not always included in the set of values, and that ranges defined "
+"by floating point values can produce surprising results because Octave uses "
+"floating point arithmetic to compute the values in the range.  If it is "
+"important to include the endpoints of a range and the number of elements is "
+"known, you should use the @code{linspace} function instead (@pxref{Special "
+"Utility Matrices})."
+msgstr "レンジの上限(増分が負の場合は下限)は常に値セットに含まれるとは限らないこと、そして浮動小数点で定義されたレンジは、レンジ内の値の計算にOctaveが浮動小数演算を使用するので、驚くような結果を生成するかもしれないことに注意してください。レンジの終端を含めることが重要で、なおかつ要素数が既知の場合は、@code{linspace}関数(@ref{Special Utility Matrices}参照)をかわりに使用してください。"
+
+#. type: Plain text
+#: numbers.texi:593
+msgid ""
+"When adding a scalar to a range, subtracting a scalar from it (or "
+"subtracting a range from a scalar) and multiplying by scalar, Octave will "
+"attempt to avoid unpacking the range and keep the result as a range, too, if "
+"it can determine that it is safe to do so.  For instance, doing"
+msgstr "レンジにたいするスカラーの加算と減算(またはスカラーからレンジの減算)、および乗算の場合、Octaveじゃレンジの展開を試みずに、展開しても安全だと判断できるまで、結果をレンジのまま保留します。たとえば、"
+
+#. type: example
+#: numbers.texi:596
+#, no-wrap
+msgid "a = 2*(1:1e7) - 1;\n"
+msgstr "a = 2*(1:1e7) - 1;\n"
+
+#. type: Plain text
+#: numbers.texi:601
+msgid ""
+"will produce the same result as @samp{1:2:2e7-1}, but without ever forming a "
+"vector with ten million elements."
+msgstr "これは@samp{1:2:2e7-1}と同じ結果を生成しますが、1000万個の要素をもつベクターが生成されるわけではありません。"
+
+#. type: Plain text
+#: numbers.texi:609
+msgid ""
+"Using zero as an increment in the colon notation, as @samp{1:0:1} is not "
+"allowed, because a division by zero would occur in determining the number of "
+"range elements.  However, ranges with zero increment (i.e., all elements "
+"equal)  are useful, especially in indexing, and Octave allows them to be "
+"constructed using the built-in function @dfn{ones}.  Note that because a "
+"range must be a row vector, @samp{ones (1, 10)} produces a range, while "
+"@samp{ones (10, 1)} does not."
+msgstr "コロン表記で@samp{1:0:1}のように増分に0を使用するのは、レンジ要素の個数を決定するとき0除算が発生するために、許されていません。しかし、増分0(例: すべての要素が同じ)のレンジは有用(よく特にインデクス操作において)なので、Octaveではビルトイン関数@dfn{ones}を使用してそれらを構築できます。レンジは行にベクターでなければならないので、@samp{ones (1, 10)}はレンジを構成しますが、@samp{ones (10, 1)}はレンジを構成しません。"
+
+#. type: Plain text
+#: numbers.texi:613
+msgid ""
+"When Octave parses a range expression, it examines the elements of the "
+"expression to determine whether they are all constants.  If they are, it "
+"replaces the range expression with a single range constant."
+msgstr "Octaveがレンジ式をパースするとき、その式の要素がすべて定数かどうか調べます。そして、すべて定数の場合は、そのレンジ式を1つのレンジ定数で置き換えます。"
+
+#. type: section
+#: numbers.texi:614 numbers.texi:615
+#, no-wrap
+msgid "Single Precision Data Types"
+msgstr "Single Precision Data Types"
+
+#. type: Plain text
+#: numbers.texi:621
+msgid ""
+"Octave includes support for single precision data types, and most of the "
+"functions in Octave accept single precision values and return single "
+"precision answers.  A single precision variable is created with the "
+"@code{single} function."
+msgstr "Octaveには単精度データ型(single precision data type)にたいするサポートがおり、Octave内のほとんどの関数は、単精度値を受け入れ、単精度の答えをリターンします。単精度変数は、@code{single}関数で作成します。"
+
+#. type: anchor{#1}
+#: numbers.texi:624
+msgid "XREFsingle"
+msgstr "XREFsingle"
+
+#. type: deftypefn
+#: numbers.texi:624
+#, no-wrap
+msgid "{Built-in Function} {} single (@var{x})"
+msgstr "{Built-in Function} {} single (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:627
+msgid ""
+"Convert @var{x} to single precision type.  "
+"@seealso{@ref{XREFdouble,,double}}"
+msgstr ""
+"@var{x}を単精度型に変換します。\n"
+"@seealso{@ref{XREFdouble,,double}}"
+
+#. type: Plain text
+#: numbers.texi:631
+msgid "for example:"
+msgstr "たとえば:"
+
+#. type: group
+#: numbers.texi:640
+#, no-wrap
+msgid ""
+"sngl = single (rand (2, 2))\n"
+"     @result{} sngl = \n"
+"        0.37569   0.92982\n"
+"        0.11962   0.50876\n"
+"class (sngl)\n"
+"    @result{} single\n"
+msgstr ""
+"sngl = single (rand (2, 2))\n"
+"     @result{} sngl = \n"
+"        0.37569   0.92982\n"
+"        0.11962   0.50876\n"
+"class (sngl)\n"
+"    @result{} single\n"
+
+#. type: Plain text
+#: numbers.texi:645
+msgid ""
+"Many functions can also return single precision values directly.  For "
+"example"
+msgstr "\n多くの関数は、単精度値を直接リターンすることもできます。たとえば"
+
+#. type: group
+#: numbers.texi:655
+#, no-wrap
+msgid ""
+"ones (2, 2, \"single\")\n"
+"zeros (2, 2, \"single\")\n"
+"eye (2, 2,  \"single\")\n"
+"rand (2, 2, \"single\")\n"
+"NaN (2, 2, \"single\")\n"
+"NA (2, 2, \"single\")\n"
+"Inf (2, 2, \"single\")\n"
+msgstr ""
+"ones (2, 2, \"single\")\n"
+"zeros (2, 2, \"single\")\n"
+"eye (2, 2,  \"single\")\n"
+"rand (2, 2, \"single\")\n"
+"NaN (2, 2, \"single\")\n"
+"NA (2, 2, \"single\")\n"
+"Inf (2, 2, \"single\")\n"
+
+#. type: Plain text
+#: numbers.texi:660
+msgid "will all return single precision matrices."
+msgstr "これはすべて単精度マトリクスをリターンします。"
+
+#. type: section
+#: numbers.texi:661 numbers.texi:662
+#, no-wrap
+msgid "Integer Data Types"
+msgstr "Integer Data Types"
+
+#. type: Plain text
+#: numbers.texi:671
+msgid ""
+"Octave supports integer matrices as an alternative to using double "
+"precision.  It is possible to use both signed and unsigned integers "
+"represented by 8, 16, 32, or 64 bits.  It should be noted that most "
+"computations require floating point data, meaning that integers will often "
+"change type when involved in numeric computations.  For this reason integers "
+"are most often used to store data, and not for calculations."
+msgstr "Octaveは倍精度を使用する代替えとして、整数マトリクスをサポートします。8、16、32、64ビットで表される、符号つき、および符号なし整数の両方が使用できます。整数は数値演算により型が変化するときがあるので、多くの演算では浮動小数点データが要求されることは注記しておくべきでしょう。この理由により、整数がもっとも使用されるのは計算ではなく、データの格納においてです。"
+
+#. type: Plain text
+#: numbers.texi:675
+msgid ""
+"In general most integer matrices are created by casting existing matrices to "
+"integers.  The following example shows how to cast a matrix into 32 bit "
+"integers."
+msgstr "一般的に、整数マトリクスのほとんどは、既存のマトリクスを整数にキャストすることにより作成されます。以下は、マトリクスを32ビット整数にキャストする方法の例です。"
+
+#. type: group
+#: numbers.texi:684
+#, no-wrap
+msgid ""
+"float = rand (2, 2)\n"
+"     @result{} float = 0.37569   0.92982\n"
+"                0.11962   0.50876\n"
+"integer = int32 (float)\n"
+"     @result{} integer = 0  1\n"
+"                  0  1\n"
+msgstr ""
+"float = rand (2, 2)\n"
+"     @result{} float = 0.37569   0.92982\n"
+"                0.11962   0.50876\n"
+"integer = int32 (float)\n"
+"     @result{} integer = 0  1\n"
+"                  0  1\n"
+
+#. type: Plain text
+#: numbers.texi:690
+msgid ""
+"As can be seen, floating point values are rounded to the nearest integer "
+"when converted."
+msgstr "確認できるように、浮動小数点値は変換時にもっとも近い整数に丸められます。"
+
+#. type: anchor{#1}
+#: numbers.texi:693
+msgid "XREFisinteger"
+msgstr "XREFisinteger"
+
+#. type: deftypefn
+#: numbers.texi:693
+#, no-wrap
+msgid "{Built-in Function} {} isinteger (@var{x})"
+msgstr "{Built-in Function} {} isinteger (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:698
+msgid ""
+"Return true if @var{x} is an integer object (int8, uint8, int16, etc.).  "
+"Note that @w{@code{isinteger (14)}} is false because numeric constants in "
+"Octave are double precision floating point values.  "
+"@seealso{@ref{XREFisfloat,,isfloat}, @ref{XREFischar,,ischar}, "
+"@ref{XREFislogical,,islogical}, @ref{XREFisnumeric,,isnumeric}, "
+"@ref{XREFisa,,isa}}"
+msgstr ""
+"@var{x}が整数オブジェクト(int8、uint8、int16、など)の場合はtrueをリターンします。Octave内部では数値定数は倍精度浮動小数点値なので、@w{@code{isinteger (14)}}はfalseになることに注意してください。\n"
+"@seealso{@ref{XREFisfloat,,isfloat}, @ref{XREFischar,,ischar}, @ref{XREFislogical,,islogical}, @ref{XREFisnumeric,,isnumeric}, @ref{XREFisa,,isa}}"
+
+#. type: anchor{#1}
+#: numbers.texi:703
+msgid "XREFint8"
+msgstr "XREFint8"
+
+#. type: deftypefn
+#: numbers.texi:703
+#, no-wrap
+msgid "{Built-in Function} {} int8 (@var{x})"
+msgstr "{Built-in Function} {} int8 (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:706
+msgid ""
+"Convert @var{x} to 8-bit integer type.  @seealso{@ref{XREFuint8,,uint8}, "
+"@ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, "
+"@ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+msgstr ""
+"@var{x}を8ビット整数型に変換します。\n"
+"@seealso{@ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+
+#. type: anchor{#1}
+#: numbers.texi:711
+msgid "XREFuint8"
+msgstr "XREFuint8"
+
+#. type: deftypefn
+#: numbers.texi:711
+#, no-wrap
+msgid "{Built-in Function} {} uint8 (@var{x})"
+msgstr "{Built-in Function} {} uint8 (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:714
+msgid ""
+"Convert @var{x} to unsigned 8-bit integer type.  "
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFint16,,int16}, "
+"@ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, "
+"@ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+msgstr ""
+"@var{x}を符号なし8ビット整数型に変換します。\n"
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+
+#. type: anchor{#1}
+#: numbers.texi:719
+msgid "XREFint16"
+msgstr "XREFint16"
+
+#. type: deftypefn
+#: numbers.texi:719
+#, no-wrap
+msgid "{Built-in Function} {} int16 (@var{x})"
+msgstr "{Built-in Function} {} int16 (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:722
+msgid ""
+"Convert @var{x} to 16-bit integer type.  @seealso{@ref{XREFint8,,int8}, "
+"@ref{XREFuint8,,uint8}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, "
+"@ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+msgstr ""
+"@var{x}を16ビット整数型に変換します。\n"
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+
+#. type: anchor{#1}
+#: numbers.texi:727
+msgid "XREFuint16"
+msgstr "XREFuint16"
+
+#. type: deftypefn
+#: numbers.texi:727
+#, no-wrap
+msgid "{Built-in Function} {} uint16 (@var{x})"
+msgstr "{Built-in Function} {} uint16 (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:730
+msgid ""
+"Convert @var{x} to unsigned 16-bit integer type.  "
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, "
+"@ref{XREFint16,,int16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, "
+"@ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+msgstr ""
+"@var{x}を符号なし16ビット整数型に変換します。\n"
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+
+#. type: anchor{#1}
+#: numbers.texi:735
+msgid "XREFint32"
+msgstr "XREFint32"
+
+#. type: deftypefn
+#: numbers.texi:735
+#, no-wrap
+msgid "{Built-in Function} {} int32 (@var{x})"
+msgstr "{Built-in Function} {} int32 (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:738
+msgid ""
+"Convert @var{x} to 32-bit integer type.  @seealso{@ref{XREFint8,,int8}, "
+"@ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, "
+"@ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+msgstr ""
+"@var{x}を32ビット整数型に変換します。\n"
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+
+#. type: anchor{#1}
+#: numbers.texi:743
+msgid "XREFuint32"
+msgstr "XREFuint32"
+
+#. type: deftypefn
+#: numbers.texi:743
+#, no-wrap
+msgid "{Built-in Function} {} uint32 (@var{x})"
+msgstr "{Built-in Function} {} uint32 (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:746
+msgid ""
+"Convert @var{x} to unsigned 32-bit integer type.  "
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, "
+"@ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, "
+"@ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+msgstr ""
+"@var{x}を符号なし32ビット整数型に変換します。\n"
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}"
+
+#. type: anchor{#1}
+#: numbers.texi:751
+msgid "XREFint64"
+msgstr "XREFint64"
+
+#. type: deftypefn
+#: numbers.texi:751
+#, no-wrap
+msgid "{Built-in Function} {} int64 (@var{x})"
+msgstr "{Built-in Function} {} int64 (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:754
+msgid ""
+"Convert @var{x} to 64-bit integer type.  @seealso{@ref{XREFint8,,int8}, "
+"@ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, "
+"@ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, @ref{XREFuint64,,uint64}}"
+msgstr ""
+"@var{x}を64ビット整数型に変換します。\n"
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, @ref{XREFuint64,,uint64}}"
+
+#. type: anchor{#1}
+#: numbers.texi:759
+msgid "XREFuint64"
+msgstr "XREFuint64"
+
+#. type: deftypefn
+#: numbers.texi:759
+#, no-wrap
+msgid "{Built-in Function} {} uint64 (@var{x})"
+msgstr "{Built-in Function} {} uint64 (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:762
+msgid ""
+"Convert @var{x} to unsigned 64-bit integer type.  "
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, "
+"@ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, "
+"@ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}}"
+msgstr ""
+"@var{x}を符号なし64ビット整数型に変換します。\n"
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}}"
+
+#. type: anchor{#1}
+#: numbers.texi:767
+msgid "XREFintmax"
+msgstr "XREFintmax"
+
+#. type: deftypefn
+#: numbers.texi:767
+#, no-wrap
+msgid "{Built-in Function} {} intmax (@var{type})"
+msgstr "{Built-in Function} {} intmax (@var{type})"
+
+#. type: deftypefn
+#: numbers.texi:770
+msgid ""
+"Return the largest integer that can be represented in an integer type.  The "
+"variable @var{type} can be"
+msgstr "整数型として表すことができる、もっとも大きな整数をリターンします。変数@var{type}は"
+
+#. type: item
+#: numbers.texi:772 numbers.texi:809
+#, no-wrap
+msgid "int8"
+msgstr "int8"
+
+#. type: table
+#: numbers.texi:774 numbers.texi:811
+msgid "signed 8-bit integer."
+msgstr "signed 8-bit integer."
+
+#. type: item
+#: numbers.texi:775 numbers.texi:812
+#, no-wrap
+msgid "int16"
+msgstr "int16"
+
+#. type: table
+#: numbers.texi:777 numbers.texi:814
+msgid "signed 16-bit integer."
+msgstr "符号つき16ビット整数"
+
+#. type: item
+#: numbers.texi:778 numbers.texi:815
+#, no-wrap
+msgid "int32"
+msgstr "int32"
+
+#. type: table
+#: numbers.texi:780 numbers.texi:817
+msgid "signed 32-bit integer."
+msgstr "符号つき32ビット整数"
+
+#. type: item
+#: numbers.texi:781 numbers.texi:818
+#, no-wrap
+msgid "int64"
+msgstr "int64"
+
+#. type: table
+#: numbers.texi:783 numbers.texi:820
+msgid "signed 64-bit integer."
+msgstr "符号つき64ビット整数"
+
+#. type: item
+#: numbers.texi:784 numbers.texi:821
+#, no-wrap
+msgid "uint8"
+msgstr "uint8"
+
+#. type: table
+#: numbers.texi:786 numbers.texi:823
+msgid "unsigned 8-bit integer."
+msgstr "符号なし8ビット整数"
+
+#. type: item
+#: numbers.texi:787 numbers.texi:824
+#, no-wrap
+msgid "uint16"
+msgstr "uint16"
+
+#. type: table
+#: numbers.texi:789 numbers.texi:826
+msgid "unsigned 16-bit integer."
+msgstr "符号なし16ビット整数"
+
+#. type: item
+#: numbers.texi:790 numbers.texi:827
+#, no-wrap
+msgid "uint32"
+msgstr "uint32"
+
+#. type: table
+#: numbers.texi:792 numbers.texi:829
+msgid "unsigned 32-bit integer."
+msgstr "符号なし32ビット整数"
+
+#. type: item
+#: numbers.texi:793 numbers.texi:830
+#, no-wrap
+msgid "uint64"
+msgstr "uint64"
+
+#. type: table
+#: numbers.texi:795 numbers.texi:832
+msgid "unsigned 64-bit integer."
+msgstr "符号なし64ビット整数"
+
+#. type: deftypefn
+#: numbers.texi:799
+msgid ""
+"The default for @var{type} is @code{int32}.  "
+"@seealso{@ref{XREFintmin,,intmin}, @ref{XREFflintmax,,flintmax}, "
+"@ref{XREFbitmax,,bitmax}}"
+msgstr ""
+"@var{type}のデフォルト値は@code{int32}です。\n"
+"@seealso{@ref{XREFintmin,,intmin}, @ref{XREFflintmax,,flintmax}, @ref{XREFbitmax,,bitmax}}"
+
+#. type: anchor{#1}
+#: numbers.texi:804
+msgid "XREFintmin"
+msgstr "XREFintmin"
+
+#. type: deftypefn
+#: numbers.texi:804
+#, no-wrap
+msgid "{Built-in Function} {} intmin (@var{type})"
+msgstr "{Built-in Function} {} intmin (@var{type})"
+
+#. type: deftypefn
+#: numbers.texi:807
+msgid ""
+"Return the smallest integer that can be represented in an integer type.  The "
+"variable @var{type} can be"
+msgstr "整数型として表すことができる、もっとも小さな整数をリターンします。変数@var{type}は"
+
+#. type: deftypefn
+#: numbers.texi:836
+msgid ""
+"The default for @var{type} is @code{int32}.  "
+"@seealso{@ref{XREFintmax,,intmax}, @ref{XREFflintmax,,flintmax}, "
+"@ref{XREFbitmax,,bitmax}}"
+msgstr ""
+"@var{type}のデフォルト値は@code{int32}です。\n"
+"@seealso{@ref{XREFintmax,,intmax}, @ref{XREFflintmax,,flintmax}, @ref{XREFbitmax,,bitmax}}"
+
+#. type: anchor{#1}
+#: numbers.texi:841
+msgid "XREFflintmax"
+msgstr "XREFflintmax"
+
+#. type: deftypefn
+#: numbers.texi:841
+#, no-wrap
+msgid "{Built-in Function} {} flintmax ()"
+msgstr "{Built-in Function} {} flintmax ()"
+
+#. type: deftypefnx
+#: numbers.texi:842
+#, no-wrap
+msgid "{Built-in Function} {} flintmax (\"double\")"
+msgstr "{Built-in Function} {} flintmax (\"double\")"
+
+#. type: deftypefnx
+#: numbers.texi:843
+#, no-wrap
+msgid "{Built-in Function} {} flintmax (\"single\")"
+msgstr "{Built-in Function} {} flintmax (\"single\")"
+
+#. type: deftypefn
+#: numbers.texi:850
+msgid ""
+"Return the largest integer that can be represented consecutively in a "
+"floating point value.  The default class is @qcode{\"double\"}, but "
+"@qcode{\"single\"} is a valid option.  On IEEE-754 compatible systems, "
+"@code{flintmax} is @w{@math{2^53}} for @qcode{\"double\"} and "
+"@w{@math{2^24}} for @qcode{\"single\"}.  @seealso{@ref{XREFbitmax,,bitmax}, "
+"@ref{XREFintmax,,intmax}, @ref{XREFrealmax,,realmax}, "
+"@ref{XREFrealmin,,realmin}}"
+msgstr ""
+"浮動小数点値として一貫(consecutively)して表すことができる、最大の整数をリターンします。デフォルトクラスは@qcode{\"double\"}ですが、@qcode{\"single\"}も有効なオプションです。IEEE-754互換システムでは、@code{flintmax}は@qcode{\"double\"}にたいして@w{@math{2^53}}、@qcode{\"single\"}にたいして@w{@math{2^24}}です。\n"
+"@seealso{@ref{XREFbitmax,,bitmax}, @ref{XREFintmax,,intmax}, @ref{XREFrealmax,,realmax}, @ref{XREFrealmin,,realmin}}"
+
+#. type: subsection
+#: numbers.texi:855 numbers.texi:857 numbers.texi:858
+#, no-wrap
+msgid "Integer Arithmetic"
+msgstr "Integer Arithmetic"
+
+#. type: Plain text
+#: numbers.texi:865
+msgid ""
+"While many numerical computations can't be carried out in integers, Octave "
+"does support basic operations like addition and multiplication on integers.  "
+"The operators @code{+}, @code{-}, @code{.*}, and @code{./} work on integers "
+"of the same type.  So, it is possible to add two 32 bit integers, but not to "
+"add a 32 bit integer and a 16 bit integer."
+msgstr "整数に適用できない数値演算はたくさんありますが、Octaveは整数にたいして加算や乗算のような基本的な操作をサポートします。同じ型の整数にたいして@code{+}、@code{-}、@code{.*}、@code{./}の演算子が機能します。つまり2つの32ビット整数の加算はできますが、32ビット整数と16ビット整数の加算はできません。"
+
+#. type: Plain text
+#: numbers.texi:873
+msgid ""
+"When doing integer arithmetic one should consider the possibility of "
+"underflow and overflow.  This happens when the result of the computation "
+"can't be represented using the chosen integer type.  As an example it is not "
+"possible to represent the result of @math{10 - 20} when using unsigned "
+"integers.  Octave makes sure that the result of integer computations is the "
+"integer that is closest to the true result.  So, the result of @math{10 - "
+"20} when using unsigned integers is zero."
+msgstr "整数演算を行う場合、アンダーフローとオーバーフローの可能性を考慮すべきです。これは選択した整数型を使用して、演算結果を表現できないときに発生します。たとえば、符号なし整数を使用している場合は、@math{10 - 20}の結果は表現できません。そのような場合、Octaveは整数演算の結果を、真の結果に近い整数にします。したがって@math{10 - 20}の結果は、符号なし整数を使用している場合は0になります。"
+
+#. type: Plain text
+#: numbers.texi:878
+msgid ""
+"When doing integer division Octave will round the result to the nearest "
+"integer.  This is different from most programming languages, where the "
+"result is often floored to the nearest integer.  So, the result of "
+"@code{int32 (5) ./ int32 (8)} is @code{1}."
+msgstr "整数の除算では、Octaveは結果をもっとも近い整数に丸めます。多くの言語では結果はもっとも近い整数に切り下げる場合が多いので、Octaveとは異なります。Octaveでは、@code{int32 (5) ./ int32 (8)}の結果は@code{1}になります。"
+
+#. type: anchor{#1}
+#: numbers.texi:881
+msgid "XREFidivide"
+msgstr "XREFidivide"
+
+#. type: deftypefn
+#: numbers.texi:881
+#, no-wrap
+msgid "{Function File} {} idivide (@var{x}, @var{y}, @var{op})"
+msgstr "{Function File} {} idivide (@var{x}, @var{y}, @var{op})"
+
+#. type: deftypefn
+#: numbers.texi:883
+msgid "Integer division with different rounding rules."
+msgstr "別の丸め規則により整数の除算を行います。"
+
+#. type: deftypefn
+#: numbers.texi:890
+msgid ""
+"The standard behavior of integer division such as @code{@var{a} ./ @var{b}} "
+"is to round the result to the nearest integer.  This is not always the "
+"desired behavior and @code{idivide} permits integer element-by-element "
+"division to be performed with different treatment for the fractional part of "
+"the division as determined by the @var{op} flag.  @var{op} is a string with "
+"one of the values:"
+msgstr "標準では、@code{@var{a} ./ @var{b}}のような整数除算にたいして、結果はもっとも近い整数に丸められます。これは常に望んだ振る舞いではないため、@code{idiqvide}は要素ごとの除算による少数部にたいして、@var{op}フラグにより異なる扱いをします。@var{op}は以下の文字列です:"
+
+#. type: item
+#: numbers.texi:892
+#, no-wrap
+msgid "@qcode{\"fix\"}"
+msgstr "@qcode{\"fix\"}"
+
+#. type: table
+#: numbers.texi:895
+msgid ""
+"Calculate @code{@var{a} ./ @var{b}} with the fractional part rounded towards "
+"zero."
+msgstr "@code{@var{a} ./ @var{b}}を計算して、少数部を0に丸めます。"
+
+#. type: item
+#: numbers.texi:896
+#, no-wrap
+msgid "@qcode{\"round\"}"
+msgstr "@qcode{\"round\"}"
+
+#. type: table
+#: numbers.texi:899
+msgid ""
+"Calculate @code{@var{a} ./ @var{b}} with the fractional part rounded towards "
+"the nearest integer."
+msgstr "@code{@var{a} ./ @var{b}}を計算して、少数部をもっとも近い整数に丸めます。"
+
+#. type: item
+#: numbers.texi:900
+#, no-wrap
+msgid "@qcode{\"floor\"}"
+msgstr "@qcode{\"floor\"}"
+
+#. type: table
+#: numbers.texi:903
+msgid ""
+"Calculate @code{@var{a} ./ @var{b}} with the fractional part rounded towards "
+"negative infinity."
+msgstr "@code{@var{a} ./ @var{b}}を計算して、少数部を負の無限大に丸めます。"
+
+#. type: item
+#: numbers.texi:904
+#, no-wrap
+msgid "@qcode{\"ceil\"}"
+msgstr "@qcode{\"ceil\"}"
+
+#. type: table
+#: numbers.texi:907
+msgid ""
+"Calculate @code{@var{a} ./ @var{b}} with the fractional part rounded towards "
+"positive infinity."
+msgstr "@code{@var{a} ./ @var{b}}を計算して、少数部を正の無限大に丸めます。"
+
+#. type: deftypefn
+#: numbers.texi:912
+msgid ""
+"If @var{op} is not given it defaults to @qcode{\"fix\"}.  An example "
+"demonstrating these rounding rules is"
+msgstr "以下の例は、@var{op}にデフォルト@qcode{\"fix\"}以外が与えられた場合の、これらの丸め規則の実例です"
+
+#. type: group
+#: numbers.texi:923
+#, no-wrap
+msgid ""
+"idivide (int8 ([-3, 3]), int8 (4), \"fix\")\n"
+"  @result{} int8 ([0, 0])\n"
+"idivide (int8 ([-3, 3]), int8 (4), \"round\")\n"
+"  @result{} int8 ([-1, 1])\n"
+"idivide (int8 ([-3, 3]), int8 (4), \"floor\")\n"
+"  @result{} int8 ([-1, 0])\n"
+"idivide (int8 ([-3, 3]), int8 (4), \"ceil\")\n"
+"  @result{} int8 ([0, 1])\n"
+msgstr ""
+"idivide (int8 ([-3, 3]), int8 (4), \"fix\")\n"
+"  @result{} int8 ([0, 0])\n"
+"idivide (int8 ([-3, 3]), int8 (4), \"round\")\n"
+"  @result{} int8 ([-1, 1])\n"
+"idivide (int8 ([-3, 3]), int8 (4), \"floor\")\n"
+"  @result{} int8 ([-1, 0])\n"
+"idivide (int8 ([-3, 3]), int8 (4), \"ceil\")\n"
+"  @result{} int8 ([0, 1])\n"
+
+#. type: deftypefn
+#: numbers.texi:927
+msgid "@seealso{@ref{XREFldivide,,ldivide}, @ref{XREFrdivide,,rdivide}}"
+msgstr "@seealso{@ref{XREFldivide,,ldivide}, @ref{XREFrdivide,,rdivide}}"
+
+#. type: section
+#: numbers.texi:930 numbers.texi:931
+#, no-wrap
+msgid "Bit Manipulations"
+msgstr "Bit Manipulations"
+
+#. type: Plain text
+#: numbers.texi:936
+msgid ""
+"Octave provides a number of functions for the manipulation of numeric values "
+"on a bit by bit basis.  The basic functions to set and obtain the values of "
+"individual bits are @code{bitset} and @code{bitget}."
+msgstr "Octaveは、数値をビット単位で操作するいくつかの関数を提供します。特定のビットの値のセットと取得を行う基本的な関数は、@code{bitset}と@code{bitget}です。"
+
+#. type: anchor{#1}
+#: numbers.texi:939
+msgid "XREFbitset"
+msgstr "XREFbitset"
+
+#. type: deftypefn
+#: numbers.texi:939
+#, no-wrap
+msgid "{Function File} {@var{C} =} bitset (@var{A}, @var{n})"
+msgstr "{Function File} {@var{C} =} bitset (@var{A}, @var{n})"
+
+#. type: deftypefnx
+#: numbers.texi:940
+#, no-wrap
+msgid "{Function File} {@var{C} =} bitset (@var{A}, @var{n}, @var{val})"
+msgstr "{Function File} {@var{C} =} bitset (@var{A}, @var{n}, @var{val})"
+
+#. type: deftypefn
+#: numbers.texi:945
+msgid ""
+"Set or reset bit(s) @var{n} of unsigned integers in @var{A}.  @var{val} = 0 "
+"resets and @var{val} = 1 sets the bits.  The lowest significant bit is: "
+"@var{n} = 1.  All variables must be the same size or scalars."
+msgstr "@var{A}内の符号なし整数の@var{n}ビットにたいして、セットまたはリセットを行います。@var{val} = 0の場合はリセット、@var{val} = 1の場合はセットを行います。最小の有効なビットは、@var{n} = 1です。すべての変数は同サイズまたは、スカラーでなければなりません。"
+
+#. type: group
+#: numbers.texi:950
+#, no-wrap
+msgid ""
+"dec2bin (bitset (10, 1))\n"
+"  @result{} 1011\n"
+msgstr ""
+"dec2bin (bitset (10, 1))\n"
+"  @result{} 1011\n"
+
+#. type: deftypefn
+#: numbers.texi:953
+msgid ""
+"@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor}, "
+"@ref{XREFbitxor,,bitxor}, @ref{XREFbitget,,bitget}, "
+"@ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift}, "
+"@ref{XREFbitmax,,bitmax}}"
+msgstr "@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor}, @ref{XREFbitxor,,bitxor}, @ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}"
+
+#. type: anchor{#1}
+#: numbers.texi:958
+msgid "XREFbitget"
+msgstr "XREFbitget"
+
+#. type: deftypefn
+#: numbers.texi:958
+#, no-wrap
+msgid "{Function File} {@var{c} =} bitget (@var{A}, @var{n})"
+msgstr "{Function File} {@var{c} =} bitget (@var{A}, @var{n})"
+
+#. type: deftypefn
+#: numbers.texi:961
+msgid ""
+"Return the status of bit(s) @var{n} of unsigned integers in @var{A} the "
+"lowest significant bit is @var{n} = 1."
+msgstr "符号なし整数@var{A}内の、ビット@var{n}の状態をリターンします。有効な最小のビットは@var{n} = 1です。"
+
+#. type: group
+#: numbers.texi:966
+#, no-wrap
+msgid ""
+"bitget (100, 8:-1:1)\n"
+"@result{} 0  1  1  0  0  1  0  0\n"
+msgstr ""
+"bitget (100, 8:-1:1)\n"
+"@result{} 0  1  1  0  0  1  0  0\n"
+
+#. type: deftypefn
+#: numbers.texi:969
+msgid ""
+"@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor}, "
+"@ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, "
+"@ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift}, "
+"@ref{XREFbitmax,,bitmax}}"
+msgstr "@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor}, @ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, @ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}"
+
+#. type: Plain text
+#: numbers.texi:979
+msgid ""
+"The arguments to all of Octave's bitwise operations can be scalar or arrays, "
+"except for @code{bitcmp}, whose @var{k} argument must a scalar.  In the case "
+"where more than one argument is an array, then all arguments must have the "
+"same shape, and the bitwise operator is applied to each of the elements of "
+"the argument individually.  If at least one argument is a scalar and one an "
+"array, then the scalar argument is duplicated.  Therefore"
+msgstr "Octaveのビット単位操作の引数はすべて、@code{bitcmp}を除き、スカラーまたは配列を指定できます(@code{bitcmp}の引数@var{k}はスカラーでなければなりません)。1つ以上の引数が配列の場合は、すべての引数が同じ形状でなければならず、ビット単位操作は引数の個別の要素ごとに適用されます。少なくとも1つの引数がスカラーで、配列もある場合は、スカラー引数が複製されます。したがって"
+
+#. type: example
+#: numbers.texi:982
+#, no-wrap
+msgid "bitget (100, 8:-1:1)\n"
+msgstr "bitget (100, 8:-1:1)\n"
+
+#. type: Plain text
+#: numbers.texi:986
+msgid "is the same as"
+msgstr "は、以下と同じです"
+
+#. type: example
+#: numbers.texi:989
+#, no-wrap
+msgid "bitget (100 * ones (1, 8), 8:-1:1)\n"
+msgstr "bitget (100 * ones (1, 8), 8:-1:1)\n"
+
+#. type: Plain text
+#: numbers.texi:996
+msgid ""
+"It should be noted that all values passed to the bit manipulation functions "
+"of Octave are treated as integers.  Therefore, even though the example for "
+"@code{bitset} above passes the floating point value @code{10}, it is treated "
+"as the bits @code{[1, 0, 1, 0]} rather than the bits of the native floating "
+"point format representation of @code{10}."
+msgstr "Octaveのビット操作関数に渡されるすべての値は、整数として扱われることを注記しておくべきでしょう。師、たとえ上記の例の@code{bitset}に浮動小数点値@code{10}を渡しても、@code{10}にたいする浮動小数点フォーマットのネイティブ表現ではなく、ビット@code{[1, 0, 1, 0]}として扱われます。"
+
+#. type: Plain text
+#: numbers.texi:1000
+msgid ""
+"As the maximum value that can be represented by a number is important for "
+"bit manipulation, particularly when forming masks, Octave supplies the "
+"function @code{bitmax}."
+msgstr "ビット操作にとって、数値として表すことのできる最大値は、特にマスク処理を行う場合に重要なので、Octaveは関数@code{bitmax}を提供します。"
+
+#. type: anchor{#1}
+#: numbers.texi:1003
+msgid "XREFbitmax"
+msgstr "XREFbitmax"
+
+#. type: deftypefn
+#: numbers.texi:1003
+#, no-wrap
+msgid "{Built-in Function} {} bitmax ()"
+msgstr "{Built-in Function} {} bitmax ()"
+
+#. type: deftypefnx
+#: numbers.texi:1004
+#, no-wrap
+msgid "{Built-in Function} {} bitmax (\"double\")"
+msgstr "{Built-in Function} {} bitmax (\"double\")"
+
+#. type: deftypefnx
+#: numbers.texi:1005
+#, no-wrap
+msgid "{Built-in Function} {} bitmax (\"single\")"
+msgstr "{Built-in Function} {} bitmax (\"single\")"
+
+#. type: deftypefn
+#: numbers.texi:1012
+msgid ""
+"Return the largest integer that can be represented within a floating point "
+"value.  The default class is @qcode{\"double\"}, but @qcode{\"single\"} is a "
+"valid option.  On IEEE-754 compatible systems, @code{bitmax} is "
+"@w{@math{2^{53} - 1}} for @qcode{\"double\"} and @w{@math{2^{24} -1}} for "
+"@qcode{\"single\"}.  @seealso{@ref{XREFflintmax,,flintmax}, "
+"@ref{XREFintmax,,intmax}, @ref{XREFrealmax,,realmax}, "
+"@ref{XREFrealmin,,realmin}}"
+msgstr ""
+"浮動小数点値として表すことのできる最大の整数値をリターンします。デフォルトクラスは@qcode{\"double\"}ですが、@qcode{\"single\"}も有効なオプションです。IEEE-754互換システムでの@code{bitmax}は、@qcode{\"double\"}にたいしては@w{@math{2^{53} - 1}}、@qcode{\"single\"}にたいしては@w{@math{2^{24} -1}}です。\n"
+"@seealso{@ref{XREFflintmax,,flintmax}, @ref{XREFintmax,,intmax}, @ref{XREFrealmax,,realmax}, @ref{XREFrealmin,,realmin}}"
+
+#. type: Plain text
+#: numbers.texi:1017
+msgid ""
+"This is the double precision version of the function @code{intmax}, "
+"previously discussed."
+msgstr "これは前に説明した関数@code{intmax}の倍精度バージョンです。"
+
+#. type: Plain text
+#: numbers.texi:1020
+msgid ""
+"Octave also includes the basic bitwise 'and', 'or', and 'exclusive or' "
+"operators."
+msgstr "Octaveにはビット単位の演算子、'積(and)'、'和(or)'、'排他的論理和(exclusive or)'もあります。"
+
+#. type: anchor{#1}
+#: numbers.texi:1023
+msgid "XREFbitand"
+msgstr "XREFbitand"
+
+#. type: deftypefn
+#: numbers.texi:1023
+#, no-wrap
+msgid "{Built-in Function} {} bitand (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} bitand (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: numbers.texi:1027
+msgid ""
+"Return the bitwise AND of non-negative integers.  @var{x}, @var{y} must be "
+"in the range [0,bitmax] @seealso{@ref{XREFbitor,,bitor}, "
+"@ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, "
+"@ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, "
+"@ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}"
+msgstr ""
+"非負の整数のビットごとのANDをリターンします。@var{x}と@var{y}は、レンジ[0,bitmax]以内でなければなりません。\n"
+"@seealso{@ref{XREFbitor,,bitor}, @ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, @ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1032
+msgid "XREFbitor"
+msgstr "XREFbitor"
+
+#. type: deftypefn
+#: numbers.texi:1032
+#, no-wrap
+msgid "{Built-in Function} {} bitor (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} bitor (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: numbers.texi:1036
+msgid ""
+"Return the bitwise OR of non-negative integers.  @var{x}, @var{y} must be in "
+"the range [0,bitmax] @seealso{@ref{XREFbitor,,bitor}, "
+"@ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, "
+"@ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, "
+"@ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}"
+msgstr ""
+"非負の整数のビットごとのORをリターンします。@var{x}と@var{y}は、レンジ[0,bitmax]以内でなければなりません。\n"
+"@seealso{@ref{XREFbitor,,bitor}, @ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, @ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1041
+msgid "XREFbitxor"
+msgstr "XREFbitxor"
+
+#. type: deftypefn
+#: numbers.texi:1041
+#, no-wrap
+msgid "{Built-in Function} {} bitxor (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} bitxor (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: numbers.texi:1045
+msgid ""
+"Return the bitwise XOR of non-negative integers.  @var{x}, @var{y} must be "
+"in the range [0,bitmax] @seealso{@ref{XREFbitand,,bitand}, "
+"@ref{XREFbitor,,bitor}, @ref{XREFbitset,,bitset}, @ref{XREFbitget,,bitget}, "
+"@ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift}, "
+"@ref{XREFbitmax,,bitmax}}"
+msgstr ""
+"非負の整数のビットごとのXORをリターンします。@var{x}と@var{y}は、レンジ[0,bitmax]以内でなければなりません。\n"
+"@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor}, @ref{XREFbitset,,bitset}, @ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}"
+
+#. type: Plain text
+#: numbers.texi:1052
+msgid ""
+"The bitwise 'not' operator is a unary operator that performs a logical "
+"negation of each of the bits of the value.  For this to make sense, the mask "
+"against which the value is negated must be defined.  Octave's bitwise 'not' "
+"operator is @code{bitcmp}."
+msgstr "ビット単位の'否定(not)'は、値の各ビットにたいして論理否定を行う、単項演算子です。これは否定しようとする値のマスクを定義しなければならないときに有用です。Octaveのビットごとの'否定(not)'演算子は、@code{bitcmp}です。"
+
+#. type: anchor{#1}
+#: numbers.texi:1055
+msgid "XREFbitcmp"
+msgstr "XREFbitcmp"
+
+#. type: deftypefn
+#: numbers.texi:1055
+#, no-wrap
+msgid "{Function File} {} bitcmp (@var{A}, @var{k})"
+msgstr "{Function File} {} bitcmp (@var{A}, @var{k})"
+
+#. type: deftypefn
+#: numbers.texi:1058
+msgid ""
+"Return the @var{k}-bit complement of integers in @var{A}.  If @var{k} is "
+"omitted @code{k = log2 (bitmax) + 1} is assumed."
+msgstr "@var{A}内の整数の@var{k}ビット補数をリターンします。@var{k}は省略された場合、@code{k = log2 (bitmax) + 1}が指定されたとみなします。"
+
+#. type: group
+#: numbers.texi:1067
+#, no-wrap
+msgid ""
+"bitcmp (7,4)\n"
+"  @result{} 8\n"
+"dec2bin (11)\n"
+"  @result{} 1011\n"
+"dec2bin (bitcmp (11, 6))\n"
+"  @result{} 110100\n"
+msgstr ""
+"bitcmp (7,4)\n"
+"  @result{} 8\n"
+"dec2bin (11)\n"
+"  @result{} 1011\n"
+"dec2bin (bitcmp (11, 6))\n"
+"  @result{} 110100\n"
+
+#. type: deftypefn
+#: numbers.texi:1070
+msgid ""
+"@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor}, "
+"@ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, "
+"@ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, "
+"@ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}"
+msgstr "@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor}, @ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, @ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}"
+
+#. type: Plain text
+#: numbers.texi:1074
+msgid ""
+"Octave also includes the ability to left-shift and right-shift values "
+"bitwise."
+msgstr "Octaveには、値にたいしてビット単位での左シフトと右シフトの機能もあります。"
+
+#. type: anchor{#1}
+#: numbers.texi:1077
+msgid "XREFbitshift"
+msgstr "XREFbitshift"
+
+#. type: deftypefn
+#: numbers.texi:1077
+#, no-wrap
+msgid "{Built-in Function} {} bitshift (@var{a}, @var{k})"
+msgstr "{Built-in Function} {} bitshift (@var{a}, @var{k})"
+
+#. type: deftypefnx
+#: numbers.texi:1078
+#, no-wrap
+msgid "{Built-in Function} {} bitshift (@var{a}, @var{k}, @var{n})"
+msgstr "{Built-in Function} {} bitshift (@var{a}, @var{k}, @var{n})"
+
+#. type: deftypefn
+#: numbers.texi:1084
+msgid ""
+"Return a @var{k} bit shift of @var{n}-digit unsigned integers in @var{a}.  A "
+"positive @var{k} leads to a left shift; A negative value to a right shift.  "
+"If @var{n} is omitted it defaults to log2(bitmax)+1.  @var{n} must be in the "
+"range [1,log2(bitmax)+1] usually [1,33]."
+msgstr "@var{a}内の符号なし整数を@var{k}ビットシフトして、結果の@var{n}桁(ビット)をリターンします。@var{k}の値が正ならば左シフト、負ならば右シフトです。@var{n}が省略された場合のデフォルトは、log2(bitmax)+1です。@var{n}はレンジ[1,log2(bitmax)+1](通常は[1,33])以内でなければなりません。"
+
+#. type: group
+#: numbers.texi:1089
+#, no-wrap
+msgid ""
+"bitshift (eye (3), 1)\n"
+"@result{}\n"
+msgstr ""
+"bitshift (eye (3), 1)\n"
+"@result{}\n"
+
+#. type: group
+#: numbers.texi:1093
+#, no-wrap
+msgid ""
+"2 0 0\n"
+"0 2 0\n"
+"0 0 2\n"
+msgstr ""
+"2 0 0\n"
+"0 2 0\n"
+"0 0 2\n"
+
+#. type: group
+#: numbers.texi:1102
+#, no-wrap
+msgid ""
+"bitshift (10, [-2, -1, 0, 1, 2])\n"
+"@result{} 2   5  10  20  40\n"
+msgstr ""
+"bitshift (10, [-2, -1, 0, 1, 2])\n"
+"@result{} 2   5  10  20  40\n"
+
+#. type: deftypefn
+#: numbers.texi:1105
+msgid ""
+"@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor}, "
+"@ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, "
+"@ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, "
+"@ref{XREFbitmax,,bitmax}}"
+msgstr "@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor}, @ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset}, @ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp}, @ref{XREFbitmax,,bitmax}}"
+
+#. type: Plain text
+#: numbers.texi:1111
+msgid ""
+"Bits that are shifted out of either end of the value are lost.  Octave also "
+"uses arithmetic shifts, where the sign bit of the value is kept during a "
+"right shift.  For example:"
+msgstr "値の両方の終端からシフトアウトされたビットは失われます。Octaveは数学的シフト(右シフトにおいて値の符号ビットが保持される)も使用します。たとえば:"
+
+#. type: group
+#: numbers.texi:1118
+#, no-wrap
+msgid ""
+"bitshift (-10, -1)\n"
+"@result{} -5\n"
+"bitshift (int8 (-1), -1)\n"
+"@result{} -1\n"
+msgstr ""
+"bitshift (-10, -1)\n"
+"@result{} -5\n"
+"bitshift (int8 (-1), -1)\n"
+"@result{} -1\n"
+
+#. type: Plain text
+#: numbers.texi:1124
+msgid ""
+"Note that @code{bitshift (int8 (-1), -1)} is @code{-1} since the bit "
+"representation of @code{-1} in the @code{int8} data type is @code{[1, 1, 1, "
+"1, 1, 1, 1, 1]}."
+msgstr "@code{bitshift (int8 (-1), -1)}が@code{-1}になることに注意してください。これは@code{int8}データ型における@code{-1}のビット表現が@code{[1, 1, 1, 1, 1, 1, 1, 1]}だからです。"
+
+#. type: section
+#: numbers.texi:1125 numbers.texi:1126
+#, no-wrap
+msgid "Logical Values"
+msgstr "Logical Values"
+
+#. type: Plain text
+#: numbers.texi:1132
+msgid ""
+"Octave has built-in support for logical values, i.e., variables that are "
+"either @code{true} or @code{false}.  When comparing two variables, the "
+"result will be a logical value whose value depends on whether or not the "
+"comparison is true."
+msgstr "Octaveには論理値(例: 値が@code{true}か@code{false}であるような変数)にたいするビルトインサポートがあります。2つの変数を比較する場合、結果はその比較の結果が真か否かに依存する値をもつ、論理値になります。"
+
+#. type: Plain text
+#: numbers.texi:1136
+msgid ""
+"The basic logical operations are @code{&}, @code{|}, and @code{!}, which "
+"correspond to ``Logical And'', ``Logical Or'', and ``Logical Negation''.  "
+"These operations all follow the usual rules of logic."
+msgstr "基本的な論理演算子@code{&}、@code{|}、@code{!}はそれぞれ``論理AND''、``論理OR''、``論理NOT''に対応します。これらの演算子は通常の論理ルールにしたがいます。"
+
+#. type: Plain text
+#: numbers.texi:1141
+msgid ""
+"It is also possible to use logical values as part of standard numerical "
+"calculations.  In this case @code{true} is converted to @code{1}, and "
+"@code{false} to 0, both represented using double precision floating point "
+"numbers.  So, the result of @code{true*22 - false/6} is @code{22}."
+msgstr "標準的な数値計算の一部として論理値を使うこともできます。この場合、@code{true}は@code{1}、@code{false}は@code{0}に変換され、それらは倍精度浮動小数点数で表されます。つまり@code{true*22 - false/6}は@code{22}になります。"
+
+#. type: Plain text
+#: numbers.texi:1146
+msgid ""
+"Logical values can also be used to index matrices and cell arrays.  When "
+"indexing with a logical array the result will be a vector containing the "
+"values corresponding to @code{true} parts of the logical array.  The "
+"following example illustrates this."
+msgstr "論理値はマトリクスとセル配列のインデクスにも使用されます。論理配列でインデクス操作を行う場合、結果は論理配列の@code{true}部に対応する値を含むベクターになります。以下の例で示します。"
+
+#. type: group
+#: numbers.texi:1153
+#, no-wrap
+msgid ""
+"data = [ 1, 2; 3, 4 ];\n"
+"idx = (data <= 2);\n"
+"data(idx)\n"
+"     @result{} ans = [ 1; 2 ]\n"
+msgstr ""
+"data = [ 1, 2; 3, 4 ];\n"
+"idx = (data <= 2);\n"
+"data(idx)\n"
+"     @result{} ans = [ 1; 2 ]\n"
+
+#. type: Plain text
+#: numbers.texi:1159
+msgid ""
+"Instead of creating the @code{idx} array it is possible to replace "
+"@code{data(idx)} with @w{@code{data( data <= 2 )}} in the above code."
+msgstr "@code{idx}配列を作成せずに、上記コードの@code{data(idx)}を@w{@code{data( data <= 2 )}}に置き換えることも可能です。"
+
+#. type: Plain text
+#: numbers.texi:1163
+msgid ""
+"Logical values can also be constructed by casting numeric objects to logical "
+"values, or by using the @code{true} or @code{false} functions."
+msgstr "論理値は、数値オブジェクトから論理値へのキャストや、@code{true}および@code{false}の関数で構築することもできます。"
+
+#. type: anchor{#1}
+#: numbers.texi:1166
+msgid "XREFlogical"
+msgstr "XREFlogical"
+
+#. type: deftypefn
+#: numbers.texi:1166
+#, no-wrap
+msgid "{Built-in Function} {} logical (@var{x})"
+msgstr "{Built-in Function} {} logical (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1168
+msgid "Convert the numeric object @var{x} to logical type."
+msgstr "数値オブジェクト@var{x}を論理型に変換します。"
+
+#. type: deftypefn
+#: numbers.texi:1172
+msgid ""
+"Any non-zero values will be converted to true (1) while zero values will be "
+"converted to false (0).  The non-numeric value NaN cannot be converted and "
+"will produce an error."
+msgstr "非0値はtrue(1)に、0値はfalse(0)に変換されます。非数値NaNは変換できず、エラーが発生します。"
+
+#. type: deftypefn
+#: numbers.texi:1176
+msgid ""
+"Compatibility Note: Octave accepts complex values as input, whereas "
+"@sc{matlab} issues an error.  @seealso{@ref{XREFdouble,,double}, "
+"@ref{XREFsingle,,single}, @ref{XREFchar,,char}}"
+msgstr ""
+"互換性ノート: Octaveでは複素数値を入力できますが、@sc{matlab}はできません。\n"
+"@seealso{@ref{XREFdouble,,double}, @ref{XREFsingle,,single}, @ref{XREFchar,,char}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1181
+msgid "XREFtrue"
+msgstr "XREFtrue"
+
+#. type: deftypefn
+#: numbers.texi:1181
+#, no-wrap
+msgid "{Built-in Function} {} true (@var{x})"
+msgstr "{Built-in Function} {} true (@var{x})"
+
+#. type: deftypefnx
+#: numbers.texi:1182
+#, no-wrap
+msgid "{Built-in Function} {} true (@var{n}, @var{m})"
+msgstr "{Built-in Function} {} true (@var{n}, @var{m})"
+
+#. type: deftypefnx
+#: numbers.texi:1183
+#, no-wrap
+msgid "{Built-in Function} {} true (@var{n}, @var{m}, @var{k}, @dots{})"
+msgstr "{Built-in Function} {} true (@var{n}, @var{m}, @var{k}, @dots{})"
+
+#. type: deftypefn
+#: numbers.texi:1190
+msgid ""
+"Return a matrix or N-dimensional array whose elements are all logical 1.  If "
+"invoked with a single scalar integer argument, return a square matrix of the "
+"specified size.  If invoked with two or more scalar integer arguments, or a "
+"vector of integer values, return an array with given dimensions.  "
+"@seealso{@ref{XREFfalse,,false}}"
+msgstr ""
+"要素がすべて論理的1であるような行列またはN次元配列をリターンします。引数が1つのスカラー整数の場合は、指定されたサイズの正方マトリクスリターンします。引数が2つ以上のスカラー整数、または整数値ベクターの場合は、与えられた次元の配列をリターンします。\n"
+"@seealso{@ref{XREFfalse,,false}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1195
+msgid "XREFfalse"
+msgstr "XREFfalse"
+
+#. type: deftypefn
+#: numbers.texi:1195
+#, no-wrap
+msgid "{Built-in Function} {} false (@var{x})"
+msgstr "{Built-in Function} {} false (@var{x})"
+
+#. type: deftypefnx
+#: numbers.texi:1196
+#, no-wrap
+msgid "{Built-in Function} {} false (@var{n}, @var{m})"
+msgstr "{Built-in Function} {} false (@var{n}, @var{m})"
+
+#. type: deftypefnx
+#: numbers.texi:1197
+#, no-wrap
+msgid "{Built-in Function} {} false (@var{n}, @var{m}, @var{k}, @dots{})"
+msgstr "{Built-in Function} {} false (@var{n}, @var{m}, @var{k}, @dots{})"
+
+#. type: deftypefn
+#: numbers.texi:1204
+msgid ""
+"Return a matrix or N-dimensional array whose elements are all logical 0.  If "
+"invoked with a single scalar integer argument, return a square matrix of the "
+"specified size.  If invoked with two or more scalar integer arguments, or a "
+"vector of integer values, return an array with given dimensions.  "
+"@seealso{@ref{XREFtrue,,true}}"
+msgstr ""
+"要素がすべて論理的0であるような行列またはN次元配列をリターンします。引数が1つのスカラー整数の場合は、指定されたサイズの正方マトリクスリターンします。引数が2つ以上のスカラー整数、または整数値ベクターの場合は、与えられた次元の配列をリターンします。\n"
+"@seealso{@ref{XREFtrue,,true}}"
+
+#. type: section
+#: numbers.texi:1207 numbers.texi:1208
+#, no-wrap
+msgid "Promotion and Demotion of Data Types"
+msgstr "Promotion and Demotion of Data Types"
+
+#. type: Plain text
+#: numbers.texi:1211
+msgid "Many operators and functions can work with mixed data types.  For example,"
+msgstr "混成されたデータ型にたいして機能する演算子と関数が多数あります。たとえば、"
+
+#. type: group
+#: numbers.texi:1216
+#, no-wrap
+msgid ""
+"uint8 (1) + 1\n"
+"    @result{} 2\n"
+msgstr ""
+"uint8 (1) + 1\n"
+"    @result{} 2\n"
+
+#. type: Plain text
+#: numbers.texi:1226
+msgid ""
+"where the above operator works with an 8-bit integer and a double precision "
+"value and returns an 8-bit integer value.  Note that the type is demoted to "
+"an 8-bit integer, rather than promoted to a double precision value as might "
+"be expected.  The reason is that if Octave promoted values in expressions "
+"like the above with all numerical constants would need to be explicitly cast "
+"to the appropriate data type like"
+msgstr "上記の例の演算子は、8ビット整数と倍精度値に作用して、8ビット整数値をリターンしています。型は期待されるように倍精度値に昇格されるのではなく、8ビット整数に降格されたことに注意してください。この理由は、Octaveで上記のような式内の値が昇格されるには、下記のようにすべての数値定数を適切な型に明示的にキャストする必要があるからです"
+
+#. type: group
+#: numbers.texi:1231
+#, no-wrap
+msgid ""
+"uint8 (1) + uint8 (1)\n"
+"    @result{} 2\n"
+msgstr ""
+"uint8 (1) + uint8 (1)\n"
+"    @result{} 2\n"
+
+#. type: Plain text
+#: numbers.texi:1238
+msgid ""
+"which becomes difficult for the user to apply uniformly and might allow hard "
+"to find bugs to be introduced.  The same applies to single precision values "
+"where a mixed operation such as"
+msgstr "これはユーザーにとって一律に受け入れることを困難にし、混入されるバグの発見を難しくするかもしれません。同じことは、以下のような単精度値にたいする混成演算にも適用されます"
+
+#. type: group
+#: numbers.texi:1243
+#, no-wrap
+msgid ""
+"single (1) + 1\n"
+"    @result{} 2\n"
+msgstr ""
+"single (1) + 1\n"
+"    @result{} 2\n"
+
+#. type: Plain text
+#: numbers.texi:1249
+msgid ""
+"returns a single precision value.  The mixed operations that are valid and "
+"their returned data types are"
+msgstr "これは単精度値をリターンします。有効な混成演算と、それらがリターンするデータ型は以下のとおりです"
+
+#. type: multitable
+#: numbers.texi:1252
+msgid "@headitem"
+msgstr "@headitem"
+
+#. type: multitable
+#: numbers.texi:1252
+msgid "Mixed Operation"
+msgstr "混成演算"
+
+#. type: multitable
+#: numbers.texi:1252
+msgid "Result"
+msgstr "結果"
+
+#. type: item
+#: numbers.texi:1252
+#, no-wrap
+msgid "@tab double OP single @tab single @tab"
+msgstr "@tab double OP single @tab single @tab"
+
+#. type: item
+#: numbers.texi:1253
+#, no-wrap
+msgid "@tab double OP integer @tab integer @tab"
+msgstr "@tab double OP integer @tab integer @tab"
+
+#. type: item
+#: numbers.texi:1254
+#, no-wrap
+msgid "@tab double OP char @tab double @tab"
+msgstr "@tab double OP char @tab double @tab"
+
+#. type: item
+#: numbers.texi:1255
+#, no-wrap
+msgid "@tab double OP logical @tab double @tab"
+msgstr "@tab double OP logical @tab double @tab"
+
+#. type: item
+#: numbers.texi:1256
+#, no-wrap
+msgid "@tab single OP integer @tab integer @tab"
+msgstr "@tab single OP integer @tab integer @tab"
+
+#. type: item
+#: numbers.texi:1257
+#, no-wrap
+msgid "@tab single OP char @tab single @tab"
+msgstr "@tab single OP char @tab single @tab"
+
+#. type: item
+#: numbers.texi:1258
+#, no-wrap
+msgid "@tab single OP logical @tab single @tab"
+msgstr "@tab single OP logical @tab single @tab"
+
+#. type: Plain text
+#: numbers.texi:1262
+msgid "The same logic applies to functions with mixed arguments such as"
+msgstr "以下のような混成引数による関数呼び出しにも、同じロジックが適用されます"
+
+#. type: group
+#: numbers.texi:1267
+#, no-wrap
+msgid ""
+"min (single (1), 0)\n"
+"   @result{} 0\n"
+msgstr ""
+"min (single (1), 0)\n"
+"   @result{} 0\n"
+
+#. type: Plain text
+#: numbers.texi:1272
+msgid "where the returned value is single precision."
+msgstr "これのリターン値は単精度です。"
+
+#. type: Plain text
+#: numbers.texi:1275
+msgid ""
+"In the case of mixed type indexed assignments, the type is not changed.  For "
+"example,"
+msgstr "混成型によるインデクス割り当てでは、型は変更されません。たとえば、"
+
+#. type: group
+#: numbers.texi:1282
+#, no-wrap
+msgid ""
+"x = ones (2, 2);\n"
+"x(1, 1) = single (2)\n"
+"   @result{} x = 2   1\n"
+"          1   1\n"
+msgstr ""
+"x = ones (2, 2);\n"
+"x(1, 1) = single (2)\n"
+"   @result{} x = 2   1\n"
+"          1   1\n"
+
+#. type: Plain text
+#: numbers.texi:1287
+msgid "where @code{x} remains of the double precision type."
+msgstr "ここでは@code{x}は倍精度型のままです。"
+
+#. type: Plain text
+#: numbers.texi:1297
+msgid ""
+"Since the type of a variable may change during the execution of a program, "
+"it can be necessary to do type checking at run-time.  Doing this also allows "
+"you to change the behavior of a function depending on the type of the "
+"input.  As an example, this naive implementation of @code{abs} returns the "
+"absolute value of the input if it is a real number, and the length of the "
+"input if it is a complex number."
+msgstr "変数のデータ型はプログラム実行の間に変更されるかもしれないので、実行時に型チェックを行う必要が生じます。型チェックを行うことにより、入力のデータ型により関数の振る舞いを変化させることもできます。以下は入力が実数の場合は絶対値、複素数の場合は長さをリターンする、@code{abs}の単純な実装例です"
+
+#. type: group
+#: numbers.texi:1307
+#, no-wrap
+msgid ""
+"function a = abs (x)\n"
+"  if (isreal (x))\n"
+"    a = sign (x) .* x;\n"
+"  elseif (iscomplex (x))\n"
+"    a = sqrt (real(x).^2 + imag(x).^2);\n"
+"  endif\n"
+"endfunction\n"
+msgstr ""
+"function a = abs (x)\n"
+"  if (isreal (x))\n"
+"    a = sign (x) .* x;\n"
+"  elseif (iscomplex (x))\n"
+"    a = sqrt (real(x).^2 + imag(x).^2);\n"
+"  endif\n"
+"endfunction\n"
+
+#. type: Plain text
+#: numbers.texi:1312
+msgid ""
+"The following functions are available for determining the type of a "
+"variable."
+msgstr "以下の関数は変数の型を判断するために利用できます。"
+
+#. type: anchor{#1}
+#: numbers.texi:1315
+msgid "XREFisnumeric"
+msgstr "XREFisnumeric"
+
+#. type: deftypefn
+#: numbers.texi:1315
+#, no-wrap
+msgid "{Built-in Function} {} isnumeric (@var{x})"
+msgstr "{Built-in Function} {} isnumeric (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1320
+msgid ""
+"Return true if @var{x} is a numeric object, i.e., an integer, real, or "
+"complex array.  Logical and character arrays are not considered to be "
+"numeric.  @seealso{@ref{XREFisinteger,,isinteger}, "
+"@ref{XREFisfloat,,isfloat}, @ref{XREFisreal,,isreal}, "
+"@ref{XREFiscomplex,,iscomplex}, @ref{XREFislogical,,islogical}, "
+"@ref{XREFischar,,ischar}, @ref{XREFiscell,,iscell}, "
+"@ref{XREFisstruct,,isstruct}, @ref{XREFisa,,isa}}"
+msgstr ""
+"@var{x}が数値オブジェクト(例: 整数、実数、複素数の配列など)の場合は、trueをリターンします。論理値と文字配列は、数値とは判断されません。\n"
+"@seealso{@ref{XREFisinteger,,isinteger}, @ref{XREFisfloat,,isfloat}, @ref{XREFisreal,,isreal}, @ref{XREFiscomplex,,iscomplex}, @ref{XREFislogical,,islogical}, @ref{XREFischar,,ischar}, @ref{XREFiscell,,iscell}, @ref{XREFisstruct,,isstruct}, @ref{XREFisa,,isa}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1325
+msgid "XREFisfloat"
+msgstr "XREFisfloat"
+
+#. type: deftypefn
+#: numbers.texi:1325
+#, no-wrap
+msgid "{Built-in Function} {} isfloat (@var{x})"
+msgstr "{Built-in Function} {} isfloat (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1329
+msgid ""
+"Return true if @var{x} is a floating-point numeric object.  Objects of class "
+"double or single are floating-point objects.  "
+"@seealso{@ref{XREFisinteger,,isinteger}, @ref{XREFischar,,ischar}, "
+"@ref{XREFislogical,,islogical}, @ref{XREFisnumeric,,isnumeric}, "
+"@ref{XREFisa,,isa}}"
+msgstr ""
+"@var{x}が浮動小数点数値オブジェクトの場合は、trueをリターンします。倍精度と単精度クラスのオブジェクトは浮動小数点オブジェクトです。\n"
+"@seealso{@ref{XREFisinteger,,isinteger}, @ref{XREFischar,,ischar}, @ref{XREFislogical,,islogical}, @ref{XREFisnumeric,,isnumeric}, @ref{XREFisa,,isa}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1334
+msgid "XREFisreal"
+msgstr "XREFisreal"
+
+#. type: deftypefn
+#: numbers.texi:1334
+#, no-wrap
+msgid "{Built-in Function} {} isreal (@var{x})"
+msgstr "{Built-in Function} {} isreal (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1339
+msgid ""
+"Return true if @var{x} is a non-complex matrix or scalar.  For compatibility "
+"with @sc{matlab}, this includes logical and character matrices.  "
+"@seealso{@ref{XREFiscomplex,,iscomplex}, @ref{XREFisnumeric,,isnumeric}, "
+"@ref{XREFisa,,isa}}"
+msgstr ""
+"@var{x}が複素数のマトリクスおよびスカラーでない場合は、trueをリターンします。@sc{matlab}との互換性のため、論理値と文字マトリクスを含みます。\n"
+"@seealso{@ref{XREFiscomplex,,iscomplex}, @ref{XREFisnumeric,,isnumeric}, @ref{XREFisa,,isa}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1344
+msgid "XREFiscomplex"
+msgstr "XREFiscomplex"
+
+#. type: deftypefn
+#: numbers.texi:1344
+#, no-wrap
+msgid "{Built-in Function} {} iscomplex (@var{x})"
+msgstr "{Built-in Function} {} iscomplex (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1347
+msgid ""
+"Return true if @var{x} is a complex-valued numeric object.  "
+"@seealso{@ref{XREFisreal,,isreal}, @ref{XREFisnumeric,,isnumeric}, "
+"@ref{XREFislogical,,islogical}, @ref{XREFischar,,ischar}, "
+"@ref{XREFisfloat,,isfloat}, @ref{XREFisa,,isa}}"
+msgstr ""
+"@var{x}が複素数の値をもつ数値オブジェクトの場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFisreal,,isreal}, @ref{XREFisnumeric,,isnumeric}, @ref{XREFislogical,,islogical}, @ref{XREFischar,,ischar}, @ref{XREFisfloat,,isfloat}, @ref{XREFisa,,isa}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1352
+msgid "XREFismatrix"
+msgstr "XREFismatrix"
+
+#. type: deftypefn
+#: numbers.texi:1352
+#, no-wrap
+msgid "{Built-in Function} {} ismatrix (@var{a})"
+msgstr "{Built-in Function} {} ismatrix (@var{a})"
+
+#. type: deftypefn
+#: numbers.texi:1358
+msgid ""
+"Return true if @var{a} is a numeric, logical, or character matrix.  Scalars "
+"(1x1 matrices) and vectors (@nospell{1xN} or @nospell{Nx1} matrices)  are "
+"subsets of the more general N-dimensional matrix and @code{ismatrix} will "
+"return true for these objects as well.  "
+"@seealso{@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, "
+"@ref{XREFiscell,,iscell}, @ref{XREFisstruct,,isstruct}, "
+"@ref{XREFissparse,,issparse}, @ref{XREFisa,,isa}}"
+msgstr ""
+"@var{a}がマトリクス、論理値、文字マトリクスの場合は、trueをリターンします。スカラー(1x1マトリクス)とベクター(@nospell{1xN}マトリクスまたは@nospell{Nx1}マトリクスは、一般的なN次元マトリクスのサブセットなので、これらのオブジェクトにたいしても@code{ismatrix}は同じようにtrueをリターンします。\n"
+"@seealso{@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, @ref{XREFiscell,,iscell}, @ref{XREFisstruct,,isstruct}, @ref{XREFissparse,,issparse}, @ref{XREFisa,,isa}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1363
+msgid "XREFisvector"
+msgstr "XREFisvector"
+
+#. type: deftypefn
+#: numbers.texi:1363
+#, no-wrap
+msgid "{Function File} {} isvector (@var{x})"
+msgstr "{Function File} {} isvector (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1368
+msgid ""
+"Return true if @var{x} is a vector.  A vector is a 2-D array where one of "
+"the dimensions is equal to 1.  As a consequence a 1x1 array, or scalar, is "
+"also a vector.  @seealso{@ref{XREFisscalar,,isscalar}, "
+"@ref{XREFismatrix,,ismatrix}, @ref{XREFsize,,size}, @ref{XREFrows,,rows}, "
+"@ref{XREFcolumns,,columns}, @ref{XREFlength,,length}}"
+msgstr ""
+"@var{x}がベクターの場合は、trueをリターンします。ベクターはどちらか一方の次元が1に等しい2次元配列です。したがって1x1配列とスカラーもベクターです。\n"
+"@seealso{@ref{XREFisscalar,,isscalar}, @ref{XREFismatrix,,ismatrix}, @ref{XREFsize,,size}, @ref{XREFrows,,rows}, @ref{XREFcolumns,,columns}, @ref{XREFlength,,length}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1373
+msgid "XREFisrow"
+msgstr "XREFisrow"
+
+#. type: deftypefn
+#: numbers.texi:1373
+#, no-wrap
+msgid "{Function File} {} isrow (@var{x})"
+msgstr "{Function File} {} isrow (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1376
+msgid ""
+"Return true if @var{x} is a row vector.  "
+"@seealso{@ref{XREFiscolumn,,iscolumn}, @ref{XREFisscalar,,isscalar}, "
+"@ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}}"
+msgstr ""
+"@var{x}が行ベクターの場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFiscolumn,,iscolumn}, @ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1381
+msgid "XREFiscolumn"
+msgstr "XREFiscolumn"
+
+#. type: deftypefn
+#: numbers.texi:1381
+#, no-wrap
+msgid "{Function File} {} iscolumn (@var{x})"
+msgstr "{Function File} {} iscolumn (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1384
+msgid ""
+"Return true if @var{x} is a column vector.  @seealso{@ref{XREFisrow,,isrow}, "
+"@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, "
+"@ref{XREFismatrix,,ismatrix}}"
+msgstr ""
+"@var{x}が列ベクターの場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFisrow,,isrow}, @ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1389
+msgid "XREFisscalar"
+msgstr "XREFisscalar"
+
+#. type: deftypefn
+#: numbers.texi:1389
+#, no-wrap
+msgid "{Function File} {} isscalar (@var{x})"
+msgstr "{Function File} {} isscalar (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1392
+msgid ""
+"Return true if @var{x} is a scalar.  @seealso{@ref{XREFisvector,,isvector}, "
+"@ref{XREFismatrix,,ismatrix}}"
+msgstr ""
+"@var{x}がスカラーの場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1397
+msgid "XREFissquare"
+msgstr "XREFissquare"
+
+#. type: deftypefn
+#: numbers.texi:1397
+#, no-wrap
+msgid "{Function File} {} issquare (@var{x})"
+msgstr "{Function File} {} issquare (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1400
+msgid ""
+"Return true if @var{x} is a square matrix.  "
+"@seealso{@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, "
+"@ref{XREFismatrix,,ismatrix}, @ref{XREFsize,,size}}"
+msgstr ""
+"@var{x}が正方マトリクスの場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}, @ref{XREFsize,,size}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1405
+msgid "XREFissymmetric"
+msgstr "XREFissymmetric"
+
+#. type: deftypefn
+#: numbers.texi:1405
+#, no-wrap
+msgid "{Function File} {} issymmetric (@var{x})"
+msgstr "{Function File} {} issymmetric (@var{x})"
+
+#. type: deftypefnx
+#: numbers.texi:1406
+#, no-wrap
+msgid "{Function File} {} issymmetric (@var{x}, @var{tol})"
+msgstr "{Function File} {} issymmetric (@var{x}, @var{tol})"
+
+#. type: deftypefn
+#: numbers.texi:1412
+msgid ""
+"Return true if @var{x} is a symmetric matrix within the tolerance specified "
+"by @var{tol}.  The default tolerance is zero (uses faster code).  Matrix "
+"@var{x} is considered symmetric if @code{norm (@var{x} - @var{x}.', Inf) / "
+"norm (@var{x}, Inf) < @var{tol}}.  "
+"@seealso{@ref{XREFishermitian,,ishermitian}, "
+"@ref{XREFisdefinite,,isdefinite}}"
+msgstr ""
+"@var{x}が@var{tol}で指定された公差内で対称なマトリクスの場合は、trueをリターンします。デフォルトの公差は0です(高速なコードを使用します)。マトリクス@var{tol}は、@code{norm (@var{x} - @var{x}.', Inf) / norm (@var{x}, Inf) < @var{tol}}の場合は、対称と判断されます。\n"
+"@seealso{@ref{XREFishermitian,,ishermitian}, @ref{XREFisdefinite,,isdefinite}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1417
+msgid "XREFishermitian"
+msgstr "XREFishermitian"
+
+#. type: deftypefn
+#: numbers.texi:1417
+#, no-wrap
+msgid "{Function File} {} ishermitian (@var{x})"
+msgstr "{Function File} {} ishermitian (@var{x})"
+
+#. type: deftypefnx
+#: numbers.texi:1418
+#, no-wrap
+msgid "{Function File} {} ishermitian (@var{x}, @var{tol})"
+msgstr "{Function File} {} ishermitian (@var{x}, @var{tol})"
+
+#. type: deftypefn
+#: numbers.texi:1425
+msgid ""
+"Return true if @var{x} is Hermitian within the tolerance specified by "
+"@var{tol}.  The default tolerance is zero (uses faster code).  Matrix "
+"@var{x} is considered symmetric if @code{norm (@var{x} - @var{x}', Inf) / "
+"norm (@var{x}, Inf) < @var{tol}}.  "
+"@seealso{@ref{XREFissymmetric,,issymmetric}, "
+"@ref{XREFisdefinite,,isdefinite}}"
+msgstr ""
+"@var{x}が@var{tol}で指定された公差内でエルミートの場合は、trueをリターンします。デフォルトの公差は0です(高速なコードを使用します)。マトリクス@var{x}は、@code{norm (@var{x} - @var{x}', Inf) / norm (@var{x}, Inf) < @var{tol}}であれば対称と判断されます。\n"
+"@seealso{@ref{XREFissymmetric,,issymmetric}, @ref{XREFisdefinite,,isdefinite}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1430
+msgid "XREFisdefinite"
+msgstr "XREFisdefinite"
+
+#. type: deftypefn
+#: numbers.texi:1430
+#, no-wrap
+msgid "{Function File} {} isdefinite (@var{x})"
+msgstr "{Function File} {} isdefinite (@var{x})"
+
+#. type: deftypefnx
+#: numbers.texi:1431
+#, no-wrap
+msgid "{Function File} {} isdefinite (@var{x}, @var{tol})"
+msgstr "{Function File} {} isdefinite (@var{x}, @var{tol})"
+
+#. type: deftypefn
+#: numbers.texi:1438
+msgid ""
+"Return 1 if @var{x} is symmetric positive definite within the tolerance "
+"specified by @var{tol} or 0 if @var{x} is symmetric positive semidefinite.  "
+"Otherwise, return -1.  If @var{tol} is omitted, use a tolerance of @code{100 "
+"* eps * norm (@var{x}, \"fro\")} "
+"@seealso{@ref{XREFissymmetric,,issymmetric}, "
+"@ref{XREFishermitian,,ishermitian}}"
+msgstr ""
+"@var{x}が@var{tol}で指定された公差内で対称な正定値であれば1、@var{x}が対称な半正定値であれば0、それ以外は-1をリターンします。@var{tol}が省略された場合は、公差@code{100 * eps * norm (@var{x}, \"fro\")}を使用します。\n"
+"@seealso{@ref{XREFissymmetric,,issymmetric}, @ref{XREFishermitian,,ishermitian}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1443
+msgid "XREFislogical"
+msgstr "XREFislogical"
+
+#. type: deftypefn
+#: numbers.texi:1443
+#, no-wrap
+msgid "{Built-in Function} {} islogical (@var{x})"
+msgstr "{Built-in Function} {} islogical (@var{x})"
+
+#. type: deftypefnx
+#: numbers.texi:1444
+#, no-wrap
+msgid "{Built-in Function} {} isbool (@var{x})"
+msgstr "{Built-in Function} {} isbool (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1447
+msgid ""
+"Return true if @var{x} is a logical object.  "
+"@seealso{@ref{XREFisfloat,,isfloat}, @ref{XREFisinteger,,isinteger}, "
+"@ref{XREFischar,,ischar}, @ref{XREFisnumeric,,isnumeric}, "
+"@ref{XREFisa,,isa}}"
+msgstr ""
+"@var{x}が論理オブジェクトの場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFisfloat,,isfloat}, @ref{XREFisinteger,,isinteger}, @ref{XREFischar,,ischar}, @ref{XREFisnumeric,,isnumeric}, @ref{XREFisa,,isa}}"
+
+#. type: anchor{#1}
+#: numbers.texi:1452
+msgid "XREFisprime"
+msgstr "XREFisprime"
+
+#. type: deftypefn
+#: numbers.texi:1452
+#, no-wrap
+msgid "{Function File} {} isprime (@var{x})"
+msgstr "{Function File} {} isprime (@var{x})"
+
+#. type: deftypefn
+#: numbers.texi:1455
+msgid ""
+"Return a logical array which is true where the elements of @var{x} are prime "
+"numbers and false where they are not."
+msgstr "@var{x}の要素にたいして、素数の要素にたいしてはtrue、それ以外はfalseであるような論理配列をリターンします。"
+
+#. type: deftypefn
+#: numbers.texi:1458
+msgid ""
+"If the maximum value in @var{x} is very large, then you should be using "
+"special purpose factorization code."
+msgstr "@var{x}内の最大値が非常に大きい場合は、特別な目的のための因数分解コードを使用するべきです。"
+
+#. type: group
+#: numbers.texi:1463
+#, no-wrap
+msgid ""
+"isprime (1:6)\n"
+"    @result{} [0, 1, 1, 0, 1, 0]\n"
+msgstr ""
+"isprime (1:6)\n"
+"    @result{} [0, 1, 1, 0, 1, 0]\n"
+
+#. type: deftypefn
+#: numbers.texi:1466
+msgid ""
+"@seealso{@ref{XREFprimes,,primes}, @ref{XREFfactor,,factor}, "
+"@ref{XREFgcd,,gcd}, @ref{XREFlcm,,lcm}}"
+msgstr "@seealso{@ref{XREFprimes,,primes}, @ref{XREFfactor,,factor}, @ref{XREFgcd,,gcd}, @ref{XREFlcm,,lcm}}"
+
+#. type: Plain text
+#: numbers.texi:1471
+msgid ""
+"If instead of knowing properties of variables, you wish to know which "
+"variables are defined and to gather other information about the workspace "
+"itself, @pxref{Status of Variables}."
+msgstr "変数のプロパティを調べるのではなく、どの変数が定義されているかや、ワークスペース自体についての情報を収集したい場合は、@ref{Status of Variables}を参照してください。"

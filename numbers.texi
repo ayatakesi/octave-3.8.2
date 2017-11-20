@@ -1,0 +1,1311 @@
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+@c DO NOT EDIT!  Generated automatically by munge-texi.pl.
+
+@c Copyright (C) 1996-2013 John W. Eaton
+@c
+@c This file is part of Octave.
+@c
+@c Octave is free software; you can redistribute it and/or modify it
+@c under the terms of the GNU General Public License as published by the
+@c Free Software Foundation; either version 3 of the License, or (at
+@c your option) any later version.
+@c 
+@c Octave is distributed in the hope that it will be useful, but WITHOUT
+@c ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+@c FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+@c for more details.
+@c 
+@c You should have received a copy of the GNU General Public License
+@c along with Octave; see the file COPYING.  If not, see
+@c <http://www.gnu.org/licenses/>.
+
+@node Numeric Data Types
+@chapter Numeric Data Types
+@cindex numeric constant
+@cindex numeric value
+
+@dfn{numeric定数}はスカラー、ベクター、マトリクスであるかもしれず、さらにそれらはcomplex値を含むかもしれません。
+
+もっともシンプルなnumeric定数の形式はスカラーです。スカラーは単独の数であり、整数、少数、科学表記(指数表記)の数値、複素数を含むことができます。Octave内ではデフォルトではnumeric定数は倍精度浮動小数点数で表されることに注意してください(complex定数は倍精度浮動小数点数のペアーとして格納されます)。しかし、@ref{Integer
+Data
+Types}で説明するように、real整数(実数型整数)で表すこともできます。以下にreal値のnumeric定数の例をいくつか示します。これらはすべて同じ値をもちます:
+
+@example
+@group
+105
+1.05e+2
+1050e-1
+@end group
+@end example
+
+complex定数を指定する場合は、以下の形式で式を記述できます
+
+@example
+@group
+3 + 4i
+3.0 + 4.0i
+0.3e1 + 40e-1i
+@end group
+@end example
+
+@noindent
+これらはすべて等価です。この例の文字@samp{i}は純虚数定数(pure imaginary constant)を意味しており、
+@tex
+  $\sqrt{-1}$と定義されます。
+@end tex
+@ifnottex
+  @code{sqrt (-1)}と定義されます。
+@end ifnottex
+
+Octaveがcomplex定数の虚部(imaginary
+part)を認識するためには、数字と@samp{i}の間にスペースがあってはなりません。スペースが存在する場合、Octaveは以下のようなエラーメッセージをプリントします:
+
+@example
+@group
+octave:13> 3 + 4 i
+
+parse error:
+
+  syntax error
+
+>>> 3 + 4 i
+          ^
+@end group
+@end example
+
+@noindent
+上記の例で@samp{i}が出現する箇所には@samp{j}、@samp{I}、@samp{J}を使うこともできます。これら4つの形式は、すべて等価です。
+
+@c double libinterp/octave-value/ov-re-mat.cc
+@anchor{XREFdouble}
+@deftypefn {Built-in Function} {} double (@var{x})
+@var{x}を倍精度型に変換します。
+@seealso{@ref{XREFsingle,,single}}
+@end deftypefn
+
+
+@c complex libinterp/corefcn/data.cc
+@anchor{XREFcomplex}
+@deftypefn {Built-in Function} {} complex (@var{x})
+@deftypefnx {Built-in Function} {} complex (@var{re}, @var{im})
+realの引数から、complexの結果をリターンします。realの引数が@var{x}の1つの場合、結果はcomplexの@code{@var{x}
++ 0i}になります。realの引数が2つの場合、結果はcomplexの@code{@var{re} + @var{im}}になります。@code{a
++ i*b}のような式よりも、@code{complex}のほうが便利な場合もあります。たとえば:
+
+@example
+@group
+complex ([1, 2], [3, 4])
+  @result{} [ 1 + 3i   2 + 4i ]
+@end group
+@end example
+@seealso{@ref{XREFreal,,real}, @ref{XREFimag,,imag},
+@ref{XREFiscomplex,,iscomplex}, @ref{XREFabs,,abs}, @ref{XREFarg,,arg}}
+@end deftypefn
+
+
+@menu
+* Matrices::
+* Ranges::
+* Single Precision Data Types::
+* Integer Data Types::
+* Bit Manipulations::
+* Logical Values::
+* Promotion and Demotion of Data Types::
+* Predicates for Numeric Objects::  
+@end menu
+
+@node Matrices
+@section Matrices
+@cindex matrices
+
+@opindex [
+@opindex ]
+@opindex ;
+@opindex ,
+
+Octaveで値のマトリクスを定義するのは、簡単です。マトリクスのサイズは自動的に決定されるので、次元を明示する必要はありません。以下の式
+
+@example
+a = [1, 2; 3, 4]
+@end example
+
+@noindent
+の結果は、以下のマトリクスになります
+@tex
+$$ a = \left[ \matrix{ 1 & 2 \cr 3 & 4 } \right] $$
+@end tex
+@ifnottex
+
+@example
+@group
+
+        /      \
+        | 1  2 |
+  a  =  |      |
+        | 3  4 |
+        \      /
+
+@end group
+@end example
+
+@end ifnottex
+
+さまざまなピースをまとめたときに、すべての次元が意味をなすなら、任意の式をマトリクスの要素にできます。たとえば、上記のマトリクスが与えられた場合、以下の式
+
+@example
+[ a, a ]
+@end example
+
+@noindent
+は、以下のマトリクスを生成します
+
+@example
+@group
+ans =
+
+  1  2  1  2
+  3  4  3  4
+@end group
+@end example
+
+@noindent
+しかし、以下の式
+
+@example
+[ a, 1 ]
+@end example
+
+@noindent
+は、エラーを生成します
+
+@example
+error: number of rows must match (1 != 2) near line 13, column 6
+@end example
+
+@noindent
+(このエラーは、この式が13行目の行頭から入力された場合です)。
+
+マトリクス式を区切る角カッコの中では、スペース文字と改行文字を要素と行区切りに変換すべきか、あるいは単に無視すべきかを判断するために、Octaveは周囲のコンテキストを調べます。そのため、以下のような式
+
+@example
+@group
+a = [ 1 2
+      3 4 ]
+@end group
+@end example
+
+@noindent
+は機能するでしょう。しかし混乱の種はまだ残っています。たとえば、以下の式
+
+@example
+[ 1 - 1 ]
+@end example
+
+@noindent
+では@samp{-}は2項演算子とみなされ、その結果はスカラー0になります。しかし以下の式
+
+@example
+[ 1 -1 ]
+@end example
+
+@noindent
+では@samp{-}は単項演算子とみなされ、結果はベクター@code{[ 1, -1 ]}になります。同様に、以下の式
+
+@example
+[ sin (pi) ]
+@end example
+
+@noindent
+は以下のよｙにパースされて
+
+@example
+[ sin, (pi) ]
+@end example
+
+@noindent
+これは@code{sin}関数が引数なしで呼び出されたとみなされて、エラーになります。エラーを回避するためには、@code{sin}と開きカッコの間のスペースを取り除くか、式をカッコで括らなければなりません:
+
+@example
+[ (sin (pi)) ]
+@end example
+
+転置演算子(transpose
+operator)と文字列の区切りに使用される、空白文字ど囲まれたシングルクォート文字(@samp{'}も混乱を招きます。@code{a =
+1}が与えられた場合、以下の式
+
+@example
+[ 1 a' ]
+@end example
+
+@noindent
+では、シングルクォート文字は転置演算子とみなされて、結果はベクター@code{[ 1, 1 ]}になります。しかし以下の式
+
+@example
+[ 1 a ' ]
+@end example
+
+@noindent
+はエラーメッセージを生成します
+
+@example
+@group
+parse error:
+
+  syntax error
+
+>>> [ 1 a ' ]
+              ^
+@end group
+@end example
+
+@noindent
+なぜなら、これをエラーにしないと、以下のような有効な式をパースするときトラブルになるからです
+
+@example
+[ a 'foo' ]
+@end example
+
+明確にするためには、マトリクスの要素と行の区切りには常に、カンマとセミコロンを使用するのがおそらく最善でしょう。
+
+マトリクスの要素の最大数は、Octaveのコンパイル時に決定されていて固定です。可能な数は、関数@code{sizemax}で問い合わせることができます。マシン上で利用できるメモリーなど、他の要因により、マトリクスの最大要素数の制限は、いくぶん小さくなるかもしれないことに注意してください。
+
+@c sizemax libinterp/corefcn/bitfcns.cc
+@anchor{XREFsizemax}
+@deftypefn {Built-in Function} {} sizemax ()
+配列のサイズにたいして許される最大の値をリターンします。Octaveが64-bit
+indexingでコンパイルされている場合はint64クラスの最大値、それ以外はint32クラスの最大値になります。配列の最大サイズは、@code{intmax}でリポートされる関連するクラスに許される最大値より、少しだけ小さくなります。
+@seealso{@ref{XREFintmax,,intmax}}
+@end deftypefn
+
+
+マトリクス、または値がマトリクスである変数の名前をタイプすると、Octaveは行と列を整列してプリントします。そのマトリクスの行がスクリーンに収まらないほど大きい場合、Octaveはマトリクスを分割して、どの列が表示されているかを示すヘッダーを各セクションの前に表示します。出力フォーマットを制御するために、以下の変数を使用できます。
+
+@c output_max_field_width libinterp/corefcn/pr-output.cc
+@anchor{XREFoutput_max_field_width}
+@deftypefn {Built-in Function} {@var{val} =} output_max_field_width ()
+@deftypefnx {Built-in Function} {@var{old_val} =} output_max_field_width (@var{new_val})
+@deftypefnx {Built-in Function} {} output_max_field_width (@var{new_val}, "local")
+numeric出力フィールドの最大幅を指定する内部変数にたいして、問い合わせまたはセットを行います。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFformat,,format},
+@ref{XREFfixed_point_format,,fixed_point_format},
+@ref{XREFoutput_precision,,output_precision}}
+@end deftypefn
+
+
+@c output_precision libinterp/corefcn/pr-output.cc
+@anchor{XREFoutput_precision}
+@deftypefn {Built-in Function} {@var{val} =} output_precision ()
+@deftypefnx {Built-in Function} {@var{old_val} =} output_precision (@var{new_val})
+@deftypefnx {Built-in Function} {} output_precision (@var{new_val}, "local")
+numeric出力にたいして表示する最小の有効数字を指定する内部変数にたいして、問い合わせまたはセットを行います。
+
+関数の中から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFformat,,format},
+@ref{XREFfixed_point_format,,fixed_point_format},
+@ref{XREFoutput_max_field_width,,output_max_field_width}}
+@end deftypefn
+
+
+@code{output_precision}と@code{output_max_field_width}に異なる値を使用することにより、幅広い出力スタイルを実現できます。@code{format}関数をセットして、妥当な組み合わせをセットできます。@ref{Basic
+Input and Output}を参照してください。
+
+@c split_long_rows libinterp/corefcn/pr-output.cc
+@anchor{XREFsplit_long_rows}
+@deftypefn {Built-in Function} {@var{val} =} split_long_rows ()
+@deftypefnx {Built-in Function} {@var{old_val} =} split_long_rows (@var{new_val})
+@deftypefnx {Built-in Function} {} split_long_rows (@var{new_val}, "local")
+端末ウィンドウに表示するときにマトリクスの行を分割するかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。行を分割する場合、Octaveはマトリクスを小さい断片のシリーズとして表示します。断片はそれぞれ、端末の制限幅に適合するよう分割され、各行セットにはラベルが付されるので、現在どの列が表示されているか簡単に識別できます。たとえば:
+
+@example
+@group
+octave:13> rand (2,10)
+ans =
+
+ Columns 1 through 6:
+
+  0.75883  0.93290  0.40064  0.43818  0.94958  0.16467
+  0.75697  0.51942  0.40031  0.61784  0.92309  0.40201
+
+ Columns 7 through 10:
+
+  0.90174  0.11854  0.72313  0.73326
+  0.44672  0.94303  0.56564  0.82150
+@end group
+@end example
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFformat,,format}}
+@end deftypefn
+
+
+値が非常に大きくなったとき、または小さくなったとき、Octaveは自動的に科学的表記に切り替えます。これはマトリクス内のすべての値にたいして、数桁の有効数字を確認できることを保証します。マトリクス内のすべての値を固定小数点フォーマットで確認したい場合は、ビルトイン変数@code{fixed_point_format}を非0値にセットすることができます。しかしこれを行なうことにより、容易に誤解釈され得る出力を生成するため、推奨されません。
+
+@c fixed_point_format libinterp/corefcn/pr-output.cc
+@anchor{XREFfixed_point_format}
+@deftypefn {Built-in Function} {@var{val} =} fixed_point_format ()
+@deftypefnx {Built-in Function} {@var{old_val} =} fixed_point_format (@var{new_val})
+@deftypefnx {Built-in Function} {} fixed_point_format (@var{new_val}, "local")
+Octaveがマトリクスの値をプリントするためにスケール化されたフォーマットを使用するかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。
+
+スケール化されたフォーマットは、出力の最初の行にスケール因子をプリントします。スケール因子はマトリクスの最大要素を、整数部1桁で記述できるように選択されます。たとえば:
+
+@example
+@group
+logspace (1, 7, 5)'
+ans =
+
+  1.0e+07  *
+
+  0.00000
+  0.00003
+  0.00100
+  0.03162
+  1.00000
+@end group
+@end example
+
+@noindent
+最初の値は実際は1なのに、0のように見えることに注目してください。混乱を招く可能性があるため、@code{fixed_point_format}の有効化には注意が必要です。
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFformat,,format},
+@ref{XREFoutput_max_field_width,,output_max_field_width},
+@ref{XREFoutput_precision,,output_precision}}
+@end deftypefn
+
+
+@menu
+* Empty Matrices::           
+@end menu
+
+@node Empty Matrices
+@subsection Empty Matrices
+
+マトリクスの1つ、または両方の次元が0の場合があり、このような空マトリクスへの操作は、Carl @nospell{de} Boor in
+@cite{An Empty Exercise}, SIGNUM, Volume 25, pages 2-6, 1990 and C. N. Nett
+and W. M.  Haddad, in @cite{A System-Theoretic Appropriate Realization of
+the Empty Matrix Concept}, IEEE Transactions on Automatic Control, Volume
+38, Number 5, May 1993で説明されています。
+@tex
+簡単にいうと、スカラー$s$、$m\times n$のマトリクス$M_{m\times n}$、$m\times n$の空マトリクス(2つまたは両方の次元が0)$[\,]_{m\times n}$が与えられたとき、以下が成り立ちます:
+$$
+\eqalign{%
+s \cdot [\,]_{m\times n} = [\,]_{m\times n} \cdot s &= [\,]_{m\times n}\cr
+[\,]_{m\times n} + [\,]_{m\times n} &= [\,]_{m\times n}\cr
+[\,]_{0\times m} \cdot M_{m\times n} &= [\,]_{0\times n}\cr
+M_{m\times n} \cdot [\,]_{n\times 0} &= [\,]_{m\times 0}\cr
+[\,]_{m\times 0} \cdot [\,]_{0\times n} &=  0_{m\times n}}
+$$
+@end tex
+@ifnottex
+簡単にいうと、スカラー@var{s}@var{m}行@var{n}列のマトリクス@code{M(mxn)}、@var{m}行@var{n}列の空マトリクス(1つまたは両方の次元が0)@code{[](mxn)}が与えられたとき、以下が成り立ちます:
+
+@example
+@group
+s * [](mxn) = [](mxn) * s = [](mxn)
+
+    [](mxn) + [](mxn) = [](mxn)
+
+    [](0xm) *  M(mxn) = [](0xn)
+
+     M(mxn) * [](nx0) = [](mx0)
+
+    [](mx0) * [](0xn) =  0(mxn)
+@end group
+@end example
+
+@end ifnottex
+
+デフォルトでは、空マトリクスの次元は、空マトリクスのシンボル@samp{[]}と共にプリントされます。ビルトイン変数@code{print_empty_dimensions}が、この振る舞いを制御します。
+
+@c print_empty_dimensions libinterp/corefcn/pr-output.cc
+@anchor{XREFprint_empty_dimensions}
+@deftypefn {Built-in Function} {@var{val} =} print_empty_dimensions ()
+@deftypefnx {Built-in Function} {@var{old_val} =} print_empty_dimensions (@var{new_val})
+@deftypefnx {Built-in Function} {} print_empty_dimensions (@var{new_val}, "local")
+空マトリクスの次元を空マトリクスのシンボル@samp{[]}と共にプリントするかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。たとえば、以下の式
+
+@example
+zeros (3, 0)
+@end example
+
+@noindent
+は、以下のようにプリントするでしょう
+
+@example
+ans = [](3x0)
+@end example
+
+関数の中から@qcode{"local"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFformat,,format}}
+@end deftypefn
+
+
+空マトリクスは、マトリクスから行や列を簡単に削除する方法として、割り当てステートメント内でも使用されます。@ref{Assignment
+Ops,,Assignment Expressions}を参照してください。
+
+Octaveがマトリクス式をパースする場合な要素がすべて定数かどうか、要素のリストを調べます。そして、すべて定数ならば、そのリストを1つのマトリクス定数に置き換えます。
+
+@node Ranges
+@section Ranges
+@cindex range expressions
+@cindex expression, range
+
+@opindex :
+
+@dfn{レンジ(range:
+範囲)}は、等差の要素からなる行ベクターを記述する便利な方法です。レンジ式は、そのレンジ内の最初の値、オプションとして要素間の増分値、そしてそのレンジの要素の上限となる最大値により定義されます。これらのベース、増分、リミットはコロン(@samp{:}文字)で区切られ、任意の算術式や関数呼び出しを含むことができます。増分が省略された場合、増分は1とみなされます。たとえば、以下のレンジ
+
+@example
+1 : 5
+@end example
+
+@noindent
+は、値@samp{[ 1, 2, 3, 4, 5 ]}を定義します。また、以下のレンジ
+
+@example
+1 : 3 : 5
+@end example
+
+@noindent
+は、値@samp{[ 1, 4 ]}を定義します。
+
+レンジ定数で行ベクターを指定しても、Octaveは変換する必要がなければ、レンジ定数をベクターに変換@emph{しません}。これにより、@samp{1
+: 10000}のような定数を記述しても、ストレージを消費(通常の32ビットワークステーション上では8000バイト)せずにすみます。
+
+レンジをベクターに変換する必要が生じる例としては、それらがベクター(例: 角カッコの内側)と共に記述されるときです。たとえば、
+
+@example
+x = 0 : 0.1 : 1;
+@end example
+
+@noindent
+これは、@var{x}を@code{range}型として定義し、式のために24バイトのメモリーを占めます
+
+@example
+y = [ 0 : 0.1 : 1];
+@end example
+
+@noindent
+これは、@var{y}を@code{matrix}型として定義し、88バイトのメモリーを占めます。
+
+レンジの上限(増分が負の場合は下限)は常に値セットに含まれるとは限らないこと、そして浮動小数点で定義されたレンジは、レンジ内の値の計算にOctaveが浮動小数演算を使用するので、驚くような結果を生成するかもしれないことに注意してください。レンジの終端を含めることが重要で、なおかつ要素数が既知の場合は、@code{linspace}関数(@ref{Special
+Utility Matrices}参照)をかわりに使用してください。
+
+レンジにたいするスカラーの加算と減算(またはスカラーからレンジの減算)、および乗算の場合、Octaveじゃレンジの展開を試みずに、展開しても安全だと判断できるまで、結果をレンジのまま保留します。たとえば、
+
+@example
+a = 2*(1:1e7) - 1;
+@end example
+
+@noindent
+これは@samp{1:2:2e7-1}と同じ結果を生成しますが、1000万個の要素をもつベクターが生成されるわけではありません。
+
+コロン表記で@samp{1:0:1}のように増分に0を使用するのは、レンジ要素の個数を決定するとき0除算が発生するために、許されていません。しかし、増分0(例:
+すべての要素が同じ)のレンジは有用(よく特にインデクス操作において)なので、Octaveではビルトイン関数@dfn{ones}を使用してそれらを構築できます。レンジは行にベクターでなければならないので、@samp{ones
+(1, 10)}はレンジを構成しますが、@samp{ones (10, 1)}はレンジを構成しません。
+
+Octaveがレンジ式をパースするとき、その式の要素がすべて定数かどうか調べます。そして、すべて定数の場合は、そのレンジ式を1つのレンジ定数で置き換えます。
+
+@node Single Precision Data Types
+@section Single Precision Data Types
+
+Octaveには単精度データ型(single precision data
+type)にたいするサポートがおり、Octave内のほとんどの関数は、単精度値を受け入れ、単精度の答えをリターンします。単精度変数は、@code{single}関数で作成します。
+
+@c single libinterp/octave-value/ov-flt-re-mat.cc
+@anchor{XREFsingle}
+@deftypefn {Built-in Function} {} single (@var{x})
+@var{x}を単精度型に変換します。
+@seealso{@ref{XREFdouble,,double}}
+@end deftypefn
+
+
+たとえば:
+
+@example
+@group
+sngl = single (rand (2, 2))
+     @result{} sngl = 
+        0.37569   0.92982
+        0.11962   0.50876
+class (sngl)
+    @result{} single
+@end group
+@end example
+
+
+多くの関数は、単精度値を直接リターンすることもできます。たとえば
+
+@example
+@group
+ones (2, 2, "single")
+zeros (2, 2, "single")
+eye (2, 2,  "single")
+rand (2, 2, "single")
+NaN (2, 2, "single")
+NA (2, 2, "single")
+Inf (2, 2, "single")
+@end group
+@end example
+
+@noindent
+これはすべて単精度マトリクスをリターンします。
+
+@node Integer Data Types
+@section Integer Data Types
+
+Octaveは倍精度を使用する代替えとして、整数マトリクスをサポートします。8、16、32、64ビットで表される、符号つき、および符号なし整数の両方が使用できます。整数は数値演算により型が変化するときがあるので、多くの演算では浮動小数点データが要求されることは注記しておくべきでしょう。この理由により、整数がもっとも使用されるのは計算ではなく、データの格納においてです。
+
+一般的に、整数マトリクスのほとんどは、既存のマトリクスを整数にキャストすることにより作成されます。以下は、マトリクスを32ビット整数にキャストする方法の例です。
+
+@example
+@group
+float = rand (2, 2)
+     @result{} float = 0.37569   0.92982
+                0.11962   0.50876
+integer = int32 (float)
+     @result{} integer = 0  1
+                  0  1
+@end group
+@end example
+
+@noindent
+確認できるように、浮動小数点値は変換時にもっとも近い整数に丸められます。
+
+@c isinteger libinterp/corefcn/data.cc
+@anchor{XREFisinteger}
+@deftypefn {Built-in Function} {} isinteger (@var{x})
+@var{x}が整数オブジェクト(int8、uint8、int16、など)の場合はtrueをリターンします。Octave内部では数値定数は倍精度浮動小数点値なので、@w{@code{isinteger
+(14)}}はfalseになることに注意してください。
+@seealso{@ref{XREFisfloat,,isfloat}, @ref{XREFischar,,ischar},
+@ref{XREFislogical,,islogical}, @ref{XREFisnumeric,,isnumeric},
+@ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@c int8 libinterp/octave-value/ov-int8.cc
+@anchor{XREFint8}
+@deftypefn {Built-in Function} {} int8 (@var{x})
+@var{x}を8ビット整数型に変換します。
+@seealso{@ref{XREFuint8,,uint8}, @ref{XREFint16,,int16},
+@ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32},
+@ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}
+@end deftypefn
+
+
+@c uint8 libinterp/octave-value/ov-uint8.cc
+@anchor{XREFuint8}
+@deftypefn {Built-in Function} {} uint8 (@var{x})
+@var{x}を符号なし8ビット整数型に変換します。
+@seealso{@ref{XREFint8,,int8}, @ref{XREFint16,,int16},
+@ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32},
+@ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}
+@end deftypefn
+
+
+@c int16 libinterp/octave-value/ov-int16.cc
+@anchor{XREFint16}
+@deftypefn {Built-in Function} {} int16 (@var{x})
+@var{x}を16ビット整数型に変換します。
+@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8},
+@ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32},
+@ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}
+@end deftypefn
+
+
+@c uint16 libinterp/octave-value/ov-uint16.cc
+@anchor{XREFuint16}
+@deftypefn {Built-in Function} {} uint16 (@var{x})
+@var{x}を符号なし16ビット整数型に変換します。
+@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8},
+@ref{XREFint16,,int16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32},
+@ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}
+@end deftypefn
+
+
+@c int32 libinterp/octave-value/ov-int32.cc
+@anchor{XREFint32}
+@deftypefn {Built-in Function} {} int32 (@var{x})
+@var{x}を32ビット整数型に変換します。
+@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8},
+@ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFuint32,,uint32},
+@ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}
+@end deftypefn
+
+
+@c uint32 libinterp/octave-value/ov-uint32.cc
+@anchor{XREFuint32}
+@deftypefn {Built-in Function} {} uint32 (@var{x})
+@var{x}を符号なし32ビット整数型に変換します。
+@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8},
+@ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32},
+@ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}}
+@end deftypefn
+
+
+@c int64 libinterp/octave-value/ov-int64.cc
+@anchor{XREFint64}
+@deftypefn {Built-in Function} {} int64 (@var{x})
+@var{x}を64ビット整数型に変換します。
+@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8},
+@ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32},
+@ref{XREFuint32,,uint32}, @ref{XREFuint64,,uint64}}
+@end deftypefn
+
+
+@c uint64 libinterp/octave-value/ov-uint64.cc
+@anchor{XREFuint64}
+@deftypefn {Built-in Function} {} uint64 (@var{x})
+@var{x}を符号なし64ビット整数型に変換します。
+@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8},
+@ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32},
+@ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}}
+@end deftypefn
+
+
+@c intmax libinterp/corefcn/bitfcns.cc
+@anchor{XREFintmax}
+@deftypefn {Built-in Function} {} intmax (@var{type})
+整数型として表すことができる、もっとも大きな整数をリターンします。変数@var{type}は
+
+@table @code
+@item int8
+signed 8-bit integer.
+
+@item int16
+符号つき16ビット整数
+
+@item int32
+符号つき32ビット整数
+
+@item int64
+符号つき64ビット整数
+
+@item uint8
+符号なし8ビット整数
+
+@item uint16
+符号なし16ビット整数
+
+@item uint32
+符号なし32ビット整数
+
+@item uint64
+符号なし64ビット整数
+@end table
+
+@var{type}のデフォルト値は@code{int32}です。
+@seealso{@ref{XREFintmin,,intmin}, @ref{XREFflintmax,,flintmax},
+@ref{XREFbitmax,,bitmax}}
+@end deftypefn
+
+
+@c intmin libinterp/corefcn/bitfcns.cc
+@anchor{XREFintmin}
+@deftypefn {Built-in Function} {} intmin (@var{type})
+整数型として表すことができる、もっとも小さな整数をリターンします。変数@var{type}は
+
+@table @code
+@item int8
+signed 8-bit integer.
+
+@item int16
+符号つき16ビット整数
+
+@item int32
+符号つき32ビット整数
+
+@item int64
+符号つき64ビット整数
+
+@item uint8
+符号なし8ビット整数
+
+@item uint16
+符号なし16ビット整数
+
+@item uint32
+符号なし32ビット整数
+
+@item uint64
+符号なし64ビット整数
+@end table
+
+@var{type}のデフォルト値は@code{int32}です。
+@seealso{@ref{XREFintmax,,intmax}, @ref{XREFflintmax,,flintmax},
+@ref{XREFbitmax,,bitmax}}
+@end deftypefn
+
+
+@c flintmax libinterp/corefcn/bitfcns.cc
+@anchor{XREFflintmax}
+@deftypefn {Built-in Function} {} flintmax ()
+@deftypefnx {Built-in Function} {} flintmax ("double")
+@deftypefnx {Built-in Function} {} flintmax ("single")
+浮動小数点値として一貫(consecutively)して表すことができる、最大の整数をリターンします。デフォルトクラスは@qcode{"double"}ですが、@qcode{"single"}も有効なオプションです。IEEE-754互換システムでは、@code{flintmax}は@qcode{"double"}にたいして@w{@math{2^53}}、@qcode{"single"}にたいして@w{@math{2^24}}です。
+@seealso{@ref{XREFbitmax,,bitmax}, @ref{XREFintmax,,intmax},
+@ref{XREFrealmax,,realmax}, @ref{XREFrealmin,,realmin}}
+@end deftypefn
+
+
+@menu
+* Integer Arithmetic::       
+@end menu
+
+@node Integer Arithmetic
+@subsection Integer Arithmetic
+
+整数に適用できない数値演算はたくさんありますが、Octaveは整数にたいして加算や乗算のような基本的な操作をサポートします。同じ型の整数にたいして@code{+}、@code{-}、@code{.*}、@code{./}の演算子が機能します。つまり2つの32ビット整数の加算はできますが、32ビット整数と16ビット整数の加算はできません。
+
+整数演算を行う場合、アンダーフローとオーバーフローの可能性を考慮すべきです。これは選択した整数型を使用して、演算結果を表現できないときに発生します。たとえば、符号なし整数を使用している場合は、@math{10
+- 20}の結果は表現できません。そのような場合、Octaveは整数演算の結果を、真の結果に近い整数にします。したがって@math{10 -
+20}の結果は、符号なし整数を使用している場合は0になります。
+
+整数の除算では、Octaveは結果をもっとも近い整数に丸めます。多くの言語では結果はもっとも近い整数に切り下げる場合が多いので、Octaveとは異なります。Octaveでは、@code{int32
+(5) ./ int32 (8)}の結果は@code{1}になります。
+
+@c idivide scripts/general/idivide.m
+@anchor{XREFidivide}
+@deftypefn {Function File} {} idivide (@var{x}, @var{y}, @var{op})
+別の丸め規則により整数の除算を行います。
+
+標準では、@code{@var{a} ./
+@var{b}}のような整数除算にたいして、結果はもっとも近い整数に丸められます。これは常に望んだ振る舞いではないため、@code{idiqvide}は要素ごとの除算による少数部にたいして、@var{op}フラグにより異なる扱いをします。@var{op}は以下の文字列です:
+
+@table @asis
+@item @qcode{"fix"}
+@code{@var{a} ./ @var{b}}を計算して、少数部を0に丸めます。
+
+@item @qcode{"round"}
+@code{@var{a} ./ @var{b}}を計算して、少数部をもっとも近い整数に丸めます。
+
+@item @qcode{"floor"}
+@code{@var{a} ./ @var{b}}を計算して、少数部を負の無限大に丸めます。
+
+@item @qcode{"ceil"}
+@code{@var{a} ./ @var{b}}を計算して、少数部を正の無限大に丸めます。
+@end table
+
+@noindent
+以下の例は、@var{op}にデフォルト@qcode{"fix"}以外が与えられた場合の、これらの丸め規則の実例です
+
+@example
+@group
+idivide (int8 ([-3, 3]), int8 (4), "fix")
+  @result{} int8 ([0, 0])
+idivide (int8 ([-3, 3]), int8 (4), "round")
+  @result{} int8 ([-1, 1])
+idivide (int8 ([-3, 3]), int8 (4), "floor")
+  @result{} int8 ([-1, 0])
+idivide (int8 ([-3, 3]), int8 (4), "ceil")
+  @result{} int8 ([0, 1])
+@end group
+@end example
+
+@seealso{@ref{XREFldivide,,ldivide}, @ref{XREFrdivide,,rdivide}}
+@end deftypefn
+
+
+@node Bit Manipulations
+@section Bit Manipulations
+
+Octaveは、数値をビット単位で操作するいくつかの関数を提供します。特定のビットの値のセットと取得を行う基本的な関数は、@code{bitset}と@code{bitget}です。
+
+@c bitset scripts/general/bitset.m
+@anchor{XREFbitset}
+@deftypefn {Function File} {@var{C} =} bitset (@var{A}, @var{n})
+@deftypefnx {Function File} {@var{C} =} bitset (@var{A}, @var{n}, @var{val})
+@var{A}内の符号なし整数の@var{n}ビットにたいして、セットまたはリセットを行います。@var{val} =
+0の場合はリセット、@var{val} = 1の場合はセットを行います。最小の有効なビットは、@var{n} =
+1です。すべての変数は同サイズまたは、スカラーでなければなりません。
+
+@example
+@group
+dec2bin (bitset (10, 1))
+  @result{} 1011
+@end group
+@end example
+@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor},
+@ref{XREFbitxor,,bitxor}, @ref{XREFbitget,,bitget},
+@ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift},
+@ref{XREFbitmax,,bitmax}}
+@end deftypefn
+
+
+@c bitget scripts/general/bitget.m
+@anchor{XREFbitget}
+@deftypefn {Function File} {@var{c} =} bitget (@var{A}, @var{n})
+符号なし整数@var{A}内の、ビット@var{n}の状態をリターンします。有効な最小のビットは@var{n} = 1です。
+
+@example
+@group
+bitget (100, 8:-1:1)
+@result{} 0  1  1  0  0  1  0  0
+@end group
+@end example
+@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor},
+@ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset},
+@ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift},
+@ref{XREFbitmax,,bitmax}}
+@end deftypefn
+
+
+Octaveのビット単位操作の引数はすべて、@code{bitcmp}を除き、スカラーまたは配列を指定できます(@code{bitcmp}の引数@var{k}はスカラーでなければなりません)。1つ以上の引数が配列の場合は、すべての引数が同じ形状でなければならず、ビット単位操作は引数の個別の要素ごとに適用されます。少なくとも1つの引数がスカラーで、配列もある場合は、スカラー引数が複製されます。したがって
+
+@example
+bitget (100, 8:-1:1)
+@end example
+
+@noindent
+は、以下と同じです
+
+@example
+bitget (100 * ones (1, 8), 8:-1:1)
+@end example
+
+Octaveのビット操作関数に渡されるすべての値は、整数として扱われることを注記しておくべきでしょう。師、たとえ上記の例の@code{bitset}に浮動小数点値@code{10}を渡しても、@code{10}にたいする浮動小数点フォーマットのネイティブ表現ではなく、ビット@code{[1,
+0, 1, 0]}として扱われます。
+
+ビット操作にとって、数値として表すことのできる最大値は、特にマスク処理を行う場合に重要なので、Octaveは関数@code{bitmax}を提供します。
+
+@c bitmax libinterp/corefcn/bitfcns.cc
+@anchor{XREFbitmax}
+@deftypefn {Built-in Function} {} bitmax ()
+@deftypefnx {Built-in Function} {} bitmax ("double")
+@deftypefnx {Built-in Function} {} bitmax ("single")
+浮動小数点値として表すことのできる最大の整数値をリターンします。デフォルトクラスは@qcode{"double"}ですが、@qcode{"single"}も有効なオプションです。IEEE-754互換システムでの@code{bitmax}は、@qcode{"double"}にたいしては@w{@math{2^{53}
+- 1}}、@qcode{"single"}にたいしては@w{@math{2^{24} -1}}です。
+@seealso{@ref{XREFflintmax,,flintmax}, @ref{XREFintmax,,intmax},
+@ref{XREFrealmax,,realmax}, @ref{XREFrealmin,,realmin}}
+@end deftypefn
+
+
+これは前に説明した関数@code{intmax}の倍精度バージョンです。
+
+Octaveにはビット単位の演算子、'積(and)'、'和(or)'、'排他的論理和(exclusive or)'もあります。
+
+@c bitand libinterp/corefcn/bitfcns.cc
+@anchor{XREFbitand}
+@deftypefn {Built-in Function} {} bitand (@var{x}, @var{y})
+非負の整数のビットごとのANDをリターンします。@var{x}と@var{y}は、レンジ[0,bitmax]以内でなければなりません。
+@seealso{@ref{XREFbitor,,bitor}, @ref{XREFbitxor,,bitxor},
+@ref{XREFbitset,,bitset}, @ref{XREFbitget,,bitget},
+@ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift},
+@ref{XREFbitmax,,bitmax}}
+@end deftypefn
+
+
+@c bitor libinterp/corefcn/bitfcns.cc
+@anchor{XREFbitor}
+@deftypefn {Built-in Function} {} bitor (@var{x}, @var{y})
+非負の整数のビットごとのORをリターンします。@var{x}と@var{y}は、レンジ[0,bitmax]以内でなければなりません。
+@seealso{@ref{XREFbitor,,bitor}, @ref{XREFbitxor,,bitxor},
+@ref{XREFbitset,,bitset}, @ref{XREFbitget,,bitget},
+@ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift},
+@ref{XREFbitmax,,bitmax}}
+@end deftypefn
+
+
+@c bitxor libinterp/corefcn/bitfcns.cc
+@anchor{XREFbitxor}
+@deftypefn {Built-in Function} {} bitxor (@var{x}, @var{y})
+非負の整数のビットごとのXORをリターンします。@var{x}と@var{y}は、レンジ[0,bitmax]以内でなければなりません。
+@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor},
+@ref{XREFbitset,,bitset}, @ref{XREFbitget,,bitget},
+@ref{XREFbitcmp,,bitcmp}, @ref{XREFbitshift,,bitshift},
+@ref{XREFbitmax,,bitmax}}
+@end deftypefn
+
+
+ビット単位の'否定(not)'は、値の各ビットにたいして論理否定を行う、単項演算子です。これは否定しようとする値のマスクを定義しなければならないときに有用です。Octaveのビットごとの'否定(not)'演算子は、@code{bitcmp}です。
+
+@c bitcmp scripts/general/bitcmp.m
+@anchor{XREFbitcmp}
+@deftypefn {Function File} {} bitcmp (@var{A}, @var{k})
+@var{A}内の整数の@var{k}ビット補数をリターンします。@var{k}は省略された場合、@code{k = log2 (bitmax) +
+1}が指定されたとみなします。
+
+@example
+@group
+bitcmp (7,4)
+  @result{} 8
+dec2bin (11)
+  @result{} 1011
+dec2bin (bitcmp (11, 6))
+  @result{} 110100
+@end group
+@end example
+@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor},
+@ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset},
+@ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp},
+@ref{XREFbitshift,,bitshift}, @ref{XREFbitmax,,bitmax}}
+@end deftypefn
+
+
+Octaveには、値にたいしてビット単位での左シフトと右シフトの機能もあります。
+
+@c bitshift libinterp/corefcn/bitfcns.cc
+@anchor{XREFbitshift}
+@deftypefn {Built-in Function} {} bitshift (@var{a}, @var{k})
+@deftypefnx {Built-in Function} {} bitshift (@var{a}, @var{k}, @var{n})
+@var{a}内の符号なし整数を@var{k}ビットシフトして、結果の@var{n}桁(ビット)をリターンします。@var{k}の値が正ならば左シフト、負ならば右シフトです。@var{n}が省略された場合のデフォルトは、log2(bitmax)+1です。@var{n}はレンジ[1,log2(bitmax)+1](通常は[1,33])以内でなければなりません。
+
+@example
+@group
+bitshift (eye (3), 1)
+@result{}
+@group
+2 0 0
+0 2 0
+0 0 2
+@end group
+
+@c FIXME: restore this example when third arg is allowed to be an array.
+@c
+@c
+@c bitshift ([1, 10], 2, [3,4])
+@c @result{} 4  8
+bitshift (10, [-2, -1, 0, 1, 2])
+@result{} 2   5  10  20  40
+@end group
+@end example
+@seealso{@ref{XREFbitand,,bitand}, @ref{XREFbitor,,bitor},
+@ref{XREFbitxor,,bitxor}, @ref{XREFbitset,,bitset},
+@ref{XREFbitget,,bitget}, @ref{XREFbitcmp,,bitcmp},
+@ref{XREFbitmax,,bitmax}}
+@end deftypefn
+
+
+値の両方の終端からシフトアウトされたビットは失われます。Octaveは数学的シフト(右シフトにおいて値の符号ビットが保持される)も使用します。たとえば:
+
+@example
+@group
+bitshift (-10, -1)
+@result{} -5
+bitshift (int8 (-1), -1)
+@result{} -1
+@end group
+@end example
+
+@code{bitshift (int8 (-1),
+-1)}が@code{-1}になることに注意してください。これは@code{int8}データ型における@code{-1}のビット表現が@code{[1,
+1, 1, 1, 1, 1, 1, 1]}だからです。
+
+@node Logical Values
+@section Logical Values
+
+Octaveには論理値(例:
+値が@code{true}か@code{false}であるような変数)にたいするビルトインサポートがあります。2つの変数を比較する場合、結果はその比較の結果が真か否かに依存する値をもつ、論理値になります。
+
+基本的な論理演算子@code{&}、@code{|}、@code{!}はそれぞれ``論理AND''、``論理OR''、``論理NOT''に対応します。これらの演算子は通常の論理ルールにしたがいます。
+
+標準的な数値計算の一部として論理値を使うこともできます。この場合、@code{true}は@code{1}、@code{false}は@code{0}に変換され、それらは倍精度浮動小数点数で表されます。つまり@code{true*22
+- false/6}は@code{22}になります。
+
+論理値はマトリクスとセル配列のインデクスにも使用されます。論理配列でインデクス操作を行う場合、結果は論理配列の@code{true}部に対応する値を含むベクターになります。以下の例で示します。
+
+@example
+@group
+data = [ 1, 2; 3, 4 ];
+idx = (data <= 2);
+data(idx)
+     @result{} ans = [ 1; 2 ]
+@end group
+@end example
+
+@noindent
+@code{idx}配列を作成せずに、上記コードの@code{data(idx)}を@w{@code{data( data <= 2
+)}}に置き換えることも可能です。
+
+論理値は、数値オブジェクトから論理値へのキャストや、@code{true}および@code{false}の関数で構築することもできます。
+
+@c logical libinterp/octave-value/ov-bool-mat.cc
+@anchor{XREFlogical}
+@deftypefn {Built-in Function} {} logical (@var{x})
+数値オブジェクト@var{x}を論理型に変換します。
+
+非0値はtrue(1)に、0値はfalse(0)に変換されます。非数値NaNは変換できず、エラーが発生します。
+
+互換性ノート: Octaveでは複素数値を入力できますが、@sc{matlab}はできません。
+@seealso{@ref{XREFdouble,,double}, @ref{XREFsingle,,single},
+@ref{XREFchar,,char}}
+@end deftypefn
+
+
+@c true libinterp/corefcn/data.cc
+@anchor{XREFtrue}
+@deftypefn {Built-in Function} {} true (@var{x})
+@deftypefnx {Built-in Function} {} true (@var{n}, @var{m})
+@deftypefnx {Built-in Function} {} true (@var{n}, @var{m}, @var{k}, @dots{})
+要素がすべて論理的1であるような行列またはN次元配列をリターンします。引数が1つのスカラー整数の場合は、指定されたサイズの正方マトリクスリターンします。引数が2つ以上のスカラー整数、または整数値ベクターの場合は、与えられた次元の配列をリターンします。
+@seealso{@ref{XREFfalse,,false}}
+@end deftypefn
+
+
+@c false libinterp/corefcn/data.cc
+@anchor{XREFfalse}
+@deftypefn {Built-in Function} {} false (@var{x})
+@deftypefnx {Built-in Function} {} false (@var{n}, @var{m})
+@deftypefnx {Built-in Function} {} false (@var{n}, @var{m}, @var{k}, @dots{})
+要素がすべて論理的0であるような行列またはN次元配列をリターンします。引数が1つのスカラー整数の場合は、指定されたサイズの正方マトリクスリターンします。引数が2つ以上のスカラー整数、または整数値ベクターの場合は、与えられた次元の配列をリターンします。
+@seealso{@ref{XREFtrue,,true}}
+@end deftypefn
+
+
+@node Promotion and Demotion of Data Types
+@section Promotion and Demotion of Data Types
+
+混成されたデータ型にたいして機能する演算子と関数が多数あります。たとえば、
+
+@example
+@group
+uint8 (1) + 1
+    @result{} 2
+@end group
+@end example
+
+@noindent
+上記の例の演算子は、8ビット整数と倍精度値に作用して、8ビット整数値をリターンしています。型は期待されるように倍精度値に昇格されるのではなく、8ビット整数に降格されたことに注意してください。この理由は、Octaveで上記のような式内の値が昇格されるには、下記のようにすべての数値定数を適切な型に明示的にキャストする必要があるからです
+
+@example
+@group
+uint8 (1) + uint8 (1)
+    @result{} 2
+@end group
+@end example
+
+@noindent
+これはユーザーにとって一律に受け入れることを困難にし、混入されるバグの発見を難しくするかもしれません。同じことは、以下のような単精度値にたいする混成演算にも適用されます
+
+@example
+@group
+single (1) + 1
+    @result{} 2
+@end group
+@end example
+
+@noindent
+これは単精度値をリターンします。有効な混成演算と、それらがリターンするデータ型は以下のとおりです
+
+@multitable @columnfractions .2 .3 .3 .2
+@headitem @tab 混成演算 @tab 結果 @tab 
+@item @tab double OP single @tab single @tab
+@item @tab double OP integer @tab integer @tab
+@item @tab double OP char @tab double @tab
+@item @tab double OP logical @tab double @tab
+@item @tab single OP integer @tab integer @tab
+@item @tab single OP char @tab single @tab
+@item @tab single OP logical @tab single @tab
+@end multitable
+
+以下のような混成引数による関数呼び出しにも、同じロジックが適用されます
+
+@example
+@group
+min (single (1), 0)
+   @result{} 0
+@end group
+@end example
+
+@noindent
+これのリターン値は単精度です。
+
+混成型によるインデクス割り当てでは、型は変更されません。たとえば、
+
+@example
+@group
+x = ones (2, 2);
+x(1, 1) = single (2)
+   @result{} x = 2   1
+          1   1
+@end group
+@end example
+
+@noindent
+ここでは@code{x}は倍精度型のままです。 
+
+@node Predicates for Numeric Objects
+@section Predicates for Numeric Objects
+
+変数のデータ型はプログラム実行の間に変更されるかもしれないので、実行時に型チェックを行う必要が生じます。型チェックを行うことにより、入力のデータ型により関数の振る舞いを変化させることもできます。以下は入力が実数の場合は絶対値、複素数の場合は長さをリターンする、@code{abs}の単純な実装例です
+
+@example
+@group
+function a = abs (x)
+  if (isreal (x))
+    a = sign (x) .* x;
+  elseif (iscomplex (x))
+    a = sqrt (real(x).^2 + imag(x).^2);
+  endif
+endfunction
+@end group
+@end example
+
+以下の関数は変数の型を判断するために利用できます。
+
+@c isnumeric libinterp/corefcn/data.cc
+@anchor{XREFisnumeric}
+@deftypefn {Built-in Function} {} isnumeric (@var{x})
+@var{x}が数値オブジェクト(例: 整数、実数、複素数の配列など)の場合は、trueをリターンします。論理値と文字配列は、数値とは判断されません。
+@seealso{@ref{XREFisinteger,,isinteger}, @ref{XREFisfloat,,isfloat},
+@ref{XREFisreal,,isreal}, @ref{XREFiscomplex,,iscomplex},
+@ref{XREFislogical,,islogical}, @ref{XREFischar,,ischar},
+@ref{XREFiscell,,iscell}, @ref{XREFisstruct,,isstruct}, @ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@c isfloat libinterp/corefcn/data.cc
+@anchor{XREFisfloat}
+@deftypefn {Built-in Function} {} isfloat (@var{x})
+@var{x}が浮動小数点数値オブジェクトの場合は、trueをリターンします。倍精度と単精度クラスのオブジェクトは浮動小数点オブジェクトです。
+@seealso{@ref{XREFisinteger,,isinteger}, @ref{XREFischar,,ischar},
+@ref{XREFislogical,,islogical}, @ref{XREFisnumeric,,isnumeric},
+@ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@c isreal libinterp/corefcn/data.cc
+@anchor{XREFisreal}
+@deftypefn {Built-in Function} {} isreal (@var{x})
+@var{x}が複素数のマトリクスおよびスカラーでない場合は、trueをリターンします。@sc{matlab}との互換性のため、論理値と文字マトリクスを含みます。
+@seealso{@ref{XREFiscomplex,,iscomplex}, @ref{XREFisnumeric,,isnumeric},
+@ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@c iscomplex libinterp/corefcn/data.cc
+@anchor{XREFiscomplex}
+@deftypefn {Built-in Function} {} iscomplex (@var{x})
+@var{x}が複素数の値をもつ数値オブジェクトの場合は、trueをリターンします。
+@seealso{@ref{XREFisreal,,isreal}, @ref{XREFisnumeric,,isnumeric},
+@ref{XREFislogical,,islogical}, @ref{XREFischar,,ischar},
+@ref{XREFisfloat,,isfloat}, @ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@c ismatrix libinterp/corefcn/data.cc
+@anchor{XREFismatrix}
+@deftypefn {Built-in Function} {} ismatrix (@var{a})
+@var{a}がマトリクス、論理値、文字マトリクスの場合は、trueをリターンします。スカラー(1x1マトリクス)とベクター(@nospell{1xN}マトリクスまたは@nospell{Nx1}マトリクスは、一般的なN次元マトリクスのサブセットなので、これらのオブジェクトにたいしても@code{ismatrix}は同じようにtrueをリターンします。
+@seealso{@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector},
+@ref{XREFiscell,,iscell}, @ref{XREFisstruct,,isstruct},
+@ref{XREFissparse,,issparse}, @ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@c isvector scripts/general/isvector.m
+@anchor{XREFisvector}
+@deftypefn {Function File} {} isvector (@var{x})
+@var{x}がベクターの場合は、trueをリターンします。ベクターはどちらか一方の次元が1に等しい2次元配列です。したがって1x1配列とスカラーもベクターです。
+@seealso{@ref{XREFisscalar,,isscalar}, @ref{XREFismatrix,,ismatrix},
+@ref{XREFsize,,size}, @ref{XREFrows,,rows}, @ref{XREFcolumns,,columns},
+@ref{XREFlength,,length}}
+@end deftypefn
+
+
+@c isrow scripts/general/isrow.m
+@anchor{XREFisrow}
+@deftypefn {Function File} {} isrow (@var{x})
+@var{x}が行ベクターの場合は、trueをリターンします。
+@seealso{@ref{XREFiscolumn,,iscolumn}, @ref{XREFisscalar,,isscalar},
+@ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}}
+@end deftypefn
+
+
+@c iscolumn scripts/general/iscolumn.m
+@anchor{XREFiscolumn}
+@deftypefn {Function File} {} iscolumn (@var{x})
+@var{x}が列ベクターの場合は、trueをリターンします。
+@seealso{@ref{XREFisrow,,isrow}, @ref{XREFisscalar,,isscalar},
+@ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}}
+@end deftypefn
+
+
+@c isscalar scripts/general/isscalar.m
+@anchor{XREFisscalar}
+@deftypefn {Function File} {} isscalar (@var{x})
+@var{x}がスカラーの場合は、trueをリターンします。
+@seealso{@ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}}
+@end deftypefn
+
+
+@c issquare scripts/general/issquare.m
+@anchor{XREFissquare}
+@deftypefn {Function File} {} issquare (@var{x})
+@var{x}が正方マトリクスの場合は、trueをリターンします。
+@seealso{@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector},
+@ref{XREFismatrix,,ismatrix}, @ref{XREFsize,,size}}
+@end deftypefn
+
+
+@c issymmetric scripts/linear-algebra/issymmetric.m
+@anchor{XREFissymmetric}
+@deftypefn {Function File} {} issymmetric (@var{x})
+@deftypefnx {Function File} {} issymmetric (@var{x}, @var{tol})
+@var{x}が@var{tol}で指定された公差内で対称なマトリクスの場合は、trueをリターンします。デフォルトの公差は0です(高速なコードを使用します)。マトリクス@var{tol}は、@code{norm
+(@var{x} - @var{x}.', Inf) / norm (@var{x}, Inf) < @var{tol}}の場合は、対称と判断されます。
+@seealso{@ref{XREFishermitian,,ishermitian},
+@ref{XREFisdefinite,,isdefinite}}
+@end deftypefn
+
+
+@c ishermitian scripts/linear-algebra/ishermitian.m
+@anchor{XREFishermitian}
+@deftypefn {Function File} {} ishermitian (@var{x})
+@deftypefnx {Function File} {} ishermitian (@var{x}, @var{tol})
+@var{x}が@var{tol}で指定された公差内でエルミートの場合は、trueをリターンします。デフォルトの公差は0です(高速なコードを使用します)。マトリクス@var{x}は、@code{norm
+(@var{x} - @var{x}', Inf) / norm (@var{x}, Inf) < @var{tol}}であれば対称と判断されます。
+@seealso{@ref{XREFissymmetric,,issymmetric},
+@ref{XREFisdefinite,,isdefinite}}
+@end deftypefn
+
+
+@c isdefinite scripts/linear-algebra/isdefinite.m
+@anchor{XREFisdefinite}
+@deftypefn {Function File} {} isdefinite (@var{x})
+@deftypefnx {Function File} {} isdefinite (@var{x}, @var{tol})
+@var{x}が@var{tol}で指定された公差内で対称な正定値であれば1、@var{x}が対称な半正定値であれば0、それ以外は-1をリターンします。@var{tol}が省略された場合は、公差@code{100
+* eps * norm (@var{x}, "fro")}を使用します。
+@seealso{@ref{XREFissymmetric,,issymmetric},
+@ref{XREFishermitian,,ishermitian}}
+@end deftypefn
+
+
+@c islogical libinterp/corefcn/data.cc
+@anchor{XREFislogical}
+@deftypefn {Built-in Function} {} islogical (@var{x})
+@deftypefnx {Built-in Function} {} isbool (@var{x})
+@var{x}が論理オブジェクトの場合は、trueをリターンします。
+@seealso{@ref{XREFisfloat,,isfloat}, @ref{XREFisinteger,,isinteger},
+@ref{XREFischar,,ischar}, @ref{XREFisnumeric,,isnumeric},
+@ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@c isprime scripts/specfun/isprime.m
+@anchor{XREFisprime}
+@deftypefn {Function File} {} isprime (@var{x})
+@var{x}の要素にたいして、素数の要素にたいしてはtrue、それ以外はfalseであるような論理配列をリターンします。
+
+@var{x}内の最大値が非常に大きい場合は、特別な目的のための因数分解コードを使用するべきです。
+
+@example
+@group
+isprime (1:6)
+    @result{} [0, 1, 1, 0, 1, 0]
+@end group
+@end example
+@seealso{@ref{XREFprimes,,primes}, @ref{XREFfactor,,factor},
+@ref{XREFgcd,,gcd}, @ref{XREFlcm,,lcm}}
+@end deftypefn
+
+
+変数のプロパティを調べるのではなく、どの変数が定義されているかや、ワークスペース自体についての情報を収集したい場合は、@ref{Status of
+Variables}を参照してください。

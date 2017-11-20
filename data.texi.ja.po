@@ -1,0 +1,1188 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: octave 3.8.2\n"
+"POT-Creation-Date: 2017-07-16 03:01+0000\n"
+"PO-Revision-Date: 2017-07-17 09:49+0900\n"
+"Last-Translator: Ayanokoji Takesi <ayanokoji.takesi@gmail.com>\n"
+"Language-Team: japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: chapter
+#: data.texi.orig:21 data.texi.orig:22
+#, no-wrap
+msgid "Data Types"
+msgstr "Data Types"
+
+#. type: cindex
+#: data.texi.orig:23
+#, no-wrap
+msgid "data types"
+msgstr "data types"
+
+#. type: Plain text
+#: data.texi.orig:28
+msgid ""
+"All versions of Octave include a number of built-in data types, including "
+"real and complex scalars and matrices, character strings, a data structure "
+"type, and an array that can contain all data types."
+msgstr "Octaveのすべてのバージョンにはいくつかのビルトインデータ型が含まれます。それらには、real(実数)およびcomplex(複素数)にたいするスカラー(scalar)とマトリクス(matrix)、文字列(character string)、データ構造型(data structure type)、そしてすべてのデータ型を含むことができる配列(array)が含まれます。"
+
+#. type: Plain text
+#: data.texi.orig:36
+msgid ""
+"It is also possible to define new specialized data types by writing a small "
+"amount of C++ code.  On some systems, new data types can be loaded "
+"dynamically while Octave is running, so it is not necessary to recompile all "
+"of Octave just to add a new type.  @xref{External Code Interface}, for more "
+"information about Octave's dynamic linking capabilities.  @ref{User-defined "
+"Data Types} describes what you must do to define a new data type for Octave."
+msgstr "少しC++コードを記述すれば、新しく特別なデータ型を定義することもできます。Octave実行中に新しいデータ型をダイナミック(動的)にロードできるシステムもいくつかあり、その場合はOctaveすべてをリコンパイルせずに、新しいデータ型を単に追加できます。Octaveのダイナミックリンク能力についての情報は、@ref{External Code Interface}を参照してください。@ref{User-defined Data Types}では、Octaveに新しいデータ型を定義するために、何を行わなければならないか説明しています。"
+
+#. type: anchor{#1}
+#: data.texi.orig:39
+msgid "XREFtypeinfo"
+msgstr "XREFtypeinfo"
+
+#. type: deftypefn
+#: data.texi.orig:39
+#, no-wrap
+msgid "{Built-in Function} {} typeinfo ()"
+msgstr "{Built-in Function} {} typeinfo ()"
+
+#. type: deftypefnx
+#: data.texi.orig:40
+#, no-wrap
+msgid "{Built-in Function} {} typeinfo (@var{expr})"
+msgstr "{Built-in Function} {} typeinfo (@var{expr})"
+
+#. type: deftypefn
+#: data.texi.orig:46
+msgid ""
+"Return the type of the expression @var{expr}, as a string.  If @var{expr} is "
+"omitted, return a cell array of strings containing all the currently "
+"installed data types.  @seealso{@ref{XREFclass,,class}, @ref{XREFisa,,isa}}"
+msgstr ""
+"式@var{expr}の型を、文字列でリターンします。@var{expr}が省略された場合は、現在インストールされているデータ型すべてを含む文字列のセル配列をリターンします。\n"
+"@seealso{@ref{XREFclass,,class}, @ref{XREFisa,,isa}}"
+
+#. type: menuentry
+#: data.texi.orig:53
+msgid "Built-in Data Types::"
+msgstr "Built-in Data Types::"
+
+#. type: menuentry
+#: data.texi.orig:53
+msgid "User-defined Data Types::"
+msgstr "User-defined Data Types::"
+
+#. type: section
+#: data.texi.orig:53 data.texi.orig:377 data.texi.orig:378
+#, no-wrap
+msgid "Object Sizes"
+msgstr "Object Sizes"
+
+#. type: section
+#: data.texi.orig:55 data.texi.orig:56
+#, no-wrap
+msgid "Built-in Data Types"
+msgstr "Built-in Data Types"
+
+#. type: cindex
+#: data.texi.orig:57
+#, no-wrap
+msgid "data types, built-in"
+msgstr "data types, built-in"
+
+#. type: cindex
+#: data.texi.orig:58
+#, no-wrap
+msgid "built-in data types"
+msgstr "built-in data types"
+
+#. type: Plain text
+#: data.texi.orig:66
+msgid ""
+"The standard built-in data types are real and complex scalars and matrices, "
+"ranges, character strings, a data structure type, and cell arrays.  "
+"Additional built-in data types may be added in future versions.  If you need "
+"a specialized data type that is not currently provided as a built-in type, "
+"you are encouraged to write your own user-defined data type and contribute "
+"it for distribution in a future release of Octave."
+msgstr "標準のビルトインデータ型は、real(実数)およびcomplex(複素数)のスカラー(scalar)およびマトリクス(matrix)、range(レンジ、範囲)、文字列(character string)、データ構造型(data structure type)、セル配列(cell array)です。将来のバージョンで、さらにビルトインデータ型が追加されるかもしれません。現在ビルトイン型として提供されていない、特別なデータ型が必要な場合は、あなたが独自にユーザー定義データ型を記述して、それをOctaveの将来リリースのディストリビューションのために寄贈されることをお勧めします。"
+
+#. type: Plain text
+#: data.texi.orig:69
+msgid ""
+"The data type of a variable can be determined and changed through the use of "
+"the following functions."
+msgstr "以下の関数を使用して、変数のデータ型の判定と変更ができます。"
+
+#. type: anchor{#1}
+#: data.texi.orig:72
+msgid "XREFclass"
+msgstr "XREFclass"
+
+#. type: deftypefn
+#: data.texi.orig:72
+#, no-wrap
+msgid "{Function File} {@var{classname} =} class (@var{obj})"
+msgstr "{Function File} {@var{classname} =} class (@var{obj})"
+
+#. type: deftypefnx
+#: data.texi.orig:73
+#, no-wrap
+msgid "{Function File} {} class (@var{s}, @var{id})"
+msgstr "{Function File} {} class (@var{s}, @var{id})"
+
+#. type: deftypefnx
+#: data.texi.orig:74
+#, no-wrap
+msgid "{Function File} {} class (@var{s}, @var{id}, @var{p}, @dots{})"
+msgstr "{Function File} {} class (@var{s}, @var{id}, @var{p}, @dots{})"
+
+#. type: deftypefn
+#: data.texi.orig:80
+msgid ""
+"Return the class of the object @var{obj} or create a class with fields from "
+"structure @var{s} and name (string) @var{id}.  Additional arguments name a "
+"list of parent classes from which the new class is derived.  "
+"@seealso{@ref{XREFtypeinfo,,typeinfo}, @ref{XREFisa,,isa}}"
+msgstr ""
+"オブジェクト@var{obj}のクラスをリターン、または構造@var{s}のフィールド、およびnameフィールド(文字列)が@var{id}のクラスを作成します。追加の引数は、新しいクラスがどのクラスから継承されたかを示す親クラスの名前のリストです。\n"
+"@seealso{@ref{XREFtypeinfo,,typeinfo}, @ref{XREFisa,,isa}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:85
+msgid "XREFisa"
+msgstr "XREFisa"
+
+#. type: deftypefn
+#: data.texi.orig:85
+#, no-wrap
+msgid "{Function File} {} isa (@var{obj}, @var{classname})"
+msgstr "{Function File} {} isa (@var{obj}, @var{classname})"
+
+#. type: deftypefn
+#: data.texi.orig:87
+msgid "Return true if @var{obj} is an object from the class @var{classname}."
+msgstr "@var{obj}がクラス@var{classname}ならばtrueをリターンします。"
+
+#. type: deftypefn
+#: data.texi.orig:89
+msgid "@var{classname} may also be one of the following class categories:"
+msgstr "@var{classname}は、以下のクラスカテゴリーの1つかもしれません:"
+
+#. type: item
+#: data.texi.orig:91
+#, no-wrap
+msgid "@qcode{\"float\"}"
+msgstr "@qcode{\"float\"}"
+
+#. type: table
+#: data.texi.orig:94
+msgid ""
+"Floating point value comprising classes @qcode{\"double\"} and "
+"@qcode{\"single\"}."
+msgstr "float(浮動小数点)の値は、クラス@qcode{\"double\"}および@qcode{\"single\"}を包括します。"
+
+#. type: item
+#: data.texi.orig:95
+#, no-wrap
+msgid "@qcode{\"integer\"}"
+msgstr "@qcode{\"integer\"}"
+
+#. type: table
+#: data.texi.orig:97
+msgid "Integer value comprising classes (u)int8, (u)int16, (u)int32, (u)int64."
+msgstr "integer(整数)の値は、クラス(u)int8、(u)int16、(u)int32、(u)int64を包括します。"
+
+#. type: item
+#: data.texi.orig:98
+#, no-wrap
+msgid "@qcode{\"numeric\"}"
+msgstr "@qcode{\"numeric\"}"
+
+#. type: table
+#: data.texi.orig:100
+msgid "Numeric value comprising either a floating point or integer value."
+msgstr "numericの値は、浮動小数点値と整数値を包括します。"
+
+#. type: deftypefn
+#: data.texi.orig:102
+msgid "@seealso{@ref{XREFclass,,class}, @ref{XREFtypeinfo,,typeinfo}}"
+msgstr "@seealso{@ref{XREFclass,,class}, @ref{XREFtypeinfo,,typeinfo}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:107
+msgid "XREFcast"
+msgstr "XREFcast"
+
+#. type: deftypefn
+#: data.texi.orig:107
+#, no-wrap
+msgid "{Function File} {} cast (@var{val}, @var{type})"
+msgstr "{Function File} {} cast (@var{val}, @var{type})"
+
+#. type: deftypefn
+#: data.texi.orig:110
+msgid ""
+"Convert @var{val} to data type @var{type}.  @seealso{@ref{XREFint8,,int8}, "
+"@ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, "
+"@ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, "
+"@ref{XREFuint64,,uint64}, @ref{XREFdouble,,double}}"
+msgstr ""
+"@var{val}をデータ型@var{type}に変換します。\n"
+"@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8}, @ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32}, @ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64}, @ref{XREFdouble,,double}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:115
+msgid "XREFtypecast"
+msgstr "XREFtypecast"
+
+#. type: deftypefn
+#: data.texi.orig:115
+#, no-wrap
+msgid "{Built-in Function} {} typecast (@var{x}, @var{class})"
+msgstr "{Built-in Function} {} typecast (@var{x}, @var{class})"
+
+#. type: deftypefn
+#: data.texi.orig:119
+msgid ""
+"Return a new array @var{y} resulting from interpreting the data of @var{x} "
+"in memory as data of the numeric class @var{class}.  Both the class of "
+"@var{x} and @var{class} must be one of the built-in numeric classes:"
+msgstr "メモリー内で@var{x}のデータをnumericクラス@var{class}のデータとして解釈し、結果を新たな配列@var{y}でリターンします。@var{x}と@var{class}はどちらも、ビルトインnumericクラスの1つでなければなりません。"
+
+#. type: group
+#: data.texi.orig:136
+#, no-wrap
+msgid ""
+"\"logical\"\n"
+"\"char\"\n"
+"\"int8\"\n"
+"\"int16\"\n"
+"\"int32\"\n"
+"\"int64\"\n"
+"\"uint8\"\n"
+"\"uint16\"\n"
+"\"uint32\"\n"
+"\"uint64\"\n"
+"\"double\"\n"
+"\"single\"\n"
+"\"double complex\"\n"
+"\"single complex\"\n"
+msgstr ""
+"\"logical\"\n"
+"\"char\"\n"
+"\"int8\"\n"
+"\"int16\"\n"
+"\"int32\"\n"
+"\"int64\"\n"
+"\"uint8\"\n"
+"\"uint16\"\n"
+"\"uint32\"\n"
+"\"uint64\"\n"
+"\"double\"\n"
+"\"single\"\n"
+"\"double complex\"\n"
+"\"single complex\"\n"
+
+#. type: deftypefn
+#: data.texi.orig:150
+msgid ""
+"the last two are reserved for @var{class}; they indicate that a "
+"complex-valued result is requested.  Complex arrays are stored in memory as "
+"consecutive pairs of real numbers.  The sizes of integer types are given by "
+"their bit counts.  Both logical and char are typically one byte wide; "
+"however, this is not guaranteed by C++.  If your system is IEEE conformant, "
+"single and double should be 4 bytes and 8 bytes wide, respectively.  "
+"@qcode{\"logical\"} is not allowed for @var{class}.  If the input is a row "
+"vector, the return value is a row vector, otherwise it is a column vector.  "
+"If the bit length of @var{x} is not divisible by that of @var{class}, an "
+"error occurs."
+msgstr "最後の2つは、@var{class}のために予約されています。これらは、complex値の結果が要求されていることを示します。complex配列は、連続するreal値として、メモリー内に格納されます。integer型のサイズは、それらのビット数で与えられます。logicalとcharはどちらも1バイト幅です。しかしこれはC++により保証されていません。システムがIEEE準拠の場合、singleとdoubleは、4バイトおよび8バイト幅です。@qcode{\"logical\"}は、@var{class}に指定できません。入力が行ベクターならリターン値は行ベクターで、それ以外は列ベクターです。@var{x}のビット長が@var{class}のビット長の倍数でない場合は、エラーが発生します。"
+
+#. type: deftypefn
+#: data.texi.orig:152
+msgid "An example of the use of typecast on a little-endian machine is"
+msgstr "リトルエンディアン機でtypecastを使用する例は"
+
+#. type: group
+#: data.texi.orig:158
+#, no-wrap
+msgid ""
+"@var{x} = uint16 ([1, 65535]);\n"
+"typecast (@var{x}, \"uint8\")\n"
+"@result{} [   1,   0, 255, 255]\n"
+msgstr ""
+"@var{x} = uint16 ([1, 65535]);\n"
+"typecast (@var{x}, \"uint8\")\n"
+"@result{} [   1,   0, 255, 255]\n"
+
+#. type: deftypefn
+#: data.texi.orig:161
+msgid ""
+"@seealso{@ref{XREFcast,,cast}, @ref{XREFbitunpack,,bitunpack}, "
+"@ref{XREFbitpack,,bitpack}, @ref{XREFswapbytes,,swapbytes}}"
+msgstr "@seealso{@ref{XREFcast,,cast}, @ref{XREFbitunpack,,bitunpack}, @ref{XREFbitpack,,bitpack}, @ref{XREFswapbytes,,swapbytes}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:166
+msgid "XREFswapbytes"
+msgstr "XREFswapbytes"
+
+#. type: deftypefn
+#: data.texi.orig:166
+#, no-wrap
+msgid "{Function File} {} swapbytes (@var{x})"
+msgstr "{Function File} {} swapbytes (@var{x})"
+
+#. type: deftypefn
+#: data.texi.orig:169
+msgid ""
+"Swap the byte order on values, converting from little endian to big endian "
+"and vice versa.  For example:"
+msgstr "値のバイト順を入れ替えて、リトルエンディアンからビッグエンディアン、またはその逆の変換をします。"
+
+#. type: group
+#: data.texi.orig:174
+#, no-wrap
+msgid ""
+"swapbytes (uint16 (1:4))\n"
+"@result{} [   256   512   768  1024]\n"
+msgstr ""
+"swapbytes (uint16 (1:4))\n"
+"@result{} [   256   512   768  1024]\n"
+
+#. type: deftypefn
+#: data.texi.orig:178
+msgid "@seealso{@ref{XREFtypecast,,typecast}, @ref{XREFcast,,cast}}"
+msgstr "@seealso{@ref{XREFtypecast,,typecast}, @ref{XREFcast,,cast}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:183
+msgid "XREFbitpack"
+msgstr "XREFbitpack"
+
+#. type: deftypefn
+#: data.texi.orig:183
+#, no-wrap
+msgid "{Built-in Function} {@var{y} =} bitpack (@var{x}, @var{class})"
+msgstr "{Built-in Function} {@var{y} =} bitpack (@var{x}, @var{class})"
+
+#. type: deftypefn
+#: data.texi.orig:187
+msgid ""
+"Return a new array @var{y} resulting from interpreting an array @var{x} as "
+"raw bit patterns for data of the numeric class @var{class}.  @var{class} "
+"must be one of the built-in numeric classes:"
+msgstr "配列@var{x}をnumericクラス@var{class}のrawビット配列として解釈した結果を、新たな配列@var{y}でリターンします。@var{class}はビルトインnumericクラスのうちの1つでなければなりません。"
+
+#. type: group
+#: data.texi.orig:201 data.texi.orig:232
+#, no-wrap
+msgid ""
+"\"char\"\n"
+"\"int8\"\n"
+"\"int16\"\n"
+"\"int32\"\n"
+"\"int64\"\n"
+"\"uint8\"\n"
+"\"uint16\"\n"
+"\"uint32\"\n"
+"\"uint64\"\n"
+"\"double\"\n"
+"\"single\"\n"
+msgstr ""
+"\"char\"\n"
+"\"int8\"\n"
+"\"int16\"\n"
+"\"int32\"\n"
+"\"int64\"\n"
+"\"uint8\"\n"
+"\"uint16\"\n"
+"\"uint32\"\n"
+"\"uint64\"\n"
+"\"double\"\n"
+"\"single\"\n"
+
+#. type: deftypefn
+#: data.texi.orig:210
+msgid ""
+"The number of elements of @var{x} should be divisible by the bit length of "
+"@var{class}.  If it is not, excess bits are discarded.  Bits come in "
+"increasing order of significance, i.e., @code{x(1)} is bit 0, @code{x(2)} is "
+"bit 1, etc.  The result is a row vector if @var{x} is a row vector, "
+"otherwise it is a column vector.  @seealso{@ref{XREFbitunpack,,bitunpack}, "
+"@ref{XREFtypecast,,typecast}}"
+msgstr ""
+"@var{x}の要素の個数は、@var{class}のビット長の倍数である必要があります。もしそうでない場合には、余分なビットは無視されます。ビット順は、@code{x(1)}がビット0、@code{x(2)}がビット1、のように、昇順になっています。結果は、@var{x}が行ベクターなら行ベクター、それ以外は列ベクターになります。\n"
+"@seealso{@ref{XREFbitunpack,,bitunpack}, @ref{XREFtypecast,,typecast}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:215
+msgid "XREFbitunpack"
+msgstr "XREFbitunpack"
+
+#. type: deftypefn
+#: data.texi.orig:215
+#, no-wrap
+msgid "{Built-in Function} {@var{y} =} bitunpack (@var{x})"
+msgstr "{Built-in Function} {@var{y} =} bitunpack (@var{x})"
+
+#. type: deftypefn
+#: data.texi.orig:218
+msgid ""
+"Return an array @var{y} corresponding to the raw bit patterns of @var{x}.  "
+"@var{x} must belong to one of the built-in numeric classes:"
+msgstr "@var{x}のrawビットパターンに対応する配列@var{y}をリターンします。@var{x}はビルトインnumericクラスの1つに属していなければなりません:"
+
+#. type: deftypefn
+#: data.texi.orig:238
+msgid ""
+"The result is a row vector if @var{x} is a row vector; otherwise, it is a "
+"column vector.  @seealso{@ref{XREFbitpack,,bitpack}, "
+"@ref{XREFtypecast,,typecast}}"
+msgstr ""
+"結果は@var{x}が行ベクターなら行ベクター、それ以外は列ベクターです。\n"
+"@seealso{@ref{XREFbitpack,,bitpack}, @ref{XREFtypecast,,typecast}}"
+
+#. type: menuentry
+#: data.texi.orig:247
+msgid "Numeric Objects::"
+msgstr "Numeric Objects::"
+
+#. type: menuentry
+#: data.texi.orig:247
+msgid "Missing Data::"
+msgstr "Missing Data::"
+
+#. type: menuentry
+#: data.texi.orig:247
+msgid "String Objects::"
+msgstr "String Objects::"
+
+#. type: menuentry
+#: data.texi.orig:247
+msgid "Data Structure Objects::"
+msgstr "Data Structure Objects::"
+
+#. type: subsection
+#: data.texi.orig:247 data.texi.orig:357 data.texi.orig:358
+#, no-wrap
+msgid "Cell Array Objects"
+msgstr "Cell Array Objects"
+
+#. type: subsection
+#: data.texi.orig:249 data.texi.orig:250
+#, no-wrap
+msgid "Numeric Objects"
+msgstr "Numeric Objects"
+
+#. type: cindex
+#: data.texi.orig:251
+#, no-wrap
+msgid "numeric constant"
+msgstr "numeric constant"
+
+#. type: cindex
+#: data.texi.orig:252
+#, no-wrap
+msgid "numeric value"
+msgstr "numeric value"
+
+#. type: Plain text
+#: data.texi.orig:258
+msgid ""
+"Octave's built-in numeric objects include real, complex, and integer scalars "
+"and matrices.  All built-in floating point numeric data is currently stored "
+"as double precision numbers.  On systems that use the IEEE floating point "
+"format, values in the range of approximately"
+msgstr "Octaveのビルトインnumericオブジェクトには、real、complex、integerのスカラーとマトリクスが含まれます。すべてのビルトイン浮動小数点numericデータは、現在のところ倍精度浮動小数点数として格納されます。IEEE浮動小数点フォーマットを使用するシステムでは、およそ"
+
+#. type: tex
+#: data.texi.orig:260
+#, no-wrap
+msgid " $2.2251\\times10^{-308}$ to $1.7977\\times10^{308}$\n"
+msgstr " $2.2251\\times10^{-308}$から$1.7977\\times10^{308}$\n"
+
+#. type: ifnottex
+#: data.texi.orig:263
+msgid "2.2251e-308 to 1.7977e+308"
+msgstr "2.2251e-308から1.7977e+308"
+
+#. type: Plain text
+#: data.texi.orig:265
+msgid "can be stored, and the relative precision is approximately"
+msgstr "までの範囲の値が格納でき、相対精度はおよそ"
+
+#. type: tex
+#: data.texi.orig:267
+#, no-wrap
+msgid " $2.2204\\times10^{-16}$.\n"
+msgstr " $2.2204\\times10^{-16}$です。\n"
+
+#. type: ifnottex
+#: data.texi.orig:270
+msgid "2.2204e-16."
+msgstr "2.2204e-16です。"
+
+#. type: Plain text
+#: data.texi.orig:273
+msgid ""
+"The exact values are given by the variables @code{realmin}, @code{realmax}, "
+"and @code{eps}, respectively."
+msgstr "正確な値はそれぞれ、変数@code{realmin}、@code{realmax}、@code{eps}で得ることができます。"
+
+#. type: Plain text
+#: data.texi.orig:277
+msgid ""
+"Matrix objects can be of any size, and can be dynamically reshaped and "
+"resized.  It is easy to extract individual rows, columns, or submatrices "
+"using a variety of powerful indexing features.  @xref{Index Expressions}."
+msgstr "マトリクスオブジェクトは任意のサイズをとることができ、動的に変形やサイズ変更ができます。種々の強力なインデクス機能を使用して、特定の行や列、サブマトリクスが簡単に抽出できます。@ref{Index Expressions}を参照してください。"
+
+#. type: Plain text
+#: data.texi.orig:279
+msgid "@xref{Numeric Data Types}, for more information."
+msgstr "詳細は、@ref{Numeric Data Types}を参照してください。"
+
+#. type: subsection
+#: data.texi.orig:280 data.texi.orig:281
+#, no-wrap
+msgid "Missing Data"
+msgstr "Missing Data"
+
+#. type: cindex
+#: data.texi.orig:282
+#, no-wrap
+msgid "missing data"
+msgstr "missing data"
+
+#. type: Plain text
+#: data.texi.orig:289
+msgid ""
+"It is possible to represent missing data explicitly in Octave using "
+"@code{NA} (short for ``Not Available'').  Missing data can only be "
+"represented when data is represented as floating point numbers.  In this "
+"case missing data is represented as a special case of the representation of "
+"@code{NaN}."
+msgstr "Octaveでは、@code{NA}(``Not Available''の略)を使用して、欠損データを明示的に表すことができます。欠損データが表されるのは、データが浮動小数点数として表されるときだけです。この場合、欠損データは@code{NaN}の特別なケースとして表されます。"
+
+#. type: anchor{#1}
+#: data.texi.orig:292
+msgid "XREFNA"
+msgstr "XREFNA"
+
+#. type: deftypefn
+#: data.texi.orig:292
+#, no-wrap
+msgid "{Built-in Function} {} NA"
+msgstr "{Built-in Function} {} NA"
+
+#. type: deftypefnx
+#: data.texi.orig:293
+#, no-wrap
+msgid "{Built-in Function} {} NA (@var{n})"
+msgstr "{Built-in Function} {} NA (@var{n})"
+
+#. type: deftypefnx
+#: data.texi.orig:294
+#, no-wrap
+msgid "{Built-in Function} {} NA (@var{n}, @var{m})"
+msgstr "{Built-in Function} {} NA (@var{n}, @var{m})"
+
+#. type: deftypefnx
+#: data.texi.orig:295
+#, no-wrap
+msgid "{Built-in Function} {} NA (@var{n}, @var{m}, @var{k}, @dots{})"
+msgstr "{Built-in Function} {} NA (@var{n}, @var{m}, @var{k}, @dots{})"
+
+#. type: deftypefnx
+#: data.texi.orig:296
+#, no-wrap
+msgid "{Built-in Function} {} NA (@dots{}, @var{class})"
+msgstr "{Built-in Function} {} NA (@dots{}, @var{class})"
+
+#. type: deftypefn
+#: data.texi.orig:299
+msgid ""
+"Return a scalar, matrix, or N-dimensional array whose elements are all equal "
+"to the special constant used to designate missing values."
+msgstr "すべての要素が、欠損値を示すために使用される特別な定数と等しいようなスカラー、マトリクス、N次元配列をリターンします。"
+
+#. type: deftypefn
+#: data.texi.orig:302
+msgid ""
+"Note that NA always compares not equal to NA (NA != NA).  To find NA values, "
+"use the @code{isna} function."
+msgstr "NAとNAの比較は常にノットイコール(NA != NA)になることに注意してください。NA値を見つける場合には、@code{isna}関数を使用してください。"
+
+#. type: deftypefn
+#: data.texi.orig:311
+msgid ""
+"When called with no arguments, return a scalar with the value @samp{NA}.  "
+"When called with a single argument, return a square matrix with the "
+"dimension specified.  When called with more than one scalar argument the "
+"first two arguments are taken as the number of rows and columns and any "
+"further arguments specify additional matrix dimensions.  The optional "
+"argument @var{class} specifies the return type and may be either "
+"@qcode{\"double\"} or @qcode{\"single\"}.  @seealso{@ref{XREFisna,,isna}}"
+msgstr ""
+"引数を指定しないで呼び出された場合は、値@samp{NA}のスカラーをリターンします。1つの引数で呼び出された場合は、指定された次元の正方マトリクスをリターンします。2つ以上のスカラー引数で呼び出された場合、最初の2つは行数と列数を指定し、残りは追加のマトリクス次元を指定します。オプション引数@var{class}は、リターン型を指定し、@qcode{\"double\"}か@qcode{\"single\"}です。\n"
+"@seealso{@ref{XREFisna,,isna}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:316
+msgid "XREFisna"
+msgstr "XREFisna"
+
+#. type: deftypefn
+#: data.texi.orig:316
+#, no-wrap
+msgid "{Mapping Function} {} isna (@var{x})"
+msgstr "{Mapping Function} {} isna (@var{x})"
+
+#. type: deftypefn
+#: data.texi.orig:320
+msgid ""
+"Return a logical array which is true where the elements of @var{x} are NA "
+"(missing) values and false where they are not.  For example:"
+msgstr "@var{x}の要素がNA値(欠損値)のところはtrue、異なるところはfalseであるようなlogical配列をリターンします。たとえば:"
+
+#. type: group
+#: data.texi.orig:325
+#, no-wrap
+msgid ""
+"isna ([13, Inf, NA, NaN])\n"
+"     @result{} [ 0, 0, 1, 0 ]\n"
+msgstr ""
+"isna ([13, Inf, NA, NaN])\n"
+"     @result{} [ 0, 0, 1, 0 ]\n"
+
+#. type: deftypefn
+#: data.texi.orig:328
+msgid ""
+"@seealso{@ref{XREFisnan,,isnan}, @ref{XREFisinf,,isinf}, "
+"@ref{XREFisfinite,,isfinite}}"
+msgstr "@seealso{@ref{XREFisnan,,isnan}, @ref{XREFisinf,,isinf}, @ref{XREFisfinite,,isfinite}}"
+
+#. type: subsection
+#: data.texi.orig:331 data.texi.orig:332
+#, no-wrap
+msgid "String Objects"
+msgstr "String Objects"
+
+#. type: cindex
+#: data.texi.orig:333
+#, no-wrap
+msgid "strings"
+msgstr "strings"
+
+#. type: cindex
+#: data.texi.orig:334
+#, no-wrap
+msgid "character strings"
+msgstr "character strings"
+
+#. type: opindex
+#: data.texi.orig:335
+#, no-wrap
+msgid "\""
+msgstr "\""
+
+#. type: opindex
+#: data.texi.orig:336
+#, no-wrap
+msgid "'"
+msgstr "'"
+
+#. type: Plain text
+#: data.texi.orig:342
+msgid ""
+"A character string in Octave consists of a sequence of characters enclosed "
+"in either double-quote or single-quote marks.  Internally, Octave currently "
+"stores strings as matrices of characters.  All the indexing operations that "
+"work for matrix objects also work for strings."
+msgstr "Octaveでの文字列は、ダブルクォーテーション、またはシングルクォーテーションで囲まれた文字シーケンスで構成されます。内部的には現在のところ、Octaveは文字列を文字のマトリクスとして格納します。マトリクスオブジェクトに機能するインデクス操作のすべては、文字列にたいしても機能します。"
+
+#. type: Plain text
+#: data.texi.orig:344
+msgid "@xref{Strings}, for more information."
+msgstr "詳細は、@ref{Strings}を参照してください。"
+
+#. type: subsection
+#: data.texi.orig:345 data.texi.orig:346
+#, no-wrap
+msgid "Data Structure Objects"
+msgstr "Data Structure Objects"
+
+#. type: cindex
+#: data.texi.orig:347
+#, no-wrap
+msgid "structures"
+msgstr "structures"
+
+#. type: cindex
+#: data.texi.orig:348
+#, no-wrap
+msgid "data structures"
+msgstr "data structures"
+
+#. type: Plain text
+#: data.texi.orig:354
+msgid ""
+"Octave's data structure type can help you to organize related objects of "
+"different types.  The current implementation uses an associative array with "
+"indices limited to strings, but the syntax is more like C-style structures."
+msgstr "Octaveにデータ構造型は、異なる型の関連するオブジェクトを組織化する助けになります。現在の実装では、インデクスが文字列に限定された連想配列を使用しますが、構文はCスタイルの構造体に類似しています。"
+
+#. type: Plain text
+#: data.texi.orig:356
+msgid "@xref{Structures}, for more information."
+msgstr "詳細は、@ref{Structures}を参照してください。"
+
+#. type: cindex
+#: data.texi.orig:359
+#, no-wrap
+msgid "cell arrays"
+msgstr "cell arrays"
+
+#. type: Plain text
+#: data.texi.orig:363
+msgid ""
+"A Cell Array in Octave is general array that can hold any number of "
+"different data types."
+msgstr "Octaveのセル配列(Cell Array)は、異なるデータ型を任意個もつことができる、汎用配列です。"
+
+#. type: Plain text
+#: data.texi.orig:365
+msgid "@xref{Cell Arrays}, for more information."
+msgstr "詳細は、@ref{Cell Arrays}を参照してください。"
+
+#. type: section
+#: data.texi.orig:366 data.texi.orig:367
+#, no-wrap
+msgid "User-defined Data Types"
+msgstr "User-defined Data Types"
+
+#. type: cindex
+#: data.texi.orig:368
+#, no-wrap
+msgid "user-defined data types"
+msgstr "user-defined data types"
+
+#. type: cindex
+#: data.texi.orig:369
+#, no-wrap
+msgid "data types, user-defined"
+msgstr "data types, user-defined"
+
+#. type: Plain text
+#: data.texi.orig:376
+msgid ""
+"Someday I hope to expand this to include a complete description of Octave's "
+"mechanism for managing user-defined data types.  Until this feature is "
+"documented here, you will have to make do by reading the code in the "
+"@file{ov.h}, @file{ops.h}, and related files from Octave's @file{src} "
+"directory."
+msgstr "わたしはいつかOctaveのユーザー定義データ型の管理にたいする管理メカニズムについての完全なドキュメントを含めることで、このセクションを拡張したいと思っています。ここにその機能がドキュメントされるまで、あなたがそれを行なうためには、Octaveの@file{src}ディレクトリーにある@file{ov.h}、@file{ops.h}、および関連するファイルのコードを読む必要があるでしょう。"
+
+#. type: Plain text
+#: data.texi.orig:385
+msgid ""
+"The following functions allow you to determine the size of a variable or "
+"expression.  These functions are defined for all objects.  They return "
+"@minus{}1 when the operation doesn't make sense.  For example, Octave's data "
+"structure type doesn't have rows or columns, so the @code{rows} and "
+"@code{columns} functions return @minus{}1 for structure arguments."
+msgstr "以降の関数により、変数や式のサイズを判定できます。これらの関数は、すべてのオブジェクトにたいして定義されています。これらは操作に意味がない場合は、@minus{}1をリターンします。たとえば、Octaveのデータ構造型は行や列を持たないので、@code{rows}や@code{columns}の関数は、構造型の引数にたいしては、@minus{}1をリターンします。"
+
+#. type: anchor{#1}
+#: data.texi.orig:388
+msgid "XREFndims"
+msgstr "XREFndims"
+
+#. type: deftypefn
+#: data.texi.orig:388
+#, no-wrap
+msgid "{Built-in Function} {} ndims (@var{a})"
+msgstr "{Built-in Function} {} ndims (@var{a})"
+
+#. type: deftypefn
+#: data.texi.orig:392
+msgid ""
+"Return the number of dimensions of @var{a}.  For any array, the result will "
+"always be larger than or equal to 2.  Trailing singleton dimensions are not "
+"counted."
+msgstr "@var{a}の次元数をリターンします。任意の配列にたいし、結果は2以上になります。後続のシングルトン次元(singleton dimension: 1と等しい次元)はカウントされません。"
+
+#. type: group
+#: data.texi.orig:397
+#, no-wrap
+msgid ""
+"ndims (ones (4, 1, 2, 1))\n"
+"    @result{} 3\n"
+msgstr ""
+"ndims (ones (4, 1, 2, 1))\n"
+"    @result{} 3\n"
+
+#. type: deftypefn
+#: data.texi.orig:400
+msgid "@seealso{@ref{XREFsize,,size}}"
+msgstr "@seealso{@ref{XREFsize,,size}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:405
+msgid "XREFcolumns"
+msgstr "XREFcolumns"
+
+#. type: deftypefn
+#: data.texi.orig:405
+#, no-wrap
+msgid "{Built-in Function} {} columns (@var{a})"
+msgstr "{Built-in Function} {} columns (@var{a})"
+
+#. type: deftypefn
+#: data.texi.orig:408
+msgid ""
+"Return the number of columns of @var{a}.  @seealso{@ref{XREFrows,,rows}, "
+"@ref{XREFsize,,size}, @ref{XREFlength,,length}, @ref{XREFnumel,,numel}, "
+"@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, "
+"@ref{XREFismatrix,,ismatrix}}"
+msgstr ""
+"@var{a}の列数をリターンします。\n"
+"@seealso{@ref{XREFrows,,rows}, @ref{XREFsize,,size}, @ref{XREFlength,,length}, @ref{XREFnumel,,numel}, @ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:413
+msgid "XREFrows"
+msgstr "XREFrows"
+
+#. type: deftypefn
+#: data.texi.orig:413
+#, no-wrap
+msgid "{Built-in Function} {} rows (@var{a})"
+msgstr "{Built-in Function} {} rows (@var{a})"
+
+#. type: deftypefn
+#: data.texi.orig:416
+msgid ""
+"Return the number of rows of @var{a}.  @seealso{@ref{XREFcolumns,,columns}, "
+"@ref{XREFsize,,size}, @ref{XREFlength,,length}, @ref{XREFnumel,,numel}, "
+"@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, "
+"@ref{XREFismatrix,,ismatrix}}"
+msgstr ""
+"@var{a}の行数をリターンします。\n"
+"@seealso{@ref{XREFcolumns,,columns}, @ref{XREFsize,,size}, @ref{XREFlength,,length}, @ref{XREFnumel,,numel}, @ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector}, @ref{XREFismatrix,,ismatrix}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:421
+msgid "XREFnumel"
+msgstr "XREFnumel"
+
+#. type: deftypefn
+#: data.texi.orig:421
+#, no-wrap
+msgid "{Built-in Function} {} numel (@var{a})"
+msgstr "{Built-in Function} {} numel (@var{a})"
+
+#. type: deftypefnx
+#: data.texi.orig:422
+#, no-wrap
+msgid "{Built-in Function} {} numel (@var{a}, @var{idx1}, @var{idx2}, @dots{})"
+msgstr "{Built-in Function} {} numel (@var{a}, @var{idx1}, @var{idx2}, @dots{})"
+
+#. type: deftypefn
+#: data.texi.orig:426
+msgid ""
+"Return the number of elements in the object @var{a}.  Optionally, if indices "
+"@var{idx1}, @var{idx2}, @dots{} are supplied, return the number of elements "
+"that would result from the indexing"
+msgstr "オブジェクト@var{a}内の要素数をリターンします。オプションで、もし@var{idx1}、@var{idx2}、@dots{}が与えられた場合は、インデクス操作の結果"
+
+#. type: example
+#: data.texi.orig:429
+#, no-wrap
+msgid "@var{a}(@var{idx1}, @var{idx2}, @dots{})\n"
+msgstr "@var{a}(@var{idx1}, @var{idx2}, @dots{})\n"
+
+#. type: deftypefn
+#: data.texi.orig:432
+msgid "Note that the indices do not have to be numerical.  For example,"
+msgstr "の要素数をリターンします。インデクスは数値である必要はないことに注意してください。たとえば、"
+
+#. type: group
+#: data.texi.orig:438
+#, no-wrap
+msgid ""
+"@var{a} = 1;\n"
+"@var{b} = ones (2, 3);\n"
+"numel (@var{a}, @var{b})\n"
+msgstr ""
+"@var{a} = 1;\n"
+"@var{b} = ones (2, 3);\n"
+"numel (@var{a}, @var{b})\n"
+
+#. type: deftypefn
+#: data.texi.orig:443
+msgid "will return 6, as this is the number of ways to index with @var{b}."
+msgstr "こては@var{b}でインデクスをつける方法で、6をリターンします。"
+
+#. type: deftypefn
+#: data.texi.orig:447
+msgid ""
+"This method is also called when an object appears as lvalue with cs-list "
+"indexing, i.e., @code{object@{@dots{}@}} or @code{object(@dots{}).field}.  "
+"@seealso{@ref{XREFsize,,size}}"
+msgstr ""
+"この手法は、オブジェクトがcsリスト(カンマ区切りリスト)のインデクス操作のlvalue(左辺値)として現れたときにも使用されます(例: @code{object@{@dots{}@}}または@code{object(@dots{}).field})。\n"
+"@seealso{@ref{XREFsize,,size}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:452
+msgid "XREFlength"
+msgstr "XREFlength"
+
+#. type: deftypefn
+#: data.texi.orig:452
+#, no-wrap
+msgid "{Built-in Function} {} length (@var{a})"
+msgstr "{Built-in Function} {} length (@var{a})"
+
+#. type: deftypefn
+#: data.texi.orig:454
+msgid "Return the length of the object @var{a}."
+msgstr "オブジェクト@var{a}の長さをリターンします。"
+
+#. type: deftypefn
+#: data.texi.orig:460
+msgid ""
+"The length is 0 for empty objects, 1 for scalars, and the number of elements "
+"for vectors.  For matrix objects, the length is the number of rows or "
+"columns, whichever is greater (this odd definition is used for compatibility "
+"with @sc{matlab}).  @seealso{@ref{XREFnumel,,numel}, @ref{XREFsize,,size}}"
+msgstr ""
+"lengthは、空のオブジェクトにたいしては0、スカラーにたいしては1、ベクターにたいしては要素数です。マトリクスオブジェクトについては、行数または列数の大きい方がlengthになります(この奇妙な定義は、@sc{matlab}との互換のために使用されます)。\n"
+"@seealso{@ref{XREFnumel,,numel}, @ref{XREFsize,,size}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:465
+msgid "XREFsize"
+msgstr "XREFsize"
+
+#. type: deftypefn
+#: data.texi.orig:465
+#, no-wrap
+msgid "{Built-in Function} {} size (@var{a})"
+msgstr "{Built-in Function} {} size (@var{a})"
+
+#. type: deftypefnx
+#: data.texi.orig:466
+#, no-wrap
+msgid "{Built-in Function} {} size (@var{a}, @var{dim})"
+msgstr "{Built-in Function} {} size (@var{a}, @var{dim})"
+
+#. type: deftypefn
+#: data.texi.orig:468
+msgid "Return the number of rows and columns of @var{a}."
+msgstr "@var{a}の行数と列数をリターンします。"
+
+#. type: deftypefn
+#: data.texi.orig:473
+msgid ""
+"With one input argument and one output argument, the result is returned in a "
+"row vector.  If there are multiple output arguments, the number of rows is "
+"assigned to the first, and the number of columns to the second, etc.  For "
+"example:"
+msgstr "入力引数が1つで、出力引数が1つの場合、結果は行ベクターでリターンされます。出力引数が複数の場合、行数が1つ目、列数が2つ目の出力引数、などとなります。たとえば:"
+
+#. type: group
+#: data.texi.orig:478
+#, no-wrap
+msgid ""
+"size ([1, 2; 3, 4; 5, 6])\n"
+"   @result{} [ 3, 2 ]\n"
+"\n"
+msgstr ""
+"size ([1, 2; 3, 4; 5, 6])\n"
+"   @result{} [ 3, 2 ]\n"
+"\n"
+
+#. type: group
+#: data.texi.orig:482
+#, no-wrap
+msgid ""
+"[nr, nc] = size ([1, 2; 3, 4; 5, 6])\n"
+"    @result{} nr = 3\n"
+"    @result{} nc = 2\n"
+msgstr ""
+"[nr, nc] = size ([1, 2; 3, 4; 5, 6])\n"
+"    @result{} nr = 3\n"
+"    @result{} nc = 2\n"
+
+#. type: deftypefn
+#: data.texi.orig:487
+msgid ""
+"If given a second argument, @code{size} will return the size of the "
+"corresponding dimension.  For example,"
+msgstr "2つ目の引数が与えられた場合、@code{size}は対応する次元のサイズをリターンします。たとえば、"
+
+#. type: group
+#: data.texi.orig:492
+#, no-wrap
+msgid ""
+"size ([1, 2; 3, 4; 5, 6], 2)\n"
+"    @result{} 2\n"
+msgstr ""
+"size ([1, 2; 3, 4; 5, 6], 2)\n"
+"    @result{} 2\n"
+
+#. type: deftypefn
+#: data.texi.orig:498
+msgid ""
+"returns the number of columns in the given matrix.  "
+"@seealso{@ref{XREFnumel,,numel}, @ref{XREFndims,,ndims}, "
+"@ref{XREFlength,,length}, @ref{XREFrows,,rows}, @ref{XREFcolumns,,columns}}"
+msgstr ""
+"これは与えられたマトリクスの列数をリターンします。\n"
+"@seealso{@ref{XREFnumel,,numel}, @ref{XREFndims,,ndims}, @ref{XREFlength,,length}, @ref{XREFrows,,rows}, @ref{XREFcolumns,,columns}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:503
+msgid "XREFisempty"
+msgstr "XREFisempty"
+
+#. type: deftypefn
+#: data.texi.orig:503
+#, no-wrap
+msgid "{Built-in Function} {} isempty (@var{a})"
+msgstr "{Built-in Function} {} isempty (@var{a})"
+
+#. type: deftypefn
+#: data.texi.orig:507
+msgid ""
+"Return true if @var{a} is an empty matrix (any one of its dimensions is "
+"zero).  Otherwise, return false.  @seealso{@ref{XREFisnull,,isnull}, "
+"@ref{XREFisa,,isa}}"
+msgstr ""
+"@var{a}が空のマトリクス(マトリクスの次元のうち1つが0)の場合はtrue、それ以外はfalseをリターンします。\n"
+"@seealso{@ref{XREFisnull,,isnull}, @ref{XREFisa,,isa}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:512
+msgid "XREFisnull"
+msgstr "XREFisnull"
+
+#. type: deftypefn
+#: data.texi.orig:512
+#, no-wrap
+msgid "{Built-in Function} {} isnull (@var{x})"
+msgstr "{Built-in Function} {} isnull (@var{x})"
+
+#. type: deftypefn
+#: data.texi.orig:518
+msgid ""
+"Return true if @var{x} is a special null matrix, string, or single quoted "
+"string.  Indexed assignment with such a value on the right-hand side should "
+"delete array elements.  This function should be used when overloading "
+"indexed assignment for user-defined classes instead of @code{isempty}, to "
+"distinguish the cases:"
+msgstr "@var{x}がマトリクス、文字列、シングルクォートされた文字列で、それらが特別な値nullの場合は、trueをリターンします。右辺にこのような値があるインデクス割り当てでは、配列の要素が削除されます。以下のようなケースと区別するため、ユーザー定義クラスのインデクス割り当てのオーバーロードでは、@code{isempty}のかわりにこの関数を使用するべきです:"
+
+#. type: code{#1}
+#: data.texi.orig:520
+#, no-wrap
+msgid "A(I) = []"
+msgstr "A(I) = []"
+
+#. type: table
+#: data.texi.orig:522
+msgid "This should delete elements if @code{I} is nonempty."
+msgstr "これは@code{I}が空でない場合は、要素を削除します。"
+
+#. type: code{#1}
+#: data.texi.orig:523
+#, no-wrap
+msgid "X = []; A(I) = X"
+msgstr "X = []; A(I) = X"
+
+#. type: table
+#: data.texi.orig:525
+msgid "This should give an error if @code{I} is nonempty."
+msgstr "これは、@code{I}が空でない場合は、エラーになります。"
+
+#. type: deftypefn
+#: data.texi.orig:527
+msgid "@seealso{@ref{XREFisempty,,isempty}, @ref{XREFisindex,,isindex}}"
+msgstr "@seealso{@ref{XREFisempty,,isempty}, @ref{XREFisindex,,isindex}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:532
+msgid "XREFsizeof"
+msgstr "XREFsizeof"
+
+#. type: deftypefn
+#: data.texi.orig:532
+#, no-wrap
+msgid "{Built-in Function} {} sizeof (@var{val})"
+msgstr "{Built-in Function} {} sizeof (@var{val})"
+
+#. type: deftypefn
+#: data.texi.orig:535
+msgid "Return the size of @var{val} in bytes.  @seealso{@ref{XREFwhos,,whos}}"
+msgstr ""
+"@var{val}のサイズをバイトでリターンします。\n"
+"@seealso{@ref{XREFwhos,,whos}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:540
+msgid "XREFsize_equal"
+msgstr "XREFsize_equal"
+
+#. type: deftypefn
+#: data.texi.orig:540
+#, no-wrap
+msgid "{Built-in Function} {} size_equal (@var{a}, @var{b}, @dots{})"
+msgstr "{Built-in Function} {} size_equal (@var{a}, @var{b}, @dots{})"
+
+#. type: deftypefn
+#: data.texi.orig:545
+msgid ""
+"Return true if the dimensions of all arguments agree.  Trailing singleton "
+"dimensions are ignored.  Called with a single or no argument, size_equal "
+"returns true.  @seealso{@ref{XREFsize,,size}, @ref{XREFnumel,,numel}, "
+"@ref{XREFndims,,ndims}}"
+msgstr ""
+"すべての引数の次元が一致する場合は、trueをリターンします。後続のシングルトン次元は無視されます。引数が1つ、または指定されない場合、size_equalはtrueをリターンします。\n"
+"@seealso{@ref{XREFsize,,size}, @ref{XREFnumel,,numel}, @ref{XREFndims,,ndims}}"
+
+#. type: anchor{#1}
+#: data.texi.orig:550
+msgid "XREFsqueeze"
+msgstr "XREFsqueeze"
+
+#. type: deftypefn
+#: data.texi.orig:550
+#, no-wrap
+msgid "{Built-in Function} {} squeeze (@var{x})"
+msgstr "{Built-in Function} {} squeeze (@var{x})"
+
+#. type: deftypefn
+#: data.texi.orig:555
+msgid ""
+"Remove singleton dimensions from @var{x} and return the result.  Note that "
+"for compatibility with @sc{matlab}, all objects have a minimum of two "
+"dimensions and row vectors are left unchanged.  "
+"@seealso{@ref{XREFreshape,,reshape}}"
+msgstr ""
+"@var{x}からシングルトン次元を削除して、その結果をリターンします。@sc{matlab}との互換のため、すべてのオブジェクトは少なくとも2つの次元をもち、行ベクターは変更されません。\n"
+"@seealso{@ref{XREFreshape,,reshape}}"

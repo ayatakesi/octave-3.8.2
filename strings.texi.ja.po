@@ -1,0 +1,5656 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-07-22 17:13+0000\n"
+"PO-Revision-Date: 2017-08-13 16:24+0900\n"
+"Last-Translator: Ayanokoji Takesi <ayanokoji.takesi@gmail.com>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: chapter
+#: strings.texi:21 strings.texi:22
+#, no-wrap
+msgid "Strings"
+msgstr "Strings"
+
+#. type: cindex
+#: strings.texi:23
+#, no-wrap
+msgid "strings"
+msgstr "strings"
+
+#. type: cindex
+#: strings.texi:24
+#, no-wrap
+msgid "character strings"
+msgstr "character strings"
+
+#. type: opindex
+#: strings.texi:25
+#, no-wrap
+msgid "\""
+msgstr "\""
+
+#. type: opindex
+#: strings.texi:26
+#, no-wrap
+msgid "'"
+msgstr "'"
+
+#. type: Plain text
+#: strings.texi:31
+msgid ""
+"A @dfn{string constant} consists of a sequence of characters enclosed in "
+"either double-quote or single-quote marks.  For example, both of the "
+"following expressions"
+msgstr "@dfn{文字列定数(string constant)}は、ダブルクォーテーションマークまたはシングルクォーテーションマークで囲まれた、文字シーケンスにより構成されます。たとえば、以下の式"
+
+#. type: group
+#: strings.texi:36
+#, no-wrap
+msgid ""
+"\"parrot\"\n"
+"'parrot'\n"
+msgstr ""
+"\"parrot\"\n"
+"'parrot'\n"
+
+#. type: Plain text
+#: strings.texi:42
+msgid ""
+"represent the string whose contents are @samp{parrot}.  Strings in Octave "
+"can be of any length."
+msgstr "はどちらも内容が@samp{parrot}の文字列を表します。Octaveでは文字列は任意の長さをとることができます。"
+
+#. type: Plain text
+#: strings.texi:46
+msgid ""
+"Since the single-quote mark is also used for the transpose operator "
+"(@pxref{Arithmetic Ops}) but double-quote marks have no other purpose in "
+"Octave, it is best to use double-quote marks to denote strings."
+msgstr "シングルクォートマークは転置演算子(@ref{Arithmetic Ops}参照)にも使用されますが、ダブルクォートマークはOctaveでは他の目的に使用されることはないので、文字列を表すときはダブルクォートマークを使うのが最善です。"
+
+#. type: Plain text
+#: strings.texi:49
+msgid ""
+"Strings can be concatenated using the notation for defining matrices.  For "
+"example, the expression"
+msgstr "文字列の連結はマトリクス定義の記法を使用できます。たとえば、以下の式"
+
+#. type: example
+#: strings.texi:52
+#, no-wrap
+msgid "[ \"foo\" , \"bar\" , \"baz\" ]\n"
+msgstr "[ \"foo\" , \"bar\" , \"baz\" ]\n"
+
+#. type: Plain text
+#: strings.texi:57
+msgid ""
+"produces the string whose contents are @samp{foobarbaz}.  @xref{Numeric Data "
+"Types}, for more information about creating matrices."
+msgstr "は、内容が@samp{foobarbaz}の文字列を生成します。マトリクスの作成についての詳細は、@ref{Numeric Data Types}を参照してください。"
+
+#. type: menuentry
+#: strings.texi:66
+msgid "Escape Sequences in String Constants::"
+msgstr "Escape Sequences in String Constants::"
+
+#. type: menuentry
+#: strings.texi:66
+msgid "Character Arrays::"
+msgstr "Character Arrays::"
+
+#. type: menuentry
+#: strings.texi:66
+msgid "Creating Strings::"
+msgstr "Creating Strings::"
+
+#. type: menuentry
+#: strings.texi:66
+msgid "Comparing Strings::"
+msgstr "Comparing Strings::"
+
+#. type: menuentry
+#: strings.texi:66
+msgid "Manipulating Strings::"
+msgstr "Manipulating Strings::"
+
+#. type: menuentry
+#: strings.texi:66
+msgid "String Conversions::"
+msgstr "String Conversions::"
+
+#. type: section
+#: strings.texi:66 strings.texi:2295 strings.texi:2296
+#, no-wrap
+msgid "Character Class Functions"
+msgstr "Character Class Functions"
+
+#. type: section
+#: strings.texi:68 strings.texi:69
+#, no-wrap
+msgid "Escape Sequences in String Constants"
+msgstr "Escape Sequences in String Constants"
+
+#. type: cindex
+#: strings.texi:70
+#, no-wrap
+msgid "escape sequence notation"
+msgstr "escape sequence notation"
+
+#. type: Plain text
+#: strings.texi:76
+msgid ""
+"In double-quoted strings, the backslash character is used to introduce "
+"@dfn{escape sequences} that represent other characters.  For example, "
+"@samp{\\n} embeds a newline character in a double-quoted string and "
+"@samp{\\\"} embeds a double quote character.  In single-quoted strings, "
+"backslash is not a special character.  Here is an example showing the "
+"difference:"
+msgstr ""
+"ダブルクォートされた文字列内では、バックスラッシュ文字は他の文字を表すための@dfn{エスケープシーケンス}として使用されます。\n"
+"In double-quoted strings, the backslash character is used to introduce  that represent other characters.\n"
+"たとえば@samp{\\n}はダブルクォートされた文字列内に改行文字を、@samp{\\\"}はダブルクォート文字を埋め込みます。シングルクォートされた文字列内では、バックスラッシュ文字は特別な文字ではありません。以下の例は、この違いを示します:"
+
+#. type: group
+#: strings.texi:83
+#, no-wrap
+msgid ""
+"toascii (\"\\n\")\n"
+"    @result{} 10\n"
+"toascii ('\\n')\n"
+"    @result{} [ 92 110 ]\n"
+msgstr ""
+"toascii (\"\\n\")\n"
+"    @result{} 10\n"
+"toascii ('\\n')\n"
+"    @result{} [ 92 110 ]\n"
+
+#. type: Plain text
+#: strings.texi:89
+msgid ""
+"Here is a table of all the escape sequences used in Octave (within double "
+"quoted strings).  They are the same as those used in the C programming "
+"language."
+msgstr "以下は、Octaveで(ダブルクォートされた文字列内で)使用されるすべてのエスケープシーケンスのテーブルです。これらはCプログラミング言語で使用される場合と同じです。"
+
+#. type: item
+#: strings.texi:91
+#, no-wrap
+msgid "\\\\"
+msgstr "\\\\"
+
+#. type: table
+#: strings.texi:93
+msgid "Represents a literal backslash, @samp{\\}."
+msgstr "リテラルにバックスラッシュ@samp{\\}を表します。"
+
+#. type: item
+#: strings.texi:94
+#, no-wrap
+msgid "\\\""
+msgstr "\\\""
+
+#. type: table
+#: strings.texi:96
+msgid "Represents a literal double-quote character, @samp{\"}."
+msgstr "リテラルのダブルクォート文字@samp{\"}を表します<。"
+
+#. type: item
+#: strings.texi:97
+#, no-wrap
+msgid "\\'"
+msgstr "\\'"
+
+#. type: table
+#: strings.texi:99
+msgid "Represents a literal single-quote character, @samp{'}."
+msgstr "リテラルのシングルクォート文字@samp{'}を表します。"
+
+#. type: item
+#: strings.texi:100
+#, no-wrap
+msgid "\\0"
+msgstr "\\0"
+
+#. type: table
+#: strings.texi:102
+msgid "Represents the null character, control-@@, ASCII code 0."
+msgstr "Null文字(control-@@、ASCIIコード0)を表します。"
+
+#. type: item
+#: strings.texi:103
+#, no-wrap
+msgid "\\a"
+msgstr "\\a"
+
+#. type: table
+#: strings.texi:105
+msgid "Represents the ``alert'' character, control-g, ASCII code 7."
+msgstr "``alert''文字(control-g、ASCIIコード7)を表します。"
+
+#. type: item
+#: strings.texi:106
+#, no-wrap
+msgid "\\b"
+msgstr "\\b"
+
+#. type: table
+#: strings.texi:108
+msgid "Represents a backspace, control-h, ASCII code 8."
+msgstr "バックスペース(control-h、ASCIIコード8)を表します。"
+
+#. type: item
+#: strings.texi:109
+#, no-wrap
+msgid "\\f"
+msgstr "\\f"
+
+#. type: table
+#: strings.texi:111
+msgid "Represents a formfeed, control-l, ASCII code 12."
+msgstr "改ページ(control-l、ASCIIコード12)を表します。"
+
+#. type: item
+#: strings.texi:112
+#, no-wrap
+msgid "\\n"
+msgstr "\\n"
+
+#. type: table
+#: strings.texi:114
+msgid "Represents a newline, control-j, ASCII code 10."
+msgstr "改行(control-j、ASCIIコード10)を表します。"
+
+#. type: item
+#: strings.texi:115
+#, no-wrap
+msgid "\\r"
+msgstr "\\r"
+
+#. type: table
+#: strings.texi:117
+msgid "Represents a carriage return, control-m, ASCII code 13."
+msgstr "キャリッジリターン(control-m、ASCIIコード13)を表します。"
+
+#. type: item
+#: strings.texi:118
+#, no-wrap
+msgid "\\t"
+msgstr "\\t"
+
+#. type: table
+#: strings.texi:120
+msgid "Represents a horizontal tab, control-i, ASCII code 9."
+msgstr "水平タブ(control-i、ASCIIコード9)を表します。"
+
+#. type: item
+#: strings.texi:121
+#, no-wrap
+msgid "\\v"
+msgstr "\\v"
+
+#. type: table
+#: strings.texi:123
+msgid "Represents a vertical tab, control-k, ASCII code 11."
+msgstr "垂直タブ(control-k、ASCIIコード11)を表します。"
+
+#. type: item
+#: strings.texi:124
+#, no-wrap
+msgid "\\@var{nnn}"
+msgstr "\\@var{nnn}"
+
+#. type: table
+#: strings.texi:128
+msgid ""
+"Represents the octal value @var{nnn}, where @var{nnn} are one to three "
+"digits between 0 and 7.  For example, the code for the ASCII ESC (escape) "
+"character is @samp{\\033}."
+msgstr "8進値@var{nnn}の文字を表します。@var{nnn}は0から7の1桁から3桁です。たとえば、アスキーのESC文字は@samp{\\033}です。"
+
+#. type: item
+#: strings.texi:129
+#, no-wrap
+msgid "\\x@var{hh}@dots{}"
+msgstr "\\x@var{hh}@dots{}"
+
+#. type: table
+#: strings.texi:135
+msgid ""
+"Represents the hexadecimal value @var{hh}, where @var{hh} are hexadecimal "
+"digits (@samp{0} through @samp{9} and either @samp{A} through @samp{F} or "
+"@samp{a} through @samp{f}).  Like the same construct in @sc{ansi} C, the "
+"escape sequence continues until the first non-hexadecimal digit is seen.  "
+"However, using more than two hexadecimal digits produces undefined results."
+msgstr ""
+"16進値@var{hh}の文字を表します。@var{hh}は16進数字(@samp{0}から@samp{9}、および@samp{A}から@samp{F}または@samp{a}から@samp{f})です。\n"
+"@sc{ansi}-Cの場合と同様、最初の非16進数字が見つかるエスケープシーケンスは継続されます。しかし3桁以上の16進数字は未定義の結果を生成します。"
+
+#. type: Plain text
+#: strings.texi:140
+msgid ""
+"In a single-quoted string there is only one escape sequence: you may insert "
+"a single quote character using two single quote characters in succession.  "
+"For example,"
+msgstr "シングルクォートされた文字列内のエスケープシーケンスは、1つだけです。連続してシングルクォート文字を使用することにより、1つのシングルクォート文字を挿入できます。たとえば、"
+
+#. type: group
+#: strings.texi:145
+#, no-wrap
+msgid ""
+"'I can''t escape'\n"
+"    @result{} I can't escape\n"
+msgstr ""
+"'I can''t escape'\n"
+"    @result{} I can't escape\n"
+
+#. type: Plain text
+#: strings.texi:150
+msgid ""
+"In scripts the two different string types can be distinguished if necessary "
+"by using @code{is_dq_string} and @code{is_sq_string}."
+msgstr "スクリプト内では、必要なら@code{is_dq_string}と@code{is_sq_string}を使用して、2つの文字列型を区別できます。"
+
+#. type: anchor{#1}
+#: strings.texi:153
+msgid "XREFis_dq_string"
+msgstr "XREFis_dq_string"
+
+#. type: deftypefn
+#: strings.texi:153
+#, no-wrap
+msgid "{Built-in Function} {} is_dq_string (@var{x})"
+msgstr "{Built-in Function} {} is_dq_string (@var{x})"
+
+#. type: deftypefn
+#: strings.texi:156
+msgid ""
+"Return true if @var{x} is a double-quoted character string.  "
+"@seealso{@ref{XREFis_sq_string,,is_sq_string}, @ref{XREFischar,,ischar}}"
+msgstr ""
+"@var{x}がダブルクォートされた文字列の場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFis_sq_string,,is_sq_string}, @ref{XREFischar,,ischar}}"
+
+#. type: anchor{#1}
+#: strings.texi:161
+msgid "XREFis_sq_string"
+msgstr "XREFis_sq_string"
+
+#. type: deftypefn
+#: strings.texi:161
+#, no-wrap
+msgid "{Built-in Function} {} is_sq_string (@var{x})"
+msgstr "{Built-in Function} {} is_sq_string (@var{x})"
+
+#. type: deftypefn
+#: strings.texi:164
+msgid ""
+"Return true if @var{x} is a single-quoted character string.  "
+"@seealso{@ref{XREFis_dq_string,,is_dq_string}, @ref{XREFischar,,ischar}}"
+msgstr ""
+"@var{x}がシングルクォートされた文字列の場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFis_dq_string,,is_dq_string}, @ref{XREFischar,,ischar}}"
+
+#. type: section
+#: strings.texi:167 strings.texi:168
+#, no-wrap
+msgid "Character Arrays"
+msgstr "Character Arrays"
+
+#. type: Plain text
+#: strings.texi:178
+msgid ""
+"The string representation used by Octave is an array of characters, so "
+"internally the string @nospell{@qcode{\"dddddddddd\"}} is actually a row "
+"vector of length 10 containing the value 100 in all places (100 is the ASCII "
+"code of @qcode{\"d\"}).  This lends itself to the obvious generalization to "
+"character matrices.  Using a matrix of characters, it is possible to "
+"represent a collection of same-length strings in one variable.  The "
+"convention used in Octave is that each row in a character matrix is a "
+"separate string, but letting each column represent a string is equally "
+"possible."
+msgstr "文字列を表すためにOctaveが使用するのは文字の配列なので、文字列@nospell{@qcode{\"dddddddddd\"}}は、内部的にはすべての要素が値100(100は@qcode{\"d\"}のASCIIコード)の長さが10の行ベクターです。これは文字マトリクスにたいする明白な汎化をもたらします。文字マトリクスを使用することにより、同じ長さに文字列コレクションを、1つの変数で表すことが可能になります。Octave内で使用される慣習では、文字マトリクスの各行が個別の文字列になりますが、各列で文字列を表すことも同様に可能です。"
+
+#. type: Plain text
+#: strings.texi:181
+msgid ""
+"The easiest way to create a character matrix is to put several strings "
+"together into a matrix."
+msgstr "文字マトリクスを作成するもっとも簡単な方法は、複数の文字列を一緒にマトリクスに配す方法です。"
+
+#. type: example
+#: strings.texi:184
+#, no-wrap
+msgid "collection = [ \"String #1\"; \"String #2\" ];\n"
+msgstr "collection = [ \"String #1\"; \"String #2\" ];\n"
+
+#. type: Plain text
+#: strings.texi:188
+msgid "This creates a 2-by-9 character matrix."
+msgstr "これは2行9列の文字マトリクスを作成します。"
+
+#. type: Plain text
+#: strings.texi:191
+msgid ""
+"The function @code{ischar} can be used to test if an object is a character "
+"matrix."
+msgstr "関数@code{ischar}は、オブジェクトが文字マトリクスかテストするために使用できます。"
+
+#. type: anchor{#1}
+#: strings.texi:194
+msgid "XREFischar"
+msgstr "XREFischar"
+
+#. type: deftypefn
+#: strings.texi:194
+#, no-wrap
+msgid "{Built-in Function} {} ischar (@var{x})"
+msgstr "{Built-in Function} {} ischar (@var{x})"
+
+#. type: deftypefn
+#: strings.texi:197
+msgid ""
+"Return true if @var{x} is a character array.  "
+"@seealso{@ref{XREFisfloat,,isfloat}, @ref{XREFisinteger,,isinteger}, "
+"@ref{XREFislogical,,islogical}, @ref{XREFisnumeric,,isnumeric}, "
+"@ref{XREFiscellstr,,iscellstr}, @ref{XREFisa,,isa}}"
+msgstr ""
+"@var{x}が文字配列の場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFisfloat,,isfloat}, @ref{XREFisinteger,,isinteger}, @ref{XREFislogical,,islogical}, @ref{XREFisnumeric,,isnumeric}, @ref{XREFiscellstr,,iscellstr}, @ref{XREFisa,,isa}}"
+
+#. type: Plain text
+#: strings.texi:203
+msgid ""
+"To test if an object is a string (i.e., a character vector and not a "
+"character matrix) you can use the @code{ischar} function in combination with "
+"the @code{isvector} function as in the following example:"
+msgstr "オブジェクトが文字列(例: 文字ベクターか、文字マトリクスでないか、など)なのかテストするためには、以下の例のように@code{isvector}関数を組み合わせて@code{ischar}関数を使用できます。"
+
+#. type: group
+#: strings.texi:208
+#, no-wrap
+msgid ""
+"ischar (collection)\n"
+"     @result{} 1\n"
+"\n"
+msgstr ""
+"ischar (collection)\n"
+"     @result{} 1\n"
+"\n"
+
+#. type: group
+#: strings.texi:211
+#, no-wrap
+msgid ""
+"ischar (collection) && isvector (collection)\n"
+"     @result{} 0\n"
+"\n"
+msgstr ""
+"ischar (collection) && isvector (collection)\n"
+"     @result{} 0\n"
+"\n"
+
+#. type: group
+#: strings.texi:214
+#, no-wrap
+msgid ""
+"ischar (\"my string\") && isvector (\"my string\")\n"
+"     @result{} 1\n"
+msgstr ""
+"ischar (\"my string\") && isvector (\"my string\")\n"
+"     @result{} 1\n"
+
+#. type: Plain text
+#: strings.texi:222
+msgid ""
+"One relevant question is, what happens when a character matrix is created "
+"from strings of different length.  The answer is that Octave puts blank "
+"characters at the end of strings shorter than the longest string.  It is "
+"possible to use a different character than the blank character using the "
+"@code{string_fill_char} function."
+msgstr "これに関係して疑問が1つ生じます。異なる長さの文字列から文字マトリクスを作成すると何が起こるでしょうか。短い文字列の最後にOctaveがブランク文字を追加する、というのが答えです。@code{string_fill_char}関数を使えば、ブランク文字以外の文字を使うこともできます。"
+
+#. type: anchor{#1}
+#: strings.texi:225
+msgid "XREFstring_fill_char"
+msgstr "XREFstring_fill_char"
+
+#. type: deftypefn
+#: strings.texi:225
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} string_fill_char ()"
+msgstr "{Built-in Function} {@var{val} =} string_fill_char ()"
+
+#. type: deftypefnx
+#: strings.texi:226
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} string_fill_char (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} string_fill_char (@var{new_val})"
+
+#. type: deftypefnx
+#: strings.texi:227
+#, no-wrap
+msgid "{Built-in Function} {} string_fill_char (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} string_fill_char (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: strings.texi:231
+msgid ""
+"Query or set the internal variable used to pad all rows of a character "
+"matrix to the same length; It must be a single character.  The default value "
+"is @qcode{\" \"} (a single space).  For example:"
+msgstr "文字マトリクスのすべての行を同じ長さにパディングするために使用される内部変数にたいして、問い合わせまたはセットを行います。これは1文字でなければなりません。デフォルト値は@qcode{\" \"}(スペース1つ)です。たとえば:"
+
+#. type: group
+#: strings.texi:239
+#, no-wrap
+msgid ""
+"string_fill_char (\"X\");\n"
+"[ \"these\"; \"are\"; \"strings\" ]\n"
+"      @result{}  \"theseXX\"\n"
+"          \"areXXXX\"\n"
+"          \"strings\"\n"
+msgstr ""
+"string_fill_char (\"X\");\n"
+"[ \"these\"; \"are\"; \"strings\" ]\n"
+"      @result{}  \"theseXX\"\n"
+"          \"areXXXX\"\n"
+"          \"strings\"\n"
+
+#. type: deftypefn
+#: strings.texi:245
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function."
+msgstr "関数内部から@qcode{\"local\"}オプションと共に呼び出された場合、変数の変更はその関数または関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。"
+
+#. type: Plain text
+#: strings.texi:251
+msgid ""
+"This shows a problem with character matrices.  It simply isn't possible to "
+"represent strings of different lengths.  The solution is to use a cell array "
+"of strings, which is described in @ref{Cell Arrays of Strings}."
+msgstr "これは文字マトリクスの問題点を表しています。文字マトリクスでは、長さの異なる文字列の表現は単に不可能なのです。解決策は文字列のセル配列の使用です。これは@ref{Cell Arrays of Strings}で説明されています。"
+
+#. type: section
+#: strings.texi:252 strings.texi:253
+#, no-wrap
+msgid "Creating Strings"
+msgstr "Creating Strings"
+
+#. type: Plain text
+#: strings.texi:260
+msgid ""
+"The easiest way to create a string is, as illustrated in the introduction, "
+"to enclose a text in double-quotes or single-quotes.  It is however possible "
+"to create a string without actually writing a text.  The function "
+"@code{blanks} creates a string of a given length consisting only of blank "
+"characters (ASCII code 32)."
+msgstr "文字列を作成するもっとも簡単な方法は、冒頭で紹介したように、テキストをダブルクォートかシングルクォートで囲む方法です。しかし、実際にテキストを記述せずに文字列を作成することも可能です。関数@code{blanks}はブランク文字(ASCIIコード32)だけで構成される、与えられた長さの文字列を作成します。"
+
+#. type: anchor{#1}
+#: strings.texi:263
+msgid "XREFblanks"
+msgstr "XREFblanks"
+
+#. type: deftypefn
+#: strings.texi:263
+#, no-wrap
+msgid "{Function File} {} blanks (@var{n})"
+msgstr "{Function File} {} blanks (@var{n})"
+
+#. type: deftypefn
+#: strings.texi:265
+msgid "Return a string of @var{n} blanks, for example:"
+msgstr "@var{n}個のブランクからなる文字列をリターンします。"
+
+#. type: group
+#: strings.texi:274
+#, no-wrap
+msgid ""
+"blanks (10);\n"
+"whos ans\n"
+"     @result{}\n"
+"      Attr Name        Size                     Bytes  Class\n"
+"      ==== ====        ====                     =====  =====\n"
+"           ans         1x10                        10  char\n"
+msgstr ""
+"blanks (10);\n"
+"whos ans\n"
+"     @result{}\n"
+"      Attr Name        Size                     Bytes  Class\n"
+"      ==== ====        ====                     =====  =====\n"
+"           ans         1x10                        10  char\n"
+
+#. type: deftypefn
+#: strings.texi:277
+msgid "@seealso{@ref{XREFrepmat,,repmat}}"
+msgstr "@seealso{@ref{XREFrepmat,,repmat}}"
+
+#. type: menuentry
+#: strings.texi:283
+msgid "Concatenating Strings::"
+msgstr "Concatenating Strings::"
+
+#. type: subsection
+#: strings.texi:283 strings.texi:569 strings.texi:570
+#, no-wrap
+msgid "Converting Numerical Data to Strings"
+msgstr "Converting Numerical Data to Strings"
+
+#. type: subsection
+#: strings.texi:285 strings.texi:286
+#, no-wrap
+msgid "Concatenating Strings"
+msgstr "Concatenating Strings"
+
+#. type: Plain text
+#: strings.texi:291
+msgid ""
+"Strings can be concatenated using matrix notation (@pxref{Strings}, "
+"@ref{Character Arrays}) which is often the most natural method.  For "
+"example:"
+msgstr "文字列はマトリクス表記(@ref{Strings}および@ref{Character Arrays}を参照)を使用して作成することができます。これがもっとも自然な方法の場合もあります。たとえば:"
+
+#. type: group
+#: strings.texi:296
+#, no-wrap
+msgid ""
+"fullname = [fname \".txt\"];\n"
+"email = [\"<\" user \"@@\" domain \">\"];\n"
+msgstr ""
+"fullname = [fname \".txt\"];\n"
+"email = [\"<\" user \"@@\" domain \">\"];\n"
+
+#. type: Plain text
+#: strings.texi:305
+msgid ""
+"In each case it is easy to see what the final string will look like.  This "
+"method is also the most efficient.  When using matrix concatenation the "
+"parser immediately begins joining the strings without having to process the "
+"overhead of a function call and the input validation of the associated "
+"function."
+msgstr "どちらの場合も、最終的にどのような文字列になるか容易に判断できます。この方法は、もっとも効率的でもあります。マトリクス結合を使用するとき、パーサーは関数呼び出しと関数による入力の検査というオーバーヘッドなしに、即座に文字列の連結を開始します。"
+
+#. type: Plain text
+#: strings.texi:311
+msgid ""
+"Nevertheless, there are several other functions for concatenating string "
+"objects which can be useful in specific circumstances: @code{char}, "
+"@code{strvcat}, @code{strcat}, and @code{cstrcat}.  Finally, the general "
+"purpose concatenation functions can be used: see @ref{XREFcat,,cat}, "
+"@ref{XREFhorzcat,,horzcat}, and @ref{XREFvertcat,,vertcat}."
+msgstr "それでも、特定の状況において文字列オブジェクトを連結する関数がいくつかあります: @code{char}、@code{strvcat}、@code{strcat}、@code{cstrcat}そして最後に一般的な用途のための連結関数が使用できます。@ref{XREFhorzcat,,horzcat}と@ref{XREFvertcat,,vertcat}を参照してください。"
+
+#. type: item
+#: strings.texi:313
+#, no-wrap
+msgid "All string concatenation functions except @code{cstrcat}"
+msgstr "@code{cstrcat}を除く"
+
+#. type: itemize
+#: strings.texi:316
+msgid ""
+"convert numerical input into character data by taking the corresponding "
+"ASCII character for each element, as in the following example:"
+msgstr "すべての文字列連結関数は以下の例のように、数値を対応するASCII文字に変換することにより、各要素を文字データに変換します:"
+
+#. type: group
+#: strings.texi:321
+#, no-wrap
+msgid ""
+"char ([98, 97, 110, 97, 110, 97])\n"
+"   @result{} banana\n"
+msgstr ""
+"char ([98, 97, 110, 97, 110, 97])\n"
+"   @result{} banana\n"
+
+#. type: itemize
+#: strings.texi:328
+msgid ""
+"@code{char} and @code{strvcat} concatenate vertically, while @code{strcat} "
+"and @code{cstrcat} concatenate horizontally.  For example:"
+msgstr "@code{char}と@code{strvcat}は垂直に、@code{strcat}と@code{cstrcat}は水平に連結します。たとえば、"
+
+#. type: group
+#: strings.texi:334
+#, no-wrap
+msgid ""
+"char (\"an apple\", \"two pears\")\n"
+"    @result{} an apple\n"
+"       two pears\n"
+msgstr ""
+"char (\"an apple\", \"two pears\")\n"
+"    @result{} an apple\n"
+"       two pears\n"
+
+#. type: group
+#: strings.texi:339
+#, no-wrap
+msgid ""
+"strcat (\"oc\", \"tave\", \" is\", \" good\", \" for you\")\n"
+"     @result{} octave is good for you\n"
+msgstr ""
+"strcat (\"oc\", \"tave\", \" is\", \" good\", \" for you\")\n"
+"     @result{} octave is good for you\n"
+
+#. type: item
+#: strings.texi:342
+#, no-wrap
+msgid "@code{char} generates an empty row in the output"
+msgstr "@code{char}は入力内の空文字列ごとに、出力内に空行を生成します。"
+
+#. type: itemize
+#: strings.texi:345
+msgid ""
+"for each empty string in the input.  @code{strvcat}, on the other hand, "
+"eliminates empty strings."
+msgstr "一方、@code{strvcat}は空文字列を無視します。"
+
+#. type: group
+#: strings.texi:351
+#, no-wrap
+msgid ""
+"char (\"orange\", \"green\", \"\", \"red\")\n"
+"    @result{} orange\n"
+"       green \n"
+"\n"
+msgstr ""
+"char (\"orange\", \"green\", \"\", \"red\")\n"
+"    @result{} orange\n"
+"       green \n"
+"\n"
+
+#. type: group
+#: strings.texi:353
+#, no-wrap
+msgid "       red\n"
+msgstr "       red\n"
+
+#. type: group
+#: strings.texi:360
+#, no-wrap
+msgid ""
+"strvcat (\"orange\", \"green\", \"\", \"red\")\n"
+"    @result{} orange\n"
+"       green \n"
+"       red  \n"
+msgstr ""
+"strvcat (\"orange\", \"green\", \"\", \"red\")\n"
+"    @result{} orange\n"
+"       green \n"
+"       red  \n"
+
+#. type: item
+#: strings.texi:363
+#, no-wrap
+msgid "All string concatenation functions except @code{cstrcat} also accept cell"
+msgstr "@code{cstrcat}を除くすべての文字列連結関数は、"
+
+#. type: itemize
+#: strings.texi:367
+msgid ""
+"array data (@pxref{Cell Arrays}).  @code{char} and @code{strvcat} convert "
+"cell arrays into character arrays, while @code{strcat} concatenates within "
+"the cells of the cell arrays:"
+msgstr "セル配列データも受け付けます(@ref{Cell Arrays})。@code{char}と@code{strvcat}はセル配列を文字配列に変換し、@code{strcat}はセル配列内のセルを連結します:"
+
+#. type: group
+#: strings.texi:373
+#, no-wrap
+msgid ""
+"char (@{\"red\", \"green\", \"\", \"blue\"@})\n"
+"     @result{} red  \n"
+"        green\n"
+"\n"
+msgstr ""
+"char (@{\"red\", \"green\", \"\", \"blue\"@})\n"
+"     @result{} red  \n"
+"        green\n"
+"\n"
+
+#. type: group
+#: strings.texi:375
+#, no-wrap
+msgid "        blue \n"
+msgstr "        blue \n"
+
+#. type: group
+#: strings.texi:384
+#, no-wrap
+msgid ""
+"strcat (@{\"abc\"; \"ghi\"@}, @{\"def\"; \"jkl\"@})\n"
+"     @result{}\n"
+"        @{\n"
+"          [1,1] = abcdef\n"
+"          [2,1] = ghijkl\n"
+"        @}\n"
+msgstr ""
+"strcat (@{\"abc\"; \"ghi\"@}, @{\"def\"; \"jkl\"@})\n"
+"     @result{}\n"
+"        @{\n"
+"          [1,1] = abcdef\n"
+"          [2,1] = ghijkl\n"
+"        @}\n"
+
+#. type: item
+#: strings.texi:387
+#, no-wrap
+msgid "@code{strcat} removes trailing white space in the arguments (except"
+msgstr "@code{strcat}は引数(セル配列を除く)の末尾のスペースを削除しますが、"
+
+#. type: itemize
+#: strings.texi:390
+msgid ""
+"within cell arrays), while @code{cstrcat} leaves white space untouched.  "
+"Both kinds of behavior can be useful as can be seen in the examples:"
+msgstr "@code{cstrcat}はそのまま残します。以下の例のように、この2種類を使い分けるのが便利なときもあります:"
+
+#. type: group
+#: strings.texi:396
+#, no-wrap
+msgid ""
+"strcat ([\"dir1\";\"directory2\"], [\"/\";\"/\"], [\"file1\";\"file2\"])\n"
+"     @result{} dir1/file1\n"
+"        directory2/file2\n"
+msgstr ""
+"strcat ([\"dir1\";\"directory2\"], [\"/\";\"/\"], [\"file1\";\"file2\"])\n"
+"     @result{} dir1/file1\n"
+"        directory2/file2\n"
+
+#. type: group
+#: strings.texi:402
+#, no-wrap
+msgid ""
+"cstrcat ([\"thirteen apples\"; \"a banana\"], [\" 5$\";\" 1$\"])\n"
+"      @result{} thirteen apples 5$\n"
+"         a banana        1$\n"
+msgstr ""
+"cstrcat ([\"thirteen apples\"; \"a banana\"], [\" 5$\";\" 1$\"])\n"
+"      @result{} thirteen apples 5$\n"
+"         a banana        1$\n"
+
+#. type: itemize
+#: strings.texi:408
+msgid ""
+"Note that in the above example for @code{cstrcat}, the white space "
+"originates from the internal representation of the strings in a string array "
+"(@pxref{Character Arrays})."
+msgstr "上記の@code{cstrcat}の例の空白文字は、文字列配列内での文字列の内部表現にもとづくことに注意してください(@ref{Character Arrays}を参照)。"
+
+#. type: anchor{#1}
+#: strings.texi:412
+msgid "XREFchar"
+msgstr "XREFchar"
+
+#. type: deftypefn
+#: strings.texi:412
+#, no-wrap
+msgid "{Built-in Function} {} char (@var{x})"
+msgstr "{Built-in Function} {} char (@var{x})"
+
+#. type: deftypefnx
+#: strings.texi:413
+#, no-wrap
+msgid "{Built-in Function} {} char (@var{x}, @dots{})"
+msgstr "{Built-in Function} {} char (@var{x}, @dots{})"
+
+#. type: deftypefnx
+#: strings.texi:414
+#, no-wrap
+msgid "{Built-in Function} {} char (@var{s1}, @var{s2}, @dots{})"
+msgstr "{Built-in Function} {} char (@var{s1}, @var{s2}, @dots{})"
+
+#. type: deftypefnx
+#: strings.texi:415
+#, no-wrap
+msgid "{Built-in Function} {} char (@var{cell_array})"
+msgstr "{Built-in Function} {} char (@var{cell_array})"
+
+#. type: deftypefn
+#: strings.texi:421
+msgid ""
+"Create a string array from one or more numeric matrices, character matrices, "
+"or cell arrays.  Arguments are concatenated vertically.  The returned values "
+"are padded with blanks as needed to make each row of the string array have "
+"the same length.  Empty input strings are significant and will concatenated "
+"in the output."
+msgstr "2つ以上の数値マトリクス、文字マトリクス、セル配列から文字列配列を作成します。引数は垂直に結合されます。リターン値は、文字列配列の各行の文字列が同じ長さになるように、必要に応じブランクでぱっパディングされます。空の入力文字列には意味があり、出力に連結されます。"
+
+#. type: deftypefn
+#: strings.texi:425 strings.texi:462
+msgid ""
+"For numerical input, each element is converted to the corresponding ASCII "
+"character.  A range error results if an input is outside the ASCII range "
+"(0-255)."
+msgstr "数値入力では、各要素は対応するASCII文字に変換されます。入力がASCII(0から255)の範囲外の場合、結果はレンジエラーになります。"
+
+#. type: deftypefn
+#: strings.texi:430
+msgid ""
+"For cell arrays, each element is concatenated separately.  Cell arrays "
+"converted through @code{char} can mostly be converted back with "
+"@code{cellstr}.  For example:"
+msgstr "セル配列では、各要素は個々に連結されます。@code{char}により変換されたセル配列の大部分は、@code{cellstr}で元に変換できます。たとえば:"
+
+#. type: group
+#: strings.texi:441
+#, no-wrap
+msgid ""
+"char ([97, 98, 99], \"\", @{\"98\", \"99\", 100@}, \"str1\", [\"ha\", "
+"\"lf\"])\n"
+"   @result{} [\"abc    \"\n"
+"       \"       \"\n"
+"       \"98     \"\n"
+"       \"99     \"\n"
+"       \"d      \"\n"
+"       \"str1   \"\n"
+"       \"half   \"]\n"
+msgstr ""
+"char ([97, 98, 99], \"\", @{\"98\", \"99\", 100@}, \"str1\", [\"ha\", \"lf\"])\n"
+"   @result{} [\"abc    \"\n"
+"       \"       \"\n"
+"       \"98     \"\n"
+"       \"99     \"\n"
+"       \"d      \"\n"
+"       \"str1   \"\n"
+"       \"half   \"]\n"
+
+#. type: deftypefn
+#: strings.texi:444
+msgid "@seealso{@ref{XREFstrvcat,,strvcat}, @ref{XREFcellstr,,cellstr}}"
+msgstr "@seealso{@ref{XREFstrvcat,,strvcat}, @ref{XREFcellstr,,cellstr}}"
+
+#. type: anchor{#1}
+#: strings.texi:449
+msgid "XREFstrvcat"
+msgstr "XREFstrvcat"
+
+#. type: deftypefn
+#: strings.texi:449
+#, no-wrap
+msgid "{Built-in Function} {} strvcat (@var{x})"
+msgstr "{Built-in Function} {} strvcat (@var{x})"
+
+#. type: deftypefnx
+#: strings.texi:450
+#, no-wrap
+msgid "{Built-in Function} {} strvcat (@var{x}, @dots{})"
+msgstr "{Built-in Function} {} strvcat (@var{x}, @dots{})"
+
+#. type: deftypefnx
+#: strings.texi:451
+#, no-wrap
+msgid "{Built-in Function} {} strvcat (@var{s1}, @var{s2}, @dots{})"
+msgstr "{Built-in Function} {} strvcat (@var{s1}, @var{s2}, @dots{})"
+
+#. type: deftypefnx
+#: strings.texi:452
+#, no-wrap
+msgid "{Built-in Function} {} strvcat (@var{cell_array})"
+msgstr "{Built-in Function} {} strvcat (@var{cell_array})"
+
+#. type: deftypefn
+#: strings.texi:458
+msgid ""
+"Create a character array from one or more numeric matrices, character "
+"matrices, or cell arrays.  Arguments are concatenated vertically.  The "
+"returned values are padded with blanks as needed to make each row of the "
+"string array have the same length.  Unlike @code{char}, empty strings are "
+"removed and will not appear in the output."
+msgstr "2つ以上の数値マトリクス、文字マトリクス、セル配列から文字配列を作成します。。引数は垂直に連結します。リターン値は、文字列配列の各要素が同じ長さになるように、必要に応じブランクでパディングされます。 @code{char}と異なり、空文字列は削除され、出力されません"
+
+#. type: deftypefn
+#: strings.texi:467
+msgid ""
+"For cell arrays, each element is concatenated separately.  Cell arrays "
+"converted through @code{strvcat} can mostly be converted back with "
+"@code{cellstr}.  For example:"
+msgstr "セル配列では、各要素は個々に連結されます。@code{strvcat}で変換されたセル配列の大部分は、@code{cellstr}で元に変換できます。たとえば:"
+
+#. type: group
+#: strings.texi:477
+#, no-wrap
+msgid ""
+"strvcat ([97, 98, 99], \"\", @{\"98\", \"99\", 100@}, \"str1\", [\"ha\", "
+"\"lf\"])\n"
+"      @result{} [\"abc    \"\n"
+"          \"98     \"\n"
+"          \"99     \"\n"
+"          \"d      \"\n"
+"          \"str1   \"\n"
+"          \"half   \"]\n"
+msgstr ""
+"strvcat ([97, 98, 99], \"\", @{\"98\", \"99\", 100@}, \"str1\", [\"ha\", \"lf\"])\n"
+"      @result{} [\"abc    \"\n"
+"          \"98     \"\n"
+"          \"99     \"\n"
+"          \"d      \"\n"
+"          \"str1   \"\n"
+"          \"half   \"]\n"
+
+#. type: deftypefn
+#: strings.texi:480
+msgid ""
+"@seealso{@ref{XREFchar,,char}, @ref{XREFstrcat,,strcat}, "
+"@ref{XREFcstrcat,,cstrcat}}"
+msgstr "@seealso{@ref{XREFchar,,char}, @ref{XREFstrcat,,strcat}, @ref{XREFcstrcat,,cstrcat}}"
+
+#. type: anchor{#1}
+#: strings.texi:485
+msgid "XREFstrcat"
+msgstr "XREFstrcat"
+
+#. type: deftypefn
+#: strings.texi:485
+#, no-wrap
+msgid "{Function File} {} strcat (@var{s1}, @var{s2}, @dots{})"
+msgstr "{Function File} {} strcat (@var{s1}, @var{s2}, @dots{})"
+
+#. type: deftypefn
+#: strings.texi:494
+msgid ""
+"Return a string containing all the arguments concatenated horizontally.  If "
+"the arguments are cell strings, @code{strcat} returns a cell string with the "
+"individual cells concatenated.  For numerical input, each element is "
+"converted to the corresponding ASCII character.  Trailing white space for "
+"any character string input is eliminated before the strings are "
+"concatenated.  Note that cell string values do @strong{not} have whitespace "
+"trimmed."
+msgstr "すべての引数を水平に連結した文字列をリターンします。引数がセル文字列の場合、@code{strcat}は個々のセルを連結したセル文字列をリターンします。入力が数値の場合、各要素は対応するASCII文字に変換されます。入力文字列の末尾の空白文字は、文字列を連結する前に削除されます。セル文字列にはトリムされた空白文字を@strong{含まない}ことに注意してください。"
+
+#. type: deftypefn
+#: strings.texi:496 strings.texi:983 strings.texi:1006 strings.texi:1103
+msgid "For example:"
+msgstr "たとえば:"
+
+#. type: group
+#: strings.texi:501
+#, no-wrap
+msgid ""
+"strcat (\"|\", \" leading space is preserved\", \"|\")\n"
+"    @result{} | leading space is preserved|\n"
+msgstr ""
+"strcat (\"|\", \" leading space is preserved\", \"|\")\n"
+"    @result{} | leading space is preserved|\n"
+
+#. type: group
+#: strings.texi:508
+#, no-wrap
+msgid ""
+"strcat (\"|\", \"trailing space is eliminated \", \"|\")\n"
+"    @result{} |trailing space is eliminated|\n"
+msgstr ""
+"strcat (\"|\", \"trailing space is eliminated \", \"|\")\n"
+"    @result{} |trailing space is eliminated|\n"
+
+#. type: group
+#: strings.texi:515
+#, no-wrap
+msgid ""
+"strcat (\"homogeneous space |\", \"  \", \"| is also eliminated\")\n"
+"    @result{} homogeneous space || is also eliminated\n"
+msgstr ""
+"strcat (\"homogeneous space |\", \"  \", \"| is also eliminated\")\n"
+"    @result{} homogeneous space || is also eliminated\n"
+
+#. type: group
+#: strings.texi:525
+#, no-wrap
+msgid ""
+"s = [ \"ab\"; \"cde\" ];\n"
+"strcat (s, s, s)\n"
+"    @result{}\n"
+"        \"ababab   \"\n"
+"        \"cdecdecde\"\n"
+msgstr ""
+"s = [ \"ab\"; \"cde\" ];\n"
+"strcat (s, s, s)\n"
+"    @result{}\n"
+"        \"ababab   \"\n"
+"        \"cdecdecde\"\n"
+
+#. type: group
+#: strings.texi:537
+#, no-wrap
+msgid ""
+"s = @{ \"ab\"; \"cd \" @};\n"
+"strcat (s, s, s)\n"
+"    @result{}\n"
+"        @{\n"
+"          [1,1] = ababab\n"
+"          [2,1] = cd cd cd \n"
+"        @}\n"
+msgstr ""
+"s = @{ \"ab\"; \"cd \" @};\n"
+"strcat (s, s, s)\n"
+"    @result{}\n"
+"        @{\n"
+"          [1,1] = ababab\n"
+"          [2,1] = cd cd cd \n"
+"        @}\n"
+
+#. type: deftypefn
+#: strings.texi:541
+msgid ""
+"@seealso{@ref{XREFcstrcat,,cstrcat}, @ref{XREFchar,,char}, "
+"@ref{XREFstrvcat,,strvcat}}"
+msgstr "@seealso{@ref{XREFcstrcat,,cstrcat}, @ref{XREFchar,,char}, @ref{XREFstrvcat,,strvcat}}"
+
+#. type: anchor{#1}
+#: strings.texi:546
+msgid "XREFcstrcat"
+msgstr "XREFcstrcat"
+
+#. type: deftypefn
+#: strings.texi:546
+#, no-wrap
+msgid "{Function File} {} cstrcat (@var{s1}, @var{s2}, @dots{})"
+msgstr "{Function File} {} cstrcat (@var{s1}, @var{s2}, @dots{})"
+
+#. type: deftypefn
+#: strings.texi:549
+msgid ""
+"Return a string containing all the arguments concatenated horizontally.  "
+"Trailing white space is preserved.  For example:"
+msgstr "すべての引数を水平に連結した文字列をリターンします。末尾のスペースは残されます。たとえば:"
+
+#. type: group
+#: strings.texi:554
+#, no-wrap
+msgid ""
+"cstrcat (\"ab   \", \"cd\")\n"
+"      @result{} \"ab   cd\"\n"
+msgstr ""
+"cstrcat (\"ab   \", \"cd\")\n"
+"      @result{} \"ab   cd\"\n"
+
+#. type: group
+#: strings.texi:563
+#, no-wrap
+msgid ""
+"s = [ \"ab\"; \"cde\" ];\n"
+"cstrcat (s, s, s)\n"
+"      @result{} \"ab ab ab \"\n"
+"         \"cdecdecde\"\n"
+msgstr ""
+"s = [ \"ab\"; \"cde\" ];\n"
+"cstrcat (s, s, s)\n"
+"      @result{} \"ab ab ab \"\n"
+"         \"cdecdecde\"\n"
+
+#. type: deftypefn
+#: strings.texi:566
+msgid ""
+"@seealso{@ref{XREFstrcat,,strcat}, @ref{XREFchar,,char}, "
+"@ref{XREFstrvcat,,strvcat}}"
+msgstr "@seealso{@ref{XREFstrcat,,strcat}, @ref{XREFchar,,char}, @ref{XREFstrvcat,,strvcat}}"
+
+#. type: Plain text
+#: strings.texi:579
+msgid ""
+"Apart from the string concatenation functions (@pxref{Concatenating "
+"Strings})  which cast numerical data to the corresponding ASCII characters, "
+"there are several functions that format numerical data as strings.  "
+"@code{mat2str} and @code{num2str} convert real or complex matrices, while "
+"@code{int2str} converts integer matrices.  @code{int2str} takes the real "
+"part of complex values and round fractional values to integer.  A more "
+"flexible way to format numerical data as strings is the @code{sprintf} "
+"function (@pxref{Formatted Output}, @ref{XREFsprintf,,sprintf})."
+msgstr "数値データを対応するASCII文字にキャストする文字列連結関数(@ref{Concatenating Strings}参照)の他にも、数値データを文字列にフォーマットする関数がいくつかあります。@code{mat2str}と@code{num2str}は実数おとび複素数のマトリクス、@code{int2str}は整数マトリクスを変換します。 複素数値にたいして@code{int2str}は、実数部から少数部を整数に丸めて評価します。数値データを文字列にフォーマットする、より柔軟な方法としては、@code{sprintf}関数(@ref{Formatted Output}, @ref{XREFsprintf,,sprintf}参照)があります。"
+
+#. type: anchor{#1}
+#: strings.texi:582
+msgid "XREFmat2str"
+msgstr "XREFmat2str"
+
+#. type: deftypefn
+#: strings.texi:582
+#, no-wrap
+msgid "{Function File} {@var{s} =} mat2str (@var{x}, @var{n})"
+msgstr "{Function File} {@var{s} =} mat2str (@var{x}, @var{n})"
+
+#. type: deftypefnx
+#: strings.texi:583
+#, no-wrap
+msgid "{Function File} {@var{s} =} mat2str (@var{x}, @var{n}, \"class\")"
+msgstr "{Function File} {@var{s} =} mat2str (@var{x}, @var{n}, \"class\")"
+
+#. type: deftypefn
+#: strings.texi:587
+msgid ""
+"Format real, complex, and logical matrices as strings.  The returned string "
+"may be used to reconstruct the original matrix by using the @code{eval} "
+"function."
+msgstr "実数、複素数、および論理のマトリクスｗ文字列としてフォーマットします。リターンされる文字列と@code{eval}関数を使用することにより、元のマトリクスを再構築できます。"
+
+#. type: deftypefn
+#: strings.texi:593
+msgid ""
+"The precision of the values is given by @var{n}.  If @var{n} is a scalar "
+"then both real and imaginary parts of the matrix are printed to the same "
+"precision.  Otherwise @code{@var{n}(1)} defines the precision of the real "
+"part and @code{@var{n}(2)} defines the precision of the imaginary part.  The "
+"default for @var{n} is 15."
+msgstr "値の精度は、@var{n}により与えられます。@var{n}がスカラーの場合、マトリクスの実数部と虚数部は両方とも同じ精度でプリントされます。スカラーでない場合は、@code{@var{n}(1)}が実数部の精度、@code{@var{n}(2)}が虚数部の精度を定義します。@var{n}のデフォルト値は15です。"
+
+#. type: deftypefn
+#: strings.texi:597
+msgid ""
+"If the argument @qcode{\"class\"} is given then the class of @var{x} is "
+"included in the string in such a way that @code{eval} will result in the "
+"construction of a matrix of the same class."
+msgstr "引数@qcode{\"class\"}が与えられた場合には、@code{eval}がそのクラスのマトリクスを構築するときのような方法で、@var{x}が文字列結果に含められます。"
+
+#. type: group
+#: strings.texi:602
+#, no-wrap
+msgid ""
+"mat2str ([ -1/3 + i/7; 1/3 - i/7 ], [4 2])\n"
+"     @result{} \"[-0.3333+0.14i;0.3333-0.14i]\"\n"
+"\n"
+msgstr ""
+"mat2str ([ -1/3 + i/7; 1/3 - i/7 ], [4 2])\n"
+"     @result{} \"[-0.3333+0.14i;0.3333-0.14i]\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:605
+#, no-wrap
+msgid ""
+"mat2str ([ -1/3 +i/7; 1/3 -i/7 ], [4 2])\n"
+"     @result{} \"[-0.3333+0i 0+0.14i;0.3333+0i -0-0.14i]\"\n"
+"\n"
+msgstr ""
+"mat2str ([ -1/3 +i/7; 1/3 -i/7 ], [4 2])\n"
+"     @result{} \"[-0.3333+0i 0+0.14i;0.3333+0i -0-0.14i]\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:608
+#, no-wrap
+msgid ""
+"mat2str (int16 ([1 -1]), \"class\")\n"
+"     @result{} \"int16([1 -1])\"\n"
+"\n"
+msgstr ""
+"mat2str (int16 ([1 -1]), \"class\")\n"
+"     @result{} \"int16([1 -1])\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:611
+#, no-wrap
+msgid ""
+"mat2str (logical (eye (2)))\n"
+"     @result{} \"[true false;false true]\"\n"
+"\n"
+msgstr ""
+"mat2str (logical (eye (2)))\n"
+"     @result{} \"[true false;false true]\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:614
+#, no-wrap
+msgid ""
+"isequal (x, eval (mat2str (x)))\n"
+"     @result{} 1\n"
+msgstr ""
+"isequal (x, eval (mat2str (x)))\n"
+"     @result{} 1\n"
+
+#. type: deftypefn
+#: strings.texi:618
+msgid ""
+"@seealso{@ref{XREFsprintf,,sprintf}, @ref{XREFnum2str,,num2str}, "
+"@ref{XREFint2str,,int2str}}"
+msgstr "@seealso{@ref{XREFsprintf,,sprintf}, @ref{XREFnum2str,,num2str}, @ref{XREFint2str,,int2str}}"
+
+#. type: anchor{#1}
+#: strings.texi:623
+msgid "XREFnum2str"
+msgstr "XREFnum2str"
+
+#. type: deftypefn
+#: strings.texi:623
+#, no-wrap
+msgid "{Function File} {} num2str (@var{x})"
+msgstr "{Function File} {} num2str (@var{x})"
+
+#. type: deftypefnx
+#: strings.texi:624
+#, no-wrap
+msgid "{Function File} {} num2str (@var{x}, @var{precision})"
+msgstr "{Function File} {} num2str (@var{x}, @var{precision})"
+
+#. type: deftypefnx
+#: strings.texi:625
+#, no-wrap
+msgid "{Function File} {} num2str (@var{x}, @var{format})"
+msgstr "{Function File} {} num2str (@var{x}, @var{format})"
+
+#. type: deftypefn
+#: strings.texi:631
+msgid ""
+"Convert a number (or array) to a string (or a character array).  The "
+"optional second argument may either give the number of significant digits "
+"(@var{precision}) to be used in the output or a format template string "
+"(@var{format}) as in @code{sprintf} (@pxref{Formatted Output}).  "
+"@code{num2str} can also handle complex numbers."
+msgstr "数字(または配列)を、文字列(または文字配列)に変換します。オプションの第2引数は、出力に使用される有効桁数(@var{precision})、または@code{sprintf}形式(@ref{Formatted Output}参照)のフォーマット用テンプレート文字列(@var{format})です。@code{num2str}は複素数も扱うことができます。"
+
+#. type: deftypefn
+#: strings.texi:633 strings.texi:843 strings.texi:889 strings.texi:1039 strings.texi:1138 strings.texi:1501
+msgid "Examples:"
+msgstr "例:"
+
+#. type: group
+#: strings.texi:638
+#, no-wrap
+msgid ""
+"num2str (123.456)\n"
+"     @result{} \"123.46\"\n"
+"\n"
+msgstr ""
+"num2str (123.456)\n"
+"     @result{} \"123.46\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:641
+#, no-wrap
+msgid ""
+"num2str (123.456, 4)\n"
+"     @result{} \"123.5\"\n"
+"\n"
+msgstr ""
+"num2str (123.456, 4)\n"
+"     @result{} \"123.5\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:651
+#, no-wrap
+msgid ""
+"s = num2str ([1, 1.34; 3, 3.56], \"%5.1f\")\n"
+"     @result{} s =\n"
+"        1.0  1.3\n"
+"        3.0  3.6\n"
+"whos s\n"
+"     @result{}\n"
+"      Attr Name        Size                     Bytes  Class\n"
+"      ==== ====        ====                     =====  =====\n"
+"           s           2x8                         16  char\n"
+"\n"
+msgstr ""
+"s = num2str ([1, 1.34; 3, 3.56], \"%5.1f\")\n"
+"     @result{} s =\n"
+"        1.0  1.3\n"
+"        3.0  3.6\n"
+"whos s\n"
+"     @result{}\n"
+"      Attr Name        Size                     Bytes  Class\n"
+"      ==== ====        ====                     =====  =====\n"
+"           s           2x8                         16  char\n"
+"\n"
+
+#. type: group
+#: strings.texi:654
+#, no-wrap
+msgid ""
+"num2str (1.234 + 27.3i)\n"
+"     @result{} \"1.234+27.3i\"\n"
+msgstr ""
+"num2str (1.234 + 27.3i)\n"
+"     @result{} \"1.234+27.3i\"\n"
+
+#. type: deftypefn
+#: strings.texi:658
+msgid "Notes:"
+msgstr "注意:"
+
+#. type: deftypefn
+#: strings.texi:661
+msgid ""
+"For @sc{matlab} compatibility, leading spaces are stripped before returning "
+"the string."
+msgstr "@sc{matlab}との互換性のため、文字列をリターンする前に先頭のスペースは削除されます。"
+
+#. type: deftypefn
+#: strings.texi:664
+msgid ""
+"The @code{num2str} function is not very flexible.  For better control over "
+"the results, use @code{sprintf} (@pxref{Formatted Output})."
+msgstr "@code{num2str}関数はあまり柔軟ではありません。より柔軟に結果を制御したい場合は、@code{sprintf}(@ref{Formatted Output}参照)を使用してください。"
+
+#. type: deftypefn
+#: strings.texi:669
+msgid ""
+"For complex @var{x}, the format string may only contain one output "
+"conversion specification and nothing else.  Otherwise, results will be "
+"unpredictable.  @seealso{@ref{XREFsprintf,,sprintf}, "
+"@ref{XREFint2str,,int2str}, @ref{XREFmat2str,,mat2str}}"
+msgstr ""
+"@var{x}が複素数の場合は、フォーマット文字列に含める出力変換指定は1つだけにしてください。それ以外では、結果は予測できません。\n"
+"@seealso{@ref{XREFsprintf,,sprintf}, @ref{XREFint2str,,int2str}, @ref{XREFmat2str,,mat2str}}"
+
+#. type: anchor{#1}
+#: strings.texi:674
+msgid "XREFint2str"
+msgstr "XREFint2str"
+
+#. type: deftypefn
+#: strings.texi:674
+#, no-wrap
+msgid "{Function File} {} int2str (@var{n})"
+msgstr "{Function File} {} int2str (@var{n})"
+
+#. type: deftypefn
+#: strings.texi:677
+msgid ""
+"Convert an integer (or array of integers) to a string (or a character "
+"array)."
+msgstr "整数(または整数配列)を、文字列(または文字配列)に変換します。"
+
+#. type: group
+#: strings.texi:682
+#, no-wrap
+msgid ""
+"int2str (123)\n"
+"     @result{} \"123\"\n"
+"\n"
+msgstr ""
+"int2str (123)\n"
+"     @result{} \"123\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:687
+#, no-wrap
+msgid ""
+"s = int2str ([1, 2, 3; 4, 5, 6])\n"
+"     @result{} s =\n"
+"        1  2  3\n"
+"        4  5  6\n"
+"\n"
+msgstr ""
+"s = int2str ([1, 2, 3; 4, 5, 6])\n"
+"     @result{} s =\n"
+"        1  2  3\n"
+"        4  5  6\n"
+"\n"
+
+#. type: group
+#: strings.texi:693
+#, no-wrap
+msgid ""
+"whos s\n"
+"     @result{}\n"
+"      Attr Name        Size                     Bytes  Class\n"
+"      ==== ====        ====                     =====  =====\n"
+"           s           2x7                         14  char\n"
+msgstr ""
+"whos s\n"
+"     @result{}\n"
+"      Attr Name        Size                     Bytes  Class\n"
+"      ==== ====        ====                     =====  =====\n"
+"           s           2x7                         14  char\n"
+
+#. type: deftypefn
+#: strings.texi:699
+msgid ""
+"This function is not very flexible.  For better control over the results, "
+"use @code{sprintf} (@pxref{Formatted Output}).  "
+"@seealso{@ref{XREFsprintf,,sprintf}, @ref{XREFnum2str,,num2str}, "
+"@ref{XREFmat2str,,mat2str}}"
+msgstr ""
+"この関数はあまり柔軟ではありません。より柔軟に結果を制御したい場合は、@code{sprintf}(@ref{Formatted Output}参照)を使用してください。\n"
+" @seealso{@ref{XREFsprintf,,sprintf}, @ref{XREFnum2str,,num2str}, @ref{XREFmat2str,,mat2str}}"
+
+#. type: section
+#: strings.texi:702 strings.texi:703
+#, no-wrap
+msgid "Comparing Strings"
+msgstr "Comparing Strings"
+
+#. type: Plain text
+#: strings.texi:707
+msgid ""
+"Since a string is a character array, comparisons between strings work "
+"element by element as the following example shows:"
+msgstr "文字列とは文字配列のことなので、以下の例が示すように、文字列は要素ごとに比較されます。"
+
+#. type: group
+#: strings.texi:714
+#, no-wrap
+msgid ""
+"GNU = \"GNU's Not UNIX\";\n"
+"spaces = (GNU == \" \")\n"
+"     @result{} spaces =\n"
+"       0   0   0   0   0   1   0   0   0   1   0   0   0   0\n"
+msgstr ""
+"GNU = \"GNU's Not UNIX\";\n"
+"spaces = (GNU == \" \")\n"
+"     @result{} spaces =\n"
+"       0   0   0   0   0   1   0   0   0   1   0   0   0   0\n"
+
+#. type: Plain text
+#: strings.texi:722
+msgid ""
+"@code{strcmp} function.  It compares complete strings and is case "
+"sensitive.  @code{strncmp} compares only the first @code{N} characters (with "
+"@code{N} given as a parameter).  @code{strcmpi} and @code{strncmpi} are the "
+"corresponding functions for case-insensitive comparison."
+msgstr "2つの文字列が等しいか判断するには、@code{strcmp}関数を使う必要があります。この関数は大文字小文字を区別して、文字列全体を比較します。@code{strncmp}は、最初の@code{N}文字だけを比較します(@code{N}はパラメーターとして与えられます)。@code{strcmpi}と@code{strncmpi}は、大文字小文字を区別しません。"
+
+#. type: anchor{#1}
+#: strings.texi:725
+msgid "XREFstrcmp"
+msgstr "XREFstrcmp"
+
+#. type: deftypefn
+#: strings.texi:725
+#, no-wrap
+msgid "{Built-in Function} {} strcmp (@var{s1}, @var{s2})"
+msgstr "{Built-in Function} {} strcmp (@var{s1}, @var{s2})"
+
+#. type: deftypefn
+#: strings.texi:728
+msgid ""
+"Return 1 if the character strings @var{s1} and @var{s2} are the same, and 0 "
+"otherwise."
+msgstr "文字列@var{s1}と@var{s2}が同じなら1、それ以外は0をリターンします。"
+
+#. type: deftypefn
+#: strings.texi:734 strings.texi:760 strings.texi:786 strings.texi:807
+msgid ""
+"If either @var{s1} or @var{s2} is a cell array of strings, then an array of "
+"the same size is returned, containing the values described above for every "
+"member of the cell array.  The other argument may also be a cell array of "
+"strings (of the same size or with only one element), char matrix or "
+"character string."
+msgstr "@var{s1}と@var{s2}のいずれかが文字列のセル配列の場合、個々のセル配列にたいして上述した値を含む、セル配列と同じサイズの配列をリターンします。もう一方の引数は文字列のセル配列(同じサイズ、または要素が1つだけのセル配列)、文字マトリクス、または文字列です。"
+
+#. type: deftypefn
+#: strings.texi:739
+msgid ""
+"@strong{Caution:} For compatibility with @sc{matlab}, Octave's strcmp "
+"function returns 1 if the character strings are equal, and 0 otherwise.  "
+"This is just the opposite of the corresponding C library function.  "
+"@seealso{@ref{XREFstrcmpi,,strcmpi}, @ref{XREFstrncmp,,strncmp}, "
+"@ref{XREFstrncmpi,,strncmpi}}"
+msgstr ""
+"@strong{警告:} @sc{matlab}との互換性のため、Octaveのstrcmp関数は文字列が等しいときに1、等しくなければ0をリターンします。これは同名のCライブラリー関数とは逆です。\n"
+"@seealso{@ref{XREFstrcmpi,,strcmpi}, @ref{XREFstrncmp,,strncmp}, @ref{XREFstrncmpi,,strncmpi}}"
+
+#. type: anchor{#1}
+#: strings.texi:744
+msgid "XREFstrncmp"
+msgstr "XREFstrncmp"
+
+#. type: deftypefn
+#: strings.texi:744
+#, no-wrap
+msgid "{Built-in Function} {} strncmp (@var{s1}, @var{s2}, @var{n})"
+msgstr "{Built-in Function} {} strncmp (@var{s1}, @var{s2}, @var{n})"
+
+#. type: deftypefn
+#: strings.texi:747
+msgid ""
+"Return 1 if the first @var{n} characters of strings @var{s1} and @var{s2} "
+"are the same, and 0 otherwise."
+msgstr "文字列@var{s1}と@var{s2}の最初の@var{n}文字が同じなら1、それ以外は0をリターンします。"
+
+#. type: group
+#: strings.texi:752
+#, no-wrap
+msgid ""
+"strncmp (\"abce\", \"abcd\", 3)\n"
+"      @result{} 1\n"
+msgstr ""
+"strncmp (\"abce\", \"abcd\", 3)\n"
+"      @result{} 1\n"
+
+#. type: group
+#: strings.texi:765
+#, no-wrap
+msgid ""
+"strncmp (\"abce\", @{\"abcd\", \"bca\", \"abc\"@}, 3)\n"
+"     @result{} [1, 0, 1]\n"
+msgstr ""
+"strncmp (\"abce\", @{\"abcd\", \"bca\", \"abc\"@}, 3)\n"
+"     @result{} [1, 0, 1]\n"
+
+#. type: deftypefn
+#: strings.texi:772
+msgid ""
+"@strong{Caution:} For compatibility with @sc{matlab}, Octave's strncmp "
+"function returns 1 if the character strings are equal, and 0 otherwise.  "
+"This is just the opposite of the corresponding C library function.  "
+"@seealso{@ref{XREFstrncmpi,,strncmpi}, @ref{XREFstrcmp,,strcmp}, "
+"@ref{XREFstrcmpi,,strcmpi}}"
+msgstr ""
+"@strong{警告:} @sc{matlab}との互換性のため、Octaveのstrncmp関数は文字列が等しいときに1、等しくなければ0をリターンします。これは同名のCライブラリー関数とは逆です。\n"
+"@seealso{@ref{XREFstrncmpi,,strncmpi}, @ref{XREFstrcmp,,strcmp}, @ref{XREFstrcmpi,,strcmpi}}"
+
+#. type: anchor{#1}
+#: strings.texi:777
+msgid "XREFstrcmpi"
+msgstr "XREFstrcmpi"
+
+#. type: deftypefn
+#: strings.texi:777
+#, no-wrap
+msgid "{Built-in Function} {} strcmpi (@var{s1}, @var{s2})"
+msgstr "{Built-in Function} {} strcmpi (@var{s1}, @var{s2})"
+
+#. type: deftypefn
+#: strings.texi:780
+msgid ""
+"Return 1 if the character strings @var{s1} and @var{s2} are the same, "
+"disregarding case of alphabetic characters, and 0 otherwise."
+msgstr "文字列@var{s1}と@var{s2}が、同じ(大文字小文字の違いは無視)場合は1、それ以外は0をリターンします。"
+
+#. type: deftypefn
+#: strings.texi:790
+msgid ""
+"@strong{Caution:} For compatibility with @sc{matlab}, Octave's strcmp "
+"function returns 1 if the character strings are equal, and 0 otherwise.  "
+"This is just the opposite of the corresponding C library function."
+msgstr "@strong{警告:} @sc{matlab}との互換性のため、Octaveのstrcmpi関数は文字列が等しいときに1、等しくなければ0をリターンします。これは同名のCライブラリー関数とは逆です。"
+
+#. type: deftypefn
+#: strings.texi:793
+msgid ""
+"@strong{Caution:} National alphabets are not supported.  "
+"@seealso{@ref{XREFstrcmp,,strcmp}, @ref{XREFstrncmp,,strncmp}, "
+"@ref{XREFstrncmpi,,strncmpi}}"
+msgstr ""
+"@strong{警告:} National alphabetはサポートされません。\n"
+"@seealso{@ref{XREFstrcmp,,strcmp}, @ref{XREFstrncmp,,strncmp}, @ref{XREFstrncmpi,,strncmpi}}"
+
+#. type: anchor{#1}
+#: strings.texi:798
+msgid "XREFstrncmpi"
+msgstr "XREFstrncmpi"
+
+#. type: deftypefn
+#: strings.texi:798
+#, no-wrap
+msgid "{Built-in Function} {} strncmpi (@var{s1}, @var{s2}, @var{n})"
+msgstr "{Built-in Function} {} strncmpi (@var{s1}, @var{s2}, @var{n})"
+
+#. type: deftypefn
+#: strings.texi:801
+msgid ""
+"Return 1 if the first @var{n} character of @var{s1} and @var{s2} are the "
+"same, disregarding case of alphabetic characters, and 0 otherwise."
+msgstr "@var{s1}と@var{s2}の最初の@var{n}文字が同じ(大文字小文字の違いは無視)場合は1、それ以外は0をリターンします。"
+
+#. type: deftypefn
+#: strings.texi:811
+msgid ""
+"@strong{Caution:} For compatibility with @sc{matlab}, Octave's strncmpi "
+"function returns 1 if the character strings are equal, and 0 otherwise.  "
+"This is just the opposite of the corresponding C library function."
+msgstr "@strong{警告:} @sc{matlab}との互換性のため、Octaveのstrncmpi関数は文字列が等しいときに1、等しくなければ0をリターンします。これは同名のCライブラリー関数とは逆です。"
+
+#. type: deftypefn
+#: strings.texi:814
+msgid ""
+"@strong{Caution:} National alphabets are not supported.  "
+"@seealso{@ref{XREFstrncmp,,strncmp}, @ref{XREFstrcmp,,strcmp}, "
+"@ref{XREFstrcmpi,,strcmpi}}"
+msgstr ""
+"@strong{警告:} National alphabetsはサポートされません。\n"
+"@seealso{@ref{XREFstrncmp,,strncmp}, @ref{XREFstrcmp,,strcmp}, @ref{XREFstrcmpi,,strcmpi}}"
+
+#. type: anchor{#1}
+#: strings.texi:819
+msgid "XREFvalidatestring"
+msgstr "XREFvalidatestring"
+
+#. type: deftypefn
+#: strings.texi:819
+#, no-wrap
+msgid ""
+"{Function File} {@var{validstr} =} validatestring (@var{str}, "
+"@var{strarray})"
+msgstr "{Function File} {@var{validstr} =} validatestring (@var{str}, @var{strarray})"
+
+#. type: deftypefnx
+#: strings.texi:820
+#, no-wrap
+msgid ""
+"{Function File} {@var{validstr} =} validatestring (@var{str}, "
+"@var{strarray}, @var{funcname})"
+msgstr "{Function File} {@var{validstr} =} validatestring (@var{str}, @var{strarray}, @var{funcname})"
+
+#. type: deftypefnx
+#: strings.texi:821
+#, no-wrap
+msgid ""
+"{Function File} {@var{validstr} =} validatestring (@var{str}, "
+"@var{strarray}, @var{funcname}, @var{varname})"
+msgstr "{Function File} {@var{validstr} =} validatestring (@var{str}, @var{strarray}, @var{funcname}, @var{varname})"
+
+#. type: deftypefnx
+#: strings.texi:822
+#, no-wrap
+msgid "{Function File} {@var{validstr} =} validatestring (@dots{}, @var{position})"
+msgstr "{Function File} {@var{validstr} =} validatestring (@dots{}, @var{position})"
+
+#. type: deftypefn
+#: strings.texi:825
+msgid ""
+"Verify that @var{str} is an element, or substring of an element, in "
+"@var{strarray}."
+msgstr "@var{str}が@var{strarray}内の要素、または要素の部分文字列か検証します。"
+
+#. type: deftypefn
+#: strings.texi:836
+msgid ""
+"When @var{str} is a character string to be tested, and @var{strarray} is a "
+"cellstr of valid values, then @var{validstr} will be the validated form of "
+"@var{str} where validation is defined as @var{str} being a member or "
+"substring of @var{validstr}.  This is useful for both verifying and "
+"expanding short options, such as @qcode{\"r\"}, to their longer forms, such "
+"as @qcode{\"red\"}.  If @var{str} is a substring of @var{validstr}, and "
+"there are multiple matches, the shortest match will be returned if all "
+"matches are substrings of each other.  Otherwise, an error will be raised "
+"because the expansion of @var{str} is ambiguous.  All comparisons are case "
+"insensitive."
+msgstr "@var{str}がテストされる文字列で、@var{strarray}が有効な値となる文字列のセル配列の場合、@var{validstr}は@var{str}にたいする検証フォームです(検証の定義は@var{str}が@var{validstr}のメンバー、またはメンバーの部分文字列かどうかです)。これはオプションの長い形式が@qcode{\"red\"}で短い形式が@qcode{\"r\"}のような場合などに、短い形式を展開して検証するのに便利です。@var{str}が@var{validstr}の部分文字列で複数がマッチし、すべてのマッチが部分文字列へのマッチの場合は、最短のマッチがリターンされます。それ以外では、@var{str}の展開があいまいなため、エラーがレイズされます。すべての比較で大文字小文字を区別しません。"
+
+#. type: deftypefn
+#: strings.texi:840
+msgid ""
+"The additional inputs @var{funcname}, @var{varname}, and @var{position} are "
+"optional and will make any generated validation error message more specific."
+msgstr "追加入力の@var{funcname}、@var{varname}、@var{position}はオプションで、生成される検証エラーメッセージをより具体的にするものです。"
+
+#. type: group
+#: strings.texi:848
+#, no-wrap
+msgid ""
+"validatestring (\"r\", @{\"red\", \"green\", \"blue\"@})\n"
+"@result{} \"red\"\n"
+"\n"
+msgstr ""
+"validatestring (\"r\", @{\"red\", \"green\", \"blue\"@})\n"
+"@result{} \"red\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:852
+#, no-wrap
+msgid ""
+"validatestring (\"b\", @{\"red\", \"green\", \"blue\", \"black\"@})\n"
+"@result{} error: validatestring: multiple unique matches were found for "
+"'b':\n"
+"   blue, black\n"
+msgstr ""
+"validatestring (\"b\", @{\"red\", \"green\", \"blue\", \"black\"@})\n"
+"@result{} error: validatestring: multiple unique matches were found for 'b':\n"
+"   blue, black\n"
+
+#. type: deftypefn
+#: strings.texi:856
+msgid "@seealso{@ref{XREFstrcmp,,strcmp}, @ref{XREFstrcmpi,,strcmpi}}"
+msgstr "@seealso{@ref{XREFstrcmp,,strcmp}, @ref{XREFstrcmpi,,strcmpi}}"
+
+#. type: section
+#: strings.texi:859 strings.texi:860
+#, no-wrap
+msgid "Manipulating Strings"
+msgstr "Manipulating Strings"
+
+#. type: Plain text
+#: strings.texi:866
+msgid ""
+"Octave supports a wide range of functions for manipulating strings.  Since a "
+"string is just a matrix, simple manipulations can be accomplished using "
+"standard operators.  The following example shows how to replace all blank "
+"characters with underscores."
+msgstr "Octaveは文字列を操作するための関数を広範にサポートします。文字列は単なるマトリクスなので、単純な操作は標準的な演算子を使用して行うことができます。以下はブランク文字をすべてアンダースコアで置き換える方法を示す例です。"
+
+#. type: group
+#: strings.texi:874
+#, no-wrap
+msgid ""
+"quote = ...\n"
+"  \"First things first, but not necessarily in that order\";\n"
+"quote( quote == \" \" ) = \"_\"\n"
+"@result{} quote = \n"
+"    First_things_first,_but_not_necessarily_in_that_order\n"
+msgstr ""
+"quote = ...\n"
+"  \"First things first, but not necessarily in that order\";\n"
+"quote( quote == \" \" ) = \"_\"\n"
+"@result{} quote = \n"
+"    First_things_first,_but_not_necessarily_in_that_order\n"
+
+#. type: Plain text
+#: strings.texi:879
+msgid ""
+"For more complex manipulations, such as searching, replacing, and general "
+"regular expressions, the following functions come with Octave."
+msgstr "検索、置換、および一般的な正規表現などのより複雑な操作にたいして、Octaveには以下の関数があります。"
+
+#. type: anchor{#1}
+#: strings.texi:882
+msgid "XREFdeblank"
+msgstr "XREFdeblank"
+
+#. type: deftypefn
+#: strings.texi:882
+#, no-wrap
+msgid "{Function File} {} deblank (@var{s})"
+msgstr "{Function File} {} deblank (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:887
+msgid ""
+"Remove trailing whitespace and nulls from @var{s}.  If @var{s} is a matrix, "
+"@var{deblank} trims each row to the length of longest string.  If @var{s} is "
+"a cell array of strings, operate recursively on each string element."
+msgstr "@var{s}から末尾の空白文字とnullを削除します。@var{s}がマトリクスの場合、@var{deblank}は各行をもっとも長い文字列の長さにトリムします。@var{s}が文字列のセル配列の場合は、各文字列要素を再帰的に処理します。"
+
+#. type: group
+#: strings.texi:894
+#, no-wrap
+msgid ""
+"deblank (\"    abc  \")\n"
+"     @result{}  \"    abc\"\n"
+"\n"
+msgstr ""
+"deblank (\"    abc  \")\n"
+"     @result{}  \"    abc\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:897
+#, no-wrap
+msgid ""
+"deblank ([\" abc   \"; \"   def   \"])\n"
+"     @result{}  [\" abc  \" ; \"   def\"]\n"
+msgstr ""
+"deblank ([\" abc   \"; \"   def   \"])\n"
+"     @result{}  [\" abc  \" ; \"   def\"]\n"
+
+#. type: deftypefn
+#: strings.texi:900
+msgid "@seealso{@ref{XREFstrtrim,,strtrim}}"
+msgstr "@seealso{@ref{XREFstrtrim,,strtrim}}"
+
+#. type: anchor{#1}
+#: strings.texi:905
+msgid "XREFstrtrim"
+msgstr "XREFstrtrim"
+
+#. type: deftypefn
+#: strings.texi:905
+#, no-wrap
+msgid "{Function File} {} strtrim (@var{s})"
+msgstr "{Function File} {} strtrim (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:910
+msgid ""
+"Remove leading and trailing whitespace from @var{s}.  If @var{s} is a "
+"matrix, @var{strtrim} trims each row to the length of longest string.  If "
+"@var{s} is a cell array of strings, operate recursively on each string "
+"element.  For example:"
+msgstr "@var{s}から先頭と末尾の空白文字を削除します。@var{s}がマトリクスの場合、@var{strtrim}は各行をもっとも長い文字列の長さにトリムします。@var{s}が文字列のセル配列の場合は、各文字列要素を再帰的に処理します。たとえば:"
+
+#. type: group
+#: strings.texi:915
+#, no-wrap
+msgid ""
+"strtrim (\"    abc  \")\n"
+"     @result{}  \"abc\"\n"
+"\n"
+msgstr ""
+"strtrim (\"    abc  \")\n"
+"     @result{}  \"abc\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:918
+#, no-wrap
+msgid ""
+"strtrim ([\" abc   \"; \"   def   \"])\n"
+"     @result{}  [\"abc  \"  ; \"  def\"]\n"
+msgstr ""
+"strtrim ([\" abc   \"; \"   def   \"])\n"
+"     @result{}  [\"abc  \"  ; \"  def\"]\n"
+
+#. type: deftypefn
+#: strings.texi:921
+msgid "@seealso{@ref{XREFdeblank,,deblank}}"
+msgstr "@seealso{@ref{XREFdeblank,,deblank}}"
+
+#. type: anchor{#1}
+#: strings.texi:926
+msgid "XREFstrtrunc"
+msgstr "XREFstrtrunc"
+
+#. type: deftypefn
+#: strings.texi:926
+#, no-wrap
+msgid "{Function File} {} strtrunc (@var{s}, @var{n})"
+msgstr "{Function File} {} strtrunc (@var{s}, @var{n})"
+
+#. type: deftypefn
+#: strings.texi:931
+msgid ""
+"Truncate the character string @var{s} to length @var{n}.  If @var{s} is a "
+"character matrix, then the number of columns is adjusted.  If @var{s} is a "
+"cell array of strings, then the operation is performed on each cell element "
+"and the new cell array is returned."
+msgstr "文字列@var{s}を、長さ@var{n}に切り詰めます。@var{s}が文字マトリクスのは、列数を合わせます。@var{s}が文字列のセル配列の場合は、処理は各要素にたいして行われ、新たなセル配列をリターンします。"
+
+#. type: anchor{#1}
+#: strings.texi:936
+msgid "XREFfindstr"
+msgstr "XREFfindstr"
+
+#. type: deftypefn
+#: strings.texi:936
+#, no-wrap
+msgid "{Function File} {} findstr (@var{s}, @var{t})"
+msgstr "{Function File} {} findstr (@var{s}, @var{t})"
+
+#. type: deftypefnx
+#: strings.texi:937
+#, no-wrap
+msgid "{Function File} {} findstr (@var{s}, @var{t}, @var{overlap})"
+msgstr "{Function File} {} findstr (@var{s}, @var{t}, @var{overlap})"
+
+#. type: deftypefn
+#: strings.texi:942
+msgid ""
+"Return the vector of all positions in the longer of the two strings @var{s} "
+"and @var{t} where an occurrence of the shorter of the two starts.  If the "
+"optional argument @var{overlap} is true, the returned vector can include "
+"overlapping positions (this is the default).  For example:"
+msgstr "文字列@var{s}と@var{t}の長い方の文字列中で、短い方の文字列が出現するすべての位置をベクターでリターンします。オプション引数@var{overlap}がtrueの場合は、リターンされるベクターはオーバーラップする位置を含むことができます(これがデフォルトです)。たとえば:"
+
+#. type: group
+#: strings.texi:949
+#, no-wrap
+msgid ""
+"findstr (\"ababab\", \"a\")\n"
+"     @result{} [1, 3, 5];\n"
+"findstr (\"abababa\", \"aba\", 0)\n"
+"     @result{} [1, 5]\n"
+msgstr ""
+"findstr (\"ababab\", \"a\")\n"
+"     @result{} [1, 3, 5];\n"
+"findstr (\"abababa\", \"aba\", 0)\n"
+"     @result{} [1, 5]\n"
+
+#. type: deftypefn
+#: strings.texi:955
+msgid ""
+"@strong{Caution:} @code{findstr} is scheduled for deprecation.  Use "
+"@code{strfind} in all new code.  @seealso{@ref{XREFstrfind,,strfind}, "
+"@ref{XREFstrmatch,,strmatch}, @ref{XREFstrcmp,,strcmp}, "
+"@ref{XREFstrncmp,,strncmp}, @ref{XREFstrcmpi,,strcmpi}, "
+"@ref{XREFstrncmpi,,strncmpi}, @ref{XREFfind,,find}}"
+msgstr ""
+"@strong{警告:} @code{findstr}は廃止が予定されています。新たなコードはすべて@code{strfind}を使用してください。\n"
+"@seealso{@ref{XREFstrfind,,strfind}, @ref{XREFstrmatch,,strmatch}, @ref{XREFstrcmp,,strcmp}, @ref{XREFstrncmp,,strncmp}, @ref{XREFstrcmpi,,strcmpi}, @ref{XREFstrncmpi,,strncmpi}, @ref{XREFfind,,find}}"
+
+#. type: anchor{#1}
+#: strings.texi:960
+msgid "XREFstrchr"
+msgstr "XREFstrchr"
+
+#. type: deftypefn
+#: strings.texi:960
+#, no-wrap
+msgid "{Function File} {@var{idx} =} strchr (@var{str}, @var{chars})"
+msgstr "{Function File} {@var{idx} =} strchr (@var{str}, @var{chars})"
+
+#. type: deftypefnx
+#: strings.texi:961
+#, no-wrap
+msgid "{Function File} {@var{idx} =} strchr (@var{str}, @var{chars}, @var{n})"
+msgstr "{Function File} {@var{idx} =} strchr (@var{str}, @var{chars}, @var{n})"
+
+#. type: deftypefnx
+#: strings.texi:962
+#, no-wrap
+msgid ""
+"{Function File} {@var{idx} =} strchr (@var{str}, @var{chars}, @var{n}, "
+"@var{direction})"
+msgstr "{Function File} {@var{idx} =} strchr (@var{str}, @var{chars}, @var{n}, @var{direction})"
+
+#. type: deftypefnx
+#: strings.texi:963
+#, no-wrap
+msgid "{Function File} {[@var{i}, @var{j}] =} strchr (@dots{})"
+msgstr "{Function File} {[@var{i}, @var{j}] =} strchr (@dots{})"
+
+#. type: deftypefn
+#: strings.texi:967
+msgid ""
+"Search for the string @var{str} for occurrences of characters from the set "
+"@var{chars}.  The return value(s), as well as the @var{n} and "
+"@var{direction} arguments behave identically as in @code{find}."
+msgstr "文字列@var{chars}から、文字集合@var{chars}の文字の出現を検索します。リターン値、および引数の@var{n}と@var{direction}は、@code{find}の場合と同様に振る舞います。"
+
+#. type: deftypefn
+#: strings.texi:969
+msgid "This will be faster than using regexp in most cases."
+msgstr "多くの場合、この関数はregexpを使用するより高速です。"
+
+#. type: deftypefn
+#: strings.texi:971
+msgid "@seealso{@ref{XREFfind,,find}}"
+msgstr "@seealso{@ref{XREFfind,,find}}"
+
+#. type: anchor{#1}
+#: strings.texi:976
+msgid "XREFindex"
+msgstr "XREFindex"
+
+#. type: deftypefn
+#: strings.texi:976
+#, no-wrap
+msgid "{Function File} {} index (@var{s}, @var{t})"
+msgstr "{Function File} {} index (@var{s}, @var{t})"
+
+#. type: deftypefnx
+#: strings.texi:977
+#, no-wrap
+msgid "{Function File} {} index (@var{s}, @var{t}, @var{direction})"
+msgstr "{Function File} {} index (@var{s}, @var{t}, @var{direction})"
+
+#. type: deftypefn
+#: strings.texi:981
+msgid ""
+"Return the position of the first occurrence of the string @var{t} in the "
+"string @var{s}, or 0 if no occurrence is found.  @var{s} may also be a "
+"string array or cell array of strings."
+msgstr "文字列@var{s}内で文字列@var{t}が最初に出現する位置、見つからない場合は0をリターンします。@var{s}には文字列配列、または文字列のセル配列も指定できます。"
+
+#. type: group
+#: strings.texi:988
+#, no-wrap
+msgid ""
+"index (\"Teststring\", \"t\")\n"
+"    @result{} 4\n"
+msgstr ""
+"index (\"Teststring\", \"t\")\n"
+"    @result{} 4\n"
+
+#. type: deftypefn
+#: strings.texi:993
+msgid ""
+"If @var{direction} is @qcode{\"first\"}, return the first element found.  If "
+"@var{direction} is @qcode{\"last\"}, return the last element found."
+msgstr "@var{direction}が@qcode{\"first\"}の場合は、見つかった最初の要素をリターンします。@var{direction}が@qcode{\"last\"}の場合は、見つかった最後の要素をリターンします。"
+
+#. type: deftypefn
+#: strings.texi:995
+msgid "@seealso{@ref{XREFfind,,find}, @ref{XREFrindex,,rindex}}"
+msgstr "@seealso{@ref{XREFfind,,find}, @ref{XREFrindex,,rindex}}"
+
+#. type: anchor{#1}
+#: strings.texi:1000
+msgid "XREFrindex"
+msgstr "XREFrindex"
+
+#. type: deftypefn
+#: strings.texi:1000
+#, no-wrap
+msgid "{Function File} {} rindex (@var{s}, @var{t})"
+msgstr "{Function File} {} rindex (@var{s}, @var{t})"
+
+#. type: deftypefn
+#: strings.texi:1004
+msgid ""
+"Return the position of the last occurrence of the character string @var{t} "
+"in the character string @var{s}, or 0 if no occurrence is found.  @var{s} "
+"may also be a string array or cell array of strings."
+msgstr "文字列@var{s}内で文字列@var{t}が最後に出現する位置、見つからない場合は0をリターンします。@var{s}には文字列配列、または文字列のセル配列も指定できます。"
+
+#. type: group
+#: strings.texi:1011
+#, no-wrap
+msgid ""
+"rindex (\"Teststring\", \"t\")\n"
+"     @result{} 6\n"
+msgstr ""
+"rindex (\"Teststring\", \"t\")\n"
+"     @result{} 6\n"
+
+#. type: deftypefn
+#: strings.texi:1016
+msgid ""
+"The @code{rindex} function is equivalent to @code{index} with "
+"@var{direction} set to @qcode{\"last\"}."
+msgstr "@code{rindex}関数は、@var{direction}を@qcode{\"last\"}にセットした@code{index}関数と等価です。"
+
+#. type: deftypefn
+#: strings.texi:1018
+msgid "@seealso{@ref{XREFfind,,find}, @ref{XREFindex,,index}}"
+msgstr "@seealso{@ref{XREFfind,,find}, @ref{XREFindex,,index}}"
+
+#. type: anchor{#1}
+#: strings.texi:1023
+msgid "XREFstrfind"
+msgstr "XREFstrfind"
+
+#. type: deftypefn
+#: strings.texi:1023
+#, no-wrap
+msgid "{Built-in Function} {@var{idx} =} strfind (@var{str}, @var{pattern})"
+msgstr "{Built-in Function} {@var{idx} =} strfind (@var{str}, @var{pattern})"
+
+#. type: deftypefnx
+#: strings.texi:1024
+#, no-wrap
+msgid "{Built-in Function} {@var{idx} =} strfind (@var{cellstr}, @var{pattern})"
+msgstr "{Built-in Function} {@var{idx} =} strfind (@var{cellstr}, @var{pattern})"
+
+#. type: deftypefnx
+#: strings.texi:1025
+#, no-wrap
+msgid "{Built-in Function} {@var{idx} =} strfind (@dots{}, \"overlaps\", @var{val})"
+msgstr "{Built-in Function} {@var{idx} =} strfind (@dots{}, \"overlaps\", @var{val})"
+
+#. type: deftypefn
+#: strings.texi:1028
+msgid ""
+"Search for @var{pattern} in the string @var{str} and return the starting "
+"index of every such occurrence in the vector @var{idx}."
+msgstr "文字列@var{str}内から@var{pattern}を検索して、出現の各開始位置のインデクスをベクター@var{idx}でリターンします。"
+
+#. type: deftypefn
+#: strings.texi:1034
+msgid ""
+"If there is no such occurrence, or if @var{pattern} is longer than "
+"@var{str}, then @var{idx} is the empty array @code{[]}.  The optional "
+"argument @qcode{\"overlaps\"} determines whether the pattern can match at "
+"every position in @var{str} (true), or only for unique occurrences of the "
+"complete pattern (false).  The default is true."
+msgstr "パターンが見つからなかった場合、または@var{pattern}が@var{str}より長い場合には、@var{idx}は空の配列@code{[]}になります。オプション引数@qcode{\"overlaps\"}はパターンが@var{str}内のどの位置でもマッチする(true)か、完全なパターンのユニークな出現だけにマッチする(false)を決定します。デフォルトはtrueです。"
+
+#. type: deftypefn
+#: strings.texi:1037
+msgid ""
+"If a cell array of strings @var{cellstr} is specified then @var{idx} is a "
+"cell array of vectors, as specified above."
+msgstr "文字列のセル配列 @var{cellstr}がセットされた場合、@var{idx}は上記で指定されたベクターのセル配列になります。"
+
+#. type: group
+#: strings.texi:1044
+#, no-wrap
+msgid ""
+"strfind (\"abababa\", \"aba\")\n"
+"     @result{} [1, 3, 5]\n"
+"\n"
+msgstr ""
+"strfind (\"abababa\", \"aba\")\n"
+"     @result{} [1, 3, 5]\n"
+"\n"
+
+#. type: group
+#: strings.texi:1047
+#, no-wrap
+msgid ""
+"strfind (\"abababa\", \"aba\", \"overlaps\", false)\n"
+"     @result{} [1, 5]\n"
+"\n"
+msgstr ""
+"strfind (\"abababa\", \"aba\", \"overlaps\", false)\n"
+"     @result{} [1, 5]\n"
+"\n"
+
+#. type: group
+#: strings.texi:1052
+#, no-wrap
+msgid ""
+"strfind (@{\"abababa\", \"bebebe\", \"ab\"@}, \"aba\")\n"
+"     @result{}\n"
+"        @{\n"
+"          [1,1] =\n"
+"\n"
+msgstr ""
+"strfind (@{\"abababa\", \"bebebe\", \"ab\"@}, \"aba\")\n"
+"     @result{}\n"
+"        @{\n"
+"          [1,1] =\n"
+"\n"
+
+#. type: group
+#: strings.texi:1054
+#, no-wrap
+msgid ""
+"             1   3   5\n"
+"\n"
+msgstr "             1   3   5\n\n"
+
+#. type: group
+#: strings.texi:1058
+#, no-wrap
+msgid ""
+"          [1,2] = [](1x0)\n"
+"          [1,3] = [](1x0)\n"
+"        @}\n"
+msgstr ""
+"          [1,2] = [](1x0)\n"
+"          [1,3] = [](1x0)\n"
+"        @}\n"
+
+#. type: deftypefn
+#: strings.texi:1061
+msgid ""
+"@seealso{@ref{XREFfindstr,,findstr}, @ref{XREFstrmatch,,strmatch}, "
+"@ref{XREFregexp,,regexp}, @ref{XREFregexpi,,regexpi}, @ref{XREFfind,,find}}"
+msgstr "@seealso{@ref{XREFfindstr,,findstr}, @ref{XREFstrmatch,,strmatch}, @ref{XREFregexp,,regexp}, @ref{XREFregexpi,,regexpi}, @ref{XREFfind,,find}}"
+
+#. type: anchor{#1}
+#: strings.texi:1066
+msgid "XREFstrjoin"
+msgstr "XREFstrjoin"
+
+#. type: deftypefn
+#: strings.texi:1066
+#, no-wrap
+msgid "{Function File} {@var{str} =} strjoin (@var{cstr})"
+msgstr "{Function File} {@var{str} =} strjoin (@var{cstr})"
+
+#. type: deftypefnx
+#: strings.texi:1067
+#, no-wrap
+msgid "{Function File} {@var{str} =} strjoin (@var{cstr}, @var{delimiter})"
+msgstr "{Function File} {@var{str} =} strjoin (@var{cstr}, @var{delimiter})"
+
+#. type: deftypefn
+#: strings.texi:1070
+msgid ""
+"Join the elements of the cell string array, @var{cstr}, into a single "
+"string."
+msgstr "セル文字列配列@var{cstr}の要素を1つの文字列に結合します。"
+
+#. type: deftypefn
+#: strings.texi:1073
+msgid ""
+"If no @var{delimiter} is specified, the elements of @var{cstr} separated by "
+"a space."
+msgstr "@var{delimiter}が指定されない場合、@var{cstr}の要素の区切りはスペースになります。"
+
+#. type: deftypefn
+#: strings.texi:1076
+msgid ""
+"If @var{delimiter} is specified as a string, the cell string array is joined "
+"using the string.  Escape sequences are supported."
+msgstr "@var{delimiter}が文字列として指定された場合、その文字列を使用してセル文字列配列が結合されます。エスケープシーケンスもサポートされます。"
+
+#. type: deftypefn
+#: strings.texi:1081
+msgid ""
+"If @var{delimiter} is a cell string array whose length is one less than "
+"@var{cstr}, then the elements of @var{cstr} are joined by interleaving the "
+"cell string elements of @var{delimiter}.  Escape sequences are not "
+"supported."
+msgstr "@var{delimiter}がセル文字列配列で、その長さが@var{cstr}より1小さい場合は、@var{cstr}は@var{delimiter}の要素を順番に使って結合されます。エスケープシーケンスはサポートされません。"
+
+#. type: group
+#: strings.texi:1086
+#, no-wrap
+msgid ""
+"strjoin (@{'Octave','Scilab','Lush','Yorick'@}, '*')\n"
+"      @result{} 'Octave*Scilab*Lush*Yorick'\n"
+msgstr ""
+"strjoin (@{'Octave','Scilab','Lush','Yorick'@}, '*')\n"
+"      @result{} 'Octave*Scilab*Lush*Yorick'\n"
+
+#. type: deftypefn
+#: strings.texi:1089
+msgid "@seealso {strsplit}"
+msgstr "@seealso {strsplit}"
+
+#. type: anchor{#1}
+#: strings.texi:1094
+msgid "XREFstrmatch"
+msgstr "XREFstrmatch"
+
+#. type: deftypefn
+#: strings.texi:1094
+#, no-wrap
+msgid "{Function File} {} strmatch (@var{s}, @var{A})"
+msgstr "{Function File} {} strmatch (@var{s}, @var{A})"
+
+#. type: deftypefnx
+#: strings.texi:1095
+#, no-wrap
+msgid "{Function File} {} strmatch (@var{s}, @var{A}, \"exact\")"
+msgstr "{Function File} {} strmatch (@var{s}, @var{A}, \"exact\")"
+
+#. type: deftypefn
+#: strings.texi:1101
+msgid ""
+"Return indices of entries of @var{A} which begin with the string @var{s}.  "
+"The second argument @var{A} must be a string, character matrix, or a cell "
+"array of strings.  If the third argument @qcode{\"exact\"} is not given, "
+"then @var{s} only needs to match @var{A} up to the length of @var{s}.  "
+"Trailing spaces and nulls in @var{s} and @var{A} are ignored when matching."
+msgstr "@var{s}で始まる@var{A}のエントリーのインデクスをリターンします。第2引数@var{A}は文字列、文字マトリクス、または文字列のセル配列でなければなりません。第3引数@qcode{\"exact\"}が与えられなかった場合、@var{s}は@var{s}の長さまで@var{A}に一致するだけでマッチとなります。マッチングでは、@var{s}と@var{A}の末尾のスペースとnullは無視します。"
+
+#. type: group
+#: strings.texi:1108
+#, no-wrap
+msgid ""
+"strmatch (\"apple\", \"apple juice\")\n"
+"     @result{} 1\n"
+"\n"
+msgstr ""
+"strmatch (\"apple\", \"apple juice\")\n"
+"     @result{} 1\n"
+"\n"
+
+#. type: group
+#: strings.texi:1111
+#, no-wrap
+msgid ""
+"strmatch (\"apple\", [\"apple  \"; \"apple juice\"; \"an apple\"])\n"
+"     @result{} [1; 2]\n"
+"\n"
+msgstr ""
+"strmatch (\"apple\", [\"apple  \"; \"apple juice\"; \"an apple\"])\n"
+"     @result{} [1; 2]\n"
+"\n"
+
+#. type: group
+#: strings.texi:1114
+#, no-wrap
+msgid ""
+"strmatch (\"apple\", [\"apple  \"; \"apple juice\"; \"an apple\"], "
+"\"exact\")\n"
+"     @result{} [1]\n"
+msgstr ""
+"strmatch (\"apple\", [\"apple  \"; \"apple juice\"; \"an apple\"], \"exact\")\n"
+"     @result{} [1]\n"
+
+#. type: deftypefn
+#: strings.texi:1121
+msgid ""
+"@strong{Caution:} @code{strmatch} is scheduled for deprecation.  Use "
+"@code{strncmp} (normal case), or @code{strcmp} (@qcode{\"exact\"} case), or "
+"@code{regexp} in all new code.  @seealso{@ref{XREFstrfind,,strfind}, "
+"@ref{XREFfindstr,,findstr}, @ref{XREFstrcmp,,strcmp}, "
+"@ref{XREFstrncmp,,strncmp}, @ref{XREFstrcmpi,,strcmpi}, "
+"@ref{XREFstrncmpi,,strncmpi}, @ref{XREFfind,,find}}"
+msgstr ""
+"@strong{警告:} @code{strmatch}は廃止が予定されています。\n"
+"Use @code{strncmp} (normal case), or @code{strcmp} (@qcode{\"exact\"} case), or @code{regexp} in all new code.  @seealso{@ref{XREFstrfind,,strfind}, @ref{XREFfindstr,,findstr}, @ref{XREFstrcmp,,strcmp}, @ref{XREFstrncmp,,strncmp}, @ref{XREFstrcmpi,,strcmpi}, @ref{XREFstrncmpi,,strncmpi}, @ref{XREFfind,,find}}"
+
+#. type: anchor{#1}
+#: strings.texi:1126
+msgid "XREFstrtok"
+msgstr "XREFstrtok"
+
+#. type: deftypefn
+#: strings.texi:1126
+#, no-wrap
+msgid "{Function File} {[@var{tok}, @var{rem}] =} strtok (@var{str})"
+msgstr "{Function File} {[@var{tok}, @var{rem}] =} strtok (@var{str})"
+
+#. type: deftypefnx
+#: strings.texi:1127
+#, no-wrap
+msgid "{Function File} {[@var{tok}, @var{rem}] =} strtok (@var{str}, @var{delim})"
+msgstr "{Function File} {[@var{tok}, @var{rem}] =} strtok (@var{str}, @var{delim})"
+
+#. type: deftypefn
+#: strings.texi:1136
+msgid ""
+"Find all characters in the string @var{str} up to, but not including, the "
+"first character which is in the string @var{delim}.  If @var{rem} is "
+"requested, it contains the remainder of the string, starting at the first "
+"delimiter.  Leading delimiters are ignored.  If @var{delim} is not "
+"specified, whitespace is assumed.  @var{str} may also be a cell array of "
+"strings in which case the function executes on every individual string and "
+"returns a cell array of tokens and remainders."
+msgstr "文字列@var{str}から、最初に見つかった文字列@var{delim}内の文字(その文字は含まない)までのすべての文字を探します。@var{rem}が要求された場合、@var{rem}には最初に見つかった区切り文字から開始する、@var{str}の残りの文字列がセットされます。@var{str}内の先頭の区切り文字は無視されます。@var{delim}が指定されない場合には、スペースが指定されたものとします。@var{str}には文字列のセル配列を指定することもでき、その場合は個々の文字列にたいして関数が実行され、見つかったトークンと残りの文字がセル配列でリターンされます。"
+
+#. type: group
+#: strings.texi:1143
+#, no-wrap
+msgid ""
+"strtok (\"this is the life\")\n"
+"     @result{} \"this\"\n"
+"\n"
+msgstr ""
+"strtok (\"this is the life\")\n"
+"     @result{} \"this\"\n"
+"\n"
+
+#. type: group
+#: strings.texi:1148
+#, no-wrap
+msgid ""
+"[tok, rem] = strtok (\"14*27+31\", \"+-*/\")\n"
+"     @result{}\n"
+"        tok = 14\n"
+"        rem = *27+31\n"
+msgstr ""
+"[tok, rem] = strtok (\"14*27+31\", \"+-*/\")\n"
+"     @result{}\n"
+"        tok = 14\n"
+"        rem = *27+31\n"
+
+#. type: deftypefn
+#: strings.texi:1151
+msgid ""
+"@seealso{@ref{XREFindex,,index}, @ref{XREFstrsplit,,strsplit}, "
+"@ref{XREFstrchr,,strchr}, @ref{XREFisspace,,isspace}}"
+msgstr "@seealso{@ref{XREFindex,,index}, @ref{XREFstrsplit,,strsplit}, @ref{XREFstrchr,,strchr}, @ref{XREFisspace,,isspace}}"
+
+#. type: anchor{#1}
+#: strings.texi:1156
+msgid "XREFstrsplit"
+msgstr "XREFstrsplit"
+
+#. type: deftypefn
+#: strings.texi:1156
+#, no-wrap
+msgid "{Function File} {[@var{cstr}] =} strsplit (@var{s})"
+msgstr "{Function File} {[@var{cstr}] =} strsplit (@var{s})"
+
+#. type: deftypefnx
+#: strings.texi:1157
+#, no-wrap
+msgid "{Function File} {[@var{cstr}] =} strsplit (@var{s}, @var{del})"
+msgstr "{Function File} {[@var{cstr}] =} strsplit (@var{s}, @var{del})"
+
+#. type: deftypefnx
+#: strings.texi:1158
+#, no-wrap
+msgid "{Function File} {[@var{cstr}] =} strsplit (@dots{}, @var{name}, @var{value})"
+msgstr "{Function File} {[@var{cstr}] =} strsplit (@dots{}, @var{name}, @var{value})"
+
+#. type: deftypefnx
+#: strings.texi:1159
+#, no-wrap
+msgid "{Function File} {[@var{cstr}, @var{matches}] =} strsplit (@dots{})"
+msgstr "{Function File} {[@var{cstr}, @var{matches}] =} strsplit (@dots{})"
+
+#. type: deftypefn
+#: strings.texi:1166
+msgid ""
+"Split the string @var{s} using the delimiters specified by @var{del} and "
+"return a cell string array of substrings.  If a delimiter is not specified "
+"the string, @var{s}, is split at whitespace.  The delimiter, @var{del} may "
+"be a string, a scalar cell string, or cell string array.  By default, "
+"consecutive delimiters in the input string @var{s} are collapsed into one."
+msgstr "@var{del}で指定された区切り文字を使用して文字列@var{s}を分割し、分割された部分文字列のセル文字列配列をリターンします。区切り文字が指定されない場合、文字列@var{s}は空白文字で分割されます。区切り文字@var{del}には文字列、スカラーのセル文字列、またはセル文字列配列を指定できます。デフォルトでは入力文字列@var{s}内の連続する区切り文字は、1つにまとめられます。"
+
+#. type: deftypefn
+#: strings.texi:1169
+msgid ""
+"The second output, @var{matches}, returns the delimiters which were matched "
+"in the original string."
+msgstr "第2出力@var{matches}には元文字列内でマッチした区切り文字がリターンされます。"
+
+#. type: deftypefn
+#: strings.texi:1171 strings.texi:1221 strings.texi:1278 strings.texi:1474 strings.texi:2158
+msgid "Example:"
+msgstr "例:"
+
+#. type: example
+#: strings.texi:1180
+#, no-wrap
+msgid ""
+"strsplit (\"a b c\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+msgstr ""
+"strsplit (\"a b c\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+
+#. type: example
+#: strings.texi:1188
+#, no-wrap
+msgid ""
+"strsplit (\"a,b,c\", \",\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+msgstr ""
+"strsplit (\"a,b,c\", \",\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+
+#. type: example
+#: strings.texi:1196
+#, no-wrap
+msgid ""
+"strsplit (\"a foo b,bar c\", @{\"\\s\", \"foo\", \"bar\"@})\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+msgstr ""
+"strsplit (\"a foo b,bar c\", @{\"\\s\", \"foo\", \"bar\"@})\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+
+#. type: example
+#: strings.texi:1206
+#, no-wrap
+msgid ""
+"strsplit (\"a,,b, c\", @{\",\", \" \"@}, false)\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = \n"
+"            [1,3] = b\n"
+"            [1,4] = \n"
+"            [1,5] = c\n"
+"          @}\n"
+"\n"
+msgstr ""
+"strsplit (\"a,,b, c\", @{\",\", \" \"@}, false)\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = \n"
+"            [1,3] = b\n"
+"            [1,4] = \n"
+"            [1,5] = c\n"
+"          @}\n"
+"\n"
+
+#. type: deftypefn
+#: strings.texi:1210
+msgid "Supported @var{name}/@var{value} pair arguments are;"
+msgstr "サポートされる@var{name}/@var{value}ペアー引数は;"
+
+#. type: item
+#: strings.texi:1212
+#, no-wrap
+msgid "@var{collapsedelimiters} may take the value of @var{true} or"
+msgstr "@var{collapsedelimiters}には値@var{true}、"
+
+#. type: itemize
+#: strings.texi:1214
+msgid "@var{false} with the default being @var{false}."
+msgstr "または@var{false}を指定でき、デフォルトは@var{false}。"
+
+#. type: item
+#: strings.texi:1215
+#, no-wrap
+msgid "@var{delimitertype} may take the value of @code{simple} or"
+msgstr "@var{delimitertype}は値@code{simple}、"
+
+#. type: itemize
+#: strings.texi:1218
+msgid ""
+"@code{regularexpression}.  The default is @var{delimitertype} is "
+"@code{simple}."
+msgstr "または@code{regularexpression}を指定できる。デフォルトは、@var{delimitertype}が@code{simple}。"
+
+#. type: example
+#: strings.texi:1230
+#, no-wrap
+msgid ""
+"strsplit (\"a foo b,bar c\", \",|\\\\s|foo|bar\", \"delimitertype\", "
+"\"regularexpression\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+msgstr ""
+"strsplit (\"a foo b,bar c\", \",|\\\\s|foo|bar\", \"delimitertype\", \"regularexpression\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+
+#. type: example
+#: strings.texi:1240
+#, no-wrap
+msgid ""
+"strsplit (\"a,,b, c\", \"[, ]\", false, \"delimitertype\", "
+"\"regularexpression\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = \n"
+"            [1,3] = b\n"
+"            [1,4] = \n"
+"            [1,5] = c\n"
+"          @}\n"
+"\n"
+msgstr ""
+"strsplit (\"a,,b, c\", \"[, ]\", false, \"delimitertype\", \"regularexpression\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = \n"
+"            [1,3] = b\n"
+"            [1,4] = \n"
+"            [1,5] = c\n"
+"          @}\n"
+"\n"
+
+#. type: example
+#: strings.texi:1248
+#, no-wrap
+msgid ""
+"strsplit (\"a,\\t,b, c\", @{',', '\\s'@}, \"delimitertype\", "
+"\"regularexpression\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+msgstr ""
+"strsplit (\"a,\\t,b, c\", @{',', '\\s'@}, \"delimitertype\", \"regularexpression\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+
+#. type: example
+#: strings.texi:1259
+#, no-wrap
+msgid ""
+"strsplit (\"a,\\t,b, c\", @{',', ' ', '\\t'@}, \"collapsedelimiters\", "
+"false)\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = \n"
+"            [1,3] = \n"
+"            [1,4] = b\n"
+"            [1,5] = \n"
+"            [1,6] = c\n"
+"          @}\n"
+msgstr ""
+"strsplit (\"a,\\t,b, c\", @{',', ' ', '\\t'@}, \"collapsedelimiters\", false)\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = \n"
+"            [1,3] = \n"
+"            [1,4] = b\n"
+"            [1,5] = \n"
+"            [1,6] = c\n"
+"          @}\n"
+
+#. type: deftypefn
+#: strings.texi:1262
+msgid ""
+"@seealso{@ref{XREFostrsplit,,ostrsplit}, @ref{XREFstrjoin,,strjoin}, "
+"@ref{XREFstrtok,,strtok}, @ref{XREFregexp,,regexp}}"
+msgstr "@seealso{@ref{XREFostrsplit,,ostrsplit}, @ref{XREFstrjoin,,strjoin}, @ref{XREFstrtok,,strtok}, @ref{XREFregexp,,regexp}}"
+
+#. type: anchor{#1}
+#: strings.texi:1267
+msgid "XREFostrsplit"
+msgstr "XREFostrsplit"
+
+#. type: deftypefn
+#: strings.texi:1267
+#, no-wrap
+msgid "{Function File} {[@var{cstr}] =} ostrsplit (@var{s}, @var{sep})"
+msgstr "{Function File} {[@var{cstr}] =} ostrsplit (@var{s}, @var{sep})"
+
+#. type: deftypefnx
+#: strings.texi:1268
+#, no-wrap
+msgid ""
+"{Function File} {[@var{cstr}] =} ostrsplit (@var{s}, @var{sep}, "
+"@var{strip_empty})"
+msgstr "{Function File} {[@var{cstr}] =} ostrsplit (@var{s}, @var{sep}, @var{strip_empty})"
+
+#. type: deftypefn
+#: strings.texi:1273
+msgid ""
+"Split the string @var{s} using one or more separators @var{sep} and return a "
+"cell array of strings.  Consecutive separators and separators at boundaries "
+"result in empty strings, unless @var{strip_empty} is true.  The default "
+"value of @var{strip_empty} is false."
+msgstr "文字列@var{s}を1つ以上のセパレーター@var{sep}で分割して、文字列のセル配列をリターンします。@var{strip_empty}がtrueでない場合、連続するセパレーター、および境界のセパレーターは、空文字列の結果になります。@var{strip_empty}のデフォルト値はfalseです。"
+
+#. type: deftypefn
+#: strings.texi:1276
+msgid ""
+"2-D character arrays are split at separators and at the original column "
+"boundaries."
+msgstr "2次元文字配列はセパレーター、および元々の列境界で分割されます。"
+
+#. type: group
+#: strings.texi:1288
+#, no-wrap
+msgid ""
+"ostrsplit (\"a,b,c\", \",\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+msgstr ""
+"ostrsplit (\"a,b,c\", \",\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = c\n"
+"          @}\n"
+"\n"
+
+#. type: group
+#: strings.texi:1296
+#, no-wrap
+msgid ""
+"ostrsplit ([\"a,b\" ; \"cde\"], \",\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = cde\n"
+"          @}\n"
+msgstr ""
+"ostrsplit ([\"a,b\" ; \"cde\"], \",\")\n"
+"      @result{}\n"
+"          @{\n"
+"            [1,1] = a\n"
+"            [1,2] = b\n"
+"            [1,3] = cde\n"
+"          @}\n"
+
+#. type: deftypefn
+#: strings.texi:1299
+msgid "@seealso{@ref{XREFstrsplit,,strsplit}, @ref{XREFstrtok,,strtok}}"
+msgstr "@seealso{@ref{XREFstrsplit,,strsplit}, @ref{XREFstrtok,,strtok}}"
+
+#. type: anchor{#1}
+#: strings.texi:1304
+msgid "XREFstrread"
+msgstr "XREFstrread"
+
+#. type: deftypefn
+#: strings.texi:1304
+#, no-wrap
+msgid "{Function File} {[@var{a}, @dots{}] =} strread (@var{str})"
+msgstr "{Function File} {[@var{a}, @dots{}] =} strread (@var{str})"
+
+#. type: deftypefnx
+#: strings.texi:1305
+#, no-wrap
+msgid "{Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format})"
+msgstr "{Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format})"
+
+#. type: deftypefnx
+#: strings.texi:1306
+#, no-wrap
+msgid ""
+"{Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format}, "
+"@var{format_repeat})"
+msgstr "{Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format}, @var{format_repeat})"
+
+#. type: deftypefnx
+#: strings.texi:1307
+#, no-wrap
+msgid ""
+"{Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format}, "
+"@var{prop1}, @var{value1}, @dots{})"
+msgstr "{Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format}, @var{prop1}, @var{value1}, @dots{})"
+
+#. type: deftypefnx
+#: strings.texi:1308
+#, no-wrap
+msgid ""
+"{Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format}, "
+"@var{format_repeat}, @var{prop1}, @var{value1}, @dots{})"
+msgstr "{Function File} {[@var{a}, @dots{}] =} strread (@var{str}, @var{format}, @var{format_repeat}, @var{prop1}, @var{value1}, @dots{})"
+
+#. type: deftypefn
+#: strings.texi:1310
+msgid "Read data from a string."
+msgstr "文字列からデータを読み取ります。"
+
+#. type: deftypefn
+#: strings.texi:1316
+msgid ""
+"The string @var{str} is split into words that are repeatedly matched to the "
+"specifiers in @var{format}.  The first word is matched to the first "
+"specifier, the second to the second specifier and so forth.  If there are "
+"more words than specifiers, the process is repeated until all words have "
+"been processed."
+msgstr "文字列@var{str}は、@var{format}の指定に順繰りにマッチする単語に分割されます。つまり、最初の単語は1つ目の指定、次の単語は2つ目の指定にたいするマッチ、のようにとなります。指定子より多くの単語がある場合には、すべての単語が処理されるまで、このプロセスが繰り返されます。"
+
+#. type: deftypefn
+#: strings.texi:1320
+msgid ""
+"The string @var{format} describes how the words in @var{str} should be "
+"parsed.  It may contain any combination of the following specifiers:"
+msgstr "文字列@var{format}には、@var{str}内で単語がパースされる方法を記述します。これには以下の指定の任意の組み合わせが含まれます:"
+
+#. type: item
+#: strings.texi:1322
+#, no-wrap
+msgid "%s"
+msgstr "%s"
+
+#. type: table
+#: strings.texi:1324
+msgid "The word is parsed as a string."
+msgstr "単語は文字列としてパースされる。"
+
+#. type: item
+#: strings.texi:1325
+#, no-wrap
+msgid "%f"
+msgstr "%f"
+
+#. type: itemx
+#: strings.texi:1326
+#, no-wrap
+msgid "%n"
+msgstr "%n"
+
+#. type: table
+#: strings.texi:1328
+msgid "The word is parsed as a number and converted to double."
+msgstr "単語は数字としてパースされ、倍精度に変換される。"
+
+#. type: item
+#: strings.texi:1329
+#, no-wrap
+msgid "%d"
+msgstr "%d"
+
+#. type: itemx
+#: strings.texi:1330
+#, no-wrap
+msgid "%u"
+msgstr "%u"
+
+#. type: table
+#: strings.texi:1332
+msgid "The word is parsed as a number and converted to int32."
+msgstr "単語は数字としてパースされ、int32に変換される。"
+
+#. type: item
+#: strings.texi:1333
+#, no-wrap
+msgid "%*', '%*f', '%*s"
+msgstr "%*', '%*f', '%*s"
+
+#. type: table
+#: strings.texi:1335
+msgid "The word is skipped."
+msgstr "単語をスキップする。"
+
+#. type: table
+#: strings.texi:1339
+msgid ""
+"For %s and %d, %f, %n, %u and the associated %*s @dots{} specifiers an "
+"optional width can be specified as %Ns, etc. where N is an integer > 1.  For "
+"%f, format specifiers like %N.Mf are allowed."
+msgstr "%sと%d、%f、%n、%uおよび関連する%*s @dots{}は、%N(Nは2以上の整数)によるオプションの幅指定です。%fにたいしては、%N.Mfのような指定ができます。"
+
+#. type: item
+#: strings.texi:1340
+#, no-wrap
+msgid "literals"
+msgstr "literals"
+
+#. type: table
+#: strings.texi:1343
+msgid ""
+"In addition the format may contain literal character strings; these will be "
+"skipped during reading."
+msgstr "これらに加え、フォーマットにはリテラル文字列が含まれる場合があり、これらは読み込みの際にはスキップされます。"
+
+#. type: deftypefn
+#: strings.texi:1347
+msgid ""
+"Parsed word corresponding to the first specifier are returned in the first "
+"output argument and likewise for the rest of the specifiers."
+msgstr "パースされた単語は、1つ目の指定子に対応する単語は1つ目の出力引数にリターンされ、残りの指定子も同様です。"
+
+#. type: deftypefn
+#: strings.texi:1350
+msgid ""
+"By default, @var{format} is @t{\"%f\"}, meaning that numbers are read from "
+"@var{str}.  This will do if @var{str} contains only numeric fields."
+msgstr "@var{format}のデフォルトは@t{\"%f\"}で、これは@var{str}から数字が読み取られることを意味します。これは@var{str}に数値フィールドが含まれるときだけ行われます。"
+
+#. type: deftypefn
+#: strings.texi:1352
+msgid "For example, the string"
+msgstr "たとえば、文字列"
+
+#. type: group
+#: strings.texi:1359
+#, no-wrap
+msgid ""
+"@var{str} = \"\\\n"
+"Bunny Bugs   5.5\\n\\\n"
+"Duck Daffy  -7.5e-5\\n\\\n"
+"Penguin Tux   6\"\n"
+msgstr ""
+"@var{str} = \"\\\n"
+"Bunny Bugs   5.5\\n\\\n"
+"Duck Daffy  -7.5e-5\\n\\\n"
+"Penguin Tux   6\"\n"
+
+#. type: deftypefn
+#: strings.texi:1364
+msgid "can be read using"
+msgstr "は、以下で読み取ることができます"
+
+#. type: example
+#: strings.texi:1367
+#, no-wrap
+msgid "[@var{a}, @var{b}, @var{c}] = strread (@var{str}, \"%s %s %f\");\n"
+msgstr "[@var{a}, @var{b}, @var{c}] = strread (@var{str}, \"%s %s %f\");\n"
+
+#. type: deftypefn
+#: strings.texi:1371
+msgid ""
+"Optional numeric argument @var{format_repeat} can be used for limiting the "
+"number of items read:"
+msgstr "オプションの数値引数@var{format_repeat}は、読み取るアイテム数を制限するために使用できます:"
+
+#. type: item
+#: strings.texi:1373
+#, no-wrap
+msgid "-1"
+msgstr "-1"
+
+#. type: table
+#: strings.texi:1375
+msgid "(default) read all of the string until the end."
+msgstr "すべての文字列を最後まで読み取る。"
+
+#. type: item
+#: strings.texi:1376
+#, no-wrap
+msgid "N"
+msgstr "N"
+
+#. type: table
+#: strings.texi:1379
+msgid ""
+"Read N times @var{nargout} items.  0 (zero) is an acceptable value for "
+"@var{format_repeat}."
+msgstr "@var{nargout}アイテムをN回読み込みます。@var{format_repeat}には0を指定することもできます。"
+
+#. type: deftypefn
+#: strings.texi:1383
+msgid ""
+"The behavior of @code{strread} can be changed via property-value pairs.  The "
+"following properties are recognized:"
+msgstr "プロパティー値ペアーを使って、@code{strread}の挙動を変更できます。以下のプロパティが認識されます:"
+
+#. type: item
+#: strings.texi:1385
+#, no-wrap
+msgid "@qcode{\"commentstyle\"}"
+msgstr "@qcode{\"commentstyle\"}"
+
+#. type: table
+#: strings.texi:1388
+msgid ""
+"Parts of @var{str} are considered comments and will be skipped.  @var{value} "
+"is the comment style and can be any of the following."
+msgstr "@var{str}のパーツはコメントと判断され、スキップされる。@var{value}はコメントスタイルで、以下を使用できます。"
+
+#. type: item
+#: strings.texi:1390
+#, no-wrap
+msgid "@qcode{\"shell\"}"
+msgstr "@qcode{\"shell\"}"
+
+#. type: itemize
+#: strings.texi:1392
+msgid "Everything from @code{#} characters to the nearest end-of-line is skipped."
+msgstr "@code{#}文字から行末までのすべてがスキップされる。"
+
+#. type: item
+#: strings.texi:1393
+#, no-wrap
+msgid "@qcode{\"c\"}"
+msgstr "@qcode{\"c\"}"
+
+#. type: itemize
+#: strings.texi:1395
+msgid "Everything between @code{/*} and @code{*/} is skipped."
+msgstr "@code{/*}と@code{*/}の間のすべてがスキップされる。"
+
+#. type: item
+#: strings.texi:1396
+#, no-wrap
+msgid "@qcode{\"c++\"}"
+msgstr "@qcode{\"c++\"}"
+
+#. type: itemize
+#: strings.texi:1398
+msgid "Everything from @code{//} characters to the nearest end-of-line is skipped."
+msgstr "@code{//}文字から行末までのすべてがスキップされる。"
+
+#. type: item
+#: strings.texi:1399
+#, no-wrap
+msgid "@qcode{\"matlab\"}"
+msgstr "@qcode{\"matlab\"}"
+
+#. type: itemize
+#: strings.texi:1401
+msgid "Everything from @code{%} characters to the nearest end-of-line is skipped."
+msgstr "@code{%}文字から行末までのすべてがスキップされる。"
+
+#. type: item
+#: strings.texi:1402
+#, no-wrap
+msgid "user-supplied.  Two options:"
+msgstr "ユーザー指定。オプションは2つ"
+
+#. type: itemize
+#: strings.texi:1406
+msgid ""
+"(1) One string, or 1x1 cell string: Skip everything to the right of it; (2) "
+"2x1 cell string array: Everything between the left and right strings is "
+"skipped."
+msgstr "(1) 1つの文字列、また1x1のセル文字列: この右側のすべてがスキップされる; (2) 2x1のセル文字列配列: 左側の文字列と右側の文字列の間のすべてがスキップされる。"
+
+#. type: item
+#: strings.texi:1408
+#, no-wrap
+msgid "@qcode{\"delimiter\"}"
+msgstr "@qcode{\"delimiter\"}"
+
+#. type: table
+#: strings.texi:1411
+msgid ""
+"Any character in @var{value} will be used to split @var{str} into words "
+"(default value = any whitespace)."
+msgstr "@var{value}内の文字は、@var{str}を単語に分割するために使用される(デフォルト値は任意の空白文字)。"
+
+#. type: item
+#: strings.texi:1412
+#, no-wrap
+msgid "@qcode{\"emptyvalue\"}:"
+msgstr "@qcode{\"emptyvalue\"}:"
+
+#. type: table
+#: strings.texi:1416
+msgid ""
+"Value to return for empty numeric values in non-whitespace delimited data.  "
+"The default is NaN@.  When the data type does not support NaN (int32 for "
+"example), then default is zero."
+msgstr "非空白文字で区切られた空の数値にたいしてリターンする値。デフォルトはNaN。そのデータ型がNaNをサポートしない場合(たとえばint32)のデフォルトは0。"
+
+#. type: item
+#: strings.texi:1417
+#, no-wrap
+msgid "@qcode{\"multipledelimsasone\"}"
+msgstr "@qcode{\"multipledelimsasone\"}"
+
+#. type: table
+#: strings.texi:1421
+msgid ""
+"Treat a series of consecutive delimiters, without whitespace in between, as "
+"a single delimiter.  Consecutive delimiter series need not be vertically "
+"@qcode{\"aligned\"}."
+msgstr "間に空白文字がない連続する区切り文字のシリーズを、1つの区切り文字として扱う。連続する区切り文字シリーズは垂直に@qcode{\"aligned\"}(整列されている)必要はない。"
+
+#. type: item
+#: strings.texi:1422
+#, no-wrap
+msgid "@qcode{\"treatasempty\"}"
+msgstr "@qcode{\"treatasempty\"}"
+
+#. type: table
+#: strings.texi:1425
+msgid ""
+"Treat single occurrences (surrounded by delimiters or whitespace) of the "
+"string(s) in @var{value} as missing values."
+msgstr "@var{value}内の(区切り文字か空白文字で囲まれた)文字列が1つあったら、それを欠損値として扱う。"
+
+#. type: item
+#: strings.texi:1426
+#, no-wrap
+msgid "@qcode{\"returnonerror\"}"
+msgstr "@qcode{\"returnonerror\"}"
+
+#. type: table
+#: strings.texi:1429
+msgid ""
+"If @var{value} true (1, default), ignore read errors and return normally.  "
+"If false (0), return an error."
+msgstr "@var{value}がtrue(デフォルトは1)の場合は、読み取りエラーを無視して通常どおりリターンする。false(0)の場合は、エラーをリターンする。"
+
+#. type: item
+#: strings.texi:1430
+#, no-wrap
+msgid "@qcode{\"whitespace\"}"
+msgstr "@qcode{\"whitespace\"}"
+
+#. type: table
+#: strings.texi:1437
+msgid ""
+"Any character in @var{value} will be interpreted as whitespace and trimmed; "
+"the string defining whitespace must be enclosed in double quotes for proper "
+"processing of special characters like \\t.  The default value for whitespace "
+"= @qcode{\" \\b\\r\\n\\t\"} (note the space).  Unless whitespace is set to "
+"'' (empty) AND at least one @qcode{\"%s\"} format conversion specifier is "
+"supplied, a space is always part of whitespace."
+msgstr "@var{value}内の任意の文字は空白文字と解釈され、トリムされる。/tのような特殊文字を正しく処理するために、ダブルクォートで囲まなければならない。空白文字のデフォルト値は@qcode{\" \\b\\r\\n\\t\"}(スペースが含まれることにに注意)。空白文字が''(空)にセットされておらず@qcode{\"%s\"}フォーマット変更指定子が1つも指定されていない場合、スペースは常に空白文字の一部となる。"
+
+#. type: deftypefn
+#: strings.texi:1443
+msgid ""
+"When the number of words in @var{str} doesn't match an exact multiple of the "
+"number of format conversion specifiers, strread's behavior depends on the "
+"last character of @var{str}:"
+msgstr "@var{str}内の単語数がフォーマット変換指定子の数に正確にマッチしない、strreadの振る舞いは@var{str}の最後の文字に依存する:"
+
+#. type: item
+#: strings.texi:1445
+#, no-wrap
+msgid "last character = @qcode{\"\\n\"}"
+msgstr "最後の文字 = @qcode{\"\\n\"}"
+
+#. type: table
+#: strings.texi:1448
+msgid ""
+"Data columns are padded with empty fields or Nan so that all columns have "
+"equal length"
+msgstr "データ列は空フィールドかNaNでパディングされるので、すべての列が同じ長さになる"
+
+#. type: item
+#: strings.texi:1449
+#, no-wrap
+msgid "last character is not @qcode{\"\\n\"}"
+msgstr "最後の文字がt @qcode{\"\\n\"}以外"
+
+#. type: table
+#: strings.texi:1451
+msgid "Data columns are not padded; strread returns columns of unequal length"
+msgstr "データ列はパディングされない。strreadは長さが異なる列をリターンする"
+
+#. type: deftypefn
+#: strings.texi:1455
+msgid ""
+"@seealso{@ref{XREFtextscan,,textscan}, @ref{XREFtextread,,textread}, "
+"@ref{XREFload,,load}, @ref{XREFdlmread,,dlmread}, @ref{XREFfscanf,,fscanf}}"
+msgstr "@seealso{@ref{XREFtextscan,,textscan}, @ref{XREFtextread,,textread}, @ref{XREFload,,load}, @ref{XREFdlmread,,dlmread}, @ref{XREFfscanf,,fscanf}}"
+
+#. type: anchor{#1}
+#: strings.texi:1460
+msgid "XREFstrrep"
+msgstr "XREFstrrep"
+
+#. type: deftypefn
+#: strings.texi:1460
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{newstr} =} strrep (@var{str}, @var{ptn}, "
+"@var{rep})"
+msgstr "{Built-in Function} {@var{newstr} =} strrep (@var{str}, @var{ptn}, @var{rep})"
+
+#. type: deftypefnx
+#: strings.texi:1461
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{newstr} =} strrep (@var{cellstr}, @var{ptn}, "
+"@var{rep})"
+msgstr "{Built-in Function} {@var{newstr} =} strrep (@var{cellstr}, @var{ptn}, @var{rep})"
+
+#. type: deftypefnx
+#: strings.texi:1462
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{newstr} =} strrep (@dots{}, \"overlaps\", "
+"@var{val})"
+msgstr "{Built-in Function} {@var{newstr} =} strrep (@dots{}, \"overlaps\", @var{val})"
+
+#. type: deftypefn
+#: strings.texi:1465
+msgid ""
+"Replace all occurrences of the pattern @var{ptn} in the string @var{str} "
+"with the string @var{rep} and return the result."
+msgstr "文字列@var{str}内にあるすべてのパターン@var{ptn}を文字列@var{rep}で置換して、その結果をリターンします。"
+
+#. type: deftypefn
+#: strings.texi:1469
+msgid ""
+"The optional argument @qcode{\"overlaps\"} determines whether the pattern "
+"can match at every position in @var{str} (true), or only for unique "
+"occurrences of the complete pattern (false).  The default is true."
+msgstr "オプション引数@qcode{\"overlaps\"}は、パターンが@var{str}内のすべての位置でマッチできる(true)か、それとも完全なパターンの一意な出現だけにマッチできるかを決定します。デフォルトはtrueです。"
+
+#. type: deftypefn
+#: strings.texi:1472
+msgid ""
+"@var{s} may also be a cell array of strings, in which case the replacement "
+"is done for each element and a cell array is returned."
+msgstr "@var{s}には文字列のセル配列も指定でき、その場合は各要素にたいして置換が行われ、セル配列がリターンされます。"
+
+#. type: group
+#: strings.texi:1479
+#, no-wrap
+msgid ""
+"strrep (\"This is a test string\", \"is\", \"&%$\")\n"
+"    @result{}  \"Th&%$ &%$ a test string\"\n"
+msgstr ""
+"strrep (\"This is a test string\", \"is\", \"&%$\")\n"
+"    @result{}  \"Th&%$ &%$ a test string\"\n"
+
+#. type: deftypefn
+#: strings.texi:1483
+msgid ""
+"@seealso{@ref{XREFregexprep,,regexprep}, @ref{XREFstrfind,,strfind}, "
+"@ref{XREFfindstr,,findstr}}"
+msgstr "@seealso{@ref{XREFregexprep,,regexprep}, @ref{XREFstrfind,,strfind}, @ref{XREFfindstr,,findstr}}"
+
+#. type: anchor{#1}
+#: strings.texi:1488
+msgid "XREFsubstr"
+msgstr "XREFsubstr"
+
+#. type: deftypefn
+#: strings.texi:1488
+#, no-wrap
+msgid "{Function File} {} substr (@var{s}, @var{offset})"
+msgstr "{Function File} {} substr (@var{s}, @var{offset})"
+
+#. type: deftypefnx
+#: strings.texi:1489
+#, no-wrap
+msgid "{Function File} {} substr (@var{s}, @var{offset}, @var{len})"
+msgstr "{Function File} {} substr (@var{s}, @var{offset}, @var{len})"
+
+#. type: deftypefn
+#: strings.texi:1492
+msgid ""
+"Return the substring of @var{s} which starts at character number "
+"@var{offset} and is @var{len} characters long."
+msgstr "文字位置@var{offset}から始まる長さ@var{len}文字の一部文字列をリターンします。"
+
+#. type: deftypefn
+#: strings.texi:1495
+msgid ""
+"Position numbering for offsets begins with 1.  If @var{offset} is negative, "
+"extraction starts that far from the end of the string."
+msgstr "オフセット位置の番号は1から開始されます。@var{offset}が負の場合は、抽出開始位置は文字列の終端からのオフセットで数えられます。"
+
+#. type: deftypefn
+#: strings.texi:1499
+msgid ""
+"If @var{len} is omitted, the substring extends to the end of @var{S}.  A "
+"negative value for @var{len} extracts to within @var{len} characters of the "
+"end of the string"
+msgstr "@var{len}が省略された場合、一部文字列は@var{S}の終端まで拡張されます。@var{len}に負の値を指定すると、文字列の最後の@var{len}文字が抽出されます。"
+
+#. type: group
+#: strings.texi:1510
+#, no-wrap
+msgid ""
+"substr (\"This is a test string\", 6, 9)\n"
+"     @result{} \"is a test\"\n"
+"substr (\"This is a test string\", -11)\n"
+"     @result{} \"test string\"\n"
+"substr (\"This is a test string\", -11, -7)\n"
+"     @result{} \"test\"\n"
+msgstr ""
+"substr (\"This is a test string\", 6, 9)\n"
+"     @result{} \"is a test\"\n"
+"substr (\"This is a test string\", -11)\n"
+"     @result{} \"test string\"\n"
+"substr (\"This is a test string\", -11, -7)\n"
+"     @result{} \"test\"\n"
+
+#. type: deftypefn
+#: strings.texi:1514
+msgid "This function is patterned after the equivalent function in Perl."
+msgstr "この関数はPerlの同名の関数を元にしています。"
+
+#. type: anchor{#1}
+#: strings.texi:1519
+msgid "XREFregexp"
+msgstr "XREFregexp"
+
+#. type: deftypefn
+#: strings.texi:1519
+#, no-wrap
+msgid ""
+"{Built-in Function} {[@var{s}, @var{e}, @var{te}, @var{m}, @var{t}, "
+"@var{nm}, @var{sp}] =} regexp (@var{str}, @var{pat})"
+msgstr "{Built-in Function} {[@var{s}, @var{e}, @var{te}, @var{m}, @var{t}, @var{nm}, @var{sp}] =} regexp (@var{str}, @var{pat})"
+
+#. type: deftypefnx
+#: strings.texi:1520
+#, no-wrap
+msgid ""
+"{Built-in Function} {[@dots{}] =} regexp (@var{str}, @var{pat}, "
+"\"@var{opt1}\", @dots{})"
+msgstr "{Built-in Function} {[@dots{}] =} regexp (@var{str}, @var{pat}, \"@var{opt1}\", @dots{})"
+
+#. type: deftypefn
+#: strings.texi:1524
+msgid ""
+"Regular expression string matching.  Search for @var{pat} in @var{str} and "
+"return the positions and substrings of any matches, or empty values if there "
+"are none."
+msgstr "文字列をマッチングするための正規表現です。@var{str}から@var{pat}を検索して、マッチした位置と部分文字列、マッチしなかったときは空の値をリターンします。"
+
+#. type: deftypefn
+#: strings.texi:1527
+msgid ""
+"The matched pattern @var{pat} can include any of the standard regex "
+"operators, including:"
+msgstr "マッチさせるパターン@var{pat}には以下の標準的なregex演算子が含まれます:"
+
+#. type: item
+#: strings.texi:1529
+#, no-wrap
+msgid "."
+msgstr "."
+
+#. type: table
+#: strings.texi:1531
+msgid "Match any character"
+msgstr "任意の文字にマッチする"
+
+#. type: item
+#: strings.texi:1532
+#, no-wrap
+msgid "* + ? @{@}"
+msgstr "* + ? @{@}"
+
+#. type: table
+#: strings.texi:1534
+msgid "Repetition operators, representing"
+msgstr "繰り返し演算子。以下の意味をもつ"
+
+#. type: item
+#: strings.texi:1536
+#, no-wrap
+msgid "*"
+msgstr "*"
+
+#. type: table
+#: strings.texi:1538
+msgid "Match zero or more times"
+msgstr "0回以上のマッチ"
+
+#. type: item
+#: strings.texi:1539
+#, no-wrap
+msgid "+"
+msgstr "+"
+
+#. type: table
+#: strings.texi:1541
+msgid "Match one or more times"
+msgstr "1回以上のマッチ"
+
+#. type: item
+#: strings.texi:1542
+#, no-wrap
+msgid "?"
+msgstr "?"
+
+#. type: table
+#: strings.texi:1544
+msgid "Match zero or one times"
+msgstr "0または1回のマッチ"
+
+#. type: item
+#: strings.texi:1545
+#, no-wrap
+msgid "@{@var{n}@}"
+msgstr "@{@var{n}@}"
+
+#. type: table
+#: strings.texi:1547
+msgid "Match exactly @var{n} times"
+msgstr "正確に@var{n}回のマッチ"
+
+#. type: item
+#: strings.texi:1548
+#, no-wrap
+msgid "@{@var{n},@}"
+msgstr "@{@var{n},@}"
+
+#. type: table
+#: strings.texi:1550
+msgid "Match @var{n} or more times"
+msgstr "@var{n}回以上のマッチ"
+
+#. type: item
+#: strings.texi:1551
+#, no-wrap
+msgid "@{@var{m},@var{n}@}"
+msgstr "@{@var{m},@var{n}@}"
+
+#. type: table
+#: strings.texi:1553
+msgid "Match between @var{m} and @var{n} times"
+msgstr "@var{m}回から@var{n}回のマッチ"
+
+#. type: item
+#: strings.texi:1555
+#, no-wrap
+msgid "[@dots{}] [^@dots{}]"
+msgstr "[@dots{}] [^@dots{}]"
+
+#. type: table
+#: strings.texi:1560
+msgid ""
+"List operators.  The pattern will match any character listed between \"[\" "
+"and \"]\".  If the first character is \"^\" then the pattern is inverted and "
+"any character except those listed between brackets will match."
+msgstr "リスト演算子。パターンは\"[\"と\"]\"の間にリストされた任意の文字にマッチする。最初の文字が\"^\"の場合、パターンの意味は逆になり、角カッコの間にリストされた文字以外の任意の文字にマッチする。"
+
+#. type: table
+#: strings.texi:1564
+msgid ""
+"Escape sequences defined below can also be used inside list operators.  For "
+"example, a template for a floating point number might be @code{[-+.\\d]+}."
+msgstr "リスト演算子内で以下で定義されるエスケープシーケンスを使用できる。たとえば浮動小数点数にたいするテンプレートは@code{[-+.\\d]+}のようになる。"
+
+#. type: item
+#: strings.texi:1565
+#, no-wrap
+msgid "() (?:)"
+msgstr "() (?:)"
+
+#. type: table
+#: strings.texi:1567
+msgid "Grouping operator.  The first form, parentheses only, also creates a token."
+msgstr "グループ化演算子。1つ目の丸カッコだけの形式はトークンも作成する。"
+
+#. type: item
+#: strings.texi:1568
+#, no-wrap
+msgid "|"
+msgstr "|"
+
+#. type: table
+#: strings.texi:1571
+msgid ""
+"Alternation operator.  Match one of a choice of regular expressions.  The "
+"alternatives must be delimited by the grouping operator @code{()} above."
+msgstr "選択肢のための演算子。正規表現からなる選択肢の1つにマッチする。選択肢は上述のグループ化演算子@code{()}で区切らなければならない。"
+
+#. type: item
+#: strings.texi:1572
+#, no-wrap
+msgid "^ $"
+msgstr "^ $"
+
+#. type: table
+#: strings.texi:1575
+msgid ""
+"Anchoring operators.  Requires pattern to occur at the start (@code{^}) or "
+"end (@code{$}) of the string."
+msgstr "アンカー演算子。文字列の開始、または終了を示すには、(@code{^})および(@code{$})のパターンが要求される。"
+
+#. type: deftypefn
+#: strings.texi:1578
+msgid "In addition, the following escaped characters have special meaning."
+msgstr "さらに以下のエスケープシーケンスは、特別な意味をもつ。"
+
+#. type: item
+#: strings.texi:1581
+#, no-wrap
+msgid "\\d"
+msgstr "\\d"
+
+#. type: table
+#: strings.texi:1583
+msgid "Match any digit"
+msgstr "任意の数字にマッチする"
+
+#. type: item
+#: strings.texi:1584
+#, no-wrap
+msgid "\\D"
+msgstr "\\D"
+
+#. type: table
+#: strings.texi:1586
+msgid "Match any non-digit"
+msgstr "数字以外の任意の文字にマッチする"
+
+#. type: item
+#: strings.texi:1587
+#, no-wrap
+msgid "\\s"
+msgstr "\\s"
+
+#. type: table
+#: strings.texi:1589
+msgid "Match any whitespace character"
+msgstr "任意の空白文字にマッチする"
+
+#. type: item
+#: strings.texi:1590
+#, no-wrap
+msgid "\\S"
+msgstr "\\S"
+
+#. type: table
+#: strings.texi:1592
+msgid "Match any non-whitespace character"
+msgstr "空白文字以外の任意の文字にマッチする"
+
+#. type: item
+#: strings.texi:1593
+#, no-wrap
+msgid "\\w"
+msgstr "\\w"
+
+#. type: table
+#: strings.texi:1595
+msgid "Match any word character"
+msgstr "任意の単語文字にマッチする"
+
+#. type: item
+#: strings.texi:1596
+#, no-wrap
+msgid "\\W"
+msgstr "\\W"
+
+#. type: table
+#: strings.texi:1598
+msgid "Match any non-word character"
+msgstr "単語以外の任意の文字にマッチする"
+
+#. type: item
+#: strings.texi:1599
+#, no-wrap
+msgid "\\<"
+msgstr "\\<"
+
+#. type: table
+#: strings.texi:1601
+msgid "Match the beginning of a word"
+msgstr "単語の先頭にマッチする"
+
+#. type: item
+#: strings.texi:1602
+#, no-wrap
+msgid "\\>"
+msgstr "\\>"
+
+#. type: table
+#: strings.texi:1604
+msgid "Match the end of a word"
+msgstr "単語の末尾にマッチする"
+
+#. type: item
+#: strings.texi:1605
+#, no-wrap
+msgid "\\B"
+msgstr "\\B"
+
+#. type: table
+#: strings.texi:1607
+msgid "Match within a word"
+msgstr "単語の内部にマッチする"
+
+#. type: deftypefn
+#: strings.texi:1614
+msgid ""
+"Implementation Note: For compatibility with @sc{matlab}, ordinary escape "
+"sequences (e.g., @qcode{\"\\n\"} => newline) are processed in @var{pat} "
+"regardless of whether @var{pat} has been defined within single quotes.  Use "
+"a second backslash to stop interpolation of the escape sequence (e.g., "
+"\"\\\\n\") or use the @code{regexptranslate} function."
+msgstr "実装ノート: @sc{matlab}との互換性のため、通常のエスケープシーケンス(例: @qcode{\"\\n\"} => newline)は、@var{pat}がシングルクォートで定義されているか否かに関わらず処理されます。エスケープシーケンスの補間を停止するには2つ目のバックスラッシュ(例: \"\\\\n\")を使うか、@code{regexptranslate}関数を使用してください。"
+
+#. type: deftypefn
+#: strings.texi:1616
+msgid "The outputs of @code{regexp} default to the order given below"
+msgstr "@code{regexp}のデフォルトの出力順は以下で与えられます"
+
+#. type: item
+#: strings.texi:1618
+#, no-wrap
+msgid "s"
+msgstr "s"
+
+#. type: table
+#: strings.texi:1620
+msgid "The start indices of each matching substring"
+msgstr "マッチした部分文字列の開始インデクス"
+
+#. type: item
+#: strings.texi:1621
+#, no-wrap
+msgid "e"
+msgstr "e"
+
+#. type: table
+#: strings.texi:1623
+msgid "The end indices of each matching substring"
+msgstr "マッチした部分文字列の終了インデクス"
+
+#. type: item
+#: strings.texi:1624
+#, no-wrap
+msgid "te"
+msgstr "te"
+
+#. type: table
+#: strings.texi:1627
+msgid ""
+"The extents of each matched token surrounded by @code{(@dots{})} in "
+"@var{pat}"
+msgstr "マッチした各トークンを@var{pat}内の@code{(@dots{})}で囲んだものの範囲"
+
+#. type: item
+#: strings.texi:1628
+#, no-wrap
+msgid "m"
+msgstr "m"
+
+#. type: table
+#: strings.texi:1630
+msgid "A cell array of the text of each match"
+msgstr "各マッチのテキストのセル配列"
+
+#. type: item
+#: strings.texi:1631
+#, no-wrap
+msgid "t"
+msgstr "t"
+
+#. type: table
+#: strings.texi:1633
+msgid "A cell array of the text of each token matched"
+msgstr "各マッチのトークンのテキストのセル配列"
+
+#. type: item
+#: strings.texi:1634
+#, no-wrap
+msgid "nm"
+msgstr "nm"
+
+#. type: table
+#: strings.texi:1638
+msgid ""
+"A structure containing the text of each matched named token, with the name "
+"being used as the fieldname.  A named token is denoted by "
+"@code{(?<name>@dots{})}."
+msgstr "マッチした名前付きトークン(名前はフィールド名として使用される)のテキストを含む構造体。名前付きトークンは@code{(?<name>@dots{})}で表される。"
+
+#. type: item
+#: strings.texi:1639
+#, no-wrap
+msgid "sp"
+msgstr "sp"
+
+#. type: table
+#: strings.texi:1642
+msgid ""
+"A cell array of the text not returned by match, i.e., what remains if you "
+"split the string based on @var{pat}."
+msgstr "テキストのセル配列(例: @var{pat}により文字列を分割したときの残り)はマッチによりリターンされない。"
+
+#. type: deftypefn
+#: strings.texi:1648
+msgid ""
+"Particular output arguments, or the order of the output arguments, can be "
+"selected by additional @var{opt} arguments.  These are strings and the "
+"correspondence between the output arguments and the optional argument are"
+msgstr "特定の出力引数、または出力引数の順番は、追加の引数@var{opt}で選択できます。これらは文字列で、出力引数とオプション引数の対応は以下のとおりです"
+
+#. type: item
+#: strings.texi:1650
+#, no-wrap
+msgid "@tab @qcode{'start'}        @tab @var{s}  @tab"
+msgstr "@tab @qcode{'start'}        @tab @var{s}  @tab"
+
+#. type: item
+#: strings.texi:1651
+#, no-wrap
+msgid "@tab @qcode{'end'}          @tab @var{e}  @tab"
+msgstr "@tab @qcode{'end'}          @tab @var{e}  @tab"
+
+#. type: item
+#: strings.texi:1652
+#, no-wrap
+msgid "@tab @qcode{'tokenExtents'} @tab @var{te} @tab"
+msgstr "@tab @qcode{'tokenExtents'} @tab @var{te} @tab"
+
+#. type: item
+#: strings.texi:1653
+#, no-wrap
+msgid "@tab @qcode{'match'}        @tab @var{m}  @tab"
+msgstr "@tab @qcode{'match'}        @tab @var{m}  @tab"
+
+#. type: item
+#: strings.texi:1654
+#, no-wrap
+msgid "@tab @qcode{'tokens'}       @tab @var{t}  @tab"
+msgstr "@tab @qcode{'tokens'}       @tab @var{t}  @tab"
+
+#. type: item
+#: strings.texi:1655
+#, no-wrap
+msgid "@tab @qcode{'names'}        @tab @var{nm} @tab"
+msgstr "@tab @qcode{'names'}        @tab @var{nm} @tab"
+
+#. type: item
+#: strings.texi:1656
+#, no-wrap
+msgid "@tab @qcode{'split'}        @tab @var{sp} @tab"
+msgstr "@tab @qcode{'split'}        @tab @var{sp} @tab"
+
+#. type: deftypefn
+#: strings.texi:1660
+msgid "Additional arguments are summarized below."
+msgstr "追加の引数を以下に要約します。"
+
+#. type: item
+#: strings.texi:1662 strings.texi:1759
+#, no-wrap
+msgid "once"
+msgstr "once"
+
+#. type: table
+#: strings.texi:1664
+msgid "Return only the first occurrence of the pattern."
+msgstr "パターンの最初の出現だけをリターンする。"
+
+#. type: item
+#: strings.texi:1665
+#, no-wrap
+msgid "matchcase"
+msgstr "matchcase"
+
+#. type: table
+#: strings.texi:1667
+msgid "Make the matching case sensitive.  (default)"
+msgstr "大文字小文字を区別せずにマッチングする(デフォルト)。"
+
+#. type: table
+#: strings.texi:1669
+msgid "Alternatively, use (?-i) in the pattern."
+msgstr "パターン内で(?-i)を使用して代替できる。"
+
+#. type: item
+#: strings.texi:1670
+#, no-wrap
+msgid "ignorecase"
+msgstr "ignorecase"
+
+#. type: table
+#: strings.texi:1672
+msgid "Ignore case when matching the pattern to the string."
+msgstr "大文字小文字を区別してマッチングする。"
+
+#. type: table
+#: strings.texi:1674
+msgid "Alternatively, use (?i) in the pattern."
+msgstr "パターン内で(?i)を使用して代替できる。"
+
+#. type: item
+#: strings.texi:1675
+#, no-wrap
+msgid "stringanchors"
+msgstr "stringanchors"
+
+#. type: table
+#: strings.texi:1678
+msgid ""
+"Match the anchor characters at the beginning and end of the string.  "
+"(default)"
+msgstr "アンカー文字は文字列の開始と終了にマッチする(デフォルト)。"
+
+#. type: table
+#: strings.texi:1680
+msgid "Alternatively, use (?-m) in the pattern."
+msgstr "パターン内で(?-m)を使用して代替できる。"
+
+#. type: item
+#: strings.texi:1681
+#, no-wrap
+msgid "lineanchors"
+msgstr "lineanchors"
+
+#. type: table
+#: strings.texi:1683
+msgid "Match the anchor characters at the beginning and end of the line."
+msgstr "アンカー文字は行の開始と終了にマッチする(デフォルト)。"
+
+#. type: table
+#: strings.texi:1685
+msgid "Alternatively, use (?m) in the pattern."
+msgstr "パターン内で(?m)を使用して代替できる。"
+
+#. type: item
+#: strings.texi:1686
+#, no-wrap
+msgid "dotall"
+msgstr "dotall"
+
+#. type: table
+#: strings.texi:1689
+msgid ""
+"The pattern @code{.} matches all characters including the newline "
+"character.  (default)"
+msgstr "パターン@code{.}は、改行文字を含むすべての文字にマッチする(デフォルト)。"
+
+#. type: table
+#: strings.texi:1691
+msgid "Alternatively, use (?s) in the pattern."
+msgstr "パターン内で(?s)を使用して代替できる。"
+
+#. type: item
+#: strings.texi:1692
+#, no-wrap
+msgid "dotexceptnewline"
+msgstr "dotexceptnewline"
+
+#. type: table
+#: strings.texi:1694
+msgid "The pattern @code{.} matches all characters except the newline character."
+msgstr "パターン@code{.}は、改行文字を除くすべての文字にマッチする。"
+
+#. type: table
+#: strings.texi:1696
+msgid "Alternatively, use (?-s) in the pattern."
+msgstr "パターン内で(?-s)を使用して代替できる。"
+
+#. type: item
+#: strings.texi:1697
+#, no-wrap
+msgid "literalspacing"
+msgstr "literalspacing"
+
+#. type: table
+#: strings.texi:1700
+msgid ""
+"All characters in the pattern, including whitespace, are significant and are "
+"used in pattern matching.  (default)"
+msgstr "空白文字を含む、パターン内のすべての文字は有意であり、パターンマッチングに使用される(デフォルト)。"
+
+#. type: table
+#: strings.texi:1702
+msgid "Alternatively, use (?-x) in the pattern."
+msgstr "パターン内で(?-x)を使用して代替できる。"
+
+#. type: item
+#: strings.texi:1703
+#, no-wrap
+msgid "freespacing"
+msgstr "freespacing"
+
+#. type: table
+#: strings.texi:1706
+msgid ""
+"The pattern may include arbitrary whitespace and also comments beginning "
+"with the character @samp{#}."
+msgstr "パターンは任意の空白文字、および文字@samp{#}で始まるコメントを含むことができる。"
+
+#. type: table
+#: strings.texi:1708
+msgid "Alternatively, use (?x) in the pattern."
+msgstr "パターン内で(?x)を使用して代替できる。"
+
+#. type: item
+#: strings.texi:1709
+#, no-wrap
+msgid "noemptymatch"
+msgstr "noemptymatch"
+
+#. type: table
+#: strings.texi:1711
+msgid "Zero-length matches are not returned.  (default)"
+msgstr "長さ0のマッチはリターンされない(デフォルト)。"
+
+#. type: item
+#: strings.texi:1712
+#, no-wrap
+msgid "emptymatch"
+msgstr "emptymatch"
+
+#. type: table
+#: strings.texi:1714
+msgid "Return zero-length matches."
+msgstr "長さ0のマッチをリターンする。"
+
+#. type: table
+#: strings.texi:1717
+msgid ""
+"@code{regexp ('a', 'b*', 'emptymatch')} returns @code{[1 2]} because there "
+"are zero or more @qcode{'b'} characters at positions 1 and end-of-string."
+msgstr "@code{regexp ('a', 'b*', 'emptymatch')}は@code{[1 2]}をリターンする。それは0文字以上の@qcode{'b'}が位置1と文字列終端にマッチするからである。"
+
+#. type: deftypefn
+#: strings.texi:1720
+msgid ""
+"@seealso{@ref{XREFregexpi,,regexpi}, @ref{XREFstrfind,,strfind}, "
+"@ref{XREFregexprep,,regexprep}}"
+msgstr "@seealso{@ref{XREFregexpi,,regexpi}, @ref{XREFstrfind,,strfind}, @ref{XREFregexprep,,regexprep}}"
+
+#. type: anchor{#1}
+#: strings.texi:1725
+msgid "XREFregexpi"
+msgstr "XREFregexpi"
+
+#. type: deftypefn
+#: strings.texi:1725
+#, no-wrap
+msgid ""
+"{Built-in Function} {[@var{s}, @var{e}, @var{te}, @var{m}, @var{t}, "
+"@var{nm}, @var{sp}] =} regexpi (@var{str}, @var{pat})"
+msgstr "{Built-in Function} {[@var{s}, @var{e}, @var{te}, @var{m}, @var{t}, @var{nm}, @var{sp}] =} regexpi (@var{str}, @var{pat})"
+
+#. type: deftypefnx
+#: strings.texi:1726
+#, no-wrap
+msgid ""
+"{Built-in Function} {[@dots{}] =} regexpi (@var{str}, @var{pat}, "
+"\"@var{opt1}\", @dots{})"
+msgstr "{Built-in Function} {[@dots{}] =} regexpi (@var{str}, @var{pat}, \"@var{opt1}\", @dots{})"
+
+#. type: deftypefn
+#: strings.texi:1733
+msgid ""
+"Case insensitive regular expression string matching.  Search for @var{pat} "
+"in @var{str} and return the positions and substrings of any matches, or "
+"empty values if there are none.  @xref{XREFregexp,,regexp}, for details on "
+"the syntax of the search pattern.  @seealso{@ref{XREFregexp,,regexp}}"
+msgstr ""
+"大文字小文字を区別せずに正規表現による文字列マッチングを行います。@var{str}内から@var{pat}を検索して、マッチした位置と部分文字列、マッチしなかったときは空の値をリターンします。検索パターン構文の詳細は、@ref{XREFregexp,,regexp}を参照してください。\n"
+"@seealso{@ref{XREFregexp,,regexp}}"
+
+#. type: anchor{#1}
+#: strings.texi:1738
+msgid "XREFregexprep"
+msgstr "XREFregexprep"
+
+#. type: deftypefn
+#: strings.texi:1738
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{outstr} =} regexprep (@var{string}, @var{pat}, "
+"@var{repstr})"
+msgstr "{Built-in Function} {@var{outstr} =} regexprep (@var{string}, @var{pat}, @var{repstr})"
+
+#. type: deftypefnx
+#: strings.texi:1739
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{outstr} =} regexprep (@var{string}, @var{pat}, "
+"@var{repstr}, \"@var{opt1}\", @dots{})"
+msgstr "{Built-in Function} {@var{outstr} =} regexprep (@var{string}, @var{pat}, @var{repstr}, \"@var{opt1}\", @dots{})"
+
+#. type: deftypefn
+#: strings.texi:1741
+msgid "Replace occurrences of pattern @var{pat} in @var{string} with @var{repstr}."
+msgstr "@var{string}内に存在するパターン@var{pat}を、@var{repstr}で置き換えます。"
+
+#. type: deftypefn
+#: strings.texi:1744
+msgid ""
+"The pattern is a regular expression as documented for @code{regexp}.  "
+"@xref{XREFregexp,,regexp}."
+msgstr "パターンは@code{regexp}に記述されている正規表現です。@ref{XREFregexp,,regexp}を参照してください。"
+
+#. type: deftypefn
+#: strings.texi:1747
+msgid ""
+"The replacement string may contain @code{$i}, which substitutes for the ith "
+"set of parentheses in the match string.  For example,"
+msgstr "置換文字列には@code{$i}を含めることができます。これはマッチした文字列内の、i番目のカッコで括られたもので置換されます。たとえば、"
+
+#. type: example
+#: strings.texi:1750
+#, no-wrap
+msgid "regexprep (\"Bill Dunn\", '(\\w+) (\\w+)', '$2, $1')\n"
+msgstr "regexprep (\"Bill Dunn\", '(\\w+) (\\w+)', '$2, $1')\n"
+
+#. type: deftypefn
+#: strings.texi:1754
+msgid "returns \"Dunn, Bill\""
+msgstr "は、\"Dunn, Bill\"をリターンします"
+
+#. type: deftypefn
+#: strings.texi:1756
+msgid "Options in addition to those of @code{regexp} are"
+msgstr "追加オプションは@code{regexp}のものに以下が加わります"
+
+#. type: table
+#: strings.texi:1761
+msgid "Replace only the first occurrence of @var{pat} in the result."
+msgstr "結果の中の最初にあった@code{regexp}だけを置換する。"
+
+#. type: item
+#: strings.texi:1762
+#, no-wrap
+msgid "warnings"
+msgstr "warnings"
+
+#. type: table
+#: strings.texi:1764
+msgid "This option is present for compatibility but is ignored."
+msgstr "このオプションは互換性のためだけで、無視される。"
+
+#. type: deftypefn
+#: strings.texi:1773
+msgid ""
+"Implementation Note: For compatibility with @sc{matlab}, ordinary escape "
+"sequences (e.g., @qcode{\"\\n\"} => newline) are processed in both @var{pat} "
+"and @var{repstr} regardless of whether they were defined within single "
+"quotes.  Use a second backslash to stop interpolation of the escape sequence "
+"(e.g., \"\\\\n\") or use the @code{regexptranslate} function.  "
+"@seealso{@ref{XREFregexp,,regexp}, @ref{XREFregexpi,,regexpi}, "
+"@ref{XREFstrrep,,strrep}}"
+msgstr ""
+"実装ノート: @sc{matlab}との互換性のため@var{pat}と@var{repstr}内のエスケープシーケンス(例: @qcode{\"\\n\"} => 改行)は、それらがシングルクォート内で定義されているか否かに関わらず、通常どおり処理されます。エスケープシーケンスの補間を防ぐには2つ目のバックスラッシュを使かう(例: \"\\\\n\")か、@code{regexptranslate}関数を使用してください。\n"
+"@seealso{@ref{XREFregexp,,regexp}, @ref{XREFregexpi,,regexpi}, @ref{XREFstrrep,,strrep}}"
+
+#. type: anchor{#1}
+#: strings.texi:1778
+msgid "XREFregexptranslate"
+msgstr "XREFregexptranslate"
+
+#. type: deftypefn
+#: strings.texi:1778
+#, no-wrap
+msgid "{Function File} {} regexptranslate (@var{op}, @var{s})"
+msgstr "{Function File} {} regexptranslate (@var{op}, @var{s})"
+
+#. type: deftypefn
+#: strings.texi:1783
+msgid ""
+"Translate a string for use in a regular expression.  This may include either "
+"wildcard replacement or special character escaping.  The behavior is "
+"controlled by @var{op} which can take the following values"
+msgstr "正規表現として使用するために文字列を翻訳します。これにはワイルドカードの置換や、特殊文字のエスケープが含まれます。この振る舞いは@var{op}により制御され、以下の値をとることができます"
+
+#. type: item
+#: strings.texi:1785
+#, no-wrap
+msgid "@qcode{\"wildcard\"}"
+msgstr "@qcode{\"wildcard\"}"
+
+#. type: table
+#: strings.texi:1789
+msgid ""
+"The wildcard characters @code{.}, @code{*}, and @code{?} are replaced with "
+"wildcards that are appropriate for a regular expression.  For example:"
+msgstr "ワイルドカード文字@code{.}、@code{*}、@code{?}は適切な正規表現に置き換えられます。たとえば:"
+
+#. type: group
+#: strings.texi:1794
+#, no-wrap
+msgid ""
+"regexptranslate (\"wildcard\", \"*.m\")\n"
+"     @result{} \".*\\.m\"\n"
+msgstr ""
+"regexptranslate (\"wildcard\", \"*.m\")\n"
+"     @result{} \".*\\.m\"\n"
+
+#. type: item
+#: strings.texi:1797
+#, no-wrap
+msgid "@qcode{\"escape\"}"
+msgstr "@qcode{\"escape\"}"
+
+#. type: table
+#: strings.texi:1800
+msgid ""
+"The characters @code{$.?[]}, that have special meaning for regular "
+"expressions are escaped so that they are treated literally.  For example:"
+msgstr "文字@code{$.?[]}は正規表現では特別な意味をもつので、リテラルとして扱うためには、エスケープする必要があります。たとえば:"
+
+#. type: group
+#: strings.texi:1805
+#, no-wrap
+msgid ""
+"regexptranslate (\"escape\", \"12.5\")\n"
+"     @result{} \"12\\.5\"\n"
+msgstr ""
+"regexptranslate (\"escape\", \"12.5\")\n"
+"     @result{} \"12\\.5\"\n"
+
+#. type: deftypefn
+#: strings.texi:1810
+msgid ""
+"@seealso{@ref{XREFregexp,,regexp}, @ref{XREFregexpi,,regexpi}, "
+"@ref{XREFregexprep,,regexprep}}"
+msgstr "@seealso{@ref{XREFregexp,,regexp}, @ref{XREFregexpi,,regexpi}, @ref{XREFregexprep,,regexprep}}"
+
+#. type: anchor{#1}
+#: strings.texi:1815
+msgid "XREFuntabify"
+msgstr "XREFuntabify"
+
+#. type: deftypefn
+#: strings.texi:1815
+#, no-wrap
+msgid "{Function File} {} untabify (@var{t})"
+msgstr "{Function File} {} untabify (@var{t})"
+
+#. type: deftypefnx
+#: strings.texi:1816
+#, no-wrap
+msgid "{Function File} {} untabify (@var{t}, @var{tw})"
+msgstr "{Function File} {} untabify (@var{t}, @var{tw})"
+
+#. type: deftypefnx
+#: strings.texi:1817
+#, no-wrap
+msgid "{Function File} {} untabify (@var{t}, @var{tw}, @var{deblank})"
+msgstr "{Function File} {} untabify (@var{t}, @var{tw}, @var{deblank})"
+
+#. type: deftypefn
+#: strings.texi:1823
+msgid ""
+"Replace TAB characters in @var{t}, with spaces.  The tab width is specified "
+"by @var{tw}, or defaults to eight.  The input, @var{t}, may be either a 2-D "
+"character array, or a cell array of character strings.  The output is the "
+"same class as the input."
+msgstr "@var{t}内のTAB文字を、スペースで置き換えます。TAB幅は@var{tw}での指定、またはデフォルトの8になります。入力の@var{t}は2次元文字配列、または文字列のセル配列です。出力は入力と同じクラスになります。"
+
+#. type: deftypefn
+#: strings.texi:1826
+msgid ""
+"If the optional argument @var{deblank} is true, then the spaces will be "
+"removed from the end of the character data."
+msgstr "オプション引数@var{deblank}がtrueの場合、文字データの末尾のスペースは削除されます。"
+
+#. type: deftypefn
+#: strings.texi:1829
+msgid ""
+"The following example reads a file and writes an untabified version of the "
+"same file with trailing spaces stripped."
+msgstr "以下は、ファイルを読み込んでから、最後のス同じファイルのスペースを取り除いた、TABなしバージョンを書き込む例です。"
+
+#. type: group
+#: strings.texi:1839
+#, no-wrap
+msgid ""
+"fid = fopen (\"tabbed_script.m\");\n"
+"text = char (fread (fid, \"uchar\")');\n"
+"fclose (fid);\n"
+"fid = fopen (\"untabified_script.m\", \"w\");\n"
+"text = untabify (strsplit (text, \"\\n\"), 8, true);\n"
+"fprintf (fid, \"%s\\n\", text@{:@});\n"
+"fclose (fid);\n"
+msgstr ""
+"fid = fopen (\"tabbed_script.m\");\n"
+"text = char (fread (fid, \"uchar\")');\n"
+"fclose (fid);\n"
+"fid = fopen (\"untabified_script.m\", \"w\");\n"
+"text = untabify (strsplit (text, \"\\n\"), 8, true);\n"
+"fprintf (fid, \"%s\\n\", text@{:@});\n"
+"fclose (fid);\n"
+
+#. type: deftypefn
+#: strings.texi:1843
+msgid ""
+"@seealso{@ref{XREFstrjust,,strjust}, @ref{XREFstrsplit,,strsplit}, "
+"@ref{XREFdeblank,,deblank}}"
+msgstr "@seealso{@ref{XREFstrjust,,strjust}, @ref{XREFstrsplit,,strsplit}, @ref{XREFdeblank,,deblank}}"
+
+#. type: section
+#: strings.texi:1846 strings.texi:1847
+#, no-wrap
+msgid "String Conversions"
+msgstr "String Conversions"
+
+#. type: Plain text
+#: strings.texi:1852
+msgid ""
+"Octave supports various kinds of conversions between strings and numbers.  "
+"As an example, it is possible to convert a string containing a hexadecimal "
+"number to a floating point number."
+msgstr "Octaveは文字列と数値の間で、さまざまな種類の変換をサポートします。1例をあげると、16進数を含む文字列を、浮動小数点数に変換することができます。"
+
+#. type: group
+#: strings.texi:1857
+#, no-wrap
+msgid ""
+"hex2dec (\"FF\")\n"
+"      @result{} 255\n"
+msgstr ""
+"hex2dec (\"FF\")\n"
+"      @result{} 255\n"
+
+#. type: anchor{#1}
+#: strings.texi:1862
+msgid "XREFbin2dec"
+msgstr "XREFbin2dec"
+
+#. type: deftypefn
+#: strings.texi:1862
+#, no-wrap
+msgid "{Function File} {} bin2dec (@var{s})"
+msgstr "{Function File} {} bin2dec (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:1865
+msgid ""
+"Return the decimal number corresponding to the binary number represented by "
+"the string @var{s}.  For example:"
+msgstr "文字列@var{s}で表された2進数に対応する10進数をリターンします。たとえば:"
+
+#. type: group
+#: strings.texi:1870
+#, no-wrap
+msgid ""
+"bin2dec (\"1110\")\n"
+"     @result{} 14\n"
+msgstr ""
+"bin2dec (\"1110\")\n"
+"     @result{} 14\n"
+
+#. type: deftypefn
+#: strings.texi:1875
+msgid ""
+"Spaces are ignored during conversion and may be used to make the binary "
+"number more readable."
+msgstr "変換において、2進数値のかどくせいを工場させるために使用されるかもしれないスペースは無視されます。"
+
+#. type: group
+#: strings.texi:1880
+#, no-wrap
+msgid ""
+"bin2dec (\"1000 0001\")\n"
+"     @result{} 129\n"
+msgstr ""
+"bin2dec (\"1000 0001\")\n"
+"     @result{} 129\n"
+
+#. type: deftypefn
+#: strings.texi:1885 strings.texi:1955
+msgid ""
+"If @var{s} is a string matrix, return a column vector with one converted "
+"number per row of @var{s}; Invalid rows evaluate to NaN@."
+msgstr "@var{s}が文字列マトリクスの場合は、@var{s}の行ごとに1つの数値に変換した列ベクターをリターンします。無効な行はNaNに評価されます。"
+
+#. type: deftypefn
+#: strings.texi:1889
+msgid ""
+"If @var{s} is a cell array of strings, return a column vector with one "
+"converted number per cell element in @var{s}.  "
+"@seealso{@ref{XREFdec2bin,,dec2bin}, @ref{XREFbase2dec,,base2dec}, "
+"@ref{XREFhex2dec,,hex2dec}}"
+msgstr ""
+"@var{s}が文字列のセル配列の場合は、@var{s}内のセル要素ごとに1つの数値に変換した列ベクターをリターンします。\n"
+"@seealso{@ref{XREFdec2bin,,dec2bin}, @ref{XREFbase2dec,,base2dec}, @ref{XREFhex2dec,,hex2dec}}"
+
+#. type: anchor{#1}
+#: strings.texi:1894
+msgid "XREFdec2bin"
+msgstr "XREFdec2bin"
+
+#. type: deftypefn
+#: strings.texi:1894
+#, no-wrap
+msgid "{Function File} {} dec2bin (@var{d}, @var{len})"
+msgstr "{Function File} {} dec2bin (@var{d}, @var{len})"
+
+#. type: deftypefn
+#: strings.texi:1897
+msgid ""
+"Return a binary number corresponding to the non-negative integer @var{d}, as "
+"a string of ones and zeros.  For example:"
+msgstr "非負の整数@var{d}に大王する2進数値を、1と0からなる文字列でリターンします。たとえば:"
+
+#. type: group
+#: strings.texi:1902
+#, no-wrap
+msgid ""
+"dec2bin (14)\n"
+"     @result{} \"1110\"\n"
+msgstr ""
+"dec2bin (14)\n"
+"     @result{} \"1110\"\n"
+
+#. type: deftypefn
+#: strings.texi:1908 strings.texi:1931 strings.texi:1980
+msgid ""
+"If @var{d} is a matrix or cell array, return a string matrix with one row "
+"per element in @var{d}, padded with leading zeros to the width of the "
+"largest value."
+msgstr "@var{d}がマトリクスまたはセル配列の場合は、@var{d}内の要素ごとに1行(最大値の幅になるように先頭に0がパディングされます)となる文字列マトリクスをリターンします。"
+
+#. type: deftypefn
+#: strings.texi:1912
+msgid ""
+"The optional second argument, @var{len}, specifies the minimum number of "
+"digits in the result.  @seealso{@ref{XREFbin2dec,,bin2dec}, "
+"@ref{XREFdec2base,,dec2base}, @ref{XREFdec2hex,,dec2hex}}"
+msgstr ""
+"2つ目のオプション引数@var{len}は、結果の最小の桁数を指定します。\n"
+"@seealso{@ref{XREFbin2dec,,bin2dec}, @ref{XREFdec2base,,dec2base}, @ref{XREFdec2hex,,dec2hex}}"
+
+#. type: anchor{#1}
+#: strings.texi:1917
+msgid "XREFdec2hex"
+msgstr "XREFdec2hex"
+
+#. type: deftypefn
+#: strings.texi:1917
+#, no-wrap
+msgid "{Function File} {} dec2hex (@var{d}, @var{len})"
+msgstr "{Function File} {} dec2hex (@var{d}, @var{len})"
+
+#. type: deftypefn
+#: strings.texi:1920
+msgid ""
+"Return the hexadecimal string corresponding to the non-negative integer "
+"@var{d}.  For example:"
+msgstr "非負の整数@var{d}に対応する16進文字列をリターンします。たとえば:"
+
+#. type: group
+#: strings.texi:1925
+#, no-wrap
+msgid ""
+"dec2hex (2748)\n"
+"     @result{} \"ABC\"\n"
+msgstr ""
+"dec2hex (2748)\n"
+"     @result{} \"ABC\"\n"
+
+#. type: deftypefn
+#: strings.texi:1935
+msgid ""
+"The optional second argument, @var{len}, specifies the minimum number of "
+"digits in the result.  @seealso{@ref{XREFhex2dec,,hex2dec}, "
+"@ref{XREFdec2base,,dec2base}, @ref{XREFdec2bin,,dec2bin}}"
+msgstr ""
+"2つ目のオプション引数@var{len}は、結果の最小の桁数を指定します。\n"
+"@seealso{@ref{XREFhex2dec,,hex2dec}, @ref{XREFdec2base,,dec2base}, @ref{XREFdec2bin,,dec2bin}}"
+
+#. type: anchor{#1}
+#: strings.texi:1940
+msgid "XREFhex2dec"
+msgstr "XREFhex2dec"
+
+#. type: deftypefn
+#: strings.texi:1940
+#, no-wrap
+msgid "{Function File} {} hex2dec (@var{s})"
+msgstr "{Function File} {} hex2dec (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:1943
+msgid ""
+"Return the integer corresponding to the hexadecimal number represented by "
+"the string @var{s}.  For example:"
+msgstr "文字列@var{s}で表された16進数値に対応する整数をリターンします。たとえば:"
+
+#. type: group
+#: strings.texi:1950
+#, no-wrap
+msgid ""
+"hex2dec (\"12B\")\n"
+"      @result{} 299\n"
+"hex2dec (\"12b\")\n"
+"      @result{} 299\n"
+msgstr ""
+"hex2dec (\"12B\")\n"
+"      @result{} 299\n"
+"hex2dec (\"12b\")\n"
+"      @result{} 299\n"
+
+#. type: deftypefn
+#: strings.texi:1958
+msgid ""
+"If @var{s} is a cell array of strings, return a column vector with one "
+"converted number per cell element in @var{s}."
+msgstr "@var{s}がセル配列の場合は、@var{s}内のセル要素ごとに1つの数値に変換された列ベクターをリターンします。"
+
+#. type: deftypefn
+#: strings.texi:1960
+msgid ""
+"@seealso{@ref{XREFdec2hex,,dec2hex}, @ref{XREFbase2dec,,base2dec}, "
+"@ref{XREFbin2dec,,bin2dec}}"
+msgstr "@seealso{@ref{XREFdec2hex,,dec2hex}, @ref{XREFbase2dec,,base2dec}, @ref{XREFbin2dec,,bin2dec}}"
+
+#. type: anchor{#1}
+#: strings.texi:1965
+msgid "XREFdec2base"
+msgstr "XREFdec2base"
+
+#. type: deftypefn
+#: strings.texi:1965
+#, no-wrap
+msgid "{Function File} {} dec2base (@var{d}, @var{base})"
+msgstr "{Function File} {} dec2base (@var{d}, @var{base})"
+
+#. type: deftypefnx
+#: strings.texi:1966
+#, no-wrap
+msgid "{Function File} {} dec2base (@var{d}, @var{base}, @var{len})"
+msgstr "{Function File} {} dec2base (@var{d}, @var{base}, @var{len})"
+
+#. type: deftypefn
+#: strings.texi:1969
+msgid ""
+"Return a string of symbols in base @var{base} corresponding to the "
+"non-negative integer @var{d}."
+msgstr "非負の整数@var{d}に対応する、基数@var{base}のシンボル文字列をリターンします。"
+
+#. type: group
+#: strings.texi:1974
+#, no-wrap
+msgid ""
+"dec2base (123, 3)\n"
+"   @result{} \"11120\"\n"
+msgstr ""
+"dec2base (123, 3)\n"
+"   @result{} \"11120\"\n"
+
+#. type: deftypefn
+#: strings.texi:1984
+msgid ""
+"If @var{base} is a string then the characters of @var{base} are used as the "
+"symbols for the digits of @var{d}.  Space (' ') may not be used as a symbol."
+msgstr "@var{base}が文字列の場合は、@var{base}の文字が@var{d}の桁のシンボルとして使用されます。スペース(' ')はシンボルとして使用されません。"
+
+#. type: group
+#: strings.texi:1989
+#, no-wrap
+msgid ""
+"dec2base (123, \"aei\")\n"
+"   @result{} \"eeeia\"\n"
+msgstr ""
+"dec2base (123, \"aei\")\n"
+"   @result{} \"eeeia\"\n"
+
+#. type: deftypefn
+#: strings.texi:1995
+msgid ""
+"The optional third argument, @var{len}, specifies the minimum number of "
+"digits in the result.  @seealso{@ref{XREFbase2dec,,base2dec}, "
+"@ref{XREFdec2bin,,dec2bin}, @ref{XREFdec2hex,,dec2hex}}"
+msgstr ""
+"3つ目のオプション引数@var{len}は、結果の最小の桁数を指定します。\n"
+"@seealso{@ref{XREFbase2dec,,base2dec}, @ref{XREFdec2bin,,dec2bin}, @ref{XREFdec2hex,,dec2hex}}"
+
+#. type: anchor{#1}
+#: strings.texi:2000
+msgid "XREFbase2dec"
+msgstr "XREFbase2dec"
+
+#. type: deftypefn
+#: strings.texi:2000
+#, no-wrap
+msgid "{Function File} {} base2dec (@var{s}, @var{base})"
+msgstr "{Function File} {} base2dec (@var{s}, @var{base})"
+
+#. type: deftypefn
+#: strings.texi:2003
+msgid ""
+"Convert @var{s} from a string of digits in base @var{base} to a decimal "
+"integer (base 10)."
+msgstr "基数@var{base}の数字文字列を10進整数(基数10)に変換します。"
+
+#. type: group
+#: strings.texi:2008
+#, no-wrap
+msgid ""
+"base2dec (\"11120\", 3)\n"
+"   @result{} 123\n"
+msgstr ""
+"base2dec (\"11120\", 3)\n"
+"   @result{} 123\n"
+
+#. type: deftypefn
+#: strings.texi:2014
+msgid ""
+"If @var{s} is a string matrix, return a column vector with one value per row "
+"of @var{s}.  If a row contains invalid symbols then the corresponding value "
+"will be NaN@."
+msgstr "@var{s}が文字列マトリクスの場合は、@var{s}の各行が1つの値になる列ベクターをリターンします。行に無効なシンボルが含まれる場合、対応する値はNaNになります。"
+
+#. type: deftypefn
+#: strings.texi:2017
+msgid ""
+"If @var{s} is a cell array of strings, return a column vector with one value "
+"per cell element in @var{s}."
+msgstr "@var{s}が文字列のセル配列の場合は、@var{s}内のセル要素ごとに1つの値となる列ベクターをリターンします。"
+
+#. type: deftypefn
+#: strings.texi:2021
+msgid ""
+"If @var{base} is a string, the characters of @var{base} are used as the "
+"symbols for the digits of @var{s}.  Space (' ') may not be used as a symbol."
+msgstr "@var{base}が文字列の場合は、@var{base}の文字が@var{s}の数字のシンボルとして使用されます。スペース(' ')はシンボルとして使用されません。"
+
+#. type: group
+#: strings.texi:2026
+#, no-wrap
+msgid ""
+"base2dec (\"yyyzx\", \"xyz\")\n"
+"   @result{} 123\n"
+msgstr ""
+"base2dec (\"yyyzx\", \"xyz\")\n"
+"   @result{} 123\n"
+
+#. type: deftypefn
+#: strings.texi:2029
+msgid ""
+"@seealso{@ref{XREFdec2base,,dec2base}, @ref{XREFbin2dec,,bin2dec}, "
+"@ref{XREFhex2dec,,hex2dec}}"
+msgstr "@seealso{@ref{XREFdec2base,,dec2base}, @ref{XREFbin2dec,,bin2dec}, @ref{XREFhex2dec,,hex2dec}}"
+
+#. type: anchor{#1}
+#: strings.texi:2034
+msgid "XREFnum2hex"
+msgstr "XREFnum2hex"
+
+#. type: deftypefn
+#: strings.texi:2034
+#, no-wrap
+msgid "{Built-in Function} {@var{s} =} num2hex (@var{n})"
+msgstr "{Built-in Function} {@var{s} =} num2hex (@var{n})"
+
+#. type: deftypefn
+#: strings.texi:2038
+msgid ""
+"Typecast a double or single precision number or vector to a 8 or 16 "
+"character hexadecimal string of the IEEE 754 representation of the number.  "
+"For example:"
+msgstr "倍精度または単精度数値のベクターを、IEEE 754数値表現の8文字または16文字の16進文字列に型キャストします。たとえば:"
+
+#. type: group
+#: strings.texi:2046
+#, no-wrap
+msgid ""
+"num2hex ([-1, 1, e, Inf])\n"
+"@result{} \"bff0000000000000\n"
+"    3ff0000000000000\n"
+"    4005bf0a8b145769\n"
+"    7ff0000000000000\"\n"
+msgstr ""
+"num2hex ([-1, 1, e, Inf])\n"
+"@result{} \"bff0000000000000\n"
+"    3ff0000000000000\n"
+"    4005bf0a8b145769\n"
+"    7ff0000000000000\"\n"
+
+#. type: deftypefn
+#: strings.texi:2051
+msgid ""
+"If the argument @var{n} is a single precision number or vector, the returned "
+"string has a length of 8.  For example:"
+msgstr "引数@var{n}が単精度数値の数値またはベクターの場合、リターンされる文字列の長さは8になります。たとえば:"
+
+#. type: group
+#: strings.texi:2059
+#, no-wrap
+msgid ""
+"num2hex (single ([-1, 1, e, Inf]))\n"
+"@result{} \"bf800000\n"
+"    3f800000\n"
+"    402df854\n"
+"    7f800000\"\n"
+msgstr ""
+"num2hex (single ([-1, 1, e, Inf]))\n"
+"@result{} \"bf800000\n"
+"    3f800000\n"
+"    402df854\n"
+"    7f800000\"\n"
+
+#. type: deftypefn
+#: strings.texi:2062
+msgid ""
+"@seealso{@ref{XREFhex2num,,hex2num}, @ref{XREFhex2dec,,hex2dec}, "
+"@ref{XREFdec2hex,,dec2hex}}"
+msgstr "@seealso{@ref{XREFhex2num,,hex2num}, @ref{XREFhex2dec,,hex2dec}, @ref{XREFdec2hex,,dec2hex}}"
+
+#. type: anchor{#1}
+#: strings.texi:2067
+msgid "XREFhex2num"
+msgstr "XREFhex2num"
+
+#. type: deftypefn
+#: strings.texi:2067
+#, no-wrap
+msgid "{Built-in Function} {@var{n} =} hex2num (@var{s})"
+msgstr "{Built-in Function} {@var{n} =} hex2num (@var{s})"
+
+#. type: deftypefnx
+#: strings.texi:2068
+#, no-wrap
+msgid "{Built-in Function} {@var{n} =} hex2num (@var{s}, @var{class})"
+msgstr "{Built-in Function} {@var{n} =} hex2num (@var{s}, @var{class})"
+
+#. type: deftypefn
+#: strings.texi:2072
+msgid ""
+"Typecast the 16 character hexadecimal character string to an IEEE 754 double "
+"precision number.  If fewer than 16 characters are given the strings are "
+"right padded with @qcode{'0'} characters."
+msgstr "16文字16進文字列を、IEEE 754の倍精度数値に型キャストします。与えられた文字列が16文字未満の場合は、右に文字@qcode{'0'}がパディングされます。"
+
+#. type: deftypefn
+#: strings.texi:2075
+msgid "Given a string matrix, @code{hex2num} treats each row as a separate number."
+msgstr "文字列マトリクスが与えられた場合、@code{hex2num}は各行を個別の数値として扱います。"
+
+#. type: group
+#: strings.texi:2080
+#, no-wrap
+msgid ""
+"hex2num ([\"4005bf0a8b145769\"; \"4024000000000000\"])\n"
+"   @result{} [2.7183; 10.000]\n"
+msgstr ""
+"hex2num ([\"4005bf0a8b145769\"; \"4024000000000000\"])\n"
+"   @result{} [2.7183; 10.000]\n"
+
+#. type: deftypefn
+#: strings.texi:2087
+msgid ""
+"The optional argument @var{class} can be passed as the string "
+"@qcode{\"single\"} to specify that the given string should be interpreted as "
+"a single precision number.  In this case, @var{s} should be an 8 character "
+"hexadecimal string.  For example:"
+msgstr "オプション引数@var{class}にはもっと@qcode{\"single\"}を渡すことができ、これは与えられた文字列を単精度数値として解釈すべきことを指定します。この場合、@var{s}は8文字の16進文字列になります。たとえば:"
+
+#. type: group
+#: strings.texi:2092
+#, no-wrap
+msgid ""
+"hex2num ([\"402df854\"; \"41200000\"], \"single\")\n"
+"   @result{} [2.7183; 10.000]\n"
+msgstr ""
+"hex2num ([\"402df854\"; \"41200000\"], \"single\")\n"
+"   @result{} [2.7183; 10.000]\n"
+
+#. type: deftypefn
+#: strings.texi:2095
+msgid ""
+"@seealso{@ref{XREFnum2hex,,num2hex}, @ref{XREFhex2dec,,hex2dec}, "
+"@ref{XREFdec2hex,,dec2hex}}"
+msgstr "@seealso{@ref{XREFnum2hex,,num2hex}, @ref{XREFhex2dec,,hex2dec}, @ref{XREFdec2hex,,dec2hex}}"
+
+#. type: anchor{#1}
+#: strings.texi:2100
+msgid "XREFstr2double"
+msgstr "XREFstr2double"
+
+#. type: deftypefn
+#: strings.texi:2100
+#, no-wrap
+msgid "{Built-in Function} {} str2double (@var{s})"
+msgstr "{Built-in Function} {} str2double (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2102
+msgid "Convert a string to a real or complex number."
+msgstr "文字列を実数または複素数に変換します。"
+
+#. type: deftypefn
+#: strings.texi:2105
+msgid ""
+"The string must be in one of the following formats where a and b are real "
+"numbers and the complex unit is @qcode{'i'} or @qcode{'j'}:"
+msgstr "文字列は以下のフォーマットのうちの1つでなければなりません。ここでaとbは実数、複素数単位は@qcode{'i'}と@qcode{'j'}です。"
+
+#. type: item
+#: strings.texi:2107
+#, no-wrap
+msgid "a + bi"
+msgstr "a + bi"
+
+#. type: item
+#: strings.texi:2109
+#, no-wrap
+msgid "a + b*i"
+msgstr "a + b*i"
+
+#. type: item
+#: strings.texi:2111
+#, no-wrap
+msgid "a + i*b"
+msgstr "a + i*b"
+
+#. type: item
+#: strings.texi:2113
+#, no-wrap
+msgid "bi + a"
+msgstr "bi + a"
+
+#. type: item
+#: strings.texi:2115
+#, no-wrap
+msgid "b*i + a"
+msgstr "b*i + a"
+
+#. type: item
+#: strings.texi:2117
+#, no-wrap
+msgid "i*b + a"
+msgstr "i*b + a"
+
+#. type: deftypefn
+#: strings.texi:2124
+msgid ""
+"If present, a and/or b are of the form @nospell{[+-]d[,.]d[[eE][+-]d]} where "
+"the brackets indicate optional arguments and @qcode{'d'} indicates zero or "
+"more digits.  The special input values @code{Inf}, @code{NaN}, and @code{NA} "
+"are also accepted."
+msgstr "もし与えられた場合、aおよび/またはbは@nospell{[+-]d[,.]d[[eE][+-]d]}という形式です。ここで角カッコはオプション引数を示し、@qcode{'d'}は0以上の数字を示します。特別な入力値@code{Inf}、@code{NaN}、@code{NA}も指定できます。"
+
+#. type: deftypefn
+#: strings.texi:2131
+msgid ""
+"@var{s} may be a character string, character matrix, or cell array.  For "
+"character arrays the conversion is repeated for every row, and a double or "
+"complex array is returned.  Empty rows in @var{s} are deleted and not "
+"returned in the numeric array.  For cell arrays each character string "
+"element is processed and a double or complex array of the same dimensions as "
+"@var{s} is returned."
+msgstr "@var{s}は文字列、文字マトリクス、またはセル配列です。文字列配列にたいしては、各行にたいして変換が繰り返され、倍精度または複素数の配列がリターンされます。@var{s}内の空行は削除され、数値配列はリターンされません。セル配列にたいしては各文字列要素が処理され、@var{s}と同じ次元の倍精度または複素数の配列がリターンされます。"
+
+#. type: deftypefn
+#: strings.texi:2139
+msgid ""
+"For unconvertible scalar or character string input @code{str2double} returns "
+"a NaN@.  Similarly, for character array input @code{str2double} returns a "
+"NaN for any row of @var{s} that could not be converted.  For a cell array, "
+"@code{str2double} returns a NaN for any element of @var{s} for which "
+"conversion fails.  Note that numeric elements in a mixed string/numeric cell "
+"array are not strings and the conversion will fail for these elements and "
+"return NaN."
+msgstr "互換性のないスカラーまたは文字列が入力された場合、@code{str2double}はNaNをリターンします。同様に文字配列が入力された場合、@code{str2double}は変換できなかった@var{s}の行にNaNをリターンします。セル配列にたいして、@code{str2double}は変換がに失敗した@var{s}の要素にたいしてNaNをリターンします。文字列と数値が混交されたセル配列内の数値要素は文字列ではないので、これらの要素の変換は失敗しNaNがリターンされることに注意してください。"
+
+#. type: deftypefn
+#: strings.texi:2143
+msgid ""
+"@code{str2double} can replace @code{str2num}, and it avoids the security "
+"risk of using @code{eval} on unknown data.  "
+"@seealso{@ref{XREFstr2num,,str2num}}"
+msgstr ""
+"@code{str2double}は@code{str2num}に置き換えることができ、未知のデータにたいして@code{eval}を使用するセキュリティリスクを避けます。\n"
+"@seealso{@ref{XREFstr2num,,str2num}}"
+
+#. type: anchor{#1}
+#: strings.texi:2148
+msgid "XREFstrjust"
+msgstr "XREFstrjust"
+
+#. type: deftypefn
+#: strings.texi:2148
+#, no-wrap
+msgid "{Function File} {} strjust (@var{s})"
+msgstr "{Function File} {} strjust (@var{s})"
+
+#. type: deftypefnx
+#: strings.texi:2149
+#, no-wrap
+msgid "{Function File} {} strjust (@var{s}, @var{pos})"
+msgstr "{Function File} {} strjust (@var{s}, @var{pos})"
+
+#. type: deftypefn
+#: strings.texi:2153
+msgid ""
+"Return the text, @var{s}, justified according to @var{pos}, which may be "
+"@qcode{\"left\"}, @qcode{\"center\"}, or @qcode{\"right\"}.  If @var{pos} is "
+"omitted it defaults to @qcode{\"right\"}."
+msgstr "@var{pos}(@qcode{\"left\"}、@qcode{\"center\"}、または@qcode{\"right\"})に応じて@var{s}を整列したテキストをリターンします。@var{pos}が省略された場合、デフォルトは@qcode{\"right\"}です。"
+
+#. type: deftypefn
+#: strings.texi:2156
+msgid ""
+"Null characters are replaced by spaces.  All other character data are "
+"treated as non-white space."
+msgstr "null文字はスペースに置き換えられます。それ以外のすべての文字は、非空白文字として扱います。"
+
+#. type: group
+#: strings.texi:2167
+#, no-wrap
+msgid ""
+"strjust ([\"a\"; \"ab\"; \"abc\"; \"abcd\"])\n"
+"     @result{}\n"
+"        \"   a\"\n"
+"        \"  ab\"\n"
+"        \" abc\"\n"
+"        \"abcd\"\n"
+msgstr ""
+"strjust ([\"a\"; \"ab\"; \"abc\"; \"abcd\"])\n"
+"     @result{}\n"
+"        \"   a\"\n"
+"        \"  ab\"\n"
+"        \" abc\"\n"
+"        \"abcd\"\n"
+
+#. type: deftypefn
+#: strings.texi:2170
+msgid ""
+"@seealso{@ref{XREFdeblank,,deblank}, @ref{XREFstrrep,,strrep}, "
+"@ref{XREFstrtrim,,strtrim}, @ref{XREFuntabify,,untabify}}"
+msgstr "@seealso{@ref{XREFdeblank,,deblank}, @ref{XREFstrrep,,strrep}, @ref{XREFstrtrim,,strtrim}, @ref{XREFuntabify,,untabify}}"
+
+#. type: anchor{#1}
+#: strings.texi:2175
+msgid "XREFstr2num"
+msgstr "XREFstr2num"
+
+#. type: deftypefn
+#: strings.texi:2175
+#, no-wrap
+msgid "{Function File} {@var{x} =} str2num (@var{s})"
+msgstr "{Function File} {@var{x} =} str2num (@var{s})"
+
+#. type: deftypefnx
+#: strings.texi:2176
+#, no-wrap
+msgid "{Function File} {[@var{x}, @var{state}] =} str2num (@var{s})"
+msgstr "{Function File} {[@var{x}, @var{state}] =} str2num (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2179
+msgid ""
+"Convert the string (or character array) @var{s} to a number (or an array).  "
+"Examples:"
+msgstr "文字列(または文字配列)@var{s}を数値(または配列)に変換します。たとえば:"
+
+#. type: group
+#: strings.texi:2184
+#, no-wrap
+msgid ""
+"str2num (\"3.141596\")\n"
+"      @result{} 3.141596\n"
+"\n"
+msgstr ""
+"str2num (\"3.141596\")\n"
+"      @result{} 3.141596\n"
+"\n"
+
+#. type: group
+#: strings.texi:2188
+#, no-wrap
+msgid ""
+"str2num ([\"1, 2, 3\"; \"4, 5, 6\"])\n"
+"      @result{} 1  2  3\n"
+"         4  5  6\n"
+msgstr ""
+"str2num ([\"1, 2, 3\"; \"4, 5, 6\"])\n"
+"      @result{} 1  2  3\n"
+"         4  5  6\n"
+
+#. type: deftypefn
+#: strings.texi:2194
+msgid ""
+"The optional second output, @var{state}, is logically true when the "
+"conversion is successful.  If the conversion fails the numeric output, "
+"@var{x}, is empty and @var{state} is false."
+msgstr "2つ目のオプション出力@var{state}は、変換が成功したときは論理的trueになります。変換が失敗した場合、数値出力は空で、@var{state}はfalseになります。"
+
+#. type: deftypefn
+#: strings.texi:2199
+msgid ""
+"@strong{Caution:} As @code{str2num} uses the @code{eval} function to do the "
+"conversion, @code{str2num} will execute any code contained in the string "
+"@var{s}.  Use @code{str2double} for a safer and faster conversion."
+msgstr "@strong{警告:} @code{str2num}は変換を行うために@code{eval}関数を使用しているので、文字列@var{s}に含まれる任意のコードは実行されます。より安全かつ高速な変換のために@code{str2double}を使用してください。"
+
+#. type: deftypefn
+#: strings.texi:2202
+msgid ""
+"For cell array of strings use @code{str2double}.  "
+"@seealso{@ref{XREFstr2double,,str2double}, @ref{XREFeval,,eval}}"
+msgstr ""
+"文字列のセル配列には、@code{str2double}を使用してください。\n"
+"@seealso{@ref{XREFstr2double,,str2double}, @ref{XREFeval,,eval}}"
+
+#. type: anchor{#1}
+#: strings.texi:2207
+msgid "XREFtoascii"
+msgstr "XREFtoascii"
+
+#. type: deftypefn
+#: strings.texi:2207
+#, no-wrap
+msgid "{Mapping Function} {} toascii (@var{s})"
+msgstr "{Mapping Function} {} toascii (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2209
+msgid "Return ASCII representation of @var{s} in a matrix.  For example:"
+msgstr "@var{s}のASCII表現をマトリクスでリターンします。たとえば:"
+
+#. type: group
+#: strings.texi:2214
+#, no-wrap
+msgid ""
+"toascii (\"ASCII\")\n"
+"     @result{} [ 65, 83, 67, 73, 73 ]\n"
+msgstr ""
+"toascii (\"ASCII\")\n"
+"     @result{} [ 65, 83, 67, 73, 73 ]\n"
+
+#. type: deftypefn
+#: strings.texi:2218
+msgid "@seealso{@ref{XREFchar,,char}}"
+msgstr "@seealso{@ref{XREFchar,,char}}"
+
+#. type: anchor{#1}
+#: strings.texi:2223
+msgid "XREFtolower"
+msgstr "XREFtolower"
+
+#. type: deftypefn
+#: strings.texi:2223
+#, no-wrap
+msgid "{Mapping Function} {} tolower (@var{s})"
+msgstr "{Mapping Function} {} tolower (@var{s})"
+
+#. type: deftypefnx
+#: strings.texi:2224
+#, no-wrap
+msgid "{Mapping Function} {} lower (@var{s})"
+msgstr "{Mapping Function} {} lower (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2228
+msgid ""
+"Return a copy of the string or cell string @var{s}, with each uppercase "
+"character replaced by the corresponding lowercase one; non-alphabetic "
+"characters are left unchanged.  For example:"
+msgstr "文字列またはセル文字列@var{s}の大文字を対応する小文字に置き換えたコピーをリターンします。非アルファベット文字は変更されません。たとえば:"
+
+#. type: group
+#: strings.texi:2233
+#, no-wrap
+msgid ""
+"tolower (\"MiXeD cAsE 123\")\n"
+"      @result{} \"mixed case 123\"\n"
+msgstr ""
+"tolower (\"MiXeD cAsE 123\")\n"
+"      @result{} \"mixed case 123\"\n"
+
+#. type: deftypefn
+#: strings.texi:2236
+msgid "@seealso{@ref{XREFtoupper,,toupper}}"
+msgstr "@seealso{@ref{XREFtoupper,,toupper}}"
+
+#. type: anchor{#1}
+#: strings.texi:2241
+msgid "XREFtoupper"
+msgstr "XREFtoupper"
+
+#. type: deftypefn
+#: strings.texi:2241
+#, no-wrap
+msgid "{Mapping Function} {} toupper (@var{s})"
+msgstr "{Mapping Function} {} toupper (@var{s})"
+
+#. type: deftypefnx
+#: strings.texi:2242
+#, no-wrap
+msgid "{Mapping Function} {} upper (@var{s})"
+msgstr "{Mapping Function} {} upper (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2246
+msgid ""
+"Return a copy of the string or cell string @var{s}, with each lowercase "
+"character replaced by the corresponding uppercase one; non-alphabetic "
+"characters are left unchanged.  For example:"
+msgstr "文字列またはセル文字列@var{s}の小文字を対応する大文字に置き換えたコピーをリターンします。非アルファベット文字は変更されません。たとえば:"
+
+#. type: group
+#: strings.texi:2251
+#, no-wrap
+msgid ""
+"toupper (\"MiXeD cAsE 123\")\n"
+"      @result{} \"MIXED CASE 123\"\n"
+msgstr ""
+"toupper (\"MiXeD cAsE 123\")\n"
+"      @result{} \"MIXED CASE 123\"\n"
+
+#. type: deftypefn
+#: strings.texi:2254
+msgid "@seealso{@ref{XREFtolower,,tolower}}"
+msgstr "@seealso{@ref{XREFtolower,,tolower}}"
+
+#. type: anchor{#1}
+#: strings.texi:2259
+msgid "XREFdo_string_escapes"
+msgstr "XREFdo_string_escapes"
+
+#. type: deftypefn
+#: strings.texi:2259
+#, no-wrap
+msgid "{Built-in Function} {} do_string_escapes (@var{string})"
+msgstr "{Built-in Function} {} do_string_escapes (@var{string})"
+
+#. type: deftypefn
+#: strings.texi:2261
+msgid "Convert special characters in @var{string} to their escaped forms."
+msgstr "@var{string}内のエスケープされた特殊文字を、特殊文字にに変換します。"
+
+#. type: anchor{#1}
+#: strings.texi:2266
+msgid "XREFundo_string_escapes"
+msgstr "XREFundo_string_escapes"
+
+#. type: deftypefn
+#: strings.texi:2266
+#, no-wrap
+msgid "{Built-in Function} {} undo_string_escapes (@var{s})"
+msgstr "{Built-in Function} {} undo_string_escapes (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2269
+msgid ""
+"Convert special characters in strings back to their escaped forms.  For "
+"example, the expression"
+msgstr "文字列内の特殊文字を、エスケープされた形式に変換します。たとえば、"
+
+#. type: example
+#: strings.texi:2272
+#, no-wrap
+msgid "bell = \"\\a\";\n"
+msgstr "bell = \"\\a\";\n"
+
+#. type: deftypefn
+#: strings.texi:2281
+msgid ""
+"assigns the value of the alert character (control-g, ASCII code 7) to the "
+"string variable @code{bell}.  If this string is printed, the system will "
+"ring the terminal bell (if it is possible).  This is normally the desired "
+"outcome.  However, sometimes it is useful to be able to print the original "
+"representation of the string, with the special characters replaced by their "
+"escape sequences.  For example,"
+msgstr "この式は変数@code{bell}にalert文字(control-g、ASCIIコード7)を割り当てます。この文字列がプリントされた場合、(もし可能なら)システムは端末ベルを鳴らすでしょう。通常これは望んだ結果です。しかし特殊文字をエスケープシーケンスに置き換えて、元の文字列表現をプリントできたほうが便利な場合もあります。たとえば、"
+
+#. type: group
+#: strings.texi:2286
+#, no-wrap
+msgid ""
+"octave:13> undo_string_escapes (bell)\n"
+"ans = \\a\n"
+msgstr ""
+"octave:13> undo_string_escapes (bell)\n"
+"ans = \\a\n"
+
+#. type: deftypefn
+#: strings.texi:2292
+msgid "replaces the unprintable alert character with its printable representation."
+msgstr "これはプリントできないalert文字を、プリント可能な表現に置き換えます。"
+
+#. type: Plain text
+#: strings.texi:2303
+msgid ""
+"Octave also provides the following character class test functions patterned "
+"after the functions in the standard C library.  They all operate on string "
+"arrays and return matrices of zeros and ones.  Elements that are nonzero "
+"indicate that the condition was true for the corresponding character in the "
+"string array.  For example:"
+msgstr "Octaveは以下のような、C標準ライブラリーに倣った文字クラステスト関数も提供します。これらはすべて文字列配列を処理して、0と1からなるマトリクスをリターンします。非0の要素は文字列配列内の対応する文字がtrueであることを示します。たとえば:"
+
+#. type: group
+#: strings.texi:2308
+#, no-wrap
+msgid ""
+"isalpha (\"!Q@@WERT^Y&\")\n"
+"     @result{} [ 0, 1, 0, 1, 1, 1, 1, 0, 1, 0 ]\n"
+msgstr ""
+"isalpha (\"!Q@@WERT^Y&\")\n"
+"     @result{} [ 0, 1, 0, 1, 1, 1, 1, 0, 1, 0 ]\n"
+
+#. type: anchor{#1}
+#: strings.texi:2313
+msgid "XREFisalnum"
+msgstr "XREFisalnum"
+
+#. type: deftypefn
+#: strings.texi:2313
+#, no-wrap
+msgid "{Mapping Function} {} isalnum (@var{s})"
+msgstr "{Mapping Function} {} isalnum (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2318
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"letters or digits and false where they are not.  This is equivalent to "
+"(@code{isalpha (@var{s}) | isdigit (@var{s})}).  "
+"@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}, "
+"@ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace}, "
+"@ref{XREFiscntrl,,iscntrl}}"
+msgstr ""
+"@var{s}の要素が英数字ならtrue、それ以外はfalseのような論理配列をリターンします。この関数は(@code{isalpha (@var{s}) | isdigit (@var{s})})と等価です。\n"
+"@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}, @ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}}"
+
+#. type: anchor{#1}
+#: strings.texi:2323
+msgid "XREFisalpha"
+msgstr "XREFisalpha"
+
+#. type: deftypefn
+#: strings.texi:2323
+#, no-wrap
+msgid "{Mapping Function} {} isalpha (@var{s})"
+msgstr "{Mapping Function} {} isalpha (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2328
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"letters and false where they are not.  This is equivalent to (@code{islower "
+"(@var{s}) | isupper (@var{s})}).  @seealso{@ref{XREFisdigit,,isdigit}, "
+"@ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace}, "
+"@ref{XREFiscntrl,,iscntrl}, @ref{XREFisalnum,,isalnum}, "
+"@ref{XREFislower,,islower}, @ref{XREFisupper,,isupper}}"
+msgstr ""
+"@var{s}の要素がアルファベットならtrue、それ以外はfalseのような論理配列をリターンします。この関数は(@code{islower (@var{s}) | isupper (@var{s})})と等価です。\n"
+"@seealso{@ref{XREFisdigit,,isdigit}, @ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}, @ref{XREFisalnum,,isalnum}, @ref{XREFislower,,islower}, @ref{XREFisupper,,isupper}}"
+
+#. type: anchor{#1}
+#: strings.texi:2333
+msgid "XREFisletter"
+msgstr "XREFisletter"
+
+#. type: deftypefn
+#: strings.texi:2333
+#, no-wrap
+msgid "{Function File} {} isletter (@var{s})"
+msgstr "{Function File} {} isletter (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2338
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"letters and false where they are not.  This is an alias for the "
+"@code{isalpha} function.  @seealso{@ref{XREFisalpha,,isalpha}, "
+"@ref{XREFisdigit,,isdigit}, @ref{XREFispunct,,ispunct}, "
+"@ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}, "
+"@ref{XREFisalnum,,isalnum}}"
+msgstr ""
+"@var{s}の要素がアルファベットならtrue、それ以外はfalseのような論理配列をリターンします。この関数は@code{isalpha}関数のエイリアスです。\n"
+"@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}, @ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}, @ref{XREFisalnum,,isalnum}}"
+
+#. type: anchor{#1}
+#: strings.texi:2343
+msgid "XREFislower"
+msgstr "XREFislower"
+
+#. type: deftypefn
+#: strings.texi:2343
+#, no-wrap
+msgid "{Mapping Function} {} islower (@var{s})"
+msgstr "{Mapping Function} {} islower (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2347
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"lowercase letters and false where they are not.  "
+"@seealso{@ref{XREFisupper,,isupper}, @ref{XREFisalpha,,isalpha}, "
+"@ref{XREFisletter,,isletter}, @ref{XREFisalnum,,isalnum}}"
+msgstr ""
+"@var{s}の要素がアルファベット小文字ならtrue、それ以外はfalseのような論理配列をリターンします。\n"
+"@seealso{@ref{XREFisupper,,isupper}, @ref{XREFisalpha,,isalpha}, @ref{XREFisletter,,isletter}, @ref{XREFisalnum,,isalnum}}"
+
+#. type: anchor{#1}
+#: strings.texi:2352
+msgid "XREFisupper"
+msgstr "XREFisupper"
+
+#. type: deftypefn
+#: strings.texi:2352
+#, no-wrap
+msgid "{Mapping Function} {} isupper (@var{s})"
+msgstr "{Mapping Function} {} isupper (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2356
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"uppercase letters and false where they are not.  "
+"@seealso{@ref{XREFislower,,islower}, @ref{XREFisalpha,,isalpha}, "
+"@ref{XREFisletter,,isletter}, @ref{XREFisalnum,,isalnum}}"
+msgstr ""
+"@var{s}の要素がアルファベット大文字ならtrue、それ以外はfalseのような論理配列をリターンします。\n"
+"@seealso{@ref{XREFislower,,islower}, @ref{XREFisalpha,,isalpha}, @ref{XREFisletter,,isletter}, @ref{XREFisalnum,,isalnum}}"
+
+#. type: anchor{#1}
+#: strings.texi:2361
+msgid "XREFisdigit"
+msgstr "XREFisdigit"
+
+#. type: deftypefn
+#: strings.texi:2361
+#, no-wrap
+msgid "{Mapping Function} {} isdigit (@var{s})"
+msgstr "{Mapping Function} {} isdigit (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2365
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"decimal digits (0-9) and false where they are not.  "
+"@seealso{@ref{XREFisxdigit,,isxdigit}, @ref{XREFisalpha,,isalpha}, "
+"@ref{XREFisletter,,isletter}, @ref{XREFispunct,,ispunct}, "
+"@ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}}"
+msgstr ""
+"@var{s}の要素が10進数字(0-9)ならtrue、それ以外はfalseのような論理配列をリターンします。\n"
+"@seealso{@ref{XREFisxdigit,,isxdigit}, @ref{XREFisalpha,,isalpha}, @ref{XREFisletter,,isletter}, @ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}}"
+
+#. type: anchor{#1}
+#: strings.texi:2370
+msgid "XREFisxdigit"
+msgstr "XREFisxdigit"
+
+#. type: deftypefn
+#: strings.texi:2370
+#, no-wrap
+msgid "{Mapping Function} {} isxdigit (@var{s})"
+msgstr "{Mapping Function} {} isxdigit (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2374
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"hexadecimal digits (0-9 and @nospell{a-fA-F}).  "
+"@seealso{@ref{XREFisdigit,,isdigit}}"
+msgstr ""
+"@var{s}の要素が16進数字(0-9および@nospell{a-fA-F})ならtrueのような論理配列をリターンします。\n"
+"@seealso{@ref{XREFisdigit,,isdigit}}"
+
+#. type: anchor{#1}
+#: strings.texi:2379
+msgid "XREFispunct"
+msgstr "XREFispunct"
+
+#. type: deftypefn
+#: strings.texi:2379
+#, no-wrap
+msgid "{Mapping Function} {} ispunct (@var{s})"
+msgstr "{Mapping Function} {} ispunct (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2383
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"punctuation characters and false where they are not.  "
+"@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}, "
+"@ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}}"
+msgstr ""
+"@var{s}の要素が句読点文字ならtrue、それ以外はfalseのような論理配列をリターンします。\n"
+"@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}, @ref{XREFisspace,,isspace}, @ref{XREFiscntrl,,iscntrl}}"
+
+#. type: anchor{#1}
+#: strings.texi:2388
+msgid "XREFisspace"
+msgstr "XREFisspace"
+
+#. type: deftypefn
+#: strings.texi:2388
+#, no-wrap
+msgid "{Mapping Function} {} isspace (@var{s})"
+msgstr "{Mapping Function} {} isspace (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2393
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"whitespace characters (space, formfeed, newline, carriage return, tab, and "
+"vertical tab) and false where they are not.  "
+"@seealso{@ref{XREFiscntrl,,iscntrl}, @ref{XREFispunct,,ispunct}, "
+"@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}}"
+msgstr ""
+"@var{s}の要素が空白文字(スペース、改ページ、改行、復帰、タブ、垂直タブ)ならtrue、それ以外はfalseのような論理配列をリターンします。\n"
+"@seealso{@ref{XREFiscntrl,,iscntrl}, @ref{XREFispunct,,ispunct}, @ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}}"
+
+#. type: anchor{#1}
+#: strings.texi:2398
+msgid "XREFiscntrl"
+msgstr "XREFiscntrl"
+
+#. type: deftypefn
+#: strings.texi:2398
+#, no-wrap
+msgid "{Mapping Function} {} iscntrl (@var{s})"
+msgstr "{Mapping Function} {} iscntrl (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2402
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"control characters and false where they are not.  "
+"@seealso{@ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace}, "
+"@ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}}"
+msgstr ""
+"@var{s}の要素がコントロール文字ならtrue、それ以外はfalseのような論理配列をリターンします。\n"
+"@seealso{@ref{XREFispunct,,ispunct}, @ref{XREFisspace,,isspace}, @ref{XREFisalpha,,isalpha}, @ref{XREFisdigit,,isdigit}}"
+
+#. type: anchor{#1}
+#: strings.texi:2407
+msgid "XREFisgraph"
+msgstr "XREFisgraph"
+
+#. type: deftypefn
+#: strings.texi:2407
+#, no-wrap
+msgid "{Mapping Function} {} isgraph (@var{s})"
+msgstr "{Mapping Function} {} isgraph (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2412
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"printable characters (but not the space character) and false where they are "
+"not.  @seealso{@ref{XREFisprint,,isprint}}"
+msgstr ""
+"@var{s}の要素がプリント可能文字(ただしスペース以外)ならtrue、それ以外はfalseのような論理配列をリターンします。\n"
+"@seealso{@ref{XREFisprint,,isprint}}"
+
+#. type: anchor{#1}
+#: strings.texi:2417
+msgid "XREFisprint"
+msgstr "XREFisprint"
+
+#. type: deftypefn
+#: strings.texi:2417
+#, no-wrap
+msgid "{Mapping Function} {} isprint (@var{s})"
+msgstr "{Mapping Function} {} isprint (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2422
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are "
+"printable characters (including the space character) and false where they "
+"are not.  @seealso{@ref{XREFisgraph,,isgraph}}"
+msgstr ""
+"@var{s}の要素がプリント可能文字(スペース文字も含む)ならtrue、それ以外はfalseのような論理配列をリターンします。\n"
+"@seealso{@ref{XREFisgraph,,isgraph}}"
+
+#. type: anchor{#1}
+#: strings.texi:2427
+msgid "XREFisascii"
+msgstr "XREFisascii"
+
+#. type: deftypefn
+#: strings.texi:2427
+#, no-wrap
+msgid "{Mapping Function} {} isascii (@var{s})"
+msgstr "{Mapping Function} {} isascii (@var{s})"
+
+#. type: deftypefn
+#: strings.texi:2431
+msgid ""
+"Return a logical array which is true where the elements of @var{s} are ASCII "
+"characters (in the range 0 to 127 decimal) and false where they are not."
+msgstr "@var{s}の要素がASCII文字(10進の0から127)ならtrue、それ以外はfalseのような論理配列をリターンします。"
+
+#. type: anchor{#1}
+#: strings.texi:2436
+msgid "XREFisstrprop"
+msgstr "XREFisstrprop"
+
+#. type: deftypefn
+#: strings.texi:2436
+#, no-wrap
+msgid "{Function File} {} isstrprop (@var{str}, @var{prop})"
+msgstr "{Function File} {} isstrprop (@var{str}, @var{prop})"
+
+#. type: deftypefn
+#: strings.texi:2438
+msgid "Test character string properties.  For example:"
+msgstr "文字列プロパティをテストします。たとえば:"
+
+#. type: group
+#: strings.texi:2443
+#, no-wrap
+msgid ""
+"isstrprop (\"abc123\", \"alpha\")\n"
+"@result{} [1, 1, 1, 0, 0, 0]\n"
+msgstr ""
+"isstrprop (\"abc123\", \"alpha\")\n"
+"@result{} [1, 1, 1, 0, 0, 0]\n"
+
+#. type: deftypefn
+#: strings.texi:2448
+msgid ""
+"If @var{str} is a cell array, @code{isstrpop} is applied recursively to each "
+"element of the cell array."
+msgstr "@var{str}がセル配列の場合は、セル配列の各要素にたいして@code{isstrpop}が再帰的に適用されます。"
+
+#. type: deftypefn
+#: strings.texi:2450
+msgid "Numeric arrays are converted to character strings."
+msgstr "数値配列は文字列に変換されます。"
+
+#. type: deftypefn
+#: strings.texi:2452
+msgid "The second argument @var{prop} must be one of"
+msgstr "2つ目の引数@var{prop}は、以下のうちの1つでなければなりません"
+
+#. type: item
+#: strings.texi:2454
+#, no-wrap
+msgid "@qcode{\"alpha\"}"
+msgstr "@qcode{\"alpha\"}"
+
+#. type: table
+#: strings.texi:2456
+msgid "True for characters that are alphabetic (letters)."
+msgstr "文字がアルファベットならtrue。"
+
+#. type: item
+#: strings.texi:2457
+#, no-wrap
+msgid "@qcode{\"alnum\"}"
+msgstr "@qcode{\"alnum\"}"
+
+#. type: itemx
+#: strings.texi:2458
+#, no-wrap
+msgid "@qcode{\"alphanum\"}"
+msgstr "@qcode{\"alphanum\"}"
+
+#. type: table
+#: strings.texi:2460
+msgid "True for characters that are alphabetic or digits."
+msgstr "文字が英数字ならtrue。"
+
+#. type: item
+#: strings.texi:2461
+#, no-wrap
+msgid "@qcode{\"lower\"}"
+msgstr "@qcode{\"lower\"}"
+
+#. type: table
+#: strings.texi:2463
+msgid "True for lowercase letters."
+msgstr "アルファベット小文字ならtrue。"
+
+#. type: item
+#: strings.texi:2464
+#, no-wrap
+msgid "@qcode{\"upper\"}"
+msgstr "@qcode{\"upper\"}"
+
+#. type: table
+#: strings.texi:2466
+msgid "True for uppercase letters."
+msgstr "アルファベット大文字ならtrue。"
+
+#. type: item
+#: strings.texi:2467
+#, no-wrap
+msgid "@qcode{\"digit\"}"
+msgstr "@qcode{\"digit\"}"
+
+#. type: table
+#: strings.texi:2469
+msgid "True for decimal digits (0-9)."
+msgstr "10進数字(0-9)ならtrue。"
+
+#. type: item
+#: strings.texi:2470
+#, no-wrap
+msgid "@qcode{\"xdigit\"}"
+msgstr "@qcode{\"xdigit\"}"
+
+#. type: table
+#: strings.texi:2472
+msgid "True for hexadecimal digits (@nospell{a-fA-F0-9})."
+msgstr "16進数字(@nospell{a-fA-F0-9})ならtrue。"
+
+#. type: item
+#: strings.texi:2473
+#, no-wrap
+msgid "@qcode{\"space\"}"
+msgstr "@qcode{\"space\"}"
+
+#. type: itemx
+#: strings.texi:2474
+#, no-wrap
+msgid "@qcode{\"wspace\"}"
+msgstr "@qcode{\"wspace\"}"
+
+#. type: table
+#: strings.texi:2477
+msgid ""
+"True for whitespace characters (space, formfeed, newline, carriage return, "
+"tab, vertical tab)."
+msgstr "空白文字(スペース、改ページ、改行、復帰、タブ、垂直タブ)ならtrue。"
+
+#. type: item
+#: strings.texi:2478
+#, no-wrap
+msgid "@qcode{\"punct\"}"
+msgstr "@qcode{\"punct\"}"
+
+#. type: table
+#: strings.texi:2481
+msgid ""
+"True for punctuation characters (printing characters except space or letter "
+"or digit)."
+msgstr "句読点文字(スペース、英数字を除くプリント文字)ならtrue。"
+
+#. type: item
+#: strings.texi:2482
+#, no-wrap
+msgid "@qcode{\"cntrl\"}"
+msgstr "@qcode{\"cntrl\"}"
+
+#. type: table
+#: strings.texi:2484
+msgid "True for control characters."
+msgstr "コントロール文字ならtrue。"
+
+#. type: item
+#: strings.texi:2485
+#, no-wrap
+msgid "@qcode{\"graph\"}"
+msgstr "@qcode{\"graph\"}"
+
+#. type: itemx
+#: strings.texi:2486
+#, no-wrap
+msgid "@qcode{\"graphic\"}"
+msgstr "@qcode{\"graphic\"}"
+
+#. type: table
+#: strings.texi:2488
+msgid "True for printing characters except space."
+msgstr "スペース以外のプリント文字ならtrue。"
+
+#. type: item
+#: strings.texi:2489
+#, no-wrap
+msgid "@qcode{\"print\"}"
+msgstr "@qcode{\"print\"}"
+
+#. type: table
+#: strings.texi:2491
+msgid "True for printing characters including space."
+msgstr "スペースを含むプリント文字ならtrue。"
+
+#. type: item
+#: strings.texi:2492
+#, no-wrap
+msgid "@qcode{\"ascii\"}"
+msgstr "@qcode{\"ascii\"}"
+
+#. type: table
+#: strings.texi:2494
+msgid "True for characters that are in the range of ASCII encoding."
+msgstr "ASCIIエンコーディング範囲内の文字ならtrue。"
+
+#. type: deftypefn
+#: strings.texi:2498
+msgid ""
+"@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisalnum,,isalnum}, "
+"@ref{XREFislower,,islower}, @ref{XREFisupper,,isupper}, "
+"@ref{XREFisdigit,,isdigit}, @ref{XREFisxdigit,,isxdigit}, "
+"@ref{XREFisspace,,isspace}, @ref{XREFispunct,,ispunct}, "
+"@ref{XREFiscntrl,,iscntrl}, @ref{XREFisgraph,,isgraph}, "
+"@ref{XREFisprint,,isprint}, @ref{XREFisascii,,isascii}}"
+msgstr "@seealso{@ref{XREFisalpha,,isalpha}, @ref{XREFisalnum,,isalnum}, @ref{XREFislower,,islower}, @ref{XREFisupper,,isupper}, @ref{XREFisdigit,,isdigit}, @ref{XREFisxdigit,,isxdigit}, @ref{XREFisspace,,isspace}, @ref{XREFispunct,,ispunct}, @ref{XREFiscntrl,,iscntrl}, @ref{XREFisgraph,,isgraph}, @ref{XREFisprint,,isprint}, @ref{XREFisascii,,isascii}}"

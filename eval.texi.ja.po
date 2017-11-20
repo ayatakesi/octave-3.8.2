@@ -1,0 +1,545 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-08-30 13:27+0000\n"
+"PO-Revision-Date: 2017-08-31 16:33+0900\n"
+"Last-Translator: Ayanokoji Takesi <ayanokoji.takesi@gmail.com>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: chapter
+#: eval.texi.orig:21 eval.texi.orig:22
+#, no-wrap
+msgid "Evaluation"
+msgstr "Evaluation"
+
+#. type: Plain text
+#: eval.texi.orig:27
+msgid ""
+"Normally, you evaluate expressions simply by typing them at the Octave "
+"prompt, or by asking Octave to interpret commands that you have saved in a "
+"file."
+msgstr "式を評価するには通常、Octaveプロンプトでシンプルにそれらをタイプするか、ファイルに保存したコマンドの解釈をOctaveに命令します。"
+
+#. type: Plain text
+#: eval.texi.orig:31
+msgid ""
+"Sometimes, you may find it necessary to evaluate an expression that has been "
+"computed and stored in a string, which is exactly what the @code{eval} "
+"function lets you do."
+msgstr "計算されて文字列に格納だれた式の評価が必要なときがあるかもしれません。それはまさに@code{eval}関数が行うことです。"
+
+#. type: anchor{#1}
+#: eval.texi.orig:34
+msgid "XREFeval"
+msgstr "XREFeval"
+
+#. type: deftypefn
+#: eval.texi.orig:34
+#, no-wrap
+msgid "{Built-in Function} {} eval (@var{try})"
+msgstr "{Built-in Function} {} eval (@var{try})"
+
+#. type: deftypefnx
+#: eval.texi.orig:35
+#, no-wrap
+msgid "{Built-in Function} {} eval (@var{try}, @var{catch})"
+msgstr "{Built-in Function} {} eval (@var{try}, @var{catch})"
+
+#. type: deftypefn
+#: eval.texi.orig:40
+msgid ""
+"Parse the string @var{try} and evaluate it as if it were an Octave program.  "
+"If that fails, evaluate the optional string @var{catch}.  The string "
+"@var{try} is evaluated in the current context, so any results remain "
+"available after @code{eval} returns."
+msgstr "文字列@var{try}をパースして、それがOctaveプログラムであるかのように評価します。失敗した場合は、オプション文字列@var{catch}を評価します。文字列@var{try}はカレントコンテキストで評価されるので、@code{eval}がリターンした後でも結果を利用できます。"
+
+#. type: deftypefn
+#: eval.texi.orig:43
+msgid ""
+"The following example creates the variable @var{A} with the approximate "
+"value of 3.1416 in the current workspace."
+msgstr "以下はカレントワークスペースで値が約3.1416の変数@var{A}を作成する例です。"
+
+#. type: example
+#: eval.texi.orig:46
+#, no-wrap
+msgid "eval (\"A = acos(-1);\");\n"
+msgstr "eval (\"A = acos(-1);\");\n"
+
+#. type: deftypefn
+#: eval.texi.orig:50
+msgid ""
+"If an error occurs during the evaluation of @var{try} then the @var{catch} "
+"string is evaluated, as the following example shows:"
+msgstr "@var{try}を評価する間にエラーが発生した場合は、以下の例が示すように@var{catch}文字列が評価されます:"
+
+#. type: group
+#: eval.texi.orig:57
+#, no-wrap
+msgid ""
+"eval ('error (\"This is a bad example\");',\n"
+"      'printf (\"This error occurred:\\n%s\\n\", lasterr ());');\n"
+"     @print{} This error occurred:\n"
+"        This is a bad example\n"
+msgstr ""
+"eval ('error (\"This is a bad example\");',\n"
+"      'printf (\"This error occurred:\\n%s\\n\", lasterr ());');\n"
+"     @print{} This error occurred:\n"
+"        This is a bad example\n"
+
+#. type: deftypefn
+#: eval.texi.orig:66
+msgid ""
+"Programming Note: if you are only using @code{eval} as an error-capturing "
+"mechanism, rather than for the execution of arbitrary code strings, Consider "
+"using try/catch blocks or unwind_protect/unwind_protect_cleanup blocks "
+"instead.  These techniques have higher performance and don't introduce the "
+"security considerations that the evaluation of arbitrary code does.  "
+"@seealso{@ref{XREFevalin,,evalin}}"
+msgstr ""
+"プログラミングノート: @code{eval}を任意文字列の実行ではなくエラーキャプチャリングメカニズムとしてだけ使用する場合はかわりにtry/catchブロックかunwind_protect/unwind_protect_cleanupの使用を考えてください。これらのテクニックは高いパフォーマンスをもち、任意のコードを評価することによるセキュリティ問題は発生しません。\n"
+"@seealso{@ref{XREFevalin,,evalin}}"
+
+#. type: menuentry
+#: eval.texi.orig:72
+msgid "Calling a Function by its Name::"
+msgstr "Calling a Function by its Name::"
+
+#. type: section
+#: eval.texi.orig:72 eval.texi.orig:189 eval.texi.orig:190
+#, no-wrap
+msgid "Evaluation in a Different Context"
+msgstr "Evaluation in a Different Context"
+
+#. type: section
+#: eval.texi.orig:74 eval.texi.orig:75
+#, no-wrap
+msgid "Calling a Function by its Name"
+msgstr "Calling a Function by its Name"
+
+#. type: Plain text
+#: eval.texi.orig:82
+msgid ""
+"The @code{feval} function allows you to call a function from a string "
+"containing its name.  This is useful when writing a function that needs to "
+"call user-supplied functions.  The @code{feval} function takes the name of "
+"the function to call as its first argument, and the remaining arguments are "
+"given to the function."
+msgstr "@code{feval}関数により関数名を含む文字列から関数を実行できます。これはユーザー提供関数を呼び出す必要のある関数の記述に便利です。@code{feval}関数は呼び出す関数の名前を1つ目お引数にとり、残りの引数はその関数に渡されます。"
+
+#. type: Plain text
+#: eval.texi.orig:86
+msgid ""
+"The following example is a simple-minded function using @code{feval} that "
+"finds the root of a user-supplied function of one variable using Newton's "
+"method."
+msgstr "以下は@code{feval}を使用して、ニュートン法により1変数のユーザー提供関数の根を見つける簡単な関数の例です。"
+
+#. type: example
+#: eval.texi.orig:89
+#, no-wrap
+msgid ""
+"function result = newtroot (fname, x)\n"
+"\n"
+msgstr "function result = newtroot (fname, x)\n\n"
+
+#. type: example
+#: eval.texi.orig:94
+#, no-wrap
+msgid ""
+"# usage: newtroot (fname, x)\n"
+"#\n"
+"#   fname : a string naming a function f(x).\n"
+"#   x     : initial guess\n"
+"\n"
+msgstr ""
+"# usage: newtroot (fname, x)\n"
+"#\n"
+"#   fname : a string naming a function f(x).\n"
+"#   x     : initial guess\n"
+"\n"
+
+#. type: example
+#: eval.texi.orig:109
+#, no-wrap
+msgid ""
+"  delta = tol = sqrt (eps);\n"
+"  maxit = 200;\n"
+"  fx = feval (fname, x);\n"
+"  for i = 1:maxit\n"
+"    if (abs (fx) < tol)\n"
+"      result = x;\n"
+"      return;\n"
+"    else\n"
+"      fx_new = feval (fname, x + delta);\n"
+"      deriv = (fx_new - fx) / delta;\n"
+"      x = x - fx / deriv;\n"
+"      fx = fx_new;\n"
+"    endif\n"
+"  endfor\n"
+"\n"
+msgstr ""
+"  delta = tol = sqrt (eps);\n"
+"  maxit = 200;\n"
+"  fx = feval (fname, x);\n"
+"  for i = 1:maxit\n"
+"    if (abs (fx) < tol)\n"
+"      result = x;\n"
+"      return;\n"
+"    else\n"
+"      fx_new = feval (fname, x + delta);\n"
+"      deriv = (fx_new - fx) / delta;\n"
+"      x = x - fx / deriv;\n"
+"      fx = fx_new;\n"
+"    endif\n"
+"  endfor\n"
+"\n"
+
+#. type: example
+#: eval.texi.orig:111
+#, no-wrap
+msgid ""
+"  result = x;\n"
+"\n"
+msgstr "  result = x;\n\n"
+
+#. type: example
+#: eval.texi.orig:113
+#, no-wrap
+msgid "endfunction\n"
+msgstr "endfunction\n"
+
+#. type: Plain text
+#: eval.texi.orig:122
+msgid ""
+"Note that this is only meant to be an example of calling user-supplied "
+"functions and should not be taken too seriously.  In addition to using a "
+"more robust algorithm, any serious code would check the number and type of "
+"all the arguments, ensure that the supplied function really was a function, "
+"etc.  @xref{Predicates for Numeric Objects}, for a list of predicates for "
+"numeric objects, and @pxref{Status of Variables}, for a description of the "
+"@code{exist} function."
+msgstr "これは単にユーザー提供関数を呼び出す例を意図したもので、あまりシリアスにとるべきではないことに注意してください。さらに、より頑健なアルゴリズムを使用することにより、シリアスなコードは、提供された関数が実際に関数なのか等、すべての引数の数や型をチェックするでしょう。数値オブジェクトにたいする述語については@ref{Predicates for Numeric Objects}、@code{exist}関数の説明は@ref{Status of Variables}を参照してください。"
+
+#. type: anchor{#1}
+#: eval.texi.orig:125
+msgid "XREFfeval"
+msgstr "XREFfeval"
+
+#. type: deftypefn
+#: eval.texi.orig:125
+#, no-wrap
+msgid "{Built-in Function} {} feval (@var{name}, @dots{})"
+msgstr "{Built-in Function} {} feval (@var{name}, @dots{})"
+
+#. type: deftypefn
+#: eval.texi.orig:128
+msgid ""
+"Evaluate the function named @var{name}.  Any arguments after the first are "
+"passed as inputs to the named function.  For example,"
+msgstr "@var{name}という名前の関数を評価します。、2つ目以降の引数は、名前付き関数の入力として渡されます。たとえば、"
+
+#. type: group
+#: eval.texi.orig:133
+#, no-wrap
+msgid ""
+"feval (\"acos\", -1)\n"
+"     @result{} 3.1416\n"
+msgstr ""
+"feval (\"acos\", -1)\n"
+"     @result{} 3.1416\n"
+
+#. type: deftypefn
+#: eval.texi.orig:138
+msgid "calls the function @code{acos} with the argument @samp{-1}."
+msgstr "これは引数@samp{-1}で関数@code{acos}を呼び出します。"
+
+#. type: deftypefn
+#: eval.texi.orig:144
+msgid ""
+"The function @code{feval} can also be used with function handles of any sort "
+"(@pxref{Function Handles}).  Historically, @code{feval} was the only way to "
+"call user-supplied functions in strings, but function handles are now "
+"preferred due to the cleaner syntax they offer.  For example,"
+msgstr "関数@code{feval}は任意の種類の関数ハンドルとともに使用することもできます。歴史的に、@code{feval}は文字列内のユーザー提供関数を呼び出す唯一の方法でしたが、現在はより明快な構文を提供する関数ハンドルが好まれます。たとえば、"
+
+#. type: group
+#: eval.texi.orig:152
+#, no-wrap
+msgid ""
+"@var{f} = @@exp;\n"
+"feval (@var{f}, 1)\n"
+"    @result{} 2.7183\n"
+"@var{f} (1)\n"
+"    @result{} 2.7183\n"
+msgstr ""
+"@var{f} = @@exp;\n"
+"feval (@var{f}, 1)\n"
+"    @result{} 2.7183\n"
+"@var{f} (1)\n"
+"    @result{} 2.7183\n"
+
+#. type: deftypefn
+#: eval.texi.orig:160
+msgid ""
+"are equivalent ways to call the function referred to by @var{f}.  If it "
+"cannot be predicted beforehand whether @var{f} is a function handle, "
+"function name in a string, or inline function then @code{feval} can be used "
+"instead."
+msgstr "これは同じ方法で@var{f}により参照される関数を呼び出します。@var{f}が関数ハンドル、文字列内の関数名、またはインライン関数なのか事前に予測できない場合は、かわりに@code{feval}を使用してください。"
+
+#. type: Plain text
+#: eval.texi.orig:165
+msgid ""
+"A similar function @code{run} exists for calling user script files, that are "
+"not necessarily on the user path"
+msgstr "ユーザースクリプトファイルを呼び出す同様の関数@code{run}もあります。スクリプトファイルはユーザーのパス上にある必要はありません。"
+
+#. type: anchor{#1}
+#: eval.texi.orig:168
+msgid "XREFrun"
+msgstr "XREFrun"
+
+#. type: deftypefn
+#: eval.texi.orig:168
+#, no-wrap
+msgid "{Command} {} run @var{script}"
+msgstr "{Command} {} run @var{script}"
+
+#. type: deftypefnx
+#: eval.texi.orig:169
+#, no-wrap
+msgid "{Function File} {} run (\"@var{script}\")"
+msgstr "{Function File} {} run (\"@var{script}\")"
+
+#. type: deftypefn
+#: eval.texi.orig:171
+msgid "Run @var{script} in the current workspace."
+msgstr "カレントワークスペース内の@var{script}を実行します。"
+
+#. type: deftypefn
+#: eval.texi.orig:175
+msgid ""
+"Scripts which reside in directories specified in Octave's load path, and "
+"which end with the extension @file{\".m\"}, can be run simply by typing "
+"their name.  For scripts not located on the load path, use @code{run}."
+msgstr "Octaveのロードパスに指定されたディレクトリに存在し、拡張子が@file{\".m\"}のスクリプトは、単に名前をタイプして実行できます。ロードパス上にないスクリプトにたいしては、@code{run}を使用します。"
+
+#. type: deftypefn
+#: eval.texi.orig:180
+msgid ""
+"The file name @var{script} can be a bare, fully qualified, or relative "
+"filename and with or without a file extension.  If no extension is "
+"specified, Octave will first search for a script with the @file{\".m\"} "
+"extension before falling back to the script name without an extension."
+msgstr "ファイル名@var{script}はファイル名のみ、完全ファイル名または相対ファイル名で指定してもよく、拡張子を付けても付けなくても構いません。拡張子が指定されない場合、Octaveは拡張子なしのファイル名にフォールバックする前に、まず拡張子@file{\".m\"}のスクリプトを検索します。"
+
+#. type: deftypefn
+#: eval.texi.orig:186
+msgid ""
+"Implementation Note: If @var{script} includes a path component, then "
+"@code{run} first changes the directory to the directory where @var{script} "
+"is found.  @code{run} then executes the script, and returns to the original "
+"directory.  @seealso{@ref{XREFpath,,path}, @ref{XREFaddpath,,addpath}, "
+"@ref{XREFsource,,source}}"
+msgstr ""
+"実装ノート: @var{script}がパスコンポーネントを含む場合、@code{run}はまず@var{script}を探すディレクトリにディレクトリを変更します。その後@code{run}はスクリプトを実行して、元のディレクトリにリターンします。\n"
+"@seealso{@ref{XREFpath,,path}, @ref{XREFaddpath,,addpath}, @ref{XREFsource,,source}}"
+
+#. type: Plain text
+#: eval.texi.orig:200
+msgid ""
+"Before you evaluate an expression you need to substitute the values of the "
+"variables used in the expression.  These are stored in the symbol table.  "
+"Whenever the interpreter starts a new function it saves the current symbol "
+"table and creates a new one, initializing it with the list of function "
+"parameters and a couple of predefined variables such as @code{nargin}.  "
+"Expressions inside the function use the new symbol table."
+msgstr "式を評価する前に式内で使用されている変数の値を置き換える必要があります。これらはシンボルテーブルに格納されています。インタープリターが新たに関数を開始するときは常にカレントシンボルテーブルを保存してから新しいシンボルテーブルを作成し、それを関数パラメーターのリストと@code{nargin}のような事前定義された変数を初期化します。関数内の式は、新しいシンボルテーブルを使用します。"
+
+#. type: Plain text
+#: eval.texi.orig:206
+msgid ""
+"Sometimes you want to write a function so that when you call it, it modifies "
+"variables in your own context.  This allows you to use a pass-by-name style "
+"of function, which is similar to using a pointer in programming languages "
+"such as C."
+msgstr "呼び出したときに、あなたのコンテキスト内の変数を変更するような関数を記述したいときがあります。これによりCのゆなプログラミング言語でのポインター使用に似た、名前渡しスタイルの関数を使用できます。"
+
+#. type: Plain text
+#: eval.texi.orig:209
+msgid ""
+"Consider how you might write @code{save} and @code{load} as m-files.  For "
+"example:"
+msgstr "m-filesの@code{save}と@code{load}を行う関数を記述する方法を考えてみましょう。たとえば:"
+
+#. type: group
+#: eval.texi.orig:217
+#, no-wrap
+msgid ""
+"function create_data\n"
+"  x = linspace (0, 10, 10);\n"
+"  y = sin (x);\n"
+"  save mydata x y\n"
+"endfunction\n"
+msgstr ""
+"function create_data\n"
+"  x = linspace (0, 10, 10);\n"
+"  y = sin (x);\n"
+"  save mydata x y\n"
+"endfunction\n"
+
+#. type: Plain text
+#: eval.texi.orig:221
+msgid "With @code{evalin}, you could write @code{save} as follows:"
+msgstr "@code{evalin}により、以下のように@code{save}を記述できます:"
+
+#. type: group
+#: eval.texi.orig:229
+#, no-wrap
+msgid ""
+"function save (file, name1, name2)\n"
+"  f = open_save_file (file);\n"
+"  save_var (f, name1, evalin (\"caller\", name1));\n"
+"  save_var (f, name2, evalin (\"caller\", name2));\n"
+"endfunction\n"
+msgstr ""
+"function save (file, name1, name2)\n"
+"  f = open_save_file (file);\n"
+"  save_var (f, name1, evalin (\"caller\", name1));\n"
+"  save_var (f, name2, evalin (\"caller\", name2));\n"
+"endfunction\n"
+
+#. type: Plain text
+#: eval.texi.orig:235
+msgid ""
+"Here, @samp{caller} is the @code{create_data} function and @code{name1} is "
+"the string @qcode{\"x\"}, which evaluates simply as the value of @code{x}."
+msgstr "ここで@samp{caller}は@code{create_data}関数、@code{name1}は@code{x}を評価されますした値である文字列@qcode{\"x\"}です。"
+
+#. type: Plain text
+#: eval.texi.orig:238
+msgid ""
+"You later want to load the values back from @code{mydata} in a different "
+"context:"
+msgstr "後で異なるコンテキストで@code{mydata}から値をloadしたい場合"
+
+#. type: group
+#: eval.texi.orig:245
+#, no-wrap
+msgid ""
+"function process_data\n"
+"  load mydata\n"
+"  @dots{} do work @dots{}\n"
+"endfunction\n"
+msgstr ""
+"function process_data\n"
+"  load mydata\n"
+"  @dots{} do work @dots{}\n"
+"endfunction\n"
+
+#. type: Plain text
+#: eval.texi.orig:250
+msgid "With @code{assignin}, you could write @code{load} as follows:"
+msgstr "@code{assignin}により、以下のように@code{load}を記述できます:"
+
+#. type: group
+#: eval.texi.orig:260
+#, no-wrap
+msgid ""
+"function load (file)\n"
+"  f = open_load_file (file);\n"
+"  [name, val] = load_var (f);\n"
+"  assignin (\"caller\", name, val);\n"
+"  [name, val] = load_var (f);\n"
+"  assignin (\"caller\", name, val);\n"
+"endfunction\n"
+msgstr ""
+"function load (file)\n"
+"  f = open_load_file (file);\n"
+"  [name, val] = load_var (f);\n"
+"  assignin (\"caller\", name, val);\n"
+"  [name, val] = load_var (f);\n"
+"  assignin (\"caller\", name, val);\n"
+"endfunction\n"
+
+#. type: Plain text
+#: eval.texi.orig:265
+msgid "Here, @samp{caller} is the @code{process_data} function."
+msgstr "ここで@samp{caller}は@code{process_data}関数です。"
+
+#. type: Plain text
+#: eval.texi.orig:268
+msgid ""
+"You can set and use variables at the command prompt using the context "
+"@samp{base} rather than @samp{caller}."
+msgstr "コマンドプロンプトで@samp{caller}ではなくコンテキスト@samp{base}で変数のセットおよび使用ができます。"
+
+#. type: Plain text
+#: eval.texi.orig:276
+msgid ""
+"These functions are rarely used in practice.  One example is the @code{fail "
+"(@samp{code}, @samp{pattern})} function which evaluates @samp{code} in the "
+"caller's context and checks that the error message it produces matches the "
+"given pattern.  Other examples such as @code{save} and @code{load} are "
+"written in C++ where all Octave variables are in the @samp{caller} context "
+"and @code{evalin} is not needed."
+msgstr "これらの関数が実際に使用されるのはまれです。1つの例として@code{fail (@samp{code}, @samp{pattern})}関数があります。これは呼び出し側のコンテキストで@samp{code}を評価して、与えられたパターンにマッチするエラーメッセージをチェックします。他の@code{save}や@code{load}のような例はC++で記述されており、Octave変数はすべて@samp{caller}のコンテキストにあり、@code{evalin}は必要ありません。"
+
+#. type: anchor{#1}
+#: eval.texi.orig:279
+msgid "XREFevalin"
+msgstr "XREFevalin"
+
+#. type: deftypefn
+#: eval.texi.orig:279
+#, no-wrap
+msgid "{Built-in Function} {} evalin (@var{context}, @var{try})"
+msgstr "{Built-in Function} {} evalin (@var{context}, @var{try})"
+
+#. type: deftypefnx
+#: eval.texi.orig:280
+#, no-wrap
+msgid "{Built-in Function} {} evalin (@var{context}, @var{try}, @var{catch})"
+msgstr "{Built-in Function} {} evalin (@var{context}, @var{try}, @var{catch})"
+
+#. type: deftypefn
+#: eval.texi.orig:285
+msgid ""
+"Like @code{eval}, except that the expressions are evaluated in the context "
+"@var{context}, which may be either @qcode{\"caller\"} or @qcode{\"base\"}.  "
+"@seealso{@ref{XREFeval,,eval}, @ref{XREFassignin,,assignin}}"
+msgstr ""
+"式が@qcode{\"caller\"}か@qcode{\"base\"}どちらか一方のコンテキスト@var{context}で評価されることを除外すれば、@code{eval}と同様です。\n"
+"@seealso{@ref{XREFeval,,eval}, @ref{XREFassignin,,assignin}}"
+
+#. type: anchor{#1}
+#: eval.texi.orig:290
+msgid "XREFassignin"
+msgstr "XREFassignin"
+
+#. type: deftypefn
+#: eval.texi.orig:290
+#, no-wrap
+msgid "{Built-in Function} {} assignin (@var{context}, @var{varname}, @var{value})"
+msgstr "{Built-in Function} {} assignin (@var{context}, @var{varname}, @var{value})"
+
+#. type: deftypefn
+#: eval.texi.orig:294
+msgid ""
+"Assign @var{value} to @var{varname} in context @var{context}, which may be "
+"either @qcode{\"base\"} or @qcode{\"caller\"}.  "
+"@seealso{@ref{XREFevalin,,evalin}}"
+msgstr ""
+"@qcode{\"base\"}か@qcode{\"caller\"}どちらか一方のコンテキスト@var{context}で、@var{varname}に@var{value}を代入します。\n"
+"@seealso{@ref{XREFevalin,,evalin}}"

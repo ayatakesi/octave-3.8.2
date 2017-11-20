@@ -1,0 +1,3753 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-08-28 10:56+0000\n"
+"PO-Revision-Date: 2017-08-30 22:24+0900\n"
+"Last-Translator: Ayanokoji Takesi <ayanokoji.taesi@gmail.com>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: chapter
+#: expr.texi.orig:21 expr.texi.orig:22
+#, no-wrap
+msgid "Expressions"
+msgstr "Expressions"
+
+#. type: cindex
+#: expr.texi.orig:23
+#, no-wrap
+msgid "expressions"
+msgstr "expressions"
+
+#. type: Plain text
+#: expr.texi.orig:29
+msgid ""
+"Expressions are the basic building block of statements in Octave.  An "
+"expression evaluates to a value, which you can print, test, store in a "
+"variable, pass to a function, or assign a new value to a variable with an "
+"assignment operator."
+msgstr "式はOctaveにおける命令文の基本的な構築ブロックです。式は値に評価され、その値をプリント、テスト、変数に格納、関数に渡すことができ、代入演算子で変数に新たな値を割り当てることもできます。"
+
+#. type: Plain text
+#: expr.texi.orig:35
+msgid ""
+"An expression can serve as a statement on its own.  Most other kinds of "
+"statements contain one or more expressions which specify data to be operated "
+"on.  As in other languages, expressions in Octave include variables, array "
+"references, constants, and function calls, as well as combinations of these "
+"with various operators."
+msgstr "式は自身の命令文の役割りも果たすことができます他の種の命令文の多くは、処理を行うデータを指定する、1つ以上の式を含みます。他言語と比較して、Octaveの式は変数、配列参照、定数、関数呼び出しを含み、同様にさまざまな種類の演算子によるそれらの組み合わせも含みます。"
+
+#. type: menuentry
+#: expr.texi.orig:45
+msgid "Index Expressions::"
+msgstr "Index Expressions::"
+
+#. type: menuentry
+#: expr.texi.orig:45
+msgid "Calling Functions::"
+msgstr "Calling Functions::"
+
+#. type: menuentry
+#: expr.texi.orig:45
+msgid "Arithmetic Ops::"
+msgstr "Arithmetic Ops::"
+
+#. type: menuentry
+#: expr.texi.orig:45
+msgid "Comparison Ops::"
+msgstr "Comparison Ops::"
+
+#. type: menuentry
+#: expr.texi.orig:45
+msgid "Boolean Expressions::"
+msgstr "Boolean Expressions::"
+
+#. type: menuentry
+#: expr.texi.orig:45
+msgid "Assignment Ops::"
+msgstr "Assignment Ops::"
+
+#. type: menuentry
+#: expr.texi.orig:45
+msgid "Increment Ops::"
+msgstr "Increment Ops::"
+
+#. type: section
+#: expr.texi.orig:45 expr.texi.orig:1669 expr.texi.orig:1670
+#, no-wrap
+msgid "Operator Precedence"
+msgstr "Operator Precedence"
+
+#. type: section
+#: expr.texi.orig:47 expr.texi.orig:48
+#, no-wrap
+msgid "Index Expressions"
+msgstr "Index Expressions"
+
+#. type: opindex
+#: expr.texi.orig:50
+#, no-wrap
+msgid "("
+msgstr "("
+
+#. type: opindex
+#: expr.texi.orig:51
+#, no-wrap
+msgid ")"
+msgstr ")"
+
+#. type: samp{#1}
+#: expr.texi.orig:52 expr.texi.orig:1724
+#, no-wrap
+msgid ":"
+msgstr ":"
+
+#. type: Plain text
+#: expr.texi.orig:56
+msgid ""
+"An @dfn{index expression} allows you to reference or extract selected "
+"elements of a matrix or vector."
+msgstr "@dfn{インデクス式(index expression)}により、マトリクスｙｓベクターの選択した要素の参照と抽出が可能になります。"
+
+#. type: Plain text
+#: expr.texi.orig:59
+msgid ""
+"Indices may be scalars, vectors, ranges, or the special operator @samp{:}, "
+"which may be used to select entire rows or columns."
+msgstr "インデクスはスカラー、ベクター、レンジ、または行や列全体の選択に使用する特殊演算子@samp{:}です。"
+
+#. type: Plain text
+#: expr.texi.orig:65
+msgid ""
+"Vectors are indexed using a single index expression.  Matrices (2-D)  and "
+"higher multi-dimensional arrays are indexed using either one index or "
+"@math{N} indices where @math{N} is the dimension of the array.  When using a "
+"single index expression to index 2-D or higher data the elements of the "
+"array are taken in column-first order (like Fortran)."
+msgstr "ベクターは1つにインデクス式を使用してインデクス付けされます。マトリクス(2次元)およびより高次の多次元配列は、1つのインデクスまたは@math{N}個(@math{N}は配列の次元)のインデクスによりインデクス付けされます。2次元またはより高次のデータを1つのインデクス式でインデクス付けする場合、配列の要素は(Fortranのように)列優先で取得されます。"
+
+#. type: Plain text
+#: expr.texi.orig:68
+msgid ""
+"The output from indexing assumes the dimensions of the index expression.  "
+"For example:"
+msgstr "インデクス操作による出力はインデクス式の次元とみなされます。たとえば:"
+
+#. type: group
+#: expr.texi.orig:74
+#, no-wrap
+msgid ""
+"a(2)       # result is a scalar\n"
+"a(1:2)     # result is a row vector\n"
+"a([1; 2])  # result is a column vector\n"
+msgstr ""
+"a(2)       # 結果はスカラー\n"
+"a(1:2)     # 結果はベクター\n"
+"a([1; 2])  # 結果は列ベクター\n"
+
+#. type: Plain text
+#: expr.texi.orig:80
+msgid ""
+"As a special case, when a colon is used as a single index, the output is a "
+"column vector containing all the elements of the vector or matrix.  For "
+"example:"
+msgstr "特殊なケースとして、コロンが1つのインデクスとして使用された場合、出力はベクターまたはマトリクスのすべての要素を含む列ベクターになります。たとえば:"
+
+#. type: group
+#: expr.texi.orig:85
+#, no-wrap
+msgid ""
+"a(:)       # result is a column vector\n"
+"a(:)'      # result is a row vector\n"
+msgstr ""
+"a(:)       # 結果は列ベクター\n"
+"a(:)'      # 結果は行ベクター\n"
+
+#. type: Plain text
+#: expr.texi.orig:91
+msgid ""
+"The above two code idioms are often used in place of @code{reshape} when a "
+"simple vector, rather than an arbitrarily sized array, is needed."
+msgstr "上記2つのコード用法は、@code{reshape}などで任意サイズの配列ではなくシンプルなベクターが必要なとき用いられます。"
+
+#. type: Plain text
+#: expr.texi.orig:93
+msgid "Given the matrix"
+msgstr "以下のマトリクスが与えられたとき"
+
+#. type: example
+#: expr.texi.orig:96
+#, no-wrap
+msgid "a = [1, 2; 3, 4]\n"
+msgstr "a = [1, 2; 3, 4]\n"
+
+#. type: Plain text
+#: expr.texi.orig:101
+msgid ""
+"all of the following expressions are equivalent and select the first row of "
+"the matrix."
+msgstr "以下の式はすべて等価で、いずれもマトリクスの最初の行を選択します。"
+
+#. type: group
+#: expr.texi.orig:107
+#, no-wrap
+msgid ""
+"a(1, [1, 2])  # row 1, columns 1 and 2\n"
+"a(1, 1:2)     # row 1, columns in range 1-2\n"
+"a(1, :)       # row 1, all columns\n"
+msgstr ""
+"a(1, [1, 2])  # 行 1, 列 1、2\n"
+"a(1, 1:2)     # 行 1, 列のレンジ 1-2\n"
+"a(1, :)       # 行 1, 列全体\n"
+
+#. type: cindex
+#: expr.texi.orig:110
+#, no-wrap
+msgid "@code{end}, indexing"
+msgstr "@code{end}, indexing"
+
+#. type: cindex
+#: expr.texi.orig:111
+#, no-wrap
+msgid ":end"
+msgstr ":end"
+
+#. type: Plain text
+#: expr.texi.orig:118
+msgid ""
+"In index expressions the keyword @code{end} automatically refers to the last "
+"entry for a particular dimension.  This magic index can also be used in "
+"ranges and typically eliminates the needs to call @code{size} or "
+"@code{length} to gather array bounds before indexing.  For example:"
+msgstr "インデクス式において、キーワード@code{end}は特定の次元の最後のエントリーを自動的に参照します。このマジックインデクスはレンジで使用することもでき、インデクス操作前に配列範囲を得るための@code{size}と@code{length}の呼び出しの必要性をなくします。たとえば:"
+
+#. type: group
+#: expr.texi.orig:122
+#, no-wrap
+msgid ""
+"a = [1, 2, 3, 4];\n"
+"\n"
+msgstr "a = [1, 2, 3, 4];\n\n"
+
+#. type: group
+#: expr.texi.orig:129
+#, no-wrap
+msgid ""
+"a(1:end/2)        # first half of a => [1, 2]\n"
+"a(end + 1) = 5;   # append element \n"
+"a(end) = [];      # delete element \n"
+"a(1:2:end)        # odd elements of a => [1, 3]\n"
+"a(2:2:end)        # even elements of a => [2, 4]\n"
+"a(end:-1:1)       # reversal of a => [4, 3, 2 , 1]\n"
+msgstr ""
+"a(1:end/2)        # aの最初の半分 => [1, 2]\n"
+"a(end + 1) = 5;   # 要素の追加\n"
+"a(end) = [];      # 要素の削除\n"
+"a(1:2:end)        # aの奇数要素 => [1, 3]\n"
+"a(2:2:end)        # aの偶数要素 => [2, 4]\n"
+"a(end:-1:1)       # aの逆 => [4, 3, 2 , 1]\n"
+
+#. type: subsection
+#: expr.texi.orig:134 expr.texi.orig:136 expr.texi.orig:137
+#, no-wrap
+msgid "Advanced Indexing"
+msgstr "Advanced Indexing"
+
+#. type: Plain text
+#: expr.texi.orig:143
+msgid ""
+"An array with @samp{n} dimensions can be indexed using @samp{m} indices.  "
+"More generally, the set of index tuples determining the result is formed by "
+"the Cartesian product of the index vectors (or ranges or scalars)."
+msgstr "@samp{n}次元の配列を@samp{m}次元のインデクスでインデクス付けできます。より一般的には結果を決定するインデクスセットはインデクスベクター(またはレンジ、スカラー)は直積(Cartesian product: カルテシアン積、デカルト積)により形成されます。"
+
+#. type: Plain text
+#: expr.texi.orig:154
+msgid ""
+"For the ordinary and most common case, @w{@code{m == n}}, and each index "
+"corresponds to its respective dimension.  If @w{@code{m < n}} and every "
+"index is less than the size of the array in the @math{i^{th}} dimension, "
+"@code{m(i) < n(i)}, then the index expression is padded with trailing "
+"singleton dimensions (@code{[ones (m-n, 1)]}).  If @w{@code{m < n}} but one "
+"of the indices @code{m(i)} is outside the size of the current array, then "
+"the last @w{@code{n-m+1}} dimensions are folded into a single dimension with "
+"an extent equal to the product of extents of the original dimensions.  This "
+"is easiest to understand with an example."
+msgstr "通常、そしてもっとも一般的なケースは@w{@code{m == n}}で、各インデクスはそれぞれの次元に対応します。@w{@code{m < n}}で各インデクスが@math{i}番目の次元において配列サイズより小さい場合、インデクス式は末尾のシングルトン次元(@code{[ones (m-n, 1)]})とともに渡されます。@w{@code{m < n}}だがインデクスの1つ@code{m(i)}が現在の配列のサイズの外側の場合、最後の@w{@code{n-m+1}}次元が元の次元を掛け合わせた結果と等しくなるように拡張されてシングルトン次元に折り畳まれます。例で理解するのがもっとも簡単でしょう。"
+
+#. type: example
+#: expr.texi.orig:158
+#, no-wrap
+msgid ""
+"a = reshape (1:8, 2, 2, 2)  # Create 3-D array\n"
+"a =\n"
+"\n"
+msgstr ""
+"a = reshape (1:8, 2, 2, 2)  # 3次元配列を作成\n"
+"a =\n"
+"\n"
+
+#. type: example
+#: expr.texi.orig:160
+#, no-wrap
+msgid ""
+"ans(:,:,1) =\n"
+"\n"
+msgstr "ans(:,:,1) =\n\n"
+
+#. type: example
+#: expr.texi.orig:163
+#, no-wrap
+msgid ""
+"   1   3\n"
+"   2   4\n"
+"\n"
+msgstr ""
+"   1   3\n"
+"   2   4\n"
+"\n"
+
+#. type: example
+#: expr.texi.orig:165
+#, no-wrap
+msgid ""
+"ans(:,:,2) =\n"
+"\n"
+msgstr "ans(:,:,2) =\n\n"
+
+#. type: example
+#: expr.texi.orig:168
+#, no-wrap
+msgid ""
+"   5   7\n"
+"   6   8\n"
+"\n"
+msgstr ""
+"   5   7\n"
+"   6   8\n"
+"\n"
+
+#. type: example
+#: expr.texi.orig:175
+#, no-wrap
+msgid ""
+"a(2,1,2);   # Case (m == n): ans = 6\n"
+"a(2,1);     # Case (m < n), idx within array:\n"
+"            # equivalent to a(2,1,1), ans = 2\n"
+"a(2,4);     # Case (m < n), idx outside array:\n"
+"            # Dimension 2 & 3 folded into new dimension of size 2x2 = 4\n"
+"            # Select 2nd row, 4th element of [2, 4, 6, 8], ans = 8\n"
+msgstr ""
+"a(2,1,2);   # (m == n)の場合: ans = 6\n"
+"a(2,1);     # (m < n)の場合、インデクスは配列内\n"
+"            # a(2,1,1)に等しい: ans = 2\n"
+"a(2,4);     # (m < n)の場合、インデクスは配列の外側\n"
+"            # 次元2と3は、サイズ2x2 = 4の新たな次元に折り畳まれる\n"
+"            # 2行目[2, 4, 6, 8]の4番目の要素が選択される: ans = 8\n"
+
+#. type: Plain text
+#: expr.texi.orig:182
+msgid ""
+"One advanced use of indexing is to create arrays filled with a single "
+"value.  This can be done by using an index of ones on a scalar value.  The "
+"result is an object with the dimensions of the index expression and every "
+"element equal to the original scalar.  For example, the following statements"
+msgstr "インデクスの上級の使用法としては、1つの値で満たされた配列の作成があります。これはonesのインデクスをスカラー値に使用して行うことができます。結果はインデクス式の次元をもち、各要素が元のスカラーに等しいオブジェクトになります。たとえば以下の命令文"
+
+#. type: group
+#: expr.texi.orig:187
+#, no-wrap
+msgid ""
+"a = 13;\n"
+"a(ones (1, 4))\n"
+msgstr ""
+"a = 13;\n"
+"a(ones (1, 4))\n"
+
+#. type: Plain text
+#: expr.texi.orig:192
+msgid "produce a vector whose four elements are all equal to 13."
+msgstr "これは4つの要素すべてが13のベクターを生成します。"
+
+#. type: Plain text
+#: expr.texi.orig:195
+msgid ""
+"Similarly, by indexing a scalar with two vectors of ones it is possible to "
+"create a matrix.  The following statements"
+msgstr "同様に2つのonesベクターによりスカラーをインデクス付けすることにより、マトリクスを作成できます。以下の命令文"
+
+#. type: group
+#: expr.texi.orig:200
+#, no-wrap
+msgid ""
+"a = 13;\n"
+"a(ones (1, 2), ones (1, 3))\n"
+msgstr ""
+"a = 13;\n"
+"a(ones (1, 2), ones (1, 3))\n"
+
+#. type: Plain text
+#: expr.texi.orig:205
+msgid "create a 2x3 matrix with all elements equal to 13."
+msgstr "これはすべての要素が13と等しい2x3のマトリクスを作成します。"
+
+#. type: Plain text
+#: expr.texi.orig:207
+msgid "The last example could also be written as"
+msgstr "最後の例は以下のように記述することもできます"
+
+#. type: group
+#: expr.texi.orig:211
+#, no-wrap
+msgid "13(ones (2, 3))\n"
+msgstr "13(ones (2, 3))\n"
+
+#. type: Plain text
+#: expr.texi.orig:220
+msgid ""
+"It is more efficient to use indexing rather than the code construction "
+"@code{scalar * ones (N, M, @dots{})} because it avoids the unnecessary "
+"multiplication operation.  Moreover, multiplication may not be defined for "
+"the object to be replicated whereas indexing an array is always defined.  "
+"The following code shows how to create a 2x3 cell array from a base unit "
+"which is not itself a scalar."
+msgstr "不要な乗算を避けることができるので、@code{scalar * ones (N, M, @dots{})}とコードを構築するよりインデクス操作を使用するほうがより効果的です。さらに複製されるオブジェクトには乗算が定義されていないかもしれませんが、配列へのインデクス操作は常に定義されています。以下は、それ自身がスカラーではない基本ユニットから、2x3のセル配列を作成する方法を示します。"
+
+#. type: group
+#: expr.texi.orig:224
+#, no-wrap
+msgid "@{\"Hello\"@}(ones (2, 3))\n"
+msgstr "@{\"Hello\"@}(ones (2, 3))\n"
+
+#. type: Plain text
+#: expr.texi.orig:233
+msgid ""
+"It should be, noted that @code{ones (1, n)} (a row vector of ones)  results "
+"in a range (with zero increment).  A range is stored internally as a "
+"starting value, increment, end value, and total number of values; hence, it "
+"is more efficient for storage than a vector or matrix of ones whenever the "
+"number of elements is greater than 4.  In particular, when @samp{r} is a row "
+"vector, the expressions"
+msgstr "@code{ones (1, n)}(onesの行ベクター)の結果は、(増分が0の)レンジとなることは注記しておくべきでしょう。内部的にレンジは開始値、増分、終値、値の合計として格納されます。したがって、要素数が4より大のときは常にonesのベクターまたはマトリクスのほうが、記憶領域にたいして効果的です。特に@samp{r}が行ベクターの場合、以下の式"
+
+#. type: example
+#: expr.texi.orig:236
+#, no-wrap
+msgid "  r(ones (1, n), :)\n"
+msgstr "  r(ones (1, n), :)\n"
+
+#. type: example
+#: expr.texi.orig:240
+#, no-wrap
+msgid "  r(ones (n, 1), :)\n"
+msgstr "  r(ones (n, 1), :)\n"
+
+#. type: Plain text
+#: expr.texi.orig:248
+msgid ""
+"will produce identical results, but the first one will be significantly "
+"faster, at least for @samp{r} and @samp{n} large enough.  In the first case "
+"the index is held in compressed form as a range which allows Octave to "
+"choose a more efficient algorithm to handle the expression."
+msgstr "これは同じ結果を生成しますが、少なくとも@samp{r}と@samp{n}が十分大きければ、1つ目のほうが明らかに高速です。最初のケースでは、インデクスはOctaveが式を処理するためにより効果的なアルゴリズムを選択できるレンジ形式として、圧縮されて保持されます。"
+
+#. type: Plain text
+#: expr.texi.orig:252
+msgid ""
+"A general recommendation, for a user unaware of these subtleties, is to use "
+"the function @code{repmat} for replicating smaller arrays into bigger ones."
+msgstr "これらの違いを理解しないユーザーには、一般的に小さな配列を大きな配列に複製する場合は、関数@code{repmat}の使用を推奨します。"
+
+#. type: Plain text
+#: expr.texi.orig:256
+msgid ""
+"A second use of indexing is to speed up code.  Indexing is a fast operation "
+"and judicious use of it can reduce the requirement for looping over "
+"individual array elements which is a slow operation."
+msgstr "2つ目のインデクス操作の用途は、コードのスピードアップです。インデクス操作は高速な処理であり、慎重に使用することにより、特定の配列要素をループするような低速な処理の必要を低減できます。"
+
+#. type: Plain text
+#: expr.texi.orig:259
+msgid ""
+"Consider the following example which creates a 10-element row vector "
+"@math{a} containing the values"
+msgstr "以下のような値をもつ10要素の行ベクター@math{a}を作成する例で考えてみましょう"
+
+#. type: tex
+#: expr.texi.orig:261
+#, no-wrap
+msgid "$a_i = \\sqrt{i}$.\n"
+msgstr "$a_i = \\sqrt{i}$.\n"
+
+#. type: ifnottex
+#: expr.texi.orig:264
+msgid "a(i) = sqrt (i)."
+msgstr "a(i) = sqrt (i)."
+
+#. type: group
+#: expr.texi.orig:271
+#, no-wrap
+msgid ""
+"for i = 1:10\n"
+"  a(i) = sqrt (i);\n"
+"endfor\n"
+msgstr ""
+"for i = 1:10\n"
+"  a(i) = sqrt (i);\n"
+"endfor\n"
+
+#. type: Plain text
+#: expr.texi.orig:278
+msgid ""
+"It is quite inefficient to create a vector using a loop like this.  In this "
+"case, it would have been much more efficient to use the expression"
+msgstr "このようなループを使用してベクターを作成するのは、効果的ではありません。この場合は、以下のような式を使用するほうがより効果的でしょう"
+
+#. type: example
+#: expr.texi.orig:281
+#, no-wrap
+msgid "a = sqrt (1:10);\n"
+msgstr "a = sqrt (1:10);\n"
+
+#. type: Plain text
+#: expr.texi.orig:285
+msgid "which avoids the loop entirely."
+msgstr "これはループ全体の使用を避けています。"
+
+#. type: Plain text
+#: expr.texi.orig:291
+msgid ""
+"In cases where a loop cannot be avoided, or a number of values must be "
+"combined to form a larger matrix, it is generally faster to set the size of "
+"the matrix first (pre-allocate storage), and then insert elements using "
+"indexing commands.  For example, given a matrix @code{a},"
+msgstr "ループを避けることができず、値の数が巨大なマトリクスの形成に結びついている場合、最初にマトリクスのサイズをセット(事前領域割り当て)してから、インデクスコマンドを使用して要素を挿入するほうが、一般的にはより高速です。たとえば、マトリクス@code{a}が与えられた場合、"
+
+#. type: group
+#: expr.texi.orig:299
+#, no-wrap
+msgid ""
+"[nr, nc] = size (a);\n"
+"x = zeros (nr, n * nc);\n"
+"for i = 1:n\n"
+"  x(:,(i-1)*nc+1:i*nc) = a;\n"
+"endfor\n"
+msgstr ""
+"[nr, nc] = size (a);\n"
+"x = zeros (nr, n * nc);\n"
+"for i = 1:n\n"
+"  x(:,(i-1)*nc+1:i*nc) = a;\n"
+"endfor\n"
+
+#. type: Plain text
+#: expr.texi.orig:304
+msgid "is considerably faster than"
+msgstr "この式は、以下に比べてはるかに高速です"
+
+#. type: group
+#: expr.texi.orig:311
+#, no-wrap
+msgid ""
+"x = a;\n"
+"for i = 1:n-1\n"
+"  x = [x, a];\n"
+"endfor\n"
+msgstr ""
+"x = a;\n"
+"for i = 1:n-1\n"
+"  x = [x, a];\n"
+"endfor\n"
+
+#. type: Plain text
+#: expr.texi.orig:317
+msgid "because Octave does not have to repeatedly resize the intermediate result."
+msgstr "なぜなら、Octaveが中間結果を繰り返しリサイズする必要がないからです。"
+
+#. type: anchor{#1}
+#: expr.texi.orig:320
+msgid "XREFsub2ind"
+msgstr "XREFsub2ind"
+
+#. type: deftypefn
+#: expr.texi.orig:320
+#, no-wrap
+msgid "{Function File} {@var{ind} =} sub2ind (@var{dims}, @var{i}, @var{j})"
+msgstr "{Function File} {@var{ind} =} sub2ind (@var{dims}, @var{i}, @var{j})"
+
+#. type: deftypefnx
+#: expr.texi.orig:321
+#, no-wrap
+msgid ""
+"{Function File} {@var{ind} =} sub2ind (@var{dims}, @var{s1}, @var{s2}, "
+"@dots{}, @var{sN})"
+msgstr "{Function File} {@var{ind} =} sub2ind (@var{dims}, @var{s1}, @var{s2}, @dots{}, @var{sN})"
+
+#. type: deftypefn
+#: expr.texi.orig:323
+msgid "Convert subscripts to a linear index."
+msgstr "添字を線形のインデクスに変換します。"
+
+#. type: deftypefn
+#: expr.texi.orig:328
+msgid ""
+"The following example shows how to convert the two-dimensional index "
+"@code{(2,3)} of a 3-by-3 matrix to a linear index.  The matrix is linearly "
+"indexed moving from one column to next, filling up all rows in each column."
+msgstr "以下は3行3列のマトリクスの2次元インデクス@code{(2,3)}を線形インデクスに変換する方法を示す例です。マトリクスは列から列へ、各列のすべての行が満たされるまで、線形にインデクス付けされます。"
+
+#. type: group
+#: expr.texi.orig:333
+#, no-wrap
+msgid ""
+"linear_index = sub2ind ([3, 3], 2, 3)\n"
+"@result{} 8\n"
+msgstr ""
+"linear_index = sub2ind ([3, 3], 2, 3)\n"
+"@result{} 8\n"
+
+#. type: deftypefn
+#: expr.texi.orig:336
+msgid "@seealso{@ref{XREFind2sub,,ind2sub}}"
+msgstr "@seealso{@ref{XREFind2sub,,ind2sub}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:341
+msgid "XREFind2sub"
+msgstr "XREFind2sub"
+
+#. type: deftypefn
+#: expr.texi.orig:341
+#, no-wrap
+msgid ""
+"{Function File} {[@var{s1}, @var{s2}, @dots{}, @var{sN}] =} ind2sub "
+"(@var{dims}, @var{ind})"
+msgstr "{Function File} {[@var{s1}, @var{s2}, @dots{}, @var{sN}] =} ind2sub (@var{dims}, @var{ind})"
+
+#. type: deftypefn
+#: expr.texi.orig:343
+msgid "Convert a linear index to subscripts."
+msgstr "線形のインデクスを添字に変換します。"
+
+#. type: deftypefn
+#: expr.texi.orig:347
+msgid ""
+"The following example shows how to convert the linear index @code{8} in a "
+"3-by-3 matrix into a subscript.  The matrix is linearly indexed moving from "
+"one column to next, filling up all rows in each column."
+msgstr "以下は3行3列のマトリクスの線形インデクス@code{8}を添字に変換する方法を示す例です。マトリクスは列から列へ、各列のすべての行が満たされるまで、線形にインデクス付けされます。"
+
+#. type: group
+#: expr.texi.orig:353
+#, no-wrap
+msgid ""
+"[r, c] = ind2sub ([3, 3], 8)\n"
+"    @result{} r =  2\n"
+"    @result{} c =  3\n"
+msgstr ""
+"[r, c] = ind2sub ([3, 3], 8)\n"
+"    @result{} r =  2\n"
+"    @result{} c =  3\n"
+
+#. type: deftypefn
+#: expr.texi.orig:356
+msgid "@seealso{@ref{XREFsub2ind,,sub2ind}}"
+msgstr "@seealso{@ref{XREFsub2ind,,sub2ind}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:361
+msgid "XREFisindex"
+msgstr "XREFisindex"
+
+#. type: deftypefn
+#: expr.texi.orig:361
+#, no-wrap
+msgid "{Built-in Function} {} isindex (@var{ind})"
+msgstr "{Built-in Function} {} isindex (@var{ind})"
+
+#. type: deftypefnx
+#: expr.texi.orig:362
+#, no-wrap
+msgid "{Built-in Function} {} isindex (@var{ind}, @var{n})"
+msgstr "{Built-in Function} {} isindex (@var{ind}, @var{n})"
+
+#. type: deftypefn
+#: expr.texi.orig:368
+msgid ""
+"Return true if @var{ind} is a valid index.  Valid indices are either "
+"positive integers (although possibly of real data type), or logical arrays.  "
+"If present, @var{n} specifies the maximum extent of the dimension to be "
+"indexed.  When possible the internal result is cached so that subsequent "
+"indexing using @var{ind} will not perform the check again."
+msgstr "@var{ind}が有効なインデクスの場合は、trueをリターンします。有効なインデクスとは、正の整数(実際は実数データ型ですが)、または論理配列です。@var{n}が与えられた場合、それはインデクス付けされる次元の拡張の最大を指定します。可能なら結果は内部でキャッシュされるので、@var{ind}を連続して使用する場合、再チェックを行いません。"
+
+#. type: anchor{#1}
+#: expr.texi.orig:373
+msgid "XREFallow_noninteger_range_as_index"
+msgstr "XREFallow_noninteger_range_as_index"
+
+#. type: deftypefn
+#: expr.texi.orig:373
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} allow_noninteger_range_as_index ()"
+msgstr "{Built-in Function} {@var{val} =} allow_noninteger_range_as_index ()"
+
+#. type: deftypefnx
+#: expr.texi.orig:374
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{old_val} =} allow_noninteger_range_as_index "
+"(@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} allow_noninteger_range_as_index (@var{new_val})"
+
+#. type: deftypefnx
+#: expr.texi.orig:375
+#, no-wrap
+msgid ""
+"{Built-in Function} {} allow_noninteger_range_as_index (@var{new_val}, "
+"\"local\")"
+msgstr "{Built-in Function} {} allow_noninteger_range_as_index (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: expr.texi.orig:380
+msgid ""
+"Query or set the internal variable that controls whether non-integer ranges "
+"are allowed as indices.  This might be useful for @sc{matlab} compatibility; "
+"however, it is still not entirely compatible because @sc{matlab} treats the "
+"range expression differently in different contexts."
+msgstr "非整数レンジをインデクスに使用できるかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。これは@sc{matlab}との互換性にたいしては有用です。しかし、@sc{matlab}はレンジ式にたいして、異なるコンテキストで異なる扱いをするため、完全な互換性はありません。"
+
+#. type: deftypefn
+#: expr.texi.orig:384 expr.texi.orig:569 expr.texi.orig:1326
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function."
+msgstr "関数内から@qcode{\"local\"}オプションとともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。"
+
+#. type: section
+#: expr.texi.orig:387 expr.texi.orig:388
+#, no-wrap
+msgid "Calling Functions"
+msgstr "Calling Functions"
+
+#. type: Plain text
+#: expr.texi.orig:393
+msgid ""
+"A @dfn{function} is a name for a particular calculation.  Because it has a "
+"name, you can ask for it by name at any point in the program.  For example, "
+"the function @code{sqrt} computes the square root of a number."
+msgstr "@dfn{関数(function)}とは、特定の計算にたいする名前です。名前をもつので、プログラム内の任意の場所で名前で問い合わせることができます。たとえば、関数@code{sqrt}は数値の平方根を計算します。"
+
+#. type: Plain text
+#: expr.texi.orig:398
+msgid ""
+"A fixed set of functions are @dfn{built-in}, which means they are available "
+"in every Octave program.  The @code{sqrt} function is one of these.  In "
+"addition, you can define your own functions.  @xref{Functions and Scripts}, "
+"for information about how to do this."
+msgstr "関数のある固定されたセットは@dfn{ビルトイン}で、すべてのOctaveプログラム内でそれらを利用できることを意味します。@code{sqrt}関数は、そのうちの1つです。さらに、あなたが自分の関数を定義できます。これを行うための情報は、@ref{Functions and Scripts}を参照してください。"
+
+#. type: cindex
+#: expr.texi.orig:399
+#, no-wrap
+msgid "arguments in function call"
+msgstr "arguments in function call"
+
+#. type: Plain text
+#: expr.texi.orig:408
+msgid ""
+"The way to use a function is with a @dfn{function call} expression, which "
+"consists of the function name followed by a list of @dfn{arguments} in "
+"parentheses.  The arguments are expressions which give the raw materials for "
+"the calculation that the function will do.  When there is more than one "
+"argument, they are separated by commas.  If there are no arguments, you can "
+"omit the parentheses, but it is a good idea to include them anyway, to "
+"clearly indicate that a function call was intended.  Here are some examples:"
+msgstr "@dfn{関数呼び出し}式で関数を使用します。これは関数の後にカッコで括った@dfn{引数}リストを続けて構成されます。引数は、その関数が行うであろう計算のための、生の材料を与えます。2つ以上の引数がある場合は、カンマで区切ります。引数がない場合はカッコを省略できますが、関数呼び出しが意図されていることを明確に示すために、カッコを含めるのは良いアイデアです。以下にいくつか例を示します:"
+
+#. type: group
+#: expr.texi.orig:414
+#, no-wrap
+msgid ""
+"sqrt (x^2 + y^2)      # @r{One argument}\n"
+"ones (n, m)           # @r{Two arguments}\n"
+"rand ()               # @r{No arguments}\n"
+msgstr ""
+"sqrt (x^2 + y^2)      # @r{引数=1}\n"
+"ones (n, m)           # @r{引数=2}\n"
+"rand ()               # @r{引数なし}\n"
+
+#. type: Plain text
+#: expr.texi.orig:420
+msgid ""
+"Each function expects a particular number of arguments.  For example, the "
+"@code{sqrt} function must be called with a single argument, the number to "
+"take the square root of:"
+msgstr "関数はそれぞれ、特定の個数の引数を期待します。たとえば@code{sqrt}関数は平方根を求める数値を1つの引数として呼び出さなければなりません:"
+
+#. type: example
+#: expr.texi.orig:423
+#, no-wrap
+msgid "sqrt (@var{argument})\n"
+msgstr "sqrt (@var{argument})\n"
+
+#. type: Plain text
+#: expr.texi.orig:428
+msgid ""
+"Some of the built-in functions take a variable number of arguments, "
+"depending on the particular usage, and their behavior is different depending "
+"on the number of arguments supplied."
+msgstr "ビルトイン関数には、可変個の引数をとるものがいくつかあります。引数の数は使い方に依存して異なり、与えられた引数の数に応じて異なった振る舞いをします。"
+
+#. type: Plain text
+#: expr.texi.orig:434
+msgid ""
+"Like every other expression, the function call has a value, which is "
+"computed by the function based on the arguments you give it.  In this "
+"example, the value of @code{sqrt (@var{argument})} is the square root of the "
+"argument.  A function can also have side effects, such as assigning the "
+"values of certain variables or doing input or output operations."
+msgstr "他のすべての式と同様、関数呼び出しは値であり、値は与えられた引数に基づきその関数により計算されます。この例では、@code{sqrt (@var{argument})}の値は、引数の平方根です。関数は、特定の変数に値を割り当てたり、入出力処理を行うような、副作用もあります。"
+
+#. type: Plain text
+#: expr.texi.orig:437
+msgid ""
+"Unlike most languages, functions in Octave may return multiple values.  For "
+"example, the following statement"
+msgstr "他の多くの言語と異なり、Octaveの関数は複数の値をリターンします。たとえば、以下の命令文"
+
+#. type: example
+#: expr.texi.orig:440
+#, no-wrap
+msgid "[u, s, v] = svd (a)\n"
+msgstr "[u, s, v] = svd (a)\n"
+
+#. type: Plain text
+#: expr.texi.orig:445
+msgid ""
+"computes the singular value decomposition of the matrix @code{a} and assigns "
+"the three result matrices to @code{u}, @code{s}, and @code{v}."
+msgstr "これはマトリクス@code{a}のsingular value decompositionを3つの結果マトリクス@code{u}、@code{s}、@code{v}に割り当てます。"
+
+#. type: Plain text
+#: expr.texi.orig:449
+msgid ""
+"The left side of a multiple assignment expression is itself a list of "
+"expressions, and is allowed to be a list of variable names or index "
+"expressions.  See also @ref{Index Expressions}, and @ref{Assignment Ops}."
+msgstr "複数代入式の左辺は、それ自体がリスト式であり、変数名リストまたはインデクス式を記述できます。@ref{Index Expressions}と@ref{Assignment Ops}も参照してください。"
+
+#. type: menuentry
+#: expr.texi.orig:453
+msgid "Call by Value::"
+msgstr "Call by Value::"
+
+#. type: subsection
+#: expr.texi.orig:453 expr.texi.orig:519 expr.texi.orig:520
+#, no-wrap
+msgid "Recursion"
+msgstr "Recursion"
+
+#. type: subsection
+#: expr.texi.orig:455 expr.texi.orig:456
+#, no-wrap
+msgid "Call by Value"
+msgstr "Call by Value"
+
+#. type: Plain text
+#: expr.texi.orig:466
+msgid ""
+"In Octave, unlike Fortran, function arguments are passed by value, which "
+"means that each argument in a function call is evaluated and assigned to a "
+"temporary location in memory before being passed to the function.  There is "
+"currently no way to specify that a function parameter should be passed by "
+"reference instead of by value.  This means that it is impossible to directly "
+"alter the value of a function parameter in the calling function.  It can "
+"only change the local copy within the function body.  For example, the "
+"function"
+msgstr "OctaveではFortranと異なり関数の引数は値で渡されます。これは関数に渡される前に関数呼び出しの各引数が評価されて、一時的な場所に割り当てられることを意味します。関数のパラメーターを値ではなく参照であると指定する方法は、現在のところありません。これは呼び出された関数内で直接関数パラメーターの値を変更することは不可能であることを意味します。関数ボディー内のローカルコピーだけが変更できます。たとえば、"
+
+#. type: group
+#: expr.texi.orig:474
+#, no-wrap
+msgid ""
+"function f (x, n)\n"
+"  while (n-- > 0)\n"
+"    disp (x);\n"
+"  endwhile\n"
+"endfunction\n"
+msgstr ""
+"function f (x, n)\n"
+"  while (n-- > 0)\n"
+"    disp (x);\n"
+"  endwhile\n"
+"endfunction\n"
+
+#. type: Plain text
+#: expr.texi.orig:484
+msgid ""
+"displays the value of the first argument @var{n} times.  In this function, "
+"the variable @var{n} is used as a temporary variable without having to worry "
+"that its value might also change in the calling function.  Call by value is "
+"also useful because it is always possible to pass constants for any function "
+"parameter without first having to determine that the function will not "
+"attempt to modify the parameter."
+msgstr "この関数は1つ目の引数を@var{n}回表示します。この関数では、呼び出された関数内で値が変更されることを心配しなくてもよい、一時的な変数として変数@var{n}を使用しています。値呼出しは最初にその関数がパラメーターの変更を試みないか判断する必要なく、常に定数を任意の関数パラメーターとすることができます。"
+
+#. type: Plain text
+#: expr.texi.orig:488
+msgid ""
+"The caller may use a variable as the expression for the argument, but the "
+"called function does not know this: it only knows what value the argument "
+"had.  For example, given a function called as"
+msgstr "呼び出し側は引数に変数として式を使用できますが、呼び出された関数はこれを知りません。知っているのは引数がもつ値だけです。たとえば、以下の関数呼び出しが与えられた場合"
+
+#. type: group
+#: expr.texi.orig:493
+#, no-wrap
+msgid ""
+"foo = \"bar\";\n"
+"fcn (foo)\n"
+msgstr ""
+"foo = \"bar\";\n"
+"fcn (foo)\n"
+
+#. type: Plain text
+#: expr.texi.orig:500
+msgid ""
+"you should not think of the argument as being ``the variable @code{foo}.'' "
+"Instead, think of the argument as the string value, @qcode{\"bar\"}."
+msgstr "これを``変数@code{foo}''が引数だと考えるべきではありません。かわりに、引数を文字列値@qcode{\"bar\"}と考えるべきです。"
+
+#. type: Plain text
+#: expr.texi.orig:503
+msgid ""
+"Even though Octave uses pass-by-value semantics for function arguments, "
+"values are not copied unnecessarily.  For example,"
+msgstr "たとえOctaveが関数の引数に値渡しのセマンティックを使用していても、不必要に値はコピーされません。たとえば、"
+
+#. type: group
+#: expr.texi.orig:508
+#, no-wrap
+msgid ""
+"x = rand (1000);\n"
+"f (x);\n"
+msgstr ""
+"x = rand (1000);\n"
+"f (x);\n"
+
+#. type: Plain text
+#: expr.texi.orig:518
+msgid ""
+"does not actually force two 1000 by 1000 element matrices to exist "
+"@emph{unless} the function @code{f} modifies the value of its argument.  "
+"Then Octave must create a copy to avoid changing the value outside the scope "
+"of the function @code{f}, or attempting (and probably failing!) to modify "
+"the value of a constant or the value of a temporary result."
+msgstr "この式は、関数@code{f}が引数を変更する@emph{まで}は、実際に1000x1000のマトリクス要素2つが存在することを強いません。その後でOctaveは関数@code{f}のスコープ外で値が変更されたり、定数または一時的な結果値にたいする修正の試み(おそらく失敗します!)を避けるためにコピーを作成しなければならなくなります。"
+
+#. type: cindex
+#: expr.texi.orig:521
+#, no-wrap
+msgid "factorial function"
+msgstr "factorial function"
+
+#. type: Plain text
+#: expr.texi.orig:535
+msgid ""
+"With some restrictions@footnote{Some of Octave's functions are implemented "
+"in terms of functions that cannot be called recursively.  For example, the "
+"ODE solver @code{lsode} is ultimately implemented in a Fortran subroutine "
+"that cannot be called recursively, so @code{lsode} should not be called "
+"either directly or indirectly from within the user-supplied function that "
+"@code{lsode} requires.  Doing so will result in an error.}, recursive "
+"function calls are allowed.  A @dfn{recursive function} is one which calls "
+"itself, either directly or indirectly.  For example, here is an "
+"inefficient@footnote{It would be much better to use @code{prod (1:n)}, or "
+"@code{gamma (n+1)} instead, after first checking to ensure that the value "
+"@code{n} is actually a positive integer.} way to compute the factorial of a "
+"given integer:"
+msgstr "いくつかの制限@footnote{Octave関数のいくつかは、再帰呼び出しできない関数として記述されています。たとえばODE solverの@code{lsode}は最終的には再帰呼び出しできないFortranサブルーチンとして実装されているので、@code{lsode}が要求するユーザー提供の関数内からは、直接あるいは間接的に呼び出すべきではありません。これを行うと、結果はエラーになるでしょう。}により、再帰関数呼び出しは許されません。@dfn{再帰関数}とは、直接または間接的に自身を呼び出す関数です。たとえば、以下は与えられた整数の階乗を計算する、非効率的@footnote{最初に値@code{n}が実際に正の整数かチェックした後で@code{prod (1:n)}または@code{gamma (n+1)}を使用するほうが良いでしょう。}な方法の例です:"
+
+#. type: group
+#: expr.texi.orig:545
+#, no-wrap
+msgid ""
+"function retval = fact (n)\n"
+"  if (n > 0)\n"
+"    retval = n * fact (n-1);\n"
+"  else\n"
+"    retval = 1;\n"
+"  endif\n"
+"endfunction\n"
+msgstr ""
+"function retval = fact (n)\n"
+"  if (n > 0)\n"
+"    retval = n * fact (n-1);\n"
+"  else\n"
+"    retval = 1;\n"
+"  endif\n"
+"endfunction\n"
+
+#. type: Plain text
+#: expr.texi.orig:553
+msgid ""
+"This function is recursive because it calls itself directly.  It eventually "
+"terminates because each time it calls itself, it uses an argument that is "
+"one less than was used for the previous call.  Once the argument is no "
+"longer greater than zero, it does not call itself, and the recursion ends."
+msgstr "この関数は自身を直接呼び出すので、再帰的です。これは呼び出すごとに、以前の呼び出しより1少ない引数を使用するので、最終的には終了します。一度引数が0以下になれば、自身を呼び出さず、再帰は終了します。"
+
+#. type: Plain text
+#: expr.texi.orig:556
+msgid ""
+"The built-in variable @code{max_recursion_depth} specifies a limit to the "
+"recursion depth and prevents Octave from recursing infinitely."
+msgstr "ビルトイン変数@code{max_recursion_depth}は、再帰の深さを制限し、Octaveが永久に再帰するのを防ぎます。"
+
+#. type: anchor{#1}
+#: expr.texi.orig:559
+msgid "XREFmax_recursion_depth"
+msgstr "XREFmax_recursion_depth"
+
+#. type: deftypefn
+#: expr.texi.orig:559
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} max_recursion_depth ()"
+msgstr "{Built-in Function} {@var{val} =} max_recursion_depth ()"
+
+#. type: deftypefnx
+#: expr.texi.orig:560
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} max_recursion_depth (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} max_recursion_depth (@var{new_val})"
+
+#. type: deftypefnx
+#: expr.texi.orig:561
+#, no-wrap
+msgid "{Built-in Function} {} max_recursion_depth (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} max_recursion_depth (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: expr.texi.orig:565
+msgid ""
+"Query or set the internal limit on the number of times a function may be "
+"called recursively.  If the limit is exceeded, an error message is printed "
+"and control returns to the top level."
+msgstr "関数が再帰的に呼び出される回数の内部制限にたいして、問い合わせまたはセットを行います。制限を超過した場合はエラーメッセージがプリントされ、制御はトップレベルに戻されます。"
+
+#. type: node
+#: expr.texi.orig:572
+#, no-wrap
+msgid "Arithmetic Ops"
+msgstr "Arithmetic Ops"
+
+#. type: section
+#: expr.texi.orig:573
+#, no-wrap
+msgid "Arithmetic Operators"
+msgstr "Arithmetic Operators"
+
+#. type: cindex
+#: expr.texi.orig:574
+#, no-wrap
+msgid "arithmetic operators"
+msgstr "arithmetic operators"
+
+#. type: cindex
+#: expr.texi.orig:575
+#, no-wrap
+msgid "operators, arithmetic"
+msgstr "operators, arithmetic"
+
+#. type: cindex
+#: expr.texi.orig:576
+#, no-wrap
+msgid "addition"
+msgstr "addition"
+
+#. type: cindex
+#: expr.texi.orig:577
+#, no-wrap
+msgid "subtraction"
+msgstr "subtraction"
+
+#. type: cindex
+#: expr.texi.orig:578
+#, no-wrap
+msgid "multiplication"
+msgstr "multiplication"
+
+#. type: cindex
+#: expr.texi.orig:579
+#, no-wrap
+msgid "matrix multiplication"
+msgstr "matrix multiplication"
+
+#. type: cindex
+#: expr.texi.orig:580
+#, no-wrap
+msgid "division"
+msgstr "division"
+
+#. type: cindex
+#: expr.texi.orig:581
+#, no-wrap
+msgid "quotient"
+msgstr "quotient"
+
+#. type: cindex
+#: expr.texi.orig:582
+#, no-wrap
+msgid "negation"
+msgstr "negation"
+
+#. type: cindex
+#: expr.texi.orig:583
+#, no-wrap
+msgid "unary minus"
+msgstr "unary minus"
+
+#. type: cindex
+#: expr.texi.orig:584
+#, no-wrap
+msgid "exponentiation"
+msgstr "exponentiation"
+
+#. type: cindex
+#: expr.texi.orig:585
+#, no-wrap
+msgid "transpose"
+msgstr "transpose"
+
+#. type: cindex
+#: expr.texi.orig:586
+#, no-wrap
+msgid "Hermitian operator"
+msgstr "Hermitian operator"
+
+#. type: cindex
+#: expr.texi.orig:587
+#, no-wrap
+msgid "transpose, complex-conjugate"
+msgstr "transpose, complex-conjugate"
+
+#. type: cindex
+#: expr.texi.orig:588
+#, no-wrap
+msgid "complex-conjugate transpose"
+msgstr "complex-conjugate transpose"
+
+#. type: Plain text
+#: expr.texi.orig:593
+msgid ""
+"The following arithmetic operators are available, and work on scalars and "
+"matrices.  The element-by-element operators and functions broadcast "
+"(@pxref{Broadcasting})."
+msgstr "以下の算術演算子が利用でき、それらはスカラーとマトリクスにたいして機能します。要素対要素の演算子と関数はブロードキャストします(@ref{Broadcasting}を参照)。"
+
+#. type: item
+#: expr.texi.orig:595
+#, no-wrap
+msgid "@var{x} + @var{y}"
+msgstr "@var{x} + @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:596 expr.texi.orig:693 expr.texi.orig:819 expr.texi.orig:901
+#, no-wrap
+msgid "+"
+msgstr "+"
+
+#. type: table
+#: expr.texi.orig:599
+msgid ""
+"Addition.  If both operands are matrices, the number of rows and columns "
+"must both agree, or they must be broadcastable to the same shape."
+msgstr "加算。オペランドがどちらもマトリクスの場合、行数と列数が一致するか、同じ形体にブロードキャスト可能でなければならない。"
+
+#. type: item
+#: expr.texi.orig:600
+#, no-wrap
+msgid "@var{x} .+ @var{y}"
+msgstr "@var{x} .+ @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:601
+#, no-wrap
+msgid ".+"
+msgstr ".+"
+
+#. type: table
+#: expr.texi.orig:603
+msgid "Element-by-element addition.  This operator is equivalent to @code{+}."
+msgstr "要素ごとの加算。この演算子は@code{+}と等価。"
+
+#. type: item
+#: expr.texi.orig:604
+#, no-wrap
+msgid "@var{x} - @var{y}"
+msgstr "@var{x} - @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:605 expr.texi.orig:689 expr.texi.orig:760 expr.texi.orig:892
+#, no-wrap
+msgid "-"
+msgstr "-"
+
+#. type: table
+#: expr.texi.orig:609
+msgid ""
+"Subtraction.  If both operands are matrices, the number of rows and columns "
+"of both must agree, or they must be broadcastable to the same shape."
+msgstr "減算。オペランドがどちらもマトリクスの場合は、行数と列数が一致するか、同じ形体にブロードキャスト可能でなければならない。"
+
+#. type: item
+#: expr.texi.orig:610
+#, no-wrap
+msgid "@var{x} .- @var{y}"
+msgstr "@var{x} .- @var{y}"
+
+#. type: table
+#: expr.texi.orig:612
+msgid "Element-by-element subtraction.  This operator is equivalent to @code{-}."
+msgstr "要素ごとの減算。この演算子は@code{-}と等価。"
+
+#. type: item
+#: expr.texi.orig:613
+#, no-wrap
+msgid "@var{x} * @var{y}"
+msgstr "@var{x} * @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:614 expr.texi.orig:800
+#, no-wrap
+msgid "*"
+msgstr "*"
+
+#. type: table
+#: expr.texi.orig:618
+msgid ""
+"Matrix multiplication.  The number of columns of @var{x} must agree with the "
+"number of rows of @var{y}, or they must be broadcastable to the same shape."
+msgstr "マトリクスの乗算。@var{x}の列数は、@var{y}の行数に一致するか、同じ形体にブロードキャスト可能でなければならない。"
+
+#. type: item
+#: expr.texi.orig:619
+#, no-wrap
+msgid "@var{x} .* @var{y}"
+msgstr "@var{x} .* @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:620 expr.texi.orig:863
+#, no-wrap
+msgid ".*"
+msgstr ".*"
+
+#. type: table
+#: expr.texi.orig:624
+msgid ""
+"Element-by-element multiplication.  If both operands are matrices, the "
+"number of rows and columns must both agree, or they must be broadcastable to "
+"the same shape."
+msgstr "要素ごとのの乗算。オペランドがどちらもマトリクスの場合は、行数と列数が一致するか、同じ形体にブロードキャスト可能でなければならない。"
+
+#. type: item
+#: expr.texi.orig:625
+#, no-wrap
+msgid "@var{x} / @var{y}"
+msgstr "@var{x} / @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:626 expr.texi.orig:790
+#, no-wrap
+msgid "/"
+msgstr "/"
+
+#. type: table
+#: expr.texi.orig:628
+msgid "Right division.  This is conceptually equivalent to the expression"
+msgstr "右除算。これは以下の式と概念的に等価"
+
+#. type: example
+#: expr.texi.orig:631
+#, no-wrap
+msgid "(inverse (y') * x')'\n"
+msgstr "(inverse (y') * x')'\n"
+
+#. type: table
+#: expr.texi.orig:635
+msgid "but it is computed without forming the inverse of @var{y'}."
+msgstr "しかし@var{y'}を逆転せずに計算される。"
+
+#. type: table
+#: expr.texi.orig:638 expr.texi.orig:656
+msgid ""
+"If the system is not square, or if the coefficient matrix is singular, a "
+"minimum norm solution is computed."
+msgstr "システムがsquareeではない、または係数行列が非正則の場合は、minimum norm solutionが計算されます。"
+
+#. type: item
+#: expr.texi.orig:639
+#, no-wrap
+msgid "@var{x} ./ @var{y}"
+msgstr "@var{x} ./ @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:640 expr.texi.orig:853
+#, no-wrap
+msgid "./"
+msgstr "./"
+
+#. type: table
+#: expr.texi.orig:642
+msgid "Element-by-element right division."
+msgstr "要素ごとの右除算。"
+
+#. type: item
+#: expr.texi.orig:643
+#, no-wrap
+msgid "@var{x} \\ @var{y}"
+msgstr "@var{x} \\ @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:644 expr.texi.orig:769
+#, no-wrap
+msgid "\\"
+msgstr "\\"
+
+#. type: table
+#: expr.texi.orig:646
+msgid "Left division.  This is conceptually equivalent to the expression"
+msgstr "左除算。これは以下の式と概念的に等価"
+
+#. type: example
+#: expr.texi.orig:649
+#, no-wrap
+msgid "inverse (x) * y\n"
+msgstr "inverse (x) * y\n"
+
+#. type: table
+#: expr.texi.orig:653
+msgid "but it is computed without forming the inverse of @var{x}."
+msgstr "しかし@var{x}を逆転せずに計算される。"
+
+#. type: item
+#: expr.texi.orig:657
+#, no-wrap
+msgid "@var{x} .\\ @var{y}"
+msgstr "@var{x} .\\ @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:658 expr.texi.orig:750
+#, no-wrap
+msgid ".\\"
+msgstr ".\\"
+
+#. type: table
+#: expr.texi.orig:661
+msgid ""
+"Element-by-element left division.  Each element of @var{y} is divided by "
+"each corresponding element of @var{x}."
+msgstr "要素ごとの左除算。@var{y}の各要素は、対応する@var{x}の要素により除される。"
+
+#. type: item
+#: expr.texi.orig:662
+#, no-wrap
+msgid "@var{x} ^ @var{y}"
+msgstr "@var{x} ^ @var{y}"
+
+#. type: itemx
+#: expr.texi.orig:663
+#, no-wrap
+msgid "@var{x} ** @var{y}"
+msgstr "@var{x} ** @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:664 expr.texi.orig:779
+#, no-wrap
+msgid "**"
+msgstr "**"
+
+#. type: opindex
+#: expr.texi.orig:665 expr.texi.orig:780
+#, no-wrap
+msgid "^"
+msgstr "^"
+
+#. type: table
+#: expr.texi.orig:673
+msgid ""
+"Power operator.  If @var{x} and @var{y} are both scalars, this operator "
+"returns @var{x} raised to the power @var{y}.  If @var{x} is a scalar and "
+"@var{y} is a square matrix, the result is computed using an eigenvalue "
+"expansion.  If @var{x} is a square matrix, the result is computed by "
+"repeated multiplication if @var{y} is an integer, and by an eigenvalue "
+"expansion if @var{y} is not an integer.  An error results if both @var{x} "
+"and @var{y} are matrices."
+msgstr "べき乗演算子。@var{x}と@var{y}がどちらもスカラーの場合、この演算子は@var{x}を@var{y}乗じてリターンする。@var{x}がスカラーで@var{y}が正方マトリクスの場合、結果は固有値展開を使用して計算される。@var{x}が正方マトリクスの場合、@var{y}が整数なら結果は乗算を繰り返して計算され、@var{y}が非整数なら固有値展開により計算される。@var{x}と@var{y}が両方マトリクスなら結果はエラーとなる。"
+
+#. type: table
+#: expr.texi.orig:675
+msgid "The implementation of this operator needs to be improved."
+msgstr "この演算子の実装は改善される必要がある。"
+
+#. type: item
+#: expr.texi.orig:676
+#, no-wrap
+msgid "@var{x} .^ @var{y}"
+msgstr "@var{x} .^ @var{y}"
+
+#. type: itemx
+#: expr.texi.orig:677
+#, no-wrap
+msgid "@var{x} .** @var{y}"
+msgstr "@var{x} .** @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:678 expr.texi.orig:837
+#, no-wrap
+msgid ".**"
+msgstr ".**"
+
+#. type: opindex
+#: expr.texi.orig:679 expr.texi.orig:838
+#, no-wrap
+msgid ".^"
+msgstr ".^"
+
+#. type: table
+#: expr.texi.orig:687
+msgid ""
+"Element-by-element power operator.  If both operands are matrices, the "
+"number of rows and columns must both agree, or they must be broadcastable to "
+"the same shape.  If several complex results are possible, the one with "
+"smallest non-negative argument (angle) is taken.  This rule may return a "
+"complex root even when a real root is also possible.  Use @code{realpow}, "
+"@code{realsqrt}, @code{cbrt}, or @code{nthroot} if a real result is "
+"preferred."
+msgstr "要素ごとのべき乗演算子。オペランドがどちらもマトリクスの場合、行数と列数が一致するか、同じ形体にブロードキャストされなければならない。複素数の結果が複数利用できる場合、最小の非負(angle)の引数が採用される。このルールにより、たとえ実数の根が利用できても、複素数の根がリターンされる。実数の結果を望むなら@code{realpow}、@code{realsqrt}、@code{cbrt}、@code{nthroot}を使用すること。"
+
+#. type: item
+#: expr.texi.orig:688
+#, no-wrap
+msgid "-@var{x}"
+msgstr "-@var{x}"
+
+#. type: table
+#: expr.texi.orig:691
+msgid "Negation."
+msgstr "Negation."
+
+#. type: item
+#: expr.texi.orig:692
+#, no-wrap
+msgid "+@var{x}"
+msgstr "+@var{x}"
+
+#. type: table
+#: expr.texi.orig:695
+msgid "Unary plus.  This operator has no effect on the operand."
+msgstr "単項プラス。この演算子はオペランドに影響を与えない。"
+
+#. type: item
+#: expr.texi.orig:696
+#, no-wrap
+msgid "@var{x}'"
+msgstr "@var{x}'"
+
+#. type: opindex
+#: expr.texi.orig:697 expr.texi.orig:740
+#, no-wrap
+msgid "'"
+msgstr "'"
+
+#. type: table
+#: expr.texi.orig:701
+msgid ""
+"Complex conjugate transpose.  For real arguments, this operator is the same "
+"as the transpose operator.  For complex arguments, this operator is "
+"equivalent to the expression"
+msgstr "複素数の共役転置。実数の引数にたいして、この演算子は転置演算子と等価。複素数引数にたいして、この演算子は以下の式と等価"
+
+#. type: example
+#: expr.texi.orig:704
+#, no-wrap
+msgid "conj (x.')\n"
+msgstr "conj (x.')\n"
+
+#. type: item
+#: expr.texi.orig:706
+#, no-wrap
+msgid "@var{x}.'"
+msgstr "@var{x}.'"
+
+#. type: opindex
+#: expr.texi.orig:707 expr.texi.orig:882
+#, no-wrap
+msgid ".'"
+msgstr ".'"
+
+#. type: table
+#: expr.texi.orig:709
+msgid "Transpose."
+msgstr "転置。"
+
+#. type: Plain text
+#: expr.texi.orig:713
+msgid ""
+"Note that because Octave's element-by-element operators begin with a "
+"@samp{.}, there is a possible ambiguity for statements like"
+msgstr "Octaveの要素ごとの演算子は@samp{.}で始まり、以下のような文にたいして曖昧さが存在することに注意してください"
+
+#. type: example
+#: expr.texi.orig:716
+#, no-wrap
+msgid "1./m\n"
+msgstr "1./m\n"
+
+#. type: Plain text
+#: expr.texi.orig:722
+msgid ""
+"because the period could be interpreted either as part of the constant or as "
+"part of the operator.  To resolve this conflict, Octave treats the "
+"expression as if you had typed"
+msgstr "なぜならピリオドは定数の一部、あるいは演算子の一部としてどちらにも解釈できるからです。この競合を解決するために、Octaveはあたかも以下をタイプしたかのように扱い"
+
+#. type: example
+#: expr.texi.orig:725
+#, no-wrap
+msgid "(1) ./ m\n"
+msgstr "(1) ./ m\n"
+
+#. type: Plain text
+#: expr.texi.orig:729
+msgid "and not"
+msgstr "以下のように扱うことはありません"
+
+#. type: example
+#: expr.texi.orig:732
+#, no-wrap
+msgid "(1.) / m\n"
+msgstr "(1.) / m\n"
+
+#. type: Plain text
+#: expr.texi.orig:739
+msgid ""
+"Although this is inconsistent with the normal behavior of Octave's lexer, "
+"which usually prefers to break the input into tokens by preferring the "
+"longest possible match at any given point, it is more useful in this case."
+msgstr "これは、与えられた任意の位置において最長のマッチが優先されるというOctave字句解析の通常の振る舞いと統一が取れませんが、この場合はこちらのほうが便利です。"
+
+#. type: anchor{#1}
+#: expr.texi.orig:743
+msgid "XREFctranspose"
+msgstr "XREFctranspose"
+
+#. type: deftypefn
+#: expr.texi.orig:743
+#, no-wrap
+msgid "{Built-in Function} {} ctranspose (@var{x})"
+msgstr "{Built-in Function} {} ctranspose (@var{x})"
+
+#. type: deftypefn
+#: expr.texi.orig:747
+msgid ""
+"Return the complex conjugate transpose of @var{x}.  This function and "
+"@tcode{x'} are equivalent.  @seealso{@ref{XREFtranspose,,transpose}}"
+msgstr ""
+"複素数の@var{x}の共役転置をリターンします。この関数と@tcode{x'}は等価です。\n"
+"@seealso{@ref{XREFtranspose,,transpose}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:753
+msgid "XREFldivide"
+msgstr "XREFldivide"
+
+#. type: deftypefn
+#: expr.texi.orig:753
+#, no-wrap
+msgid "{Built-in Function} {} ldivide (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} ldivide (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:757
+msgid ""
+"Return the element-by-element left division of @var{x} and @var{y}.  This "
+"function and @w{@tcode{x .@xbackslashchar{} y}} are equivalent.  "
+"@seealso{@ref{XREFrdivide,,rdivide}, @ref{XREFmldivide,,mldivide}, "
+"@ref{XREFtimes,,times}, @ref{XREFplus,,plus}}"
+msgstr ""
+"@var{x}と@var{y}の要素ごとの左除算をリターンします。この関数と@w{@tcode{x .@xbackslashchar{} y}}は等価です。\n"
+"@seealso{@ref{XREFrdivide,,rdivide}, @ref{XREFmldivide,,mldivide}, @ref{XREFtimes,,times}, @ref{XREFplus,,plus}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:763
+msgid "XREFminus"
+msgstr "XREFminus"
+
+#. type: deftypefn
+#: expr.texi.orig:763
+#, no-wrap
+msgid "{Built-in Function} {} minus (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} minus (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:766
+msgid ""
+"This function and @w{@tcode{x - y}} are equivalent.  "
+"@seealso{@ref{XREFplus,,plus}, @ref{XREFuminus,,uminus}}"
+msgstr ""
+"この関数は@w{@tcode{x - y}}と等価です。\n"
+"@seealso{@ref{XREFplus,,plus}, @ref{XREFuminus,,uminus}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:772
+msgid "XREFmldivide"
+msgstr "XREFmldivide"
+
+#. type: deftypefn
+#: expr.texi.orig:772
+#, no-wrap
+msgid "{Built-in Function} {} mldivide (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} mldivide (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:776
+msgid ""
+"Return the matrix left division of @var{x} and @var{y}.  This function and "
+"@w{@tcode{x @xbackslashchar{} y}} are equivalent.  "
+"@seealso{@ref{XREFmrdivide,,mrdivide}, @ref{XREFldivide,,ldivide}, "
+"@ref{XREFrdivide,,rdivide}}"
+msgstr ""
+"@var{x}と@var{y}の左除算マトリクスをリターンします。この関数は@w{@tcode{x @xbackslashchar{} y}}と等価です。\n"
+"@seealso{@ref{XREFmrdivide,,mrdivide}, @ref{XREFldivide,,ldivide}, @ref{XREFrdivide,,rdivide}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:783
+msgid "XREFmpower"
+msgstr "XREFmpower"
+
+#. type: deftypefn
+#: expr.texi.orig:783
+#, no-wrap
+msgid "{Built-in Function} {} mpower (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} mpower (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:787
+msgid ""
+"Return the matrix power operation of @var{x} raised to the @var{y} power.  "
+"This function and @w{@tcode{x ^ y}} are equivalent.  "
+"@seealso{@ref{XREFpower,,power}, @ref{XREFmtimes,,mtimes}, "
+"@ref{XREFplus,,plus}, @ref{XREFminus,,minus}}"
+msgstr ""
+"@var{x}の@var{y}乗というべき乗操作を行いマトリクスをリターンします。この関数は@w{@tcode{x ^ y}}と等価です。\n"
+"@seealso{@ref{XREFpower,,power}, @ref{XREFmtimes,,mtimes}, @ref{XREFplus,,plus}, @ref{XREFminus,,minus}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:793
+msgid "XREFmrdivide"
+msgstr "XREFmrdivide"
+
+#. type: deftypefn
+#: expr.texi.orig:793
+#, no-wrap
+msgid "{Built-in Function} {} mrdivide (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} mrdivide (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:797
+msgid ""
+"Return the matrix right division of @var{x} and @var{y}.  This function and "
+"@w{@tcode{x / y}} are equivalent.  @seealso{@ref{XREFmldivide,,mldivide}, "
+"@ref{XREFrdivide,,rdivide}, @ref{XREFplus,,plus}, @ref{XREFminus,,minus}}"
+msgstr ""
+"@var{x}と@var{y}を右除算したマトリクスをリターンします。この関数は@w{@tcode{x / y}}と等価です。\n"
+"@seealso{@ref{XREFmldivide,,mldivide}, @ref{XREFrdivide,,rdivide}, @ref{XREFplus,,plus}, @ref{XREFminus,,minus}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:803
+msgid "XREFmtimes"
+msgstr "XREFmtimes"
+
+#. type: deftypefn
+#: expr.texi.orig:803
+#, no-wrap
+msgid "{Built-in Function} {} mtimes (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} mtimes (@var{x}, @var{y})"
+
+#. type: deftypefnx
+#: expr.texi.orig:804
+#, no-wrap
+msgid "{Built-in Function} {} mtimes (@var{x1}, @var{x2}, @dots{})"
+msgstr "{Built-in Function} {} mtimes (@var{x1}, @var{x2}, @dots{})"
+
+#. type: deftypefn
+#: expr.texi.orig:809
+msgid ""
+"Return the matrix multiplication product of inputs.  This function and "
+"@w{@tcode{x * y}} are equivalent.  If more arguments are given, the "
+"multiplication is applied cumulatively from left to right:"
+msgstr "入力のmultiplication productをリターンします。この関数と@w{@tcode{x * y}}は等価です。より多くの引数が与えられた場合、multiplicationは累積的に左から右へと行われます:"
+
+#. type: example
+#: expr.texi.orig:812
+#, no-wrap
+msgid "(@dots{}((x1 * x2) * x3) * @dots{})\n"
+msgstr "(@dots{}((x1 * x2) * x3) * @dots{})\n"
+
+#. type: deftypefn
+#: expr.texi.orig:816
+msgid ""
+"At least one argument is required.  @seealso{@ref{XREFtimes,,times}, "
+"@ref{XREFplus,,plus}, @ref{XREFminus,,minus}, @ref{XREFrdivide,,rdivide}, "
+"@ref{XREFmrdivide,,mrdivide}, @ref{XREFmldivide,,mldivide}, "
+"@ref{XREFmpower,,mpower}}"
+msgstr ""
+"少なくとも1つの引数が要求されます。\n"
+"@seealso{@ref{XREFtimes,,times}, @ref{XREFplus,,plus}, @ref{XREFminus,,minus}, @ref{XREFrdivide,,rdivide}, @ref{XREFmrdivide,,mrdivide}, @ref{XREFmldivide,,mldivide}, @ref{XREFmpower,,mpower}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:822
+msgid "XREFplus"
+msgstr "XREFplus"
+
+#. type: deftypefn
+#: expr.texi.orig:822
+#, no-wrap
+msgid "{Built-in Function} {} plus (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} plus (@var{x}, @var{y})"
+
+#. type: deftypefnx
+#: expr.texi.orig:823
+#, no-wrap
+msgid "{Built-in Function} {} plus (@var{x1}, @var{x2}, @dots{})"
+msgstr "{Built-in Function} {} plus (@var{x1}, @var{x2}, @dots{})"
+
+#. type: deftypefn
+#: expr.texi.orig:827
+msgid ""
+"This function and @w{@tcode{x + y}} are equivalent.  If more arguments are "
+"given, the summation is applied cumulatively from left to right:"
+msgstr "この関数は@w{@tcode{x + y}}と等価です。より多くの引数が与えられた場合、加算は左から右へ累積的に行われます:"
+
+#. type: example
+#: expr.texi.orig:830
+#, no-wrap
+msgid "(@dots{}((x1 + x2) + x3) + @dots{})\n"
+msgstr "(@dots{}((x1 + x2) + x3) + @dots{})\n"
+
+#. type: deftypefn
+#: expr.texi.orig:834
+msgid ""
+"At least one argument is required.  @seealso{@ref{XREFminus,,minus}, "
+"@ref{XREFuplus,,uplus}}"
+msgstr ""
+"少なくとも1つの引数が要求されます。\n"
+"@seealso{@ref{XREFminus,,minus}, @ref{XREFuplus,,uplus}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:841
+msgid "XREFpower"
+msgstr "XREFpower"
+
+#. type: deftypefn
+#: expr.texi.orig:841
+#, no-wrap
+msgid "{Built-in Function} {} power (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} power (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:847
+msgid ""
+"Return the element-by-element operation of @var{x} raised to the @var{y} "
+"power.  If several complex results are possible, returns the one with "
+"smallest non-negative argument (angle).  Use @code{realpow}, "
+"@code{realsqrt}, @code{cbrt}, or @code{nthroot} if a real result is "
+"preferred."
+msgstr "要素ごとに@var{x}を@var{y}乗してリターンします。複数の複素数結果が利用できる場合は、最小の非負(angle)の引数をリターンします。実数の結果が望ましい場合は@code{realpow}、@code{realsqrt}、@code{cbrt}、@code{nthroot}を使用してください。"
+
+#. type: deftypefn
+#: expr.texi.orig:850
+msgid ""
+"This function and @w{@tcode{x .^ y}} are equivalent.  "
+"@seealso{@ref{XREFmpower,,mpower}, @ref{XREFrealpow,,realpow}, "
+"@ref{XREFrealsqrt,,realsqrt}, @ref{XREFcbrt,,cbrt}, "
+"@ref{XREFnthroot,,nthroot}}"
+msgstr ""
+"この関数は@w{@tcode{x .^ y}}と等価です。\n"
+"@seealso{@ref{XREFmpower,,mpower}, @ref{XREFrealpow,,realpow}, @ref{XREFrealsqrt,,realsqrt}, @ref{XREFcbrt,,cbrt}, @ref{XREFnthroot,,nthroot}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:856
+msgid "XREFrdivide"
+msgstr "XREFrdivide"
+
+#. type: deftypefn
+#: expr.texi.orig:856
+#, no-wrap
+msgid "{Built-in Function} {} rdivide (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} rdivide (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:860
+msgid ""
+"Return the element-by-element right division of @var{x} and @var{y}.  This "
+"function and @w{@tcode{x ./ y}} are equivalent.  "
+"@seealso{@ref{XREFldivide,,ldivide}, @ref{XREFmrdivide,,mrdivide}, "
+"@ref{XREFtimes,,times}, @ref{XREFplus,,plus}}"
+msgstr ""
+"@var{x}と@var{y}を要素ごとに右除算してリターンします。この関数は@w{@tcode{x ./ y}}と等価です。\n"
+"@seealso{@ref{XREFldivide,,ldivide}, @ref{XREFmrdivide,,mrdivide}, @ref{XREFtimes,,times}, @ref{XREFplus,,plus}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:866
+msgid "XREFtimes"
+msgstr "XREFtimes"
+
+#. type: deftypefn
+#: expr.texi.orig:866
+#, no-wrap
+msgid "{Built-in Function} {} times (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} times (@var{x}, @var{y})"
+
+#. type: deftypefnx
+#: expr.texi.orig:867
+#, no-wrap
+msgid "{Built-in Function} {} times (@var{x1}, @var{x2}, @dots{})"
+msgstr "{Built-in Function} {} times (@var{x1}, @var{x2}, @dots{})"
+
+#. type: deftypefn
+#: expr.texi.orig:872
+msgid ""
+"Return the element-by-element multiplication product of inputs.  This "
+"function and @w{@tcode{x .* y}} are equivalent.  If more arguments are "
+"given, the multiplication is applied cumulatively from left to right:"
+msgstr "入力の要素ごとのmultiplication productをリターンします。この関数と@w{@tcode{x .* y}}は等価です。より多くの引数が与えられた場合、乗算は左から右に累積的に適用されます:"
+
+#. type: example
+#: expr.texi.orig:875
+#, no-wrap
+msgid "(@dots{}((x1 .* x2) .* x3) .* @dots{})\n"
+msgstr "(@dots{}((x1 .* x2) .* x3) .* @dots{})\n"
+
+#. type: deftypefn
+#: expr.texi.orig:879
+msgid ""
+"At least one argument is required.  @seealso{@ref{XREFmtimes,,mtimes}, "
+"@ref{XREFrdivide,,rdivide}}"
+msgstr ""
+"少なくとも1つの引数が要求されます。\n"
+"@seealso{@ref{XREFmtimes,,mtimes}, @ref{XREFrdivide,,rdivide}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:885
+msgid "XREFtranspose"
+msgstr "XREFtranspose"
+
+#. type: deftypefn
+#: expr.texi.orig:885
+#, no-wrap
+msgid "{Built-in Function} {} transpose (@var{x})"
+msgstr "{Built-in Function} {} transpose (@var{x})"
+
+#. type: deftypefn
+#: expr.texi.orig:889
+msgid ""
+"Return the transpose of @var{x}.  This function and @tcode{x.'} are "
+"equivalent.  @seealso{@ref{XREFctranspose,,ctranspose}}"
+msgstr ""
+"@var{x}の転置をリターンします。この関数と@tcode{x.'}は等価です。\n"
+"@seealso{@ref{XREFctranspose,,ctranspose}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:895
+msgid "XREFuminus"
+msgstr "XREFuminus"
+
+#. type: deftypefn
+#: expr.texi.orig:895
+#, no-wrap
+msgid "{Built-in Function} {} uminus (@var{x})"
+msgstr "{Built-in Function} {} uminus (@var{x})"
+
+#. type: deftypefn
+#: expr.texi.orig:898
+msgid ""
+"This function and @w{@tcode{- x}} are equivalent.  "
+"@seealso{@ref{XREFuplus,,uplus}, @ref{XREFminus,,minus}}"
+msgstr ""
+"この関数は@w{@tcode{- x}}と等価です。\n"
+"@seealso{@ref{XREFuplus,,uplus}, @ref{XREFminus,,minus}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:904
+msgid "XREFuplus"
+msgstr "XREFuplus"
+
+#. type: deftypefn
+#: expr.texi.orig:904
+#, no-wrap
+msgid "{Built-in Function} {} uplus (@var{x})"
+msgstr "{Built-in Function} {} uplus (@var{x})"
+
+#. type: deftypefn
+#: expr.texi.orig:907
+msgid ""
+"This function and @w{@tcode{+ x}} are equivalent.  "
+"@seealso{@ref{XREFuminus,,uminus}, @ref{XREFplus,,plus}, "
+"@ref{XREFminus,,minus}}"
+msgstr ""
+"この関数は@w{@tcode{+ x}}と等価です。\n"
+"@seealso{@ref{XREFuminus,,uminus}, @ref{XREFplus,,plus}, @ref{XREFminus,,minus}}"
+
+#. type: node
+#: expr.texi.orig:910
+#, no-wrap
+msgid "Comparison Ops"
+msgstr "Comparison Ops"
+
+#. type: section
+#: expr.texi.orig:911
+#, no-wrap
+msgid "Comparison Operators"
+msgstr "Comparison Operators"
+
+#. type: cindex
+#: expr.texi.orig:912
+#, no-wrap
+msgid "comparison expressions"
+msgstr "comparison expressions"
+
+#. type: cindex
+#: expr.texi.orig:913
+#, no-wrap
+msgid "expressions, comparison"
+msgstr "expressions, comparison"
+
+#. type: cindex
+#: expr.texi.orig:914
+#, no-wrap
+msgid "relational operators"
+msgstr "relational operators"
+
+#. type: cindex
+#: expr.texi.orig:915
+#, no-wrap
+msgid "operators, relational"
+msgstr "operators, relational"
+
+#. type: cindex
+#: expr.texi.orig:916
+#, no-wrap
+msgid "less than operator"
+msgstr "less than operator"
+
+#. type: cindex
+#: expr.texi.orig:917
+#, no-wrap
+msgid "greater than operator"
+msgstr "greater than operator"
+
+#. type: cindex
+#: expr.texi.orig:918
+#, no-wrap
+msgid "equality operator"
+msgstr "equality operator"
+
+#. type: cindex
+#: expr.texi.orig:919
+#, no-wrap
+msgid "tests for equality"
+msgstr "tests for equality"
+
+#. type: cindex
+#: expr.texi.orig:920
+#, no-wrap
+msgid "equality, tests for"
+msgstr "equality, tests for"
+
+#. type: Plain text
+#: expr.texi.orig:925
+msgid ""
+"@dfn{Comparison operators} compare numeric values for relationships such as "
+"equality.  They are written using @emph{relational operators}."
+msgstr "@dfn{比較演算子}は等価性のような関連について数値を比較します。これらは@emph{関係演算子}を用いて記述されます。"
+
+#. type: Plain text
+#: expr.texi.orig:930
+msgid ""
+"All of Octave's comparison operators return a value of 1 if the comparison "
+"is true, or 0 if it is false.  For matrix values, they all work on an "
+"element-by-element basis.  Broadcasting rules apply.  @xref{Broadcasting}.  "
+"For example:"
+msgstr "Octaveのすべての比較演算子は、比較がtrueなら1、falseなら0をリターンします。マトリクス値にたいしては、すべて要素ごとの原理に基づき機能します。ブロードキャストのルールが適用されます。@ref{Broadcasting}を参照してください。たとえば:"
+
+#. type: group
+#: expr.texi.orig:936
+#, no-wrap
+msgid ""
+"[1, 2; 3, 4] == [1, 3; 2, 4]\n"
+"     @result{}  1  0\n"
+"         0  1\n"
+msgstr ""
+"[1, 2; 3, 4] == [1, 3; 2, 4]\n"
+"     @result{}  1  0\n"
+"         0  1\n"
+
+#. type: Plain text
+#: expr.texi.orig:942
+msgid ""
+"According to broadcasting rules, if one operand is a scalar and the other is "
+"a matrix, the scalar is compared to each element of the matrix in turn, and "
+"the result is the same size as the matrix."
+msgstr "ブロードキャストのルールにしたがい、オペランドの1つがスカラーで、もう一方がマトリクスの場合は、そのスカラーがマトリクスの各要素と順に比較され、結果はそのマトリクスと同じサイズになります。"
+
+#. type: item
+#: expr.texi.orig:944
+#, no-wrap
+msgid "@var{x} < @var{y}"
+msgstr "@var{x} < @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:945 expr.texi.orig:1045
+#, no-wrap
+msgid "<"
+msgstr "<"
+
+#. type: table
+#: expr.texi.orig:947
+msgid "True if @var{x} is less than @var{y}."
+msgstr "@var{x}が@var{y}より小ならtrue。"
+
+#. type: item
+#: expr.texi.orig:948
+#, no-wrap
+msgid "@var{x} <= @var{y}"
+msgstr "@var{x} <= @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:949 expr.texi.orig:1036
+#, no-wrap
+msgid "<="
+msgstr "<="
+
+#. type: table
+#: expr.texi.orig:951
+msgid "True if @var{x} is less than or equal to @var{y}."
+msgstr "@var{x}が@var{y}以下ならtrue。"
+
+#. type: item
+#: expr.texi.orig:952
+#, no-wrap
+msgid "@var{x} == @var{y}"
+msgstr "@var{x} == @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:953 expr.texi.orig:990
+#, no-wrap
+msgid "=="
+msgstr "=="
+
+#. type: table
+#: expr.texi.orig:955
+msgid "True if @var{x} is equal to @var{y}."
+msgstr "@var{x}が@var{y}と等しければtrue。"
+
+#. type: item
+#: expr.texi.orig:956
+#, no-wrap
+msgid "@var{x} >= @var{y}"
+msgstr "@var{x} >= @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:957 expr.texi.orig:1000
+#, no-wrap
+msgid ">="
+msgstr ">="
+
+#. type: table
+#: expr.texi.orig:959
+msgid "True if @var{x} is greater than or equal to @var{y}."
+msgstr "@var{x}が@var{y}以上ならtrue。"
+
+#. type: item
+#: expr.texi.orig:960
+#, no-wrap
+msgid "@var{x} > @var{y}"
+msgstr "@var{x} > @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:961 expr.texi.orig:1009
+#, no-wrap
+msgid ">"
+msgstr ">"
+
+#. type: table
+#: expr.texi.orig:963
+msgid "True if @var{x} is greater than @var{y}."
+msgstr "@var{x}が@var{y}より大ならtrue。"
+
+#. type: item
+#: expr.texi.orig:964
+#, no-wrap
+msgid "@var{x} != @var{y}"
+msgstr "@var{x} != @var{y}"
+
+#. type: itemx
+#: expr.texi.orig:965
+#, no-wrap
+msgid "@var{x} ~= @var{y}"
+msgstr "@var{x} ~= @var{y}"
+
+#. type: opindex
+#: expr.texi.orig:966 expr.texi.orig:1054
+#, no-wrap
+msgid "!="
+msgstr "!="
+
+#. type: opindex
+#: expr.texi.orig:967 expr.texi.orig:1055
+#, no-wrap
+msgid "~="
+msgstr "~="
+
+#. type: table
+#: expr.texi.orig:969
+msgid "True if @var{x} is not equal to @var{y}."
+msgstr "@var{x}が@var{y}としくなければtrue。"
+
+#. type: Plain text
+#: expr.texi.orig:974
+msgid ""
+"For complex numbers, the following ordering is defined: @var{z1} < @var{z2} "
+"if and only if"
+msgstr "複素数値にたいしては以下の順序が定義されている(@var{z1} < @var{z2}の場合に限る)。"
+
+#. type: group
+#: expr.texi.orig:979
+#, no-wrap
+msgid ""
+"  abs (@var{z1}) < abs (@var{z2}) \n"
+"  || (abs (@var{z1}) == abs (@var{z2}) && arg (@var{z1}) < arg (@var{z2}))\n"
+msgstr ""
+"  abs (@var{z1}) < abs (@var{z2}) \n"
+"  || (abs (@var{z1}) == abs (@var{z2}) && arg (@var{z1}) < arg (@var{z2}))\n"
+
+#. type: Plain text
+#: expr.texi.orig:985
+msgid ""
+"This is consistent with the ordering used by @dfn{max}, @dfn{min} and "
+"@dfn{sort}, but is not consistent with @sc{matlab}, which only compares the "
+"real parts."
+msgstr "これは@dfn{max}、@dfn{min}、@dfn{sort}で使用される順序と整合がとれていますが、実数部だけを比較する@sc{matlab}とは不整合です。"
+
+#. type: Plain text
+#: expr.texi.orig:989
+msgid ""
+"String comparisons may also be performed with the @code{strcmp} function, "
+"not with the comparison operators listed above.  @xref{Strings}."
+msgstr "文字列の比較は上記にリストした演算子ではなく、@code{strcmp}関数により処理されます。@ref{Strings}を参照してください。"
+
+#. type: anchor{#1}
+#: expr.texi.orig:993
+msgid "XREFeq"
+msgstr "XREFeq"
+
+#. type: deftypefn
+#: expr.texi.orig:993
+#, no-wrap
+msgid "{Built-in Function} {} eq (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} eq (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:997
+msgid ""
+"Return true if the two inputs are equal.  This function is equivalent to "
+"@w{@code{x == y}}.  @seealso{@ref{XREFne,,ne}, @ref{XREFisequal,,isequal}, "
+"@ref{XREFle,,le}, @ref{XREFge,,ge}, @ref{XREFgt,,gt}, @ref{XREFne,,ne}, "
+"@ref{XREFlt,,lt}}"
+msgstr ""
+"2つの入力が等しければtrueをリターンします。この関数は@w{@code{x == y}}と等価です。\n"
+"@seealso{@ref{XREFne,,ne}, @ref{XREFisequal,,isequal}, @ref{XREFle,,le}, @ref{XREFge,,ge}, @ref{XREFgt,,gt}, @ref{XREFne,,ne}, @ref{XREFlt,,lt}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1003
+msgid "XREFge"
+msgstr "XREFge"
+
+#. type: deftypefn
+#: expr.texi.orig:1003
+#, no-wrap
+msgid "{Built-in Function} {} ge (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} ge (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:1006
+msgid ""
+"This function is equivalent to @w{@code{x >= y}}.  "
+"@seealso{@ref{XREFle,,le}, @ref{XREFeq,,eq}, @ref{XREFgt,,gt}, "
+"@ref{XREFne,,ne}, @ref{XREFlt,,lt}}"
+msgstr ""
+"この関数は@w{@code{x >= y}}と等価です。\n"
+"@seealso{@ref{XREFle,,le}, @ref{XREFeq,,eq}, @ref{XREFgt,,gt}, @ref{XREFne,,ne}, @ref{XREFlt,,lt}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1012
+msgid "XREFgt"
+msgstr "XREFgt"
+
+#. type: deftypefn
+#: expr.texi.orig:1012
+#, no-wrap
+msgid "{Built-in Function} {} gt (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} gt (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:1015
+msgid ""
+"This function is equivalent to @w{@code{x > y}}.  @seealso{@ref{XREFle,,le}, "
+"@ref{XREFeq,,eq}, @ref{XREFge,,ge}, @ref{XREFne,,ne}, @ref{XREFlt,,lt}}"
+msgstr ""
+"この関数は@w{@code{x > y}}と等価です\n"
+"@seealso{@ref{XREFle,,le}, @ref{XREFeq,,eq}, @ref{XREFge,,ge}, @ref{XREFne,,ne}, @ref{XREFlt,,lt}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1020
+msgid "XREFisequal"
+msgstr "XREFisequal"
+
+#. type: deftypefn
+#: expr.texi.orig:1020
+#, no-wrap
+msgid "{Function File} {} isequal (@var{x1}, @var{x2}, @dots{})"
+msgstr "{Function File} {} isequal (@var{x1}, @var{x2}, @dots{})"
+
+#. type: deftypefn
+#: expr.texi.orig:1023
+msgid ""
+"Return true if all of @var{x1}, @var{x2}, @dots{} are equal.  "
+"@seealso{@ref{XREFisequaln,,isequaln}}"
+msgstr ""
+"@var{x1}、@var{x2}、@dots{}がすべて等しければtrueをリターンします。\n"
+"@seealso{@ref{XREFisequaln,,isequaln}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1028
+msgid "XREFisequaln"
+msgstr "XREFisequaln"
+
+#. type: deftypefn
+#: expr.texi.orig:1028
+#, no-wrap
+msgid "{Function File} {} isequaln (@var{x1}, @var{x2}, @dots{})"
+msgstr "{Function File} {} isequaln (@var{x1}, @var{x2}, @dots{})"
+
+#. type: deftypefn
+#: expr.texi.orig:1033
+msgid ""
+"Return true if all of @var{x1}, @var{x2}, @dots{} are equal under the "
+"additional assumption that NaN == NaN (no comparison of NaN placeholders in "
+"dataset).  @seealso{@ref{XREFisequal,,isequal}}"
+msgstr ""
+"NaN == NaNという追加の仮定のもとに、@var{x1}、@var{x2}、@dots{}のすべてが等しければtrueをリターンします(データセット内のNaNの代替物の比較は行いません)。\n"
+"@seealso{@ref{XREFisequal,,isequal}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1039
+msgid "XREFle"
+msgstr "XREFle"
+
+#. type: deftypefn
+#: expr.texi.orig:1039
+#, no-wrap
+msgid "{Built-in Function} {} le (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} le (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:1042
+msgid ""
+"This function is equivalent to @w{@code{x <= y}}.  "
+"@seealso{@ref{XREFeq,,eq}, @ref{XREFge,,ge}, @ref{XREFgt,,gt}, "
+"@ref{XREFne,,ne}, @ref{XREFlt,,lt}}"
+msgstr ""
+"この関数は@w{@code{x <= y}}と等価です。\n"
+"@seealso{@ref{XREFeq,,eq}, @ref{XREFge,,ge}, @ref{XREFgt,,gt}, @ref{XREFne,,ne}, @ref{XREFlt,,lt}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1048
+msgid "XREFlt"
+msgstr "XREFlt"
+
+#. type: deftypefn
+#: expr.texi.orig:1048
+#, no-wrap
+msgid "{Built-in Function} {} lt (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} lt (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:1051
+msgid ""
+"This function is equivalent to @w{@code{x < y}}.  @seealso{@ref{XREFle,,le}, "
+"@ref{XREFeq,,eq}, @ref{XREFge,,ge}, @ref{XREFgt,,gt}, @ref{XREFne,,ne}}"
+msgstr ""
+"この関数は@w{@code{x < y}}と等価です。\n"
+"@seealso{@ref{XREFle,,le}, @ref{XREFeq,,eq}, @ref{XREFge,,ge}, @ref{XREFgt,,gt}, @ref{XREFne,,ne}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1058
+msgid "XREFne"
+msgstr "XREFne"
+
+#. type: deftypefn
+#: expr.texi.orig:1058
+#, no-wrap
+msgid "{Built-in Function} {} ne (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} ne (@var{x}, @var{y})"
+
+#. type: deftypefn
+#: expr.texi.orig:1062
+msgid ""
+"Return true if the two inputs are not equal.  This function is equivalent to "
+"@w{@code{x != y}}.  @seealso{@ref{XREFeq,,eq}, @ref{XREFisequal,,isequal}, "
+"@ref{XREFle,,le}, @ref{XREFge,,ge}, @ref{XREFlt,,lt}}"
+msgstr ""
+"2つの入力が等しくなければtrueをリターンします。この順序は@w{@code{x != y}}と等価です。\n"
+"@seealso{@ref{XREFeq,,eq}, @ref{XREFisequal,,isequal}, @ref{XREFle,,le}, @ref{XREFge,,ge}, @ref{XREFlt,,lt}}"
+
+#. type: section
+#: expr.texi.orig:1065 expr.texi.orig:1066
+#, no-wrap
+msgid "Boolean Expressions"
+msgstr "Boolean Expressions"
+
+#. type: cindex
+#: expr.texi.orig:1067
+#, no-wrap
+msgid "expressions, boolean"
+msgstr "expressions, boolean"
+
+#. type: cindex
+#: expr.texi.orig:1068
+#, no-wrap
+msgid "boolean expressions"
+msgstr "boolean expressions"
+
+#. type: cindex
+#: expr.texi.orig:1069
+#, no-wrap
+msgid "expressions, logical"
+msgstr "expressions, logical"
+
+#. type: cindex
+#: expr.texi.orig:1070
+#, no-wrap
+msgid "logical expressions"
+msgstr "logical expressions"
+
+#. type: cindex
+#: expr.texi.orig:1071
+#, no-wrap
+msgid "operators, boolean"
+msgstr "operators, boolean"
+
+#. type: cindex
+#: expr.texi.orig:1072
+#, no-wrap
+msgid "boolean operators"
+msgstr "boolean operators"
+
+#. type: cindex
+#: expr.texi.orig:1073
+#, no-wrap
+msgid "logical operators"
+msgstr "logical operators"
+
+#. type: cindex
+#: expr.texi.orig:1074
+#, no-wrap
+msgid "operators, logical"
+msgstr "operators, logical"
+
+#. type: cindex
+#: expr.texi.orig:1075
+#, no-wrap
+msgid "and operator"
+msgstr "and operator"
+
+#. type: cindex
+#: expr.texi.orig:1076
+#, no-wrap
+msgid "or operator"
+msgstr "or operator"
+
+#. type: cindex
+#: expr.texi.orig:1077
+#, no-wrap
+msgid "not operator"
+msgstr "not operator"
+
+#. type: menuentry
+#: expr.texi.orig:1082
+msgid "Element-by-element Boolean Operators::"
+msgstr "Element-by-element Boolean Operators::"
+
+#. type: subsection
+#: expr.texi.orig:1082 expr.texi.orig:1208 expr.texi.orig:1209
+#, no-wrap
+msgid "Short-circuit Boolean Operators"
+msgstr "Short-circuit Boolean Operators"
+
+#. type: subsection
+#: expr.texi.orig:1084 expr.texi.orig:1085
+#, no-wrap
+msgid "Element-by-element Boolean Operators"
+msgstr "Element-by-element Boolean Operators"
+
+#. type: cindex
+#: expr.texi.orig:1086
+#, no-wrap
+msgid "element-by-element evaluation"
+msgstr "element-by-element evaluation"
+
+#. type: Plain text
+#: expr.texi.orig:1095
+msgid ""
+"An @dfn{element-by-element boolean expression} is a combination of "
+"comparison expressions using the boolean operators ``or'' (@samp{|}), "
+"``and'' (@samp{&}), and ``not'' (@samp{!}), along with parentheses to "
+"control nesting.  The truth of the boolean expression is computed by "
+"combining the truth values of the corresponding elements of the component "
+"expressions.  A value is considered to be false if it is zero, and true "
+"otherwise."
+msgstr "@dfn{要素ごとの論理式}は、ネストを制御するカッコとともにブール演算子``or'' (@samp{|})、``and'' (@samp{&})、``not'' (@samp{!})を使用します。ブール式のtrueはコンポーネント式の対応する要素の論理値を組み合わせて計算されます。値が0の場合はfalse、それ以外はtrueと判断されます。"
+
+#. type: Plain text
+#: expr.texi.orig:1101
+msgid ""
+"Element-by-element boolean expressions can be used wherever comparison "
+"expressions can be used.  They can be used in @code{if} and @code{while} "
+"statements.  However, a matrix value used as the condition in an @code{if} "
+"or @code{while} statement is only true if @emph{all} of its elements are "
+"nonzero."
+msgstr "要素ごとのブール式は、比較式が使える場所ならどこでも使用できます。これら@code{if}や@code{while}などの命令文内で使用されます。しかし@code{if}や@code{while}などの命令文内の条件としてマトリクス値が使用される場合は、マトリクスの@emph{すべて}の要素が非0のときだけtrueになります。"
+
+#. type: Plain text
+#: expr.texi.orig:1106
+msgid ""
+"Like comparison operations, each element of an element-by-element boolean "
+"expression also has a numeric value (1 if true, 0 if false) that comes into "
+"play if the result of the boolean expression is stored in a variable, or "
+"used in arithmetic."
+msgstr "比較演算子と同様、要素ごとのブール式は数値(1はtrue、0はfalse)をもち、ブール式の結果をを変数に格納したり、数学的に使用された場合に効果を発揮します。"
+
+#. type: Plain text
+#: expr.texi.orig:1108
+msgid "Here are descriptions of the three element-by-element boolean operators."
+msgstr "以下は3つの要素ごとのブール演算子の説明です。"
+
+#. type: item
+#: expr.texi.orig:1110
+#, no-wrap
+msgid "@var{boolean1} & @var{boolean2}"
+msgstr "@var{boolean1} & @var{boolean2}"
+
+#. type: samp{#1}
+#: expr.texi.orig:1111 expr.texi.orig:1159 expr.texi.orig:1731
+#, no-wrap
+msgid "&"
+msgstr "&"
+
+#. type: table
+#: expr.texi.orig:1114
+msgid ""
+"Elements of the result are true if both corresponding elements of "
+"@var{boolean1} and @var{boolean2} are true."
+msgstr "対応する要素@var{boolean1}と@var{boolean2}の両方がtrueのとき、結果要素はtrue。"
+
+#. type: item
+#: expr.texi.orig:1115
+#, no-wrap
+msgid "@var{boolean1} | @var{boolean2}"
+msgstr "@var{boolean1} | @var{boolean2}"
+
+#. type: samp{#1}
+#: expr.texi.orig:1116 expr.texi.orig:1189 expr.texi.orig:1734
+#, no-wrap
+msgid "|"
+msgstr "|"
+
+#. type: table
+#: expr.texi.orig:1119
+msgid ""
+"Elements of the result are true if either of the corresponding elements of "
+"@var{boolean1} or @var{boolean2} is true."
+msgstr "対応する要素@var{boolean1}と@var{boolean2}のどちらか一方がtrueのとき、結果要素はtrue。"
+
+#. type: item
+#: expr.texi.orig:1120
+#, no-wrap
+msgid "! @var{boolean}"
+msgstr "! @var{boolean}"
+
+#. type: itemx
+#: expr.texi.orig:1121
+#, no-wrap
+msgid "~ @var{boolean}"
+msgstr "~ @var{boolean}"
+
+#. type: opindex
+#: expr.texi.orig:1122 expr.texi.orig:1178
+#, no-wrap
+msgid "~"
+msgstr "~"
+
+#. type: opindex
+#: expr.texi.orig:1123 expr.texi.orig:1179
+#, no-wrap
+msgid "!"
+msgstr "!"
+
+#. type: table
+#: expr.texi.orig:1126
+msgid ""
+"Each element of the result is true if the corresponding element of "
+"@var{boolean} is false."
+msgstr "対応する要素@var{boolean}がfalseのとき、結果要素はtrue。"
+
+#. type: Plain text
+#: expr.texi.orig:1130
+msgid ""
+"These operators work on an element-by-element basis.  For example, the "
+"expression"
+msgstr "これらの演算子は、要素ごとの原理にもとづき機能します。たとえば、以下の式"
+
+#. type: example
+#: expr.texi.orig:1133
+#, no-wrap
+msgid "[1, 0; 0, 1] & [1, 0; 2, 3]\n"
+msgstr "[1, 0; 0, 1] & [1, 0; 2, 3]\n"
+
+#. type: Plain text
+#: expr.texi.orig:1137
+msgid "returns a two by two identity matrix."
+msgstr "は2行2列の単位マトリクスをリターンします。"
+
+#. type: Plain text
+#: expr.texi.orig:1142
+msgid ""
+"For the binary operators, broadcasting rules apply.  @xref{Broadcasting}.  "
+"In particular, if one of the operands is a scalar and the other a matrix, "
+"the operator is applied to the scalar and each element of the matrix."
+msgstr "2項演算子にたいしては、ブロードキャストルールが適用されます。@ref{Broadcasting}を参照してください。特にオペランドの1つがスカラーで、もう一方がマトリクスの場合、しの演算子はスカラーとマトリクスの各要素に適用されます。"
+
+#. type: Plain text
+#: expr.texi.orig:1147
+msgid ""
+"For the binary element-by-element boolean operators, both subexpressions "
+"@var{boolean1} and @var{boolean2} are evaluated before computing the "
+"result.  This can make a difference when the expressions have side effects.  "
+"For example, in the expression"
+msgstr "要素ごとの2項ブール演算子にたいしては、結果を計算する前に部分式@var{boolean1}と@var{boolean2}が評価されます。。これは、式が副作用をもつとき、違いを生じます。たとえば、以下の式"
+
+#. type: example
+#: expr.texi.orig:1150
+#, no-wrap
+msgid "a & b++\n"
+msgstr "a & b++\n"
+
+#. type: Plain text
+#: expr.texi.orig:1155
+msgid ""
+"the value of the variable @var{b} is incremented even if the variable "
+"@var{a} is zero."
+msgstr "これは、たとえ@var{a}が0でも、変数@var{b}の値はインクリメントされます。"
+
+#. type: Plain text
+#: expr.texi.orig:1158
+msgid ""
+"This behavior is necessary for the boolean operators to work as described "
+"for matrix-valued operands."
+msgstr "この振る舞いは説明したように、マトリクス値をもつオペランドにたいしてブール演算子が機能するために必要なのです。"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1162
+msgid "XREFand"
+msgstr "XREFand"
+
+#. type: deftypefn
+#: expr.texi.orig:1162
+#, no-wrap
+msgid "{Built-in Function} {} and (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} and (@var{x}, @var{y})"
+
+#. type: deftypefnx
+#: expr.texi.orig:1163
+#, no-wrap
+msgid "{Built-in Function} {} and (@var{x1}, @var{x2}, @dots{})"
+msgstr "{Built-in Function} {} and (@var{x1}, @var{x2}, @dots{})"
+
+#. type: deftypefn
+#: expr.texi.orig:1168
+msgid ""
+"Return the logical AND of @var{x} and @var{y}.  This function is equivalent "
+"to @w{@code{x & y}}.  If more arguments are given, the logical and is "
+"applied cumulatively from left to right:"
+msgstr "@var{x}と@var{y}の論理的ANDをリターンします。この関数は@w{@code{x & y}}と等価です。より多くの引数が与えられた場合、論理的ANDは左から右へと累積的に適用されます:"
+
+#. type: example
+#: expr.texi.orig:1171
+#, no-wrap
+msgid "(@dots{}((x1 & x2) & x3) & @dots{})\n"
+msgstr "(@dots{}((x1 & x2) & x3) & @dots{})\n"
+
+#. type: deftypefn
+#: expr.texi.orig:1175
+msgid ""
+"At least one argument is required.  @seealso{@ref{XREFor,,or}, "
+"@ref{XREFnot,,not}, @ref{XREFxor,,xor}}"
+msgstr ""
+"少なくとも1つの引数が要求されます。\n"
+"@seealso{@ref{XREFor,,or}, @ref{XREFnot,,not}, @ref{XREFxor,,xor}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1182
+msgid "XREFnot"
+msgstr "XREFnot"
+
+#. type: deftypefn
+#: expr.texi.orig:1182
+#, no-wrap
+msgid "{Built-in Function} {} not (@var{x})"
+msgstr "{Built-in Function} {} not (@var{x})"
+
+#. type: deftypefn
+#: expr.texi.orig:1186
+msgid ""
+"Return the logical NOT of @var{x}.  This function is equivalent to @code{! "
+"x}.  @seealso{@ref{XREFand,,and}, @ref{XREFor,,or}, @ref{XREFxor,,xor}}"
+msgstr ""
+"@var{x}の論理的NOTをリターンします。この関数は@code{! x}と等価です。\n"
+"@seealso{@ref{XREFand,,and}, @ref{XREFor,,or}, @ref{XREFxor,,xor}}"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1192
+msgid "XREFor"
+msgstr "XREFor"
+
+#. type: deftypefn
+#: expr.texi.orig:1192
+#, no-wrap
+msgid "{Built-in Function} {} or (@var{x}, @var{y})"
+msgstr "{Built-in Function} {} or (@var{x}, @var{y})"
+
+#. type: deftypefnx
+#: expr.texi.orig:1193
+#, no-wrap
+msgid "{Built-in Function} {} or (@var{x1}, @var{x2}, @dots{})"
+msgstr "{Built-in Function} {} or (@var{x1}, @var{x2}, @dots{})"
+
+#. type: deftypefn
+#: expr.texi.orig:1198
+msgid ""
+"Return the logical OR of @var{x} and @var{y}.  This function is equivalent "
+"to @w{@code{x | y}}.  If more arguments are given, the logical or is applied "
+"cumulatively from left to right:"
+msgstr "@var{x}と@var{y}の論理的ORをリターンします。この関数は@w{@code{x | y}}と等価です。より多くの引数が与えられた場合、論理的ORは左から右へと累積的に適用されます:"
+
+#. type: example
+#: expr.texi.orig:1201
+#, no-wrap
+msgid "(@dots{}((x1 | x2) | x3) | @dots{})\n"
+msgstr "(@dots{}((x1 | x2) | x3) | @dots{})\n"
+
+#. type: deftypefn
+#: expr.texi.orig:1205
+msgid ""
+"At least one argument is required.  @seealso{@ref{XREFand,,and}, "
+"@ref{XREFnot,,not}, @ref{XREFxor,,xor}}"
+msgstr ""
+"少なくとも1つの引数が要求されます。\n"
+"@seealso{@ref{XREFand,,and}, @ref{XREFnot,,not}, @ref{XREFxor,,xor}}"
+
+#. type: cindex
+#: expr.texi.orig:1210
+#, no-wrap
+msgid "short-circuit evaluation"
+msgstr "short-circuit evaluation"
+
+#. type: Plain text
+#: expr.texi.orig:1218
+msgid ""
+"Combined with the implicit conversion to scalar values in @code{if} and "
+"@code{while} conditions, Octave's element-by-element boolean operators are "
+"often sufficient for performing most logical operations.  However, it is "
+"sometimes desirable to stop evaluating a boolean expression as soon as the "
+"overall truth value can be determined.  Octave's @dfn{short-circuit} boolean "
+"operators work this way."
+msgstr "@code{if}や@code{while}の中での暗黙的なスカラー値への変換と組み合わせれば、Octaveの要素ごとのブール演算子は、論理演算の大部分を処理するのに十分です。しかし、全体の論理値が判断されたらすぐにブール式の評価を停止するのが望ましい場合もあります。Octaveのブール演算子の@dfn{ショートサーキット}は、この方法で機能します。"
+
+#. type: item
+#: expr.texi.orig:1220
+#, no-wrap
+msgid "@var{boolean1} && @var{boolean2}"
+msgstr "@var{boolean1} && @var{boolean2}"
+
+#. type: samp{#1}
+#: expr.texi.orig:1221 expr.texi.orig:1737
+#, no-wrap
+msgid "&&"
+msgstr "&&"
+
+#. type: table
+#: expr.texi.orig:1229
+msgid ""
+"The expression @var{boolean1} is evaluated and converted to a scalar using "
+"the equivalent of the operation @code{all (@var{boolean1}(:))}.  If it is "
+"false, the result of the overall expression is 0.  If it is true, the "
+"expression @var{boolean2} is evaluated and converted to a scalar using the "
+"equivalent of the operation @code{all (@var{boolean1}(:))}.  If it is true, "
+"the result of the overall expression is 1.  Otherwise, the result of the "
+"overall expression is 0."
+msgstr "式@var{boolean1}は、@code{all (@var{boolean1}(:))}と等価な処理を使用して、スカラーに評価・変換されます。これがfalseの場合、式全体の結果は0になります。trueの場合、式@var{boolean2}は@code{all (@var{boolean1}(:))}と等価な処理を使用して、スカラーへと評価・変換されます。trueの場合、式全体の結果は1になります。それ以外は、式全体の結果は0になります。"
+
+#. type: table
+#: expr.texi.orig:1235
+msgid ""
+"@strong{Warning:} there is one exception to the rule of evaluating @code{all "
+"(@var{boolean1}(:))}, which is when @code{boolean1} is the empty matrix.  "
+"The truth value of an empty matrix is always @code{false} so @code{[] && "
+"true} evaluates to @code{false} even though @code{all ([])} is @code{true}."
+msgstr "@strong{警告:} @code{all (@var{boolean1}(:))}の評価ルールには、@code{boolean1}が空マトリクスの場合に、1つの例外があります。空マトリクスの論理値は空マトリクスにたいして常に@code{false}なので、たとえ@code{all ([])}が@code{true}でも、@code{[] && true}は@code{false}に評価されます。"
+
+#. type: item
+#: expr.texi.orig:1236
+#, no-wrap
+msgid "@var{boolean1} || @var{boolean2}"
+msgstr "@var{boolean1} || @var{boolean2}"
+
+#. type: samp{#1}
+#: expr.texi.orig:1237 expr.texi.orig:1740
+#, no-wrap
+msgid "||"
+msgstr "||"
+
+#. type: table
+#: expr.texi.orig:1245
+msgid ""
+"The expression @var{boolean1} is evaluated and converted to a scalar using "
+"the equivalent of the operation @code{all (@var{boolean1}(:))}.  If it is "
+"true, the result of the overall expression is 1.  If it is false, the "
+"expression @var{boolean2} is evaluated and converted to a scalar using the "
+"equivalent of the operation @code{all (@var{boolean1}(:))}.  If it is true, "
+"the result of the overall expression is 1.  Otherwise, the result of the "
+"overall expression is 0."
+msgstr "式@var{boolean1}は、@code{all (@var{boolean1}(:))}と等価な処理を使用して、スカラーに評価・変換されます。trueの場合、式全体の結果は1になります。falseの場合、@code{all (@var{boolean1}(:))}と等価な処理を使用して、式@var{boolean2}がスカラーに評価・変換されます。trueの場合、式全体の結果は1になります。それ以外は、式全体の結果は0になります。"
+
+#. type: table
+#: expr.texi.orig:1248
+msgid ""
+"@strong{Warning:} the truth value of an empty matrix is always @code{false}, "
+"see the previous list item for details."
+msgstr "@strong{警告:} 空マトリクスの論理値は常に@code{false}になります。詳細は上記リストのアイテムを参照してください。"
+
+#. type: Plain text
+#: expr.texi.orig:1253
+msgid ""
+"The fact that both operands may not be evaluated before determining the "
+"overall truth value of the expression can be important.  For example, in the "
+"expression"
+msgstr "式全体の論理値が決定される前に両方のオペランドが評価されることはないという事実は重要です。たとえば、以下の式"
+
+#. type: example
+#: expr.texi.orig:1256
+#, no-wrap
+msgid "a && b++\n"
+msgstr "a && b++\n"
+
+#. type: Plain text
+#: expr.texi.orig:1261
+msgid ""
+"the value of the variable @var{b} is only incremented if the variable "
+"@var{a} is nonzero."
+msgstr "変数@var{a}が非0の場合のみ、変数@var{b}の値はインクリメントされます。"
+
+#. type: Plain text
+#: expr.texi.orig:1264
+msgid ""
+"This can be used to write somewhat more concise code.  For example, it is "
+"possible write"
+msgstr "これは、より簡潔なコードを記述するのに使用できます。たとえば、"
+
+#. type: group
+#: expr.texi.orig:1270
+#, no-wrap
+msgid ""
+"function f (a, b, c)\n"
+"  if (nargin > 2 && ischar (c))\n"
+"    @dots{}\n"
+msgstr ""
+"function f (a, b, c)\n"
+"  if (nargin > 2 && ischar (c))\n"
+"    @dots{}\n"
+
+#. type: Plain text
+#: expr.texi.orig:1277
+msgid ""
+"instead of having to use two @code{if} statements to avoid attempting to "
+"evaluate an argument that doesn't exist.  For example, without the "
+"short-circuit feature, it would be necessary to write"
+msgstr "存在しない引数の評価を避けるために2つの@code{if}文を使用するかわりに、上記のように記述することが可能です。たとえば、ショートサーキット機能がなければ、以下のように記述する必要があるでしょう"
+
+#. type: group
+#: expr.texi.orig:1284
+#, no-wrap
+msgid ""
+"function f (a, b, c)\n"
+"  if (nargin > 2)\n"
+"    if (ischar (c))\n"
+"      @dots{}\n"
+msgstr ""
+"function f (a, b, c)\n"
+"  if (nargin > 2)\n"
+"    if (ischar (c))\n"
+"      @dots{}\n"
+
+#. type: Plain text
+#: expr.texi.orig:1289
+msgid "Writing"
+msgstr "以下のように記述すると"
+
+#. type: group
+#: expr.texi.orig:1295
+#, no-wrap
+msgid ""
+"function f (a, b, c)\n"
+"  if (nargin > 2 & ischar (c))\n"
+"    @dots{}\n"
+msgstr ""
+"function f (a, b, c)\n"
+"  if (nargin > 2 & ischar (c))\n"
+"    @dots{}\n"
+
+#. type: Plain text
+#: expr.texi.orig:1302
+msgid ""
+"would result in an error if @code{f} were called with one or two arguments "
+"because Octave would be forced to try to evaluate both of the operands for "
+"the operator @samp{&}."
+msgstr "@code{f}が1つ、または2つの引数で呼び出された場合にエラーとなります。なぜならOctaveは演算子@samp{&}にたいして、両方のオペランドの評価を強いるからです。"
+
+#. type: Plain text
+#: expr.texi.orig:1307
+msgid ""
+"@sc{matlab} has special behavior that allows the operators @samp{&} and "
+"@samp{|} to short-circuit when used in the truth expression for @code{if} "
+"and @code{while} statements.  The Octave parser may be instructed to behave "
+"in the same manner, but its use is strongly discouraged."
+msgstr "@sc{matlab}は、@code{if}および@code{while}文の論理式内で使用されたとき、演算子@samp{&}と@samp{|}がショートサーキットのために特別に振る舞うことを許しています。Octaveパーサーもおそらく同じ振る舞いを指示するでしょうが、この使用法は推奨されません。"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1310
+msgid "XREFdo_braindead_shortcircuit_evaluation"
+msgstr "XREFdo_braindead_shortcircuit_evaluation"
+
+#. type: deftypefn
+#: expr.texi.orig:1310
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} do_braindead_shortcircuit_evaluation ()"
+msgstr "{Built-in Function} {@var{val} =} do_braindead_shortcircuit_evaluation ()"
+
+#. type: deftypefnx
+#: expr.texi.orig:1311
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{old_val} =} do_braindead_shortcircuit_evaluation "
+"(@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} do_braindead_shortcircuit_evaluation (@var{new_val})"
+
+#. type: deftypefnx
+#: expr.texi.orig:1312
+#, no-wrap
+msgid ""
+"{Built-in Function} {} do_braindead_shortcircuit_evaluation (@var{new_val}, "
+"\"local\")"
+msgstr "{Built-in Function} {} do_braindead_shortcircuit_evaluation (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: expr.texi.orig:1316
+msgid ""
+"Query or set the internal variable that controls whether Octave will do "
+"short-circuit evaluation of @samp{|} and @samp{&} operators inside the "
+"conditions of if or while statements."
+msgstr "ifまたはwhile文の条件部の内部で、@samp{|}および@samp{&}演算子が評価のショートサーキットを行うかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。"
+
+#. type: deftypefn
+#: expr.texi.orig:1319
+msgid ""
+"This feature is only provided for compatibility with @sc{matlab} and should "
+"not be used unless you are porting old code that relies on this feature."
+msgstr "この機能は@sc{matlab}との互換性のためだけに提供されており、この機能にもとづいた古いコードを移植するのでなければ、使用するべきではありません。"
+
+#. type: deftypefn
+#: expr.texi.orig:1322
+msgid ""
+"To obtain short-circuit behavior for logical expressions in new programs, "
+"you should always use the @samp{&&} and @samp{||} operators."
+msgstr "新しいプログラムで論理式のショートサーキット動作を得るには、常に@samp{&&}および@samp{||}演算子を使用するべきです。"
+
+#. type: Plain text
+#: expr.texi.orig:1332
+msgid ""
+"Finally, the ternary operator (?:) is not supported in Octave.  If "
+"short-circuiting is not important, it can be replaced by the @code{ifelse} "
+"function."
+msgstr "最期に、Octaveでは三項演算子(?:)はサポートされません。ショートサーキットが重要でなければ、@code{ifelse}関数で置き換えることができます。"
+
+#. type: anchor{#1}
+#: expr.texi.orig:1335
+msgid "XREFmerge"
+msgstr "XREFmerge"
+
+#. type: deftypefn
+#: expr.texi.orig:1335
+#, no-wrap
+msgid "{Built-in Function} {} merge (@var{mask}, @var{tval}, @var{fval})"
+msgstr "{Built-in Function} {} merge (@var{mask}, @var{tval}, @var{fval})"
+
+#. type: deftypefnx
+#: expr.texi.orig:1336
+#, no-wrap
+msgid "{Built-in Function} {} ifelse (@var{mask}, @var{tval}, @var{fval})"
+msgstr "{Built-in Function} {} ifelse (@var{mask}, @var{tval}, @var{fval})"
+
+#. type: deftypefn
+#: expr.texi.orig:1343
+msgid ""
+"Merge elements of @var{true_val} and @var{false_val}, depending on the value "
+"of @var{mask}.  If @var{mask} is a logical scalar, the other two arguments "
+"can be arbitrary values.  Otherwise, @var{mask} must be a logical array, and "
+"@var{tval}, @var{fval} should be arrays of matching class, or cell arrays.  "
+"In the scalar mask case, @var{tval} is returned if @var{mask} is true, "
+"otherwise @var{fval} is returned."
+msgstr "@var{mask}の値に応じて、@var{true_val}と@var{false_val}の要素をマージします。@var{mask}が論理的スカラーの場合、他の2つの引数は任意の値をとることができます。それ以外は、@var{mask}は論理的配列でなければならず、@var{tval}と@var{fval}はマッチングするクラスかセル配列です。スカラーマスクの場合、@var{mask}がtrueなら@var{tval}がリターンされ、それ以外は@var{fval}がリターンされます。"
+
+#. type: deftypefn
+#: expr.texi.orig:1347
+msgid ""
+"In the array mask case, both @var{tval} and @var{fval} must be either "
+"scalars or arrays with dimensions equal to @var{mask}.  The result is "
+"constructed as follows:"
+msgstr "配列マスクの場合、@var{tval}と@var{fval}はどちらもスカラーか、@var{mask}と次元が等しい配列でなければなりません。以下のように結果が構築されます:"
+
+#. type: group
+#: expr.texi.orig:1352
+#, no-wrap
+msgid ""
+"result(mask) = tval(mask);\n"
+"result(! mask) = fval(! mask);\n"
+msgstr ""
+"result(mask) = tval(mask);\n"
+"result(! mask) = fval(! mask);\n"
+
+#. type: deftypefn
+#: expr.texi.orig:1358
+msgid ""
+"@var{mask} can also be arbitrary numeric type, in which case it is first "
+"converted to logical.  @seealso{@ref{XREFlogical,,logical}, "
+"@ref{XREFdiff,,diff}}"
+msgstr ""
+"@var{mask}は任意の数値型でもよく、この場合は最初に論理値に変換されます。\n"
+"@seealso{@ref{XREFlogical,,logical}, @ref{XREFdiff,,diff}}"
+
+#. type: node
+#: expr.texi.orig:1361
+#, no-wrap
+msgid "Assignment Ops"
+msgstr "Assignment Ops"
+
+#. type: section
+#: expr.texi.orig:1362
+#, no-wrap
+msgid "Assignment Expressions"
+msgstr "Assignment Expressions"
+
+#. type: cindex
+#: expr.texi.orig:1363
+#, no-wrap
+msgid "assignment expressions"
+msgstr "assignment expressions"
+
+#. type: cindex
+#: expr.texi.orig:1364
+#, no-wrap
+msgid "assignment operators"
+msgstr "assignment operators"
+
+#. type: cindex
+#: expr.texi.orig:1365
+#, no-wrap
+msgid "operators, assignment"
+msgstr "operators, assignment"
+
+#. type: cindex
+#: expr.texi.orig:1366
+#, no-wrap
+msgid "expressions, assignment"
+msgstr "expressions, assignment"
+
+#. type: opindex
+#: expr.texi.orig:1368
+#, no-wrap
+msgid "="
+msgstr "="
+
+#. type: Plain text
+#: expr.texi.orig:1373
+msgid ""
+"An @dfn{assignment} is an expression that stores a new value into a "
+"variable.  For example, the following expression assigns the value 1 to the "
+"variable @code{z}:"
+msgstr "@dfn{割り当て}とは、変換に新しい値を格納することです。たとえば、以下の式は変数@code{z}に値1を代入します:"
+
+#. type: example
+#: expr.texi.orig:1376
+#, no-wrap
+msgid "z = 1\n"
+msgstr "z = 1\n"
+
+#. type: Plain text
+#: expr.texi.orig:1382
+msgid ""
+"After this expression is executed, the variable @code{z} has the value 1.  "
+"Whatever old value @code{z} had before the assignment is forgotten.  The "
+"@samp{=} sign is called an @dfn{assignment operator}."
+msgstr "この式が実行されると、変数@code{z}は値1をもちます。@code{z}の古い値が何であれ、以前に割り当てられていた値は忘れられます。@samp{=}記号は、@dfn{代入演算子}と呼ばれます。"
+
+#. type: Plain text
+#: expr.texi.orig:1386
+msgid ""
+"Assignments can store string values also.  For example, the following "
+"expression would store the value @qcode{\"this food is good\"} in the "
+"variable @code{message}:"
+msgstr "代入により文字列値も格納できます。たとえば、以下の式は変数@code{message}に値@qcode{\"this food is good\"}を格納します:"
+
+#. type: group
+#: expr.texi.orig:1392
+#, no-wrap
+msgid ""
+"thing = \"food\"\n"
+"predicate = \"good\"\n"
+"message = [ \"this \" , thing , \" is \" , predicate ]\n"
+msgstr ""
+"thing = \"food\"\n"
+"predicate = \"good\"\n"
+"message = [ \"this \" , thing , \" is \" , predicate ]\n"
+
+#. type: Plain text
+#: expr.texi.orig:1397
+msgid "(This also illustrates concatenation of strings.)"
+msgstr "(これは文字列の連結も示しています。)"
+
+#. type: cindex
+#: expr.texi.orig:1398
+#, no-wrap
+msgid "side effect"
+msgstr "side effect"
+
+#. type: Plain text
+#: expr.texi.orig:1405
+msgid ""
+"Most operators (addition, concatenation, and so on) have no effect except to "
+"compute a value.  If you ignore the value, you might as well not use the "
+"operator.  An assignment operator is different.  It does produce a value, "
+"but even if you ignore the value, the assignment still makes itself felt "
+"through the alteration of the variable.  We call this a @dfn{side effect}."
+msgstr "大部分の演算子(追加、連結など)は、値の計算以外の効果はもちません。値が不要なら、演算子を使用することもないでしょう。代入演算子は異なります。これは値を生成しますが、たとえ値を無視しても、変数の変更により代入は効果をもちます。これを@dfn{副作用}と呼びます。"
+
+#. type: cindex
+#: expr.texi.orig:1406
+#, no-wrap
+msgid "lvalue"
+msgstr "lvalue"
+
+#. type: Plain text
+#: expr.texi.orig:1415
+msgid ""
+"The left-hand operand of an assignment need not be a variable "
+"(@pxref{Variables}).  It can also be an element of a matrix (@pxref{Index "
+"Expressions}) or a list of return values (@pxref{Calling Functions}).  These "
+"are all called @dfn{lvalues}, which means they can appear on the left-hand "
+"side of an assignment operator.  The right-hand operand may be any "
+"expression.  It produces the new value which the assignment stores in the "
+"specified variable, matrix element, or list of return values."
+msgstr "代入の左辺のオペランドは、変数である必要はありません(@ref{Variables}を参照)。マトリクスの要素(@ref{Index Expressions}を参照)や、リターン値のリスト(@ref{Calling Functions}を参照)でも可能です。これらはすべて@dfn{左辺値(lvalues)}と呼ばれ、これはそれらが代入演算子の左辺に出現することを意味します。右辺のオペランドは任意の式です。これは新しい値を生成して、代入により指定された変数、マトリクス要素、リターン値リストに格納されます。"
+
+#. type: Plain text
+#: expr.texi.orig:1420
+msgid ""
+"It is important to note that variables do @emph{not} have permanent types.  "
+"The type of a variable is simply the type of whatever value it happens to "
+"hold at the moment.  In the following program fragment, the variable "
+"@code{foo} has a numeric value at first, and a string value later on:"
+msgstr "変数が不変の型を@emph{もたない}ことに注意するのが重要です。値が何であれ、そのとき保持する型が、変数の型です。以下のプログラム断片では、変数@code{foo}は最初数値をもち、その後文字列値をもちます:"
+
+#. type: group
+#: expr.texi.orig:1427
+#, no-wrap
+msgid ""
+"octave:13> foo = 1\n"
+"foo = 1\n"
+"octave:13> foo = \"bar\"\n"
+"foo = bar\n"
+msgstr ""
+"octave:13> foo = 1\n"
+"foo = 1\n"
+"octave:13> foo = \"bar\"\n"
+"foo = bar\n"
+
+#. type: Plain text
+#: expr.texi.orig:1433
+msgid ""
+"When the second assignment gives @code{foo} a string value, the fact that it "
+"previously had a numeric value is forgotten."
+msgstr "2つ目の代入により@code{foo}に文字列値が与えられると、以前は数値をもっていたという事実は忘れられます。"
+
+#. type: Plain text
+#: expr.texi.orig:1437
+msgid ""
+"Assignment of a scalar to an indexed matrix sets all of the elements that "
+"are referenced by the indices to the scalar value.  For example, if @code{a} "
+"is a matrix with at least two columns,"
+msgstr "インデクス付けされたマトリクスにスカラーを代入すると、インデクスにより参照されていた要素すべてにスカラー値がセットされます。たとえば、@code{a}が少なくとも2つの列をもつマトリクスの場合"
+
+#. type: group
+#: expr.texi.orig:1441
+#, no-wrap
+msgid "a(:, 2) = 5\n"
+msgstr "a(:, 2) = 5\n"
+
+#. type: Plain text
+#: expr.texi.orig:1446
+msgid "sets all the elements in the second column of @code{a} to 5."
+msgstr "これは@code{a}に2列目の要素すべてに5をセットします。"
+
+#. type: Plain text
+#: expr.texi.orig:1450
+msgid ""
+"Assigning an empty matrix @samp{[]} works in most cases to allow you to "
+"delete rows or columns of matrices and vectors.  @xref{Empty Matrices}.  For "
+"example, given a 4 by 5 matrix @var{A}, the assignment"
+msgstr "多くに場合、空マトリクス@samp{[]}を割り当てることにより、マトリクスまたはベクターの行や列のすべてを削除できます。@ref{Empty Matrices}を参照してください。たとえば4行5列のマトリクス@var{A}が与えられたとき、"
+
+#. type: example
+#: expr.texi.orig:1453
+#, no-wrap
+msgid "A (3, :) = []\n"
+msgstr "A (3, :) = []\n"
+
+#. type: Plain text
+#: expr.texi.orig:1457
+msgid "deletes the third row of @var{A}, and the assignment"
+msgstr "この代入により、@var{A}の3行目が削除され、"
+
+#. type: example
+#: expr.texi.orig:1460
+#, no-wrap
+msgid "A (:, 1:2:5) = []\n"
+msgstr "A (:, 1:2:5) = []\n"
+
+#. type: Plain text
+#: expr.texi.orig:1464
+msgid "deletes the first, third, and fifth columns."
+msgstr "この割り当てでは、1つ目、3つ目、5つ目の列が削除されます。"
+
+#. type: Plain text
+#: expr.texi.orig:1468
+msgid ""
+"An assignment is an expression, so it has a value.  Thus, @code{z = 1} as an "
+"expression has the value 1.  One consequence of this is that you can write "
+"multiple assignments together:"
+msgstr "代入は式なので値をもちます。したが@code{z = 1}は式として値1をもちます。この結果、以下のように複数の代入を一緒に記述できます:"
+
+#. type: example
+#: expr.texi.orig:1471
+#, no-wrap
+msgid "x = y = z = 0\n"
+msgstr "x = y = z = 0\n"
+
+#. type: Plain text
+#: expr.texi.orig:1477
+msgid ""
+"stores the value 0 in all three variables.  It does this because the value "
+"of @code{z = 0}, which is 0, is stored into @code{y}, and then the value of "
+"@code{y = z = 0}, which is 0, is stored into @code{x}."
+msgstr "これは3つの変数すべてに0をセットします。なぜなら@code{z = 0}の値は0で、それが@code{y}に格納され、@code{y = z = 0}の値も0で、それが@code{x}に格納されるからです。"
+
+#. type: Plain text
+#: expr.texi.orig:1480
+msgid ""
+"This is also true of assignments to lists of values, so the following is a "
+"valid expression"
+msgstr "これはリスト値への代入でも真なので、以下は有効な式です"
+
+#. type: example
+#: expr.texi.orig:1483
+#, no-wrap
+msgid "[a, b, c] = [u, s, v] = svd (a)\n"
+msgstr "[a, b, c] = [u, s, v] = svd (a)\n"
+
+#. type: Plain text
+#: expr.texi.orig:1487
+msgid "that is exactly equivalent to"
+msgstr "これは以下とまったく同じです"
+
+#. type: group
+#: expr.texi.orig:1494
+#, no-wrap
+msgid ""
+"[u, s, v] = svd (a)\n"
+"a = u\n"
+"b = s\n"
+"c = v\n"
+msgstr ""
+"[u, s, v] = svd (a)\n"
+"a = u\n"
+"b = s\n"
+"c = v\n"
+
+#. type: Plain text
+#: expr.texi.orig:1499
+msgid ""
+"In expressions like this, the number of values in each part of the "
+"expression need not match.  For example, the expression"
+msgstr "このような式では、式の各部分の値数がマッチする必要はありません。たとえば、以下の式"
+
+#. type: example
+#: expr.texi.orig:1502
+#, no-wrap
+msgid "[a, b] = [u, s, v] = svd (a)\n"
+msgstr "[a, b] = [u, s, v] = svd (a)\n"
+
+#. type: Plain text
+#: expr.texi.orig:1506
+msgid "is equivalent to"
+msgstr "は以下と等価です"
+
+#. type: group
+#: expr.texi.orig:1512
+#, no-wrap
+msgid ""
+"[u, s, v] = svd (a)\n"
+"a = u\n"
+"b = s\n"
+msgstr ""
+"[u, s, v] = svd (a)\n"
+"a = u\n"
+"b = s\n"
+
+#. type: Plain text
+#: expr.texi.orig:1519
+msgid ""
+"The number of values on the left side of the expression can, however, not "
+"exceed the number of values on the right side.  For example, the following "
+"will produce an error."
+msgstr "しかし式の左辺の値の数は、右辺の値の数を超えることはできません。たとえば、以下はエラーを生成します。"
+
+#. type: group
+#: expr.texi.orig:1524
+#, no-wrap
+msgid ""
+"[a, b, c, d] = [u, s, v] = svd (a);\n"
+"@print{} error: element number 4 undefined in return list\n"
+msgstr ""
+"[a, b, c, d] = [u, s, v] = svd (a);\n"
+"@print{} error: element number 4 undefined in return list\n"
+
+#. type: Plain text
+#: expr.texi.orig:1530
+msgid ""
+"The symbol @code{~} may be used as a placeholder in the list of lvalues, "
+"indicating that the corresponding return value should be ignored and not "
+"stored anywhere:"
+msgstr "シンボル@code{~}は左辺値リストの代替えとして使用され、対応するリターン値は無視され、どこにも格納されないことを示します:"
+
+#. type: group
+#: expr.texi.orig:1534
+#, no-wrap
+msgid "[~, s, v] = svd (a);\n"
+msgstr "[~, s, v] = svd (a);\n"
+
+#. type: Plain text
+#: expr.texi.orig:1541
+msgid ""
+"This is cleaner and more memory efficient than using a dummy variable.  The "
+"@code{nargout} value for the right-hand side expression is not affected.  If "
+"the assignment is used as an expression, the return value is a "
+"comma-separated list with the ignored values dropped."
+msgstr "ダミー変数を使用することにより、より明解になり、メモリーも効率的になります。右辺の式にたいする@code{nargout}の値は影響を受けません。代入が式として使用された場合、リターン値は無視する値が省かれたカンマ区切りリストになります。"
+
+#. type: opindex
+#: expr.texi.orig:1542
+#, no-wrap
+msgid "+="
+msgstr "+="
+
+#. type: Plain text
+#: expr.texi.orig:1545
+msgid ""
+"A very common programming pattern is to increment an existing variable with "
+"a given value, like this"
+msgstr "とても一般的なプログラミングのパターンに、以下のように与えられた値による既存変数のインクリメントがあります"
+
+#. type: example
+#: expr.texi.orig:1548
+#, no-wrap
+msgid "a = a + 2;\n"
+msgstr "a = a + 2;\n"
+
+#. type: Plain text
+#: expr.texi.orig:1553
+msgid ""
+"This can be written in a clearer and more condensed form using the @code{+=} "
+"operator"
+msgstr "以下のように@code{+=}演算子を使えば、より明解・簡略に記述できます"
+
+#. type: example
+#: expr.texi.orig:1556
+#, no-wrap
+msgid "a += 2;\n"
+msgstr "a += 2;\n"
+
+#. type: opindex
+#: expr.texi.orig:1559
+#, no-wrap
+msgid "-="
+msgstr "-="
+
+#. type: opindex
+#: expr.texi.orig:1560
+#, no-wrap
+msgid "*="
+msgstr "*="
+
+#. type: opindex
+#: expr.texi.orig:1561
+#, no-wrap
+msgid "/="
+msgstr "/="
+
+#. type: Plain text
+#: expr.texi.orig:1565
+msgid ""
+"Similar operators also exist for subtraction (@code{-=}), multiplication "
+"(@code{*=}), and division (@code{/=}).  An expression of the form"
+msgstr "同様な演算子は減算(@code{-=})、乗算(@code{*=})、除算(@code{/=})にも存在します。以下の形式の式"
+
+#. type: example
+#: expr.texi.orig:1568
+#, no-wrap
+msgid "@var{expr1} @var{op}= @var{expr2}\n"
+msgstr "@var{expr1} @var{op}= @var{expr2}\n"
+
+#. type: Plain text
+#: expr.texi.orig:1572 expr.texi.orig:1598
+msgid "is evaluated as"
+msgstr "は以下と等価です"
+
+#. type: example
+#: expr.texi.orig:1575
+#, no-wrap
+msgid "@var{expr1} = (@var{expr1}) @var{op} (@var{expr2})\n"
+msgstr "@var{expr1} = (@var{expr1}) @var{op} (@var{expr2})\n"
+
+#. type: Plain text
+#: expr.texi.orig:1582
+msgid ""
+"where @var{op} can be either @code{+}, @code{-}, @code{*}, or @code{/}, as "
+"long as @var{expr2} is a simple expression with no side effects.  If "
+"@var{expr2} also contains an assignment operator, then this expression is "
+"evaluated as"
+msgstr "ここで、@var{expr2}が副作用をもたないシンプルな式であれば、@var{op}は@code{+}、@code{-}、@code{*}、@code{/}のうちの1つです。@var{expr2}も代入演算子を含む場合、この式は以下のように評価されます"
+
+#. type: example
+#: expr.texi.orig:1586
+#, no-wrap
+msgid ""
+"@var{temp} = @var{expr2}\n"
+"@var{expr1} = (@var{expr1}) @var{op} @var{temp}\n"
+msgstr ""
+"@var{temp} = @var{expr2}\n"
+"@var{expr1} = (@var{expr1}) @var{op} @var{temp}\n"
+
+#. type: Plain text
+#: expr.texi.orig:1591
+msgid ""
+"where @var{temp} is a placeholder temporary value storing the computed "
+"result of evaluating @var{expr2}.  So, the expression"
+msgstr "ここで@var{temp}は@var{expr2}を評価することにより計算された一時的な値を格納するプレースホルダーです。したがって以下の式"
+
+#. type: example
+#: expr.texi.orig:1594
+#, no-wrap
+msgid "a *= b+1\n"
+msgstr "a *= b+1\n"
+
+#. type: example
+#: expr.texi.orig:1601
+#, no-wrap
+msgid "a = a * (b+1)\n"
+msgstr "a = a * (b+1)\n"
+
+#. type: Plain text
+#: expr.texi.orig:1605
+msgid "and @emph{not}"
+msgstr "以下のようには@emph{なりません}"
+
+#. type: example
+#: expr.texi.orig:1608
+#, no-wrap
+msgid "a = a * b + 1\n"
+msgstr "a = a * b + 1\n"
+
+#. type: Plain text
+#: expr.texi.orig:1615
+msgid ""
+"You can use an assignment anywhere an expression is called for.  For "
+"example, it is valid to write @code{x != (y = 1)} to set @code{y} to 1 and "
+"then test whether @code{x} equals 1.  But this style tends to make programs "
+"hard to read.  Except in a one-shot program, you should rewrite it to get "
+"rid of such nesting of assignments.  This is never very hard."
+msgstr "式が呼び出される場所ならどこでも、代入を使用できます。たとえば、@code{y}に1をセットしてから@code{x}が1と等しいかテストするために、@code{x != (y = 1)}と記述するのは有効です。しかし、このスタイルはプログラムの読解を難しくする傾向があります。使い捨てのプログラムを除き、このようなネストした代入を取り除くように書き直すべきです。これは難しいことではありません。"
+
+#. type: cindex
+#: expr.texi.orig:1616
+#, no-wrap
+msgid "increment operator"
+msgstr "increment operator"
+
+#. type: cindex
+#: expr.texi.orig:1617
+#, no-wrap
+msgid "decrement operator"
+msgstr "decrement operator"
+
+#. type: cindex
+#: expr.texi.orig:1618
+#, no-wrap
+msgid "operators, increment"
+msgstr "operators, increment"
+
+#. type: cindex
+#: expr.texi.orig:1619
+#, no-wrap
+msgid "operators, decrement"
+msgstr "operators, decrement"
+
+#. type: node
+#: expr.texi.orig:1621
+#, no-wrap
+msgid "Increment Ops"
+msgstr "Increment Ops"
+
+#. type: section
+#: expr.texi.orig:1622
+#, no-wrap
+msgid "Increment Operators"
+msgstr "Increment Operators"
+
+#. type: Plain text
+#: expr.texi.orig:1628
+msgid ""
+"@emph{Increment operators} increase or decrease the value of a variable by "
+"1.  The operator to increment a variable is written as @samp{++}.  It may be "
+"used to increment a variable either before or after taking its value."
+msgstr "@emph{インクリメント演算子}は、変数の値を1増加または減少させます。変数を増加させる演算子は@samp{++}と記述します。この演算子は、変数から値を取得する前、または後のどちらかで変数を増加させるために使用します。"
+
+#. type: Plain text
+#: expr.texi.orig:1633
+msgid ""
+"For example, to pre-increment the variable @var{x}, you would write "
+"@code{++@var{x}}.  This would add one to @var{x} and then return the new "
+"value of @var{x} as the result of the expression.  It is exactly the same as "
+"the expression @code{@var{x} = @var{x} + 1}."
+msgstr "たとえば変数@var{x}を事前に増加させるには、@code{++@var{x}}と記述します。これは@var{x}に1加算してから、式の結果として@var{x}の新しい値をリターンします。これは式@code{@var{x} = @var{x} + 1}とまったく同じです。"
+
+#. type: Plain text
+#: expr.texi.orig:1639
+msgid ""
+"To post-increment a variable @var{x}, you would write @code{@var{x}++}.  "
+"This adds one to the variable @var{x}, but returns the value that @var{x} "
+"had prior to incrementing it.  For example, if @var{x} is equal to 2, the "
+"result of the expression @code{@var{x}++} is 2, and the new value of @var{x} "
+"is 3."
+msgstr "変数@var{x}を事後に増加させるには、@code{@var{x}++}と記述します。これは@var{x}に1加算しますが、@var{x}が増加される前にもっていた値をリターンします。たとえば、@var{x}が2に等しい場合、式@code{@var{x}++}の結果は2で、@var{x}の新たな値は3になります。"
+
+#. type: Plain text
+#: expr.texi.orig:1642
+msgid ""
+"For matrix and vector arguments, the increment and decrement operators work "
+"on each element of the operand."
+msgstr "マトリクスおよびベクターの引数については、インクリメントおよびデクリメント演算子はオペランドの各要素に機能します。"
+
+#. type: Plain text
+#: expr.texi.orig:1644
+msgid "Here is a list of all the increment and decrement expressions."
+msgstr "以下はすべてのインクリメントおよびデクリメント式のリストです。"
+
+#. type: item
+#: expr.texi.orig:1646
+#, no-wrap
+msgid "++@var{x}"
+msgstr "++@var{x}"
+
+#. type: opindex
+#: expr.texi.orig:1647 expr.texi.orig:1659
+#, no-wrap
+msgid "++"
+msgstr "++"
+
+#. type: table
+#: expr.texi.orig:1651
+msgid ""
+"This expression increments the variable @var{x}.  The value of the "
+"expression is the @emph{new} value of @var{x}.  It is equivalent to the "
+"expression @code{@var{x} = @var{x} + 1}."
+msgstr "この式は、変数@var{x}をインクリメントします。式の値は@var{x}の@emph{新しい}値です。これは式@code{@var{x} = @var{x} + 1}と等価です。"
+
+#. type: item
+#: expr.texi.orig:1652
+#, no-wrap
+msgid "--@var{x}"
+msgstr "--@var{x}"
+
+#. type: code{#1}
+#: expr.texi.orig:1653 expr.texi.orig:1664
+#, no-wrap
+msgid "--"
+msgstr "--"
+
+#. type: table
+#: expr.texi.orig:1657
+msgid ""
+"This expression decrements the variable @var{x}.  The value of the "
+"expression is the @emph{new} value of @var{x}.  It is equivalent to the "
+"expression @code{@var{x} = @var{x} - 1}."
+msgstr "この式は、変数@var{x}をデクリメントします。式の値は@var{x}の@emph{新しい}値です。これは式@code{@var{x} = @var{x} - 1}と等価です。"
+
+#. type: item
+#: expr.texi.orig:1658
+#, no-wrap
+msgid "@var{x}++"
+msgstr "@var{x}++"
+
+#. type: table
+#: expr.texi.orig:1662
+msgid ""
+"This expression causes the variable @var{x} to be incremented.  The value of "
+"the expression is the @emph{old} value of @var{x}."
+msgstr "この式は変数@var{x}をインクリメントします。式の値は、@var{x}の@emph{古い}値です。"
+
+#. type: item
+#: expr.texi.orig:1663
+#, no-wrap
+msgid "@var{x}--"
+msgstr "@var{x}--"
+
+#. type: table
+#: expr.texi.orig:1667
+msgid ""
+"This expression causes the variable @var{x} to be decremented.  The value of "
+"the expression is the @emph{old} value of @var{x}."
+msgstr "この式は、変数@var{x}をデクリメントします。式の値は@var{x}の@emph{古い}値です。"
+
+#. type: cindex
+#: expr.texi.orig:1671
+#, no-wrap
+msgid "operator precedence"
+msgstr "operator precedence"
+
+#. type: Plain text
+#: expr.texi.orig:1678
+msgid ""
+"@dfn{Operator precedence} determines how operators are grouped, when "
+"different operators appear close by in one expression.  For example, "
+"@samp{*} has higher precedence than @samp{+}.  Thus, the expression @code{a "
+"+ b * c} means to multiply @code{b} and @code{c}, and then add @code{a} to "
+"the product (i.e., @code{a + (b * c)})."
+msgstr "@dfn{演算子の優先順位}は、1つの式中に異なる演算子が近接して出現するとき、演算子がどのようにグループ化されるかを決定します。たとえば@samp{*}は@samp{+}より高い優先順位をもちます。したがって式@code{a + b * c}は@code{b}に@code{c}を乗じてから、その積に@code{a}を和することを意味します(例: @code{a + (b * c)})。"
+
+#. type: Plain text
+#: expr.texi.orig:1687
+msgid ""
+"You can overrule the precedence of the operators by using parentheses.  You "
+"can think of the precedence rules as saying where the parentheses are "
+"assumed if you do not write parentheses yourself.  In fact, it is wise to "
+"use parentheses whenever you have an unusual combination of operators, "
+"because other people who read the program may not remember what the "
+"precedence is in this case.  You might forget as well, and then you too "
+"could make a mistake.  Explicit parentheses will help prevent any such "
+"mistake."
+msgstr "カッコを使用することにより、演算子の優先順位を変更できます。優先順位は、あなたがカッコを書かなかったとき、どこにカッコがあるとみなすか告げるものと考えることができます。実際のところ、通常とは異なる演算子を組み合わせるときは常にカッコを使用するのが賢明です。なぜならプログラムを読む他の人は、この場合何が優先されるのか覚えていないかもしれないからです。あなたも同様に忘れるかもしれず、間違えるかもしれません。明示的なカッコは、そのような間違いを防ぐ助けになります。"
+
+#. type: Plain text
+#: expr.texi.orig:1693
+msgid ""
+"When operators of equal precedence are used together, the leftmost operator "
+"groups first, except for the assignment operators, which group in the "
+"opposite order.  Thus, the expression @code{a - b + c} groups as @code{(a - "
+"b) + c}, but the expression @code{a = b = c} groups as @code{a = (b = c)}."
+msgstr "イコール演算子の優先順位が一緒に使用された場合、最左演算子が最初にグループ化されますが、代入演算子は逆順にグループ化されます。したがって式@code{a - b + c}は@code{(a - b) + c}とグループ化されますが、@code{a = b = c}は@code{a = (b = c)}のようにグループ化されます。"
+
+#. type: Plain text
+#: expr.texi.orig:1697
+msgid ""
+"The precedence of prefix unary operators is important when another operator "
+"follows the operand.  For example, @code{-x^2} means @code{-(x^2)}, because "
+"@samp{-} has lower precedence than @samp{^}."
+msgstr "前置単項演算子の優先順位は、オペランドの後に他の演算子が続く場合に重要です。たとえば@code{-x^2}は@code{-(x^2)}を意味します。なぜなら@samp{-}は@samp{^}より優先順位が低いからです。"
+
+#. type: Plain text
+#: expr.texi.orig:1700
+msgid ""
+"Here is a table of the operators in Octave, in order of decreasing "
+"precedence.  Unless noted, all operators group left to right."
+msgstr "以下はOctaveでの演算子を優先順位順に並べたテーブルです。しかしすべての演算子が左から右にグループ化されるわけではないことに注意してください。"
+
+#. type: item
+#: expr.texi.orig:1702
+#, no-wrap
+msgid ""
+"function call and array indexing, cell array indexing, and structure element "
+"indexing"
+msgstr "関数呼び出し、および配列のインデクス操作、セル配列のインデクス操作、および構造体要素のインデクス操作"
+
+#. type: table
+#: expr.texi.orig:1704
+msgid "@samp{()} @samp{@{@}} @samp{.}"
+msgstr "@samp{()} @samp{@{@}} @samp{.}"
+
+#. type: item
+#: expr.texi.orig:1705
+#, no-wrap
+msgid "postfix increment, and postfix decrement"
+msgstr "後置インクリメント、および後置デクリメント"
+
+#. type: table
+#: expr.texi.orig:1707
+msgid "@samp{++} @samp{--}"
+msgstr "@samp{++} @samp{--}"
+
+#. type: table
+#: expr.texi.orig:1709 expr.texi.orig:1747
+msgid "These operators group right to left."
+msgstr "これらの演算子は右から左にグループ化されます。"
+
+#. type: item
+#: expr.texi.orig:1710
+#, no-wrap
+msgid "transpose and exponentiation"
+msgstr "転置、および指数"
+
+#. type: table
+#: expr.texi.orig:1712
+msgid "@samp{'} @samp{.'} @samp{^} @samp{**} @samp{.^} @samp{.**}"
+msgstr "@samp{'} @samp{.'} @samp{^} @samp{**} @samp{.^} @samp{.**}"
+
+#. type: item
+#: expr.texi.orig:1713
+#, no-wrap
+msgid ""
+"unary plus, unary minus, prefix increment, prefix decrement, and logical "
+"\"not\""
+msgstr "単項プラス、単項マイナス、前置インクリメント、前置デクリメント、論理的\"not\""
+
+#. type: table
+#: expr.texi.orig:1715
+msgid "@samp{+} @samp{-} @samp{++} @samp{--} @samp{~} @samp{!}"
+msgstr "@samp{+} @samp{-} @samp{++} @samp{--} @samp{~} @samp{!}"
+
+#. type: item
+#: expr.texi.orig:1716
+#, no-wrap
+msgid "multiply and divide"
+msgstr "乗算および除算"
+
+#. type: table
+#: expr.texi.orig:1718
+msgid "@samp{*} @samp{/} @samp{\\} @samp{.\\} @samp{.*} @samp{./}"
+msgstr "@samp{*} @samp{/} @samp{\\} @samp{.\\} @samp{.*} @samp{./}"
+
+#. type: item
+#: expr.texi.orig:1719
+#, no-wrap
+msgid "add, subtract"
+msgstr "加算、減算"
+
+#. type: table
+#: expr.texi.orig:1721
+msgid "@samp{+} @samp{-}"
+msgstr "@samp{+} @samp{-}"
+
+#. type: item
+#: expr.texi.orig:1722
+#, no-wrap
+msgid "colon"
+msgstr "コロン"
+
+#. type: item
+#: expr.texi.orig:1725
+#, no-wrap
+msgid "relational"
+msgstr "比較"
+
+#. type: table
+#: expr.texi.orig:1728
+msgid "@samp{<} @samp{<=} @samp{==} @samp{>=} @samp{>} @samp{!=} @samp{~=}"
+msgstr "@samp{<} @samp{<=} @samp{==} @samp{>=} @samp{>} @samp{!=} @samp{~=}"
+
+#. type: item
+#: expr.texi.orig:1729
+#, no-wrap
+msgid "element-wise \"and\""
+msgstr "要素ごとの\"and\""
+
+#. type: item
+#: expr.texi.orig:1732
+#, no-wrap
+msgid "element-wise \"or\""
+msgstr "要素ごとの\"or\""
+
+#. type: item
+#: expr.texi.orig:1735
+#, no-wrap
+msgid "logical \"and\""
+msgstr "論理的\"and\""
+
+#. type: item
+#: expr.texi.orig:1738
+#, no-wrap
+msgid "logical \"or\""
+msgstr "論理的\"or\""
+
+#. type: item
+#: expr.texi.orig:1741
+#, no-wrap
+msgid "assignment"
+msgstr "代入"
+
+#. type: table
+#: expr.texi.orig:1745
+msgid ""
+"@samp{=} @samp{+=} @samp{-=} @samp{*=} @samp{/=} @samp{\\=} @samp{^=} "
+"@samp{.*=} @samp{./=} @samp{.\\=} @samp{.^=} @samp{|=} @samp{&=}"
+msgstr "@samp{=} @samp{+=} @samp{-=} @samp{*=} @samp{/=} @samp{\\=} @samp{^=} @samp{.*=} @samp{./=} @samp{.\\=} @samp{.^=} @samp{|=} @samp{&=}"

@@ -1,0 +1,1445 @@
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+@c DO NOT EDIT!  Generated automatically by munge-texi.pl.
+
+@c Copyright (C) 1996-2013 John W. Eaton
+@c
+@c This file is part of Octave.
+@c
+@c Octave is free software; you can redistribute it and/or modify it
+@c under the terms of the GNU General Public License as published by the
+@c Free Software Foundation; either version 3 of the License, or (at
+@c your option) any later version.
+@c 
+@c Octave is distributed in the hope that it will be useful, but WITHOUT
+@c ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+@c FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+@c for more details.
+@c 
+@c You should have received a copy of the GNU General Public License
+@c along with Octave; see the file COPYING.  If not, see
+@c <http://www.gnu.org/licenses/>.
+
+@node Data Containers
+@chapter Data Containers
+@cindex containers
+
+Octaveには、任意のデータ型を同じ変数に含めるために、2つの異なるメカニズムをサポートします。Cスタイルの構造体は名前付きフィールドでインデクスされ、セル配列は配列の各要素が異なるデータ型と形状をもつことができます。関数の複数の入力引数やリターン値は、カンマ区切りリストという他のデータ型により形成されます。
+
+@menu
+* Structures::
+* Cell Arrays::
+* Comma Separated Lists::    
+@end menu
+
+@node Structures
+@section Structures
+@cindex structures
+@cindex data structures
+
+Octaveには構造体内のデータを組織化するためのサポートが含まれます。現在の実装は文字列によるインデクスに限定された連想配列を使用しますが、Cスタイルの構造体に類似した構文です。
+
+@menu
+* Basic Usage and Examples::
+* Structure Arrays::
+* Creating Structures::
+* Manipulating Structures::
+* Processing Data in Structures::  
+@end menu
+
+@node Basic Usage and Examples
+@subsection Basic Usage and Examples
+
+以下はOctaveでデータ構造体を使用する例です。
+
+構造体の要素には任意の値型を使用できます。たとえば
+
+@example
+@group
+x.a = 1;
+x.b = [1, 2; 3, 4];
+x.c = "string";
+@end group
+@end example
+
+@opindex .
+@noindent
+この3つの式は、要素が3つの構造体を作成します。文字@samp{.}は構造体名とィールド名を区別し、Octaveにたいしてこれが構造体であることを示します。他の変数と同様に構造体の名前をタイプすれば、構造体の値をプリントできます。
+
+@example
+@group
+x
+     @result{} x =
+        @{
+          a = 1
+          b =
+
+            1  2
+            3  4
+
+          c = string
+        @}
+@end group
+@end example
+
+@noindent
+Octaveは任意の順序で要素をプリントすることに注意してください。
+
+他の変数と同じように、構造体をコピーできます。
+
+@example
+@group
+y = x
+     @result{} y =
+        @{
+          a = 1
+          b =
+
+            1  2
+            3  4
+
+          c = string
+        @}
+@end group
+@end example
+
+構造体はそれ自体が値なので、構造体の要素が他の構造体を参照することもあります。以下の命令文は構造体@code{x}の要素@code{b}の値を、値が3であるような1つの要素@code{d}をもつデータ構造体に変更します。
+
+@example
+@group
+x.b.d = 3;
+x.b
+     @result{} ans =
+        @{
+          d = 3
+        @}
+
+x
+     @result{} x =
+        @{
+          a = 1
+          b =
+          @{
+            d = 3
+          @}
+
+          c = string
+        @}
+@end group
+@end example
+
+構造体が他の構造体を含むとき、Octaveはそれらの2、3レベルだけをプリントすることに注意してください。たとえば:
+
+@example
+@group
+a.b.c.d.e = 1;
+a
+     @result{} a =
+        @{
+          b =
+          @{
+            c =
+            @{
+              1x1 struct array containing the fields:
+
+              d: 1x1 struct
+            @}
+          @}
+        @}
+@end group
+@end example
+
+@noindent
+これは、大きくネストが深い構造体による、長く混乱した出力を抑制するためです。ネストされた構造体にたいしてプリントするレベル数は、関数@code{struct_levels_to_print}でセットすることができ、構造体配列の内容のプリントを有効にするには関数@code{print_struct_array_contents}が使用されます。
+
+@c struct_levels_to_print libinterp/octave-value/ov-struct.cc
+@anchor{XREFstruct_levels_to_print}
+@deftypefn {Built-in Function} {@var{val} =} struct_levels_to_print ()
+@deftypefnx {Built-in Function} {@var{old_val} =} struct_levels_to_print (@var{new_val})
+@deftypefnx {Built-in Function} {} struct_levels_to_print (@var{new_val}, "local")
+表示する構造体レベル数を指定する内部変数にたいして、問い合わせまたはセットをします。
+
+関数の内部で@qcode{"local"}オプションとともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@seealso{@ref{XREFprint_struct_array_contents,,print_struct_array_contents}}
+@end deftypefn
+
+
+@c print_struct_array_contents libinterp/octave-value/ov-struct.cc
+@anchor{XREFprint_struct_array_contents}
+@deftypefn {Built-in Function} {@var{val} =} print_struct_array_contents ()
+@deftypefnx {Built-in Function} {@var{old_val} =} print_struct_array_contents (@var{new_val})
+@deftypefnx {Built-in Function} {} print_struct_array_contents (@var{new_val}, "local")
+構造体配列の内容をプリントするかどうかを指定する内部変数にたいして、問い合わせまたはセットを行います。
+
+trueの場合、構造体配列の要素はプリントされます。この変数は、要素が常にプリントされるスカラー構造体には影響しません。しかしどちらの場合も、プリントされるのは@var{struct_levels_to_print}で指定されるレベル数に制限されます。
+
+関数の内部で@qcode{"local"}とともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。
+@seealso{@ref{XREFstruct_levels_to_print,,struct_levels_to_print}}
+@end deftypefn
+
+
+関数は構造体をリターンすることができます。たとえば、以下の関数はマトリクスの実数部と複素部を分割して、同じ構造体変数の2つの要素に格納します。
+
+@example
+@group
+function y = f (x)
+  y.re = real (x);
+  y.im = imag (x);
+endfunction
+@end group
+@end example
+
+複素数値を引数に呼び出された場合、@code{f}は元の関数引数の実数部と虚数部を含むデータ構造体をリターンします。
+
+@example
+@group
+f (rand (2) + rand (2) * I)
+     @result{} ans =
+        @{
+          im =
+
+            0.26475  0.14828
+            0.18436  0.83669
+
+          re =
+
+            0.040239  0.242160
+            0.238081  0.402523
+
+        @}
+@end group
+@end example
+
+リストをリターンする関数には構造体要素を含めることができ、それらは他の変数と同じようにインデクスされます。たとえば:
+
+@example
+[ x.u, x.s(2:3,2:3), x.v ] = svd ([1, 2; 3, 4]);
+x
+     @result{} x =
+        @{
+          u =
+
+            -0.40455  -0.91451
+            -0.91451   0.40455
+
+          s =
+
+             0.00000   0.00000   0.00000
+             0.00000   5.46499   0.00000
+             0.00000   0.00000   0.36597
+
+          v =
+
+            -0.57605   0.81742
+            -0.81742  -0.57605
+
+        @}
+@end example
+
+@code{for}命令の特別フォームを使用して、構造体のすべての要素を巡回することも可能です(@ref{Looping Over Structure
+Elements}を参照)。
+
+@node Structure Arrays
+@subsection Structure Arrays
+
+構造体配列とは、構造体の各フィールドがセル配列で表される、構造体固有のインスタンスです。
+これらの各セル配列は同じ次元をもちます。概念上、構造体配列は同じフィールドをもつ構造体の配列と捉えることもできます。以下は構造体配列を作成する例です
+
+@example
+@group
+x(1).a = "string1";
+x(2).a = "string2";
+x(1).b = 1;
+x(2).b = 2;
+@end group
+@end example
+
+@noindent
+これは2つのフィールドをもつ2×1の構造体配列を作成しています。構造体配列を作成する別の方法として、@code{struct}関数があります(@ref{Creating
+Structures}を参照)。すでに示したように、名前をタイプすることにより、構造体配列の値をプリントできます。 
+
+@example
+@group
+x
+     @result{} x =
+        @{
+          1x2 struct array containing the fields:
+
+            a
+            b
+        @}  
+@end group
+@end example
+
+構造体配列の各要素は@code{@var{x}(1)}のようにインデクス付された変数でリターンされ、この変数は2つのフィールドをもつ構造体をリターンします:
+
+@example
+@group
+x(1)
+     @result{} ans =
+        @{
+          a = string1
+          b =  1
+        @}
+@end group
+@end example
+
+さらに構造体配列は、それがフィールド名でインデクス付けされている場合は、フィールド値のカンマ区切りリストをリターンします(@ref{Comma
+Separated Lists}を参照)。
+
+@example
+@group
+x.a
+     @result{}
+        ans = string1
+        ans = string2
+@end group
+@end example
+
+以下は、このカンマ区切りリストを割り当ての左辺で使用する例です。
+
+@example
+@group
+[x.a] = deal ("new string1", "new string2");
+ x(1).a
+     @result{} ans = new string1
+ x(2).a
+     @result{} ans = new string2
+@end group
+@end example
+
+数値配列に限られますが、インデクスにベクターを使用できます(@ref{Index Expressions}を参照):
+
+@example
+@group
+x(3:4) = x(1:2);
+[x([1,3]).a] = deal ("other string1", "other string2");
+x.a
+     @result{}
+        ans = other string1
+        ans = new string2
+        ans = other string2
+        ans = new string2
+@end group
+@end example
+
+関数@code{size}は構造体のサイズをリターンします。上記の例にたいしては以下のようになります
+
+@example
+@group
+size (x)
+     @result{} ans =
+
+          1   4
+@end group
+@end example
+
+構造体配列の要素は、要素に空マトリクスを割り当てることにより、数値配列と同様のやり方で削除できます。たとえば
+
+@example
+@group
+in = struct ("call1", @{x, Inf, "last"@}, 
+             "call2", @{x, Inf, "first"@})
+     @result{} in =
+        @{
+          1x3 struct array containing the fields:
+
+            call1
+            call2
+        @}
+
+in(1) = [];
+in.call1
+     @result{}
+       ans = Inf
+       ans = last
+@end group
+@end example
+
+@node Creating Structures
+@subsection Creating Structures
+@cindex dynamic naming
+
+インデクス演算子@qcode{"."}とは別に、octaveでは動的名前付け@qcode{"(var)"}、または@code{struct}を使用して構造体を作成できます。動的名前付けでは、変数の文字列値をフィールド名に使用します。たとえば:
+
+@example
+@group
+a = "field2";
+x.a = 1;
+x.(a) = 2;
+x
+     @result{} x =
+        @{
+          a =  1
+          field2 =  2
+        @}
+@end group
+@end example
+
+@noindent
+動的インデクス付けでは、Octaveで有効な識別子だけでなく、任意の文字列を使用できます(これは@sc{matlab}では機能しないことに注意してください):
+
+@example
+@group
+a = "long field with spaces (and funny char$)";
+x.a = 1;
+x.(a) = 2;
+x
+     @result{} x =
+        @{
+          a =  1
+          long field with spaces (and funny char$) =  2
+        @}
+@end group
+@end example
+
+@noindent
+警告IDの@code{Octave:matlab-incompatible}によい、この使用についての警告を有効にできます。@ref{XREFwarning_ids,,warning_ids}を参照してください。
+
+実際には、データ構造体の正確なフィールド名を構築するときに、文字列を操作するすべての関数を使用できます。
+
+@example
+@group
+names = ["Bill"; "Mary"; "John"];
+ages  = [37; 26; 31];
+for i = 1:rows (names)
+  database.(names(i,:)) = ages(i);
+endfor
+database
+     @result{} database =
+        @{
+          Bill =  37
+          Mary =  26
+          John =  31
+        @}
+@end group
+@end example
+
+構造体を作成する3つ目の方法は、@code{struct}コマンドです。@code{struct}は1対の引数をとります。1つ目の引数は構造体内に含めるためのfieldnameで、2つ目はスカラーまたはセル配列です。たとえば:
+
+@example
+@group
+struct ("field1", 1, "field2", 2)
+@result{} ans =
+      @{
+        field1 =  1
+        field2 =  2
+      @}
+@end group
+@end example
+
+@code{struct}にスカラーとセル配列が混交された値が渡された場合は、矛盾しない次元の構造体配列を作成するようにスカラー引数が展開されます。たとえば:
+
+@example
+@group
+s = struct ("field1", @{1, "one"@}, "field2", @{2, "two"@},
+        "field3", 3);
+s.field1
+     @result{} 
+        ans =  1
+        ans = one
+
+s.field2
+     @result{}
+        ans =  2
+        ans = two
+
+s.field3
+     @result{}
+        ans =  3
+        ans =  3
+@end group
+@end example
+
+セル配列を特定のフィールドに含む構造体を作成したい場合は、以下の例のようにそれを別のセル配列でラップしなければなりません:
+
+@example
+@group
+struct ("field1", @{@{1, "one"@}@}, "field2", 2)
+     @result{} ans =
+        @{
+          field1 =
+
+        @{
+          [1,1] =  1
+          [1,2] = one
+        @}
+
+          field2 =  2
+        @}
+@end group
+@end example
+
+@c struct libinterp/octave-value/ov-struct.cc
+@anchor{XREFstruct}
+@deftypefn {Built-in Function} {@var{s} =} struct ()
+@deftypefnx {Built-in Function} {@var{s} =} struct (@var{field1}, @var{value1}, @var{field2}, @var{value2}, @dots{})
+@deftypefnx {Built-in Function} {@var{s} =} struct (@var{obj})
+
+スカラーまたは配列の構造体を作成して、値を初期化します。変数@var{field1}、@var{field2}、@dots{}はフィールド名を指定する文字列で、変数@var{value1}、@var{value2}、@dots{}には任意の型を使用できます。
+
+値がセル配列の場合は構造体配列を作成して、値を初期化します。値となる各セル配列の次元は一致していなければなりません。シングルトンのセルおよび非セル値は、配列全体を満たすように繰り返されます。セルが空の場合は、指定されたフィールド名の空の構造体配列が作成されます。
+
+引数がオブジェクトの場合は、それにもとづいた構造体をリターンします。
+
+構文が構造体@strong{配列}に最適化されていることに注目してください。以下の例で考えてみましょう:
+
+@example
+@group
+struct ("foo", 1)
+  @result{} scalar structure containing the fields:
+    foo =  1
+
+struct ("foo", @{@})
+  @result{} 0x0 struct array containing the fields:
+    foo
+
+struct ("foo", @{ @{@} @})
+  @result{} scalar structure containing the fields:
+    foo = @{@}(0x0)
+
+struct ("foo", @{1, 2, 3@})
+  @result{} 1x3 struct array containing the fields:
+    foo
+
+@end group
+@end example
+
+@noindent
+1つ目は通常のスカラー構造体で、1つのフィールドと1つの値をもちます。2つ目は値をもたない1つのフィールドをもつ、空の構造体配列を作成します。値が1つのエントリーを含むセル配列の場合は、そのフィールドの値が単一のエントリーとなるようなスカラー構造体になります。そのような単一のエントリーは、空のセル配列にたいして発生します。
+
+最後に値が非スカラーのセル配列の場合、@code{struct}は構造体@strong{配列}を作成します。
+@seealso{@ref{XREFcell2struct,,cell2struct},
+@ref{XREFfieldnames,,fieldnames}, @ref{XREForderfields,,orderfields},
+@ref{XREFgetfield,,getfield}, @ref{XREFsetfield,,setfield},
+@ref{XREFrmfield,,rmfield}, @ref{XREFstructfun,,structfun}}
+@end deftypefn
+
+
+オブジェクトが構造体または構造体配列かをテストするのに、関数@code{isstruct}を使用してできます。
+
+@c isstruct libinterp/octave-value/ov-struct.cc
+@anchor{XREFisstruct}
+@deftypefn {Built-in Function} {} isstruct (@var{x})
+@var{x}が構造体または構造体配列の場合は、trueをリターンします。
+@seealso{@ref{XREFismatrix,,ismatrix}, @ref{XREFiscell,,iscell},
+@ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@node Manipulating Structures
+@subsection Manipulating Structures
+
+以下は、構造体のフィールドを操作する関数です。
+
+@c nfields libinterp/octave-value/ov-struct.cc
+@anchor{XREFnfields}
+@deftypefn {Built-in Function} {} nfields (@var{s})
+構造体@var{s}のフィールド数をリターンします。
+@seealso{@ref{XREFfieldnames,,fieldnames}}
+@end deftypefn
+
+
+@c fieldnames scripts/general/fieldnames.m
+@anchor{XREFfieldnames}
+@deftypefn {Function File} {@var{names} =} fieldnames (@var{struct})
+@deftypefnx {Function File} {@var{names} =} fieldnames (@var{obj})
+@deftypefnx {Function File} {@var{names} =} fieldnames (@var{javaobj})
+@deftypefnx {Function File} {@var{names} =} fieldnames ("@var{jclassname}")
+入力で指定されたフィールド名により、文字列のセル配列をリターンします。
+
+入力が構造体@var{struct}の場合、構造体の要素が名前になります。
+
+入力がOctaveオブジェクト@var{obj}の場合、オブジェクトのパブリックプロパティが名前になります。
+
+入力がJavaオブジェクト@var{javaobj}、またはJavaクラス名@var{jclassname}の場合、オブジェクトまたはクラスのパブリックなデータ要素が名前になります。
+@seealso{@ref{XREFnfields,,nfields}, @ref{XREFisfield,,isfield},
+@ref{XREForderfields,,orderfields}, @ref{XREFstruct,,struct},
+@ref{XREFmethods,,methods}}
+@end deftypefn
+
+
+@c isfield libinterp/octave-value/ov-struct.cc
+@anchor{XREFisfield}
+@deftypefn {Built-in Function} {} isfield (@var{x}, "@var{name}")
+@deftypefnx {Built-in Function} {} isfield (@var{x}, @var{name})
+@var{x}が構造体で@var{name}という名前の要素を含む場合は、trueをリターンします。@var{name}が文字列のセル配列の場合は、等しい次元の論理配列をリターンします。
+@seealso{@ref{XREFfieldnames,,fieldnames}}
+@end deftypefn
+
+
+@c setfield scripts/miscellaneous/setfield.m
+@anchor{XREFsetfield}
+@deftypefn {Function File} {@var{s} =} setfield (@var{s}, @var{field}, @var{val})
+@deftypefnx {Function File} {@var{s} =} setfield (@var{s}, @var{idx1}, @var{field1}, @var{idx2}, @var{field2}, @dots{}, @var{val})
+
+構造体@var{s}のフィールドメンバー@var{field}を、@var{val}にセットします。たとえば:
+
+@example
+@group
+@var{s} = struct ();
+@var{s} = setfield (@var{s}, "foo bar", 42);
+@end group
+@end example
+
+@noindent
+これは以下と等価です
+
+@example
+@var{s}.("foo bar") = 42;
+@end example
+
+@noindent
+フィールド名は有効なOctave識別子ではないので、ここでは通常の構造体構文@code{@var{s}.foo bar =
+42}は使用できないことに注意してください。フィールド名に任意の文字列を使用するのは@sc{matlab}と互換性がないので、@code{Octave:matlab-incompatible}警告がセットされている場合はこの使用にたいして警告されるでしょう。@ref{XREFwarning_ids}を参照してください。
+
+2つ目の呼び出し形式では、構造体配列のフィールドへのセットはインデクス@var{idx1}、@var{idx2}、@dots{}とフィールド@var{field1},
+@var{field2},
+@dots{}のように連続してネストされているかもしれません。インデクスは、そのネスト深さでの期待されるインデクスを含むセルでなければなりません。
+
+したがって以下のように考えることができます
+
+@example
+@group
+@var{s} = struct ("baz", 42);
+setfield (@var{s}, @{1@}, "foo", @{1@}, "bar", 5)
+    @result{} ans =
+    scalar structure containing the fields:
+      baz =  42
+      foo =
+        scalar structure containing the fields:
+          bar =  5
+@end group
+@end example
+
+ここでは最初に通常の構造体配列のフィールド@code{baz}に42をセットしています。それから一意なインデクスを含む単独セル2つによりインデクス付けされる、別のネストされたスカラー構造体フィールドに値をセットしています。
+
+最後は、ネストされた構造体配列の例です
+
+@example
+@group
+@var{sa}.foo = 1;
+@var{sa} = setfield (@var{sa}, @{2@}, "bar", @{3@}, "baz", 6);
+@var{sa}(2).bar(3)
+     @result{} ans =
+     scalar structure containing the fields:
+       baz =  6
+@end group
+@end example
+
+ここでは@var{sa}は構造体配列で、要素1がフィールド@code{fd}で、2つ目のフィールドは3つ目の要素が構造体であるような別の構造体配列です
+
+以下のようにして、上記の例と同じ結果を得られることに注意してください:
+
+@example
+@group
+@var{SA}.foo = 1;
+@var{SA}(2).bar(3).baz = 6
+@end group
+@end example
+@seealso{@ref{XREFgetfield,,getfield}, @ref{XREFrmfield,,rmfield},
+@ref{XREFisfield,,isfield}, @ref{XREFfieldnames,,fieldnames},
+@ref{XREFisstruct,,isstruct}, @ref{XREFstruct,,struct}}
+@end deftypefn
+
+
+@c getfield scripts/miscellaneous/getfield.m
+@anchor{XREFgetfield}
+@deftypefn {Function File} {[@var{val}] =} getfield (@var{s}, @var{field})
+@deftypefnx {Function File} {[@var{val}] =} getfield (@var{s}, @var{idx1}, @var{field1}, @var{idx2}, @var{field2}, @dots{})
+構造体(またはネストされた構造体)からフィールドを抽出します。構文は@code{setfield}と同様ですが、最後の@var{val}がなく、値をセットするかわりに、値をリターンする点が異なります。
+
+@seealso{@ref{XREFsetfield,,setfield}, @ref{XREFrmfield,,rmfield},
+@ref{XREFisfield,,isfield}, @ref{XREFfieldnames,,fieldnames},
+@ref{XREFisstruct,,isstruct}, @ref{XREFstruct,,struct}}
+@end deftypefn
+
+
+@c rmfield libinterp/octave-value/ov-struct.cc
+@anchor{XREFrmfield}
+@deftypefn {Built-in Function} {@var{s} =} rmfield (@var{s}, "@var{f}")
+@deftypefnx {Built-in Function} {@var{s} =} rmfield (@var{s}, @var{f})
+構造体(または構造体配列)@var{s}からフィールド@var{f}を削除したコピーをリターンします。@var{f}が文字列のセル配列か文字配列の場合は、それぞれの名前付きフィールドを削除します。
+@seealso{@ref{XREForderfields,,orderfields},
+@ref{XREFfieldnames,,fieldnames}}
+@end deftypefn
+
+
+@c orderfields scripts/miscellaneous/orderfields.m
+@anchor{XREForderfields}
+@deftypefn {Function File} {[@var{t}, @var{p}] =} orderfields (@var{s1})
+@deftypefnx {Function File} {[@var{t}, @var{p}] =} orderfields (@var{s1}, @var{s2})
+アルファベット順、または@var{s2}で指定された順にフィールドを整列した@var{s1}のコピーをリターンします。
+
+1つの構造体が与えられた場合は、@var{s1}のフィールド名をアルファベット順に整列します。
+
+2つ目の引数が構造体の場合は、@var{s1}のフィールド名を@var{s2}に出現する順に整列します。2つ目の引数には順序を指定する置換ベクター(permutation
+vector)、または望む順に整列された@var{s1}内のフィールド名を含む文字列のセル配列を指定することもできます。
+
+2つ目のオプション出力引数@var{p}には、元の名前順を新しい名前順に変換する置換ベクターが割り当てられます。
+
+例:
+
+@example
+@group
+s = struct ("d", 4, "b", 2, "a", 1, "c", 3);
+t1 = orderfields (s)
+     @result{} t1 =
+        @{
+          a =  1
+          b =  2
+          c =  3
+          d =  4
+        @}
+@end group
+@group
+t = struct ("d", @{@}, "c", @{@}, "b", @{@}, "a", @{@});
+t2 = orderfields (s, t)
+     @result{} t2 =
+        @{
+          d =  4
+          c =  3
+          b =  2
+          a =  1
+        @}
+@end group
+@group
+t3 = orderfields (s, [3, 2, 4, 1])
+     @result{} t3 =
+        @{
+          a =  1
+          b =  2
+          c =  3
+          d =  4
+        @}
+@end group
+@group
+[t4, p] = orderfields (s, @{"d", "c", "b", "a"@})
+     @result{} t4 =
+        @{
+          d =  4
+          c =  3
+          b =  2
+          a =  1
+        @}
+        p =
+           1
+           4
+           2
+           3
+@end group
+@end example
+
+@seealso{@ref{XREFgetfield,,getfield}, @ref{XREFrmfield,,rmfield},
+@ref{XREFisfield,,isfield}, @ref{XREFisstruct,,isstruct},
+@ref{XREFfieldnames,,fieldnames}, @ref{XREFstruct,,struct}}
+@end deftypefn
+
+
+@c substruct scripts/miscellaneous/substruct.m
+@anchor{XREFsubstruct}
+@deftypefn {Function File} {} substruct (@var{type}, @var{subs}, @dots{})
+@code{subsref}および@code{subsasgn}で使用するための添字構造体(subscript
+structure)を作成します。たとえば:
+
+@example
+@group
+idx = substruct ("()", @{3, ":"@})
+     @result{}
+       idx =
+       @{
+         type = ()
+         subs =
+         @{
+           [1,1] =  3
+           [1,2] = :
+         @}
+       @}
+x = [1, 2, 3; 4, 5, 6; 7, 8, 9];
+subsref (x, idx)
+   @result{} 7  8  9
+@end group
+@end example
+@seealso{@ref{XREFsubsref,,subsref}, @ref{XREFsubsasgn,,subsasgn}}
+@end deftypefn
+
+
+@node Processing Data in Structures
+@subsection Processing Data in Structures
+
+構造体内のデータを処理するには、@code{for}ループを使用するのが一番シンプルな方法です(@ref{Looping Over Structure
+Elements}を参照)。構造体の各フィールドにユーザー定義関数を適用する@code{structfun}関数でも、同様の効果を得ることができます。@ref{XREFstructfun,,structfun}を参照してください。
+
+かわりに、構造体内のデータを処理するために、処理の前に構造体を他のコンテナー型に変換すると良いかもしれません。
+
+@c struct2cell libinterp/octave-value/ov-cell.cc
+@anchor{XREFstruct2cell}
+@deftypefn {Built-in Function} {@var{c} =} struct2cell (@var{s})
+構造体オブジェクトに格納されたオブジェクトから、新たなセル配列を作成します。@var{f}が構造体内のフィールド数の場合、結果となるセル配列は@code{[@var{f}
+size(@var{s})]}に応じた次元のベクターとなります。たとえば:
+
+@example
+@group
+s = struct ("name", @{"Peter", "Hannah", "Robert"@},
+           "age", @{23, 16, 3@});
+c = struct2cell (s)
+   @result{} c = @{2x1x3 Cell Array@}
+c(1,1,:)(:)
+   @result{}
+      @{
+        [1,1] = Peter
+        [2,1] = Hannah
+        [3,1] = Robert
+      @}
+c(2,1,:)(:)
+   @result{}
+      @{
+        [1,1] = 23
+        [2,1] = 16
+        [3,1] = 3
+      @}
+@end group
+@end example
+
+@seealso{@ref{XREFcell2struct,,cell2struct},
+@ref{XREFfieldnames,,fieldnames}}
+@end deftypefn
+
+
+@node Cell Arrays
+@section Cell Arrays
+@cindex cell arrays
+
+複数の異なるサイズや型の変数を、1つの変数に格納するのが必要だったり便利なことがあるかもしれません。セル配列はまさにそれを行うことを可能にするコンテナークラスです。一般的にセル配列は@math{N}次元配列と同様に機能しますが、割り当てとインデクスの演算子に@samp{@{}と@samp{@}}を使用する点が異なります。
+
+@menu
+* Basic Usage of Cell Arrays::
+* Creating Cell Arrays::
+* Indexing Cell Arrays::
+* Cell Arrays of Strings::
+* Processing Data in Cell Arrays::  
+@end menu
+
+@node Basic Usage of Cell Arrays
+@subsection Basic Usage of Cell Arrays
+@opindex @{
+@opindex @}
+以下は文字列と2行2列の乱数行列を含むセル配列を作成するコードの例です
+
+@example
+c = @{"a string", rand(2, 2)@};
+@end example
+
+@noindent
+セル配列の要素にアクセスするために、@{および@}演算子でインデクス付けすることができます。したがって上記の例で作成された変数は、以下のようにインデクス付けできます:
+
+@example
+@group
+c@{1@}
+     @result{} ans = a string
+@end group
+@end example
+
+@noindent
+数値配列と同様に、セル配列の複数の要素をインデクス用ベクターでインデクス付けして抽出できます。
+
+@example
+@group
+c@{1:2@}
+     @result{} ans = a string
+     @result{} ans =
+
+               0.593993   0.627732
+               0.377037   0.033643
+@end group
+@end example
+
+インデクス演算子はセル配列に要素を挿入したり上書きするためにも使用できます。以下のコードでは、上記で作成したセル配列の3番目にスカラーの3を挿入しています
+
+@example
+@group
+c@{3@} = 3
+     @result{} c =
+
+         @{
+           [1,1] = a string
+           [1,2] =
+
+              0.593993   0.627732
+              0.377037   0.033643
+
+           [1,3] =  3
+         @}
+@end group
+@end example
+
+セル配列のインデクス操作についての詳細は@ref{Indexing Cell Arrays}を参照してください。
+
+前の例のように、一般的にネストされたセル配列は階層的に表示されます。それらをインデクスにより参照するほうが理解しやすい場合は、@code{celldisp}関数を使用できます。
+
+@c celldisp scripts/general/celldisp.m
+@anchor{XREFcelldisp}
+@deftypefn {Function File} {} celldisp (@var{c})
+@deftypefnx {Function File} {} celldisp (@var{c}, @var{name})
+セル配列の内容を再帰的に表示します。デフォルトでは、値は変数@var{c}の名前とともに表示されます。しかし、この名前は変数@var{name}で置き換えることができます。たとえば:
+
+@example
+@group
+c = @{1, 2, @{31, 32@}@};
+celldisp (c, "b")
+   @result{}
+      b@{1@} =
+       1
+      b@{2@} =
+       2
+      b@{3@}@{1@} =
+       31
+      b@{3@}@{2@} =
+       32
+@end group
+@end example
+
+@seealso{@ref{XREFdisp,,disp}}
+@end deftypefn
+
+
+オブジェクトがセル配列かどうかテストするには、@code{iscell}関数を使用します。たとえば:
+
+@example
+@group
+iscell (c)
+     @result{} ans = 1
+
+iscell (3)
+     @result{} ans = 0
+
+@end group
+@end example
+
+@c iscell libinterp/octave-value/ov-cell.cc
+@anchor{XREFiscell}
+@deftypefn {Built-in Function} {} iscell (@var{x})
+@var{x}がセル配列の場合は、trueをリターンします。
+@seealso{@ref{XREFismatrix,,ismatrix}, @ref{XREFisstruct,,isstruct},
+@ref{XREFiscellstr,,iscellstr}, @ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@node Creating Cell Arrays
+@subsection Creating Cell Arrays
+
+冒頭に紹介した例(@ref{Basic Usage of Cell
+Arrays}を参照)では、現在利用可能な変数を含むセル配列を作成する方法を示しました。しかし、セル配列を作成した後にデータをセットするほうが便利な場合も多いでしょう。 
+
+@code{cell}関数は与えられたサイズの空マトリクスを含むセル配列をリターンします。この関数は、新たに数値配列を作成する@code{zeros}関数に似ています。以下は空マトリクスを含む2行2列のセル配列を作成する例です
+
+@example
+@group
+c = cell (2,2)
+     @result{} c =
+
+         @{
+           [1,1] = [](0x0)
+           [2,1] = [](0x0)
+           [1,2] = [](0x0)
+           [2,2] = [](0x0)
+         @}
+@end group
+@end example
+
+数値配列と同様に、セル配列を多次元にすることもできます。@code{cell}関数ｈｑリターンされるセル配列のサイズを決定するために、任意の個数の正の整数を受け入れます。正の整数のベクターによりセル配列のサイズをセットすることもできます。以下の例では、サイズの等しい2つのセル配列を作成して、1つ目のセル配列にサイズを表示しています
+
+@example
+@group
+c1 = cell (3, 4, 5);
+c2 = cell ( [3, 4, 5] );
+size (c1)
+     @result{} ans =
+         3   4   5
+@end group
+@end example
+
+@noindent
+これまで見てきたように、@ref{XREFsize,,size}関数はセル配列にたいしても機能します。@ref{XREFlength,,length}、@ref{XREFnumel,,
+numel}、@ref{XREFrows,,rows}、@ref{XREFcolumns,,columns}のようなサイズを報告する他の関数も同様に機能します。
+
+@c cell libinterp/octave-value/ov-cell.cc
+@anchor{XREFcell}
+@deftypefn {Built-in Function} {} cell (@var{n})
+@deftypefnx {Built-in Function} {} cell (@var{m}, @var{n})
+@deftypefnx {Built-in Function} {} cell (@var{m}, @var{n}, @var{k}, @dots{})
+@deftypefnx {Built-in Function} {} cell ([@var{m} @var{n} @dots{}])
+新たにセル配列オブジェクトを作成します。
+
+1つのスカラー整数引数とともに呼び出された場合は、@nospell{NxN}の正方セル配列をリターンします。2つ以上のスカラー整数引数、または整数値ベクターとともに呼び出された場合は、与えられた次元の配列をリターンします。
+@seealso{@ref{XREFcellstr,,cellstr}, @ref{XREFmat2cell,,mat2cell},
+@ref{XREFnum2cell,,num2cell}, @ref{XREFstruct2cell,,struct2cell}}
+@end deftypefn
+
+
+空のセル配列を作成してから値をセットする別の方法として@code{num2cell}、@code{mat2cell}、@code{cellslices}関数を使用して数値配列をセル配列に変換する方法が利用できます。
+
+@c num2cell libinterp/corefcn/cellfun.cc
+@anchor{XREFnum2cell}
+@deftypefn {Built-in Function} {@var{C} =} num2cell (@var{A})
+@deftypefnx {Built-in Function} {@var{C} =} num2cell (@var{A}, @var{dim})
+数値マトリクス@var{A}をセル配列に変換します。@var{dim}が定義されている場合は、@var{C}がこの次元での次元1となり、@var{A}の要素は@var{C}にスライスとして配されます。たとえば:
+
+@example
+@group
+num2cell ([1,2;3,4])
+   @result{}
+      @{
+        [1,1] =  1
+        [2,1] =  3
+        [1,2] =  2
+        [2,2] =  4
+      @}
+num2cell ([1,2;3,4],1)
+   @result{}
+      @{
+        [1,1] =
+           1
+           3
+        [1,2] =
+           2
+           4
+      @}
+@end group
+@end example
+
+@seealso{@ref{XREFmat2cell,,mat2cell}}
+@end deftypefn
+
+
+@c mat2cell libinterp/corefcn/cellfun.cc
+@anchor{XREFmat2cell}
+@deftypefn {Built-in Function} {@var{C} =} mat2cell (@var{A}, @var{m}, @var{n})
+@deftypefnx {Built-in Function} {@var{C} =} mat2cell (@var{A}, @var{d1}, @var{d2}, @dots{})
+@deftypefnx {Built-in Function} {@var{C} =} mat2cell (@var{A}, @var{r})
+マトリクス@var{A}をセル配列に変換します。@var{A}が2次元の場合、@code{sum (@var{m}) == size (@var{A},
+1)}と@code{sum (@var{n}) == size (@var{A},
+2)}が成り立つ必要があります。同様に@var{A}が多次元で次元数の引数が@var{A}の次元と等しい場合は、@code{sum (@var{di})
+== size (@var{A}, i)}が成り立つ必要があります。
+
+単一の次元引数@var{r}が与えられた場合、他の次元引数は@code{size (@var{A},@var{i})}と等しいとみなされます。
+
+以下はmat2cellを使用する例です
+
+@example
+mat2cell (reshape (1:16,4,4), [3,1], [3,1])
+@result{}
+@{
+   [1,1] =
+
+      1   5   9
+      2   6  10
+      3   7  11
+
+   [2,1] =
+
+      4   8  12
+
+   [1,2] =
+
+     13
+     14
+     15
+
+   [2,2] = 16
+@}
+@end example
+@seealso{@ref{XREFnum2cell,,num2cell}, @ref{XREFcell2mat,,cell2mat}}
+@end deftypefn
+
+
+@c cellslices libinterp/corefcn/cellfun.cc
+@anchor{XREFcellslices}
+@deftypefn {Built-in Function} {@var{sl} =} cellslices (@var{x}, @var{lb}, @var{ub}, @var{dim})
+与えられた配列@var{x}にたいして、この関数はインデクスベクター@var{lb}および@var{ub}(下限と上限を指定)から決定される配列スライスのセル配列を生成します。言い換えると、これは以下のコードと等価です:
+
+@example
+@group
+n = length (lb);
+sl = cell (1, n);
+for i = 1:length (lb)
+  sl@{i@} = x(:,@dots{},lb(i):ub(i),@dots{},:);
+endfor
+@end group
+@end example
+
+インデクスの位置は@var{dim}により決定されます。指定されなかった場合は、最初の非シングルトン次元に沿ってスライシングが行われます。
+@seealso{@ref{XREFcell2mat,,cell2mat}, @ref{XREFcellindexmat,,cellindexmat},
+@ref{XREFcellfun,,cellfun}}
+@end deftypefn
+
+
+@node Indexing Cell Arrays
+@subsection Indexing Cell Arrays
+
+@ref{Basic Usage of Cell
+Arrays}で見た@samp{@{}および@samp{@}}演算子を使用して、セル配列の要素を抽出できます。セル配列のままで部分配列を抽出、またはアクセスしたい場合は@samp{(}および@samp{)}演算子を使う必要があります。この違いを以下の例で示します:
+
+@example
+@group
+c = @{"1", "2", "3"; "x", "y", "z"; "4", "5", "6"@};
+c@{2,3@}
+     @result{} ans = z
+
+c(2,3)
+     @result{} ans = 
+        @{
+          [1,1] = z
+        @}
+@end group
+@end example
+
+@noindent So with @samp{@{@}} you access elements of a cell
+つまり@samp{@{@}}ではセル配列の要素にアクセスしますが、@samp{()}ではセル配列の部分配列にアクセスすることになります。
+
+@samp{(}および@samp{)}演算子を使用することにより、多次元配列と同様にセル配列のインデクス操作を行うことができます。たとえば、以下のコマンドでセル配列のすべての行の1列目と3列目に@code{0}をセットできます。
+
+@example
+@group
+c(:, [1, 3]) = @{0@}
+     @result{}  =
+        @{
+          [1,1] = 0
+          [2,1] = 0
+          [3,1] = 0
+          [1,2] = 2
+          [2,2] =  10
+          [3,2] =  20
+          [1,3] = 0
+          [2,3] = 0
+          [3,3] = 0
+        @}
+@end group
+@end example
+
+以下のようにも記述できることに注意してください:
+
+@example
+c(:, [1, 3]) = 0;
+@end example
+
+@noindent Here, the scalar @samp{0} is automatically promoted to
+ここではスカラー@samp{0}が自動的にセル配列@samp{@{0@}}に昇格されて、@code{c}の部分配列に割り当てられています。
+
+@samp{()}によるセル配列のインデクス操作として、以下のコマンドはセル配列の1行目と2行目を交換する例です: 
+
+@example
+@group
+c = @{1, 2, 3; 4, 5, 6@};
+c([1, 2], :) = c([2, 1], :)
+     @result{} = 
+        @{
+          [1,1] =  4
+          [2,1] =  1
+          [1,2] =  5
+          [2,2] =  2
+          [1,3] =  6
+          [2,3] =  3
+        @}
+@end group
+@end example
+
+@samp{@{}および@samp{@}}演算子によりセル配列の複数要素にアクセスすると、結果は要求されたすべての要素のカンマ区切りリストになります(@ref{Comma
+Separated
+Lists}を参照)。@samp{@{}および@samp{@}}演算子を使用することにより、上記の例の最初の2行は以下のように書き換えることができます:
+
+@example
+@group
+[c@{[1,2], :@}] = deal (c@{[2, 1], :@})
+     @result{} = 
+        @{
+          [1,1] =  1
+          [2,1] =  4
+          [1,2] =  2
+          [2,2] =  5
+          [1,3] =  3
+          [2,3] =  6
+        @}
+@end group
+@end example
+
+構造体配列や数値配列のように、セル配列から要素を削除するために空マトリクス@samp{[]}を使用できます:
+
+@example
+@group
+x = @{"1", "2"; "3", "4"@};
+x(1, :) = []
+     @result{} x =
+        @{
+          [1,1] = 3
+          [1,2] = 4
+        @}
+@end group
+@end example
+
+以下はセル配列から要素の内容だけを削除する方法を示す例です:
+
+@example
+@group
+x = @{"1", "2"; "3", "4"@};
+x@{1, :@} = []
+@result{} x =
+      @{
+        [1,1] = [](0x0)
+        [2,1] = 3
+        [1,2] = [](0x0)
+        [2,2] = 4
+      @}
+@end group
+@end example
+
+インデクス操作はセル配列内のオブジェクトではなく、セル配列を操作します。対照的に、@code{cellindexmat}は各セル配列エントリー内のオブジェクトにたいするマトリクスのインデクス操作に適用され、要求された値をリターンします。
+
+@c cellindexmat libinterp/corefcn/cellfun.cc
+@anchor{XREFcellindexmat}
+@deftypefn {Built-in Function} {@var{y} =} cellindexmat (@var{x}, @var{varargin})
+与えられたマトリクス@var{x}のセル配列にたいして、この関数は以下の計算を行います
+
+@example
+@group
+Y = cell (size (X));
+for i = 1:numel (X)
+  Y@{i@} = X@{i@}(varargin@{:@});
+endfor
+@end group
+@end example
+@seealso{@ref{XREFcellslices,,cellslices}, @ref{XREFcellfun,,cellfun}}
+@end deftypefn
+
+
+@node Cell Arrays of Strings
+@subsection Cell Arrays of Strings
+
+一般的に、セル配列は複数の文字列を1つの変数に格納するために使用されます。各行を文字列とみなせば、文字マトリクスに複数文字列を格納することもできます。しかしこれは、すべての文字列が同じ長さにしなければならないという問題が生じます。したがって、複数文字列の格納にはセル配列の使用を推奨します。ある操作に文字マトリクス表現が要求されるような場合に備えて、文字列のセル配列を文字マトリクスに変換したり、その逆を行う関数がいくつかあります。@code{cellstr}は文字配列を文字列のセル配列に変換しますが、@code{char}と@code{strvcat}はセル配列を文字配列に変換します(@ref{Concatenating
+Strings}を参照)。 
+
+@example
+@group
+a = ["hello"; "world"];
+c = cellstr (a)
+     @result{} c =
+         @{
+           [1,1] = hello
+           [2,1] = world
+         @}
+@end group
+@end example
+
+@c cellstr libinterp/octave-value/ov-cell.cc
+@anchor{XREFcellstr}
+@deftypefn {Built-in Function} {@var{cstr} =} cellstr (@var{strmat})
+文字列配列@var{strmat}の要素から、新たにセル配列オブジェクトを作成します。
+
+@var{strmat}の各行が、@var{cstr}の要素になります。行内の末尾のスペースは、変換の前に削除されます。
+
+文字列のセル配列から文字配列に逆変換するには@code{char}を使用します。
+@seealso{@ref{XREFcell,,cell}, @ref{XREFchar,,char}}
+@end deftypefn
+
+
+複数の文字列を格納するのにセル配列を使用する他の利点として、Octaveに同梱されている文字列を操作する関数の多くがこの表現をサポートする点が挙げられます。例として、@code{strcmp}関数を使用することにより、1つの文字列を、他の多くのものと比較できます。この関数の引数の1つが文字列で、それ以外は文字列のセル配列の場合、セル配列の各要素が文字列と比較されます:
+
+@example
+@group
+c = @{"hello", "world"@};
+strcmp ("hello", c)
+     @result{} ans =
+        1   0
+@end group
+@end example
+
+@noindent
+次の文字列関数が文字列のセル配列をサポートします: @code{char}、@code{strvcat}、@code{strcat}
+(@ref{Concatenating
+Strings}を参照)、@code{strcmp}、@code{strncmp}、@code{strcmpi}、@code{strncmpi}
+(@ref{Comparing
+Strings}を参照)、@code{str2double}、@code{deblank}、@code{strtrim}、@code{strtrunc}、@code{strfind}、@code{strmatch}、@code{regexp}、@code{regexpi}
+(@ref{Manipulating Strings}を参照)、@code{str2double} (@ref{String
+Conversions}を参照)。
+
+関数@code{iscellstr}は、オブジェクトが文字列のセル配列かテストするのに使用できます。
+
+@c iscellstr libinterp/octave-value/ov-cell.cc
+@anchor{XREFiscellstr}
+@deftypefn {Built-in Function} {} iscellstr (@var{cell})
+セル配列@var{cell}のすべての要素が文字列の場合は、trueをリターンします。
+@seealso{@ref{XREFischar,,ischar}}
+@end deftypefn
+
+
+@node Processing Data in Cell Arrays
+@subsection Processing Data in Cell Arrays
+
+セル配列に格納されたデータは、実際のデータに応じて複数の方法により処理されます。@code{for}ループを使用して処理を繰り返すのが、そのデータを処理するもっともシンプルな方法です。セル配列のすべての要素にユーザー定義関数を呼び出す@code{cellfun}関数の使用を通じて、さらに簡単に同じアイデアを実装できます。@ref{XREFcellfun,,cellfun}を参照してください。
+
+かわりにマトリクスやデータ構造体のような、異なるコンテナーにデータを変換することもできます。データに応じて@code{cell2mat}、および@code{cell2struct}関数の利用が可能です。
+
+@c cell2mat scripts/general/cell2mat.m
+@anchor{XREFcell2mat}
+@deftypefn {Function File} {@var{m} =} cell2mat (@var{c})
+セル配列@var{c}のすべての要素を連結することによりマトリクスにして超矩形(hyperrectangle)に変換します。@var{c}の要素は数値、論理値、文字マトリクス、セル配列、構造体でなければならず、@code{cat}はそれらを連結できなければなりません。
+@seealso{@ref{XREFmat2cell,,mat2cell}, @ref{XREFnum2cell,,num2cell}}
+@end deftypefn
+
+
+@c cell2struct libinterp/octave-value/ov-struct.cc
+@anchor{XREFcell2struct}
+@deftypefn {Built-in Function} {} cell2struct (@var{cell}, @var{fields})
+@deftypefnx {Built-in Function} {} cell2struct (@var{cell}, @var{fields}, @var{dim})
+@var{cell}を構造体に変換します。@var{fields}内のフィールド数は、次元@var{dim}にしたがった@var{cell}の要素数に一致(@code{numel
+(@var{fields}) == size (@var{cell},
+@var{dim})})しなければなりません。@var{dim}が省略された場合、値は1とみなされます。
+
+@example
+@group
+A = cell2struct (@{"Peter", "Hannah", "Robert";
+                   185, 170, 168@},
+                 @{"Name","Height"@}, 1);
+A(1)
+   @result{}
+      @{
+        Name   = Peter
+        Height = 185
+      @}
+
+@end group
+@end example
+@seealso{@ref{XREFstruct2cell,,struct2cell}, @ref{XREFcell2mat,,cell2mat},
+@ref{XREFstruct,,struct}}
+@end deftypefn
+
+
+@node Comma Separated Lists
+@section Comma Separated Lists
+@cindex comma separated lists
+@cindex cs-lists
+
+カンマ区切りリスト@footnote{カンマ区切りリストは@dfn{cs-lists}と略される場合があります。}はすべてのOctave関数の基本的な引数型(入力引数とリターン引数の両方)です。
+
+@example
+max (@var{a}, @var{b})
+@end example
+
+@noindent
+上記の例では@samp{@var{a},
+@var{b}}がカンマ区切りリストです。カンマ区切りリストは代入の右辺と左辺の両方に出現することができます。たとえば
+
+@example
+@group
+x = [1 0 1 0 0 1 1; 0 0 0 0 0 0 7];
+[@var{i}, @var{j}] = find (@var{x}, 2, "last");
+@end group
+@end example
+
+@noindent
+ここでは@samp{@var{x}, 2,
+"last"}は@code{find}の入力引数を構成するカンマ区切りリストです。@code{find}はカンマ区切りリストの出力引数をリターンし、それらは要素ごとにカンマ区切りリスト@samp{@var{i},
+@var{j}}に割り当てられます。
+
+カンマ区切りリストが使用される他の例としては、@code{[]}による新たな配列の作成(@ref{Matrices}を参照)や、@code{@{@}}によるセル配列の作成(@ref{Basic
+Usage of Cell Arrays}を参照)があります。 
+
+@example
+@group
+a = [1, 2, 3, 4];
+c = @{4, 5, 6, 7@};
+@end group
+@end example
+
+@noindent
+この場合は@samp{1, 2, 3, 4}と@samp{4, 5, 6, 7}の両方がカンマ区切りリストです。
+
+カンマ区切りリストはユーザーが直接扱うことはできません。しかし構造体配列とセル配列はどちらもカンマ区切りリストに変換できるので、明示的にカンマ区切りリストを記述するかわりに使用することができます。この機能は、以降のサブセクションで示すように、有用な場面が多数あります。
+
+@menu
+* Comma Separated Lists Generated from Cell Arrays::
+* Comma Separated Lists Generated from Structure Arrays::  
+@end menu
+
+@node Comma Separated Lists Generated from Cell Arrays
+@subsection Comma Separated Lists Generated from Cell Arrays
+
+これまで示したように(@ref{Indexing Cell
+Arrays}を参照)、セル配列は@code{@{}および@code{@}}演算子でカンマ区切りリストに抽出できます。このリストを@code{[}と@code{]}で囲うことにより、配列に連結できます。たとえば:
+
+@example
+@group
+a = @{1, [2, 3], 4, 5, 6@};
+b = [a@{1:4@}]
+     @result{} b =
+         1   2   3   4   5
+@end group
+@end example
+
+同様に@code{@{@}}で選択されたセル要素を含む、新たなセル配列を作成することができます。以下の例で示すように、リストを@samp{@{}と@samp{@}}で囲えば、新しいセル配列が作成されます:
+
+@example
+@group
+a = @{1, rand(2, 2), "three"@};
+b = @{ a@{ [1, 3] @} @}
+     @result{} b =
+         @{
+           [1,1] =  1
+           [1,2] = three
+         @}
+@end group
+@end example
+
+さらに(@code{@{@}}によりアクセスされる)セル要素を、直接関数に渡すことができます。セル配列の要素リストは、あたかもその要素を引数として呼び出したかのように、関数の引数として渡すことができます。以下の例の2つの@code{printf}呼び出しは等価ですが、後者はよりシンプルで、任意のサイズのセル配列を処理できます:
+
+@example
+@group
+c = @{"GNU", "Octave", "is", "Free", "Software"@};
+printf ("%s ", c@{1@}, c@{2@}, c@{3@}, c@{4@}, c@{5@});
+     @print{} GNU Octave is Free Software 
+printf ("%s ", c@{:@});
+     @print{} GNU Octave is Free Software 
+@end group
+@end example
+
+代入の左辺で使用する場合、@code{@{@}}で生成されたカンマ区切りリストに代入できます。以下は例です 
+
+@example
+@group
+in@{1@} = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+in@{2@} = inf;
+in@{3@} = "last";
+in@{4@} = "first";
+out = cell (4, 1);
+[out@{1:3@}] = find (in@{1 : 3@});
+[out@{4:6@}] = find (in@{[1, 2, 4]@})
+     @result{} out =
+        @{
+          [1,1] = 1
+          [2,1] = 9
+          [3,1] = 90
+          [4,1] = 1
+          [3,1] = 1
+          [4,1] = 10
+        @}
+@end group
+@end example
+
+
+@node Comma Separated Lists Generated from Structure Arrays
+@subsection Comma Separated Lists Generated from Structure Arrays
+同様に構造体配列もカンマ区切りリストの生成に使用できます。これは構造体配列の1つのフィールドをアドレッシングすることにより行われます。たとえば:
+
+@example
+@group
+x = ceil (randn (10, 1)); 
+in = struct ("call1", @{x, 3, "last"@}, 
+             "call2", @{x, inf, "first"@});
+out = struct ("call1", cell (2, 1), "call2", cell (2, 1));
+[out.call1] = find (in.call1);
+[out.call2] = find (in.call2);
+@end group
+@end example

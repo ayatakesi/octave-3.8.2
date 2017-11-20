@@ -1,0 +1,3386 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-08-13 07:37+0000\n"
+"PO-Revision-Date: 2017-08-27 19:59+0900\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Ayanokoji Takesi <ayanokoji.takesi@gmail.com>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: chapter
+#: container.texi:21 container.texi:22
+#, no-wrap
+msgid "Data Containers"
+msgstr "Data Containers"
+
+#. type: cindex
+#: container.texi:23
+#, no-wrap
+msgid "containers"
+msgstr "containers"
+
+#. type: Plain text
+#: container.texi:31
+msgid ""
+"Octave includes support for two different mechanisms to contain arbitrary "
+"data types in the same variable.  Structures, which are C-like, and are "
+"indexed with named fields, and cell arrays, where each element of the array "
+"can have a different data type and or shape.  Multiple input arguments and "
+"return values of functions are organized as another data container, the "
+"comma separated list."
+msgstr "Octaveには、任意のデータ型を同じ変数に含めるために、2つの異なるメカニズムをサポートします。Cスタイルの構造体は名前付きフィールドでインデクスされ、セル配列は配列の各要素が異なるデータ型と形状をもつことができます。関数の複数の入力引数やリターン値は、カンマ区切りリストという他のデータ型により形成されます。"
+
+#. type: menuentry
+#: container.texi:36
+msgid "Structures::"
+msgstr "Structures::"
+
+#. type: menuentry
+#: container.texi:36
+msgid "Cell Arrays::"
+msgstr "Cell Arrays::"
+
+#. type: section
+#: container.texi:36 container.texi:1490 container.texi:1491
+#, no-wrap
+msgid "Comma Separated Lists"
+msgstr "Comma Separated Lists"
+
+#. type: section
+#: container.texi:38 container.texi:39
+#, no-wrap
+msgid "Structures"
+msgstr "Structures"
+
+#. type: cindex
+#: container.texi:40
+#, no-wrap
+msgid "structures"
+msgstr "structures"
+
+#. type: cindex
+#: container.texi:41
+#, no-wrap
+msgid "data structures"
+msgstr "data structures"
+
+#. type: Plain text
+#: container.texi:46
+msgid ""
+"Octave includes support for organizing data in structures.  The current "
+"implementation uses an associative array with indices limited to strings, "
+"but the syntax is more like C-style structures."
+msgstr "Octaveには構造体内のデータを組織化するためのサポートが含まれます。現在の実装は文字列によるインデクスに限定された連想配列を使用しますが、Cスタイルの構造体に類似した構文です。"
+
+#. type: menuentry
+#: container.texi:53
+msgid "Basic Usage and Examples::"
+msgstr "Basic Usage and Examples::"
+
+#. type: menuentry
+#: container.texi:53
+msgid "Structure Arrays::"
+msgstr "Structure Arrays::"
+
+#. type: menuentry
+#: container.texi:53
+msgid "Creating Structures::"
+msgstr "Creating Structures::"
+
+#. type: menuentry
+#: container.texi:53
+msgid "Manipulating Structures::"
+msgstr "Manipulating Structures::"
+
+#. type: subsection
+#: container.texi:53 container.texi:852 container.texi:853
+#, no-wrap
+msgid "Processing Data in Structures"
+msgstr "Processing Data in Structures"
+
+#. type: subsection
+#: container.texi:55 container.texi:56
+#, no-wrap
+msgid "Basic Usage and Examples"
+msgstr "Basic Usage and Examples"
+
+#. type: Plain text
+#: container.texi:59
+msgid "Here are some examples of using data structures in Octave."
+msgstr "以下はOctaveでデータ構造体を使用する例です。"
+
+#. type: Plain text
+#: container.texi:62
+msgid ""
+"Elements of structures can be of any value type.  For example, the three "
+"expressions"
+msgstr "構造体の要素には任意の値型を使用できます。たとえば"
+
+#. type: group
+#: container.texi:68
+#, no-wrap
+msgid ""
+"x.a = 1;\n"
+"x.b = [1, 2; 3, 4];\n"
+"x.c = \"string\";\n"
+msgstr ""
+"x.a = 1;\n"
+"x.b = [1, 2; 3, 4];\n"
+"x.c = \"string\";\n"
+
+#. type: opindex
+#: container.texi:71
+#, no-wrap
+msgid "."
+msgstr "."
+
+#. type: Plain text
+#: container.texi:77
+msgid ""
+"create a structure with three elements.  The @samp{.} character separates "
+"the structure name from the field name and indicates to Octave that this "
+"variable is a structure.  To print the value of the structure you can type "
+"its name, just as for any other variable:"
+msgstr "この3つの式は、要素が3つの構造体を作成します。文字@samp{.}は構造体名とィールド名を区別し、Octaveにたいしてこれが構造体であることを示します。他の変数と同様に構造体の名前をタイプすれば、構造体の値をプリントできます。"
+
+#. type: group
+#: container.texi:85
+#, no-wrap
+msgid ""
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          a = 1\n"
+"          b =\n"
+"\n"
+msgstr ""
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          a = 1\n"
+"          b =\n"
+"\n"
+
+#. type: group
+#: container.texi:88 container.texi:109
+#, no-wrap
+msgid ""
+"            1  2\n"
+"            3  4\n"
+"\n"
+msgstr ""
+"            1  2\n"
+"            3  4\n"
+"\n"
+
+#. type: group
+#: container.texi:91 container.texi:112 container.texi:140
+#, no-wrap
+msgid ""
+"          c = string\n"
+"        @}\n"
+msgstr ""
+"          c = string\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:96
+msgid "Note that Octave may print the elements in any order."
+msgstr "Octaveは任意の順序で要素をプリントすることに注意してください。"
+
+#. type: Plain text
+#: container.texi:98
+msgid "Structures may be copied just like any other variable:"
+msgstr "他の変数と同じように、構造体をコピーできます。"
+
+#. type: group
+#: container.texi:106
+#, no-wrap
+msgid ""
+"y = x\n"
+"     @result{} y =\n"
+"        @{\n"
+"          a = 1\n"
+"          b =\n"
+"\n"
+msgstr ""
+"y = x\n"
+"     @result{} y =\n"
+"        @{\n"
+"          a = 1\n"
+"          b =\n"
+"\n"
+
+#. type: Plain text
+#: container.texi:119
+msgid ""
+"Since structures are themselves values, structure elements may reference "
+"other structures.  The following statements change the value of the element "
+"@code{b} of the structure @code{x} to be a data structure containing the "
+"single element @code{d}, which has a value of 3."
+msgstr "構造体はそれ自体が値なので、構造体の要素が他の構造体を参照することもあります。以下の命令文は構造体@code{x}の要素@code{b}の値を、値が3であるような1つの要素@code{d}をもつデータ構造体に変更します。"
+
+#. type: group
+#: container.texi:128
+#, no-wrap
+msgid ""
+"x.b.d = 3;\n"
+"x.b\n"
+"     @result{} ans =\n"
+"        @{\n"
+"          d = 3\n"
+"        @}\n"
+"\n"
+msgstr ""
+"x.b.d = 3;\n"
+"x.b\n"
+"     @result{} ans =\n"
+"        @{\n"
+"          d = 3\n"
+"        @}\n"
+"\n"
+
+#. type: group
+#: container.texi:137
+#, no-wrap
+msgid ""
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          a = 1\n"
+"          b =\n"
+"          @{\n"
+"            d = 3\n"
+"          @}\n"
+"\n"
+msgstr ""
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          a = 1\n"
+"          b =\n"
+"          @{\n"
+"            d = 3\n"
+"          @}\n"
+"\n"
+
+#. type: Plain text
+#: container.texi:145
+msgid ""
+"Note that when Octave prints the value of a structure that contains other "
+"structures, only a few levels are displayed.  For example:"
+msgstr "構造体が他の構造体を含むとき、Octaveはそれらの2、3レベルだけをプリントすることに注意してください。たとえば:"
+
+#. type: group
+#: container.texi:157
+#, no-wrap
+msgid ""
+"a.b.c.d.e = 1;\n"
+"a\n"
+"     @result{} a =\n"
+"        @{\n"
+"          b =\n"
+"          @{\n"
+"            c =\n"
+"            @{\n"
+"              1x1 struct array containing the fields:\n"
+"\n"
+msgstr ""
+"a.b.c.d.e = 1;\n"
+"a\n"
+"     @result{} a =\n"
+"        @{\n"
+"          b =\n"
+"          @{\n"
+"            c =\n"
+"            @{\n"
+"              1x1 struct array containing the fields:\n"
+"\n"
+
+#. type: group
+#: container.texi:162
+#, no-wrap
+msgid ""
+"              d: 1x1 struct\n"
+"            @}\n"
+"          @}\n"
+"        @}\n"
+msgstr ""
+"              d: 1x1 struct\n"
+"            @}\n"
+"          @}\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:171
+msgid ""
+"This prevents long and confusing output from large deeply nested "
+"structures.  The number of levels to print for nested structures may be set "
+"with the function @code{struct_levels_to_print}, and the function "
+"@code{print_struct_array_contents} may be used to enable printing of the "
+"contents of structure arrays."
+msgstr "これは、大きくネストが深い構造体による、長く混乱した出力を抑制するためです。ネストされた構造体にたいしてプリントするレベル数は、関数@code{struct_levels_to_print}でセットすることができ、構造体配列の内容のプリントを有効にするには関数@code{print_struct_array_contents}が使用されます。"
+
+#. type: anchor{#1}
+#: container.texi:174
+msgid "XREFstruct_levels_to_print"
+msgstr "XREFstruct_levels_to_print"
+
+#. type: deftypefn
+#: container.texi:174
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} struct_levels_to_print ()"
+msgstr "{Built-in Function} {@var{val} =} struct_levels_to_print ()"
+
+#. type: deftypefnx
+#: container.texi:175
+#, no-wrap
+msgid "{Built-in Function} {@var{old_val} =} struct_levels_to_print (@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} struct_levels_to_print (@var{new_val})"
+
+#. type: deftypefnx
+#: container.texi:176
+#, no-wrap
+msgid "{Built-in Function} {} struct_levels_to_print (@var{new_val}, \"local\")"
+msgstr "{Built-in Function} {} struct_levels_to_print (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: container.texi:179
+msgid ""
+"Query or set the internal variable that specifies the number of structure "
+"levels to display."
+msgstr "表示する構造体レベル数を指定する内部変数にたいして、問い合わせまたはセットをします。"
+
+#. type: deftypefn
+#: container.texi:184
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFprint_struct_array_contents,,print_struct_array_contents}}"
+msgstr ""
+"関数の内部で@qcode{\"local\"}オプションとともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFprint_struct_array_contents,,print_struct_array_contents}}"
+
+#. type: anchor{#1}
+#: container.texi:189
+msgid "XREFprint_struct_array_contents"
+msgstr "XREFprint_struct_array_contents"
+
+#. type: deftypefn
+#: container.texi:189
+#, no-wrap
+msgid "{Built-in Function} {@var{val} =} print_struct_array_contents ()"
+msgstr "{Built-in Function} {@var{val} =} print_struct_array_contents ()"
+
+#. type: deftypefnx
+#: container.texi:190
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{old_val} =} print_struct_array_contents "
+"(@var{new_val})"
+msgstr "{Built-in Function} {@var{old_val} =} print_struct_array_contents (@var{new_val})"
+
+#. type: deftypefnx
+#: container.texi:191
+#, no-wrap
+msgid ""
+"{Built-in Function} {} print_struct_array_contents (@var{new_val}, "
+"\"local\")"
+msgstr "{Built-in Function} {} print_struct_array_contents (@var{new_val}, \"local\")"
+
+#. type: deftypefn
+#: container.texi:194
+msgid ""
+"Query or set the internal variable that specifies whether to print struct "
+"array contents."
+msgstr "構造体配列の内容をプリントするかどうかを指定する内部変数にたいして、問い合わせまたはセットを行います。"
+
+#. type: deftypefn
+#: container.texi:199
+msgid ""
+"If true, values of struct array elements are printed.  This variable does "
+"not affect scalar structures whose elements are always printed.  In both "
+"cases, however, printing will be limited to the number of levels specified "
+"by @var{struct_levels_to_print}."
+msgstr "trueの場合、構造体配列の要素はプリントされます。この変数は、要素が常にプリントされるスカラー構造体には影響しません。しかしどちらの場合も、プリントされるのは@var{struct_levels_to_print}で指定されるレベル数に制限されます。"
+
+#. type: deftypefn
+#: container.texi:204
+msgid ""
+"When called from inside a function with the @qcode{\"local\"} option, the "
+"variable is changed locally for the function and any subroutines it calls.  "
+"The original variable value is restored when exiting the function.  "
+"@seealso{@ref{XREFstruct_levels_to_print,,struct_levels_to_print}}"
+msgstr ""
+"関数の内部で@qcode{\"local\"}とともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするときに、変数の元の値がリストアされます。\n"
+"@seealso{@ref{XREFstruct_levels_to_print,,struct_levels_to_print}}"
+
+#. type: Plain text
+#: container.texi:210
+msgid ""
+"Functions can return structures.  For example, the following function "
+"separates the real and complex parts of a matrix and stores them in two "
+"elements of the same structure variable."
+msgstr "関数は構造体をリターンすることができます。たとえば、以下の関数はマトリクスの実数部と複素部を分割して、同じ構造体変数の2つの要素に格納します。"
+
+#. type: group
+#: container.texi:217
+#, no-wrap
+msgid ""
+"function y = f (x)\n"
+"  y.re = real (x);\n"
+"  y.im = imag (x);\n"
+"endfunction\n"
+msgstr ""
+"function y = f (x)\n"
+"  y.re = real (x);\n"
+"  y.im = imag (x);\n"
+"endfunction\n"
+
+#. type: Plain text
+#: container.texi:223
+msgid ""
+"When called with a complex-valued argument, @code{f} returns the data "
+"structure containing the real and imaginary parts of the original function "
+"argument."
+msgstr "複素数値を引数に呼び出された場合、@code{f}は元の関数引数の実数部と虚数部を含むデータ構造体をリターンします。"
+
+#. type: group
+#: container.texi:230
+#, no-wrap
+msgid ""
+"f (rand (2) + rand (2) * I)\n"
+"     @result{} ans =\n"
+"        @{\n"
+"          im =\n"
+"\n"
+msgstr ""
+"f (rand (2) + rand (2) * I)\n"
+"     @result{} ans =\n"
+"        @{\n"
+"          im =\n"
+"\n"
+
+#. type: group
+#: container.texi:233
+#, no-wrap
+msgid ""
+"            0.26475  0.14828\n"
+"            0.18436  0.83669\n"
+"\n"
+msgstr ""
+"            0.26475  0.14828\n"
+"            0.18436  0.83669\n"
+"\n"
+
+#. type: group
+#: container.texi:235
+#, no-wrap
+msgid ""
+"          re =\n"
+"\n"
+msgstr "          re =\n\n"
+
+#. type: group
+#: container.texi:238
+#, no-wrap
+msgid ""
+"            0.040239  0.242160\n"
+"            0.238081  0.402523\n"
+"\n"
+msgstr ""
+"            0.040239  0.242160\n"
+"            0.238081  0.402523\n"
+"\n"
+
+#. type: example
+#: container.texi:240 container.texi:268
+#, no-wrap
+msgid "        @}\n"
+msgstr "        @}\n"
+
+#. type: Plain text
+#: container.texi:245
+msgid ""
+"Function return lists can include structure elements, and they may be "
+"indexed like any other variable.  For example:"
+msgstr "リストをリターンする関数には構造体要素を含めることができ、それらは他の変数と同じようにインデクスされます。たとえば:"
+
+#. type: example
+#: container.texi:252
+#, no-wrap
+msgid ""
+"[ x.u, x.s(2:3,2:3), x.v ] = svd ([1, 2; 3, 4]);\n"
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          u =\n"
+"\n"
+msgstr ""
+"[ x.u, x.s(2:3,2:3), x.v ] = svd ([1, 2; 3, 4]);\n"
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          u =\n"
+"\n"
+
+#. type: example
+#: container.texi:255
+#, no-wrap
+msgid ""
+"            -0.40455  -0.91451\n"
+"            -0.91451   0.40455\n"
+"\n"
+msgstr ""
+"            -0.40455  -0.91451\n"
+"            -0.91451   0.40455\n"
+"\n"
+
+#. type: example
+#: container.texi:257
+#, no-wrap
+msgid ""
+"          s =\n"
+"\n"
+msgstr "          s =\n\n"
+
+#. type: example
+#: container.texi:261
+#, no-wrap
+msgid ""
+"             0.00000   0.00000   0.00000\n"
+"             0.00000   5.46499   0.00000\n"
+"             0.00000   0.00000   0.36597\n"
+"\n"
+msgstr ""
+"             0.00000   0.00000   0.00000\n"
+"             0.00000   5.46499   0.00000\n"
+"             0.00000   0.00000   0.36597\n"
+"\n"
+
+#. type: example
+#: container.texi:263
+#, no-wrap
+msgid ""
+"          v =\n"
+"\n"
+msgstr "          v =\n\n"
+
+#. type: example
+#: container.texi:266
+#, no-wrap
+msgid ""
+"            -0.57605   0.81742\n"
+"            -0.81742  -0.57605\n"
+"\n"
+msgstr ""
+"            -0.57605   0.81742\n"
+"            -0.81742  -0.57605\n"
+"\n"
+
+#. type: Plain text
+#: container.texi:273
+msgid ""
+"It is also possible to cycle through all the elements of a structure in a "
+"loop, using a special form of the @code{for} statement (@pxref{Looping Over "
+"Structure Elements})."
+msgstr "@code{for}命令の特別フォームを使用して、構造体のすべての要素を巡回することも可能です(@ref{Looping Over Structure Elements}を参照)。"
+
+#. type: subsection
+#: container.texi:274 container.texi:275
+#, no-wrap
+msgid "Structure Arrays"
+msgstr "Structure Arrays"
+
+#. type: Plain text
+#: container.texi:282
+msgid ""
+"A structure array is a particular instance of a structure, where each of the "
+"fields of the structure is represented by a cell array.  Each of these cell "
+"arrays has the same dimensions.  Conceptually, a structure array can also be "
+"seen as an array of structures with identical fields.  An example of the "
+"creation of a structure array is"
+msgstr ""
+"構造体配列とは、構造体の各フィールドがセル配列で表される、構造体固有のインスタンスです。\n"
+"これらの各セル配列は同じ次元をもちます。概念上、構造体配列は同じフィールドをもつ構造体の配列と捉えることもできます。以下は構造体配列を作成する例です"
+
+#. type: group
+#: container.texi:289
+#, no-wrap
+msgid ""
+"x(1).a = \"string1\";\n"
+"x(2).a = \"string2\";\n"
+"x(1).b = 1;\n"
+"x(2).b = 2;\n"
+msgstr ""
+"x(1).a = \"string1\";\n"
+"x(2).a = \"string2\";\n"
+"x(1).b = 1;\n"
+"x(2).b = 2;\n"
+
+#. type: Plain text
+#: container.texi:297
+msgid ""
+"which creates a 2-by-1 structure array with two fields.  Another way to "
+"create a structure array is with the @code{struct} function (@pxref{Creating "
+"Structures}).  As previously, to print the value of the structure array, you "
+"can type its name:"
+msgstr "これは2つのフィールドをもつ2×1の構造体配列を作成しています。構造体配列を作成する別の方法として、@code{struct}関数があります(@ref{Creating Structures}を参照)。すでに示したように、名前をタイプすることにより、構造体配列の値をプリントできます。"
+
+#. type: group
+#: container.texi:304
+#, no-wrap
+msgid ""
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          1x2 struct array containing the fields:\n"
+"\n"
+msgstr ""
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          1x2 struct array containing the fields:\n"
+"\n"
+
+#. type: group
+#: container.texi:308
+#, no-wrap
+msgid ""
+"            a\n"
+"            b\n"
+"        @}  \n"
+msgstr ""
+"            a\n"
+"            b\n"
+"        @}  \n"
+
+#. type: Plain text
+#: container.texi:314
+msgid ""
+"Individual elements of the structure array can be returned by indexing the "
+"variable like @code{@var{x}(1)}, which returns a structure with two fields:"
+msgstr "構造体配列の各要素は@code{@var{x}(1)}のようにインデクス付された変数でリターンされ、この変数は2つのフィールドをもつ構造体をリターンします:"
+
+#. type: group
+#: container.texi:323
+#, no-wrap
+msgid ""
+"x(1)\n"
+"     @result{} ans =\n"
+"        @{\n"
+"          a = string1\n"
+"          b =  1\n"
+"        @}\n"
+msgstr ""
+"x(1)\n"
+"     @result{} ans =\n"
+"        @{\n"
+"          a = string1\n"
+"          b =  1\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:329
+msgid ""
+"Furthermore, the structure array can return a comma separated list of field "
+"values (@pxref{Comma Separated Lists}), if indexed by one of its own field "
+"names.  For example:"
+msgstr "さらに構造体配列は、それがフィールド名でインデクス付けされている場合は、フィールド値のカンマ区切りリストをリターンします(@ref{Comma Separated Lists}を参照)。"
+
+#. type: group
+#: container.texi:336
+#, no-wrap
+msgid ""
+"x.a\n"
+"     @result{}\n"
+"        ans = string1\n"
+"        ans = string2\n"
+msgstr ""
+"x.a\n"
+"     @result{}\n"
+"        ans = string1\n"
+"        ans = string2\n"
+
+#. type: Plain text
+#: container.texi:341
+msgid ""
+"Here is another example, using this comma separated list on the left-hand "
+"side of an assignment:"
+msgstr "以下は、このカンマ区切りリストを割り当ての左辺で使用する例です。"
+
+#. type: group
+#: container.texi:349
+#, no-wrap
+msgid ""
+"[x.a] = deal (\"new string1\", \"new string2\");\n"
+" x(1).a\n"
+"     @result{} ans = new string1\n"
+" x(2).a\n"
+"     @result{} ans = new string2\n"
+msgstr ""
+"[x.a] = deal (\"new string1\", \"new string2\");\n"
+" x(1).a\n"
+"     @result{} ans = new string1\n"
+" x(2).a\n"
+"     @result{} ans = new string2\n"
+
+#. type: Plain text
+#: container.texi:354
+msgid ""
+"Just as for numerical arrays, it is possible to use vectors as indices "
+"(@pxref{Index Expressions}):"
+msgstr "数値配列に限られますが、インデクスにベクターを使用できます(@ref{Index Expressions}を参照):"
+
+#. type: group
+#: container.texi:365
+#, no-wrap
+msgid ""
+"x(3:4) = x(1:2);\n"
+"[x([1,3]).a] = deal (\"other string1\", \"other string2\");\n"
+"x.a\n"
+"     @result{}\n"
+"        ans = other string1\n"
+"        ans = new string2\n"
+"        ans = other string2\n"
+"        ans = new string2\n"
+msgstr ""
+"x(3:4) = x(1:2);\n"
+"[x([1,3]).a] = deal (\"other string1\", \"other string2\");\n"
+"x.a\n"
+"     @result{}\n"
+"        ans = other string1\n"
+"        ans = new string2\n"
+"        ans = other string2\n"
+"        ans = new string2\n"
+
+#. type: Plain text
+#: container.texi:370
+msgid ""
+"The function @code{size} will return the size of the structure.  For the "
+"example above"
+msgstr "関数@code{size}は構造体のサイズをリターンします。上記の例にたいしては以下のようになります"
+
+#. type: group
+#: container.texi:375
+#, no-wrap
+msgid ""
+"size (x)\n"
+"     @result{} ans =\n"
+"\n"
+msgstr ""
+"size (x)\n"
+"     @result{} ans =\n"
+"\n"
+
+#. type: group
+#: container.texi:377
+#, no-wrap
+msgid "          1   4\n"
+msgstr "          1   4\n"
+
+#. type: Plain text
+#: container.texi:383
+msgid ""
+"Elements can be deleted from a structure array in a similar manner to a "
+"numerical array, by assigning the elements to an empty matrix.  For example"
+msgstr "構造体配列の要素は、要素に空マトリクスを割り当てることにより、数値配列と同様のやり方で削除できます。たとえば"
+
+#. type: group
+#: container.texi:391
+#, no-wrap
+msgid ""
+"in = struct (\"call1\", @{x, Inf, \"last\"@}, \n"
+"             \"call2\", @{x, Inf, \"first\"@})\n"
+"     @result{} in =\n"
+"        @{\n"
+"          1x3 struct array containing the fields:\n"
+"\n"
+msgstr ""
+"in = struct (\"call1\", @{x, Inf, \"last\"@}, \n"
+"             \"call2\", @{x, Inf, \"first\"@})\n"
+"     @result{} in =\n"
+"        @{\n"
+"          1x3 struct array containing the fields:\n"
+"\n"
+
+#. type: group
+#: container.texi:395
+#, no-wrap
+msgid ""
+"            call1\n"
+"            call2\n"
+"        @}\n"
+"\n"
+msgstr ""
+"            call1\n"
+"            call2\n"
+"        @}\n"
+"\n"
+
+#. type: group
+#: container.texi:401
+#, no-wrap
+msgid ""
+"in(1) = [];\n"
+"in.call1\n"
+"     @result{}\n"
+"       ans = Inf\n"
+"       ans = last\n"
+msgstr ""
+"in(1) = [];\n"
+"in.call1\n"
+"     @result{}\n"
+"       ans = Inf\n"
+"       ans = last\n"
+
+#. type: subsection
+#: container.texi:404 container.texi:405
+#, no-wrap
+msgid "Creating Structures"
+msgstr "Creating Structures"
+
+#. type: cindex
+#: container.texi:406
+#, no-wrap
+msgid "dynamic naming"
+msgstr "dynamic naming"
+
+#. type: Plain text
+#: container.texi:411
+msgid ""
+"Besides the index operator @qcode{\".\"}, Octave can use dynamic naming "
+"@qcode{\"(var)\"} or the @code{struct} function to create structures.  "
+"Dynamic naming uses the string value of a variable as the field name.  For "
+"example:"
+msgstr "インデクス演算子@qcode{\".\"}とは別に、octaveでは動的名前付け@qcode{\"(var)\"}、または@code{struct}を使用して構造体を作成できます。動的名前付けでは、変数の文字列値をフィールド名に使用します。たとえば:"
+
+#. type: group
+#: container.texi:423
+#, no-wrap
+msgid ""
+"a = \"field2\";\n"
+"x.a = 1;\n"
+"x.(a) = 2;\n"
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          a =  1\n"
+"          field2 =  2\n"
+"        @}\n"
+msgstr ""
+"a = \"field2\";\n"
+"x.a = 1;\n"
+"x.(a) = 2;\n"
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          a =  1\n"
+"          field2 =  2\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:429
+msgid ""
+"Dynamic indexing also allows you to use arbitrary strings, not merely valid "
+"Octave identifiers (note that this does not work on @sc{matlab}):"
+msgstr "動的インデクス付けでは、Octaveで有効な識別子だけでなく、任意の文字列を使用できます(これは@sc{matlab}では機能しないことに注意してください):"
+
+#. type: group
+#: container.texi:441
+#, no-wrap
+msgid ""
+"a = \"long field with spaces (and funny char$)\";\n"
+"x.a = 1;\n"
+"x.(a) = 2;\n"
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          a =  1\n"
+"          long field with spaces (and funny char$) =  2\n"
+"        @}\n"
+msgstr ""
+"a = \"long field with spaces (and funny char$)\";\n"
+"x.a = 1;\n"
+"x.(a) = 2;\n"
+"x\n"
+"     @result{} x =\n"
+"        @{\n"
+"          a =  1\n"
+"          long field with spaces (and funny char$) =  2\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:447
+msgid ""
+"The warning id @code{Octave:matlab-incompatible} can be enabled to warn "
+"about this usage.  @xref{XREFwarning_ids,,warning_ids}."
+msgstr "警告IDの@code{Octave:matlab-incompatible}によい、この使用についての警告を有効にできます。@ref{XREFwarning_ids,,warning_ids}を参照してください。"
+
+#. type: Plain text
+#: container.texi:450
+msgid ""
+"More realistically, all of the functions that operate on strings can be used "
+"to build the correct field name before it is entered into the data "
+"structure."
+msgstr "実際には、データ構造体の正確なフィールド名を構築するときに、文字列を操作するすべての関数を使用できます。"
+
+#. type: group
+#: container.texi:465
+#, no-wrap
+msgid ""
+"names = [\"Bill\"; \"Mary\"; \"John\"];\n"
+"ages  = [37; 26; 31];\n"
+"for i = 1:rows (names)\n"
+"  database.(names(i,:)) = ages(i);\n"
+"endfor\n"
+"database\n"
+"     @result{} database =\n"
+"        @{\n"
+"          Bill =  37\n"
+"          Mary =  26\n"
+"          John =  31\n"
+"        @}\n"
+msgstr ""
+"names = [\"Bill\"; \"Mary\"; \"John\"];\n"
+"ages  = [37; 26; 31];\n"
+"for i = 1:rows (names)\n"
+"  database.(names(i,:)) = ages(i);\n"
+"endfor\n"
+"database\n"
+"     @result{} database =\n"
+"        @{\n"
+"          Bill =  37\n"
+"          Mary =  26\n"
+"          John =  31\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:473
+msgid ""
+"The third way to create structures is the @code{struct} command.  "
+"@code{struct} takes pairs of arguments, where the first argument in the pair "
+"is the fieldname to include in the structure and the second is a scalar or "
+"cell array, representing the values to include in the structure or structure "
+"array.  For example:"
+msgstr "構造体を作成する3つ目の方法は、@code{struct}コマンドです。@code{struct}は1対の引数をとります。1つ目の引数は構造体内に含めるためのfieldnameで、2つ目はスカラーまたはセル配列です。たとえば:"
+
+#. type: group
+#: container.texi:482
+#, no-wrap
+msgid ""
+"struct (\"field1\", 1, \"field2\", 2)\n"
+"@result{} ans =\n"
+"      @{\n"
+"        field1 =  1\n"
+"        field2 =  2\n"
+"      @}\n"
+msgstr ""
+"struct (\"field1\", 1, \"field2\", 2)\n"
+"@result{} ans =\n"
+"      @{\n"
+"        field1 =  1\n"
+"        field2 =  2\n"
+"      @}\n"
+
+#. type: Plain text
+#: container.texi:488
+msgid ""
+"If the values passed to @code{struct} are a mix of scalar and cell arrays, "
+"then the scalar arguments are expanded to create a structure array with a "
+"consistent dimension.  For example:"
+msgstr "@code{struct}にスカラーとセル配列が混交された値が渡された場合は、矛盾しない次元の構造体配列を作成するようにスカラー引数が展開されます。たとえば:"
+
+#. type: group
+#: container.texi:497
+#, no-wrap
+msgid ""
+"s = struct (\"field1\", @{1, \"one\"@}, \"field2\", @{2, \"two\"@},\n"
+"        \"field3\", 3);\n"
+"s.field1\n"
+"     @result{} \n"
+"        ans =  1\n"
+"        ans = one\n"
+"\n"
+msgstr ""
+"s = struct (\"field1\", @{1, \"one\"@}, \"field2\", @{2, \"two\"@},\n"
+"        \"field3\", 3);\n"
+"s.field1\n"
+"     @result{} \n"
+"        ans =  1\n"
+"        ans = one\n"
+"\n"
+
+#. type: group
+#: container.texi:502
+#, no-wrap
+msgid ""
+"s.field2\n"
+"     @result{}\n"
+"        ans =  2\n"
+"        ans = two\n"
+"\n"
+msgstr ""
+"s.field2\n"
+"     @result{}\n"
+"        ans =  2\n"
+"        ans = two\n"
+"\n"
+
+#. type: group
+#: container.texi:507
+#, no-wrap
+msgid ""
+"s.field3\n"
+"     @result{}\n"
+"        ans =  3\n"
+"        ans =  3\n"
+msgstr ""
+"s.field3\n"
+"     @result{}\n"
+"        ans =  3\n"
+"        ans =  3\n"
+
+#. type: Plain text
+#: container.texi:513
+msgid ""
+"If you want to create a struct which contains a cell array as an individual "
+"field, you must wrap it in another cell array as shown in the following "
+"example:"
+msgstr "セル配列を特定のフィールドに含む構造体を作成したい場合は、以下の例のようにそれを別のセル配列でラップしなければなりません:"
+
+#. type: group
+#: container.texi:520
+#, no-wrap
+msgid ""
+"struct (\"field1\", @{@{1, \"one\"@}@}, \"field2\", 2)\n"
+"     @result{} ans =\n"
+"        @{\n"
+"          field1 =\n"
+"\n"
+msgstr ""
+"struct (\"field1\", @{@{1, \"one\"@}@}, \"field2\", 2)\n"
+"     @result{} ans =\n"
+"        @{\n"
+"          field1 =\n"
+"\n"
+
+#. type: group
+#: container.texi:525
+#, no-wrap
+msgid ""
+"        @{\n"
+"          [1,1] =  1\n"
+"          [1,2] = one\n"
+"        @}\n"
+"\n"
+msgstr ""
+"        @{\n"
+"          [1,1] =  1\n"
+"          [1,2] = one\n"
+"        @}\n"
+"\n"
+
+#. type: group
+#: container.texi:528
+#, no-wrap
+msgid ""
+"          field2 =  2\n"
+"        @}\n"
+msgstr ""
+"          field2 =  2\n"
+"        @}\n"
+
+#. type: anchor{#1}
+#: container.texi:533
+msgid "XREFstruct"
+msgstr "XREFstruct"
+
+#. type: deftypefn
+#: container.texi:533
+#, no-wrap
+msgid "{Built-in Function} {@var{s} =} struct ()"
+msgstr "{Built-in Function} {@var{s} =} struct ()"
+
+#. type: deftypefnx
+#: container.texi:534
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{s} =} struct (@var{field1}, @var{value1}, "
+"@var{field2}, @var{value2}, @dots{})"
+msgstr "{Built-in Function} {@var{s} =} struct (@var{field1}, @var{value1}, @var{field2}, @var{value2}, @dots{})"
+
+#. type: deftypefnx
+#: container.texi:535
+#, no-wrap
+msgid "{Built-in Function} {@var{s} =} struct (@var{obj})"
+msgstr "{Built-in Function} {@var{s} =} struct (@var{obj})"
+
+#. type: deftypefn
+#: container.texi:541
+msgid ""
+"Create a scalar or array structure and initialize its values.  The "
+"@var{field1}, @var{field2}, @dots{} variables are strings specifying the "
+"names of the fields and the @var{value1}, @var{value2}, @dots{} variables "
+"can be of any type."
+msgstr "スカラーまたは配列の構造体を作成して、値を初期化します。変数@var{field1}、@var{field2}、@dots{}はフィールド名を指定する文字列で、変数@var{value1}、@var{value2}、@dots{}には任意の型を使用できます。"
+
+#. type: deftypefn
+#: container.texi:547
+msgid ""
+"If the values are cell arrays, create a structure array and initialize its "
+"values.  The dimensions of each cell array of values must match.  Singleton "
+"cells and non-cell values are repeated so that they fill the entire array.  "
+"If the cells are empty, create an empty structure array with the specified "
+"field names."
+msgstr "値がセル配列の場合は構造体配列を作成して、値を初期化します。値となる各セル配列の次元は一致していなければなりません。シングルトンのセルおよび非セル値は、配列全体を満たすように繰り返されます。セルが空の場合は、指定されたフィールド名の空の構造体配列が作成されます。"
+
+#. type: deftypefn
+#: container.texi:549
+msgid "If the argument is an object, return the underlying struct."
+msgstr "引数がオブジェクトの場合は、それにもとづいた構造体をリターンします。"
+
+#. type: deftypefn
+#: container.texi:552
+msgid ""
+"Observe that the syntax is optimized for struct @strong{arrays}.  Consider "
+"the following examples:"
+msgstr "構文が構造体@strong{配列}に最適化されていることに注目してください。以下の例で考えてみましょう:"
+
+#. type: group
+#: container.texi:558
+#, no-wrap
+msgid ""
+"struct (\"foo\", 1)\n"
+"  @result{} scalar structure containing the fields:\n"
+"    foo =  1\n"
+"\n"
+msgstr ""
+"struct (\"foo\", 1)\n"
+"  @result{} scalar structure containing the fields:\n"
+"    foo =  1\n"
+"\n"
+
+#. type: group
+#: container.texi:562
+#, no-wrap
+msgid ""
+"struct (\"foo\", @{@})\n"
+"  @result{} 0x0 struct array containing the fields:\n"
+"    foo\n"
+"\n"
+msgstr ""
+"struct (\"foo\", @{@})\n"
+"  @result{} 0x0 struct array containing the fields:\n"
+"    foo\n"
+"\n"
+
+#. type: group
+#: container.texi:566
+#, no-wrap
+msgid ""
+"struct (\"foo\", @{ @{@} @})\n"
+"  @result{} scalar structure containing the fields:\n"
+"    foo = @{@}(0x0)\n"
+"\n"
+msgstr ""
+"struct (\"foo\", @{ @{@} @})\n"
+"  @result{} scalar structure containing the fields:\n"
+"    foo = @{@}(0x0)\n"
+"\n"
+
+#. type: group
+#: container.texi:570
+#, no-wrap
+msgid ""
+"struct (\"foo\", @{1, 2, 3@})\n"
+"  @result{} 1x3 struct array containing the fields:\n"
+"    foo\n"
+"\n"
+msgstr ""
+"struct (\"foo\", @{1, 2, 3@})\n"
+"  @result{} 1x3 struct array containing the fields:\n"
+"    foo\n"
+"\n"
+
+#. type: deftypefn
+#: container.texi:581
+msgid ""
+"The first case is an ordinary scalar struct---one field, one value.  The "
+"second produces an empty struct array with one field and no values, since s "
+"being passed an empty cell array of struct array values.  When the value is "
+"a cell array containing a single entry, this becomes a scalar struct with "
+"that single entry as the value of the field.  That single entry happens to "
+"be an empty cell array."
+msgstr "1つ目は通常のスカラー構造体で、1つのフィールドと1つの値をもちます。2つ目は値をもたない1つのフィールドをもつ、空の構造体配列を作成します。値が1つのエントリーを含むセル配列の場合は、そのフィールドの値が単一のエントリーとなるようなスカラー構造体になります。そのような単一のエントリーは、空のセル配列にたいして発生します。"
+
+#. type: deftypefn
+#: container.texi:585
+msgid ""
+"Finally, if the value is a non-scalar cell array, then @code{struct} "
+"produces a struct @strong{array}.  "
+"@seealso{@ref{XREFcell2struct,,cell2struct}, "
+"@ref{XREFfieldnames,,fieldnames}, @ref{XREForderfields,,orderfields}, "
+"@ref{XREFgetfield,,getfield}, @ref{XREFsetfield,,setfield}, "
+"@ref{XREFrmfield,,rmfield}, @ref{XREFstructfun,,structfun}}"
+msgstr ""
+"最後に値が非スカラーのセル配列の場合、@code{struct}は構造体@strong{配列}を作成します。\n"
+"@seealso{@ref{XREFcell2struct,,cell2struct}, @ref{XREFfieldnames,,fieldnames}, @ref{XREForderfields,,orderfields}, @ref{XREFgetfield,,getfield}, @ref{XREFsetfield,,setfield}, @ref{XREFrmfield,,rmfield}, @ref{XREFstructfun,,structfun}}"
+
+#. type: Plain text
+#: container.texi:590
+msgid ""
+"The function @code{isstruct} can be used to test if an object is a structure "
+"or a structure array."
+msgstr "オブジェクトが構造体または構造体配列かをテストするのに、関数@code{isstruct}を使用してできます。"
+
+#. type: anchor{#1}
+#: container.texi:593
+msgid "XREFisstruct"
+msgstr "XREFisstruct"
+
+#. type: deftypefn
+#: container.texi:593
+#, no-wrap
+msgid "{Built-in Function} {} isstruct (@var{x})"
+msgstr "{Built-in Function} {} isstruct (@var{x})"
+
+#. type: deftypefn
+#: container.texi:596
+msgid ""
+"Return true if @var{x} is a structure or a structure array.  "
+"@seealso{@ref{XREFismatrix,,ismatrix}, @ref{XREFiscell,,iscell}, "
+"@ref{XREFisa,,isa}}"
+msgstr ""
+"@var{x}が構造体または構造体配列の場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFismatrix,,ismatrix}, @ref{XREFiscell,,iscell}, @ref{XREFisa,,isa}}"
+
+#. type: subsection
+#: container.texi:599 container.texi:600
+#, no-wrap
+msgid "Manipulating Structures"
+msgstr "Manipulating Structures"
+
+#. type: Plain text
+#: container.texi:603
+msgid ""
+"Other functions that can manipulate the fields of a structure are given "
+"below."
+msgstr "以下は、構造体のフィールドを操作する関数です。"
+
+#. type: anchor{#1}
+#: container.texi:606
+msgid "XREFnfields"
+msgstr "XREFnfields"
+
+#. type: deftypefn
+#: container.texi:606
+#, no-wrap
+msgid "{Built-in Function} {} nfields (@var{s})"
+msgstr "{Built-in Function} {} nfields (@var{s})"
+
+#. type: deftypefn
+#: container.texi:609
+msgid ""
+"Return the number of fields of the structure @var{s}.  "
+"@seealso{@ref{XREFfieldnames,,fieldnames}}"
+msgstr ""
+"構造体@var{s}のフィールド数をリターンします。\n"
+"@seealso{@ref{XREFfieldnames,,fieldnames}}"
+
+#. type: anchor{#1}
+#: container.texi:614
+msgid "XREFfieldnames"
+msgstr "XREFfieldnames"
+
+#. type: deftypefn
+#: container.texi:614
+#, no-wrap
+msgid "{Function File} {@var{names} =} fieldnames (@var{struct})"
+msgstr "{Function File} {@var{names} =} fieldnames (@var{struct})"
+
+#. type: deftypefnx
+#: container.texi:615
+#, no-wrap
+msgid "{Function File} {@var{names} =} fieldnames (@var{obj})"
+msgstr "{Function File} {@var{names} =} fieldnames (@var{obj})"
+
+#. type: deftypefnx
+#: container.texi:616
+#, no-wrap
+msgid "{Function File} {@var{names} =} fieldnames (@var{javaobj})"
+msgstr "{Function File} {@var{names} =} fieldnames (@var{javaobj})"
+
+#. type: deftypefnx
+#: container.texi:617
+#, no-wrap
+msgid "{Function File} {@var{names} =} fieldnames (\"@var{jclassname}\")"
+msgstr "{Function File} {@var{names} =} fieldnames (\"@var{jclassname}\")"
+
+#. type: deftypefn
+#: container.texi:620
+msgid ""
+"Return a cell array of strings with the names of the fields in the specified "
+"input."
+msgstr "入力で指定されたフィールド名により、文字列のセル配列をリターンします。"
+
+#. type: deftypefn
+#: container.texi:623
+msgid ""
+"When the input is a structure @var{struct}, the names are the elements of "
+"the structure."
+msgstr "入力が構造体@var{struct}の場合、構造体の要素が名前になります。"
+
+#. type: deftypefn
+#: container.texi:626
+msgid ""
+"When the input is an Octave object @var{obj}, the names are the public "
+"properties of the object."
+msgstr "入力がOctaveオブジェクト@var{obj}の場合、オブジェクトのパブリックプロパティが名前になります。"
+
+#. type: deftypefn
+#: container.texi:631
+msgid ""
+"When the input is a Java object @var{javaobj} or Java classname "
+"@var{jclassname} the name are the public data elements of the object or "
+"class.  @seealso{@ref{XREFnfields,,nfields}, @ref{XREFisfield,,isfield}, "
+"@ref{XREForderfields,,orderfields}, @ref{XREFstruct,,struct}, "
+"@ref{XREFmethods,,methods}}"
+msgstr ""
+"入力がJavaオブジェクト@var{javaobj}、またはJavaクラス名@var{jclassname}の場合、オブジェクトまたはクラスのパブリックなデータ要素が名前になります。\n"
+"@seealso{@ref{XREFnfields,,nfields}, @ref{XREFisfield,,isfield}, @ref{XREForderfields,,orderfields}, @ref{XREFstruct,,struct}, @ref{XREFmethods,,methods}}"
+
+#. type: anchor{#1}
+#: container.texi:636
+msgid "XREFisfield"
+msgstr "XREFisfield"
+
+#. type: deftypefn
+#: container.texi:636
+#, no-wrap
+msgid "{Built-in Function} {} isfield (@var{x}, \"@var{name}\")"
+msgstr "{Built-in Function} {} isfield (@var{x}, \"@var{name}\")"
+
+#. type: deftypefnx
+#: container.texi:637
+#, no-wrap
+msgid "{Built-in Function} {} isfield (@var{x}, @var{name})"
+msgstr "{Built-in Function} {} isfield (@var{x}, @var{name})"
+
+#. type: deftypefn
+#: container.texi:642
+msgid ""
+"Return true if the @var{x} is a structure and it includes an element named "
+"@var{name}.  If @var{name} is a cell array of strings then a logical array "
+"of equal dimension is returned.  @seealso{@ref{XREFfieldnames,,fieldnames}}"
+msgstr ""
+"@var{x}が構造体で@var{name}という名前の要素を含む場合は、trueをリターンします。@var{name}が文字列のセル配列の場合は、等しい次元の論理配列をリターンします。\n"
+"@seealso{@ref{XREFfieldnames,,fieldnames}}"
+
+#. type: anchor{#1}
+#: container.texi:647
+msgid "XREFsetfield"
+msgstr "XREFsetfield"
+
+#. type: deftypefn
+#: container.texi:647
+#, no-wrap
+msgid "{Function File} {@var{s} =} setfield (@var{s}, @var{field}, @var{val})"
+msgstr "{Function File} {@var{s} =} setfield (@var{s}, @var{field}, @var{val})"
+
+#. type: deftypefnx
+#: container.texi:648
+#, no-wrap
+msgid ""
+"{Function File} {@var{s} =} setfield (@var{s}, @var{idx1}, @var{field1}, "
+"@var{idx2}, @var{field2}, @dots{}, @var{val})"
+msgstr "{Function File} {@var{s} =} setfield (@var{s}, @var{idx1}, @var{field1}, @var{idx2}, @var{field2}, @dots{}, @var{val})"
+
+#. type: deftypefn
+#: container.texi:652
+msgid ""
+"Set a field member @var{field} in a structure @var{s} equal to @var{val}.  "
+"For example:"
+msgstr "構造体@var{s}のフィールドメンバー@var{field}を、@var{val}にセットします。たとえば:"
+
+#. type: group
+#: container.texi:657
+#, no-wrap
+msgid ""
+"@var{s} = struct ();\n"
+"@var{s} = setfield (@var{s}, \"foo bar\", 42);\n"
+msgstr ""
+"@var{s} = struct ();\n"
+"@var{s} = setfield (@var{s}, \"foo bar\", 42);\n"
+
+#. type: deftypefn
+#: container.texi:662
+msgid "This is equivalent to"
+msgstr "これは以下と等価です"
+
+#. type: example
+#: container.texi:665
+#, no-wrap
+msgid "@var{s}.(\"foo bar\") = 42;\n"
+msgstr "@var{s}.(\"foo bar\") = 42;\n"
+
+#. type: deftypefn
+#: container.texi:673
+msgid ""
+"Note that ordinary structure syntax @code{@var{s}.foo bar = 42} cannot be "
+"used here, as the field name is not a valid Octave identifier.  Using "
+"arbitrary strings for field name is incompatible with @sc{matlab}, so this "
+"usage will warn if the @code{Octave:matlab-incompatible} warning is set.  "
+"@xref{XREFwarning_ids}."
+msgstr "フィールド名は有効なOctave識別子ではないので、ここでは通常の構造体構文@code{@var{s}.foo bar = 42}は使用できないことに注意してください。フィールド名に任意の文字列を使用するのは@sc{matlab}と互換性がないので、@code{Octave:matlab-incompatible}警告がセットされている場合はこの使用にたいして警告されるでしょう。@ref{XREFwarning_ids}を参照してください。"
+
+#. type: deftypefn
+#: container.texi:679
+msgid ""
+"With the second calling form, set a field on a structure array, possibly "
+"nested, with successive nested indices @var{idx1}, @var{idx2}, @dots{} and "
+"fields @var{field1}, @var{field2}, @dots{} The indices must be cells "
+"containing the desired index at this nesting depth."
+msgstr "2つ目の呼び出し形式では、構造体配列のフィールドへのセットはインデクス@var{idx1}、@var{idx2}、@dots{}とフィールド@var{field1}, @var{field2}, @dots{}のように連続してネストされているかもしれません。インデクスは、そのネスト深さでの期待されるインデクスを含むセルでなければなりません。"
+
+#. type: deftypefn
+#: container.texi:681
+msgid "Thus consider instead,"
+msgstr "したがって以下のように考えることができます"
+
+#. type: group
+#: container.texi:692
+#, no-wrap
+msgid ""
+"@var{s} = struct (\"baz\", 42);\n"
+"setfield (@var{s}, @{1@}, \"foo\", @{1@}, \"bar\", 5)\n"
+"    @result{} ans =\n"
+"    scalar structure containing the fields:\n"
+"      baz =  42\n"
+"      foo =\n"
+"        scalar structure containing the fields:\n"
+"          bar =  54\n"
+msgstr ""
+"@var{s} = struct (\"baz\", 42);\n"
+"setfield (@var{s}, @{1@}, \"foo\", @{1@}, \"bar\", 5)\n"
+"    @result{} ans =\n"
+"    scalar structure containing the fields:\n"
+"      baz =  42\n"
+"      foo =\n"
+"        scalar structure containing the fields:\n"
+"          bar =  5\n"
+
+#. type: deftypefn
+#: container.texi:698
+msgid ""
+"Here we first have an ordinary structure array with one field @code{baz} set "
+"to 42.  Then we set another field in a nested scalar structure indexing with "
+"two single cells containing the unique desired indices."
+msgstr "ここでは最初に通常の構造体配列のフィールド@code{baz}に42をセットしています。それから一意なインデクスを含む単独セル2つによりインデクス付けされる、別のネストされたスカラー構造体フィールドに値をセットしています。"
+
+#. type: deftypefn
+#: container.texi:700
+msgid "Finally an example with nested structure arrays,"
+msgstr "最後は、ネストされた構造体配列の例です"
+
+#. type: group
+#: container.texi:709
+#, no-wrap
+msgid ""
+"@var{sa}.foo = 1;\n"
+"@var{sa} = setfield (@var{sa}, @{2@}, \"bar\", @{3@}, \"baz\", 6);\n"
+"@var{sa}(2).bar(3)\n"
+"     @result{} ans =\n"
+"     scalar structure containing the fields:\n"
+"       baz =  6\n"
+msgstr ""
+"@var{sa}.foo = 1;\n"
+"@var{sa} = setfield (@var{sa}, @{2@}, \"bar\", @{3@}, \"baz\", 6);\n"
+"@var{sa}(2).bar(3)\n"
+"     @result{} ans =\n"
+"     scalar structure containing the fields:\n"
+"       baz =  6\n"
+
+#. type: deftypefn
+#: container.texi:715
+msgid ""
+"Here @var{sa} is a structure array whose field @code{fd} at elements 1 and 2 "
+"field is in turn another structure array whose third element is a structure"
+msgstr "ここでは@var{sa}は構造体配列で、要素1がフィールド@code{fd}で、2つ目のフィールドは3つ目の要素が構造体であるような別の構造体配列です"
+
+#. type: deftypefn
+#: container.texi:717
+msgid "Note that the same result as in the above example could be achieved by:"
+msgstr "以下のようにして、上記の例と同じ結果を得られることに注意してください:"
+
+#. type: group
+#: container.texi:722
+#, no-wrap
+msgid ""
+"@var{SA}.foo = 1;\n"
+"@var{SA}(2).bar(3).baz = 6\n"
+msgstr ""
+"@var{SA}.foo = 1;\n"
+"@var{SA}(2).bar(3).baz = 6\n"
+
+#. type: deftypefn
+#: container.texi:725
+msgid ""
+"@seealso{@ref{XREFgetfield,,getfield}, @ref{XREFrmfield,,rmfield}, "
+"@ref{XREFisfield,,isfield}, @ref{XREFfieldnames,,fieldnames}, "
+"@ref{XREFisstruct,,isstruct}, @ref{XREFstruct,,struct}}"
+msgstr "@seealso{@ref{XREFgetfield,,getfield}, @ref{XREFrmfield,,rmfield}, @ref{XREFisfield,,isfield}, @ref{XREFfieldnames,,fieldnames}, @ref{XREFisstruct,,isstruct}, @ref{XREFstruct,,struct}}"
+
+#. type: anchor{#1}
+#: container.texi:730
+msgid "XREFgetfield"
+msgstr "XREFgetfield"
+
+#. type: deftypefn
+#: container.texi:730
+#, no-wrap
+msgid "{Function File} {[@var{val}] =} getfield (@var{s}, @var{field})"
+msgstr "{Function File} {[@var{val}] =} getfield (@var{s}, @var{field})"
+
+#. type: deftypefnx
+#: container.texi:731
+#, no-wrap
+msgid ""
+"{Function File} {[@var{val}] =} getfield (@var{s}, @var{idx1}, @var{field1}, "
+"@var{idx2}, @var{field2}, @dots{})"
+msgstr "{Function File} {[@var{val}] =} getfield (@var{s}, @var{idx1}, @var{field1}, @var{idx2}, @var{field2}, @dots{})"
+
+#. type: deftypefn
+#: container.texi:735
+msgid ""
+"Extract a field from a structure (or a nested structure).  The syntax is the "
+"same as @code{setfield}, except it omits the final @var{val} argument, "
+"returning this value instead of setting it."
+msgstr "構造体(またはネストされた構造体)からフィールドを抽出します。構文は@code{setfield}と同様ですが、最後の@var{val}がなく、値をセットするかわりに、値をリターンする点が異なります。"
+
+#. type: deftypefn
+#: container.texi:737
+msgid ""
+"@seealso{@ref{XREFsetfield,,setfield}, @ref{XREFrmfield,,rmfield}, "
+"@ref{XREFisfield,,isfield}, @ref{XREFfieldnames,,fieldnames}, "
+"@ref{XREFisstruct,,isstruct}, @ref{XREFstruct,,struct}}"
+msgstr "@seealso{@ref{XREFsetfield,,setfield}, @ref{XREFrmfield,,rmfield}, @ref{XREFisfield,,isfield}, @ref{XREFfieldnames,,fieldnames}, @ref{XREFisstruct,,isstruct}, @ref{XREFstruct,,struct}}"
+
+#. type: anchor{#1}
+#: container.texi:742
+msgid "XREFrmfield"
+msgstr "XREFrmfield"
+
+#. type: deftypefn
+#: container.texi:742
+#, no-wrap
+msgid "{Built-in Function} {@var{s} =} rmfield (@var{s}, \"@var{f}\")"
+msgstr "{Built-in Function} {@var{s} =} rmfield (@var{s}, \"@var{f}\")"
+
+#. type: deftypefnx
+#: container.texi:743
+#, no-wrap
+msgid "{Built-in Function} {@var{s} =} rmfield (@var{s}, @var{f})"
+msgstr "{Built-in Function} {@var{s} =} rmfield (@var{s}, @var{f})"
+
+#. type: deftypefn
+#: container.texi:748
+msgid ""
+"Return a @emph{copy} of the structure (array) @var{s} with the field @var{f} "
+"removed.  If @var{f} is a cell array of strings or a character array, remove "
+"each of the named fields.  @seealso{@ref{XREForderfields,,orderfields}, "
+"@ref{XREFfieldnames,,fieldnames}}"
+msgstr ""
+"構造体(または構造体配列)@var{s}からフィールド@var{f}を削除したコピーをリターンします。@var{f}が文字列のセル配列か文字配列の場合は、それぞれの名前付きフィールドを削除します。\n"
+"@seealso{@ref{XREForderfields,,orderfields}, @ref{XREFfieldnames,,fieldnames}}"
+
+#. type: anchor{#1}
+#: container.texi:753
+msgid "XREForderfields"
+msgstr "XREForderfields"
+
+#. type: deftypefn
+#: container.texi:753
+#, no-wrap
+msgid "{Function File} {[@var{t}, @var{p}] =} orderfields (@var{s1})"
+msgstr "{Function File} {[@var{t}, @var{p}] =} orderfields (@var{s1})"
+
+#. type: deftypefnx
+#: container.texi:754
+#, no-wrap
+msgid "{Function File} {[@var{t}, @var{p}] =} orderfields (@var{s1}, @var{s2})"
+msgstr "{Function File} {[@var{t}, @var{p}] =} orderfields (@var{s1}, @var{s2})"
+
+#. type: deftypefn
+#: container.texi:757
+msgid ""
+"Return a copy of @var{s1} with fields arranged alphabetically or as "
+"specified by @var{s2}."
+msgstr "アルファベット順、または@var{s2}で指定された順にフィールドを整列した@var{s1}のコピーをリターンします。"
+
+#. type: deftypefn
+#: container.texi:759
+msgid "Given one struct, arrange field names in @var{s1} alphabetically."
+msgstr "1つの構造体が与えられた場合は、@var{s1}のフィールド名をアルファベット順に整列します。"
+
+#. type: deftypefn
+#: container.texi:764
+msgid ""
+"If the second argument is a struct, arrange field names in @var{s1} as they "
+"appear in @var{s2}.  The second argument may also specify the order in a "
+"permutation vector or a cell array of strings containing the fieldnames of "
+"@var{s1} in the desired order."
+msgstr "2つ目の引数が構造体の場合は、@var{s1}のフィールド名を@var{s2}に出現する順に整列します。2つ目の引数には順序を指定する置換ベクター(permutation vector)、または望む順に整列された@var{s1}内のフィールド名を含む文字列のセル配列を指定することもできます。"
+
+#. type: deftypefn
+#: container.texi:767
+msgid ""
+"The optional second output argument @var{p} is assigned the permutation "
+"vector which converts the original name order into the new name order."
+msgstr "2つ目のオプション出力引数@var{p}には、元の名前順を新しい名前順に変換する置換ベクターが割り当てられます。"
+
+#. type: deftypefn
+#: container.texi:769
+msgid "Examples:"
+msgstr "例:"
+
+#. type: group
+#: container.texi:781
+#, no-wrap
+msgid ""
+"s = struct (\"d\", 4, \"b\", 2, \"a\", 1, \"c\", 3);\n"
+"t1 = orderfields (s)\n"
+"     @result{} t1 =\n"
+"        @{\n"
+"          a =  1\n"
+"          b =  2\n"
+"          c =  3\n"
+"          d =  4\n"
+"        @}\n"
+msgstr ""
+"s = struct (\"d\", 4, \"b\", 2, \"a\", 1, \"c\", 3);\n"
+"t1 = orderfields (s)\n"
+"     @result{} t1 =\n"
+"        @{\n"
+"          a =  1\n"
+"          b =  2\n"
+"          c =  3\n"
+"          d =  4\n"
+"        @}\n"
+
+#. type: group
+#: container.texi:792
+#, no-wrap
+msgid ""
+"t = struct (\"d\", @{@}, \"c\", @{@}, \"b\", @{@}, \"a\", @{@});\n"
+"t2 = orderfields (s, t)\n"
+"     @result{} t2 =\n"
+"        @{\n"
+"          d =  4\n"
+"          c =  3\n"
+"          b =  2\n"
+"          a =  1\n"
+"        @}\n"
+msgstr ""
+"t = struct (\"d\", @{@}, \"c\", @{@}, \"b\", @{@}, \"a\", @{@});\n"
+"t2 = orderfields (s, t)\n"
+"     @result{} t2 =\n"
+"        @{\n"
+"          d =  4\n"
+"          c =  3\n"
+"          b =  2\n"
+"          a =  1\n"
+"        @}\n"
+
+#. type: group
+#: container.texi:802
+#, no-wrap
+msgid ""
+"t3 = orderfields (s, [3, 2, 4, 1])\n"
+"     @result{} t3 =\n"
+"        @{\n"
+"          a =  1\n"
+"          b =  2\n"
+"          c =  3\n"
+"          d =  4\n"
+"        @}\n"
+msgstr ""
+"t3 = orderfields (s, [3, 2, 4, 1])\n"
+"     @result{} t3 =\n"
+"        @{\n"
+"          a =  1\n"
+"          b =  2\n"
+"          c =  3\n"
+"          d =  4\n"
+"        @}\n"
+
+#. type: group
+#: container.texi:817
+#, no-wrap
+msgid ""
+"[t4, p] = orderfields (s, @{\"d\", \"c\", \"b\", \"a\"@})\n"
+"     @result{} t4 =\n"
+"        @{\n"
+"          d =  4\n"
+"          c =  3\n"
+"          b =  2\n"
+"          a =  1\n"
+"        @}\n"
+"        p =\n"
+"           1\n"
+"           4\n"
+"           2\n"
+"           3\n"
+msgstr ""
+"[t4, p] = orderfields (s, @{\"d\", \"c\", \"b\", \"a\"@})\n"
+"     @result{} t4 =\n"
+"        @{\n"
+"          d =  4\n"
+"          c =  3\n"
+"          b =  2\n"
+"          a =  1\n"
+"        @}\n"
+"        p =\n"
+"           1\n"
+"           4\n"
+"           2\n"
+"           3\n"
+
+#. type: deftypefn
+#: container.texi:821
+msgid ""
+"@seealso{@ref{XREFgetfield,,getfield}, @ref{XREFrmfield,,rmfield}, "
+"@ref{XREFisfield,,isfield}, @ref{XREFisstruct,,isstruct}, "
+"@ref{XREFfieldnames,,fieldnames}, @ref{XREFstruct,,struct}}"
+msgstr "@seealso{@ref{XREFgetfield,,getfield}, @ref{XREFrmfield,,rmfield}, @ref{XREFisfield,,isfield}, @ref{XREFisstruct,,isstruct}, @ref{XREFfieldnames,,fieldnames}, @ref{XREFstruct,,struct}}"
+
+#. type: anchor{#1}
+#: container.texi:826
+msgid "XREFsubstruct"
+msgstr "XREFsubstruct"
+
+#. type: deftypefn
+#: container.texi:826
+#, no-wrap
+msgid "{Function File} {} substruct (@var{type}, @var{subs}, @dots{})"
+msgstr "{Function File} {} substruct (@var{type}, @var{subs}, @dots{})"
+
+#. type: deftypefn
+#: container.texi:829
+msgid ""
+"Create a subscript structure for use with @code{subsref} or "
+"@code{subsasgn}.  For example:"
+msgstr "@code{subsref}および@code{subsasgn}で使用するための添字構造体(subscript structure)を作成します。たとえば:"
+
+#. type: group
+#: container.texi:846
+#, no-wrap
+msgid ""
+"idx = substruct (\"()\", @{3, \":\"@})\n"
+"     @result{}\n"
+"       idx =\n"
+"       @{\n"
+"         type = ()\n"
+"         subs =\n"
+"         @{\n"
+"           [1,1] =  3\n"
+"           [1,2] = :\n"
+"         @}\n"
+"       @}\n"
+"x = [1, 2, 3; 4, 5, 6; 7, 8, 9];\n"
+"subsref (x, idx)\n"
+"   @result{} 7  8  9\n"
+msgstr ""
+"idx = substruct (\"()\", @{3, \":\"@})\n"
+"     @result{}\n"
+"       idx =\n"
+"       @{\n"
+"         type = ()\n"
+"         subs =\n"
+"         @{\n"
+"           [1,1] =  3\n"
+"           [1,2] = :\n"
+"         @}\n"
+"       @}\n"
+"x = [1, 2, 3; 4, 5, 6; 7, 8, 9];\n"
+"subsref (x, idx)\n"
+"   @result{} 7  8  9\n"
+
+#. type: deftypefn
+#: container.texi:849
+msgid "@seealso{@ref{XREFsubsref,,subsref}, @ref{XREFsubsasgn,,subsasgn}}"
+msgstr "@seealso{@ref{XREFsubsref,,subsref}, @ref{XREFsubsasgn,,subsasgn}}"
+
+#. type: Plain text
+#: container.texi:860
+msgid ""
+"The simplest way to process data in a structure is within a @code{for} loop "
+"(@pxref{Looping Over Structure Elements}).  A similar effect can be achieved "
+"with the @code{structfun} function, where a user defined function is applied "
+"to each field of the structure.  @xref{XREFstructfun,,structfun}."
+msgstr "構造体内のデータを処理するには、@code{for}ループを使用するのが一番シンプルな方法です(@ref{Looping Over Structure Elements}を参照)。構造体の各フィールドにユーザー定義関数を適用する@code{structfun}関数でも、同様の効果を得ることができます。@ref{XREFstructfun,,structfun}を参照してください。"
+
+#. type: Plain text
+#: container.texi:863
+msgid ""
+"Alternatively, to process the data in a structure, the structure might be "
+"converted to another type of container before being treated."
+msgstr "かわりに、構造体内のデータを処理するために、処理の前に構造体を他のコンテナー型に変換すると良いかもしれません。"
+
+#. type: anchor{#1}
+#: container.texi:866
+msgid "XREFstruct2cell"
+msgstr "XREFstruct2cell"
+
+#. type: deftypefn
+#: container.texi:866
+#, no-wrap
+msgid "{Built-in Function} {@var{c} =} struct2cell (@var{s})"
+msgstr "{Built-in Function} {@var{c} =} struct2cell (@var{s})"
+
+#. type: deftypefn
+#: container.texi:871
+msgid ""
+"Create a new cell array from the objects stored in the struct object.  If "
+"@var{f} is the number of fields in the structure, the resulting cell array "
+"will have a dimension vector corresponding to @code{[@var{f} "
+"size(@var{s})]}.  For example:"
+msgstr "構造体オブジェクトに格納されたオブジェクトから、新たなセル配列を作成します。@var{f}が構造体内のフィールド数の場合、結果となるセル配列は@code{[@var{f} size(@var{s})]}に応じた次元のベクターとなります。たとえば:"
+
+#. type: group
+#: container.texi:892
+#, no-wrap
+msgid ""
+"s = struct (\"name\", @{\"Peter\", \"Hannah\", \"Robert\"@},\n"
+"           \"age\", @{23, 16, 3@});\n"
+"c = struct2cell (s)\n"
+"   @result{} c = @{2x1x3 Cell Array@}\n"
+"c(1,1,:)(:)\n"
+"   @result{}\n"
+"      @{\n"
+"        [1,1] = Peter\n"
+"        [2,1] = Hannah\n"
+"        [3,1] = Robert\n"
+"      @}\n"
+"c(2,1,:)(:)\n"
+"   @result{}\n"
+"      @{\n"
+"        [1,1] = 23\n"
+"        [2,1] = 16\n"
+"        [3,1] = 3\n"
+"      @}\n"
+msgstr ""
+"s = struct (\"name\", @{\"Peter\", \"Hannah\", \"Robert\"@},\n"
+"           \"age\", @{23, 16, 3@});\n"
+"c = struct2cell (s)\n"
+"   @result{} c = @{2x1x3 Cell Array@}\n"
+"c(1,1,:)(:)\n"
+"   @result{}\n"
+"      @{\n"
+"        [1,1] = Peter\n"
+"        [2,1] = Hannah\n"
+"        [3,1] = Robert\n"
+"      @}\n"
+"c(2,1,:)(:)\n"
+"   @result{}\n"
+"      @{\n"
+"        [1,1] = 23\n"
+"        [2,1] = 16\n"
+"        [3,1] = 3\n"
+"      @}\n"
+
+#. type: deftypefn
+#: container.texi:896
+msgid ""
+"@seealso{@ref{XREFcell2struct,,cell2struct}, "
+"@ref{XREFfieldnames,,fieldnames}}"
+msgstr "@seealso{@ref{XREFcell2struct,,cell2struct}, @ref{XREFfieldnames,,fieldnames}}"
+
+#. type: section
+#: container.texi:899 container.texi:900
+#, no-wrap
+msgid "Cell Arrays"
+msgstr "Cell Arrays"
+
+#. type: cindex
+#: container.texi:901
+#, no-wrap
+msgid "cell arrays"
+msgstr "cell arrays"
+
+#. type: Plain text
+#: container.texi:908
+msgid ""
+"It can be both necessary and convenient to store several variables of "
+"different size or type in one variable.  A cell array is a container class "
+"able to do just that.  In general cell arrays work just like "
+"@math{N}-dimensional arrays with the exception of the use of @samp{@{} and "
+"@samp{@}} as allocation and indexing operators."
+msgstr "複数の異なるサイズや型の変数を、1つの変数に格納するのが必要だったり便利なことがあるかもしれません。セル配列はまさにそれを行うことを可能にするコンテナークラスです。一般的にセル配列は@math{N}次元配列と同様に機能しますが、割り当てとインデクスの演算子に@samp{@{}と@samp{@}}を使用する点が異なります。"
+
+#. type: menuentry
+#: container.texi:915
+msgid "Basic Usage of Cell Arrays::"
+msgstr "Basic Usage of Cell Arrays::"
+
+#. type: menuentry
+#: container.texi:915
+msgid "Creating Cell Arrays::"
+msgstr "Creating Cell Arrays::"
+
+#. type: menuentry
+#: container.texi:915
+msgid "Indexing Cell Arrays::"
+msgstr "Indexing Cell Arrays::"
+
+#. type: menuentry
+#: container.texi:915
+msgid "Cell Arrays of Strings::"
+msgstr "Cell Arrays of Strings::"
+
+#. type: subsection
+#: container.texi:915 container.texi:1438 container.texi:1439
+#, no-wrap
+msgid "Processing Data in Cell Arrays"
+msgstr "Processing Data in Cell Arrays"
+
+#. type: subsection
+#: container.texi:917 container.texi:918
+#, no-wrap
+msgid "Basic Usage of Cell Arrays"
+msgstr "Basic Usage of Cell Arrays"
+
+#. type: opindex
+#: container.texi:919
+#, no-wrap
+msgid "@{"
+msgstr "@{"
+
+#. type: opindex
+#: container.texi:920
+#, no-wrap
+msgid "@}"
+msgstr "@}"
+
+#. type: Plain text
+#: container.texi:923
+msgid ""
+"As an example, the following code creates a cell array containing a string "
+"and a 2-by-2 random matrix"
+msgstr "以下は文字列と2行2列の乱数行列を含むセル配列を作成するコードの例です"
+
+#. type: example
+#: container.texi:926
+#, no-wrap
+msgid "c = @{\"a string\", rand(2, 2)@};\n"
+msgstr "c = @{\"a string\", rand(2, 2)@};\n"
+
+#. type: Plain text
+#: container.texi:932
+msgid ""
+"To access the elements of a cell array, it can be indexed with the @{ and @} "
+"operators.  Thus, the variable created in the previous example can be "
+"indexed like this:"
+msgstr "セル配列の要素にアクセスするために、@{および@}演算子でインデクス付けすることができます。したがって上記の例で作成された変数は、以下のようにインデクス付けできます:"
+
+#. type: group
+#: container.texi:937
+#, no-wrap
+msgid ""
+"c@{1@}\n"
+"     @result{} ans = a string\n"
+msgstr ""
+"c@{1@}\n"
+"     @result{} ans = a string\n"
+
+#. type: Plain text
+#: container.texi:943
+msgid ""
+"As with numerical arrays several elements of a cell array can be extracted "
+"by indexing with a vector of indexes"
+msgstr "数値配列と同様に、セル配列の複数の要素をインデクス用ベクターでインデクス付けして抽出できます。"
+
+#. type: group
+#: container.texi:949
+#, no-wrap
+msgid ""
+"c@{1:2@}\n"
+"     @result{} ans = a string\n"
+"     @result{} ans =\n"
+"\n"
+msgstr ""
+"c@{1:2@}\n"
+"     @result{} ans = a string\n"
+"     @result{} ans =\n"
+"\n"
+
+#. type: group
+#: container.texi:952
+#, no-wrap
+msgid ""
+"               0.593993   0.627732\n"
+"               0.377037   0.033643\n"
+msgstr ""
+"               0.593993   0.627732\n"
+"               0.377037   0.033643\n"
+
+#. type: Plain text
+#: container.texi:958
+msgid ""
+"The indexing operators can also be used to insert or overwrite elements of a "
+"cell array.  The following code inserts the scalar 3 on the third place of "
+"the previously created cell array"
+msgstr "インデクス演算子はセル配列に要素を挿入したり上書きするためにも使用できます。以下のコードでは、上記で作成したセル配列の3番目にスカラーの3を挿入しています"
+
+#. type: group
+#: container.texi:963
+#, no-wrap
+msgid ""
+"c@{3@} = 3\n"
+"     @result{} c =\n"
+"\n"
+msgstr ""
+"c@{3@} = 3\n"
+"     @result{} c =\n"
+"\n"
+
+#. type: group
+#: container.texi:967
+#, no-wrap
+msgid ""
+"         @{\n"
+"           [1,1] = a string\n"
+"           [1,2] =\n"
+"\n"
+msgstr ""
+"         @{\n"
+"           [1,1] = a string\n"
+"           [1,2] =\n"
+"\n"
+
+#. type: group
+#: container.texi:970
+#, no-wrap
+msgid ""
+"              0.593993   0.627732\n"
+"              0.377037   0.033643\n"
+"\n"
+msgstr ""
+"              0.593993   0.627732\n"
+"              0.377037   0.033643\n"
+"\n"
+
+#. type: group
+#: container.texi:973
+#, no-wrap
+msgid ""
+"           [1,3] =  3\n"
+"         @}\n"
+msgstr ""
+"           [1,3] =  3\n"
+"         @}\n"
+
+#. type: Plain text
+#: container.texi:977
+msgid "Details on indexing cell arrays are explained in @ref{Indexing Cell Arrays}."
+msgstr "セル配列のインデクス操作についての詳細は@ref{Indexing Cell Arrays}を参照してください。"
+
+#. type: Plain text
+#: container.texi:982
+msgid ""
+"In general nested cell arrays are displayed hierarchically as in the "
+"previous example.  In some circumstances it makes sense to reference them by "
+"their index, and this can be performed by the @code{celldisp} function."
+msgstr "前の例のように、一般的にネストされたセル配列は階層的に表示されます。それらをインデクスにより参照するほうが理解しやすい場合は、@code{celldisp}関数を使用できます。"
+
+#. type: anchor{#1}
+#: container.texi:985
+msgid "XREFcelldisp"
+msgstr "XREFcelldisp"
+
+#. type: deftypefn
+#: container.texi:985
+#, no-wrap
+msgid "{Function File} {} celldisp (@var{c})"
+msgstr "{Function File} {} celldisp (@var{c})"
+
+#. type: deftypefnx
+#: container.texi:986
+#, no-wrap
+msgid "{Function File} {} celldisp (@var{c}, @var{name})"
+msgstr "{Function File} {} celldisp (@var{c}, @var{name})"
+
+#. type: deftypefn
+#: container.texi:990
+msgid ""
+"Recursively display the contents of a cell array.  By default the values are "
+"displayed with the name of the variable @var{c}.  However, this name can be "
+"replaced with the variable @var{name}.  For example:"
+msgstr "セル配列の内容を再帰的に表示します。デフォルトでは、値は変数@var{c}の名前とともに表示されます。しかし、この名前は変数@var{name}で置き換えることができます。たとえば:"
+
+#. type: group
+#: container.texi:1004
+#, no-wrap
+msgid ""
+"c = @{1, 2, @{31, 32@}@};\n"
+"celldisp (c, \"b\")\n"
+"   @result{}\n"
+"      b@{1@} =\n"
+"       1\n"
+"      b@{2@} =\n"
+"       2\n"
+"      b@{3@}@{1@} =\n"
+"       31\n"
+"      b@{3@}@{2@} =\n"
+"       32\n"
+msgstr ""
+"c = @{1, 2, @{31, 32@}@};\n"
+"celldisp (c, \"b\")\n"
+"   @result{}\n"
+"      b@{1@} =\n"
+"       1\n"
+"      b@{2@} =\n"
+"       2\n"
+"      b@{3@}@{1@} =\n"
+"       31\n"
+"      b@{3@}@{2@} =\n"
+"       32\n"
+
+#. type: deftypefn
+#: container.texi:1008
+msgid "@seealso{@ref{XREFdisp,,disp}}"
+msgstr "@seealso{@ref{XREFdisp,,disp}}"
+
+#. type: Plain text
+#: container.texi:1013
+msgid ""
+"To test if an object is a cell array, use the @code{iscell} function.  For "
+"example:"
+msgstr "オブジェクトがセル配列かどうかテストするには、@code{iscell}関数を使用します。たとえば:"
+
+#. type: group
+#: container.texi:1018
+#, no-wrap
+msgid ""
+"iscell (c)\n"
+"     @result{} ans = 1\n"
+"\n"
+msgstr ""
+"iscell (c)\n"
+"     @result{} ans = 1\n"
+"\n"
+
+#. type: group
+#: container.texi:1021
+#, no-wrap
+msgid ""
+"iscell (3)\n"
+"     @result{} ans = 0\n"
+"\n"
+msgstr ""
+"iscell (3)\n"
+"     @result{} ans = 0\n"
+"\n"
+
+#. type: anchor{#1}
+#: container.texi:1027
+msgid "XREFiscell"
+msgstr "XREFiscell"
+
+#. type: deftypefn
+#: container.texi:1027
+#, no-wrap
+msgid "{Built-in Function} {} iscell (@var{x})"
+msgstr "{Built-in Function} {} iscell (@var{x})"
+
+#. type: deftypefn
+#: container.texi:1030
+msgid ""
+"Return true if @var{x} is a cell array object.  "
+"@seealso{@ref{XREFismatrix,,ismatrix}, @ref{XREFisstruct,,isstruct}, "
+"@ref{XREFiscellstr,,iscellstr}, @ref{XREFisa,,isa}}"
+msgstr ""
+"@var{x}がセル配列の場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFismatrix,,ismatrix}, @ref{XREFisstruct,,isstruct}, @ref{XREFiscellstr,,iscellstr}, @ref{XREFisa,,isa}}"
+
+#. type: subsection
+#: container.texi:1033 container.texi:1034
+#, no-wrap
+msgid "Creating Cell Arrays"
+msgstr "Creating Cell Arrays"
+
+#. type: Plain text
+#: container.texi:1040
+msgid ""
+"The introductory example (@pxref{Basic Usage of Cell Arrays}) showed how to "
+"create a cell array containing currently available variables.  In many "
+"situations, however, it is useful to create a cell array and then fill it "
+"with data."
+msgstr "冒頭に紹介した例(@ref{Basic Usage of Cell Arrays}を参照)では、現在利用可能な変数を含むセル配列を作成する方法を示しました。しかし、セル配列を作成した後にデータをセットするほうが便利な場合も多いでしょう。"
+
+#. type: Plain text
+#: container.texi:1045
+msgid ""
+"The @code{cell} function returns a cell array of a given size, containing "
+"empty matrices.  This function is similar to the @code{zeros} function for "
+"creating new numerical arrays.  The following example creates a 2-by-2 cell "
+"array containing empty matrices"
+msgstr "@code{cell}関数は与えられたサイズの空マトリクスを含むセル配列をリターンします。この関数は、新たに数値配列を作成する@code{zeros}関数に似ています。以下は空マトリクスを含む2行2列のセル配列を作成する例です"
+
+#. type: group
+#: container.texi:1050
+#, no-wrap
+msgid ""
+"c = cell (2,2)\n"
+"     @result{} c =\n"
+"\n"
+msgstr ""
+"c = cell (2,2)\n"
+"     @result{} c =\n"
+"\n"
+
+#. type: group
+#: container.texi:1057
+#, no-wrap
+msgid ""
+"         @{\n"
+"           [1,1] = [](0x0)\n"
+"           [2,1] = [](0x0)\n"
+"           [1,2] = [](0x0)\n"
+"           [2,2] = [](0x0)\n"
+"         @}\n"
+msgstr ""
+"         @{\n"
+"           [1,1] = [](0x0)\n"
+"           [2,1] = [](0x0)\n"
+"           [1,2] = [](0x0)\n"
+"           [2,2] = [](0x0)\n"
+"         @}\n"
+
+#. type: Plain text
+#: container.texi:1066
+msgid ""
+"Just like numerical arrays, cell arrays can be multi-dimensional.  The "
+"@code{cell} function accepts any number of positive integers to describe the "
+"size of the returned cell array.  It is also possible to set the size of the "
+"cell array through a vector of positive integers.  In the following example "
+"two cell arrays of equal size are created, and the size of the first one is "
+"displayed"
+msgstr "数値配列と同様に、セル配列を多次元にすることもできます。@code{cell}関数ｈｑリターンされるセル配列のサイズを決定するために、任意の個数の正の整数を受け入れます。正の整数のベクターによりセル配列のサイズをセットすることもできます。以下の例では、サイズの等しい2つのセル配列を作成して、1つ目のセル配列にサイズを表示しています"
+
+#. type: group
+#: container.texi:1074
+#, no-wrap
+msgid ""
+"c1 = cell (3, 4, 5);\n"
+"c2 = cell ( [3, 4, 5] );\n"
+"size (c1)\n"
+"     @result{} ans =\n"
+"         3   4   5\n"
+msgstr ""
+"c1 = cell (3, 4, 5);\n"
+"c2 = cell ( [3, 4, 5] );\n"
+"size (c1)\n"
+"     @result{} ans =\n"
+"         3   4   5\n"
+
+#. type: Plain text
+#: container.texi:1082
+msgid ""
+"As can be seen, the @ref{XREFsize,,size} function also works for cell "
+"arrays.  As do other functions describing the size of an object, such as "
+"@ref{XREFlength,,length}, @ref{XREFnumel,, numel}, @ref{XREFrows,,rows}, and "
+"@ref{XREFcolumns,,columns}."
+msgstr "これまで見てきたように、@ref{XREFsize,,size}関数はセル配列にたいしても機能します。@ref{XREFlength,,length}、@ref{XREFnumel,, numel}、@ref{XREFrows,,rows}、@ref{XREFcolumns,,columns}のようなサイズを報告する他の関数も同様に機能します。"
+
+#. type: anchor{#1}
+#: container.texi:1085
+msgid "XREFcell"
+msgstr "XREFcell"
+
+#. type: deftypefn
+#: container.texi:1085
+#, no-wrap
+msgid "{Built-in Function} {} cell (@var{n})"
+msgstr "{Built-in Function} {} cell (@var{n})"
+
+#. type: deftypefnx
+#: container.texi:1086
+#, no-wrap
+msgid "{Built-in Function} {} cell (@var{m}, @var{n})"
+msgstr "{Built-in Function} {} cell (@var{m}, @var{n})"
+
+#. type: deftypefnx
+#: container.texi:1087
+#, no-wrap
+msgid "{Built-in Function} {} cell (@var{m}, @var{n}, @var{k}, @dots{})"
+msgstr "{Built-in Function} {} cell (@var{m}, @var{n}, @var{k}, @dots{})"
+
+#. type: deftypefnx
+#: container.texi:1088
+#, no-wrap
+msgid "{Built-in Function} {} cell ([@var{m} @var{n} @dots{}])"
+msgstr "{Built-in Function} {} cell ([@var{m} @var{n} @dots{}])"
+
+#. type: deftypefn
+#: container.texi:1090
+msgid "Create a new cell array object."
+msgstr "新たにセル配列オブジェクトを作成します。"
+
+#. type: deftypefn
+#: container.texi:1096
+msgid ""
+"If invoked with a single scalar integer argument, return a square "
+"@nospell{NxN} cell array.  If invoked with two or more scalar integer "
+"arguments, or a vector of integer values, return an array with the given "
+"dimensions.  @seealso{@ref{XREFcellstr,,cellstr}, "
+"@ref{XREFmat2cell,,mat2cell}, @ref{XREFnum2cell,,num2cell}, "
+"@ref{XREFstruct2cell,,struct2cell}}"
+msgstr ""
+"1つのスカラー整数引数とともに呼び出された場合は、@nospell{NxN}の正方セル配列をリターンします。2つ以上のスカラー整数引数、または整数値ベクターとともに呼び出された場合は、与えられた次元の配列をリターンします。\n"
+"@seealso{@ref{XREFcellstr,,cellstr}, @ref{XREFmat2cell,,mat2cell}, @ref{XREFnum2cell,,num2cell}, @ref{XREFstruct2cell,,struct2cell}}"
+
+#. type: Plain text
+#: container.texi:1102
+msgid ""
+"As an alternative to creating empty cell arrays, and then filling them, it "
+"is possible to convert numerical arrays into cell arrays using the "
+"@code{num2cell}, @code{mat2cell} and @code{cellslices} functions."
+msgstr "空のセル配列を作成してから値をセットする別の方法として@code{num2cell}、@code{mat2cell}、@code{cellslices}関数を使用して数値配列をセル配列に変換する方法が利用できます。"
+
+#. type: anchor{#1}
+#: container.texi:1105
+msgid "XREFnum2cell"
+msgstr "XREFnum2cell"
+
+#. type: deftypefn
+#: container.texi:1105
+#, no-wrap
+msgid "{Built-in Function} {@var{C} =} num2cell (@var{A})"
+msgstr "{Built-in Function} {@var{C} =} num2cell (@var{A})"
+
+#. type: deftypefnx
+#: container.texi:1106
+#, no-wrap
+msgid "{Built-in Function} {@var{C} =} num2cell (@var{A}, @var{dim})"
+msgstr "{Built-in Function} {@var{C} =} num2cell (@var{A}, @var{dim})"
+
+#. type: deftypefn
+#: container.texi:1110
+msgid ""
+"Convert the numeric matrix @var{A} to a cell array.  If @var{dim} is "
+"defined, the value @var{C} is of dimension 1 in this dimension and the "
+"elements of @var{A} are placed into @var{C} in slices.  For example:"
+msgstr "数値マトリクス@var{A}をセル配列に変換します。@var{dim}が定義されている場合は、@var{C}がこの次元での次元1となり、@var{A}の要素は@var{C}にスライスとして配されます。たとえば:"
+
+#. type: group
+#: container.texi:1131
+#, no-wrap
+msgid ""
+"num2cell ([1,2;3,4])\n"
+"   @result{}\n"
+"      @{\n"
+"        [1,1] =  1\n"
+"        [2,1] =  3\n"
+"        [1,2] =  2\n"
+"        [2,2] =  4\n"
+"      @}\n"
+"num2cell ([1,2;3,4],1)\n"
+"   @result{}\n"
+"      @{\n"
+"        [1,1] =\n"
+"           1\n"
+"           3\n"
+"        [1,2] =\n"
+"           2\n"
+"           4\n"
+"      @}\n"
+msgstr ""
+"num2cell ([1,2;3,4])\n"
+"   @result{}\n"
+"      @{\n"
+"        [1,1] =  1\n"
+"        [2,1] =  3\n"
+"        [1,2] =  2\n"
+"        [2,2] =  4\n"
+"      @}\n"
+"num2cell ([1,2;3,4],1)\n"
+"   @result{}\n"
+"      @{\n"
+"        [1,1] =\n"
+"           1\n"
+"           3\n"
+"        [1,2] =\n"
+"           2\n"
+"           4\n"
+"      @}\n"
+
+#. type: deftypefn
+#: container.texi:1135
+msgid "@seealso{@ref{XREFmat2cell,,mat2cell}}"
+msgstr "@seealso{@ref{XREFmat2cell,,mat2cell}}"
+
+#. type: anchor{#1}
+#: container.texi:1140
+msgid "XREFmat2cell"
+msgstr "XREFmat2cell"
+
+#. type: deftypefn
+#: container.texi:1140
+#, no-wrap
+msgid "{Built-in Function} {@var{C} =} mat2cell (@var{A}, @var{m}, @var{n})"
+msgstr "{Built-in Function} {@var{C} =} mat2cell (@var{A}, @var{m}, @var{n})"
+
+#. type: deftypefnx
+#: container.texi:1141
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{C} =} mat2cell (@var{A}, @var{d1}, @var{d2}, "
+"@dots{})"
+msgstr "{Built-in Function} {@var{C} =} mat2cell (@var{A}, @var{d1}, @var{d2}, @dots{})"
+
+#. type: deftypefnx
+#: container.texi:1142
+#, no-wrap
+msgid "{Built-in Function} {@var{C} =} mat2cell (@var{A}, @var{r})"
+msgstr "{Built-in Function} {@var{C} =} mat2cell (@var{A}, @var{r})"
+
+#. type: deftypefn
+#: container.texi:1149
+msgid ""
+"Convert the matrix @var{A} to a cell array.  If @var{A} is 2-D, then it is "
+"required that @code{sum (@var{m}) == size (@var{A}, 1)} and @code{sum "
+"(@var{n}) == size (@var{A}, 2)}.  Similarly, if @var{A} is multi-dimensional "
+"and the number of dimensional arguments is equal to the dimensions of "
+"@var{A}, then it is required that @code{sum (@var{di})  == size (@var{A}, "
+"i)}."
+msgstr "マトリクス@var{A}をセル配列に変換します。@var{A}が2次元の場合、@code{sum (@var{m}) == size (@var{A}, 1)}と@code{sum (@var{n}) == size (@var{A}, 2)}が成り立つ必要があります。同様に@var{A}が多次元で次元数の引数が@var{A}の次元と等しい場合は、@code{sum (@var{di})  == size (@var{A}, i)}が成り立つ必要があります。"
+
+#. type: deftypefn
+#: container.texi:1152
+msgid ""
+"Given a single dimensional argument @var{r}, the other dimensional arguments "
+"are assumed to equal @code{size (@var{A},@var{i})}."
+msgstr "単一の次元引数@var{r}が与えられた場合、他の次元引数は@code{size (@var{A},@var{i})}と等しいとみなされます。"
+
+#. type: deftypefn
+#: container.texi:1154
+msgid "An example of the use of mat2cell is"
+msgstr "以下はmat2cellを使用する例です"
+
+#. type: example
+#: container.texi:1160
+#, no-wrap
+msgid ""
+"mat2cell (reshape (1:16,4,4), [3,1], [3,1])\n"
+"@result{}\n"
+"@{\n"
+"   [1,1] =\n"
+"\n"
+msgstr ""
+"mat2cell (reshape (1:16,4,4), [3,1], [3,1])\n"
+"@result{}\n"
+"@{\n"
+"   [1,1] =\n"
+"\n"
+
+#. type: example
+#: container.texi:1164
+#, no-wrap
+msgid ""
+"      1   5   9\n"
+"      2   6  10\n"
+"      3   7  11\n"
+"\n"
+msgstr ""
+"      1   5   9\n"
+"      2   6  10\n"
+"      3   7  11\n"
+"\n"
+
+#. type: example
+#: container.texi:1166
+#, no-wrap
+msgid ""
+"   [2,1] =\n"
+"\n"
+msgstr "   [2,1] =\n\n"
+
+#. type: example
+#: container.texi:1168
+#, no-wrap
+msgid ""
+"      4   8  12\n"
+"\n"
+msgstr "      4   8  12\n\n"
+
+#. type: example
+#: container.texi:1170
+#, no-wrap
+msgid ""
+"   [1,2] =\n"
+"\n"
+msgstr "   [1,2] =\n\n"
+
+#. type: example
+#: container.texi:1174
+#, no-wrap
+msgid ""
+"     13\n"
+"     14\n"
+"     15\n"
+"\n"
+msgstr ""
+"     13\n"
+"     14\n"
+"     15\n"
+"\n"
+
+#. type: example
+#: container.texi:1177
+#, no-wrap
+msgid ""
+"   [2,2] = 16\n"
+"@}\n"
+msgstr ""
+"   [2,2] = 16\n"
+"@}\n"
+
+#. type: deftypefn
+#: container.texi:1179
+msgid "@seealso{@ref{XREFnum2cell,,num2cell}, @ref{XREFcell2mat,,cell2mat}}"
+msgstr "@seealso{@ref{XREFnum2cell,,num2cell}, @ref{XREFcell2mat,,cell2mat}}"
+
+#. type: anchor{#1}
+#: container.texi:1184
+msgid "XREFcellslices"
+msgstr "XREFcellslices"
+
+#. type: deftypefn
+#: container.texi:1184
+#, no-wrap
+msgid ""
+"{Built-in Function} {@var{sl} =} cellslices (@var{x}, @var{lb}, @var{ub}, "
+"@var{dim})"
+msgstr "{Built-in Function} {@var{sl} =} cellslices (@var{x}, @var{lb}, @var{ub}, @var{dim})"
+
+#. type: deftypefn
+#: container.texi:1189
+msgid ""
+"Given an array @var{x}, this function produces a cell array of slices from "
+"the array determined by the index vectors @var{lb}, @var{ub}, for lower and "
+"upper bounds, respectively.  In other words, it is equivalent to the "
+"following code:"
+msgstr "与えられた配列@var{x}にたいして、この関数はインデクスベクター@var{lb}および@var{ub}(下限と上限を指定)から決定される配列スライスのセル配列を生成します。言い換えると、これは以下のコードと等価です:"
+
+#. type: group
+#: container.texi:1197
+#, no-wrap
+msgid ""
+"n = length (lb);\n"
+"sl = cell (1, n);\n"
+"for i = 1:length (lb)\n"
+"  sl@{i@} = x(:,@dots{},lb(i):ub(i),@dots{},:);\n"
+"endfor\n"
+msgstr ""
+"n = length (lb);\n"
+"sl = cell (1, n);\n"
+"for i = 1:length (lb)\n"
+"  sl@{i@} = x(:,@dots{},lb(i):ub(i),@dots{},:);\n"
+"endfor\n"
+
+#. type: deftypefn
+#: container.texi:1203
+msgid ""
+"The position of the index is determined by @var{dim}.  If not specified, "
+"slicing is done along the first non-singleton dimension.  "
+"@seealso{@ref{XREFcell2mat,,cell2mat}, @ref{XREFcellindexmat,,cellindexmat}, "
+"@ref{XREFcellfun,,cellfun}}"
+msgstr ""
+"インデクスの位置は@var{dim}により決定されます。指定されなかった場合は、最初の非シングルトン次元に沿ってスライシングが行われます。\n"
+"@seealso{@ref{XREFcell2mat,,cell2mat}, @ref{XREFcellindexmat,,cellindexmat}, @ref{XREFcellfun,,cellfun}}"
+
+#. type: subsection
+#: container.texi:1206 container.texi:1207
+#, no-wrap
+msgid "Indexing Cell Arrays"
+msgstr "Indexing Cell Arrays"
+
+#. type: Plain text
+#: container.texi:1214
+msgid ""
+"As shown in @pxref{Basic Usage of Cell Arrays} elements can be extracted "
+"from cell arrays using the @samp{@{} and @samp{@}} operators.  If you want "
+"to extract or access subarrays which are still cell arrays, you need to use "
+"the @samp{(} and @samp{)} operators.  The following example illustrates the "
+"difference:"
+msgstr "@ref{Basic Usage of Cell Arrays}で見た@samp{@{}および@samp{@}}演算子を使用して、セル配列の要素を抽出できます。セル配列のままで部分配列を抽出、またはアクセスしたい場合は@samp{(}および@samp{)}演算子を使う必要があります。この違いを以下の例で示します:"
+
+#. type: group
+#: container.texi:1220
+#, no-wrap
+msgid ""
+"c = @{\"1\", \"2\", \"3\"; \"x\", \"y\", \"z\"; \"4\", \"5\", \"6\"@};\n"
+"c@{2,3@}\n"
+"     @result{} ans = z\n"
+"\n"
+msgstr ""
+"c = @{\"1\", \"2\", \"3\"; \"x\", \"y\", \"z\"; \"4\", \"5\", \"6\"@};\n"
+"c@{2,3@}\n"
+"     @result{} ans = z\n"
+"\n"
+
+#. type: group
+#: container.texi:1226
+#, no-wrap
+msgid ""
+"c(2,3)\n"
+"     @result{} ans = \n"
+"        @{\n"
+"          [1,1] = z\n"
+"        @}\n"
+msgstr ""
+"c(2,3)\n"
+"     @result{} ans = \n"
+"        @{\n"
+"          [1,1] = z\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:1232
+msgid "array, while with @samp{()} you access a sub array of a cell array."
+msgstr "つまり@samp{@{@}}ではセル配列の要素にアクセスしますが、@samp{()}ではセル配列の部分配列にアクセスすることになります。"
+
+#. type: Plain text
+#: container.texi:1237
+msgid ""
+"Using the @samp{(} and @samp{)} operators, indexing works for cell arrays "
+"like for multi-dimensional arrays.  As an example, all the rows of the first "
+"and third column of a cell array can be set to @code{0} with the following "
+"command:"
+msgstr "@samp{(}および@samp{)}演算子を使用することにより、多次元配列と同様にセル配列のインデクス操作を行うことができます。たとえば、以下のコマンドでセル配列のすべての行の1列目と3列目に@code{0}をセットできます。"
+
+#. type: group
+#: container.texi:1253
+#, no-wrap
+msgid ""
+"c(:, [1, 3]) = @{0@}\n"
+"     @result{}  =\n"
+"        @{\n"
+"          [1,1] = 0\n"
+"          [2,1] = 0\n"
+"          [3,1] = 0\n"
+"          [1,2] = 2\n"
+"          [2,2] =  10\n"
+"          [3,2] =  20\n"
+"          [1,3] = 0\n"
+"          [2,3] = 0\n"
+"          [3,3] = 0\n"
+"        @}\n"
+msgstr ""
+"c(:, [1, 3]) = @{0@}\n"
+"     @result{}  =\n"
+"        @{\n"
+"          [1,1] = 0\n"
+"          [2,1] = 0\n"
+"          [3,1] = 0\n"
+"          [1,2] = 2\n"
+"          [2,2] =  10\n"
+"          [3,2] =  20\n"
+"          [1,3] = 0\n"
+"          [2,3] = 0\n"
+"          [3,3] = 0\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:1257
+msgid "Note, that the above can also be achieved like this:"
+msgstr "以下のようにも記述できることに注意してください:"
+
+#. type: example
+#: container.texi:1260
+#, no-wrap
+msgid "c(:, [1, 3]) = 0;\n"
+msgstr "c(:, [1, 3]) = 0;\n"
+
+#. type: Plain text
+#: container.texi:1264
+msgid "cell array @samp{@{0@}} and then assigned to the subarray of @code{c}."
+msgstr "ここではスカラー@samp{0}が自動的にセル配列@samp{@{0@}}に昇格されて、@code{c}の部分配列に割り当てられています。"
+
+#. type: Plain text
+#: container.texi:1268
+msgid ""
+"To give another example for indexing cell arrays with @samp{()}, you can "
+"exchange the first and the second row of a cell array as in the following "
+"command:"
+msgstr "@samp{()}によるセル配列のインデクス操作として、以下のコマンドはセル配列の1行目と2行目を交換する例です:"
+
+#. type: group
+#: container.texi:1282
+#, no-wrap
+msgid ""
+"c = @{1, 2, 3; 4, 5, 6@};\n"
+"c([1, 2], :) = c([2, 1], :)\n"
+"     @result{} = \n"
+"        @{\n"
+"          [1,1] =  4\n"
+"          [2,1] =  1\n"
+"          [1,2] =  5\n"
+"          [2,2] =  2\n"
+"          [1,3] =  6\n"
+"          [2,3] =  3\n"
+"        @}\n"
+msgstr ""
+"c = @{1, 2, 3; 4, 5, 6@};\n"
+"c([1, 2], :) = c([2, 1], :)\n"
+"     @result{} = \n"
+"        @{\n"
+"          [1,1] =  4\n"
+"          [2,1] =  1\n"
+"          [1,2] =  5\n"
+"          [2,2] =  2\n"
+"          [1,3] =  6\n"
+"          [2,3] =  3\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:1290
+msgid ""
+"Accessing multiple elements of a cell array with the @samp{@{} and @samp{@}} "
+"operators will result in a comma-separated list of all the requested "
+"elements (@pxref{Comma Separated Lists}).  Using the @samp{@{} and @samp{@}} "
+"operators the first two rows in the above example can be swapped back like "
+"this:"
+msgstr "@samp{@{}および@samp{@}}演算子によりセル配列の複数要素にアクセスすると、結果は要求されたすべての要素のカンマ区切りリストになります(@ref{Comma Separated Lists}を参照)。@samp{@{}および@samp{@}}演算子を使用することにより、上記の例の最初の2行は以下のように書き換えることができます:"
+
+#. type: group
+#: container.texi:1303
+#, no-wrap
+msgid ""
+"[c@{[1,2], :@}] = deal (c@{[2, 1], :@})\n"
+"     @result{} = \n"
+"        @{\n"
+"          [1,1] =  1\n"
+"          [2,1] =  4\n"
+"          [1,2] =  2\n"
+"          [2,2] =  5\n"
+"          [1,3] =  3\n"
+"          [2,3] =  6\n"
+"        @}\n"
+msgstr ""
+"[c@{[1,2], :@}] = deal (c@{[2, 1], :@})\n"
+"     @result{} = \n"
+"        @{\n"
+"          [1,1] =  1\n"
+"          [2,1] =  4\n"
+"          [1,2] =  2\n"
+"          [2,2] =  5\n"
+"          [1,3] =  3\n"
+"          [2,3] =  6\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:1308
+msgid ""
+"As for struct arrays and numerical arrays, the empty matrix @samp{[]} can be "
+"used to delete elements from a cell array:"
+msgstr "構造体配列や数値配列のように、セル配列から要素を削除するために空マトリクス@samp{[]}を使用できます:"
+
+#. type: group
+#: container.texi:1318
+#, no-wrap
+msgid ""
+"x = @{\"1\", \"2\"; \"3\", \"4\"@};\n"
+"x(1, :) = []\n"
+"     @result{} x =\n"
+"        @{\n"
+"          [1,1] = 3\n"
+"          [1,2] = 4\n"
+"        @}\n"
+msgstr ""
+"x = @{\"1\", \"2\"; \"3\", \"4\"@};\n"
+"x(1, :) = []\n"
+"     @result{} x =\n"
+"        @{\n"
+"          [1,1] = 3\n"
+"          [1,2] = 4\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:1323
+msgid ""
+"The following example shows how to just remove the contents of cell array "
+"elements but not delete the space for them:"
+msgstr "以下はセル配列から要素の内容だけを削除する方法を示す例です:"
+
+#. type: group
+#: container.texi:1335
+#, no-wrap
+msgid ""
+"x = @{\"1\", \"2\"; \"3\", \"4\"@};\n"
+"x@{1, :@} = []\n"
+"@result{} x =\n"
+"      @{\n"
+"        [1,1] = [](0x0)\n"
+"        [2,1] = 3\n"
+"        [1,2] = [](0x0)\n"
+"        [2,2] = 4\n"
+"      @}\n"
+msgstr ""
+"x = @{\"1\", \"2\"; \"3\", \"4\"@};\n"
+"x@{1, :@} = []\n"
+"@result{} x =\n"
+"      @{\n"
+"        [1,1] = [](0x0)\n"
+"        [2,1] = 3\n"
+"        [1,2] = [](0x0)\n"
+"        [2,2] = 4\n"
+"      @}\n"
+
+#. type: Plain text
+#: container.texi:1341
+msgid ""
+"The indexing operations operate on the cell array and not on the objects "
+"within the cell array.  By contrast, @code{cellindexmat} applies matrix "
+"indexing to the objects within each cell array entry and returns the "
+"requested values."
+msgstr "インデクス操作はセル配列内のオブジェクトではなく、セル配列を操作します。対照的に、@code{cellindexmat}は各セル配列エントリー内のオブジェクトにたいするマトリクスのインデクス操作に適用され、要求された値をリターンします。"
+
+#. type: anchor{#1}
+#: container.texi:1344
+msgid "XREFcellindexmat"
+msgstr "XREFcellindexmat"
+
+#. type: deftypefn
+#: container.texi:1344
+#, no-wrap
+msgid "{Built-in Function} {@var{y} =} cellindexmat (@var{x}, @var{varargin})"
+msgstr "{Built-in Function} {@var{y} =} cellindexmat (@var{x}, @var{varargin})"
+
+#. type: deftypefn
+#: container.texi:1346
+msgid "Given a cell array of matrices @var{x}, this function computes"
+msgstr "与えられたマトリクス@var{x}のセル配列にたいして、この関数は以下の計算を行います"
+
+#. type: group
+#: container.texi:1353
+#, no-wrap
+msgid ""
+"Y = cell (size (X));\n"
+"for i = 1:numel (X)\n"
+"  Y@{i@} = X@{i@}(varargin@{:@});\n"
+"endfor\n"
+msgstr ""
+"Y = cell (size (X));\n"
+"for i = 1:numel (X)\n"
+"  Y@{i@} = X@{i@}(varargin@{:@});\n"
+"endfor\n"
+
+#. type: deftypefn
+#: container.texi:1356
+msgid "@seealso{@ref{XREFcellslices,,cellslices}, @ref{XREFcellfun,,cellfun}}"
+msgstr "@seealso{@ref{XREFcellslices,,cellslices}, @ref{XREFcellfun,,cellfun}}"
+
+#. type: subsection
+#: container.texi:1359 container.texi:1360
+#, no-wrap
+msgid "Cell Arrays of Strings"
+msgstr "Cell Arrays of Strings"
+
+#. type: Plain text
+#: container.texi:1373
+msgid ""
+"One common use of cell arrays is to store multiple strings in the same "
+"variable.  It is also possible to store multiple strings in a character "
+"matrix by letting each row be a string.  This, however, introduces the "
+"problem that all strings must be of equal length.  Therefore, it is "
+"recommended to use cell arrays to store multiple strings.  For cases, where "
+"the character matrix representation is required for an operation, there are "
+"several functions that convert a cell array of strings to a character array "
+"and back.  @code{char} and @code{strvcat} convert cell arrays to a character "
+"array (@pxref{Concatenating Strings}), while the function @code{cellstr} "
+"converts a character array to a cell array of strings:"
+msgstr "一般的に、セル配列は複数の文字列を1つの変数に格納するために使用されます。各行を文字列とみなせば、文字マトリクスに複数文字列を格納することもできます。しかしこれは、すべての文字列が同じ長さにしなければならないという問題が生じます。したがって、複数文字列の格納にはセル配列の使用を推奨します。ある操作に文字マトリクス表現が要求されるような場合に備えて、文字列のセル配列を文字マトリクスに変換したり、その逆を行う関数がいくつかあります。@code{cellstr}は文字配列を文字列のセル配列に変換しますが、@code{char}と@code{strvcat}はセル配列を文字配列に変換します(@ref{Concatenating Strings}を参照)。"
+
+#. type: group
+#: container.texi:1383
+#, no-wrap
+msgid ""
+"a = [\"hello\"; \"world\"];\n"
+"c = cellstr (a)\n"
+"     @result{} c =\n"
+"         @{\n"
+"           [1,1] = hello\n"
+"           [2,1] = world\n"
+"         @}\n"
+msgstr ""
+"a = [\"hello\"; \"world\"];\n"
+"c = cellstr (a)\n"
+"     @result{} c =\n"
+"         @{\n"
+"           [1,1] = hello\n"
+"           [2,1] = world\n"
+"         @}\n"
+
+#. type: anchor{#1}
+#: container.texi:1388
+msgid "XREFcellstr"
+msgstr "XREFcellstr"
+
+#. type: deftypefn
+#: container.texi:1388
+#, no-wrap
+msgid "{Built-in Function} {@var{cstr} =} cellstr (@var{strmat})"
+msgstr "{Built-in Function} {@var{cstr} =} cellstr (@var{strmat})"
+
+#. type: deftypefn
+#: container.texi:1391
+msgid ""
+"Create a new cell array object from the elements of the string array "
+"@var{strmat}."
+msgstr "文字列配列@var{strmat}の要素から、新たにセル配列オブジェクトを作成します。"
+
+#. type: deftypefn
+#: container.texi:1394
+msgid ""
+"Each row of @var{strmat} becomes an element of @var{cstr}.  Any trailing "
+"spaces in a row are deleted before conversion."
+msgstr "@var{strmat}の各行が、@var{cstr}の要素になります。行内の末尾のスペースは、変換の前に削除されます。"
+
+#. type: deftypefn
+#: container.texi:1397
+msgid ""
+"To convert back from a cellstr to a character array use @code{char}.  "
+"@seealso{@ref{XREFcell,,cell}, @ref{XREFchar,,char}}"
+msgstr ""
+"文字列のセル配列から文字配列に逆変換するには@code{char}を使用します。\n"
+"@seealso{@ref{XREFcell,,cell}, @ref{XREFchar,,char}}"
+
+#. type: Plain text
+#: container.texi:1407
+msgid ""
+"One further advantage of using cell arrays to store multiple strings is that "
+"most functions for string manipulations included with Octave support this "
+"representation.  As an example, it is possible to compare one string with "
+"many others using the @code{strcmp} function.  If one of the arguments to "
+"this function is a string and the other is a cell array of strings, each "
+"element of the cell array will be compared to the string argument:"
+msgstr "複数の文字列を格納するのにセル配列を使用する他の利点として、Octaveに同梱されている文字列を操作する関数の多くがこの表現をサポートする点が挙げられます。例として、@code{strcmp}関数を使用することにより、1つの文字列を、他の多くのものと比較できます。この関数の引数の1つが文字列で、それ以外は文字列のセル配列の場合、セル配列の各要素が文字列と比較されます:"
+
+#. type: group
+#: container.texi:1414
+#, no-wrap
+msgid ""
+"c = @{\"hello\", \"world\"@};\n"
+"strcmp (\"hello\", c)\n"
+"     @result{} ans =\n"
+"        1   0\n"
+msgstr ""
+"c = @{\"hello\", \"world\"@};\n"
+"strcmp (\"hello\", c)\n"
+"     @result{} ans =\n"
+"        1   0\n"
+
+#. type: Plain text
+#: container.texi:1425
+msgid ""
+"The following string functions support cell arrays of strings: @code{char}, "
+"@code{strvcat}, @code{strcat} (@pxref{Concatenating Strings}), "
+"@code{strcmp}, @code{strncmp}, @code{strcmpi}, @code{strncmpi} "
+"(@pxref{Comparing Strings}), @code{str2double}, @code{deblank}, "
+"@code{strtrim}, @code{strtrunc}, @code{strfind}, @code{strmatch}, , "
+"@code{regexp}, @code{regexpi} (@pxref{Manipulating Strings}) and "
+"@code{str2double} (@pxref{String Conversions})."
+msgstr "次の文字列関数が文字列のセル配列をサポートします: @code{char}、@code{strvcat}、@code{strcat} (@ref{Concatenating Strings}を参照)、@code{strcmp}、@code{strncmp}、@code{strcmpi}、@code{strncmpi} (@ref{Comparing Strings}を参照)、@code{str2double}、@code{deblank}、@code{strtrim}、@code{strtrunc}、@code{strfind}、@code{strmatch}、@code{regexp}、@code{regexpi} (@ref{Manipulating Strings}を参照)、@code{str2double} (@ref{String Conversions}を参照)。"
+
+#. type: Plain text
+#: container.texi:1428
+msgid ""
+"The function @code{iscellstr} can be used to test if an object is a cell "
+"array of strings."
+msgstr "関数@code{iscellstr}は、オブジェクトが文字列のセル配列かテストするのに使用できます。"
+
+#. type: anchor{#1}
+#: container.texi:1431
+msgid "XREFiscellstr"
+msgstr "XREFiscellstr"
+
+#. type: deftypefn
+#: container.texi:1431
+#, no-wrap
+msgid "{Built-in Function} {} iscellstr (@var{cell})"
+msgstr "{Built-in Function} {} iscellstr (@var{cell})"
+
+#. type: deftypefn
+#: container.texi:1435
+msgid ""
+"Return true if every element of the cell array @var{cell} is a character "
+"string.  @seealso{@ref{XREFischar,,ischar}}"
+msgstr ""
+"セル配列@var{cell}のすべての要素が文字列の場合は、trueをリターンします。\n"
+"@seealso{@ref{XREFischar,,ischar}}"
+
+#. type: Plain text
+#: container.texi:1447
+msgid ""
+"Data that is stored in a cell array can be processed in several ways "
+"depending on the actual data.  The simplest way to process that data is to "
+"iterate through it using one or more @code{for} loops.  The same idea can be "
+"implemented more easily through the use of the @code{cellfun} function that "
+"calls a user-specified function on all elements of a cell array.  "
+"@xref{XREFcellfun,,cellfun}."
+msgstr "セル配列に格納されたデータは、実際のデータに応じて複数の方法により処理されます。@code{for}ループを使用して処理を繰り返すのが、そのデータを処理するもっともシンプルな方法です。セル配列のすべての要素にユーザー定義関数を呼び出す@code{cellfun}関数の使用を通じて、さらに簡単に同じアイデアを実装できます。@ref{XREFcellfun,,cellfun}を参照してください。"
+
+#. type: Plain text
+#: container.texi:1451
+msgid ""
+"An alternative is to convert the data to a different container, such as a "
+"matrix or a data structure.  Depending on the data this is possible using "
+"the @code{cell2mat} and @code{cell2struct} functions."
+msgstr "かわりにマトリクスやデータ構造体のような、異なるコンテナーにデータを変換することもできます。データに応じて@code{cell2mat}、および@code{cell2struct}関数の利用が可能です。"
+
+#. type: anchor{#1}
+#: container.texi:1454
+msgid "XREFcell2mat"
+msgstr "XREFcell2mat"
+
+#. type: deftypefn
+#: container.texi:1454
+#, no-wrap
+msgid "{Function File} {@var{m} =} cell2mat (@var{c})"
+msgstr "{Function File} {@var{m} =} cell2mat (@var{c})"
+
+#. type: deftypefn
+#: container.texi:1460
+msgid ""
+"Convert the cell array @var{c} into a matrix by concatenating all elements "
+"of @var{c} into a hyperrectangle.  Elements of @var{c} must be numeric, "
+"logical, or char matrices; or cell arrays; or structs; and @code{cat} must "
+"be able to concatenate them together.  "
+"@seealso{@ref{XREFmat2cell,,mat2cell}, @ref{XREFnum2cell,,num2cell}}"
+msgstr ""
+"セル配列@var{c}のすべての要素を連結することによりマトリクスにして超矩形(hyperrectangle)に変換します。@var{c}の要素は数値、論理値、文字マトリクス、セル配列、構造体でなければならず、@code{cat}はそれらを連結できなければなりません。\n"
+"@seealso{@ref{XREFmat2cell,,mat2cell}, @ref{XREFnum2cell,,num2cell}}"
+
+#. type: anchor{#1}
+#: container.texi:1465
+msgid "XREFcell2struct"
+msgstr "XREFcell2struct"
+
+#. type: deftypefn
+#: container.texi:1465
+#, no-wrap
+msgid "{Built-in Function} {} cell2struct (@var{cell}, @var{fields})"
+msgstr "{Built-in Function} {} cell2struct (@var{cell}, @var{fields})"
+
+#. type: deftypefnx
+#: container.texi:1466
+#, no-wrap
+msgid "{Built-in Function} {} cell2struct (@var{cell}, @var{fields}, @var{dim})"
+msgstr "{Built-in Function} {} cell2struct (@var{cell}, @var{fields}, @var{dim})"
+
+#. type: deftypefn
+#: container.texi:1471
+msgid ""
+"Convert @var{cell} to a structure.  The number of fields in @var{fields} "
+"must match the number of elements in @var{cell} along dimension @var{dim}, "
+"that is @code{numel (@var{fields}) == size (@var{cell}, @var{dim})}.  If "
+"@var{dim} is omitted, a value of 1 is assumed."
+msgstr "@var{cell}を構造体に変換します。@var{fields}内のフィールド数は、次元@var{dim}にしたがった@var{cell}の要素数に一致(@code{numel (@var{fields}) == size (@var{cell}, @var{dim})})しなければなりません。@var{dim}が省略された場合、値は1とみなされます。"
+
+#. type: group
+#: container.texi:1483
+#, no-wrap
+msgid ""
+"A = cell2struct (@{\"Peter\", \"Hannah\", \"Robert\";\n"
+"                   185, 170, 168@},\n"
+"                 @{\"Name\",\"Height\"@}, 1);\n"
+"A(1)\n"
+"   @result{}\n"
+"      @{\n"
+"        Name   = Peter\n"
+"        Height = 185\n"
+"      @}\n"
+"\n"
+msgstr ""
+"A = cell2struct (@{\"Peter\", \"Hannah\", \"Robert\";\n"
+"                   185, 170, 168@},\n"
+"                 @{\"Name\",\"Height\"@}, 1);\n"
+"A(1)\n"
+"   @result{}\n"
+"      @{\n"
+"        Name   = Peter\n"
+"        Height = 185\n"
+"      @}\n"
+"\n"
+
+#. type: deftypefn
+#: container.texi:1487
+msgid ""
+"@seealso{@ref{XREFstruct2cell,,struct2cell}, @ref{XREFcell2mat,,cell2mat}, "
+"@ref{XREFstruct,,struct}}"
+msgstr "@seealso{@ref{XREFstruct2cell,,struct2cell}, @ref{XREFcell2mat,,cell2mat}, @ref{XREFstruct,,struct}}"
+
+#. type: cindex
+#: container.texi:1492
+#, no-wrap
+msgid "comma separated lists"
+msgstr "comma separated lists"
+
+#. type: cindex
+#: container.texi:1493
+#, no-wrap
+msgid "cs-lists"
+msgstr "cs-lists"
+
+#. type: Plain text
+#: container.texi:1499
+msgid ""
+"Comma separated lists @footnote{Comma-separated lists are also sometimes "
+"informally referred to as @dfn{cs-lists}.} are the basic argument type to "
+"all Octave functions - both for input and return arguments.  In the example"
+msgstr "カンマ区切りリスト@footnote{カンマ区切りリストは@dfn{cs-lists}と略される場合があります。}はすべてのOctave関数の基本的な引数型(入力引数とリターン引数の両方)です。"
+
+#. type: example
+#: container.texi:1502
+#, no-wrap
+msgid "max (@var{a}, @var{b})\n"
+msgstr "max (@var{a}, @var{b})\n"
+
+#. type: Plain text
+#: container.texi:1508
+msgid ""
+"@samp{@var{a}, @var{b}} is a comma separated list.  Comma separated lists "
+"can appear on both the right and left hand side of an assignment.  For "
+"example"
+msgstr "上記の例では@samp{@var{a}, @var{b}}がカンマ区切りリストです。カンマ区切りリストは代入の右辺と左辺の両方に出現することができます。たとえば"
+
+#. type: group
+#: container.texi:1513
+#, no-wrap
+msgid ""
+"x = [1 0 1 0 0 1 1; 0 0 0 0 0 0 7];\n"
+"[@var{i}, @var{j}] = find (@var{x}, 2, \"last\");\n"
+msgstr ""
+"x = [1 0 1 0 0 1 1; 0 0 0 0 0 0 7];\n"
+"[@var{i}, @var{j}] = find (@var{x}, 2, \"last\");\n"
+
+#. type: Plain text
+#: container.texi:1521
+msgid ""
+"Here, @samp{@var{x}, 2, \"last\"} is a comma separated list constituting the "
+"input arguments of @code{find}.  @code{find} returns a comma separated list "
+"of output arguments which is assigned element by element to the comma "
+"separated list @samp{@var{i}, @var{j}}."
+msgstr "ここでは@samp{@var{x}, 2, \"last\"}は@code{find}の入力引数を構成するカンマ区切りリストです。@code{find}はカンマ区切りリストの出力引数をリターンし、それらは要素ごとにカンマ区切りリスト@samp{@var{i}, @var{j}}に割り当てられます。"
+
+#. type: Plain text
+#: container.texi:1526
+msgid ""
+"Another example of where comma separated lists are used is in the creation "
+"of a new array with @code{[]} (@pxref{Matrices}) or the creation of a cell "
+"array with @code{@{@}} (@pxref{Basic Usage of Cell Arrays}).  In the "
+"expressions"
+msgstr "カンマ区切りリストが使用される他の例としては、@code{[]}による新たな配列の作成(@ref{Matrices}を参照)や、@code{@{@}}によるセル配列の作成(@ref{Basic Usage of Cell Arrays}を参照)があります。"
+
+#. type: group
+#: container.texi:1531
+#, no-wrap
+msgid ""
+"a = [1, 2, 3, 4];\n"
+"c = @{4, 5, 6, 7@};\n"
+msgstr ""
+"a = [1, 2, 3, 4];\n"
+"c = @{4, 5, 6, 7@};\n"
+
+#. type: Plain text
+#: container.texi:1536
+msgid "both @samp{1, 2, 3, 4} and @samp{4, 5, 6, 7} are comma separated lists."
+msgstr "この場合は@samp{1, 2, 3, 4}と@samp{4, 5, 6, 7}の両方がカンマ区切りリストです。"
+
+#. type: Plain text
+#: container.texi:1542
+msgid ""
+"Comma separated lists cannot be directly manipulated by the user.  However, "
+"both structure arrays and cell arrays can be converted into comma separated "
+"lists, and thus used in place of explicitly written comma separated lists.  "
+"This feature is useful in many ways, as will be shown in the following "
+"subsections."
+msgstr "カンマ区切りリストはユーザーが直接扱うことはできません。しかし構造体配列とセル配列はどちらもカンマ区切りリストに変換できるので、明示的にカンマ区切りリストを記述するかわりに使用することができます。この機能は、以降のサブセクションで示すように、有用な場面が多数あります。"
+
+#. type: menuentry
+#: container.texi:1546
+msgid "Comma Separated Lists Generated from Cell Arrays::"
+msgstr "Comma Separated Lists Generated from Cell Arrays::"
+
+#. type: subsection
+#: container.texi:1546 container.texi:1624 container.texi:1625
+#, no-wrap
+msgid "Comma Separated Lists Generated from Structure Arrays"
+msgstr "Comma Separated Lists Generated from Structure Arrays"
+
+#. type: subsection
+#: container.texi:1548 container.texi:1549
+#, no-wrap
+msgid "Comma Separated Lists Generated from Cell Arrays"
+msgstr "Comma Separated Lists Generated from Cell Arrays"
+
+#. type: Plain text
+#: container.texi:1555
+msgid ""
+"As has been mentioned above (@pxref{Indexing Cell Arrays}), elements of a "
+"cell array can be extracted into a comma separated list with the @code{@{} "
+"and @code{@}} operators.  By surrounding this list with @code{[} and "
+"@code{]}, it can be concatenated into an array.  For example:"
+msgstr "これまで示したように(@ref{Indexing Cell Arrays}を参照)、セル配列は@code{@{}および@code{@}}演算子でカンマ区切りリストに抽出できます。このリストを@code{[}と@code{]}で囲うことにより、配列に連結できます。たとえば:"
+
+#. type: group
+#: container.texi:1562
+#, no-wrap
+msgid ""
+"a = @{1, [2, 3], 4, 5, 6@};\n"
+"b = [a@{1:4@}]\n"
+"     @result{} b =\n"
+"         1   2   3   4   5\n"
+msgstr ""
+"a = @{1, [2, 3], 4, 5, 6@};\n"
+"b = [a@{1:4@}]\n"
+"     @result{} b =\n"
+"         1   2   3   4   5\n"
+
+#. type: Plain text
+#: container.texi:1569
+msgid ""
+"Similarly, it is possible to create a new cell array containing cell "
+"elements selected with @code{@{@}}.  By surrounding the list with @samp{@{} "
+"and @samp{@}} a new cell array will be created, as the following example "
+"illustrates:"
+msgstr "同様に@code{@{@}}で選択されたセル要素を含む、新たなセル配列を作成することができます。以下の例で示すように、リストを@samp{@{}と@samp{@}}で囲えば、新しいセル配列が作成されます:"
+
+#. type: group
+#: container.texi:1579
+#, no-wrap
+msgid ""
+"a = @{1, rand(2, 2), \"three\"@};\n"
+"b = @{ a@{ [1, 3] @} @}\n"
+"     @result{} b =\n"
+"         @{\n"
+"           [1,1] =  1\n"
+"           [1,2] = three\n"
+"         @}\n"
+msgstr ""
+"a = @{1, rand(2, 2), \"three\"@};\n"
+"b = @{ a@{ [1, 3] @} @}\n"
+"     @result{} b =\n"
+"         @{\n"
+"           [1,1] =  1\n"
+"           [1,2] = three\n"
+"         @}\n"
+
+#. type: Plain text
+#: container.texi:1588
+msgid ""
+"Furthermore, cell elements (accessed by @code{@{@}}) can be passed directly "
+"to a function.  The list of elements from the cell array will be passed as "
+"an argument list to a given function as if it is called with the elements as "
+"individual arguments.  The two calls to @code{printf} in the following "
+"example are identical but the latter is simpler and can handle cell arrays "
+"of an arbitrary size:"
+msgstr "さらに(@code{@{@}}によりアクセスされる)セル要素を、直接関数に渡すことができます。セル配列の要素リストは、あたかもその要素を引数として呼び出したかのように、関数の引数として渡すことができます。以下の例の2つの@code{printf}呼び出しは等価ですが、後者はよりシンプルで、任意のサイズのセル配列を処理できます:"
+
+#. type: group
+#: container.texi:1596
+#, no-wrap
+msgid ""
+"c = @{\"GNU\", \"Octave\", \"is\", \"Free\", \"Software\"@};\n"
+"printf (\"%s \", c@{1@}, c@{2@}, c@{3@}, c@{4@}, c@{5@});\n"
+"     @print{} GNU Octave is Free Software \n"
+"printf (\"%s \", c@{:@});\n"
+"     @print{} GNU Octave is Free Software \n"
+msgstr ""
+"c = @{\"GNU\", \"Octave\", \"is\", \"Free\", \"Software\"@};\n"
+"printf (\"%s \", c@{1@}, c@{2@}, c@{3@}, c@{4@}, c@{5@});\n"
+"     @print{} GNU Octave is Free Software \n"
+"printf (\"%s \", c@{:@});\n"
+"     @print{} GNU Octave is Free Software \n"
+
+#. type: Plain text
+#: container.texi:1601
+msgid ""
+"If used on the left-hand side of an assignment, a comma separated list "
+"generated with @code{@{@}} can be assigned to.  An example is"
+msgstr "代入の左辺で使用する場合、@code{@{@}}で生成されたカンマ区切りリストに代入できます。以下は例です"
+
+#. type: group
+#: container.texi:1620
+#, no-wrap
+msgid ""
+"in@{1@} = [10, 20, 30, 40, 50, 60, 70, 80, 90];\n"
+"in@{2@} = inf;\n"
+"in@{3@} = \"last\";\n"
+"in@{4@} = \"first\";\n"
+"out = cell (4, 1);\n"
+"[out@{1:3@}] = find (in@{1 : 3@});\n"
+"[out@{4:6@}] = find (in@{[1, 2, 4]@})\n"
+"     @result{} out =\n"
+"        @{\n"
+"          [1,1] = 1\n"
+"          [2,1] = 9\n"
+"          [3,1] = 90\n"
+"          [4,1] = 1\n"
+"          [3,1] = 1\n"
+"          [4,1] = 10\n"
+"        @}\n"
+msgstr ""
+"in@{1@} = [10, 20, 30, 40, 50, 60, 70, 80, 90];\n"
+"in@{2@} = inf;\n"
+"in@{3@} = \"last\";\n"
+"in@{4@} = \"first\";\n"
+"out = cell (4, 1);\n"
+"[out@{1:3@}] = find (in@{1 : 3@});\n"
+"[out@{4:6@}] = find (in@{[1, 2, 4]@})\n"
+"     @result{} out =\n"
+"        @{\n"
+"          [1,1] = 1\n"
+"          [2,1] = 9\n"
+"          [3,1] = 90\n"
+"          [4,1] = 1\n"
+"          [3,1] = 1\n"
+"          [4,1] = 10\n"
+"        @}\n"
+
+#. type: Plain text
+#: container.texi:1629
+msgid ""
+"Structure arrays can equally be used to create comma separated lists.  This "
+"is done by addressing one of the fields of a structure array.  For example:"
+msgstr "同様に構造体配列もカンマ区切りリストの生成に使用できます。これは構造体配列の1つのフィールドをアドレッシングすることにより行われます。たとえば:"
+
+#. type: group
+#: container.texi:1638
+#, no-wrap
+msgid ""
+"x = ceil (randn (10, 1)); \n"
+"in = struct (\"call1\", @{x, 3, \"last\"@}, \n"
+"             \"call2\", @{x, inf, \"first\"@});\n"
+"out = struct (\"call1\", cell (2, 1), \"call2\", cell (2, 1));\n"
+"[out.call1] = find (in.call1);\n"
+"[out.call2] = find (in.call2);\n"
+msgstr ""
+"x = ceil (randn (10, 1)); \n"
+"in = struct (\"call1\", @{x, 3, \"last\"@}, \n"
+"             \"call2\", @{x, inf, \"first\"@});\n"
+"out = struct (\"call1\", cell (2, 1), \"call2\", cell (2, 1));\n"
+"[out.call1] = find (in.call1);\n"
+"[out.call2] = find (in.call2);\n"

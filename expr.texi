@@ -1,0 +1,1427 @@
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+@c DO NOT EDIT!  Generated automatically by munge-texi.pl.
+
+@c Copyright (C) 1996-2013 John W. Eaton
+@c
+@c This file is part of Octave.
+@c
+@c Octave is free software; you can redistribute it and/or modify it
+@c under the terms of the GNU General Public License as published by the
+@c Free Software Foundation; either version 3 of the License, or (at
+@c your option) any later version.
+@c 
+@c Octave is distributed in the hope that it will be useful, but WITHOUT
+@c ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+@c FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+@c for more details.
+@c 
+@c You should have received a copy of the GNU General Public License
+@c along with Octave; see the file COPYING.  If not, see
+@c <http://www.gnu.org/licenses/>.
+
+@node Expressions
+@chapter Expressions
+@cindex expressions
+
+式はOctaveにおける命令文の基本的な構築ブロックです。式は値に評価され、その値をプリント、テスト、変数に格納、関数に渡すことができ、代入演算子で変数に新たな値を割り当てることもできます。
+
+式は自身の命令文の役割りも果たすことができます他の種の命令文の多くは、処理を行うデータを指定する、1つ以上の式を含みます。他言語と比較して、Octaveの式は変数、配列参照、定数、関数呼び出しを含み、同様にさまざまな種類の演算子によるそれらの組み合わせも含みます。
+
+@menu
+* Index Expressions::
+* Calling Functions::
+* Arithmetic Ops::
+* Comparison Ops::
+* Boolean Expressions::
+* Assignment Ops::
+* Increment Ops::
+* Operator Precedence::      
+@end menu
+
+@node Index Expressions
+@section Index Expressions
+
+@opindex (
+@opindex )
+@opindex :
+
+@dfn{インデクス式(index expression)}により、マトリクスｙｓベクターの選択した要素の参照と抽出が可能になります。
+
+インデクスはスカラー、ベクター、レンジ、または行や列全体の選択に使用する特殊演算子@samp{:}です。
+
+ベクターは1つにインデクス式を使用してインデクス付けされます。マトリクス(2次元)およびより高次の多次元配列は、1つのインデクスまたは@math{N}個(@math{N}は配列の次元)のインデクスによりインデクス付けされます。2次元またはより高次のデータを1つのインデクス式でインデクス付けする場合、配列の要素は(Fortranのように)列優先で取得されます。
+
+インデクス操作による出力はインデクス式の次元とみなされます。たとえば:
+
+@example
+@group
+a(2)       # 結果はスカラー
+a(1:2)     # 結果はベクター
+a([1; 2])  # 結果は列ベクター
+@end group
+@end example
+
+特殊なケースとして、コロンが1つのインデクスとして使用された場合、出力はベクターまたはマトリクスのすべての要素を含む列ベクターになります。たとえば:
+
+@example
+@group
+a(:)       # 結果は列ベクター
+a(:)'      # 結果は行ベクター
+@end group
+@end example
+
+上記2つのコード用法は、@code{reshape}などで任意サイズの配列ではなくシンプルなベクターが必要なとき用いられます。
+
+以下のマトリクスが与えられたとき
+
+@example
+a = [1, 2; 3, 4]
+@end example
+
+@noindent
+以下の式はすべて等価で、いずれもマトリクスの最初の行を選択します。
+
+@example
+@group
+a(1, [1, 2])  # 行 1, 列 1、2
+a(1, 1:2)     # 行 1, 列のレンジ 1-2
+a(1, :)       # 行 1, 列全体
+@end group
+@end example
+
+@cindex @code{end}, indexing
+@cindex :end
+
+インデクス式において、キーワード@code{end}は特定の次元の最後のエントリーを自動的に参照します。このマジックインデクスはレンジで使用することもでき、インデクス操作前に配列範囲を得るための@code{size}と@code{length}の呼び出しの必要性をなくします。たとえば:
+
+@example
+@group
+a = [1, 2, 3, 4];
+
+a(1:end/2)        # aの最初の半分 => [1, 2]
+a(end + 1) = 5;   # 要素の追加
+a(end) = [];      # 要素の削除
+a(1:2:end)        # aの奇数要素 => [1, 3]
+a(2:2:end)        # aの偶数要素 => [2, 4]
+a(end:-1:1)       # aの逆 => [4, 3, 2 , 1]
+@end group
+@end example
+
+@menu
+* Advanced Indexing::        
+@end menu
+
+@node Advanced Indexing
+@subsection Advanced Indexing
+
+@samp{n}次元の配列を@samp{m}次元のインデクスでインデクス付けできます。より一般的には結果を決定するインデクスセットはインデクスベクター(またはレンジ、スカラー)は直積(Cartesian
+product: カルテシアン積、デカルト積)により形成されます。
+
+通常、そしてもっとも一般的なケースは@w{@code{m == n}}で、各インデクスはそれぞれの次元に対応します。@w{@code{m <
+n}}で各インデクスが@math{i}番目の次元において配列サイズより小さい場合、インデクス式は末尾のシングルトン次元(@code{[ones
+(m-n, 1)]})とともに渡されます。@w{@code{m <
+n}}だがインデクスの1つ@code{m(i)}が現在の配列のサイズの外側の場合、最後の@w{@code{n-m+1}}次元が元の次元を掛け合わせた結果と等しくなるように拡張されてシングルトン次元に折り畳まれます。例で理解するのがもっとも簡単でしょう。
+
+@example
+a = reshape (1:8, 2, 2, 2)  # 3次元配列を作成
+a =
+
+ans(:,:,1) =
+
+   1   3
+   2   4
+
+ans(:,:,2) =
+
+   5   7
+   6   8
+
+a(2,1,2);   # (m == n)の場合: ans = 6
+a(2,1);     # (m < n)の場合、インデクスは配列内
+            # a(2,1,1)に等しい: ans = 2
+a(2,4);     # (m < n)の場合、インデクスは配列の外側
+            # 次元2と3は、サイズ2x2 = 4の新たな次元に折り畳まれる
+            # 2行目[2, 4, 6, 8]の4番目の要素が選択される: ans = 8
+@end example
+
+インデクスの上級の使用法としては、1つの値で満たされた配列の作成があります。これはonesのインデクスをスカラー値に使用して行うことができます。結果はインデクス式の次元をもち、各要素が元のスカラーに等しいオブジェクトになります。たとえば以下の命令文
+
+@example
+@group
+a = 13;
+a(ones (1, 4))
+@end group
+@end example
+
+@noindent
+これは4つの要素すべてが13のベクターを生成します。
+
+同様に2つのonesベクターによりスカラーをインデクス付けすることにより、マトリクスを作成できます。以下の命令文
+
+@example
+@group
+a = 13;
+a(ones (1, 2), ones (1, 3))
+@end group
+@end example
+
+@noindent
+これはすべての要素が13と等しい2x3のマトリクスを作成します。
+
+最後の例は以下のように記述することもできます
+
+@example
+@group
+13(ones (2, 3))
+@end group
+@end example
+
+不要な乗算を避けることができるので、@code{scalar * ones (N, M,
+@dots{})}とコードを構築するよりインデクス操作を使用するほうがより効果的です。さらに複製されるオブジェクトには乗算が定義されていないかもしれませんが、配列へのインデクス操作は常に定義されています。以下は、それ自身がスカラーではない基本ユニットから、2x3のセル配列を作成する方法を示します。
+
+@example
+@group
+@{"Hello"@}(ones (2, 3))
+@end group
+@end example
+
+@code{ones (1,
+n)}(onesの行ベクター)の結果は、(増分が0の)レンジとなることは注記しておくべきでしょう。内部的にレンジは開始値、増分、終値、値の合計として格納されます。したがって、要素数が4より大のときは常にonesのベクターまたはマトリクスのほうが、記憶領域にたいして効果的です。特に@samp{r}が行ベクターの場合、以下の式
+
+@example
+  r(ones (1, n), :)
+@end example
+
+@example
+  r(ones (n, 1), :)
+@end example
+
+@noindent
+これは同じ結果を生成しますが、少なくとも@samp{r}と@samp{n}が十分大きければ、1つ目のほうが明らかに高速です。最初のケースでは、インデクスはOctaveが式を処理するためにより効果的なアルゴリズムを選択できるレンジ形式として、圧縮されて保持されます。
+
+これらの違いを理解しないユーザーには、一般的に小さな配列を大きな配列に複製する場合は、関数@code{repmat}の使用を推奨します。
+
+2つ目のインデクス操作の用途は、コードのスピードアップです。インデクス操作は高速な処理であり、慎重に使用することにより、特定の配列要素をループするような低速な処理の必要を低減できます。
+
+以下のような値をもつ10要素の行ベクター@math{a}を作成する例で考えてみましょう
+@tex
+$a_i = \sqrt{i}$.
+@end tex
+@ifnottex
+a(i) = sqrt (i).
+@end ifnottex
+
+@example
+@group
+for i = 1:10
+  a(i) = sqrt (i);
+endfor
+@end group
+@end example
+
+@noindent
+このようなループを使用してベクターを作成するのは、効果的ではありません。この場合は、以下のような式を使用するほうがより効果的でしょう
+
+@example
+a = sqrt (1:10);
+@end example
+
+@noindent
+これはループ全体の使用を避けています。
+
+ループを避けることができず、値の数が巨大なマトリクスの形成に結びついている場合、最初にマトリクスのサイズをセット(事前領域割り当て)してから、インデクスコマンドを使用して要素を挿入するほうが、一般的にはより高速です。たとえば、マトリクス@code{a}が与えられた場合、
+
+@example
+@group
+[nr, nc] = size (a);
+x = zeros (nr, n * nc);
+for i = 1:n
+  x(:,(i-1)*nc+1:i*nc) = a;
+endfor
+@end group
+@end example
+
+@noindent
+この式は、以下に比べてはるかに高速です
+
+@example
+@group
+x = a;
+for i = 1:n-1
+  x = [x, a];
+endfor
+@end group
+@end example
+
+@noindent
+なぜなら、Octaveが中間結果を繰り返しリサイズする必要がないからです。
+
+@c sub2ind libinterp/corefcn/sub2ind.cc
+@anchor{XREFsub2ind}
+@deftypefn {Function File} {@var{ind} =} sub2ind (@var{dims}, @var{i}, @var{j})
+@deftypefnx {Function File} {@var{ind} =} sub2ind (@var{dims}, @var{s1}, @var{s2}, @dots{}, @var{sN})
+添字を線形のインデクスに変換します。
+
+以下は3行3列のマトリクスの2次元インデクス@code{(2,3)}を線形インデクスに変換する方法を示す例です。マトリクスは列から列へ、各列のすべての行が満たされるまで、線形にインデクス付けされます。
+
+@example
+@group
+linear_index = sub2ind ([3, 3], 2, 3)
+@result{} 8
+@end group
+@end example
+@seealso{@ref{XREFind2sub,,ind2sub}}
+@end deftypefn
+
+
+@c ind2sub libinterp/corefcn/sub2ind.cc
+@anchor{XREFind2sub}
+@deftypefn {Function File} {[@var{s1}, @var{s2}, @dots{}, @var{sN}] =} ind2sub (@var{dims}, @var{ind})
+線形のインデクスを添字に変換します。
+
+以下は3行3列のマトリクスの線形インデクス@code{8}を添字に変換する方法を示す例です。マトリクスは列から列へ、各列のすべての行が満たされるまで、線形にインデクス付けされます。
+
+@example
+@group
+[r, c] = ind2sub ([3, 3], 8)
+    @result{} r =  2
+    @result{} c =  3
+@end group
+@end example
+@seealso{@ref{XREFsub2ind,,sub2ind}}
+@end deftypefn
+
+
+@c isindex libinterp/corefcn/utils.cc
+@anchor{XREFisindex}
+@deftypefn {Built-in Function} {} isindex (@var{ind})
+@deftypefnx {Built-in Function} {} isindex (@var{ind}, @var{n})
+@var{ind}が有効なインデクスの場合は、trueをリターンします。有効なインデクスとは、正の整数(実際は実数データ型ですが)、または論理配列です。@var{n}が与えられた場合、それはインデクス付けされる次元の拡張の最大を指定します。可能なら結果は内部でキャッシュされるので、@var{ind}を連続して使用する場合、再チェックを行いません。
+@end deftypefn
+
+
+@c allow_noninteger_range_as_index libinterp/octave-value/ov-range.cc
+@anchor{XREFallow_noninteger_range_as_index}
+@deftypefn {Built-in Function} {@var{val} =} allow_noninteger_range_as_index ()
+@deftypefnx {Built-in Function} {@var{old_val} =} allow_noninteger_range_as_index (@var{new_val})
+@deftypefnx {Built-in Function} {} allow_noninteger_range_as_index (@var{new_val}, "local")
+非整数レンジをインデクスに使用できるかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。これは@sc{matlab}との互換性にたいしては有用です。しかし、@sc{matlab}はレンジ式にたいして、異なるコンテキストで異なる扱いをするため、完全な互換性はありません。
+
+関数内から@qcode{"local"}オプションとともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@end deftypefn
+
+
+@node Calling Functions
+@section Calling Functions
+
+@dfn{関数(function)}とは、特定の計算にたいする名前です。名前をもつので、プログラム内の任意の場所で名前で問い合わせることができます。たとえば、関数@code{sqrt}は数値の平方根を計算します。
+
+関数のある固定されたセットは@dfn{ビルトイン}で、すべてのOctaveプログラム内でそれらを利用できることを意味します。@code{sqrt}関数は、そのうちの1つです。さらに、あなたが自分の関数を定義できます。これを行うための情報は、@ref{Functions
+and Scripts}を参照してください。
+
+@cindex arguments in function call
+@dfn{関数呼び出し}式で関数を使用します。これは関数の後にカッコで括った@dfn{引数}リストを続けて構成されます。引数は、その関数が行うであろう計算のための、生の材料を与えます。2つ以上の引数がある場合は、カンマで区切ります。引数がない場合はカッコを省略できますが、関数呼び出しが意図されていることを明確に示すために、カッコを含めるのは良いアイデアです。以下にいくつか例を示します:
+
+@example
+@group
+sqrt (x^2 + y^2)      # @r{引数=1}
+ones (n, m)           # @r{引数=2}
+rand ()               # @r{引数なし}
+@end group
+@end example
+
+関数はそれぞれ、特定の個数の引数を期待します。たとえば@code{sqrt}関数は平方根を求める数値を1つの引数として呼び出さなければなりません:
+
+@example
+sqrt (@var{argument})
+@end example
+
+ビルトイン関数には、可変個の引数をとるものがいくつかあります。引数の数は使い方に依存して異なり、与えられた引数の数に応じて異なった振る舞いをします。
+
+他のすべての式と同様、関数呼び出しは値であり、値は与えられた引数に基づきその関数により計算されます。この例では、@code{sqrt
+(@var{argument})}の値は、引数の平方根です。関数は、特定の変数に値を割り当てたり、入出力処理を行うような、副作用もあります。
+
+他の多くの言語と異なり、Octaveの関数は複数の値をリターンします。たとえば、以下の命令文
+
+@example
+[u, s, v] = svd (a)
+@end example
+
+@noindent
+これはマトリクス@code{a}のsingular value
+decompositionを3つの結果マトリクス@code{u}、@code{s}、@code{v}に割り当てます。
+
+複数代入式の左辺は、それ自体がリスト式であり、変数名リストまたはインデクス式を記述できます。@ref{Index
+Expressions}と@ref{Assignment Ops}も参照してください。
+
+@menu
+* Call by Value::
+* Recursion::                
+@end menu
+
+@node Call by Value
+@subsection Call by Value
+
+OctaveではFortranと異なり関数の引数は値で渡されます。これは関数に渡される前に関数呼び出しの各引数が評価されて、一時的な場所に割り当てられることを意味します。関数のパラメーターを値ではなく参照であると指定する方法は、現在のところありません。これは呼び出された関数内で直接関数パラメーターの値を変更することは不可能であることを意味します。関数ボディー内のローカルコピーだけが変更できます。たとえば、
+
+@example
+@group
+function f (x, n)
+  while (n-- > 0)
+    disp (x);
+  endwhile
+endfunction
+@end group
+@end example
+
+@noindent
+この関数は1つ目の引数を@var{n}回表示します。この関数では、呼び出された関数内で値が変更されることを心配しなくてもよい、一時的な変数として変数@var{n}を使用しています。値呼出しは最初にその関数がパラメーターの変更を試みないか判断する必要なく、常に定数を任意の関数パラメーターとすることができます。
+
+呼び出し側は引数に変数として式を使用できますが、呼び出された関数はこれを知りません。知っているのは引数がもつ値だけです。たとえば、以下の関数呼び出しが与えられた場合
+
+@example
+@group
+foo = "bar";
+fcn (foo)
+@end group
+@end example
+
+@noindent
+これを``変数@code{foo}''が引数だと考えるべきではありません。かわりに、引数を文字列値@qcode{"bar"}と考えるべきです。
+
+たとえOctaveが関数の引数に値渡しのセマンティックを使用していても、不必要に値はコピーされません。たとえば、
+
+@example
+@group
+x = rand (1000);
+f (x);
+@end group
+@end example
+
+@noindent
+この式は、関数@code{f}が引数を変更する@emph{まで}は、実際に1000x1000のマトリクス要素2つが存在することを強いません。その後でOctaveは関数@code{f}のスコープ外で値が変更されたり、定数または一時的な結果値にたいする修正の試み(おそらく失敗します!)を避けるためにコピーを作成しなければならなくなります。
+
+@node Recursion
+@subsection Recursion
+@cindex factorial function
+
+いくつかの制限@footnote{Octave関数のいくつかは、再帰呼び出しできない関数として記述されています。たとえばODE
+solverの@code{lsode}は最終的には再帰呼び出しできないFortranサブルーチンとして実装されているので、@code{lsode}が要求するユーザー提供の関数内からは、直接あるいは間接的に呼び出すべきではありません。これを行うと、結果はエラーになるでしょう。}により、再帰関数呼び出しは許されません。@dfn{再帰関数}とは、直接または間接的に自身を呼び出す関数です。たとえば、以下は与えられた整数の階乗を計算する、非効率的@footnote{最初に値@code{n}が実際に正の整数かチェックした後で@code{prod
+(1:n)}または@code{gamma (n+1)}を使用するほうが良いでしょう。}な方法の例です:
+
+@example
+@group
+function retval = fact (n)
+  if (n > 0)
+    retval = n * fact (n-1);
+  else
+    retval = 1;
+  endif
+endfunction
+@end group
+@end example
+
+この関数は自身を直接呼び出すので、再帰的です。これは呼び出すごとに、以前の呼び出しより1少ない引数を使用するので、最終的には終了します。一度引数が0以下になれば、自身を呼び出さず、再帰は終了します。
+
+ビルトイン変数@code{max_recursion_depth}は、再帰の深さを制限し、Octaveが永久に再帰するのを防ぎます。
+
+@c max_recursion_depth libinterp/parse-tree/pt-eval.cc
+@anchor{XREFmax_recursion_depth}
+@deftypefn {Built-in Function} {@var{val} =} max_recursion_depth ()
+@deftypefnx {Built-in Function} {@var{old_val} =} max_recursion_depth (@var{new_val})
+@deftypefnx {Built-in Function} {} max_recursion_depth (@var{new_val}, "local")
+関数が再帰的に呼び出される回数の内部制限にたいして、問い合わせまたはセットを行います。制限を超過した場合はエラーメッセージがプリントされ、制御はトップレベルに戻されます。
+
+関数内から@qcode{"local"}オプションとともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@end deftypefn
+
+
+@node Arithmetic Ops
+@section Arithmetic Operators
+@cindex arithmetic operators
+@cindex operators, arithmetic
+@cindex addition
+@cindex subtraction
+@cindex multiplication
+@cindex matrix multiplication
+@cindex division
+@cindex quotient
+@cindex negation
+@cindex unary minus
+@cindex exponentiation
+@cindex transpose
+@cindex Hermitian operator
+@cindex transpose, complex-conjugate
+@cindex complex-conjugate transpose
+
+以下の算術演算子が利用でき、それらはスカラーとマトリクスにたいして機能します。要素対要素の演算子と関数はブロードキャストします(@ref{Broadcasting}を参照)。
+
+@table @asis
+@item @var{x} + @var{y}
+@opindex +
+加算。オペランドがどちらもマトリクスの場合、行数と列数が一致するか、同じ形体にブロードキャスト可能でなければならない。
+
+@item @var{x} .+ @var{y}
+@opindex .+
+要素ごとの加算。この演算子は@code{+}と等価。
+
+@item @var{x} - @var{y}
+@opindex -
+減算。オペランドがどちらもマトリクスの場合は、行数と列数が一致するか、同じ形体にブロードキャスト可能でなければならない。
+
+@item @var{x} .- @var{y}
+要素ごとの減算。この演算子は@code{-}と等価。
+
+@item @var{x} * @var{y}
+@opindex *
+マトリクスの乗算。@var{x}の列数は、@var{y}の行数に一致するか、同じ形体にブロードキャスト可能でなければならない。
+
+@item @var{x} .* @var{y}
+@opindex .*
+要素ごとのの乗算。オペランドがどちらもマトリクスの場合は、行数と列数が一致するか、同じ形体にブロードキャスト可能でなければならない。
+
+@item @var{x} / @var{y}
+@opindex /
+右除算。これは以下の式と概念的に等価
+
+@example
+(inverse (y') * x')'
+@end example
+
+@noindent
+しかし@var{y'}を逆転せずに計算される。
+
+システムがsquareeではない、または係数行列が非正則の場合は、minimum norm solutionが計算されます。
+
+@item @var{x} ./ @var{y}
+@opindex ./
+要素ごとの右除算。
+
+@item @var{x} \ @var{y}
+@opindex \
+左除算。これは以下の式と概念的に等価
+
+@example
+inverse (x) * y
+@end example
+
+@noindent
+しかし@var{x}を逆転せずに計算される。
+
+システムがsquareeではない、または係数行列が非正則の場合は、minimum norm solutionが計算されます。
+
+@item @var{x} .\ @var{y}
+@opindex .\
+要素ごとの左除算。@var{y}の各要素は、対応する@var{x}の要素により除される。
+
+@item @var{x} ^ @var{y}
+@itemx @var{x} ** @var{y}
+@opindex **
+@opindex ^
+べき乗演算子。@var{x}と@var{y}がどちらもスカラーの場合、この演算子は@var{x}を@var{y}乗じてリターンする。@var{x}がスカラーで@var{y}が正方マトリクスの場合、結果は固有値展開を使用して計算される。@var{x}が正方マトリクスの場合、@var{y}が整数なら結果は乗算を繰り返して計算され、@var{y}が非整数なら固有値展開により計算される。@var{x}と@var{y}が両方マトリクスなら結果はエラーとなる。
+
+この演算子の実装は改善される必要がある。
+
+@item @var{x} .^ @var{y}
+@itemx @var{x} .** @var{y}
+@opindex .**
+@opindex .^
+要素ごとのべき乗演算子。オペランドがどちらもマトリクスの場合、行数と列数が一致するか、同じ形体にブロードキャストされなければならない。複素数の結果が複数利用できる場合、最小の非負(angle)の引数が採用される。このルールにより、たとえ実数の根が利用できても、複素数の根がリターンされる。実数の結果を望むなら@code{realpow}、@code{realsqrt}、@code{cbrt}、@code{nthroot}を使用すること。
+
+@item -@var{x}
+@opindex -
+Negation.
+
+@item +@var{x}
+@opindex +
+単項プラス。この演算子はオペランドに影響を与えない。
+
+@item @var{x}'
+@opindex '
+複素数の共役転置。実数の引数にたいして、この演算子は転置演算子と等価。複素数引数にたいして、この演算子は以下の式と等価
+
+@example
+conj (x.')
+@end example
+
+@item @var{x}.'
+@opindex .'
+転置。
+@end table
+
+Octaveの要素ごとの演算子は@samp{.}で始まり、以下のような文にたいして曖昧さが存在することに注意してください
+
+@example
+1./m
+@end example
+
+@noindent
+なぜならピリオドは定数の一部、あるいは演算子の一部としてどちらにも解釈できるからです。この競合を解決するために、Octaveはあたかも以下をタイプしたかのように扱い
+
+@example
+(1) ./ m
+@end example
+
+@noindent
+以下のように扱うことはありません
+
+@example
+(1.) / m
+@end example
+
+@noindent
+これは、与えられた任意の位置において最長のマッチが優先されるというOctave字句解析の通常の振る舞いと統一が取れませんが、この場合はこちらのほうが便利です。
+
+@opindex '
+@c ctranspose libinterp/corefcn/data.cc
+@anchor{XREFctranspose}
+@deftypefn {Built-in Function} {} ctranspose (@var{x})
+複素数の@var{x}の共役転置をリターンします。この関数と@tcode{x'}は等価です。
+@seealso{@ref{XREFtranspose,,transpose}}
+@end deftypefn
+
+
+@opindex .\
+@c ldivide libinterp/corefcn/data.cc
+@anchor{XREFldivide}
+@deftypefn {Built-in Function} {} ldivide (@var{x}, @var{y})
+@var{x}と@var{y}の要素ごとの左除算をリターンします。この関数と@w{@tcode{x .@xbackslashchar{}
+y}}は等価です。
+@seealso{@ref{XREFrdivide,,rdivide}, @ref{XREFmldivide,,mldivide},
+@ref{XREFtimes,,times}, @ref{XREFplus,,plus}}
+@end deftypefn
+
+
+@opindex -
+@c minus libinterp/corefcn/data.cc
+@anchor{XREFminus}
+@deftypefn {Built-in Function} {} minus (@var{x}, @var{y})
+この関数は@w{@tcode{x - y}}と等価です。
+@seealso{@ref{XREFplus,,plus}, @ref{XREFuminus,,uminus}}
+@end deftypefn
+
+
+@opindex \
+@c mldivide libinterp/corefcn/data.cc
+@anchor{XREFmldivide}
+@deftypefn {Built-in Function} {} mldivide (@var{x}, @var{y})
+@var{x}と@var{y}の左除算マトリクスをリターンします。この関数は@w{@tcode{x @xbackslashchar{}
+y}}と等価です。
+@seealso{@ref{XREFmrdivide,,mrdivide}, @ref{XREFldivide,,ldivide},
+@ref{XREFrdivide,,rdivide}}
+@end deftypefn
+
+
+@opindex **
+@opindex ^
+@c mpower libinterp/corefcn/data.cc
+@anchor{XREFmpower}
+@deftypefn {Built-in Function} {} mpower (@var{x}, @var{y})
+@var{x}の@var{y}乗というべき乗操作を行いマトリクスをリターンします。この関数は@w{@tcode{x ^ y}}と等価です。
+@seealso{@ref{XREFpower,,power}, @ref{XREFmtimes,,mtimes},
+@ref{XREFplus,,plus}, @ref{XREFminus,,minus}}
+@end deftypefn
+
+
+@opindex /
+@c mrdivide libinterp/corefcn/data.cc
+@anchor{XREFmrdivide}
+@deftypefn {Built-in Function} {} mrdivide (@var{x}, @var{y})
+@var{x}と@var{y}を右除算したマトリクスをリターンします。この関数は@w{@tcode{x / y}}と等価です。
+@seealso{@ref{XREFmldivide,,mldivide}, @ref{XREFrdivide,,rdivide},
+@ref{XREFplus,,plus}, @ref{XREFminus,,minus}}
+@end deftypefn
+
+
+@opindex *
+@c mtimes libinterp/corefcn/data.cc
+@anchor{XREFmtimes}
+@deftypefn {Built-in Function} {} mtimes (@var{x}, @var{y})
+@deftypefnx {Built-in Function} {} mtimes (@var{x1}, @var{x2}, @dots{})
+入力のmultiplication productをリターンします。この関数と@w{@tcode{x *
+y}}は等価です。より多くの引数が与えられた場合、multiplicationは累積的に左から右へと行われます:
+
+@example
+(@dots{}((x1 * x2) * x3) * @dots{})
+@end example
+
+少なくとも1つの引数が要求されます。
+@seealso{@ref{XREFtimes,,times}, @ref{XREFplus,,plus},
+@ref{XREFminus,,minus}, @ref{XREFrdivide,,rdivide},
+@ref{XREFmrdivide,,mrdivide}, @ref{XREFmldivide,,mldivide},
+@ref{XREFmpower,,mpower}}
+@end deftypefn
+
+
+@opindex +
+@c plus libinterp/corefcn/data.cc
+@anchor{XREFplus}
+@deftypefn {Built-in Function} {} plus (@var{x}, @var{y})
+@deftypefnx {Built-in Function} {} plus (@var{x1}, @var{x2}, @dots{})
+この関数は@w{@tcode{x + y}}と等価です。より多くの引数が与えられた場合、加算は左から右へ累積的に行われます:
+
+@example
+(@dots{}((x1 + x2) + x3) + @dots{})
+@end example
+
+少なくとも1つの引数が要求されます。
+@seealso{@ref{XREFminus,,minus}, @ref{XREFuplus,,uplus}}
+@end deftypefn
+
+
+@opindex .**
+@opindex .^
+@c power libinterp/corefcn/data.cc
+@anchor{XREFpower}
+@deftypefn {Built-in Function} {} power (@var{x}, @var{y})
+要素ごとに@var{x}を@var{y}乗してリターンします。複数の複素数結果が利用できる場合は、最小の非負(angle)の引数をリターンします。実数の結果が望ましい場合は@code{realpow}、@code{realsqrt}、@code{cbrt}、@code{nthroot}を使用してください。
+
+この関数は@w{@tcode{x .^ y}}と等価です。
+@seealso{@ref{XREFmpower,,mpower}, @ref{XREFrealpow,,realpow},
+@ref{XREFrealsqrt,,realsqrt}, @ref{XREFcbrt,,cbrt},
+@ref{XREFnthroot,,nthroot}}
+@end deftypefn
+
+
+@opindex ./
+@c rdivide libinterp/corefcn/data.cc
+@anchor{XREFrdivide}
+@deftypefn {Built-in Function} {} rdivide (@var{x}, @var{y})
+@var{x}と@var{y}を要素ごとに右除算してリターンします。この関数は@w{@tcode{x ./ y}}と等価です。
+@seealso{@ref{XREFldivide,,ldivide}, @ref{XREFmrdivide,,mrdivide},
+@ref{XREFtimes,,times}, @ref{XREFplus,,plus}}
+@end deftypefn
+
+
+@opindex .*
+@c times libinterp/corefcn/data.cc
+@anchor{XREFtimes}
+@deftypefn {Built-in Function} {} times (@var{x}, @var{y})
+@deftypefnx {Built-in Function} {} times (@var{x1}, @var{x2}, @dots{})
+入力の要素ごとのmultiplication productをリターンします。この関数と@w{@tcode{x .*
+y}}は等価です。より多くの引数が与えられた場合、乗算は左から右に累積的に適用されます:
+
+@example
+(@dots{}((x1 .* x2) .* x3) .* @dots{})
+@end example
+
+少なくとも1つの引数が要求されます。
+@seealso{@ref{XREFmtimes,,mtimes}, @ref{XREFrdivide,,rdivide}}
+@end deftypefn
+
+
+@opindex .'
+@c transpose libinterp/corefcn/data.cc
+@anchor{XREFtranspose}
+@deftypefn {Built-in Function} {} transpose (@var{x})
+@var{x}の転置をリターンします。この関数と@tcode{x.'}は等価です。
+@seealso{@ref{XREFctranspose,,ctranspose}}
+@end deftypefn
+
+
+@opindex -
+@c uminus libinterp/corefcn/data.cc
+@anchor{XREFuminus}
+@deftypefn {Built-in Function} {} uminus (@var{x})
+この関数は@w{@tcode{- x}}と等価です。
+@seealso{@ref{XREFuplus,,uplus}, @ref{XREFminus,,minus}}
+@end deftypefn
+
+
+@opindex +
+@c uplus libinterp/corefcn/data.cc
+@anchor{XREFuplus}
+@deftypefn {Built-in Function} {} uplus (@var{x})
+この関数は@w{@tcode{+ x}}と等価です。
+@seealso{@ref{XREFuminus,,uminus}, @ref{XREFplus,,plus},
+@ref{XREFminus,,minus}}
+@end deftypefn
+
+
+@node Comparison Ops
+@section Comparison Operators
+@cindex comparison expressions
+@cindex expressions, comparison
+@cindex relational operators
+@cindex operators, relational
+@cindex less than operator
+@cindex greater than operator
+@cindex equality operator
+@cindex tests for equality
+@cindex equality, tests for
+
+@dfn{比較演算子}は等価性のような関連について数値を比較します。これらは@emph{関係演算子}を用いて記述されます。
+
+Octaveのすべての比較演算子は、比較がtrueなら1、falseなら0をリターンします。マトリクス値にたいしては、すべて要素ごとの原理に基づき機能します。ブロードキャストのルールが適用されます。@ref{Broadcasting}を参照してください。たとえば:
+
+@example
+@group
+[1, 2; 3, 4] == [1, 3; 2, 4]
+     @result{}  1  0
+         0  1
+@end group
+@end example
+
+ブロードキャストのルールにしたがい、オペランドの1つがスカラーで、もう一方がマトリクスの場合は、そのスカラーがマトリクスの各要素と順に比較され、結果はそのマトリクスと同じサイズになります。
+
+@table @code
+@item @var{x} < @var{y}
+@opindex <
+@var{x}が@var{y}より小ならtrue。
+
+@item @var{x} <= @var{y}
+@opindex <=
+@var{x}が@var{y}以下ならtrue。
+
+@item @var{x} == @var{y}
+@opindex ==
+@var{x}が@var{y}と等しければtrue。
+
+@item @var{x} >= @var{y}
+@opindex >=
+@var{x}が@var{y}以上ならtrue。
+
+@item @var{x} > @var{y}
+@opindex >
+@var{x}が@var{y}より大ならtrue。
+
+@item @var{x} != @var{y}
+@itemx @var{x} ~= @var{y}
+@opindex !=
+@opindex ~=
+@var{x}が@var{y}としくなければtrue。
+@end table
+
+複素数値にたいしては以下の順序が定義されている(@var{z1} < @var{z2}の場合に限る)。
+
+@example
+@group
+  abs (@var{z1}) < abs (@var{z2}) 
+  || (abs (@var{z1}) == abs (@var{z2}) && arg (@var{z1}) < arg (@var{z2}))
+@end group
+@end example
+
+これは@dfn{max}、@dfn{min}、@dfn{sort}で使用される順序と整合がとれていますが、実数部だけを比較する@sc{matlab}とは不整合です。
+
+文字列の比較は上記にリストした演算子ではなく、@code{strcmp}関数により処理されます。@ref{Strings}を参照してください。
+
+@opindex ==
+@c eq libinterp/corefcn/data.cc
+@anchor{XREFeq}
+@deftypefn {Built-in Function} {} eq (@var{x}, @var{y})
+2つの入力が等しければtrueをリターンします。この関数は@w{@code{x == y}}と等価です。
+@seealso{@ref{XREFne,,ne}, @ref{XREFisequal,,isequal}, @ref{XREFle,,le},
+@ref{XREFge,,ge}, @ref{XREFgt,,gt}, @ref{XREFne,,ne}, @ref{XREFlt,,lt}}
+@end deftypefn
+
+
+@opindex >=
+@c ge libinterp/corefcn/data.cc
+@anchor{XREFge}
+@deftypefn {Built-in Function} {} ge (@var{x}, @var{y})
+この関数は@w{@code{x >= y}}と等価です。
+@seealso{@ref{XREFle,,le}, @ref{XREFeq,,eq}, @ref{XREFgt,,gt},
+@ref{XREFne,,ne}, @ref{XREFlt,,lt}}
+@end deftypefn
+
+
+@opindex >
+@c gt libinterp/corefcn/data.cc
+@anchor{XREFgt}
+@deftypefn {Built-in Function} {} gt (@var{x}, @var{y})
+この関数は@w{@code{x > y}}と等価です
+@seealso{@ref{XREFle,,le}, @ref{XREFeq,,eq}, @ref{XREFge,,ge},
+@ref{XREFne,,ne}, @ref{XREFlt,,lt}}
+@end deftypefn
+
+
+@c isequal scripts/general/isequal.m
+@anchor{XREFisequal}
+@deftypefn {Function File} {} isequal (@var{x1}, @var{x2}, @dots{})
+@var{x1}、@var{x2}、@dots{}がすべて等しければtrueをリターンします。
+@seealso{@ref{XREFisequaln,,isequaln}}
+@end deftypefn
+
+
+@c isequaln scripts/general/isequaln.m
+@anchor{XREFisequaln}
+@deftypefn {Function File} {} isequaln (@var{x1}, @var{x2}, @dots{})
+NaN ==
+NaNという追加の仮定のもとに、@var{x1}、@var{x2}、@dots{}のすべてが等しければtrueをリターンします(データセット内のNaNの代替物の比較は行いません)。
+@seealso{@ref{XREFisequal,,isequal}}
+@end deftypefn
+
+
+@opindex <=
+@c le libinterp/corefcn/data.cc
+@anchor{XREFle}
+@deftypefn {Built-in Function} {} le (@var{x}, @var{y})
+この関数は@w{@code{x <= y}}と等価です。
+@seealso{@ref{XREFeq,,eq}, @ref{XREFge,,ge}, @ref{XREFgt,,gt},
+@ref{XREFne,,ne}, @ref{XREFlt,,lt}}
+@end deftypefn
+
+
+@opindex <
+@c lt libinterp/corefcn/data.cc
+@anchor{XREFlt}
+@deftypefn {Built-in Function} {} lt (@var{x}, @var{y})
+この関数は@w{@code{x < y}}と等価です。
+@seealso{@ref{XREFle,,le}, @ref{XREFeq,,eq}, @ref{XREFge,,ge},
+@ref{XREFgt,,gt}, @ref{XREFne,,ne}}
+@end deftypefn
+
+
+@opindex !=
+@opindex ~=
+@c ne libinterp/corefcn/data.cc
+@anchor{XREFne}
+@deftypefn {Built-in Function} {} ne (@var{x}, @var{y})
+2つの入力が等しくなければtrueをリターンします。この順序は@w{@code{x != y}}と等価です。
+@seealso{@ref{XREFeq,,eq}, @ref{XREFisequal,,isequal}, @ref{XREFle,,le},
+@ref{XREFge,,ge}, @ref{XREFlt,,lt}}
+@end deftypefn
+
+
+@node Boolean Expressions
+@section Boolean Expressions
+@cindex expressions, boolean
+@cindex boolean expressions
+@cindex expressions, logical
+@cindex logical expressions
+@cindex operators, boolean
+@cindex boolean operators
+@cindex logical operators
+@cindex operators, logical
+@cindex and operator
+@cindex or operator
+@cindex not operator
+
+@menu
+* Element-by-element Boolean Operators::
+* Short-circuit Boolean Operators::  
+@end menu
+
+@node Element-by-element Boolean Operators
+@subsection Element-by-element Boolean Operators
+@cindex element-by-element evaluation
+
+@dfn{要素ごとの論理式}は、ネストを制御するカッコとともにブール演算子``or'' (@samp{|})、``and''
+(@samp{&})、``not''
+(@samp{!})を使用します。ブール式のtrueはコンポーネント式の対応する要素の論理値を組み合わせて計算されます。値が0の場合はfalse、それ以外はtrueと判断されます。
+
+要素ごとのブール式は、比較式が使える場所ならどこでも使用できます。これら@code{if}や@code{while}などの命令文内で使用されます。しかし@code{if}や@code{while}などの命令文内の条件としてマトリクス値が使用される場合は、マトリクスの@emph{すべて}の要素が非0のときだけtrueになります。
+
+比較演算子と同様、要素ごとのブール式は数値(1はtrue、0はfalse)をもち、ブール式の結果をを変数に格納したり、数学的に使用された場合に効果を発揮します。
+
+以下は3つの要素ごとのブール演算子の説明です。
+
+@table @code
+@item @var{boolean1} & @var{boolean2}
+@opindex &
+対応する要素@var{boolean1}と@var{boolean2}の両方がtrueのとき、結果要素はtrue。
+
+@item @var{boolean1} | @var{boolean2}
+@opindex |
+対応する要素@var{boolean1}と@var{boolean2}のどちらか一方がtrueのとき、結果要素はtrue。
+
+@item ! @var{boolean}
+@itemx ~ @var{boolean}
+@opindex ~
+@opindex !
+対応する要素@var{boolean}がfalseのとき、結果要素はtrue。
+@end table
+
+これらの演算子は、要素ごとの原理にもとづき機能します。たとえば、以下の式
+
+@example
+[1, 0; 0, 1] & [1, 0; 2, 3]
+@end example
+
+@noindent
+は2行2列の単位マトリクスをリターンします。
+
+2項演算子にたいしては、ブロードキャストルールが適用されます。@ref{Broadcasting}を参照してください。特にオペランドの1つがスカラーで、もう一方がマトリクスの場合、しの演算子はスカラーとマトリクスの各要素に適用されます。
+
+要素ごとの2項ブール演算子にたいしては、結果を計算する前に部分式@var{boolean1}と@var{boolean2}が評価されます。。これは、式が副作用をもつとき、違いを生じます。たとえば、以下の式
+
+@example
+a & b++
+@end example
+
+@noindent
+これは、たとえ@var{a}が0でも、変数@var{b}の値はインクリメントされます。
+
+この振る舞いは説明したように、マトリクス値をもつオペランドにたいしてブール演算子が機能するために必要なのです。
+
+@opindex &
+@c and libinterp/corefcn/data.cc
+@anchor{XREFand}
+@deftypefn {Built-in Function} {} and (@var{x}, @var{y})
+@deftypefnx {Built-in Function} {} and (@var{x1}, @var{x2}, @dots{})
+@var{x}と@var{y}の論理的ANDをリターンします。この関数は@w{@code{x &
+y}}と等価です。より多くの引数が与えられた場合、論理的ANDは左から右へと累積的に適用されます:
+
+@example
+(@dots{}((x1 & x2) & x3) & @dots{})
+@end example
+
+少なくとも1つの引数が要求されます。
+@seealso{@ref{XREFor,,or}, @ref{XREFnot,,not}, @ref{XREFxor,,xor}}
+@end deftypefn
+
+
+@opindex ~
+@opindex !
+@c not libinterp/corefcn/data.cc
+@anchor{XREFnot}
+@deftypefn {Built-in Function} {} not (@var{x})
+@var{x}の論理的NOTをリターンします。この関数は@code{! x}と等価です。
+@seealso{@ref{XREFand,,and}, @ref{XREFor,,or}, @ref{XREFxor,,xor}}
+@end deftypefn
+
+
+@opindex |
+@c or libinterp/corefcn/data.cc
+@anchor{XREFor}
+@deftypefn {Built-in Function} {} or (@var{x}, @var{y})
+@deftypefnx {Built-in Function} {} or (@var{x1}, @var{x2}, @dots{})
+@var{x}と@var{y}の論理的ORをリターンします。この関数は@w{@code{x |
+y}}と等価です。より多くの引数が与えられた場合、論理的ORは左から右へと累積的に適用されます:
+
+@example
+(@dots{}((x1 | x2) | x3) | @dots{})
+@end example
+
+少なくとも1つの引数が要求されます。
+@seealso{@ref{XREFand,,and}, @ref{XREFnot,,not}, @ref{XREFxor,,xor}}
+@end deftypefn
+
+
+@node Short-circuit Boolean Operators
+@subsection Short-circuit Boolean Operators
+@cindex short-circuit evaluation
+
+@code{if}や@code{while}の中での暗黙的なスカラー値への変換と組み合わせれば、Octaveの要素ごとのブール演算子は、論理演算の大部分を処理するのに十分です。しかし、全体の論理値が判断されたらすぐにブール式の評価を停止するのが望ましい場合もあります。Octaveのブール演算子の@dfn{ショートサーキット}は、この方法で機能します。
+
+@table @code
+@item @var{boolean1} && @var{boolean2}
+@opindex &&
+式@var{boolean1}は、@code{all
+(@var{boolean1}(:))}と等価な処理を使用して、スカラーに評価・変換されます。これがfalseの場合、式全体の結果は0になります。trueの場合、式@var{boolean2}は@code{all
+(@var{boolean1}(:))}と等価な処理を使用して、スカラーへと評価・変換されます。trueの場合、式全体の結果は1になります。それ以外は、式全体の結果は0になります。
+
+@strong{警告:} @code{all
+(@var{boolean1}(:))}の評価ルールには、@code{boolean1}が空マトリクスの場合に、1つの例外があります。空マトリクスの論理値は空マトリクスにたいして常に@code{false}なので、たとえ@code{all
+([])}が@code{true}でも、@code{[] && true}は@code{false}に評価されます。
+
+@item @var{boolean1} || @var{boolean2}
+@opindex ||
+式@var{boolean1}は、@code{all
+(@var{boolean1}(:))}と等価な処理を使用して、スカラーに評価・変換されます。trueの場合、式全体の結果は1になります。falseの場合、@code{all
+(@var{boolean1}(:))}と等価な処理を使用して、式@var{boolean2}がスカラーに評価・変換されます。trueの場合、式全体の結果は1になります。それ以外は、式全体の結果は0になります。
+
+@strong{警告:} 空マトリクスの論理値は常に@code{false}になります。詳細は上記リストのアイテムを参照してください。
+@end table
+
+式全体の論理値が決定される前に両方のオペランドが評価されることはないという事実は重要です。たとえば、以下の式
+
+@example
+a && b++
+@end example
+
+@noindent
+変数@var{a}が非0の場合のみ、変数@var{b}の値はインクリメントされます。
+
+これは、より簡潔なコードを記述するのに使用できます。たとえば、
+
+@example
+@group
+function f (a, b, c)
+  if (nargin > 2 && ischar (c))
+    @dots{}
+@end group
+@end example
+
+@noindent
+存在しない引数の評価を避けるために2つの@code{if}文を使用するかわりに、上記のように記述することが可能です。たとえば、ショートサーキット機能がなければ、以下のように記述する必要があるでしょう
+
+@example
+@group
+function f (a, b, c)
+  if (nargin > 2)
+    if (ischar (c))
+      @dots{}
+@end group
+@end example
+
+@noindent
+以下のように記述すると
+
+@example
+@group
+function f (a, b, c)
+  if (nargin > 2 & ischar (c))
+    @dots{}
+@end group
+@end example
+
+@noindent
+@code{f}が1つ、または2つの引数で呼び出された場合にエラーとなります。なぜならOctaveは演算子@samp{&}にたいして、両方のオペランドの評価を強いるからです。
+
+@sc{matlab}は、@code{if}および@code{while}文の論理式内で使用されたとき、演算子@samp{&}と@samp{|}がショートサーキットのために特別に振る舞うことを許しています。Octaveパーサーもおそらく同じ振る舞いを指示するでしょうが、この使用法は推奨されません。
+
+@c do_braindead_shortcircuit_evaluation libinterp/parse-tree/pt-binop.cc
+@anchor{XREFdo_braindead_shortcircuit_evaluation}
+@deftypefn {Built-in Function} {@var{val} =} do_braindead_shortcircuit_evaluation ()
+@deftypefnx {Built-in Function} {@var{old_val} =} do_braindead_shortcircuit_evaluation (@var{new_val})
+@deftypefnx {Built-in Function} {} do_braindead_shortcircuit_evaluation (@var{new_val}, "local")
+ifまたはwhile文の条件部の内部で、@samp{|}および@samp{&}演算子が評価のショートサーキットを行うかどうかを制御する内部変数にたいして、問い合わせまたはセットを行います。
+
+この機能は@sc{matlab}との互換性のためだけに提供されており、この機能にもとづいた古いコードを移植するのでなければ、使用するべきではありません。
+
+新しいプログラムで論理式のショートサーキット動作を得るには、常に@samp{&&}および@samp{||}演算子を使用するべきです。
+
+関数内から@qcode{"local"}オプションとともに呼び出された場合、変数の変更はその関数および関数のサブルーチンにたいしてローカルになります。関数をexitするとき、変数の元の値がリストアされます。
+@end deftypefn
+
+
+最期に、Octaveでは三項演算子(?:)はサポートされません。ショートサーキットが重要でなければ、@code{ifelse}関数で置き換えることができます。
+
+@c merge libinterp/corefcn/data.cc
+@anchor{XREFmerge}
+@deftypefn {Built-in Function} {} merge (@var{mask}, @var{tval}, @var{fval})
+@deftypefnx {Built-in Function} {} ifelse (@var{mask}, @var{tval}, @var{fval})
+@var{mask}の値に応じて、@var{true_val}と@var{false_val}の要素をマージします。@var{mask}が論理的スカラーの場合、他の2つの引数は任意の値をとることができます。それ以外は、@var{mask}は論理的配列でなければならず、@var{tval}と@var{fval}はマッチングするクラスかセル配列です。スカラーマスクの場合、@var{mask}がtrueなら@var{tval}がリターンされ、それ以外は@var{fval}がリターンされます。
+
+配列マスクの場合、@var{tval}と@var{fval}はどちらもスカラーか、@var{mask}と次元が等しい配列でなければなりません。以下のように結果が構築されます:
+
+@example
+@group
+result(mask) = tval(mask);
+result(! mask) = fval(! mask);
+@end group
+@end example
+
+@var{mask}は任意の数値型でもよく、この場合は最初に論理値に変換されます。
+@seealso{@ref{XREFlogical,,logical}, @ref{XREFdiff,,diff}}
+@end deftypefn
+
+
+@node Assignment Ops
+@section Assignment Expressions
+@cindex assignment expressions
+@cindex assignment operators
+@cindex operators, assignment
+@cindex expressions, assignment
+
+@opindex =
+
+@dfn{割り当て}とは、変換に新しい値を格納することです。たとえば、以下の式は変数@code{z}に値1を代入します:
+
+@example
+z = 1
+@end example
+
+@noindent
+この式が実行されると、変数@code{z}は値1をもちます。@code{z}の古い値が何であれ、以前に割り当てられていた値は忘れられます。@samp{=}記号は、@dfn{代入演算子}と呼ばれます。
+
+代入により文字列値も格納できます。たとえば、以下の式は変数@code{message}に値@qcode{"this food is
+good"}を格納します:
+
+@example
+@group
+thing = "food"
+predicate = "good"
+message = [ "this " , thing , " is " , predicate ]
+@end group
+@end example
+
+@noindent
+(これは文字列の連結も示しています。)
+
+@cindex side effect
+大部分の演算子(追加、連結など)は、値の計算以外の効果はもちません。値が不要なら、演算子を使用することもないでしょう。代入演算子は異なります。これは値を生成しますが、たとえ値を無視しても、変数の変更により代入は効果をもちます。これを@dfn{副作用}と呼びます。
+
+@cindex lvalue
+代入の左辺のオペランドは、変数である必要はありません(@ref{Variables}を参照)。マトリクスの要素(@ref{Index
+Expressions}を参照)や、リターン値のリスト(@ref{Calling
+Functions}を参照)でも可能です。これらはすべて@dfn{左辺値(lvalues)}と呼ばれ、これはそれらが代入演算子の左辺に出現することを意味します。右辺のオペランドは任意の式です。これは新しい値を生成して、代入により指定された変数、マトリクス要素、リターン値リストに格納されます。
+
+変数が不変の型を@emph{もたない}ことに注意するのが重要です。値が何であれ、そのとき保持する型が、変数の型です。以下のプログラム断片では、変数@code{foo}は最初数値をもち、その後文字列値をもちます:
+
+@example
+@group
+octave:13> foo = 1
+foo = 1
+octave:13> foo = "bar"
+foo = bar
+@end group
+@end example
+
+@noindent
+2つ目の代入により@code{foo}に文字列値が与えられると、以前は数値をもっていたという事実は忘れられます。
+
+インデクス付けされたマトリクスにスカラーを代入すると、インデクスにより参照されていた要素すべてにスカラー値がセットされます。たとえば、@code{a}が少なくとも2つの列をもつマトリクスの場合
+
+@example
+@group
+a(:, 2) = 5
+@end group
+@end example
+
+@noindent
+これは@code{a}に2列目の要素すべてに5をセットします。
+
+多くに場合、空マトリクス@samp{[]}を割り当てることにより、マトリクスまたはベクターの行や列のすべてを削除できます。@ref{Empty
+Matrices}を参照してください。たとえば4行5列のマトリクス@var{A}が与えられたとき、
+
+@example
+A (3, :) = []
+@end example
+
+@noindent
+この代入により、@var{A}の3行目が削除され、
+
+@example
+A (:, 1:2:5) = []
+@end example
+
+@noindent
+この割り当てでは、1つ目、3つ目、5つ目の列が削除されます。
+
+代入は式なので値をもちます。したが@code{z = 1}は式として値1をもちます。この結果、以下のように複数の代入を一緒に記述できます:
+
+@example
+x = y = z = 0
+@end example
+
+@noindent
+これは3つの変数すべてに0をセットします。なぜなら@code{z = 0}の値は0で、それが@code{y}に格納され、@code{y = z =
+0}の値も0で、それが@code{x}に格納されるからです。
+
+これはリスト値への代入でも真なので、以下は有効な式です
+
+@example
+[a, b, c] = [u, s, v] = svd (a)
+@end example
+
+@noindent
+これは以下とまったく同じです
+
+@example
+@group
+[u, s, v] = svd (a)
+a = u
+b = s
+c = v
+@end group
+@end example
+
+このような式では、式の各部分の値数がマッチする必要はありません。たとえば、以下の式
+
+@example
+[a, b] = [u, s, v] = svd (a)
+@end example
+
+@noindent
+は以下と等価です 
+
+@example
+@group
+[u, s, v] = svd (a)
+a = u
+b = s
+@end group
+@end example
+
+@noindent
+しかし式の左辺の値の数は、右辺の値の数を超えることはできません。たとえば、以下はエラーを生成します。
+
+@example
+@group
+[a, b, c, d] = [u, s, v] = svd (a);
+@print{} error: element number 4 undefined in return list
+@end group
+@end example
+
+シンボル@code{~}は左辺値リストの代替えとして使用され、対応するリターン値は無視され、どこにも格納されないことを示します:
+
+@example
+@group
+[~, s, v] = svd (a);
+@end group
+@end example
+
+ダミー変数を使用することにより、より明解になり、メモリーも効率的になります。右辺の式にたいする@code{nargout}の値は影響を受けません。代入が式として使用された場合、リターン値は無視する値が省かれたカンマ区切りリストになります。
+
+@opindex +=
+とても一般的なプログラミングのパターンに、以下のように与えられた値による既存変数のインクリメントがあります
+
+@example
+a = a + 2;
+@end example
+
+@noindent
+以下のように@code{+=}演算子を使えば、より明解・簡略に記述できます
+
+@example
+a += 2;
+@end example
+
+@noindent
+@opindex -=
+@opindex *=
+@opindex /=
+同様な演算子は減算(@code{-=})、乗算(@code{*=})、除算(@code{/=})にも存在します。以下の形式の式
+
+@example
+@var{expr1} @var{op}= @var{expr2}
+@end example
+
+@noindent
+は以下と等価です
+
+@example
+@var{expr1} = (@var{expr1}) @var{op} (@var{expr2})
+@end example
+
+@noindent
+ここで、@var{expr2}が副作用をもたないシンプルな式であれば、@var{op}は@code{+}、@code{-}、@code{*}、@code{/}のうちの1つです。@var{expr2}も代入演算子を含む場合、この式は以下のように評価されます
+
+@example
+@var{temp} = @var{expr2}
+@var{expr1} = (@var{expr1}) @var{op} @var{temp}
+@end example
+
+@noindent
+ここで@var{temp}は@var{expr2}を評価することにより計算された一時的な値を格納するプレースホルダーです。したがって以下の式
+
+@example
+a *= b+1
+@end example
+
+@noindent
+は以下と等価です
+
+@example
+a = a * (b+1)
+@end example
+
+@noindent
+以下のようには@emph{なりません}
+
+@example
+a = a * b + 1
+@end example
+
+式が呼び出される場所ならどこでも、代入を使用できます。たとえば、@code{y}に1をセットしてから@code{x}が1と等しいかテストするために、@code{x
+!= (y =
+1)}と記述するのは有効です。しかし、このスタイルはプログラムの読解を難しくする傾向があります。使い捨てのプログラムを除き、このようなネストした代入を取り除くように書き直すべきです。これは難しいことではありません。
+
+@cindex increment operator
+@cindex decrement operator
+@cindex operators, increment
+@cindex operators, decrement
+
+@node Increment Ops
+@section Increment Operators
+
+@emph{インクリメント演算子}は、変数の値を1増加または減少させます。変数を増加させる演算子は@samp{++}と記述します。この演算子は、変数から値を取得する前、または後のどちらかで変数を増加させるために使用します。
+
+たとえば変数@var{x}を事前に増加させるには、@code{++@var{x}}と記述します。これは@var{x}に1加算してから、式の結果として@var{x}の新しい値をリターンします。これは式@code{@var{x}
+= @var{x} + 1}とまったく同じです。
+
+変数@var{x}を事後に増加させるには、@code{@var{x}++}と記述します。これは@var{x}に1加算しますが、@var{x}が増加される前にもっていた値をリターンします。たとえば、@var{x}が2に等しい場合、式@code{@var{x}++}の結果は2で、@var{x}の新たな値は3になります。
+
+マトリクスおよびベクターの引数については、インクリメントおよびデクリメント演算子はオペランドの各要素に機能します。
+
+以下はすべてのインクリメントおよびデクリメント式のリストです。
+
+@table @code
+@item ++@var{x}
+@opindex ++
+この式は、変数@var{x}をインクリメントします。式の値は@var{x}の@emph{新しい}値です。これは式@code{@var{x} =
+@var{x} + 1}と等価です。
+
+@item --@var{x}
+@opindex @code{--}
+この式は、変数@var{x}をデクリメントします。式の値は@var{x}の@emph{新しい}値です。これは式@code{@var{x} =
+@var{x} - 1}と等価です。
+
+@item @var{x}++
+@opindex ++
+この式は変数@var{x}をインクリメントします。式の値は、@var{x}の@emph{古い}値です。
+
+@item @var{x}--
+@opindex @code{--}
+この式は、変数@var{x}をデクリメントします。式の値は@var{x}の@emph{古い}値です。
+@end table
+
+@node Operator Precedence
+@section Operator Precedence
+@cindex operator precedence
+
+@dfn{演算子の優先順位}は、1つの式中に異なる演算子が近接して出現するとき、演算子がどのようにグループ化されるかを決定します。たとえば@samp{*}は@samp{+}より高い優先順位をもちます。したがって式@code{a
++ b * c}は@code{b}に@code{c}を乗じてから、その積に@code{a}を和することを意味します(例: @code{a + (b *
+c)})。
+
+カッコを使用することにより、演算子の優先順位を変更できます。優先順位は、あなたがカッコを書かなかったとき、どこにカッコがあるとみなすか告げるものと考えることができます。実際のところ、通常とは異なる演算子を組み合わせるときは常にカッコを使用するのが賢明です。なぜならプログラムを読む他の人は、この場合何が優先されるのか覚えていないかもしれないからです。あなたも同様に忘れるかもしれず、間違えるかもしれません。明示的なカッコは、そのような間違いを防ぐ助けになります。
+
+イコール演算子の優先順位が一緒に使用された場合、最左演算子が最初にグループ化されますが、代入演算子は逆順にグループ化されます。したがって式@code{a
+- b + c}は@code{(a - b) + c}とグループ化されますが、@code{a = b = c}は@code{a = (b =
+c)}のようにグループ化されます。
+
+前置単項演算子の優先順位は、オペランドの後に他の演算子が続く場合に重要です。たとえば@code{-x^2}は@code{-(x^2)}を意味します。なぜなら@samp{-}は@samp{^}より優先順位が低いからです。
+
+以下はOctaveでの演算子を優先順位順に並べたテーブルです。しかしすべての演算子が左から右にグループ化されるわけではないことに注意してください。
+
+@table @code
+@item 関数呼び出し、および配列のインデクス操作、セル配列のインデクス操作、および構造体要素のインデクス操作
+@samp{()} @samp{@{@}} @samp{.}
+
+@item 後置インクリメント、および後置デクリメント
+@samp{++} @samp{--}
+
+これらの演算子は右から左にグループ化されます。
+
+@item 転置、および指数
+@samp{'} @samp{.'} @samp{^} @samp{**} @samp{.^} @samp{.**}
+
+@item 単項プラス、単項マイナス、前置インクリメント、前置デクリメント、論理的"not"
+@samp{+} @samp{-} @samp{++} @samp{--} @samp{~} @samp{!}
+
+@item 乗算および除算
+@samp{*} @samp{/} @samp{\} @samp{.\} @samp{.*} @samp{./}
+
+@item 加算、減算
+@samp{+} @samp{-}
+
+@item コロン
+@samp{:}
+
+@item 比較
+@samp{<} @samp{<=} @samp{==} @samp{>=} @samp{>} @samp{!=} @samp{~=}
+
+@item 要素ごとの"and"
+@samp{&}
+
+@item 要素ごとの"or"
+@samp{|}
+
+@item 論理的"and"
+@samp{&&}
+
+@item 論理的"or"
+@samp{||}
+
+@item 代入
+@samp{=} @samp{+=} @samp{-=} @samp{*=} @samp{/=} @samp{\=} @samp{^=}
+@samp{.*=} @samp{./=} @samp{.\=} @samp{.^=} @samp{|=} @samp{&=}
+
+これらの演算子は右から左にグループ化されます。
+@end table

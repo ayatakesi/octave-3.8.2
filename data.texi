@@ -1,0 +1,488 @@
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+@c DO NOT EDIT!  Generated automatically by munge-texi.pl.
+
+@c Copyright (C) 1996-2013 John W. Eaton
+@c
+@c This file is part of Octave.
+@c
+@c Octave is free software; you can redistribute it and/or modify it
+@c under the terms of the GNU General Public License as published by the
+@c Free Software Foundation; either version 3 of the License, or (at
+@c your option) any later version.
+@c 
+@c Octave is distributed in the hope that it will be useful, but WITHOUT
+@c ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+@c FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+@c for more details.
+@c 
+@c You should have received a copy of the GNU General Public License
+@c along with Octave; see the file COPYING.  If not, see
+@c <http://www.gnu.org/licenses/>.
+
+@node Data Types
+@chapter Data Types
+@cindex data types
+
+Octaveのすべてのバージョンにはいくつかのビルトインデータ型が含まれます。それらには、real(実数)およびcomplex(複素数)にたいするスカラー(scalar)とマトリクス(matrix)、文字列(character
+string)、データ構造型(data structure type)、そしてすべてのデータ型を含むことができる配列(array)が含まれます。
+
+少しC++コードを記述すれば、新しく特別なデータ型を定義することもできます。Octave実行中に新しいデータ型をダイナミック(動的)にロードできるシステムもいくつかあり、その場合はOctaveすべてをリコンパイルせずに、新しいデータ型を単に追加できます。Octaveのダイナミックリンク能力についての情報は、@ref{External
+Code Interface}を参照してください。@ref{User-defined Data
+Types}では、Octaveに新しいデータ型を定義するために、何を行わなければならないか説明しています。
+
+@c typeinfo libinterp/octave-value/ov-typeinfo.cc
+@anchor{XREFtypeinfo}
+@deftypefn {Built-in Function} {} typeinfo ()
+@deftypefnx {Built-in Function} {} typeinfo (@var{expr})
+
+式@var{expr}の型を、文字列でリターンします。@var{expr}が省略された場合は、現在インストールされているデータ型すべてを含む文字列のセル配列をリターンします。
+@seealso{@ref{XREFclass,,class}, @ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@menu
+* Built-in Data Types::
+* User-defined Data Types::
+* Object Sizes::             
+@end menu
+
+@node Built-in Data Types
+@section Built-in Data Types
+@cindex data types, built-in
+@cindex built-in data types
+
+標準のビルトインデータ型は、real(実数)およびcomplex(複素数)のスカラー(scalar)およびマトリクス(matrix)、range(レンジ、範囲)、文字列(character
+string)、データ構造型(data structure type)、セル配列(cell
+array)です。将来のバージョンで、さらにビルトインデータ型が追加されるかもしれません。現在ビルトイン型として提供されていない、特別なデータ型が必要な場合は、あなたが独自にユーザー定義データ型を記述して、それをOctaveの将来リリースのディストリビューションのために寄贈されることをお勧めします。
+
+以下の関数を使用して、変数のデータ型の判定と変更ができます。
+
+@c class libinterp/octave-value/ov-class.cc
+@anchor{XREFclass}
+@deftypefn {Function File} {@var{classname} =} class (@var{obj})
+@deftypefnx {Function File} {} class (@var{s}, @var{id})
+@deftypefnx {Function File} {} class (@var{s}, @var{id}, @var{p}, @dots{})
+オブジェクト@var{obj}のクラスをリターン、または構造@var{s}のフィールド、およびnameフィールド(文字列)が@var{id}のクラスを作成します。追加の引数は、新しいクラスがどのクラスから継承されたかを示す親クラスの名前のリストです。
+@seealso{@ref{XREFtypeinfo,,typeinfo}, @ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@c isa scripts/general/isa.m
+@anchor{XREFisa}
+@deftypefn {Function File} {} isa (@var{obj}, @var{classname})
+@var{obj}がクラス@var{classname}ならばtrueをリターンします。
+
+@var{classname}は、以下のクラスカテゴリーの1つかもしれません: 
+
+@table @asis
+@item @qcode{"float"}
+float(浮動小数点)の値は、クラス@qcode{"double"}および@qcode{"single"}を包括します。
+
+@item @qcode{"integer"}
+integer(整数)の値は、クラス(u)int8、(u)int16、(u)int32、(u)int64を包括します。
+
+@item @qcode{"numeric"}
+numericの値は、浮動小数点値と整数値を包括します。
+@end table
+@seealso{@ref{XREFclass,,class}, @ref{XREFtypeinfo,,typeinfo}}
+@end deftypefn
+
+
+@c cast scripts/miscellaneous/cast.m
+@anchor{XREFcast}
+@deftypefn {Function File} {} cast (@var{val}, @var{type})
+@var{val}をデータ型@var{type}に変換します。
+@seealso{@ref{XREFint8,,int8}, @ref{XREFuint8,,uint8},
+@ref{XREFint16,,int16}, @ref{XREFuint16,,uint16}, @ref{XREFint32,,int32},
+@ref{XREFuint32,,uint32}, @ref{XREFint64,,int64}, @ref{XREFuint64,,uint64},
+@ref{XREFdouble,,double}}
+@end deftypefn
+
+
+@c typecast libinterp/corefcn/typecast.cc
+@anchor{XREFtypecast}
+@deftypefn {Built-in Function} {} typecast (@var{x}, @var{class})
+メモリー内で@var{x}のデータをnumericクラス@var{class}のデータとして解釈し、結果を新たな配列@var{y}でリターンします。@var{x}と@var{class}はどちらも、ビルトインnumericクラスの1つでなければなりません。
+
+@example
+@group
+"logical"
+"char"
+"int8"
+"int16"
+"int32"
+"int64"
+"uint8"
+"uint16"
+"uint32"
+"uint64"
+"double"
+"single"
+"double complex"
+"single complex"
+@end group
+@end example
+
+@noindent
+最後の2つは、@var{class}のために予約されています。これらは、complex値の結果が要求されていることを示します。complex配列は、連続するreal値として、メモリー内に格納されます。integer型のサイズは、それらのビット数で与えられます。logicalとcharはどちらも1バイト幅です。しかしこれはC++により保証されていません。システムがIEEE準拠の場合、singleとdoubleは、4バイトおよび8バイト幅です。@qcode{"logical"}は、@var{class}に指定できません。入力が行ベクターならリターン値は行ベクターで、それ以外は列ベクターです。@var{x}のビット長が@var{class}のビット長の倍数でない場合は、エラーが発生します。
+
+リトルエンディアン機でtypecastを使用する例は
+
+@example
+@group
+@var{x} = uint16 ([1, 65535]);
+typecast (@var{x}, "uint8")
+@result{} [   1,   0, 255, 255]
+@end group
+@end example
+@seealso{@ref{XREFcast,,cast}, @ref{XREFbitunpack,,bitunpack},
+@ref{XREFbitpack,,bitpack}, @ref{XREFswapbytes,,swapbytes}}
+@end deftypefn
+
+
+@c swapbytes scripts/miscellaneous/swapbytes.m
+@anchor{XREFswapbytes}
+@deftypefn {Function File} {} swapbytes (@var{x})
+値のバイト順を入れ替えて、リトルエンディアンからビッグエンディアン、またはその逆の変換をします。
+
+@example
+@group
+swapbytes (uint16 (1:4))
+@result{} [   256   512   768  1024]
+@end group
+@end example
+
+@seealso{@ref{XREFtypecast,,typecast}, @ref{XREFcast,,cast}}
+@end deftypefn
+
+
+@c bitpack libinterp/corefcn/typecast.cc
+@anchor{XREFbitpack}
+@deftypefn {Built-in Function} {@var{y} =} bitpack (@var{x}, @var{class})
+配列@var{x}をnumericクラス@var{class}のrawビット配列として解釈した結果を、新たな配列@var{y}でリターンします。@var{class}はビルトインnumericクラスのうちの1つでなければなりません。
+
+@example
+@group
+"char"
+"int8"
+"int16"
+"int32"
+"int64"
+"uint8"
+"uint16"
+"uint32"
+"uint64"
+"double"
+"single"
+@end group
+@end example
+
+@var{x}の要素の個数は、@var{class}のビット長の倍数である必要があります。もしそうでない場合には、余分なビットは無視されます。ビット順は、@code{x(1)}がビット0、@code{x(2)}がビット1、のように、昇順になっています。結果は、@var{x}が行ベクターなら行ベクター、それ以外は列ベクターになります。
+@seealso{@ref{XREFbitunpack,,bitunpack}, @ref{XREFtypecast,,typecast}}
+@end deftypefn
+
+
+@c bitunpack libinterp/corefcn/typecast.cc
+@anchor{XREFbitunpack}
+@deftypefn {Built-in Function} {@var{y} =} bitunpack (@var{x})
+@var{x}のrawビットパターンに対応する配列@var{y}をリターンします。@var{x}はビルトインnumericクラスの1つに属していなければなりません:
+
+@example
+@group
+"char"
+"int8"
+"int16"
+"int32"
+"int64"
+"uint8"
+"uint16"
+"uint32"
+"uint64"
+"double"
+"single"
+@end group
+@end example
+
+結果は@var{x}が行ベクターなら行ベクター、それ以外は列ベクターです。
+@seealso{@ref{XREFbitpack,,bitpack}, @ref{XREFtypecast,,typecast}}
+@end deftypefn
+
+
+@menu
+* Numeric Objects::
+* Missing Data::
+* String Objects::
+* Data Structure Objects::
+* Cell Array Objects::       
+@end menu
+
+@node Numeric Objects
+@subsection Numeric Objects
+@cindex numeric constant
+@cindex numeric value
+
+Octaveのビルトインnumericオブジェクトには、real、complex、integerのスカラーとマトリクスが含まれます。すべてのビルトイン浮動小数点numericデータは、現在のところ倍精度浮動小数点数として格納されます。IEEE浮動小数点フォーマットを使用するシステムでは、およそ
+@tex
+ $2.2251\times10^{-308}$から$1.7977\times10^{308}$
+@end tex
+@ifnottex
+ 2.2251e-308から1.7977e+308
+@end ifnottex
+ までの範囲の値が格納でき、相対精度はおよそ
+@tex
+ $2.2204\times10^{-16}$です。
+@end tex
+@ifnottex
+ 2.2204e-16です。
+@end ifnottex
+正確な値はそれぞれ、変数@code{realmin}、@code{realmax}、@code{eps}で得ることができます。
+
+マトリクスオブジェクトは任意のサイズをとることができ、動的に変形やサイズ変更ができます。種々の強力なインデクス機能を使用して、特定の行や列、サブマトリクスが簡単に抽出できます。@ref{Index
+Expressions}を参照してください。
+
+詳細は、@ref{Numeric Data Types}を参照してください。
+
+@node Missing Data
+@subsection Missing Data
+@cindex missing data
+
+Octaveでは、@code{NA}(``Not
+Available''の略)を使用して、欠損データを明示的に表すことができます。欠損データが表されるのは、データが浮動小数点数として表されるときだけです。この場合、欠損データは@code{NaN}の特別なケースとして表されます。
+
+@c NA libinterp/corefcn/data.cc
+@anchor{XREFNA}
+@deftypefn {Built-in Function} {} NA
+@deftypefnx {Built-in Function} {} NA (@var{n})
+@deftypefnx {Built-in Function} {} NA (@var{n}, @var{m})
+@deftypefnx {Built-in Function} {} NA (@var{n}, @var{m}, @var{k}, @dots{})
+@deftypefnx {Built-in Function} {} NA (@dots{}, @var{class})
+すべての要素が、欠損値を示すために使用される特別な定数と等しいようなスカラー、マトリクス、N次元配列をリターンします。
+
+NAとNAの比較は常にノットイコール(NA !=
+NA)になることに注意してください。NA値を見つける場合には、@code{isna}関数を使用してください。
+
+引数を指定しないで呼び出された場合は、値@samp{NA}のスカラーをリターンします。1つの引数で呼び出された場合は、指定された次元の正方マトリクスをリターンします。2つ以上のスカラー引数で呼び出された場合、最初の2つは行数と列数を指定し、残りは追加のマトリクス次元を指定します。オプション引数@var{class}は、リターン型を指定し、@qcode{"double"}か@qcode{"single"}です。
+@seealso{@ref{XREFisna,,isna}}
+@end deftypefn
+
+
+@c isna libinterp/corefcn/mappers.cc
+@anchor{XREFisna}
+@deftypefn {Mapping Function} {} isna (@var{x})
+@var{x}の要素がNA値(欠損値)のところはtrue、異なるところはfalseであるようなlogical配列をリターンします。たとえば:
+
+@example
+@group
+isna ([13, Inf, NA, NaN])
+     @result{} [ 0, 0, 1, 0 ]
+@end group
+@end example
+@seealso{@ref{XREFisnan,,isnan}, @ref{XREFisinf,,isinf},
+@ref{XREFisfinite,,isfinite}}
+@end deftypefn
+
+
+@node String Objects
+@subsection String Objects
+@cindex strings
+@cindex character strings
+@opindex "
+@opindex '
+
+Octaveでの文字列は、ダブルクォーテーション、またはシングルクォーテーションで囲まれた文字シーケンスで構成されます。内部的には現在のところ、Octaveは文字列を文字のマトリクスとして格納します。マトリクスオブジェクトに機能するインデクス操作のすべては、文字列にたいしても機能します。
+
+詳細は、@ref{Strings}を参照してください。
+
+@node Data Structure Objects
+@subsection Data Structure Objects
+@cindex structures
+@cindex data structures
+
+Octaveにデータ構造型は、異なる型の関連するオブジェクトを組織化する助けになります。現在の実装では、インデクスが文字列に限定された連想配列を使用しますが、構文はCスタイルの構造体に類似しています。
+
+詳細は、@ref{Structures}を参照してください。
+
+@node Cell Array Objects
+@subsection Cell Array Objects
+@cindex cell arrays
+
+Octaveのセル配列(Cell Array)は、異なるデータ型を任意個もつことができる、汎用配列です。
+
+詳細は、@ref{Cell Arrays}を参照してください。
+
+@node User-defined Data Types
+@section User-defined Data Types
+@cindex user-defined data types
+@cindex data types, user-defined
+
+わたしはいつかOctaveのユーザー定義データ型の管理にたいする管理メカニズムについての完全なドキュメントを含めることで、このセクションを拡張したいと思っています。ここにその機能がドキュメントされるまで、あなたがそれを行なうためには、Octaveの@file{src}ディレクトリーにある@file{ov.h}、@file{ops.h}、および関連するファイルのコードを読む必要があるでしょう。
+
+@node Object Sizes
+@section Object Sizes
+
+以降の関数により、変数や式のサイズを判定できます。これらの関数は、すべてのオブジェクトにたいして定義されています。これらは操作に意味がない場合は、@minus{}1をリターンします。たとえば、Octaveのデータ構造型は行や列を持たないので、@code{rows}や@code{columns}の関数は、構造型の引数にたいしては、@minus{}1をリターンします。
+
+@c ndims libinterp/corefcn/data.cc
+@anchor{XREFndims}
+@deftypefn {Built-in Function} {} ndims (@var{a})
+@var{a}の次元数をリターンします。任意の配列にたいし、結果は2以上になります。後続のシングルトン次元(singleton dimension:
+1と等しい次元)はカウントされません。
+
+@example
+@group
+ndims (ones (4, 1, 2, 1))
+    @result{} 3
+@end group
+@end example
+@seealso{@ref{XREFsize,,size}}
+@end deftypefn
+
+
+@c columns libinterp/corefcn/data.cc
+@anchor{XREFcolumns}
+@deftypefn {Built-in Function} {} columns (@var{a})
+@var{a}の列数をリターンします。
+@seealso{@ref{XREFrows,,rows}, @ref{XREFsize,,size},
+@ref{XREFlength,,length}, @ref{XREFnumel,,numel},
+@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector},
+@ref{XREFismatrix,,ismatrix}}
+@end deftypefn
+
+
+@c rows libinterp/corefcn/data.cc
+@anchor{XREFrows}
+@deftypefn {Built-in Function} {} rows (@var{a})
+@var{a}の行数をリターンします。
+@seealso{@ref{XREFcolumns,,columns}, @ref{XREFsize,,size},
+@ref{XREFlength,,length}, @ref{XREFnumel,,numel},
+@ref{XREFisscalar,,isscalar}, @ref{XREFisvector,,isvector},
+@ref{XREFismatrix,,ismatrix}}
+@end deftypefn
+
+
+@c numel libinterp/corefcn/data.cc
+@anchor{XREFnumel}
+@deftypefn {Built-in Function} {} numel (@var{a})
+@deftypefnx {Built-in Function} {} numel (@var{a}, @var{idx1}, @var{idx2}, @dots{})
+オブジェクト@var{a}内の要素数をリターンします。オプションで、もし@var{idx1}、@var{idx2}、@dots{}が与えられた場合は、インデクス操作の結果
+
+@example
+@var{a}(@var{idx1}, @var{idx2}, @dots{})
+@end example
+
+の要素数をリターンします。インデクスは数値である必要はないことに注意してください。たとえば、
+
+@example
+@group
+@var{a} = 1;
+@var{b} = ones (2, 3);
+numel (@var{a}, @var{b})
+@end group
+@end example
+
+@noindent
+こては@var{b}でインデクスをつける方法で、6をリターンします。
+
+この手法は、オブジェクトがcsリスト(カンマ区切りリスト)のインデクス操作のlvalue(左辺値)として現れたときにも使用されます(例:
+@code{object@{@dots{}@}}または@code{object(@dots{}).field})。
+@seealso{@ref{XREFsize,,size}}
+@end deftypefn
+
+
+@c length libinterp/corefcn/data.cc
+@anchor{XREFlength}
+@deftypefn {Built-in Function} {} length (@var{a})
+オブジェクト@var{a}の長さをリターンします。
+
+lengthは、空のオブジェクトにたいしては0、スカラーにたいしては1、ベクターにたいしては要素数です。マトリクスオブジェクトについては、行数または列数の大きい方がlengthになります(この奇妙な定義は、@sc{matlab}との互換のために使用されます)。
+@seealso{@ref{XREFnumel,,numel}, @ref{XREFsize,,size}}
+@end deftypefn
+
+
+@c size libinterp/corefcn/data.cc
+@anchor{XREFsize}
+@deftypefn {Built-in Function} {} size (@var{a})
+@deftypefnx {Built-in Function} {} size (@var{a}, @var{dim})
+@var{a}の行数と列数をリターンします。
+
+入力引数が1つで、出力引数が1つの場合、結果は行ベクターでリターンされます。出力引数が複数の場合、行数が1つ目、列数が2つ目の出力引数、などとなります。たとえば:
+
+@example
+@group
+size ([1, 2; 3, 4; 5, 6])
+   @result{} [ 3, 2 ]
+
+[nr, nc] = size ([1, 2; 3, 4; 5, 6])
+    @result{} nr = 3
+    @result{} nc = 2
+@end group
+@end example
+
+2つ目の引数が与えられた場合、@code{size}は対応する次元のサイズをリターンします。たとえば、
+
+@example
+@group
+size ([1, 2; 3, 4; 5, 6], 2)
+    @result{} 2
+@end group
+@end example
+
+@noindent
+これは与えられたマトリクスの列数をリターンします。
+@seealso{@ref{XREFnumel,,numel}, @ref{XREFndims,,ndims},
+@ref{XREFlength,,length}, @ref{XREFrows,,rows}, @ref{XREFcolumns,,columns}}
+@end deftypefn
+
+
+@c isempty libinterp/corefcn/data.cc
+@anchor{XREFisempty}
+@deftypefn {Built-in Function} {} isempty (@var{a})
+@var{a}が空のマトリクス(マトリクスの次元のうち1つが0)の場合はtrue、それ以外はfalseをリターンします。
+@seealso{@ref{XREFisnull,,isnull}, @ref{XREFisa,,isa}}
+@end deftypefn
+
+
+@c isnull libinterp/octave-value/ov-null-mat.cc
+@anchor{XREFisnull}
+@deftypefn {Built-in Function} {} isnull (@var{x})
+@var{x}がマトリクス、文字列、シングルクォートされた文字列で、それらが特別な値nullの場合は、trueをリターンします。右辺にこのような値があるインデクス割り当てでは、配列の要素が削除されます。以下のようなケースと区別するため、ユーザー定義クラスのインデクス割り当てのオーバーロードでは、@code{isempty}のかわりにこの関数を使用するべきです:
+
+@table @asis
+@item @code{A(I) = []}
+これは@code{I}が空でない場合は、要素を削除します。
+
+@item @code{X = []; A(I) = X}
+これは、@code{I}が空でない場合は、エラーになります。
+@end table
+@seealso{@ref{XREFisempty,,isempty}, @ref{XREFisindex,,isindex}}
+@end deftypefn
+
+
+@c sizeof libinterp/octave-value/ov.cc
+@anchor{XREFsizeof}
+@deftypefn {Built-in Function} {} sizeof (@var{val})
+@var{val}のサイズをバイトでリターンします。
+@seealso{@ref{XREFwhos,,whos}}
+@end deftypefn
+
+
+@c size_equal libinterp/corefcn/data.cc
+@anchor{XREFsize_equal}
+@deftypefn {Built-in Function} {} size_equal (@var{a}, @var{b}, @dots{})
+すべての引数の次元が一致する場合は、trueをリターンします。後続のシングルトン次元は無視されます。引数が1つ、または指定されない場合、size_equalはtrueをリターンします。
+@seealso{@ref{XREFsize,,size}, @ref{XREFnumel,,numel},
+@ref{XREFndims,,ndims}}
+@end deftypefn
+
+
+@c squeeze libinterp/corefcn/data.cc
+@anchor{XREFsqueeze}
+@deftypefn {Built-in Function} {} squeeze (@var{x})
+@var{x}からシングルトン次元を削除して、その結果をリターンします。@sc{matlab}との互換のため、すべてのオブジェクトは少なくとも2つの次元をもち、行ベクターは変更されません。
+@seealso{@ref{XREFreshape,,reshape}}
+@end deftypefn
+
